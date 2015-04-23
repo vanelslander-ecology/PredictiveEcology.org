@@ -1,6 +1,8 @@
 ---
 layout: post
-title: Is R Fast Enough - Part 1
+title: Is R Fast Enough? - Part 1
+author: Eliot McIntire
+date: April 23, 2015
 ---
 
 There have been many people, including ourselves, who have asked, "Is R fast enough for simulation modeling?". In other words, can R handle everything we throw at it for simulation modeling?  Low level functions, high level functions, GIS, data wrangling etc... 
@@ -24,7 +26,7 @@ We will start with a fairly basic low level function, the "mean"...
 ### Mean
 For the mean, we show two different C++ versions. The R function, "mean" is somewhat slower (1/2x), but the `colMeans(x)` and calling the primitives directly with `sum(x)/length(x)` are as fast or  faster than the fastest C++ function we can write.
 
-```r
+{% highlight r %}
 library(rbenchmark)
 
 x <- runif(1e6)
@@ -36,9 +38,9 @@ mb <- benchmark(m[[1]]<-meanC1(x), m[[2]]<-meanC2(x), m[[3]]<-mean(x),
                 m[[6]]<- .Internal(mean(x)), m[[7]]<-colMeans(x1),
                 replications=10000L, columns=c("test", "elapsed", "relative"), order="relative")
 print(mb)
-```
+{% endhighlight %}
 
-```
+{% highlight r %}
 ##                           test elapsed relative
 ## 7       m[[7]] <- colMeans(x1)    9.36    1.000
 ## 5   m[[5]] <- sum(x)/length(x)    9.56    1.021
@@ -47,16 +49,16 @@ print(mb)
 ## 6 m[[6]] <- .Internal(mean(x))   18.89    2.018
 ## 3            m[[3]] <- mean(x)   19.00    2.030
 ## 2          m[[2]] <- meanC2(x)   66.23    7.076
-```
+{% endhighlight %}
 
-```r
+{% highlight r %}
 # Test that all did the same thing
 all(sapply(1:6, function(y) all.equal(m[[y]],m[[y+1]])))
-```
+{% endhighlight %}
 
-```
+{% highlight r %}
 ## [1] TRUE
-```
+{% endhighlight %}
 
 ### Conclusions
 
@@ -70,7 +72,7 @@ We will redo the fibinacci series, a common low level benchmarking test that sho
 
 The C++ functions that were used are:
 
-```r
+{% highlight r %}
 cppFunction('double meanC1(NumericVector x) {
   int n = x.size();
   double total = 0;
@@ -90,12 +92,12 @@ cppFunction('double meanC2(NumericVector x) {
   }
   return y;
 }')
-```
+{% endhighlight %}
 
 ### System used:
 Tests are done on an HP Z400, Xeon 3.33 GHz processor, running Windows 7 Enterprise, using:
 
-```
+{% highlight r %}
 ## R version 3.2.0 (2015-04-16)
 ## Platform: x86_64-w64-mingw32/x64 (64-bit)
 ## Running under: Windows 7 x64 (build 7601) Service Pack 1
@@ -115,5 +117,5 @@ Tests are done on an HP Z400, Xeon 3.33 GHz processor, running Windows 7 Enterpr
 ## [1] formatR_1.1     tools_3.2.0     htmltools_0.2.6 yaml_2.1.13    
 ## [5] rmarkdown_0.5.1 knitr_1.9       stringr_0.6.2   digest_0.6.8   
 ## [9] evaluate_0.6
-```
+{% endhighlight %}
 
