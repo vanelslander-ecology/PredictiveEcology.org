@@ -23,15 +23,11 @@ We will start with a fairly basic low level function, the "mean"...
 ### Mean
 For the mean, we show two different C++ versions. The R function, "mean" is somewhat slower (1/2x), but the `colMeans(x)` and calling the primitives directly with `sum(x)/length(x)` are as fast or  faster than the fastest C++ function we can write.
 
-
-
-
-
-
-
 ```r
 library(rbenchmark)
+
 x <- runif(1e6)
+
 x1 = matrix(x, ncol=1)
 m=list()
 mb <- benchmark(m[[1]]<-meanC1(x), m[[2]]<-meanC2(x), m[[3]]<-mean(x), 
