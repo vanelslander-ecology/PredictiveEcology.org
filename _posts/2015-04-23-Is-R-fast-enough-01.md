@@ -1,6 +1,4 @@
 
-### Is R fast enough?
-
 There have been many people, including ourselves, who have asked, "Is R faster enough for simulation modeling". In other words, if we spend a lot of time building forecasting models, are we going to eventually be limited by an inefficient language?  
 
 After years of working with R as a data analysis and manipulation tool, I wasn't convinced that R was fast enoug. I realize now that was mostly because of what we see and hear on the internet (e.g., see table in http://julialang.org). So, I started benchmarking R with a series of low and high level functions. This is part 1 of a multi-part series of posts about this benchmarking experiment with R in the coming weeks. 
@@ -42,13 +40,13 @@ print(mb)
 
 ```
 ##                           test elapsed relative
-## 7       m[[7]] <- colMeans(x1)    2.17    1.000
-## 1          m[[1]] <- meanC1(x)    2.19    1.009
-## 5   m[[5]] <- sum(x)/length(x)    2.28    1.051
-## 4    m[[4]] <- mean.default(x)    4.46    2.055
-## 3            m[[3]] <- mean(x)    4.49    2.069
-## 6 m[[6]] <- .Internal(mean(x))    4.52    2.083
-## 2          m[[2]] <- meanC2(x)   13.43    6.189
+## 1          m[[1]] <- meanC1(x)    2.15    1.000
+## 7       m[[7]] <- colMeans(x1)    2.16    1.005
+## 5   m[[5]] <- sum(x)/length(x)    2.24    1.042
+## 6 m[[6]] <- .Internal(mean(x))    4.38    2.037
+## 4    m[[4]] <- mean.default(x)    4.45    2.070
+## 3            m[[3]] <- mean(x)    4.47    2.079
+## 2          m[[2]] <- meanC2(x)   13.41    6.237
 ```
 
 ```r
@@ -66,7 +64,7 @@ The fastest way to calculate the mean for long vectors (1e7) is to use `colMeans
 
 ### Next time
 
-We will redo the fibinacci series, a common low level benchmarking test that gives R a bad name.  But it turns out to be wrong.
+We will redo the fibinacci series, a common low level benchmarking test that shows R to be slow.  But it turns out to be a case of bad coding...
 
 #### Functions used
 
