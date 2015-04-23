@@ -1,10 +1,11 @@
-# R benchmarking Part 1
 
-# Is R fast enough for simulation that scales well?
+# Is R fast enough?
 
-There have been many people, including ourselves, who have asked, "Is R faster enough for simulation modeling". After years of working with R as a data analysis and manipulation tool, I wasn't convinced, mostly because of what we see and hear on the internet (e.g., http://julialang.org). So, I started benchmarking R with a series of low and high level functionality. We will be posting a multi-part series of posts about this benchmarking experiment with R in the coming weeks. 
+There have been many people, including ourselves, who have asked, "Is R faster enough for simulation modeling". In other words, if we spend a lot of time building forecasting models, are we going to eventually be limited by an inefficient language?  
 
-The objective of this experiment is to show some speed comparisons between R and other languages and software, including C++, GIS software and others. Clearly this is NOT a comparison between R and, say, C++, because many of the functions in R are written in C++ and are wrapped in R. 
+After years of working with R as a data analysis and manipulation tool, I wasn't convinced that R was fast enoug. I realize now that was mostly because of what we see and hear on the internet (e.g., see table in http://julialang.org). So, I started benchmarking R with a series of low and high level functions. This is part 1 of a multi-part series of posts about this benchmarking experiment with R in the coming weeks. 
+
+The objective of this experiment is to show some speed comparisons between R and other languages and software, including C++ and GIS software. Clearly this is NOT a comparison between R and, say, C++, because many of the functions in R are written in C++ and are wrapped in R. But, if simple R functions are fast, then we can focus our time on more complex things needed for simulation and science.
 
 **Answer:** *R is more than fast enough!*
 
@@ -19,7 +20,7 @@ The take home messages for the whole exercise are these:
 I will start with a fairly basic low level function, the "mean"
 
 ### Mean
-For the mean, I show two different C++ versions. The R function, "mean" is somewhat slower (1/2x), but the colMeans function and calling sum/length directly are often faster, represented by sum/length is faster than either C++ function.
+For the mean, I show two different C++ versions. The R function, "mean" is somewhat slower (1/2x), but the colMeans function and calling sum/length directly are often faster than either C++ function.
 
 
 
@@ -61,7 +62,7 @@ all(sapply(1:6, function(y) all.equal(m[[y]],m[[y+1]])))
 
 ### Conclusions
 
-The fastest way to calculate the mean is to use the Primitives directly, `sum(x)/length(x)`, faster than a simple, but ad hoc, C++ example. 
+The fastest way to calculate the mean for long vectors (1e7) is to use `colMeans(x)`, which is one of many R functions written for speed. It is faster than a simple, but ad hoc, C++ example. 
 
 ### Next time
 
@@ -110,14 +111,13 @@ Tests are done on an HP Z400, Xeon 3.33 GHz processor, running Windows 7 Enterpr
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-## [1] xtable_1.7-4         rbenchmark_1.0.0     Rcpp_0.11.5         
-## [4] microbenchmark_1.4-2
+## [1] Rcpp_0.11.5          microbenchmark_1.4-2
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] codetools_0.2-11 digest_0.6.8     MASS_7.3-40      grid_3.2.0      
-##  [5] plyr_1.8.1       gtable_0.1.2     formatR_1.1      evaluate_0.6    
-##  [9] scales_0.2.4     ggplot2_1.0.1    reshape2_1.4.1   rmarkdown_0.5.1 
-## [13] proto_0.3-10     tools_3.2.0      stringr_0.6.2    munsell_0.4.2   
-## [17] yaml_2.1.13      colorspace_1.2-6 htmltools_0.2.6  knitr_1.9
+##  [1] digest_0.6.8     MASS_7.3-40      grid_3.2.0       plyr_1.8.1      
+##  [5] gtable_0.1.2     formatR_1.1      evaluate_0.6     scales_0.2.4    
+##  [9] ggplot2_1.0.1    reshape2_1.4.1   rmarkdown_0.5.1  proto_0.3-10    
+## [13] tools_3.2.0      stringr_0.6.2    munsell_0.4.2    yaml_2.1.13     
+## [17] colorspace_1.2-6 htmltools_0.2.6  knitr_1.9
 ```
 
