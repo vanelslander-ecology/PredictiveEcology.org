@@ -1,5 +1,5 @@
 
-# Is R fast enough?
+### Is R fast enough?
 
 There have been many people, including ourselves, who have asked, "Is R faster enough for simulation modeling". In other words, if we spend a lot of time building forecasting models, are we going to eventually be limited by an inefficient language?  
 
