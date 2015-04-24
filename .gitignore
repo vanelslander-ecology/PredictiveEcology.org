@@ -5,3 +5,5 @@ _site
 _posts/*.Rmd
 _posts/*.rmd
 _posts/*.html
+_posts/.Rhistory
+
