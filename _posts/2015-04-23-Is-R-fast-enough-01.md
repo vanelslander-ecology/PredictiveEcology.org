@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Is R Fast Enough? - Part 1
+title: Is R Fast Enough? - Part 1 - "The Mean"
 author: Eliot McIntire
 date: April 23, 2015
 ---
@@ -38,13 +38,13 @@ benchmark(m[[1]]<-meanC1(x), m[[2]]<-meanC2(x), m[[3]]<-mean(x),
 
 ```
 ##                           test elapsed relative
-## 5   m[[5]] <- sum(x)/length(x)    1.85    1.000
-## 7       m[[7]] <- colMeans(x1)    1.88    1.016
-## 1          m[[1]] <- meanC1(x)    1.95    1.054
-## 6 m[[6]] <- .Internal(mean(x))    3.71    2.005
-## 4    m[[4]] <- mean.default(x)    3.73    2.016
-## 3            m[[3]] <- mean(x)    3.75    2.027
-## 2          m[[2]] <- meanC2(x)   13.27    7.173
+## 1          m[[1]] <- meanC1(x)    1.86    1.000
+## 5   m[[5]] <- sum(x)/length(x)    1.90    1.022
+## 7       m[[7]] <- colMeans(x1)    1.94    1.043
+## 4    m[[4]] <- mean.default(x)    3.81    2.048
+## 6 m[[6]] <- .Internal(mean(x))    3.81    2.048
+## 3            m[[3]] <- mean(x)    3.82    2.054
+## 2          m[[2]] <- meanC2(x)   13.42    7.215
 ```
 
 ```r
