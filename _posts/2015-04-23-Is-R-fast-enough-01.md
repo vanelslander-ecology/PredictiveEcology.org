@@ -97,7 +97,6 @@ Tests are done on an HP Z400, Xeon 3.33 GHz processor, running Windows 7 Enterpr
 
 {% highlight R %}
 
-
 ## R version 3.2.0 (2015-04-16)
 ## Platform: x86_64-w64-mingw32/x64 (64-bit)
 ## Running under: Windows 7 x64 (build 7601) Service Pack 1
@@ -119,4 +118,3 @@ Tests are done on an HP Z400, Xeon 3.33 GHz processor, running Windows 7 Enterpr
 ## [9] evaluate_0.6
 
 {% endhighlight %}
-
