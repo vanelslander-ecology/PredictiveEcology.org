@@ -19,45 +19,38 @@ The take home messages for the whole exercise are these:
 
 2. most built-in R functions *must* to be used in a vectorized way to achieve these speeds, avoiding loops unless it is strictly necessary to keep the sequence (though see the data.table package)
 
-3. there are often different ways to do the same thing in R; some are *much* faster than others (see following weeks posts). Use the Primitives where possible (`nms <- names(methods:::.BasicFunsList)`)
+3. there are often different ways to do the same thing in R; some are *much* faster than others (see following weeks posts). Use the Primitives where possible (`names(methods:::.BasicFunsList)`)
 
 We will start with a fairly basic low level function, the "mean"...
 
 ### Mean
 For the mean, we show two different C++ versions. The R function, "mean" is somewhat slower (1/2x), but the `colMeans(x)` and calling the primitives directly with `sum(x)/length(x)` are as fast or  faster than the fastest C++ function we can write.
 
-{% highlight r %}
-library(rbenchmark)
+{% highlight R %}
 
 x <- runif(1e6)
-
 x1 = matrix(x, ncol=1)
 m=list()
 mb <- benchmark(m[[1]]<-meanC1(x), m[[2]]<-meanC2(x), m[[3]]<-mean(x), 
                 m[[4]]<-mean.default(x), m[[5]]<-sum(x)/length(x), 
                 m[[6]]<- .Internal(mean(x)), m[[7]]<-colMeans(x1),
-                replications=10000L, columns=c("test", "elapsed", "relative"), order="relative")
+                replications=1000L, columns=c("test", "elapsed", "relative"), order="relative")
 print(mb)
-{% endhighlight %}
 
-{% highlight r %}
 ##                           test elapsed relative
-## 7       m[[7]] <- colMeans(x1)    9.36    1.000
-## 5   m[[5]] <- sum(x)/length(x)    9.56    1.021
-## 1          m[[1]] <- meanC1(x)    9.58    1.024
-## 4    m[[4]] <- mean.default(x)   18.77    2.005
-## 6 m[[6]] <- .Internal(mean(x))   18.89    2.018
-## 3            m[[3]] <- mean(x)   19.00    2.030
-## 2          m[[2]] <- meanC2(x)   66.23    7.076
-{% endhighlight %}
+## 1          m[[1]] <- meanC1(x)    0.95    1.000
+## 5   m[[5]] <- sum(x)/length(x)    0.95    1.000
+## 7       m[[7]] <- colMeans(x1)    0.96    1.011
+## 4    m[[4]] <- mean.default(x)    1.88    1.979
+## 6 m[[6]] <- .Internal(mean(x))    1.89    1.989
+## 3            m[[3]] <- mean(x)    1.94    2.042
+## 2          m[[2]] <- meanC2(x)    6.77    7.126
 
-{% highlight r %}
 # Test that all did the same thing
 all(sapply(1:6, function(y) all.equal(m[[y]],m[[y+1]])))
-{% endhighlight %}
 
-{% highlight r %}
 ## [1] TRUE
+
 {% endhighlight %}
 
 ### Conclusions
@@ -66,13 +59,14 @@ The fastest way to calculate the mean for sizeable numeric vectors (1e6) is to u
 
 ### Next time
 
-We will redo the fibinacci series, a common low level benchmarking test that shows R to be slow.  But it turns out to be a case of bad coding...
+We will redo the Fibonacci series, a common low level benchmarking test that shows R to be slow.  But it turns out to be a case of bad coding...
 
 #### Functions used
 
 The C++ functions that were used are:
 
-{% highlight r %}
+{% highlight R %}
+
 cppFunction('double meanC1(NumericVector x) {
   int n = x.size();
   double total = 0;
@@ -97,7 +91,7 @@ cppFunction('double meanC2(NumericVector x) {
 ### System used:
 Tests are done on an HP Z400, Xeon 3.33 GHz processor, running Windows 7 Enterprise, using:
 
-{% highlight r %}
+{% highlight R %}
 ## R version 3.2.0 (2015-04-16)
 ## Platform: x86_64-w64-mingw32/x64 (64-bit)
 ## Running under: Windows 7 x64 (build 7601) Service Pack 1
