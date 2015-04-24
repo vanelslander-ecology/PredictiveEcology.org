@@ -26,13 +26,7 @@ We will start with a fairly basic low level function, the "mean"...
 ### Mean
 For the mean, we show two different C++ versions. The R function, "mean" is somewhat slower (1/2x), but the `colMeans(x)` and calling the primitives directly with `sum(x)/length(x)` are as fast or  faster than the fastest C++ function we can write.
 
-
-
-
-
-
 {% highlight R %}
-
 
 x <- runif(1e6)
 x1 = matrix(x, ncol=1)
@@ -43,8 +37,6 @@ mb <- benchmark(m[[1]]<-meanC1(x), m[[2]]<-meanC2(x), m[[3]]<-mean(x),
                 replications=1000L, columns=c("test", "elapsed", "relative"), order="relative")
 print(mb)
 
-
-
 ##                           test elapsed relative
 ## 5   m[[5]] <- sum(x)/length(x)    0.92    1.000
 ## 1          m[[1]] <- meanC1(x)    0.95    1.033
@@ -54,12 +46,8 @@ print(mb)
 ## 3            m[[3]] <- mean(x)    1.90    2.065
 ## 2          m[[2]] <- meanC2(x)    6.54    7.109
 
-
-
 # Test that all did the same thing
 all(sapply(1:6, function(y) all.equal(m[[y]],m[[y+1]])))
-
-
 
 ## [1] TRUE
 
