@@ -13,7 +13,7 @@ theme:
   header_text: >
     <p>A blog about prediction in ecology: the science, the complexity and the computation</p>
   footer_text: >
-    This blog is maintained by Eliot McIntire, a scientist with the Government of Canada. All content is his and those of blog writers ("the lab"), and do not necessarily reflect any official policy of the Government of Canada. Powered by <a href="http://jekyllrb.com">Jekyll</a> with <a href="https://rohanchandra.github.io/project/type/">Type Theme</a>
+    This blog is maintained by Eliot McIntire, a scientist with the Government of Canada. All content is his and those of blog writers ("the lab"), and do not necessarily reflect any official policy of the Government of Canada.<br/>Powered by <a href="http://jekyllrb.com">Jekyll</a> with <a href="https://rohanchandra.github.io/project/type/">Type Theme</a>
 
   # Icons
   rss: false
