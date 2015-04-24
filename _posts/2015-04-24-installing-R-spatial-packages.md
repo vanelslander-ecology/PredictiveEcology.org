@@ -1,4 +1,5 @@
 ---
+layout  : post
 title   : Installing R spatial packages
 author  : Alex Chubaty
 date    : April 24, 2015
