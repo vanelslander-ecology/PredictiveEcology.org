@@ -11,7 +11,7 @@ We are located in Victoria, British Columbia, Canada, at the Pacific Forestry Ce
 #### Eliot McIntire  
 
 <div style="float:right; padding:0px 0px 10px 50px;">
-<img src="http://www.cef-cfr.ca/uploads/Membres/EliotMcIntire.jpg" alt="Eliot McIntire" width="150"/>
+<img src="img/people/EliotMcIntire.jpg" alt="Eliot McIntire" width="150"/>
 </div>
 
 **Research Scientist, [Natural Resources Canada](www.nrcan.gc.ca/home)**  
@@ -27,7 +27,7 @@ My research interests lie in applied ecology, conservation and forecasting of a 
 #### [Alex Chubaty](alexchubaty.com)
 
 <div style="float:right; padding:0px 0px 5px 50px;">
-<img src="http://www.alexchubaty.com/images/alexchubatyweb_crop.jpg" alt="Alex M. Chubaty" width="150"/>
+<img src="img/people/alexchubatyweb_crop.jpg" alt="Alex M. Chubaty" width="150"/>
 </div>
 
 **Postdoctoral Fellow**  
@@ -42,13 +42,13 @@ Personal Website: [alexchubaty.com](http://www.alexchubaty.com/)
 #### [Yong Luo](https://sites.google.com/a/lakeheadu.ca/yong-luo/home)
 
 <div style="float:right; padding:0px 0px 10px 50px;">
-<img src="https://sites.google.com/a/lakeheadu.ca/yong-luo/_/rsrc/1406753393787/home/Yong.jpg?height=200&width=150" width="150" alt="Yong Luo"/>
+<img src="img/people/Yong.jpg" width="150" alt="Yong Luo"/>
 </div>
 
 **Postdoctoral Fellow**  
 *University of British Columbia* & *Natural Resources Canada* & *Laval University*
 
-[Yong Luo](https://sites.google.com/a/lakeheadu.ca/yong-luo/home) is working on forest succession modeling.  
+Yong is working on forest succession modeling.  
 
 *Research interests*  
   1. How the tree mortality is governed by endogenous factors, such as competition, aging, and species interaction.  
@@ -60,7 +60,7 @@ Personal Website: [sites.google.com/a/lakeheadu.ca/yong-luo/home](https://sites.
 #### [Sebastien Renard](http://www.cef-cfr.ca/index.php?n=Membres.SebastienRenard)
 
 <div style="float:right; padding:0px 0px 10px 50px;">
-<img src="http://www.cef-cfr.ca/uploads/Membres/SebastienRenard.jpg?height=200&width=150" width="150" alt="Jean Marchal"/>
+<img src="img/people/SebastienRenard.jpg" width="150" alt="Sebastien Renard"/>
 </div>
 
 Sebastien is a PhD student working on high elevation plant dynamics.
@@ -72,12 +72,12 @@ Personal Website: [www.cef-cfr.ca/index.php?n=Membres.SebastienRenard](http://ww
 #### [Jean Marchal](http://www.cef-cfr.ca/index.php?n=Membres.JeanMarchal)
 
 <div style="float:right; padding:0px 0px 10px 50px;">
-<img src="http://www.cef-cfr.ca/uploads/Membres/jean_marchal_2.jpg?height=200&width=150" width="150" alt="Jean Marchal"/>
+<img src="img/people/jean_marchal_2.jpg" width="150" alt="Jean Marchal"/>
 </div>
 
 Jean is a PhD student working on forest succession and forest fire modeling.
 
-Networks of protected areas, or reserve systems, are at the core of modern conservation efforts to maintain biodiversity over the long-term. To achieve this goal, protected areas should be first, representative of the territory in which they are embedded, i.e. they “need to represent, or sample, the full variety of biodiversity, ideally at all levels of organization”, and second, sustain ecosystems processes and functions that generate and maintain biodiversity. The ranges of boreal and temperate tree species are expected to change under global warming with major consequences to biodiversity and ecosystems functions. Climate change may alter the species’ ranges so that they are no longer present or are inadequately represented in existing networks. This challenges the ability of existing networks of protected areas to sustain biodiversity.
+Networks of protected areas, or reserve systems, are at the core of modern conservation efforts to maintain biodiversity over the long-term. To achieve this goal, protected areas should be first, representative of the territory in which they are embedded, i.e. they "need to represent, or sample, the full variety of biodiversity, ideally at all levels of organization", and second, sustain ecosystems processes and functions that generate and maintain biodiversity. The ranges of boreal and temperate tree species are expected to change under global warming with major consequences to biodiversity and ecosystems functions. Climate change may alter the species' ranges so that they are no longer present or are inadequately represented in existing networks. This challenges the ability of existing networks of protected areas to sustain biodiversity.
 
 The purpose of my work is to develop methods for the design of protected areas networks that are resilient to the effects of climate change on the distribution of forest tree species. Past approaches to this problem have used species distribution models to predict future distributions. Such models have limitations that make their predictions of transient dynamics unreliable. Instead, I will present a mechanistic approach that accounts for key biotic processes and non-climatic physical constraints on migration rate. I will use a grid-based spatially explicit simulation model of forest dynamics at the regional extent (LANDIS-II) that can represent some of the main expected effects of climate change. Using these results I will adapt an existing systematic conservation planning framework (http://beaconsproject.ca) to design networks of protected area effective in achieving conservation goals in a changing climate. 
 
@@ -86,12 +86,12 @@ Personal Website: [www.cef-cfr.ca/index.php?n=Membres.JeanMarchal](http://www.ce
 #### [Alana Clason](http://bvcentre.ca/people/bio/alana_clason/)
 
 <div style="float:right; padding:0px 0px 10px 50px;">
-<img src="http://bvcentre.ca/images/made/images/uploads/people_photos/AlanaClason-web_200_300.jpg?height=200&width=150" width="150" alt="Jean Marchal"/>
+<img src="img/people/AlanaClason-web_200_300.jpg" width="150" alt="Alana Clason"/>
 </div>
 
 Alana is a PhD student working on questions related to the northern limits of whitebark pine. 
 
-Alana's research focuses on how climate change will influence the resilience and dynamics of the northern-most populations of whitebark pine (Pinus albicaulis) in the Coastal and Rocky Mountains. Incorporating local, global and stochastic processes of forest change to determine the relative resilience and future distribution of these threatened ecosystems, she hopes to delineate restoration priority areas across the northern extent under current and future climate conditions.
+Alana's research focuses on how climate change will influence the resilience and dynamics of the northern-most populations of whitebark pine (*Pinus albicaulis*) in the Coastal and Rocky Mountains. Incorporating local, global and stochastic processes of forest change to determine the relative resilience and future distribution of these threatened ecosystems, she hopes to delineate restoration priority areas across the northern extent under current and future climate conditions.
 
 Alana now happily calls Smithers home, where she lives with her husband, a happy brood of chickens and an expanding garden. She loves hiking, canoeing, skiing and playing various sports in the Bulkley Valley, as well as sewing and knitting during the long winter nights.
 
@@ -100,12 +100,12 @@ Personal Website: [bvcentre.ca/people/bio/alana_clason/](http://bvcentre.ca/peop
 #### [Sarah Bauduin](http://www.cef-cfr.ca/index.php?n=Membres.SarahBauduin)
 
 <div style="float:right; padding:0px 0px 10px 50px;">
-<img src="http://www.cef-cfr.ca/uploads/Membres/SarahBauduinProfil.jpg?height=200&width=150" width="150" alt="Jean Marchal"/>
+<img src="img/people/SarahBauduinProfil.jpg" width="150" alt="Sarah Bauduin"/>
 </div>
 
 Sarah is a PhD student working on boreal caribou movement modeling in Gaspésie, Québec.
 
-Ecological networks are one solution, to protect populations nowadays and help them to cope with future climate change and future land use, which is supported by several organisms related to biodiversity conservation like the International Union for Conservation of Nature (IUCN), the World Wide Fund for Nature (WWF) or the Secretariat of the Convention on Biological Diversity (SCBD) (Hannah et al., 2007). This solution suggests integrating current protected areas with new ones inside a connected network; the new protected areas would protect essential areas currently non-protected and areas that may become essential in the future due to climate change. Functional connectivity between the protected areas would enhance individual movements and allow them access to more resources (e.g., food, shelter, etc.).
+Ecological networks are one solution, to protect populations nowadays and help them to cope with future climate change and future land use, which is supported by several organisms related to biodiversity conservation like the International Union for Conservation of Nature (IUCN), the World Wide Fund for Nature (WWF) or the Secretariat of the Convention on Biological Diversity (SCBD) (Hannah *et al.*, 2007). This solution suggests integrating current protected areas with new ones inside a connected network; the new protected areas would protect essential areas currently non-protected and areas that may become essential in the future due to climate change. Functional connectivity between the protected areas would enhance individual movements and allow them access to more resources (*e.g.*, food, shelter, etc.).
 
 Personal Website: [www.cef-cfr.ca/index.php?n=Membres.SarahBauduin](http://www.cef-cfr.ca/index.php?n=Membres.SarahBauduin)
 
@@ -115,11 +115,11 @@ Céline is a PhD student working on spruce grouse in southern Québec.
 
 #### Trevor Schiavone
 
-Coop student starting May 2015. He will be working on SpaDES and SpaDES GUI development.
+Coop student starting May 2015. He will be working on `SpaDES` and `SpaDES` GUI development.
 
 #### Brandon Leech
 
-Coop student starting May 2015. He will be working on SpaDES and SpaDES GUI development.
+Coop student starting May 2015. He will be working on `SpaDES` and `SpaDES` GUI development.
 
 ### Former Personel
 
