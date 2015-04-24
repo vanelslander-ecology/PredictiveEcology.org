@@ -20,8 +20,7 @@ We will start with a fairly basic low level function, the "mean"...
 ### Mean
 For the mean, we show two different C++ versions. The R function, "mean" is somewhat slower (1/2x), but the `colMeans(x)` and calling the primitives directly with `sum(x)/length(x)` are as fast or  faster than the fastest C++ function we can write.
 
-{% highlight R %}
-
+```r
 x <- runif(1e6)
 x1 = matrix(x, ncol=1)
 m=list()
@@ -44,8 +43,8 @@ print(mb)
 all(sapply(1:6, function(y) all.equal(m[[y]],m[[y+1]])))
 
 ## [1] TRUE
+```
 
-{% endhighlight %}
 
 #### Conclusions
 
@@ -71,9 +70,7 @@ The take home messages for the whole exercise are these:
 
 The C++ functions that were used are:
 
-{% highlight R %}
-
-
+```r
 cppFunction('double meanC1(NumericVector x) {
   int n = x.size();
   double total = 0;
@@ -93,14 +90,12 @@ cppFunction('double meanC2(NumericVector x) {
   }
   return y;
 }')
-
-{% endhighlight %}
+```
 
 ### System used:
 Tests are done on an HP Z400, Xeon 3.33 GHz processor, running Windows 7 Enterprise, using:
 
-{% highlight R %}
-
+```r
 ## R version 3.2.0 (2015-04-16)
 ## Platform: x86_64-w64-mingw32/x64 (64-bit)
 ## Running under: Windows 7 x64 (build 7601) Service Pack 1
@@ -120,5 +115,4 @@ Tests are done on an HP Z400, Xeon 3.33 GHz processor, running Windows 7 Enterpr
 ## [1] formatR_1.1     tools_3.2.0     htmltools_0.2.6 yaml_2.1.13    
 ## [5] rmarkdown_0.5.1 knitr_1.9       stringr_0.6.2   digest_0.6.8   
 ## [9] evaluate_0.6
-
-{% endhighlight %}
+```
