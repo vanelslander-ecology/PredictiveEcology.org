@@ -11,7 +11,7 @@ We are located in Victoria, British Columbia, Canada, at the Pacific Forestry Ce
 #### Eliot McIntire  
 
 <div style="float:right; padding:0px 0px 10px 50px;">
-<img src="img/people/EliotMcIntire.jpg" alt="Eliot McIntire" width="150"/>
+<img src="{{ site.baseurl }}/img/people/EliotMcIntire.jpg" alt="Eliot McIntire" width="150"/>
 </div>
 
 **Research Scientist, [Natural Resources Canada](www.nrcan.gc.ca/home)**  
@@ -27,7 +27,7 @@ My research interests lie in applied ecology, conservation and forecasting of a 
 #### [Alex Chubaty](alexchubaty.com)
 
 <div style="float:right; padding:0px 0px 5px 50px;">
-<img src="img/people/alexchubatyweb_crop.jpg" alt="Alex M. Chubaty" width="150"/>
+<img src="{{ site.baseurl }}/img/people/alexchubatyweb_crop.jpg" alt="Alex M. Chubaty" width="150"/>
 </div>
 
 **Postdoctoral Fellow**  
@@ -42,7 +42,7 @@ Personal Website: [alexchubaty.com](http://www.alexchubaty.com/)
 #### [Yong Luo](https://sites.google.com/a/lakeheadu.ca/yong-luo/home)
 
 <div style="float:right; padding:0px 0px 10px 50px;">
-<img src="img/people/Yong.jpg" width="150" alt="Yong Luo"/>
+<img src="{{ site.baseurl }}/img/people/Yong.jpg" width="150" alt="Yong Luo"/>
 </div>
 
 **Postdoctoral Fellow**  
@@ -60,7 +60,7 @@ Personal Website: [sites.google.com/a/lakeheadu.ca/yong-luo/home](https://sites.
 #### [Sebastien Renard](http://www.cef-cfr.ca/index.php?n=Membres.SebastienRenard)
 
 <div style="float:right; padding:0px 0px 10px 50px;">
-<img src="img/people/SebastienRenard.jpg" width="150" alt="Sebastien Renard"/>
+<img src="{{ site.baseurl }}/img/people/SebastienRenard.jpg" width="150" alt="Sebastien Renard"/>
 </div>
 
 Sebastien is a PhD student working on high elevation plant dynamics.
@@ -72,7 +72,7 @@ Personal Website: [www.cef-cfr.ca/index.php?n=Membres.SebastienRenard](http://ww
 #### [Jean Marchal](http://www.cef-cfr.ca/index.php?n=Membres.JeanMarchal)
 
 <div style="float:right; padding:0px 0px 10px 50px;">
-<img src="img/people/jean_marchal_2.jpg" width="150" alt="Jean Marchal"/>
+<img src="{{ site.baseurl }}/img/people/jean_marchal_2.jpg" width="150" alt="Jean Marchal"/>
 </div>
 
 Jean is a PhD student working on forest succession and forest fire modeling.
@@ -86,7 +86,7 @@ Personal Website: [www.cef-cfr.ca/index.php?n=Membres.JeanMarchal](http://www.ce
 #### [Alana Clason](http://bvcentre.ca/people/bio/alana_clason/)
 
 <div style="float:right; padding:0px 0px 10px 50px;">
-<img src="img/people/AlanaClason-web_200_300.jpg" width="150" alt="Alana Clason"/>
+<img src="{{ site.baseurl }}/img/people/AlanaClason-web_200_300.jpg" width="150" alt="Alana Clason"/>
 </div>
 
 Alana is a PhD student working on questions related to the northern limits of whitebark pine. 
@@ -100,7 +100,7 @@ Personal Website: [bvcentre.ca/people/bio/alana_clason/](http://bvcentre.ca/peop
 #### [Sarah Bauduin](http://www.cef-cfr.ca/index.php?n=Membres.SarahBauduin)
 
 <div style="float:right; padding:0px 0px 10px 50px;">
-<img src="img/people/SarahBauduinProfil.jpg" width="150" alt="Sarah Bauduin"/>
+<img src="{{ site.baseurl }}/img/people/SarahBauduinProfil.jpg" width="150" alt="Sarah Bauduin"/>
 </div>
 
 Sarah is a PhD student working on boreal caribou movement modeling in Gaspésie, Québec.
