@@ -6,7 +6,15 @@ permalink: /software/
 
 ## R packages
 
-### `fpCompare`
+### [`SpaDES`](http://SpaDES.PredictiveEcology.org)
+
+#### Develop and Run Spatially Explicit Discrete Event Simulation Models
+
+Easily implement a variety of simulation models, with a focus on spatially explicit models. These include raster-based, event-based, and agent-based models. The core simulation components are built upon a discrete event simulation framework that facilitates modularity, and easily enables the user to include additional functionality by running user-built simulation modules. Included are numerous tools to rapidly visualize raster and other maps.
+
+View on [GitHub](https://github.com/PredictiveEcology/SpaDES); [Website](http://SpaDES.PredictiveEcology.org)
+
+### [`fpCompare`](http://cran.r-project.org/package=fpCompare)
 
 #### Reliable Comparison of Floating Point Numbers
 
@@ -14,10 +22,3 @@ Comparisons of floating point numbers are problematic due to errors associated w
 
 View on [CRAN](http://cran.r-project.org/package=fpCompare);  [GitHub](https://github.com/PredictiveEcology/fpCompare)
 
-### `SpaDES`
-
-#### Develop and Run Spatially Explicit Discrete Event Simulation Models
-
-Easily implement a variety of simulation models, with a focus on spatially explicit agent based models. The core simulation components are built upon a discrete event simulation framework that facilitates modularity, and easily enables the user to include additional functionality by running user-built simulation modules. Included are numerous tools to visualize raster and other maps.
-
-View on [GitHub](https://github.com/PredictiveEcology/SpaDES); [Website](http://SpaDES.PredictiveEcology.org)
