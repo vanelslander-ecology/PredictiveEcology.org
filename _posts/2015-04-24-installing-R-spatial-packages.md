@@ -9,16 +9,16 @@ tags    : [R]
 This guide will show you how to install a variety of packages used for analyzing spatial data in R.
 This is tested for R versions `3.1.2`, `3.1.3`, and `3.2.0`; and for the operating systems explicitly mentioned in this guide.
 
-# Prerequisites and dependencies
+## Prerequisites and dependencies
 
-## Windows 7
+### Windows 7
 
 Most R packages that require additional software will come with their own versions of that software.
 This generally means that installing R packages on Windows can be easier for the user than for other OSes because you don't have to explicitly think about additional software dependencies.
 
-## OSX (Mavericks / Yosemite)
+### OSX (Mavericks / Yosemite)
 
-### Install `brew`
+#### Install `brew`
 
 This simple one-liner install is from the `brew` homepage, [brew.sh](http://brew.sh).
 
@@ -45,7 +45,7 @@ brew install gdal
 brew install homebrew/science/netcdf
 ```
 
-## Linux (Debian 7 / Ubuntu 14.04)
+### Linux (Debian 7 / Ubuntu 14.04)
 
 Some of the R packages that require additional system packages come prebuilt as `r-cran-PACKAGE`.
 However, this precompiled version make not always be the most recent, so building it yourself is often best.
@@ -67,7 +67,7 @@ xvfb-run R
 sudo apt-get install ca-certificates curl libxml2-dev
 ```
 
-# R package installation
+## R package installation
 
 ```r
 ### install `devtools`
