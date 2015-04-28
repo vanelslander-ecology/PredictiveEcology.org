@@ -7,3 +7,7 @@ _posts/*.rmd
 _posts/*.html
 _posts/.Rhistory
 
+.Rproj.user
+.Rhistory
+PredictiveEcology.org.Rproj
+
