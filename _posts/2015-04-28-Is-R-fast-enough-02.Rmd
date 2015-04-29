@@ -1,0 +1,219 @@
+---
+layout: post
+output:
+  html_document:
+    keep_md: yes
+---
+---
+layout: post
+title: Is R Fast Enough? - Part 2 - "Sorting"
+author: Eliot McIntire
+date: April 28, 2015
+tags: [R]
+comments: true
+---
+
+In part 2 of this series on benchmarking R, we'll explore sorting. This has been a topic on numerous blogs, discussions and posts around the internet, including here: [r-blogger post](http://www.r-bloggers.com/quicksort-speed-just-in-time-compiling-and-vectorizing/). Similarly, [julialang.org](http://julialang.org) showed that sorting was particularly bad in R. We, again, felt that this was a case of poor r coding, or more accurately, missing the point of whether R was capable or not. Another [example here](http://gallery.rcpp.org/articles/sorting/) compares R sorting with standard library of C++, called from `R`. 
+
+In all cases, we felt that one of the points of using R is that there are concise ways of doing things **because the open source community has brought them to `R`**. So lets take advantage of that! We will cover both real number sorting and integer sorting. 
+
+### Sorting
+
+```{r load_cpp_functions, eval=TRUE, echo=FALSE, cache=FALSE, message=FALSE}
+library(rbenchmark)
+library(dplyr)
+library(Rcpp)
+library(data.table)
+```
+
+```{r RcppFunctions1, cache=FALSE, eval=TRUE, echo=FALSE, message=FALSE}
+cppFunction('NumericVector stl_sort(NumericVector x) {
+   NumericVector y = clone(x);
+   std::sort(y.begin(), y.end());
+   return y;
+}')
+
+```
+
+
+This was in part inspired from a blog post by Wingfeet at http://www.r-bloggers.com/quicksort-speed-just-in-time-compiling-and-vectorizing/ which drew on benchmark tests here: http://julialang.org/ 
+Essentially, that julia test was a benchmark to test the speed of Julia. It showed for the Quicksort, that R is 524x slower than C. Below is that version. But, there was no explicit comparison of how the base R sort would match with C, nor how any of the more recent packages with sorting capability fare against these procedural versions of low level languages. 
+
+```{r sorting_fns, eval=TRUE, echo=FALSE, cache=FALSE}
+qsort = function(a) {
+    qsort_kernel = function(lo, hi) {
+        i = lo
+        j = hi
+        while (i < hi) {
+            pivot = a[floor((lo+hi)/2)]
+            while (i <= j) {
+                while (a[i] < pivot) i = i + 1
+                while (a[j] > pivot) j = j - 1
+                if (i <= j) {
+                    t = a[i]
+                    a[i] <<- a[j]
+                    a[j] <<- t
+                    i = i + 1;
+                    j = j - 1;
+                }
+            }
+            if (lo < j) qsort_kernel(lo, j)
+            lo = i
+            j = hi
+        }
+    }
+    qsort_kernel(1, length(a))
+    return(a)
+}
+
+wfqs1 <- function(x) {
+  if (length(x)<2) return(x)
+  pivot <- x[sample(length(x),1)]
+  c(wfqs1(x[x<pivot]),x[x==pivot],wfqs1(x[x>pivot]))
+}
+
+wfqsx = function(a) {
+  qsort_kernel = function(lo, hi) {
+    if(lo>=hi) return()
+    if(hi-lo==1) {
+      if(a[lo]>a[hi]) {
+        t <- a[lo]
+        a[lo] <<- a[hi]
+        a[hi] <<- t
+      }
+      return()
+    }
+    goUp <- a[(lo+1):hi]>a[lo]
+    up <- which(goUp)
+    do <- which(!goUp)
+    pivottarget <- lo+length(do)
+    up <- up[up<=length(do)]+lo
+    do <- do[do>length(do)]+lo
+    t <- a[do]
+    a[do] <<- a[up]
+    a[up] <<- t
+    t <- a[pivottarget]
+    a[pivottarget] <<- a[lo]
+    a[lo] <<- t  
+    qsort_kernel(lo,pivottarget-1)
+    qsort_kernel(pivottarget+1, hi)
+  }
+  qsort_kernel(1, length(a))
+  return(a)
+}
+
+all.equalV = function(...) {
+  vals <- list(...)
+  all(sapply(vals[-1], function(x) all.equal(vals[[1]], x)))
+}
+```
+
+
+#### Real number sorting
+
+```{r sorting, eval=TRUE, echo=TRUE, cache=FALSE}
+x = runif(1e5)
+xtbl <- tbl_df(data.frame(x=x))
+(mbReal <- benchmark(
+           a <- qsort(x), 
+           d <- sort(x), 
+           e <- sort(x, method="quick"),
+           f <- .Internal(sort(x,decreasing = FALSE)),
+           g <- data.table(x=x,key="x"), 
+           h <- arrange(xtbl,x),
+           i <- stl_sort(x),
+           replications=25L, columns=c("test", "elapsed", "relative"),
+           order="relative"))
+all.equalV(a, d, e, f, g$x, h$x, i)
+```
+
+#### Integer sorting
+
+```{r integer_sort, eval=TRUE, echo=TRUE, cache=FALSE}
+x = sample(1e6,size = 1e5)
+xtbl <- tbl_df(data.frame(x=x))
+(mbInteger <- benchmark(
+           a <- qsort(x), 
+           d <- sort(x), 
+           e <- sort(x, method="quick"), 
+           f <- .Internal(sort(x,decreasing = FALSE)),
+           g <- data.table(x=x,key="x"), h<-arrange(xtbl,x),
+           i <- stl_sort(x),
+           replications=25L, columns=c("test", "elapsed", "relative"),
+           order="relative"))
+all.equalV(a, d, e, f, g$x, h$x, i)
+
+```
+
+Both real numbers and integers can be sorted quickly with R. The slowest function is indeed the procedural `qsort` written in native `R` without any optimization. This was also the `qsort` that the Julia testers used. Our numbers match almost exactly those from the the table in julialang.org; however, here we also test the real world `R` usage that a normal `R` user would face (i.e., we can all use `sort()`). We show that `R` competes quite favourably and regularly outperforms standard library of C++ (and Julia!, though that is not tested here explicitly). 
+
+#### Take home points:
+
+1. the basic `R` sorting functions are fast. The `sort(method="quick")` is about as fast as the standard `C++` library sort (`r round((1-1/(mbInteger$relative[grep(as.character(mbInteger$test), pattern="stl_sort")]/mbInteger$relative[grep(as.character(mbInteger$test), pattern="quick")]))*100)`% faster). 
+2. using [data.table](http://cran.r-project.org/web/packages/data.table/index.html) on integers is `r round((1-1/(mbInteger$relative[grep(as.character(mbInteger$test), pattern="stl_sort")]/mbInteger$relative[grep(as.character(mbInteger$test), pattern="data.table")]))*100)`% faster than the `C++` standard library sort.
+
+In real world situations, where we want to use the easiest, shortest code to produce fast, accurate results, `R` certainly holds its own compared to the standard `C++` library. But of course, there are many ways to do things in `R`. Some are much faster than others.
+
+#### Conclusion
+
+Using the `sort(method="quick")` and [`data.table`](http://cran.r-project.org/web/packages/data.table/index.html) sorting, we were able to sort a vector of real numbers ***`r round(mbReal$relative[grep(as.character(mbReal$test), pattern="qsort")]/mbReal$relative[grep(as.character(mbReal$test), pattern="data.table")])`x*** faster than a naive procedural coding (`qsort`) and ***`r round(mbInteger$relative[grep(as.character(mbInteger$test), pattern="qsort")]/mbInteger$relative[grep(as.character(mbInteger$test), pattern="data.table")])`x*** faster on a vector of integers. These put the `data.table` sort as fast as or substantially faster than C or Fortran or Julia's version of quicksort (based on timings on [julialang.org](http://julialang.org)).
+
+*YES! R is more than fast enough*.  
+
+#### Next time (really! I promised it last time...)
+
+We will redo the Fibonacci series, a common low level benchmarking test that [shows R to be slow](http://julialang.org).  But it turns out to be a case of bad coding...
+
+
+--------------------
+
+#### Functions used
+
+The C++ functions that were used are:
+
+
+```{r FunctionsUsed, cache=FALSE, eval=FALSE, echo=TRUE, message=FALSE}
+cppFunction('NumericVector stl_sort(NumericVector x) {
+   NumericVector y = clone(x);
+   std::sort(y.begin(), y.end());
+   return y;
+}')
+qsort = function(a) {
+    qsort_kernel = function(lo, hi) {
+        i = lo
+        j = hi
+        while (i < hi) {
+            pivot = a[floor((lo+hi)/2)]
+            while (i <= j) {
+                while (a[i] < pivot) i = i + 1
+                while (a[j] > pivot) j = j - 1
+                if (i <= j) {
+                    t = a[i]
+                    a[i] <<- a[j]
+                    a[j] <<- t
+                    i = i + 1;
+                    j = j - 1;
+                }
+            }
+            if (lo < j) qsort_kernel(lo, j)
+            lo = i
+            j = hi
+        }
+    }
+    qsort_kernel(1, length(a))
+    return(a)
+}
+
+all.equalV = function(...) {
+  vals <- list(...)
+  all(sapply(vals[-1], function(x) all.equal(vals[[1]], x)))
+}
+
+```
+
+#### System used:
+Tests were done on an HP Z400, Xeon 3.33 GHz processor, running Windows 7 Enterprise, using:
+
+```{r session_info, eval=TRUE, echo=FALSE}
+sessionInfo()
+```
