@@ -4,6 +4,7 @@ title: Is R Fast Enough? - Part 1 - "The Mean"
 author: Eliot McIntire
 date: April 23, 2015
 tags: [R]
+comments: true
 ---
 
 There have been many people, including ourselves, who have asked, "Is R fast enough for simulation modeling?". In other words, can R handle everything we throw at it for simulation modeling?  Low level functions, high level functions, GIS, data wrangling etc... 
