@@ -2,8 +2,6 @@ _site
 .sass-cache
 
 ## Ignore rmd and html files in posts
-_posts/*.Rmd
-_posts/*.rmd
 _posts/*.html
 _posts/.Rhistory
 
