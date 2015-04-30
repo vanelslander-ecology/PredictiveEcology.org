@@ -6,16 +6,16 @@ output:
 ---
 ---
 layout: post
-title: Is R Fast Enough? - Part 2 - "Sorting"
+title: Is `R` Fast Enough? - Part 2 - "Sorting"
 author: Eliot McIntire
 date: April 28, 2015
 tags: [R]
 comments: true
 ---
 
-In part 2 of this series on benchmarking R, we'll explore sorting. This has been a topic on numerous blogs, discussions and posts around the internet, including here: [r-blogger post](http://www.r-bloggers.com/quicksort-speed-just-in-time-compiling-and-vectorizing/). Similarly, [julialang.org](http://julialang.org) showed that sorting was particularly bad in R. We, again, felt that this was a case of poor r coding, or more accurately, missing the point of whether R was capable or not. Another [example here](http://gallery.rcpp.org/articles/sorting/) compares R sorting with standard library of C++, called from `R`. 
+In part 2 of this series on benchmarking `R`, we'll explore sorting. This has been a topic on numerous blogs, discussions and posts around the internet, including here: [r-blogger post](http://www.r-bloggers.com/quicksort-speed-just-in-time-compiling-and-vectorizing/). Similarly, [julialang.org](http://julialang.org) showed that sorting was particularly bad in `R`. We, again, felt that this was a case of poor `R` coding, or more accurately, missing the point of whether `R` was capable or not. Another [example here](http://gallery.rcpp.org/articles/sorting/) compares `R` sorting with standard library of C++, called from `R`. 
 
-In all cases, we felt that one of the points of using R is that there are concise ways of doing things **because the open source community has brought them to `R`**. So lets take advantage of that! We will cover both real number sorting and integer sorting. 
+In all cases, we felt that one of the points of using `R` is that there are concise ways of doing things **because the open source community has brought them to `R`**. So lets take advantage of that! We will cover both real number sorting and integer sorting. 
 
 ### Sorting
 
@@ -37,7 +37,7 @@ cppFunction('NumericVector stl_sort(NumericVector x) {
 
 
 This was in part inspired from a blog post by Wingfeet at http://www.r-bloggers.com/quicksort-speed-just-in-time-compiling-and-vectorizing/ which drew on benchmark tests here: http://julialang.org/ 
-Essentially, that julia test was a benchmark to test the speed of Julia. It showed for the Quicksort, that R is 524x slower than C. Below is that version. But, there was no explicit comparison of how the base R sort would match with C, nor how any of the more recent packages with sorting capability fare against these procedural versions of low level languages. 
+Essentially, that julia test was a benchmark to test the speed of Julia. It showed for the Quicksort, that `R` is 524x slower than C. Below is that version. But, there was no explicit comparison of how the base `R` sort would match with C, nor how any of the more recent packages with sorting capability fare against these procedural versions of low level languages. 
 
 ```{r sorting_fns, eval=TRUE, echo=FALSE, cache=FALSE}
 qsort = function(a) {
@@ -145,7 +145,7 @@ all.equalV(a, d, e, f, g$x, h$x, i)
 
 ```
 
-Both real numbers and integers can be sorted quickly with R. The slowest function is indeed the procedural `qsort` written in native `R` without any optimization. This was also the `qsort` that the Julia testers used. Our numbers match almost exactly those from the the table in julialang.org; however, here we also test the real world `R` usage that a normal `R` user would face (i.e., we can all use `sort()`). We show that `R` competes quite favourably and regularly outperforms standard library of C++ (and Julia!, though that is not tested here explicitly). 
+Both real numbers and integers can be sorted quickly with `R`. The slowest function is indeed the procedural `qsort` written in native `R` without any optimization. This was also the `qsort` that the Julia testers used. Our numbers match almost exactly those from the the table in julialang.org; however, here we also test the real world `R` usage that a normal `R` user would face (*i.e.*, we can all use `sort()`). We show that `R` competes quite favourably and regularly outperforms standard library of C++ (and Julia!, though that is not tested here explicitly). 
 
 #### Take home points:
 
@@ -158,11 +158,11 @@ In real world situations, where we want to use the easiest, shortest code to pro
 
 Using the `sort(method="quick")` and [`data.table`](http://cran.r-project.org/web/packages/data.table/index.html) sorting, we were able to sort a vector of real numbers ***`r round(mbReal$relative[grep(as.character(mbReal$test), pattern="qsort")]/mbReal$relative[grep(as.character(mbReal$test), pattern="data.table")])`x*** faster than a naive procedural coding (`qsort`) and ***`r round(mbInteger$relative[grep(as.character(mbInteger$test), pattern="qsort")]/mbInteger$relative[grep(as.character(mbInteger$test), pattern="data.table")])`x*** faster on a vector of integers. These put the `data.table` sort as fast as or substantially faster than C or Fortran or Julia's version of quicksort (based on timings on [julialang.org](http://julialang.org)).
 
-*YES! R is more than fast enough*.  
+*YES! `R` is more than fast enough*.  
 
 #### Next time (really! I promised it last time...)
 
-We will redo the Fibonacci series, a common low level benchmarking test that [shows R to be slow](http://julialang.org).  But it turns out to be a case of bad coding...
+We will redo the Fibonacci series, a common low level benchmarking test that [shows `R` to be slow](http://julialang.org).  But it turns out to be a case of bad coding...
 
 
 --------------------
