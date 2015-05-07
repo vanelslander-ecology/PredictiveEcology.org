@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Is `R` Fast Enough? - Part 3 - "Fibonacci"
+title: Is R Fast Enough? - Part 3 - "Fibonacci"
 author: Eliot McIntire
 date: May 6, 2015
 tags: [R]
@@ -51,11 +51,11 @@ summary(mbFib)[c(1,2,5,7)]
 
 ```
 ##                                 expr       min     median        max
-## 1 a <- fibonacci(N + 1, TRUE)[N + 1]    48.078    66.9805    945.113
-## 2                b <- fibCpp1(N + 1)    49.722    55.0640   4921.980
-## 3                d <- fibCpp2(N + 1)    50.955    56.2970    216.144
-## 4                   e <- fibR1(N)[N]    36.572    47.8730    915.116
-## 5                  f <- fibR2(N + 1) 80613.946 85565.9215 188605.730
+## 1 a <- fibonacci(N + 1, TRUE)[N + 1]    47.924    61.9015  16823.625
+## 2                b <- fibCpp1(N + 1)    55.604    60.2115    110.899
+## 3                d <- fibCpp2(N + 1)    55.604    61.4405    128.409
+## 4                   e <- fibR1(N)[N]    35.329    44.8520    980.880
+## 5                  f <- fibR2(N + 1) 85597.578 88614.4030 133390.309
 ```
 
 ```r
@@ -66,7 +66,7 @@ all.equalV(a,b,d, e, f)
 ## [1] TRUE
 ```
 
-Here, one of the two native R implementations is **1568x faster** by pre-allocating the output vector size. The fibonacci function in the package `numbers` was 1.36x slower than the faster `R` function because it has error checking. ***The native C++ version was 1.48x slower***. 
+Here, one of the two native R implementations is **1599x faster** by pre-allocating the output vector size. The fibonacci function in the package `numbers` was 2.36x slower than the faster `R` function because it has error checking. ***The native C++ version was 1.12x slower***. 
 
 #### Take home points:
 
@@ -123,14 +123,13 @@ Tests were done on an HP Z400, Xeon 3.33 GHz processor, running Windows 7 Enterp
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-## [1] microbenchmark_1.4-2 numbers_0.5-2        Rcpp_0.11.5         
+## [1] microbenchmark_1.4-2 numbers_0.5-6        Rcpp_0.11.5         
 ## [4] rbenchmark_1.0.0    
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] codetools_0.2-11 digest_0.6.8     MASS_7.3-40      grid_3.2.0      
-##  [5] plyr_1.8.1       gtable_0.1.2     formatR_1.0      scales_0.2.4    
-##  [9] evaluate_0.5.5   ggplot2_1.0.0    reshape2_1.4.1   rmarkdown_0.5.1 
+##  [5] plyr_1.8.1       gtable_0.1.2     formatR_1.1      scales_0.2.4    
+##  [9] evaluate_0.6     ggplot2_1.0.1    reshape2_1.4.1   rmarkdown_0.5.1 
 ## [13] proto_0.3-10     tools_3.2.0      stringr_0.6.2    munsell_0.4.2   
-## [17] yaml_2.1.13      colorspace_1.2-5 tcltk_3.2.0      htmltools_0.2.6 
-## [21] knitr_1.9
+## [17] yaml_2.1.13      colorspace_1.2-6 htmltools_0.2.6  knitr_1.9
 ```
