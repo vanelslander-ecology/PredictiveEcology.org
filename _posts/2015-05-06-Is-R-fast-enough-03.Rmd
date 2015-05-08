@@ -76,7 +76,7 @@ summary(mbFib)[c(1,2,5,7)]
 all.equalV(a,b,d, e, f)
 ```
 
-Here, one of the two native R implementations is **`r round(summary(mbFib)[[4]][5]/summary(mbFib)[[4]][4])`x faster** by pre-allocating the output vector size. The fibonacci function in the package `numbers` was `r round(summary(mbFib)[[4]][1]/summary(mbFib)[[4]][3],2)`x slower than the faster `R` function because it has error checking. ***The native C++ version was `r round(summary(mbFib)[[4]][2]/summary(mbFib)[[4]][4],2)`x slower***. 
+Here, one of the two native R implementations is **`r round(summary(mbFib)[[5]][5]/summary(mbFib)[[5]][4])`x faster** by pre-allocating the output vector size. The fibonacci function in the package `numbers` was `r round(summary(mbFib)[[4]][1]/summary(mbFib)[[4]][4],2)`x slower than the faster `R` function because it has error checking. ***The native C++ version was `r round(summary(mbFib)[[5]][2]/summary(mbFib)[[5]][4],2)`x slower***. 
 
 #### Take home points:
 
