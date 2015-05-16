@@ -55,7 +55,7 @@ install.packages("fpCompare")
 
 ```r
 library(devtools)
-install_github("achubaty/fpCompare")
+install_github("PredictiveEcology/fpCompare")
 ```
 
 ## Bug Reports
