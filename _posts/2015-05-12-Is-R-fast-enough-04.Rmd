@@ -9,7 +9,7 @@ layout: post
 title: Is `R` Fast Enough? - Part 4 - "Loops"
 author: Eliot McIntire
 date: May 12, 2015
-tags: [R]
+tags: [R, benchmark]
 comments: true
 ---
 

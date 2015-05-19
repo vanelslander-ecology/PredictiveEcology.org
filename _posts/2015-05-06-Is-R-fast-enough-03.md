@@ -3,7 +3,7 @@ layout: post
 title: Is R Fast Enough? - Part 3 - "Fibonacci"
 author: Eliot McIntire
 date: May 6, 2015
-tags: [R]
+tags: [R, benchmark]
 comments: true
 ---
 

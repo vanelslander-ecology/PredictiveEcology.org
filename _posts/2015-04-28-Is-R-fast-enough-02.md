@@ -3,7 +3,7 @@ layout: post
 title: Is R Fast Enough? - Part 2 - "Sorting"
 author: Eliot McIntire
 date: April 28, 2015
-tags: [R]
+tags: [R, benchmark]
 comments: true
 ---
 
