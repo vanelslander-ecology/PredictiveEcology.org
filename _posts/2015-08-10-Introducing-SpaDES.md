@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Introducing `SpaDES`: R Package for Spatial Discrete Event Simulation'
-date: May 22, 2015
+date: August 10, 2015
 author: Alex Chubaty and Eliot McIntire
 tags: [R, SpaDES]
 ---
