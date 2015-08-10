@@ -6,7 +6,7 @@ author: Alex Chubaty and Eliot McIntire
 tags: [R, SpaDES]
 ---
 
-> v1.0.1 is now available on [CRAN](cran.r-project.org/package=SpaDES)!
+> v1.0.1 is now available on [CRAN](https://cran.r-project.org/package=SpaDES)!
 
 Building spatial simulation models often involves reusing various model components, often having to re-implement similar functionality in multiple simulation frameworks (*i.e*, in different programming languages).
 When various components of a simulation model become fragmented across multiple platforms, it becomes increasingly difficult to link these various components, and often solutions for this problem are idiosyncratic and specific to the model being implemented.
