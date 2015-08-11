@@ -4,6 +4,7 @@ title: 'Introducing `SpaDES`: R Package for Spatial Discrete Event Simulation'
 date: August 10, 2015
 author: Alex Chubaty and Eliot McIntire
 tags: [R, SpaDES]
+redirect_from: 2015/05/22/Introducing-SpaDES.html
 ---
 
 > v1.0.1 is now available on [CRAN](https://cran.r-project.org/package=SpaDES)!
