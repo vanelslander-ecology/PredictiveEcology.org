@@ -73,8 +73,8 @@ Contact us via the package GitHub site: [https://github.com/PredictiveEcology/Sp
 
 Fall, A., & Fall, J. (2001). A domain-specific language for models of landscape dynamics. Ecological Modelling, 141, 1–18.
 
-Scheller, R. M., Domingo, J. B., Sturtevant, B. R., Williams, J. S., Rudy, A., Gustafson, E. J., & Mladenoff, D. J. (2007). Design, development, and application of LANDIS-II, a spatial landscape simulation model with flexible temporal and spatial resolution. Ecological Modelling, 201, 409–419. doi:10.1016/j.ecolmodel.2006.10.009
+Scheller, R. M., Domingo, J. B., Sturtevant, B. R., Williams, J. S., Rudy, A., Gustafson, E. J., & Mladenoff, D. J. (2007). Design, development, and application of LANDIS-II, a spatial landscape simulation model with flexible temporal and spatial resolution. Ecological Modelling, 201, 409–419. [doi:10.1016/j.ecolmodel.2006.10.009](http://dx.doi.org/10.1016/j.ecolmodel.2006.10.009)
 
-Thiele, J. C., & Grimm, V. (2015). Replicating and breaking models: good for you and good for ecology. Oikos. doi:10.1111/oik.02170
+Thiele, J. C., & Grimm, V. (2015). Replicating and breaking models: good for you and good for ecology. Oikos. [doi:10.1111/oik.02170](http://dx.doi.org/10.1111/oik.02170)
 
-Wilensky, U. (1999). NetLogo. Evanston, IL: Center for Connected Learning and Computer-Based Modeling, Northwestern University. http://ccl.northwestern.edu/netlogo
+Wilensky, U. (1999). NetLogo. Evanston, IL: Center for Connected Learning and Computer-Based Modeling, Northwestern University. [http://ccl.northwestern.edu/netlogo](http://ccl.northwestern.edu/netlogo)
