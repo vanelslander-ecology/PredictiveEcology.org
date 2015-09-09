@@ -14,11 +14,7 @@ There are many other resources about this topic; we will try to be concise and s
 
 ## Loops
 
-Loops have been the achilles heel of R in the past. In version 3.1 and forward, much of this problem appears to be gone. As could be seen in the [http://predictiveecology.org/2015/05/06/Is-R-fast-enough-03.html](Fibonacci  example), pre-allocating a vector and filling it up inside a loop can now be very fast and efficient in native R. To demonstrate these points, below are 6 ways to achieve the same result in R, beginning with a naive loop approach, and working up to the fully vectorized approach. I am using a very fast vectorized function, seq_len, to emphasize the differences between using loops and optimized vectorized functions.
-
-
-
-
+Loops have been the achilles heel of R in the past. In version 3.1 and forward, much of this problem appears to be gone. As could be seen in the [Fibonacci  example](http://predictiveecology.org/2015/05/06/Is-R-fast-enough-03.html), pre-allocating a vector and filling it up inside a loop can now be very fast and efficient in native R. To demonstrate these points, below are 6 ways to achieve the same result in R, beginning with a naive loop approach, and working up to the fully vectorized approach. I am using a very fast vectorized function, `seq_len`, to emphasize the differences between using loops and optimized vectorized functions.
 
 The basic code below generates random numbers. The sequence goes from a fully unvectorized, looped structure, with no pre-allocation of the output vector, through to pure vectorized code. The intermediate steps are:
 
@@ -30,9 +26,6 @@ The basic code below generates random numbers. The sequence goes from a fully un
 - vectorized with no intermediate objects
 - C++ vectorized
 
-
-
-
 ```r
 library(magrittr) # for pipe %>%
 library(data.table)
@@ -43,66 +36,67 @@ dt = data.table(num=rep(NA_real_, N))
 
 mb = microbenchmark::microbenchmark(times=5L,
 
-                                     
-# no pre-allocating of vector length, generating uniform random numbers once, then calling them within each loop
-loopWithNoPreallocate = {
-  set.seed(104)
-  a <- numeric()
-    for (i in 1:N) {
-      a[i] = unifs[i]
-    } 
-   a
-  } ,
-
-# pre-allocating vector length, generating uniform random numbers once, then calling them within each loop
-loopWithPreallocate = {
+  # no pre-allocating of vector length, generating uniform random numbers once,
+  # then calling them within each loop
+  loopWithNoPreallocate = {
     set.seed(104)
-    a <- numeric(N) 
-    for (i in 1:N) {
-      a[i] = unifs[i]
+    a <- numeric()
+      for (i in 1:N) {
+        a[i] = unifs[i]
+      } 
+     a
+  },
+  
+  # pre-allocating vector length, generating uniform random numbers once,
+  # then calling them within each loop
+  loopWithPreallocate = {
+      set.seed(104)
+      a <- numeric(N) 
+      for (i in 1:N) {
+        a[i] = unifs[i]
+      }
+      a
+  },
+   
+  # sapply - generally faster than loops
+  sapplyVector1 = {
+        set.seed(104)
+        sapply(unifs,function(x) x)
+  },
+  
+  # sapply with pipe operator: no intermediate objects are created
+  sapplyWithPipe = {
+        set.seed(104)
+        unifs <- (runif(N)) %>%
+          sapply(.,function(x) x)
+  },
+  
+  # use data.table set function, which can be very fast inside a loop
+  datatableSet = {
+    set.seed(104)
+    for(i in 1L:N) {
+      set(dt, i, j = 1L, unifs[i])
     }
-    a
+    dt
   },
- 
-# # sapply - generally faster than loops
-sapplyVector1 = {
+  
+  # vectorized with intermediate object before return
+  vectorizedWithCopy = {
       set.seed(104)
-      sapply(unifs,function(x) x)
-      },
-
-# sapply with pipe operator: no intermediate objects are created
-sapplyWithPipe = {
-      set.seed(104)
-      unifs <- (runif(N)) %>%
-        sapply(.,function(x) x)
-      },
-
-# use data.table set function, which can be very fast inside a loop
-datatableSet = {
-  set.seed(104)
-  for(i in 1L:N) {
-    set(dt, i, j = 1L, unifs[i])
-  }
-  dt
+      unifs <- runif(N)
+      unifs
   },
-
-# vectorized with intermediate object before return
-vectorizedWithCopy = {
+  
+  # no intermediate object before return
+  vectorizedWithNoCopy = {
     set.seed(104)
-    unifs <- runif(N)
-    unifs
+    runif(N)
   },
-
-# no intermediate object before return
-vectorizedWithNoCopy = {
-  set.seed(104)
-  runif(N)
-  },
-
-cpp = {
-  set.seed(104)
-  runifCpp(N)
-}
+  
+  cpp = {
+    set.seed(104)
+    runifCpp(N)
+  }
 )
 
 print("Units: milliseconds")
@@ -171,7 +165,7 @@ We move on to higher level operations. Specifically, some GIS operations.
 
 #### See also
 
-http://gallery.rcpp.org/tags/benchmark/
+[http://gallery.rcpp.org/tags/benchmark/](http://gallery.rcpp.org/tags/benchmark/)
 
 --------------------
 
