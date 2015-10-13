@@ -21,3 +21,9 @@ View on [CRAN](https://cran.r-project.org/package=SpaDES); [GitHub](https://gith
 Comparisons of floating point numbers are problematic due to errors associated with the binary representation of decimal numbers. Despite being aware of these problems, people still use numerical methods that fail to account for these and other rounding errors (this pitfall is the first to be highlighted in Circle 1 of Burns (2012) [The R Inferno](http://www.burns-stat.com/pages/Tutor/R_inferno.pdf)). This package provides new relational operators useful for performing floating point number comparisons with a set tolerance.
 
 View on [CRAN](https://cran.r-project.org/package=fpCompare);  [GitHub](https://github.com/PredictiveEcology/fpCompare)
+
+### [`lazyR`](https://github.com/PredictiveEcology/lazyR)
+
+#### Using lazy load databases for R objects
+
+An R package for stashing objects in lazy load databases, analogous to lazy loaded packages. This uses the archivist package for a lot of the back end, but replaces the storing of .rda objects in the database with .rdx/.rdb objects.
