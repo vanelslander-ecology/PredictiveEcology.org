@@ -33,6 +33,8 @@ For light `R` application that only needs a local deployment, `R` portable and w
 
   *Refer to [this](http://shiny.rstudio.com/articles/shinyapps.html) where you can discover how to get started with `shinyapps.io`*
 
+### Distribution
+
 If you want an ultimate experience of `RShiny`, there is also a paid service [RShiny Pro](https://www.rstudio.com/products/shiny-server-pro/), where you can host your application on `Shiny` server. 
 There are a few useful functionalities that comes with the service such as 
 
@@ -41,8 +43,5 @@ There are a few useful functionalities that comes with the service such as
 - Monitor resource utilization 
 
 However service is not cheap so if you have extra cash lying around, this would be a quick and easy way to host your application!
-
-
-
 
 
