@@ -24,12 +24,16 @@ How is `R` application developed?
 What is the process to deploy and distribute `R` web applications?
 ---
 
+***
+
 Development
 --
 
 While web development can be done in many different environments, [RStudio](https://www.rstudio.com/) is widely used to develop `R` applications. Below is a snapshot of what RStudio looks like.
 
 > ![Snapshot of RStudio](2015-12-08rstudio.png)
+
+***
 
 Deployment 
 --
@@ -93,6 +97,7 @@ OpenCPU is an open source solution for embedded R computing. The software can be
 
 *Refer to [this blog post](http://www.jenunderwood.com/2015/01/12/part-1-integrating-r/) by Jen Underwood on how you can integrate R*
 
+***
 
 Distribution
 --

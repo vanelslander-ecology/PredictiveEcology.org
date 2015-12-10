@@ -16,12 +16,16 @@ How is `R` application developed?
 What is the process to deploy and distribute `R` web applications?
 ---
 
+***
+
 Development
 --
 
 While web development can be done in many different environments, [RStudio](https://www.rstudio.com/) is widely used to develop `R` applications. Below is a snapshot of what RStudio looks like.
 
 > ![Snapshot of RStudio](2015-12-08rstudio.png)
+
+***
 
 Deployment 
 --
@@ -79,6 +83,13 @@ Docker can come in handy because you can create a `Shiny` server using few comma
 
 *Refer to [this blog post](http://www.rmining.net/2015/04/30/dockerizing-a-shiny-app/) to get your `Shiny` app 'dockerized'.*
 
+#### OpenCPU HTTP API for R
+
+OpenCPU is an open source solution for embedded R computing. The software can be freely used, modified and redistributed for both for open source and proprietary projects in academia, industry or elsewhere. All parts of OpenCPU are released under the Apache2 license.  The free OpenCPU framework provides a reliable and interoperable HTTP API for R data analysis. You can either call the public servers or download and install OpenCPU’s code on your own servers.
+
+*Refer to [this blog post](http://www.jenunderwood.com/2015/01/12/part-1-integrating-r/) by Jen Underwood on how you can integrate R*
+
+***
 
 Distribution
 --
@@ -107,3 +118,5 @@ When another user clones your repository, the directory structure is kept so tha
 
 If you are an awesome R programmer, creating a `R` package is an useful way to distribute and share within `R` community.
 `R` packages are stored in `Comprehensive R Archive Network (CRAN)` repository where there is extra level of testing to enforce certain structure so users can ensure quality packages.
+
+*Refer to [this blog post](http://blog.revolutionanalytics.com/2009/08/creating-r-packages-a-tutorial-draft.html) on how you can get started on creating a R package by David Smith*
