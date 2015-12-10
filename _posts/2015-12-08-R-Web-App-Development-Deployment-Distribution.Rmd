@@ -95,6 +95,8 @@ If your end user has `RStudio`. then you can share your `R` files (ui.R and serv
 
 If you have your own server, whether it be `AWS`, `Google Cloud`, `Microsoft Azure`, you can share it there.
 
+#### Docker + Kitematic
+
 After you have 'dockerized' your `Shiny` application, you can share it on `Kitematic`.
 `Kitematic` is a GUI where users can upload and download `Docker` images to run it in their `Docker` containers.
 This makes distributing very simple and easy as `Docker Hub` can work like `App Store`!
@@ -103,3 +105,13 @@ Below is a snapshot of Kitematic.
 > ![Snapshot of Kitematic](2015-12-08kitematic.jpg)
 
 *Refer to [this blog post](http://www.r-bloggers.com/share-your-shiny-apps-with-docker-and-kitematic/) to learn how you can share your `Shiny` application with `Docker` and `Kitematic`*
+
+#### GitHub
+
+You can share your code in a repository where other users can contribute by suggestions, corrections and additions.
+When another user clones your repository, the directory structure is kept so that all data is preserved as where they belong.
+
+#### R Package
+
+If you are an awesome R programmer, creating a `R` package is an useful way to distribute and share within `R` community.
+`R` packages are stored in `Comprehensive R Archive Network (CRAN)` repository where there is extra level of testing to enforce certain structure so users can ensure quality packages.
