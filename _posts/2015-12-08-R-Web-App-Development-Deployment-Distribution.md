@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title: R Web App Development, Deployment, and Distribution
@@ -14,21 +13,21 @@ How is `R` application developed?
 
 What is the process to deploy and distribute `R` web applications?
 
-***
 
-Development
---
+
+## Development
+
 
 While web development can be done in many different environments, [RStudio](https://www.rstudio.com/) is widely used to develop `R` applications. Below is a snapshot of what RStudio looks like.
 
 > ![Snapshot of RStudio](2015-12-08rstudio.png)
 
-***
 
-Deployment 
---
 
-#### Portable Applications
+## Deployment 
+
+
+### Portable Applications
 
 For light `R` application that only needs a local deployment, `R` portable and web browser portable such as `Chrome` applications can be used. It does not require as much performance on end user's side and overall distribution will result in smaller files.
 
@@ -36,7 +35,7 @@ For light `R` application that only needs a local deployment, `R` portable and w
 
 *Refer to [this post](http://blog.analytixware.com/2014/03/packaging-your-shiny-app-as-windows.html) to package your `Shiny` application as Windows application*
 
-#### Shiny Server
+### Shiny Server
 
 If you want to put your `Shiny` application on web, you can host it using Shiny Server. You would need to install, configure and manage the server yourself which could be complicated for some users.
 
@@ -51,7 +50,7 @@ However service is not cheap so if you have extra cash lying around, this would 
 
 *Refer to [this](https://www.rstudio.com/products/shiny/shiny-server/) to find out more about `Shiny Server`*
 
-#### Shinyapps.io
+### Shinyapps.io
 
 `shinyapps.io` is a multi-tenant platform as a service (PaaS) for hosting `Shiny` web applications. However it can also be expensive since the free edition can be limited depending on your needs.
 
@@ -64,7 +63,7 @@ However service is not cheap so if you have extra cash lying around, this would 
 > ![Comparison Chart](2015-12-08compare.png)
 
 
-#### Docker
+### Docker
 
 Docker containers wrap up a piece of software in a complete filesystem that contains everything it needs to run:
 
@@ -81,13 +80,13 @@ Docker can come in handy because you can create a `Shiny` server using few comma
 
 *Refer to [this blog post](http://www.rmining.net/2015/04/30/dockerizing-a-shiny-app/) to get your `Shiny` app 'dockerized'.*
 
-#### OpenCPU HTTP API for R
+### OpenCPU HTTP API for R
 
 OpenCPU is an open source solution for embedded R computing. The software can be freely used, modified and redistributed for both for open source and proprietary projects in academia, industry or elsewhere. All parts of OpenCPU are released under the Apache2 license.  The free OpenCPU framework provides a reliable and interoperable HTTP API for R data analysis. You can either call the public servers or download and install OpenCPU’s code on your own servers.
 
 *Refer to [this blog post](http://www.jenunderwood.com/2015/01/12/part-1-integrating-r/) by Jen Underwood on how you can integrate R*
 
-#### Rook
+### Rook
 
 Rook is a lightweight web server interface for R developed by Jeffrey Horner that does not need any configuration file as Rook is a R package which works out of the box with R HTTP server.
 The idea behind this is to separate application development from server implementation. Thus, when a web server supports a web server interface, an application written to its specifications is guaranteed to run on that server.
@@ -97,16 +96,14 @@ So then you would need to do some learning on HTTP to develop Rook applications.
 
 *Refer to [this CRAN](https://cran.r-project.org/web/packages/Rook/README.html) for package description of Rook*
 
-***
 
-Distribution
---
+## Distribution
 
 If your end user has `RStudio`. then you can share your `R` files (ui.R and server.R) so that end user can run it through `RStudio`.
 
 If you have your own server, whether it be `AWS`, `Google Cloud`, `Microsoft Azure`, you can share it there.
 
-#### Docker + Kitematic
+### Docker + Kitematic
 
 After you have 'dockerized' your `Shiny` application, you can share it on `Kitematic`.
 `Kitematic` is a GUI where users can upload and download `Docker` images to run it in their `Docker` containers.
@@ -117,12 +114,12 @@ Below is a snapshot of Kitematic.
 
 *Refer to [this blog post](http://www.r-bloggers.com/share-your-shiny-apps-with-docker-and-kitematic/) to learn how you can share your `Shiny` application with `Docker` and `Kitematic`*
 
-#### GitHub
+### GitHub
 
 You can share your code in a repository where other users can contribute by suggestions, corrections and additions.
 When another user clones your repository, the directory structure is kept so that all data is preserved as where they belong.
 
-#### R Package
+### R Package
 
 If you are an awesome R programmer, creating a `R` package is an useful way to distribute and share within `R` community.
 `R` packages are stored in `Comprehensive R Archive Network (CRAN)` repository where there is extra level of testing to enforce certain structure so users can ensure quality packages.
