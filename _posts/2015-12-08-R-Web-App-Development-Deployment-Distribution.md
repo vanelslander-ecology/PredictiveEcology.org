@@ -8,13 +8,11 @@ tags: [R, Shiny, Kitematic, Docker]
 comments: true
 ---
 
----
 As `R` language is becoming popular among scientists to build simple we bapplication along simple integration with `RShiny`, `R` web applications are being created at a fast rate. `RShiny` package is not only easy to integrate but also provides a lightweight user interface that is pleasing to the eyes.
 
 How is `R` application developed?
 
 What is the process to deploy and distribute `R` web applications?
----
 
 ***
 
@@ -88,6 +86,16 @@ Docker can come in handy because you can create a `Shiny` server using few comma
 OpenCPU is an open source solution for embedded R computing. The software can be freely used, modified and redistributed for both for open source and proprietary projects in academia, industry or elsewhere. All parts of OpenCPU are released under the Apache2 license.  The free OpenCPU framework provides a reliable and interoperable HTTP API for R data analysis. You can either call the public servers or download and install OpenCPU’s code on your own servers.
 
 *Refer to [this blog post](http://www.jenunderwood.com/2015/01/12/part-1-integrating-r/) by Jen Underwood on how you can integrate R*
+
+#### Rook
+
+Rook is a lightweight web server interface for R developed by Jeffrey Horner that does not need any configuration file as Rook is a R package which works out of the box with R HTTP server.
+The idea behind this is to separate application development from server implementation. Thus, when a web server supports a web server interface, an application written to its specifications is guaranteed to run on that server.
+So then you would need to do some learning on HTTP to develop Rook applications.
+
+*Refer to [this blog post](http://www.r-bloggers.com/a-simple-web-application-using-rook/) by Ben Ogorek on a tutorial on building simple web application using Rook*
+
+*Refer to [this CRAN](https://cran.r-project.org/web/packages/Rook/README.html) for package description of Rook*
 
 ***
 

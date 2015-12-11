@@ -6,7 +6,6 @@ output:
     toc: true
     toc_depth: 2
 ---
-
 ---
 layout: post
 title: R Web App Development, Deployment, and Distribution
@@ -16,13 +15,11 @@ tags: [R, Shiny, Kitematic, Docker]
 comments: true
 ---
 
----
 As `R` language is becoming popular among scientists to build simple we bapplication along simple integration with `RShiny`, `R` web applications are being created at a fast rate. `RShiny` package is not only easy to integrate but also provides a lightweight user interface that is pleasing to the eyes.
 
 How is `R` application developed?
 
 What is the process to deploy and distribute `R` web applications?
----
 
 ***
 
