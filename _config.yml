@@ -65,7 +65,7 @@ paginate_path: "blog/page:num"
 gems:
   - jekyll-paginate
   - jekyll-redirect-from
-markdown: redcarpet
+markdown: kramdown
 highlighter: pygments
 sass:
   sass_dir: _sass
