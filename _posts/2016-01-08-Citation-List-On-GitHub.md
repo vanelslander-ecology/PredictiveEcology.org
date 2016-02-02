@@ -26,8 +26,13 @@ Creating a live web page with your publications is now easy to do and there are 
 3. You will have to allow bibbase.org access to your zotero account
 4. Click on one of your Collections or Groups
 5. If the page is correct, copy the URL at the top in the browser
-6. Embed it in a markdown page ``<script src="http://bibbase.org/show?bib=[URL-OF-BIBTEX-FILE]&jsonp=1"></script>`` where you replace [URL-OF-BIBTEX-FILE] with the URL you just copied.
+6. Embed it in a markdown page:
+
+        <script src="http://bibbase.org/show?bib=[URL-OF-BIBTEX-FILE]&jsonp=1"></script>
+
+    where you replace `[URL-OF-BIBTEX-FILE]` with the URL you just copied.
+
 7. Sync your gh-pages.
-8. Browse to your page to see it in action (e.g., [http://predictiveecology.org/publications/](http://predictiveecology.org/publications/)
+8. Browse to your page to see it in action (*e.g.*, [http://predictiveecology.org/publications/](http://predictiveecology.org/publications/)
 
 If you want a little bit of customization, see [bibBase help](http://bibbase.org/help) for more.
