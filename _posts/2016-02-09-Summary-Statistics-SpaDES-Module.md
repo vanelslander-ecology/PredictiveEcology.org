@@ -1,0 +1,15 @@
+---
+layout: post
+title: How do I calculate summary statistics and report them in a simulation?
+author: Eliot McIntire
+date: Feb 9, 2016
+tags: [SpaDES, modules]
+comments: true
+---
+
+Often, we want to calculate some summary statistics from an object, such as a the mean value of a map, and plot that as a graph, updated at some interval, so that we can see how that statistic behaves over the simulation.
+
+What's the best way to do this in a [SpaDES](http://spades.predictiveecology.org/) simulation?
+
+See [Alex Chubaty's post on the SpaDES FAQ](https://github.com/PredictiveEcology/SpaDES/wiki/Summary-statistics-in-simulations)
+

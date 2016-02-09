@@ -26,7 +26,7 @@ View on [CRAN](https://cran.r-project.org/package=fpCompare);  [GitHub](https://
 
 #### Using lazy load databases for R objects
 
-An R package for stashing objects in lazy load databases, analogous to lazy loaded packages. This uses the archivist package for a lot of the back end, but replaces the storing of .rda objects in the database with .rdx/.rdb objects.
+An R package for stashing objects in lazy load databases, analogous to lazy loaded packages. This uses the archivist package for a lot of the back end, but allows loading to be lazy. This means that the objects aren't actually loaded into RAM until they are used for the first time.
 
 View on [GitHub](https://github.com/PredictiveEcology/lazyR)
 
