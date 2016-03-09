@@ -35,12 +35,10 @@ These translations could be data driven, or expert driven or whatever. But, the 
 ### Examples of lossy
 
 - GIS operations
-
     - rasterizing a polygon layer
     - reprojecting
     
 - Ecological operations
-
     - reclassifying
     - discretizing a continuous variable
 
@@ -63,4 +61,7 @@ Examples:
 - some geographic reprojections
 - data format
 
+## Conclusion
+
+Translator modules will be ubiquitous. They facilitate modularity, and let modelers get on with what they are good at: translating ecological knowledge to predictive models.
 

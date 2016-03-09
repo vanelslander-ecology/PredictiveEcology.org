@@ -7,7 +7,7 @@ tags: [SpaDES, modules, modularity, sketch]
 comments: true
 ---
 
-Continuing from previous post on [modularity](http://predictiveecology.org/2016/03/09/Removing_spaghetti_from_ecological_models.html), the next issue, of course, is not every module will be compatible out of the box. If we continue with the example from last post, not every growth module will take "stem counts and size by species". One solution to this is the idea of **translator modules**. 
+Continuing from previous post on [modularity](http://predictiveecology.org/2016/03/09/Removing-spaghetti-from-ecological-models.html), the next issue, of course, is not every module will be compatible out of the box. If we continue with the example from last post, not every growth module will take "stem counts and size by species". One solution to this is the idea of **translator modules**. 
 
 ## Translator modules
 
@@ -29,12 +29,10 @@ These translations could be data driven, or expert driven or whatever. But, the 
 ### Examples of lossy
 
 - GIS operations
-
     - rasterizing a polygon layer
     - reprojecting
     
 - Ecological operations
-
     - reclassifying
     - discretizing a continuous variable
 
@@ -57,4 +55,7 @@ Examples:
 - some geographic reprojections
 - data format
 
+## Conclusion
+
+Translator modules will be ubiquitous. They facilitate modularity, and let modelers get on with what they are good at: translating ecological knowledge to predictive models.
 
