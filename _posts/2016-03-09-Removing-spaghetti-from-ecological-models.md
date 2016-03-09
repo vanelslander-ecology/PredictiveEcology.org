@@ -7,8 +7,6 @@ tags: [SpaDES, modules, modularity, sketch]
 comments: true
 ---
 
-### Removing spaghetti, using modules
-
 Modularity requires a rethink for many people about how to build dependencies between models. Historically, ecological models were built as a single, large entity. Dependencies between different parts of the code base were deep, and hard to disentangle: spaghetti code. This has mostly changed over the past decade; however, the full revolution of modularity is still coming to ecological models.
 
 #### Data vs. model

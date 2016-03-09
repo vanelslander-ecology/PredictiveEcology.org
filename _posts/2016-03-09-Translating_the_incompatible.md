@@ -1,13 +1,11 @@
 ---
 layout: post
-title: Removing spaghetti from ecological models
+title: Translating the incompatible
 author: Eliot McIntire
 date: March 9, 2016
 tags: [SpaDES, modules, modularity, sketch]
 comments: true
 ---
-
-## What if modules are not compatible?
 
 Continuing from previous post on [modularity](http://predictiveecology.org/2016/03/09/Removing_spaghetti_from_ecological_models.html), the next issue, of course, is not every module will be compatible out of the box. If we continue with the example from last post, not every growth module will take "stem counts and size by species". One solution to this is the idea of **translator modules**. 
 
@@ -38,6 +36,7 @@ These translations could be data driven, or expert driven or whatever. But, the 
 - Ecological operations
 
     - reclassifying
+    - discretizing a continuous variable
 
 ## Not always symmetrical
 
@@ -52,12 +51,10 @@ It is important to note that a translator may be lossy in one direction, but the
 
 ## Lossless
 
-Changing units is a common example
-Anyway, these are some of the discussions and plans we are coming up with. I would be happy to include you in these, as often as you are interested.  And other people too. Indeed, we need more people to make better decisions...up to a point ;) 
+Examples:
 
-There are a lot of drawbacks to modularity... but there are a lot of benefits, and for me they are outweighing the drawbacks at the moment.
+- Changing units
+- some geographic reprojections
+- data format
 
-
-### Playground
-Imagine a neighbourhood where the kids (scientists/ecological modelers) are all playing scattered all over. Some have backyard swings and slides, others don't. They are having a grand old time running around having fun, living life (i.e., collecting data and publishing science). What we have done is build a new playground structure for the neighbourhood kids to play on (SpaDES). As we start to invite them to play, they check it out... some come and bring with them the their backyard play structures (pre-existing modules) that can attach to the structure we built, and others come with just materials to add new structures (new modules). The new games that are played are bigger, cooler, and more exciting than when the kids were playing alone or in small groups.  
 
