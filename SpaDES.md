@@ -1,6 +1,6 @@
 ---
 layout: page
-title: SpaDES resources -- presentations, training, papers
+title: SpaDES
 permalink: /SpaDES/
 ---
   
