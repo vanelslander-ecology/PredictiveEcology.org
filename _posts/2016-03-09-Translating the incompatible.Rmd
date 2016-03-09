@@ -6,7 +6,7 @@ output:
 ---
 ---
 layout: post
-title: Removing spaghetti from ecological models
+title: Translating the incompatible
 author: Eliot McIntire
 date: March 9, 2016
 tags: [SpaDES, modules, modularity, sketch]
