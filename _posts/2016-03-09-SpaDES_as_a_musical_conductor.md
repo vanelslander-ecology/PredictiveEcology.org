@@ -1,0 +1,10 @@
+---
+layout: post
+title: SpaDES as a musical conductor
+author: Eliot McIntire
+date: March 9, 2016
+tags: [SpaDES, modules, conductor]
+comments: true
+---
+
+[What is SpaDES?](https://www.dropbox.com/s/dykatrdiewhlahu/LandWeb%20-%20SpaDES%20presentation%20-%20Nov%2017%2C%202015.pdf?dl=1) Powerful tools sometimes don't lead to easy explanations of how they work. I recently got a room full of foresters, government researchers and policy people to sing some nursery rhymes to help explain it. [See the talk here.](https://www.dropbox.com/s/dykatrdiewhlahu/LandWeb%20-%20SpaDES%20presentation%20-%20Nov%2017%2C%202015.pdf?dl=1)
