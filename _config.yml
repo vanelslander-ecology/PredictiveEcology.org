@@ -16,8 +16,8 @@ theme:
     This blog is maintained by Eliot McIntire, a research scientist, and Alex Chubaty, a post doc, both working with the Government of Canada.<br/>All content is his own or that of contributors ("the lab"), and does not necessarily reflect any official policy of the Government of Canada.<br/><small>Powered by <a href="http://jekyllrb.com">Jekyll</a> with <a href="https://rohanchandra.github.io/project/type/">Type Theme</a></small>
 
   # Icons
-  rss: false
-  email_address: "eliot.mcintire@canada.ca" # Full email address, 
+  rss: true
+  email_address: "eliot.mcintire@canada.ca" # Full email address,
   behance:
   bitbucket:
   dribbble:
