@@ -32,13 +32,13 @@ Add the `science` formulae:
 brew tap homebrew/science
 ```
 
-### Upgrade existing `brew` installation
+#### Upgrade existing `brew` installation
 
 ```bash
 brew update && brew upgrade
 ```
 	
-### Install additional components
+#### Install additional components
 
 ```bash
 brew install gdal
