@@ -1,0 +1,10 @@
+---
+layout: post
+title: SpaDES as a playground
+author: Eliot McIntire
+date: March 9, 2016
+tags: [SpaDES, sketch, playground]
+comments: true
+---
+
+Imagine a neighbourhood where the kids (scientists/ecological modelers) are all playing scattered all over. Some have backyard swings and slides, others don't. They are having a grand old time running around having fun, living life (i.e., collecting data and publishing science). What we have done is build a new playground structure that is built with modular tubing for the neighbourhood kids to play on (SpaDES). As we start to invite them to play, they check it out... some come and bring with them the their own toys (pre-existing modules) that can be used with the new structure we built (balls, hoops etc.), and others come with just a desire to add more structures (new modules). We provide the tubing, but people realize that clicking the tubing together is actually something they already knew how to do because it is like lego.  The new games that are played are bigger, cooler, and more exciting than when the kids were playing alone or in small groups.  

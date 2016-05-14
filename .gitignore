@@ -1,5 +1,6 @@
 _site
 .sass-cache
+Gemfile.lock
 
 ## Ignore rmd and html files in posts
 _posts/*.html
@@ -8,4 +9,3 @@ _posts/.Rhistory
 .Rproj.user
 .Rhistory
 PredictiveEcology.org.Rproj
-
