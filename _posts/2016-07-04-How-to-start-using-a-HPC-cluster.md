@@ -175,7 +175,7 @@ qdel 9963747 # delete that job
 
 ## Other commands in Linux that may be useful for new-to-Linux users
 
-There are many others that you can find on the westgrid web page, or widely throughout the internet, but these are certain to come in handy.
+There are many others that you can find on the Westgrid web page, or widely throughout the internet, but these are certain to come in handy.
 
 
 ```bash
@@ -206,7 +206,7 @@ There are a few lines that you will generally change. Going through from top to 
 5. Load all modules you need
 6. Here, we will use MPI, which is a protocol for using multiple processors, which is supported by Westgrid out of the box, so we don't have to do anything special. 
 
-- Note, using MPI with R, we will use this approach: ask for 1 MPI process, with many processors. Which translates to , `mpiexec -n 1` and earlier line `#PBS -l procs=100`
+- Note, using MPI with R, we will use this approach: ask for 1 MPI process, with many processors. Which translates to , `mpiexec -n 1` and `#PBS -l procs=100`
 
 
 
@@ -300,7 +300,7 @@ save(outSimList, file = "outputs/outSimList.rdata")
 ##########
 ```
 
-## Possible mechanism to get files off westgrid via FTP
+## Possible mechanism to get files off Westgrid via FTP
 
 Because file transfer across the internet is slow, it may be worthwhile to set up an automated 
 copy mechanism at the end of a file. This means that if the program is running overnight and finishes at 2am, the copying would start right away.
