@@ -219,6 +219,8 @@ echo "Program test finished with exit code $? at: `date`"
 
 ## Running R with MPI
 
+You will need to make a script that can be called from the submit file. In the above submit file, I called it `test.R` and it is called on the `mpiexec` line. An example of an `Rscript` file is next. 
+
 Here is an example using SpaDES. The key line is to indicate `type = MPI` as an argument passed to raster::beginCluster(type = "MPI") or to parallel::makeCluster(100, type = "MPI").
 
 Key points below, these are specific to WestGrid:
