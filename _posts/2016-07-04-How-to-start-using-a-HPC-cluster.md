@@ -28,9 +28,9 @@ PuTTY is the software to make the command-line connection to Westgrid.
 3. Open PuTTY (double click) 
 4. Create a new Session:
   
-    a. type `grex.westgrid.ca` in the Host Name box and in the Saved Sessions box
-    b. Select Connection - Data on left side, fill in your user name in Auto-login username near top.
-    c. Click Save
+  a. type `grex.westgrid.ca` in the Host Name box and in the Saved Sessions box  
+  b. Select Connection - Data on left side, fill in your user name in Auto-login username near top.  
+  c. Click Save
 
 ## Connect using PuTTY / SSH 
 
