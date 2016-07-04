@@ -214,15 +214,13 @@ echo "Program test finished with exit code $? at: `date`"
 
 You will need to make a script that can be called from the submit file. In the above submit file, I called it `test.R` and it is called on the `mpiexec` line. An example of an `Rscript` file is next. 
 
-Here is an example using SpaDES. The key line is to indicate `type = MPI` as an argument passed to raster::beginCluster(type = "MPI") or to parallel::makeCluster(100, type = "MPI").
+Here is an example using SpaDES. The key line is to indicate `type = MPI` as an argument passed to `raster::beginCluster(type = "MPI")` or to `parallel::makeCluster(100, type = "MPI")`.
 
 Key points below, these are specific to WestGrid:
   
 1. Use scratch directory for processes that require lots of reading and writing to disk; can use the home directory for read write of infrequent things
 2. There must be a makeCluster or beginCluster function call, and the number of processes should match the number requested in the submit file submitted via qsub (i.e., in this case 100)
 3. Always run `stopCluster(ClusterObjName)` or `endCluster()` to clean up.
-
-
 
 ```r
 library(SpaDES)
@@ -267,8 +265,6 @@ save(outSimList, file = "outputs/outSimList.rdata")
 
 If you would like to see some extra information from your job, you can write this following to a file, call it epilogue.script and add it to your home directory. This will then be called from the `#PBS` line that refers to the `epilogue.script` file (above)
 
-
-
 ```bash
 #!/bin/sh
 echo "Epilogue Args:"
@@ -283,5 +279,4 @@ echo "Queue Name: $8"
 echo "Account String: $9"
 echo ""
 exit 0
-
 ```
