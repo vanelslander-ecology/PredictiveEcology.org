@@ -141,7 +141,7 @@ qsub test.pbs
 
 ```{bash, eval = FALSE}
 # to monitor jobs
-qstat -u elmci1 # change this for your user name
+qstat -u USERNAME # change this for your user name
 qstat -f 9963747 # change this for your job number, which can be found from previous line
 checkjob 9963747 # change this for your job number, which can be found from previous lines
 ```
@@ -198,7 +198,7 @@ There are a few lines that you will generally change. Going through from top to 
 #PBS -l walltime=00:25:00
 #PBS -l procs=100,pmem=500mb
 #PBS -r n
-#PBS -l epilogue=/home/elmci1/epilogue.script
+#PBS -l epilogue=/home/USERNAME/epilogue.script
 
 module load r/3.2.2
 module load gdal/1.10.1
@@ -236,7 +236,7 @@ library(parallel)
 library(raster)
 
 moduleDir <- "~/Documents/GitHub/McIntire-lab/Wolf"
-scratchDir <- "/global/scratch/elmci1"
+scratchDir <- "/global/scratch/USERNAME"
 
 ### Next section are all things for SpaDES -- can be skipped for more general R use
 times <- list(start = 0, end = 14, timeunit = "year")
