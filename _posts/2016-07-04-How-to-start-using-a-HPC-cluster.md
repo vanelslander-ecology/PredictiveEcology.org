@@ -270,3 +270,24 @@ stopCluster(cl)
 # save it for accessing later
 save(outSimList, file = "outputs/outSimList.rdata")
 ```
+
+If you would like to see some extra information from your job, you can write this following to a file, call it epilogue.script and add it to your home directory. This will then be called from the `#PBS` line that refers to the `epilogue.script` file (above)
+
+
+
+```bash
+#!/bin/sh
+echo "Epilogue Args:"
+echo "Job ID: $1"
+echo "User ID: $2"
+echo "Group ID: $3"
+echo "Job Name: $4"
+echo "Session ID: $5"
+echo "Resource List: $6"
+echo "Resources Used: $7"
+echo "Queue Name: $8"
+echo "Account String: $9"
+echo ""
+exit 0
+
+```
