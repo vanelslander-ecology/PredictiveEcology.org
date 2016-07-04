@@ -15,9 +15,9 @@ These instructions are for Compute Canada super computing network, and specifica
 
 For Compute Canada, that is [https://www.computecanada.ca/research-portal/account-management/apply-for-an-account/](here).
 
-## Set up your computer
+## Set up your computer 
 
-## Connect to supercomputer by command line
+Connect to supercomputer by command line.
 
 ### Windows -- need putty
 
