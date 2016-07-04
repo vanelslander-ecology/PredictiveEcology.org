@@ -19,7 +19,7 @@ These instructions are for Compute Canada super computing network, and specifica
  
 ## Create an account on your super computing network
 
-For Compute Canada, that is [https://www.computecanada.ca/research-portal/account-management/apply-for-an-account/](here).
+For Compute Canada, that is [here](https://www.computecanada.ca/research-portal/account-management/apply-for-an-account/).
 
 ## Set up your computer 
 
