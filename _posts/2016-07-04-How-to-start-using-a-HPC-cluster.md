@@ -21,32 +21,26 @@ Connect to supercomputer by command line.
 
 ### Windows -- need putty
 
-PuTTY is the way to make the command-line connection to Westgrid.
+PuTTY is the software to make the command-line connection to Westgrid.
 
-1. Download PuTTY from [https://the.earth.li/~sgtatham/putty/latest/x86/putty.exe](https://the.earth.li/~sgtatham/putty/latest/x86/putty.exe)
-2. Put `putty.exe` somewhere easy (like Desktop or taskbar). It is how you connect to Westgrid.
-3. Open PuTTY (double click)
+1. Download PuTTY from [https://the.earth.li/~sgtatham/putty/latest/x86/putty.exe](https://the.earth.li/~sgtatham/putty/latest/x86/putty.exe) 
+2. Put `putty.exe` somewhere easy (like Desktop or taskbar). It is how you connect to Westgrid. 
+3. Open PuTTY (double click) 
 4. Create a new Session:
-
+  
     a. type `grex.westgrid.ca` in the Host Name box and in the Saved Sessions box
-    
     b. Select Connection - Data on left side, fill in your user name in Auto-login username near top.
-    
     c. Click Save
 
-## Connect using PuTTY / SSH
+## Connect using PuTTY / SSH 
 
 ### Windows
 
-a. Go back to Session on left, click Open at bottom.
-
-b. You will see something about SSH key, type `yes`
-
-c. Type your password, Enter
-
-d. You should be connected
-
-e. When you want to disconnect, type `exit`
+a. Go back to Session on left, click Open at bottom.  
+b. You will see something about ssh key, type `yes`  
+c. Type your password, Enter  
+d. You should be connected  
+e. When you want to disconnect, type `exit`  
 
 ## Linux 
 
@@ -56,6 +50,7 @@ It is much easier on Linux because SSH is built in to most distributions.
 ```bash
 ##########
 ssh -l LOGINNAME grex.westgrid.ca # change LOGINNAME to your login name
+
 
 exit # to disconnect
 ##########
@@ -67,8 +62,8 @@ exit # to disconnect
 
 We will use WinSCP working (Windows Secure CoPy) to transfer files between your machine and Westgrid.
 
-1. Download [WinSCP](https://winscp.net/download/winscp577.zip)
-2. Unzip somewhere easy to find.
+1. Download [WinSCP](https://winscp.net/download/winscp577.zip) 
+2. Unzip somewhere easy to find. 
 3. Double click on `WinSCP.exe`
 4. Do same (approximately) steps as for putty above, though it is easier because the username is on the same page
 
@@ -76,6 +71,7 @@ We will use WinSCP working (Windows Secure CoPy) to transfer files between your 
 
 Once on to Grex on Westgrid, you need to load R and gdal. The specific ways to do this will vary by machine and cluster. 
 Please contact your cluster administrators, or find the list of software on each machine.
+
 
 ```bash
 
@@ -90,11 +86,13 @@ module load gdal/1.10.1
 
 Now, you need to work with your own files. Either you can manually copy and paste (drag) in WinSCP, or you can use another tool, like GitHub. 
 
-On Linux machines, `~` is your home directory and is the shorthand for `/home/USERNAME/` ... so you can do `cd ~` to bring you back to your home directory, in case you ever get lost in sub-sub-sub directories
+On Linux machines, `~` is your home directory and is the shorthand for `/home/USERNAME/` ... so you can do `cd ~` to bring you back to your home directory, in case you ever get lost in sub-sub-sub directories 
+
 
 ### Use a github repository
 
-Here, the use must change the lines below for their own GitHub repository of interest. The one below is private and so will not work unless you are part of that repository user group.
+Here, the use must change the lines below for their own github repository of interest. The one below is private and so will not work unless you are part of that repository user group.
+
 
 ```r
 ##########
@@ -111,9 +109,11 @@ git pull
 ##########
 ```
 
+
 ## Start R
 
 From the prompt, start R
+
 
 ```bash
 ##########
@@ -121,7 +121,8 @@ R
 ##########
 ```
 
-Prepare your R for what you will need, *i.e.*, install some packages. In the case here, we are loading a simulation package, `SpaDES`, which has a lot of dependencies and can take a while.
+Prepare your R for what you will need, *i.e.*, install some packages. In the case here, we are loading a simulation package, `SpaDES`, which has a lot of dependencies and can take a while. 
+
 
 ```r
 ##########
@@ -141,6 +142,7 @@ The R session that we have entered is the "interactive" part of Grex. You can do
 
 You need a submit file and an R file with your R code. See two files ending with .pbs in 
 McIntire-lab github repo. See example text that could be put in a submission file, here `test.pbs`
+
 
 ```bash
 ##########
@@ -242,13 +244,16 @@ echo "Program test finished with exit code $? at: `date`"
 
 You will need to make a script that can be called from the submit file. In the above submit file, I called it `test.R` and it is called on the `mpiexec` line. An example of an `Rscript` file is next. 
 
-Here is an example using SpaDES. The key line is to indicate `type = MPI` as an argument passed to `raster::beginCluster(type = "MPI")` or to `parallel::makeCluster(100, type = "MPI")`.
+Here is an example using SpaDES. The key line is to indicate `type = MPI` as an argument passed to `raster::beginCluster(type = "MPI")` or to `parallel::makeCluster(100, type = "MPI")`. 
+
 
 Key points below, these are specific to WestGrid:
   
 1. Use scratch directory for processes that require lots of reading and writing to disk; can use the home directory for read write of infrequent things
 2. There must be a makeCluster or beginCluster function call, and the number of processes should match the number requested in the submit file submitted via qsub (i.e., in this case 100)
 3. Always run `stopCluster(ClusterObjName)` or `endCluster()` to clean up.
+
+
 
 ```r
 ##########
@@ -317,6 +322,8 @@ system.time(ftpUpload(filename, paste0("ftp://ftpUsername:ftpPassword@ftpServer"
 ### Epilogue file
 
 If you would like to see some extra information from your job, you can write this following to a file, call it epilogue.script and add it to your home directory. This will then be called from the `#PBS` line that refers to the `epilogue.script` file (above)
+
+
 
 ```bash
 
