@@ -292,6 +292,9 @@ cl <- makeCluster(N, type = "MPI")
 
 # run some function that knows how to 
 outSimList <- experiment(copy(mySim), replicates = N, .plotInitialTime = NA, cl = cl) # don't use plotting
+
+# Stop the cluster. You can use the same cluster many times within this script. Only close it after no
+#  longer needed.
 stopCluster(cl)
 
 # save it for accessing later
