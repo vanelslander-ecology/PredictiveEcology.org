@@ -39,9 +39,13 @@ PuTTY is the way to make the command-line connection to Westgrid.
 ### Windows
 
 a. Go back to Session on left, click Open at bottom.
+
 b. You will see something about SSH key, type `yes`
+
 c. Type your password, Enter
+
 d. You should be connected
+
 e. When you want to disconnect, type `exit`
 
 ## Linux 
