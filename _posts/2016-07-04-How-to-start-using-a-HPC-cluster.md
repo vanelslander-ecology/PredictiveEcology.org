@@ -21,16 +21,16 @@ Connect to supercomputer by command line.
 
 ### Windows -- need putty
 
-Putty is the way to make the command-line connection to Westgrid.
+Putty is the software to make the command-line connection to Westgrid.
 
-1. Download putty.exe from https://the.earth.li/~sgtatham/putty/latest/x86/putty.exe
+1. Download putty.exe from [here](https://the.earth.li/~sgtatham/putty/latest/x86/putty.exe)
 2. Put putty.exe somewhere easy (like desktop or task bar). It is how you connect to Westgrid
 3. Open putty (double click)
 4. Create a new Session:
   
-  a. type `grex.westgrid.ca` in the Host Name box and in the Saved Sessions box
-  b. Select Connection - Data on left side, fill in your user name in Auto-login username near top.
-  c. Click Save
+    a. type `grex.westgrid.ca` in the Host Name box and in the Saved Sessions box
+    b. Select Connection - Data on left side, fill in your user name in Auto-login username near top.
+    c. Click Save
 
 ## Connect usnig putty or ssh
 
@@ -44,12 +44,16 @@ e. When you want to disconnect, type exit
 
 ## Linux 
 
+It is much easier on Linux because SSH is built in to most distributions. 
+
 
 ```bash
+##########
 ssh -l LOGINNAME grex.westgrid.ca # change LOGINNAME to your login name
 
 
 exit # to disconnect
+##########
 ```
 
 ## Connect to supercomputer for file transfer
@@ -71,8 +75,12 @@ Please contact your cluster administrators, or find the list of software on each
 
 ```bash
 
+##########
+
 module load r/3.2.2
 module load gdal/1.10.1
+
+##########
 
 ```
 
@@ -87,6 +95,8 @@ Here, the use must change the lines below for their own github repository of int
 
 
 ```r
+##########
+
 # Perhaps clone the McIntire-lab repository
 mkdir -p Documents/GitHub/
 cd ~/Documents/GitHub/
@@ -95,6 +105,8 @@ git clone git@github.com:eliotmcintire/McIntire-lab.git
 # Keep it up to date:
 cd ~/Documents/GitHub/McIntire-Lab
 git pull
+
+##########
 ```
 
 
@@ -104,18 +116,22 @@ From the prompt, start R
 
 
 ```bash
+##########
 R
+##########
 ```
 
 Prepare your R for what you will need, i.e., install some packages. In the case here, we are loading a simulation package, SpaDES, which has a lot of dependencies and can take a while.
 
 
 ```r
+##########
 # From within R, install necessary packages
 install.packages("devtools") # choose HTTP #18, then #1. This is because it is an old version of R, specifically 3.2.2  If it is a newer version of R, then you can choose HTTPS
 install.packages("Rmpi")
 library(devtools)
 install_github("PredictiveEcology/SpaDES@development")
+##########
 ```
 
 You can work with this interactive session for small testing things. But the connection we have so far is NOT intended for high performance. Please see next step for that.
@@ -129,19 +145,32 @@ McIntire-lab github repo. See example text that could be put in a submission fil
 
 
 ```bash
+##########
+
 cd Documents/GitHub/McIntire-lab/ComputeCanada/
 qsub test.pbs
+
+##########
 
 ```
 
 ## Monitoring jobs
 
+There are several commands that you can use at the command line to monitor your jobs. `qdel` will remove tham.
+
 
 ```bash
+##########
+
 # to monitor jobs
 qstat -u USERNAME # change this for your user name
 qstat -f 9963747 # change this for your job number, which can be found from previous line
 checkjob 9963747 # change this for your job number, which can be found from previous lines
+
+# delete
+qdel 9963747 # delete that job
+
+##########
 ```
 
 ## Other commands in Linux that may be useful for new-to-Linux users
@@ -150,6 +179,7 @@ There are many others that you can find on the westgrid web page, or widely thro
 
 
 ```bash
+##########
 # linux commands that may be useful
 ls # list the contents of a directory
 ls -l # 
@@ -159,19 +189,9 @@ cd Documents/GitHub #  change to another directory
 rm dist7* # remove all files in the current directory starting with dist7
   
 nano filename # a simple text editor
-```
+# CTRL-X will exit from that editor, keyboard (not mouse) can be used to do minor edits
+##########
 
-## Possible mechanism to get files off westgrid via FTP
-
-Because file transfer across the internet is slow, it may be worthwhile to set up an automated 
-copy mechanism at the end of a file. This means that if the program is running overnight and finishes at 2am, the copying would start right away.
-
-
-```r
-library(RCurl)
-# You will have to set User, password and FTPserver manually (it is not what you see here)
-filename = "output.rdata"
-system.time(ftpUpload(filename, paste0("ftp://ftpUsername:ftpPassword@ftpServer",filename)))
 ```
 
 
@@ -191,6 +211,8 @@ There are a few lines that you will generally change. Going through from top to 
 
 
 ```bash
+##########
+
 #!/bin/bash
 #PBS -S /bin/bash
 #PBS -N Rmpi-Test2
@@ -213,6 +235,8 @@ echo "Starting run at: `date`"
 mpiexec -n 1 Rscript --vanilla ./test.R
 echo "Program test finished with exit code $? at: `date`"
 
+##########
+
 ```
 
 
@@ -231,6 +255,8 @@ Key points below, these are specific to WestGrid:
 
 
 ```r
+##########
+
 library(SpaDES)
 library(parallel)
 library(raster)
@@ -269,13 +295,39 @@ stopCluster(cl)
 
 # save it for accessing later
 save(outSimList, file = "outputs/outSimList.rdata")
+
+##########
 ```
+
+## Possible mechanism to get files off westgrid via FTP
+
+Because file transfer across the internet is slow, it may be worthwhile to set up an automated 
+copy mechanism at the end of a file. This means that if the program is running overnight and finishes at 2am, the copying would start right away.
+
+
+```r
+##########
+
+library(RCurl)
+# You will have to set User, password and FTPserver manually (it is not what you see here)
+filename = "output.rdata"
+system.time(ftpUpload(filename, paste0("ftp://ftpUsername:ftpPassword@ftpServer",filename)))
+
+##########
+```
+
+
+
+### Epilogue file
 
 If you would like to see some extra information from your job, you can write this following to a file, call it epilogue.script and add it to your home directory. This will then be called from the `#PBS` line that refers to the `epilogue.script` file (above)
 
 
 
 ```bash
+
+##########
+
 #!/bin/sh
 echo "Epilogue Args:"
 echo "Job ID: $1"
@@ -289,5 +341,7 @@ echo "Queue Name: $8"
 echo "Account String: $9"
 echo ""
 exit 0
+
+##########
 
 ```
