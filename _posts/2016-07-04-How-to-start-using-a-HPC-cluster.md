@@ -78,7 +78,7 @@ Please contact your cluster administrators, or find the list of software on each
 ##########
 
 module load r/3.2.2
-module load gdal/1.10.1
+module load gdal/2.1.0
 
 ##########
 
@@ -222,7 +222,7 @@ There are a few lines that you will generally change. Going through from top to 
 #PBS -l epilogue=/home/USERNAME/epilogue.script
 
 module load r/3.2.2
-module load gdal/1.10.1
+module load gdal/2.1.0
 module load geos/3.5.0
 
 # Script for running serial program, diffuse.
