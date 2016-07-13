@@ -95,9 +95,13 @@ On Linux machines, `~` is your home directory and is the shorthand for `/home/US
 
 ### Use a github repository
 
-Here, the use must change the lines below for their own github repository of interest. The one below is private and so will not work unless you are part of that repository user group.
+Here, the use must change the lines below for their own github repository of interest. The one below is private and so will not work unless you are part of that repository user group. [edited addition] If you need to connect to a private repo, follow these instructions:
 
-```{r, eval = FALSE}
+[https://help.github.com/articles/generating-an-ssh-key/](https://help.github.com/articles/generating-an-ssh-key/)
+
+Once you have completed those steps, then you can clone a private repo:
+
+```{bash clone a private repo, eval = FALSE}
 ##########
 
 # Perhaps clone the McIntire-lab repository
@@ -156,6 +160,8 @@ qsub test.pbs
 
 ```
 
+At this point, nothing will appear to happen, but you will have submitted jobs to the queue. You should go to the next steps right away to monitor the jobs. If your job is really quick, and the queue accepts it quickly, then there will be no more jobs to monitor, and you will only have any output or error files that your job produced (see below for those.)
+
 ## Monitoring jobs
 
 There are several commands that you can use at the command line to monitor your jobs. `qdel` will remove tham.
@@ -173,6 +179,10 @@ qdel 9963747 # delete that job
 
 ##########
 ```
+
+## Finding your output files [edited addition]
+
+If your R script saved any files, then those should be in the directory that your Rscript put them it. In addition to those, there should be 2 files in the same folder from which you submitted your job (the qsub statement). They will have the job filename (the qsub file), but with new filename endings. One will be .e something, the other .o something. The .e something will be your "error" file, which may be useful if there are errors. The .o something file will be your any output statements that would have been written to your R console. The something will be your job number.
 
 ## Other commands in Linux that may be useful for new-to-Linux users
 
