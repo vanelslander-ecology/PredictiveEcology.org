@@ -299,6 +299,12 @@ N <- 100
 # Make the cluster
 cl <- makeCluster(N, type = "MPI")
 
+# You may need things loaded in the R slave processes, like libraries. Each of the 
+#   slave R processes is a clean R with few or libraries.
+clusterEvalQ(cl = cl, {
+    library(SpaDES)
+}) 
+
 # run some function that knows how to 
 outSimList <- experiment(copy(mySim), replicates = N, .plotInitialTime = NA, cl = cl) # don't use plotting
 
