@@ -31,15 +31,14 @@ The two workshops will be similar. We will be doing two workshops because there 
   c.	Agent models – [Wolves](http://htmlpreview.github.io/?https://github.com/PredictiveEcology/SpaDES-modules/blob/master/modules/wolfAlps/wolfAlps.html)  
 
 2.	**Building a new module from scratch**  
-
-  a.	newModule  
-  b.	the event queue  
-  c.	simInit and the simList object  
-  d.	scheduleEvent  
-  e.	the spades function  
-  f.	module metadata  
-  g.	initializing data  
-  h.	visualizing  
+    a. newModule  
+    b. the event queue  
+    c. simInit and the simList object  
+    d. scheduleEvent  
+    e. the spades function  
+    f. module metadata  
+    g. initializing data  
+    h. visualizing  
   
 3.	**Modules types**  
 
