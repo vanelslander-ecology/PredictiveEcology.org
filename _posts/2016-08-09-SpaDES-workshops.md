@@ -65,10 +65,10 @@ The two workshops will be similar. We will be doing two workshops because there 
 
 7.	**Online**
 
-  a.	GitHub
-  b.	Using Shiny for web interfaces (still in alpha state)
-  c.	Shinyapps.io e.g., [Proof of concept](https://spades.shinyapps.io/ForestChange_ProofOfConcept/)
-  d.	Data sources
+  a.	GitHub  
+  b.	Using Shiny for web interfaces (still in alpha state)  
+  c.	Shinyapps.io e.g., [Proof of concept](https://spades.shinyapps.io/ForestChange_ProofOfConcept/)  
+  d.	Data sources  
 
 8.	**Data to decisions**
 
