@@ -64,7 +64,7 @@ The two workshops will be similar. We will be doing two workshops because there 
     a.	Building “models”, i.e,. groups of modules
 
 7.	**Online**  
-    a.	GitHub  
+    a.	Using GitHub.com  
     b.	Using Shiny for web interfaces (still in alpha state)  
     c.	Shinyapps.io e.g., [Proof of concept](https://spades.shinyapps.io/ForestChange_ProofOfConcept/)  
     d.	Data sources  
