@@ -19,7 +19,9 @@ The two workshops will be similar. We will be doing two workshops because there 
 #### Both workshops:
 
 **Cost: Free**
+
 **Where: Pacific Forestry Centre, Victoria, BC**
+
 **Approximate content (will be updated in early September):**
 
 1.	**What is SpaDES and examples**
