@@ -13,13 +13,14 @@ The two workshops will be similar. We will be doing two workshops because there 
 
 ### Dates: 
 
-Workshop 1 - Sept 14-16, 2016
-Workshop 2 - Dec 7-9, 2016 (tentative)
+- Workshop 1 - Sept 14-16, 2016
+- Workshop 2 - Dec 7-9, 2016 (tentative)
 
-Both workshops:
-Cost: Free
-Where: Pacific Forestry Centre, Victoria, BC
-Approximate content (will be updated in early September):
+#### Both workshops:
+
+**Cost: Free**
+**Where: Pacific Forestry Centre, Victoria, BC**
+**Approximate content (will be updated in early September):**
 
 1.	**What is SpaDES and examples**
     a.	Fire – Beacons
