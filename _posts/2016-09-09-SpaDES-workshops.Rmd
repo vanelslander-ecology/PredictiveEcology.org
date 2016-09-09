@@ -6,7 +6,7 @@ output:
 ---
 ---
 layout: post
-title: Introduction to SpaDES Workshop
+title: Introduction to SpaDES Workshop Info
 author: Eliot McIntire, Alex Chubaty
 date: September 9, 2016
 comments: true
