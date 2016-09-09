@@ -24,4 +24,4 @@ We will be doing two workshops because there is immediate need for some users, b
 
 **Where: Pacific Forestry Centre, Victoria, BC**
 
-## [Current workshop outline](http://rpubs.com/PredictiveEcology/SpaDES-Intro-Outline)
+[Current workshop outline](http://rpubs.com/PredictiveEcology/SpaDES-Intro-Outline)
