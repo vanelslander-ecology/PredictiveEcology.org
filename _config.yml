@@ -2,7 +2,7 @@
 url: predictiveecology.org
 
 # THEME-SPECIFIC CONFIGURATION
-theme:
+theme_settings:
   # Meta
   title: "Predictive Ecology"
   avatar: avatar.png
