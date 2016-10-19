@@ -1,0 +1,25 @@
+---
+layout: post
+title: Introduction to SpaDES Workshop (updated)
+author: Eliot McIntire, Alex Chubaty
+date: October 15, 2016
+comments: true
+tags: [SpaDES, workshop, raster]
+---
+
+Alex Chubaty and I will be leading a 2nd [introductory SpaDES workshop](http://rpubs.com/PredictiveEcology/SpaDES-Intro-Outline) this fall.
+This will essentially be the same course as the one offered in [September, 2016](http://rpubs.com/PredictiveEcology/Archives-Sept16-Outline). 
+
+
+### Dates: 
+
+- Workshop 2 - Dec 7-9, 2016
+
+#### Both workshops:
+
+**Cost: Free**
+
+**Where: Pacific Forestry Centre, Victoria, BC**
+
+[Current workshop outline](http://rpubs.com/PredictiveEcology/SpaDES-Intro-Outline)
+
