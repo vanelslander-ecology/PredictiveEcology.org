@@ -28,14 +28,14 @@ Although you edit `.Rmd` files in text form, the files are converted to their 'f
 ) package and [`pandoc`](pandoc.org).
 It is very easy to incorporate text, images, equations, code, etc. into `.Rmd` files which can then be rendered in a wide variety of file formats.
 
-Importantly, because`Rmarkdown` files (`.Rmd`) are text files, they are easily incorporated into a `git` or other version control system.
+Importantly, because `Rmarkdown` files (`.Rmd`) are text files, they are easily incorporated into a `git` or other version control system.
 This further enhances the utility of `Rmarkdown` for scientific projects because with version control, one can see the evolution of a project from start to finish.
 
 ## Using `Rmarkdown` throughout the scientific workflow
 
 ### Initial project conception
 
-Most (all?) researchers maintain a project notebook of some type to track the development of theirs projects.
+Most (all?) researchers maintain a project notebook of some type to track the development of their projects.
 These notebooks are crucial for accountability and tracking project history and progress, and are invaluable references during the final stages of a project (*i.e.*, writing manuscripts).
 Text, code, equations, and data can all be maintained in an `.Rmd` file.
 Handwritten project sketches and notes can also be digitized for inclusion.
