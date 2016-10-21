@@ -53,7 +53,7 @@ One important additional note: `knitr` supports caching of `Rmarkdown` code bloc
 
 ### Collaboration
 
-A use a collaborative workflow using R, `Rmarkdown`, and [GitHub](https://github.com).
+I use a collaborative workflow using R, `Rmarkdown`, and [GitHub](https://github.com).
 However, most of my colleagues do not.
 This has been the most difficult challenge to overcome.
 How do I convince people to 1) adopt an open and reproducible workflow (*e.g.*, use `Rmarkdown` instead of MS Word), and 2) use version control (*i.e.*, `git`)?
