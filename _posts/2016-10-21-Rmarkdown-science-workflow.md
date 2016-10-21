@@ -24,7 +24,7 @@ Each of the components of your project can be tied together and, crucially, easi
 
 `Rmarkdown` files follow the [`markdown`](https://daringfireball.net/projects/markdown/
 ) mark up language, which is designed to be both human and machine readable.
-Although you edit `.Rmd` files in text form, the files are converted to their 'final' format (`.pdf`, `.html`, etc.) using the [`knitr`](yihui.name/knitr/
+Although you edit `.Rmd` files in text form, the files are converted to their 'final' format (`.pdf`, `.html`, etc.) using the [`knitr`](http://yihui.name/knitr/
 ) package and [`pandoc`](pandoc.org).
 It is very easy to incorporate text, images, equations, code, etc. into `.Rmd` files which can then be rendered in a wide variety of file formats.
 
