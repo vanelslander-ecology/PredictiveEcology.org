@@ -76,6 +76,7 @@ I think the time saved in other parts of the workflow make up for the additional
 I'm looking forward to more of my colleagues using `.Rmd` files, though I note that currently there is no good way of annotating documents.
 One method is to add text directly, which appears in the final rendered document.
 Another is to use HTML-style comments (`<!-- comments go here -->`) in the `.Rmd` file which will not appear in the final rendered document.
+*Edit*: Using GitHub directly to comment on specific lines within a commit can also work reasonably well, but you don't get all annotations from multiple versions in a single location.
 
 ### Publication
 
