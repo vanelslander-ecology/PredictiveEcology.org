@@ -94,7 +94,7 @@ In principle, you can use markdown formatting for emails but most email programs
 
 #### Blogs
 
-Most blogging platfroms support markdown (by default or with additional plugins).
+Most blogging platforms support markdown (by default or with additional plugins).
 This blog renders the markdown files (generated from `.Rmd` files) we upload into HTML format with all the appropriate syntax highlighting, etc.
 It's a phenomenal way to create content locally and render the results reliably on a blog.
 
