@@ -110,8 +110,8 @@ It's worth the effort, and I encourage you to start using `Rmarkdown`.
 
 ## Further reading
 
-Gandrud, C. (2015). Reproducible Research with R and RStudio, 2nd edn. Chapman and Hall/CRC Press. https://github.com/christophergandrud/Rep-Res-Book
+Gandrud, C. (2015). Reproducible Research with R and RStudio, 2nd edn. Chapman and Hall/CRC Press. [https://github.com/christophergandrud/Rep-Res-Book](https://github.com/christophergandrud/Rep-Res-Book)
 
-Ram, K. (2013). Git can facilitate greater reproducibility and increased transparency in science. Source Code for Biology and Medicine, 8(1), 7. http://doi.org/10.1186/1751-0473-8-7
+Ram, K. (2013). Git can facilitate greater reproducibility and increased transparency in science. Source Code for Biology and Medicine, 8(1), 7. [http://doi.org/10.1186/1751-0473-8-7](http://doi.org/10.1186/1751-0473-8-7)
 
-Wilson, G., Aruliah, D. A., Brown, C. T., Chue Hong, N. P., Davis, M., Guy, R. T., … Wilson, P. (2014). Best practices for scientific computing. PLoS Biology, 12(1), e1001745. http://doi.org/10.1371/journal.pbio.1001745
+Wilson, G., Aruliah, D. A., Brown, C. T., Chue Hong, N. P., Davis, M., Guy, R. T., … Wilson, P. (2014). Best practices for scientific computing. PLoS Biology, 12(1), e1001745. [http://doi.org/10.1371/journal.pbio.1001745](http://doi.org/10.1371/journal.pbio.1001745)
