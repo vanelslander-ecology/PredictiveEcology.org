@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How do I end a simluation based on some condition other than time?
+title: How do I end a simulation based on some condition other than time?
 author: Alex Chubaty
 date: Nov 7, 2016
 tags: [SpaDES, modules]
