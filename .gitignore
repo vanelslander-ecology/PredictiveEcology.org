@@ -1,6 +1,8 @@
 _site
 .sass-cache
 Gemfile.lock
+*.docx
+_posts/*.docx
 
 ## Ignore rmd and html files in posts
 _posts/*.html
