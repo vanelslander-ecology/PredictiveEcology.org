@@ -2,7 +2,7 @@
 layout: post
 title: Delivering scientific forecasts into the hands of policy makers
 author: Eliot McIntire, Alex Chubaty, Céline Boisvenue, Darcie Booth, Shannon Bradey, Elizabeth Campbell, Barry Cooke, David Price, Werner Kurz, Cindy Shaw
-date: October 21, 2016
+date: November 17, 2016
 comments: true
 tags: [App for science, leaflet, R, decision support, natural language processing]
 ---
