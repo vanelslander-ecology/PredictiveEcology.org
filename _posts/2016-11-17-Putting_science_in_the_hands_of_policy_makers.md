@@ -12,7 +12,8 @@ tags: [App for science, leaflet, R, decision support, natural language processin
 
 Empirical data have a troublesome way of being both factually true, yet difficult to understand because they exist within a complex web of even more data. Worse, forecasting what the future will look like is an even greater challenge. Scientists have, for a long time, been working on these problems, often with great success, but the venue for reporting is generally peer reviewed journals. In 2014/15, we are now at the point that policy makers _must_ have faster access, and in a context-appropriate way, to utilize the forecasts made by scientists.  At CFS, there has been an effort to build integrated systems of communities, of data, and of models. What is still lacking is a delivery mechanism to put those forecasts into the hands of the policy makers.
 
-<img src="../img/predictive_ecology_logo.png" width="420" style="float:right; margin: 20px; height: 100px; width: 100px" />
+
+<img src="{{ site.baseurl }}/img/predictive_ecology_logo.png" width="420" style="float:right; margin: 20px; height: 100px; width: 100px" />
 
 
 
