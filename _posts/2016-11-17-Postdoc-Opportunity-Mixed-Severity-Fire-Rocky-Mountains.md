@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Postdoc Opportunity: Mixed Severity Fire Modeling in the Rocky Mountain Foothills (Reposted)
+title: Postdoc Opportunity - Mixed Severity Fire Modeling in the Rocky Mountain Foothills (Reposted)
 author: Eliot McIntire
 date: November 17, 2016
 comments: true
