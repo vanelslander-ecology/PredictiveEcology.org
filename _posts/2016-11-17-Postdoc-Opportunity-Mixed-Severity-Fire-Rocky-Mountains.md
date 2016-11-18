@@ -7,6 +7,10 @@ comments: true
 tags: [Postdoc, position, ad, ecology, fire, modeling, ecological modeling]
 ---
 
+
+
+<img src="{{ site.baseurl }}/img/predictive_ecology_logo.png" width="420" style="float:right; margin: 20px; height: 200px; width: 200px" />
+
 We are seeking a landscape ecologist or ecological modeller to lead the development of a **mixed severity fire regime simulation model** that will permit spatial forecasting of forest structure and composition over the 21st century, and backcasting over the past several centuries. The intended applications are to integrated land and forest management on a multi-use landscape of roughly 1,000,000 ha in the foothills of southern Alberta, Canada. There is also an important historical component through the [Mountain Legacy Project](C:\Eliot\Sync\Students\Ads for students\mountainlegacy.ca). 
  
 The work will be conducted as part of a multidisciplinary team, integrating data from many sources and disciplines e.g. dendrochronological studies, historical fire maps, remote sensed vegetation and forest management data. The model is to be developed in [SpaDES](C:\Eliot\Sync\Students\Ads for students\spades.predictiveecology.org) an R-based system for developing modular, high performance simulation models integrating processes such as vegetation dynamics, natural disturbances,  and forest harvesting.  The project leads are E. McIntire (UBC/CFS), S. Cumming (U Laval), L. Daniels (UBC), Z. Gedalof (U. Guelph), E.S. Higgs (U. Victoria) and D. Andison (UBC).
