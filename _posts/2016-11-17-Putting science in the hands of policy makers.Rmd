@@ -140,7 +140,7 @@ To maximize the power of such an integrated tool, we, as an organization will ha
 
 # SpaDES Workshops
 
-We have begun to give [SpaDES workshops](http://rpubs.com/PredictiveEcology/SpaDES-Intro-Outline) for the scientists. Soon, we will give much shorter WebEx workshops for users. These user workshops will be much shorter and will be mostly focused on the need for responsibility in interpreting results from complex systems.
+We have begun to give [SpaDES workshops](http://rpubs.com/PredictiveEcology/SpaDES-Intro-Course-Outline) for the scientists. Soon, we will give much shorter WebEx workshops for users. These user workshops will be much shorter and will be mostly focused on the need for responsibility in interpreting results from complex systems.
 
 
 # The tangible outcomes and applications

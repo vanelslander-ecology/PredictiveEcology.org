@@ -13,7 +13,7 @@ comments: true
 tags: [SpaDES, workshop, raster]
 ---
 
-Alex Chubaty and I will be leading a 2nd [introductory SpaDES workshop](http://rpubs.com/PredictiveEcology/SpaDES-Intro-Outline) this fall.
+Alex Chubaty and I will be leading a 2nd [introductory SpaDES workshop](http://rpubs.com/PredictiveEcology/SpaDES-Intro-Course-Outline) this fall.
 This will essentially be the same course as the one offered in [September, 2016](http://rpubs.com/PredictiveEcology/Archives-Sept16-Outline). 
 
 
@@ -27,5 +27,5 @@ This will essentially be the same course as the one offered in [September, 2016]
 
 **Where: Pacific Forestry Centre, Victoria, BC**
 
-[Current workshop outline](http://rpubs.com/PredictiveEcology/SpaDES-Intro-Outline)
+[Current workshop outline](http://rpubs.com/PredictiveEcology/SpaDES-Intro-Course-Outline)
 
