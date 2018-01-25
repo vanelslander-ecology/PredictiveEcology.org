@@ -7,10 +7,11 @@ comments: true
 tags: [App for science, leaflet, R, decision support, natural language processing]
 ---
 
+
+
 Empirical data have a troublesome way of being both factually true, yet difficult to understand because they exist within a complex web of even more data. Worse, forecasting what the future will look like is an even greater challenge. Scientists have, for a long time, been working on these problems, often with great success, but the venue for reporting is generally peer reviewed journals. In 2014/15, we are now at the point that policy makers _must_ have faster access, and in a context-appropriate way, to utilize the forecasts made by scientists.  At CFS, there has been an effort to build integrated systems of communities, of data, and of models. What is still lacking is a delivery mechanism to put those forecasts into the hands of the policy makers.
 
-
-<img src="{{ site.baseurl }}/img/predictive_ecology_logo.png" width="420" style="float:right; margin: 20px; height: 100px; width: 100px" />
+<img src="../img/predictive_ecology_logo.png" width="420" style="float:right; margin: 20px; height: 200px; width: 200px" />
 
 
 
@@ -41,7 +42,7 @@ Our proof of concept [*inSpaDES*](http://w-vic-a105388.pfc.forestry.ca/SpaDESUI-
 Noting that all the specifics are changeable, the [current version](http://w-vic-a105388.pfc.forestry.ca/SpaDESUI-devel/) of the app is as follows: 
 
 
-<img src="{{ site.baseurl }}/img/SpaDES opening 1.png" width="1901" style="float:right; margin: 20px; width: 400px" />
+<img src="../img/SpaDES opening 1.png" width="1901" style="float:right; margin: 20px; width: 400px" />
 
 
 <br>
@@ -59,7 +60,7 @@ Noting that all the specifics are changeable, the [current version](http://w-vic
   - Left hand side will allow a user to select the current simulation, or previous ones. Each time the "New Simulation " button on the bottom right is clicked, the user will get a new chance to start again.
   
 
-<img src="{{ site.baseurl }}/img/Initialize SpaDESUI.png" width="1897" style="float:right; margin: 20px; width: 400px" />
+<img src="../img/Initialize SpaDESUI.png" width="1897" style="float:right; margin: 20px; width: 400px" />
 
 
 
@@ -75,7 +76,7 @@ Noting that all the specifics are changeable, the [current version](http://w-vic
 4. If the area that was selected is large, and the time horizon is long, then the simulations will take some time. 
 
 
-<img src="{{ site.baseurl }}/img/SpaDESUI output.png" width="1913" style="float:right; margin: 20px; width: 400px" />
+<img src="../img/SpaDESUI output.png" width="1913" style="float:right; margin: 20px; width: 400px" />
 
 
 5. The Results Analysis tab is still largely a work in progress. This will be where specific tabs will exist for "The effect of X on Y". There will be a default set of plots, figures, maps, but the user will be able to create more interactively.
@@ -111,7 +112,7 @@ To maximize the power of such an integrated tool, we, as an organization will ha
 
 # SpaDES Workshops
 
-We have begun to give [SpaDES workshops](http://rpubs.com/PredictiveEcology/SpaDES-Intro-Outline) for the scientists. Soon, we will give much shorter WebEx workshops for users. These user workshops will be much shorter and will be mostly focused on the need for responsibility in interpreting results from complex systems.
+We have begun to give [SpaDES workshops](http://rpubs.com/PredictiveEcology/SpaDES-Intro-Course-Outline) for the scientists. Soon, we will give much shorter WebEx workshops for users. These user workshops will be much shorter and will be mostly focused on the need for responsibility in interpreting results from complex systems.
 
 
 # The tangible outcomes and applications
