@@ -5,7 +5,7 @@ permalink: /workshops/
 ---
   
 
-[Workshops page](http://spades-workshops.predictiveecology.org/)
+[Workshops page](https://github.com/PredictiveEcology/SpaDES/wiki/SpaDES-Workshops)
 
 
 
