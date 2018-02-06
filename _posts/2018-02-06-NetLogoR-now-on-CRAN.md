@@ -23,9 +23,9 @@ For a complete list of changes, see [the package's NEWS file](https://raw.github
 ## Installation
 
 **Install development libraries:** building packages from source requires the appropriate development libraries for your operating system.
-    
+
 - *Windows:* install [Rtools](https://cran.r-project.org/bin/windows/Rtools/).
-- *macOS:* install Xcode commandline tools from the terminal: `xcode-select install`. 
+- *macOS:* install Xcode commandline tools from the terminal: `xcode-select install`.
 - *Debian/Ubuntu Linux:* ensure `r-base-dev` is installed.
 
 See [here](https://support.rstudio.com/hc/en-us/articles/200486498-Package-Development-Prerequisites) for more details.
@@ -39,7 +39,7 @@ install.packages("NetLogoR")
 ```
 
 **Install from GitHub:**
-    
+
 ```r
 #install.packages("devtools")
 library("devtools")
@@ -60,4 +60,4 @@ install_github("PredictiveEcology/NetLogoR", ref = "development", dependencies =
 
 Bug reports should be reported via the package's GitHub site:
 
-https://github.com/PredictiveEcology/NetLogoR/issues
+[https://github.com/PredictiveEcology/NetLogoR/issues](https://github.com/PredictiveEcology/NetLogoR/issues)
