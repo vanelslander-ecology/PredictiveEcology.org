@@ -63,5 +63,4 @@ A programming guide derived from the [NetLogo’s Programming Guide](https://ccl
 
 This package is under construction and therefore function errors and mismatches with the documentation may occur.
 
-View on [GitHub](https://github.com/PredictiveEcology/NetLogoR)
-
+View on [CRAN](https://cran.r-project.org/package=NetLogoR); [GitHub](https://github.com/PredictiveEcology/NetLogoR); [Website](http://NetLogoR.predictiveecology.org/)
