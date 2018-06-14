@@ -1,0 +1,161 @@
+---
+title: "Managing large SpaDES projects"
+author: "Alex Chubaty"
+date: "June 14, 2018"
+output: 
+  html_document: 
+    keep_md: yes
+---
+
+
+
+A [recent discussion](https://groups.google.com/forum/#!topic/spades-users/DAWOoEGaaZA) on the SpaDES users forum brought up the question of how to manage projects that rely on multiple `SpaDES` modules.
+This question came up in the context of module development, but I'll offer answers from both a user and developer perspective.
+
+## Basic directory structure
+
+The simplest structure is to use a single directory for all project-related components:
+
+```
+myProject/
+|_  cache/            # use this for your simulation cachePath
+|_  inputs/           # use this for your simulation inputPath
+|_  manuscripts/
+|_  modules/          # use this for your simulation modulePath
+    |_  module1/
+    |_  module2/
+    |_  module3/
+    |_  module4/
+    |_  module5/
+|_  outputs/          # use this for your simulation outputPath
+...
+```
+
+Most `SpaDES` users will get modules via `downloadModule()`, and should save these modules in the project's `modules/` subdirectory.
+New modules should also be created in this directory.
+Remember that each module should be self-contained, and that data are stored in the module's `data/` subdirectory (often downloaded via `downloadData()`).
+
+## Version control
+
+### Simple module versioning
+
+Every module has a version number in its metadata.
+To download a specific version of a module via `downloadModule()`, specify the `version` argument.
+This should be included in your project's main script / Rmd file.
+*Every project should be explicit about which versions of the modules it is using.*
+
+### Using git
+
+More advanced users and developers may choose to use more recent or in-development versions of the modules instead of the versions in the `SpaDES-modules` repository (and accessed via `downloadModule()`).
+Many `SpaDES` module authors/developers use GitHub for version control, so we can get tagged module versions as well as in-development versions of the code.
+To use version-controlled `SpaDES` modules in your project, we use [git submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules).
+
+Here, we assume that you are familiar with git (and GitHub) and are also using it for version control of your own project.
+
+```
+myProject/            # a version controlled git repo
+|_  .git/
+|_  cache/            # should be .gitignore'd
+|_  inputs/           # should be .gitignore'd (selectively)
+|_  manuscripts/
+|_  modules/
+    |_  module1/      # can be a git submodule
+    |_  module2/      # can be a git submodule
+    |_  module3/      # can be a git submodule
+    |_  module4/      # can be a git submodule
+    |_  module5/      # can be a git submodule
+|_  outputs/          # should be .gitignore'd
+...
+```
+
+**Remember that large data files should not managed using `git`.**
+Each module's data directory should have it's own `.gitignore` file.
+These data files should be easily retrieved via download or created by the module.
+
+#### Using git submodules
+
+We will add each of the `SpaDES` modules to our project as git submodules via the command line (but [GitKraken does support git submodules](https://support.gitkraken.com/working-with-repositories/submodules)).
+(You'll need to delete the `moduleN/` subdirectories within `modules`.)
+
+```
+cd ~/Documents/myProject/modules
+
+git submodule add https://github.com/USERNAMEA/module1
+git submodule add https://github.com/USERNAMEA/module2
+git submodule add https://github.com/USERNAMEB/module3
+git submodule add https://github.com/USERNAMEB/module4
+git submodule add https://github.com/USERNAMEC/module5
+
+git push origin master
+```
+
+Now our directory structure looks like this:
+
+```
+myProject/            # (https://github.com/MYUSERNAME/myProject)
+|_  .git/
+|_  cache/            # should be .gitignore'd
+|_  inputs/           # should be .gitignore'd (selectively)
+|_  manuscripts/
+|_  modules/
+    |_  module1/      # git submodule (https://github.com/USERNAMEA/module1)
+    |_  module2/      # git submodule (https://github.com/USERNAMEA/module2)
+    |_  module3/      # git submodule (https://github.com/USERNAMEB/module3)
+    |_  module4/      # git submodule (https://github.com/USERNAMEB/module4)
+    |_  module5/      # git submodule (https://github.com/USERNAMEC/module5)
+|_  outputs/          # should be .gitignore'd
+...
+```
+
+In the above example, we are working with 6 different GitHub repositories, one for each `SpaDES` module plus our `myProject` repo.
+
+Now, we manage each of the `SpaDES` modules (git submodules) independently.
+Because each of these submodules simply link back to another git repository, we can make changes upstream in the corresponding repo.
+We then need to pull in these upstream changes to specific modules as follows:
+
+```
+cd ~/Documents/myProject/modules
+
+git submodule update --remote module1
+```
+
+If we make changes to modules locally and want to push them to the remote we can do so using:
+
+```
+cd ~/Documents/myProject/modules/module1
+
+git push
+```
+
+This will push only the (commited) changes made to `module1`.
+
+## Parent and child modules
+
+Another option (as a developer) to make working with multiple `SpaDES` modules easier, is to create a parent module that specifies a group of modules as its children.
+In this way, a user only needs to call `downloadModule()` or `simInit()` specifying the parent module name.
+
+Even though a parent (and grandparent, etc.) module can be thought hierarchically above child modules, remeber that from a directory structure standpoint, all modules (chid or parent) are at the same level:
+
+```
+myProject/            # a version controlled git repo
+|_  .git/
+|_  cache/            # should be .gitignore'd
+|_  inputs/           # should be .gitignore'd (selectively)
+|_  manuscripts/
+|_  modules/
+    |_  parent1/      # with children: modules 1-5
+    |_  module1/
+    |_  module2/
+    |_  module3/
+    |_  module4/
+    |_  module5/
+|_  outputs/          # should be .gitignore'd
+...
+```
+
+Here, all of these modules (including the parent) can be git modules, and thus managed independently.
+
+## Summary
+
+The take avay here is thet when it comes to basic project organization, use a single directory for the project, and organize `SpaDES` modules within a single subdirectory therein.
+If you're using git version control (and you really should be using version control!) then git submodules offer an elegant way to manage dependencies.
