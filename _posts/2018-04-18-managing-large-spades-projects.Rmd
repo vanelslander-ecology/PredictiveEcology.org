@@ -33,9 +33,9 @@ myProject/
 ...
 ```
 
-Most `SpaDES` users will get modules via `downloadModule()`, and should save these modules in the project's `modules/` subdirectory.
+Most `SpaDES` users will get modules via `downloadModule()`, and should save these modules in the project's `modules/` sub-directory.
 New modules should also be created in this directory.
-Remember that each module should be self-contained, and that data are stored in the module's `data/` subdirectory (often downloaded via `downloadData()`).
+Remember that each module should be self-contained, and that data are stored in the module's `data/` sub-directory (often downloaded via `downloadData()`).
 
 ## Version control
 
@@ -77,7 +77,7 @@ These data files should be easily retrieved via download or created by the modul
 #### Using git submodules
 
 We will add each of the `SpaDES` modules to our project as git submodules via the command line (but [GitKraken does support git submodules](https://support.gitkraken.com/working-with-repositories/submodules)).
-(You'll need to delete the `moduleN/` subdirectories within `modules`.)
+(You'll need to delete the `moduleN/` sub-directories within `modules`.)
 
 ```
 cd ~/Documents/myProject/modules
@@ -129,14 +129,14 @@ cd ~/Documents/myProject/modules/module1
 git push
 ```
 
-This will push only the (commited) changes made to `module1`.
+This will push only the (committed) changes made to `module1`.
 
 ## Parent and child modules
 
 Another option (as a developer) to make working with multiple `SpaDES` modules easier, is to create a parent module that specifies a group of modules as its children.
 In this way, a user only needs to call `downloadModule()` or `simInit()` specifying the parent module name.
 
-Even though a parent (and grandparent, etc.) module can be thought hierarchically above child modules, remeber that from a directory structure standpoint, all modules (chid or parent) are at the same level:
+Even though a parent (and grandparent, etc.) module can be thought hierarchically above child modules, remember that from a directory structure standpoint, all modules (child or parent) are at the same level:
 
 ```
 myProject/            # a version controlled git repo
@@ -159,5 +159,5 @@ Here, all of these modules (including the parent) can be git modules, and thus m
 
 ## Summary
 
-The take avay here is thet when it comes to basic project organization, use a single directory for the project, and organize `SpaDES` modules within a single subdirectory therein.
+The take away here is that when it comes to basic project organization, use a single directory for the project, and organize `SpaDES` modules within a single sub-directory therein.
 If you're using git version control (and you really should be using version control!) then git submodules offer an elegant way to manage dependencies.
