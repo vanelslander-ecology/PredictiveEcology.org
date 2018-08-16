@@ -12,7 +12,7 @@ output:
 A [recent discussion](https://groups.google.com/forum/#!topic/spades-users/DAWOoEGaaZA) on the SpaDES users forum brought up the question of how to manage projects that rely on multiple `SpaDES` modules.
 This question came up in the context of module development, but I'll offer answers from both a user and developer perspective.
 
-**UPDATE:** See the followup post [here](2018-08-16-working-with-modules-and-projects).
+**UPDATE:** See the followup post [here](/2018/08/16/working-with-modules-and-projects).
 
 ## Basic directory structure
 
