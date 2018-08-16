@@ -30,12 +30,14 @@ My research interests lie in applied ecology, conservation and forecasting of a 
 <img src="{{ site.baseurl }}/img/people/alexchubatyweb_crop.jpg" alt="Alex M. Chubaty" width="150"/>
 </div>
 
-**Postdoctoral Fellow**  
-*University of British Columbia* & *Natural Resources Canada* & *Laval University*
+**Spatial Modelling Coordinator**  
+**[fRI Research](https://friresearch.ca/)**
 
-Alex Chubaty is a postdoctoral researcher developing landscape-level models of insect dispersal and forest disturbance. He completed his PhD in Biological Sciences at SFU, examining the population-level effects of energy and time constraints on individual behaviour. 
+Dr. Chubaty is an ecologist and simulation modeller developing landscape-level models of insect dispersal and forest disturbance.He completed his BSc in Biological Sciences at the University of Calgary, before moving to Vancouver, BC to complete his PhD in Biological Sciences at Simon Fraser University.
+He went on to complete a Post Doc through Université Laval, working with Eliot McIntire at the Pacific Forestry Centre in Victoria, BC.
+He is coauthor, with Eliot McIntire, of several R packages, including `SpaDES`, which were developed for large scale spatial simulations and analyses.
 
-Personal Website: [alexchubaty.com](http://www.alexchubaty.com/)
+Personal Website: [alexchubaty.com](https://www.alexchubaty.com/)
 
 &nbsp;
 
