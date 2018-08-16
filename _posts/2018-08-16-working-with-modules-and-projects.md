@@ -28,7 +28,7 @@ myProject/            # a version controlled git repo
 ```
 
 The layout of a project directory is somewhat flexible, but this approach works especially well if you're a module developer using [git submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules) for each of your module subdirectories.
-And each module really should be it's own git repository:
+And each module really should be its own git repository:
 
 - people don't need to pull everything in just to work on a single module;
 - makes it possible to use git submodules for [Rstudio] projects;
