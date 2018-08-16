@@ -35,7 +35,7 @@ My research interests lie in applied ecology, conservation and forecasting of a 
 Dr. Chubaty is an ecologist and simulation modeller developing landscape-level models of insect dispersal and forest disturbance.
 He completed his BSc in Biological Sciences at the University of Calgary, before moving to Vancouver, BC to complete his PhD in Biological Sciences at Simon Fraser University.
 He went on to complete a Post Doc through Université Laval, working with Eliot McIntire at the Pacific Forestry Centre in Victoria, BC.
-He is coauthor, with Eliot McIntire, of several R packages, including `SpaDES`, which were developed for large scale spatial simulations and analyses.
+He is coauthor, with Eliot, of several R packages, including `SpaDES`, which were developed for large scale spatial simulations and analyses.
 
 Personal Website: [alexchubaty.com](https://www.alexchubaty.com/)
 
