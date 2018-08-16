@@ -30,8 +30,7 @@ My research interests lie in applied ecology, conservation and forecasting of a 
 <img src="{{ site.baseurl }}/img/people/alexchubatyweb_crop.jpg" alt="Alex M. Chubaty" width="150"/>
 </div>
 
-**Spatial Modelling Coordinator**  
-**[fRI Research](https://friresearch.ca/)**
+**Spatial Modelling Coordinator, [fRI Research](https://friresearch.ca/)**
 
 Dr. Chubaty is an ecologist and simulation modeller developing landscape-level models of insect dispersal and forest disturbance.He completed his BSc in Biological Sciences at the University of Calgary, before moving to Vancouver, BC to complete his PhD in Biological Sciences at Simon Fraser University.
 He went on to complete a Post Doc through Université Laval, working with Eliot McIntire at the Pacific Forestry Centre in Victoria, BC.
