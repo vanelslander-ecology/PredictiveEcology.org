@@ -9,7 +9,7 @@ output:
 
 
 
-A [previous post](/2018/04/14/managing-large-spades-projects) discussed how to manage large SpaDES projects, and suggested the following project directory structure:
+A [previous post](/2018/06/14/managing-large-spades-projects) discussed how to manage large SpaDES projects, and suggested the following project directory structure:
 
 ```
 myProject/            # a version controlled git repo
