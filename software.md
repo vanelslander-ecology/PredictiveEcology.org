@@ -18,6 +18,13 @@ Additional functionality is provided by the [`SpaDES.addins`](http://spades-addi
 
 View on [CRAN](https://cran.r-project.org/package=SpaDES); [GitHub](https://github.com/PredictiveEcology/SpaDES); [Website](http://spades.predictiveecology.org)
 
+See also:
+
+- `SpaDES.addins`: <http://spades-addins.predictiveecology.org>
+- `SpaDES.core`: <http://spades-core.predictiveecology.org/>
+- `SpaDES.shiny`: <http://spades-shiny.predictiveecology.org/>
+- `SpaDES.tools`: <http://spades-tools.predictiveecology.org/>
+
 ### [`quickPlot`](http://quickplot.predictiveecology.org)
 
 #### A System of Plotting Optimized for Speed and Modularity

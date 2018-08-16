@@ -3,9 +3,5 @@ layout: page
 title: Workshops
 permalink: /workshops/
 ---
-  
-
-[Workshops page](https://github.com/PredictiveEcology/SpaDES/wiki/SpaDES-Workshops)
-
-
-
+ 
+For a current list of workshops, see <http://spades-workshops.predictiveecology.org/>.
