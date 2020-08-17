@@ -6,6 +6,16 @@ permalink: /software/
 
 ## R packages
 
+### [`Require`](https://Require.predictiveecology.org)
+### A simple package for reproducible package management in R. 
+
+This is an all-in-one package manager that is simple and focused around a single function, `Require`.
+This is different than other approaches to package management such as `packrat`, `checkpoint`, and `renv` as it focuses on a "script-based" solution to a reproducible work flow. 
+Thus, all packages, version numbering, and sources are contained within an R script.
+
+View on [CRAN](https://cran.r-project.org/package=Require);  [GitHub](https://github.com/PredictiveEcology/Require); [Website](https://Require.predictiveecology.org/)
+
+
 ### [`SpaDES`](https://spades.predictiveecology.org)
 
 #### Develop and Run Spatially Explicit Discrete Event Simulation Models
