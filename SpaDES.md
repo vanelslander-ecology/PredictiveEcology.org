@@ -15,6 +15,7 @@ permalink: /SpaDES/
 **Other `SpaDES` ecosystem packages:**
 
 - `quickPlot`: <https://quickplot.predictiveecology.org/>
+- `Require`: <https://Require.predictiveecology.org/>
 - `reproducible`: <https://reproducible.predictiveecology.org/>
 - `SpaDES.addins`: <https://spades-addins.predictiveecology.org>
 - `SpaDES.core`: <https://spades-core.predictiveecology.org/>

@@ -21,113 +21,95 @@ We are located in Victoria, British Columbia, Canada, at the Pacific Forestry Ce
 My research interests lie in applied ecology, conservation and forecasting of a broad array of ecosystems and species. Specifically, I am interested in using modern quantitative techniques to understand the natural complexity of ecosystems, and ultimately, to allow forecasting of organisms and ecosystem processes. I use a variety of quantitative techniques, including Hierarchical Bayes, Spatial Analysis, Landscape Simulation Modeling, Structural Equation Modeling, and Non-Linear Models to achieve the best ecological inference from ecological data. Through each of the systems I study, I strive to understand the ecological processes and to test this understanding by forecasting.
 </div>
 
-[CEF Website](https://www.cef-cfr.ca/index.php?n=Membres.EliotMcIntire?userlang=en)  
-[Predictive Ecology](https://predictiveecology.org/)
+[Predictive Ecology Blog](https://predictiveecology.org/)
+[Predictive Ecology on GitHub](https://github.com/PredictiveEcology)
+[SpaDES](https://spades.predictiveecology.org)
 
-#### [Alex Chubaty](alexchubaty.com)
+### Current Personel
 
-<div style="float:right; padding:0px 0px 5px 50px;">
-<img src="{{ site.baseurl }}/img/people/alexchubatyweb_crop.jpg" alt="Alex M. Chubaty" width="150"/>
+
+[Dr. Tatiane Micheletti](https://github.com/tati-micheletti/) (Postdoctoral Fellow 2018-)
+
+<div style="static; padding:0px 0px 5px 50px;">
+<img src="https://borealbirds.ualberta.ca/wp-content/uploads/sites/85/2019/07/TatiMichelleti.jpg" alt="Tati Micheletti" width="150"/>
 </div>
 
-**Spatial Modelling Coordinator, [fRI Research](https://friresearch.ca/)**
+[Dr. Ceres Barros](https://ceresbarros.wordpress.com/) (Postdoctoral Fellow 2018-) (on Parental Leave until 2021)
 
-Dr. Chubaty is an ecologist and simulation modeller developing landscape-level models of insect dispersal and forest disturbance.
-He completed his BSc in Biological Sciences at the University of Calgary, before moving to Vancouver, BC to complete his PhD in Biological Sciences at Simon Fraser University.
-He went on to complete a Post Doc through Université Laval, working with Eliot McIntire at the Pacific Forestry Centre in Victoria, BC.
-He is coauthor, with Eliot, of several R packages, including `SpaDES`, which were developed for large scale spatial simulations and analyses.
-
-Personal Website: [alexchubaty.com](https://www.alexchubaty.com/)
-
-&nbsp;
-
-#### [Yong Luo](https://sites.google.com/a/lakeheadu.ca/yong-luo/home)
-
-<div style="float:right; padding:0px 0px 10px 50px;">
-<img src="{{ site.baseurl }}/img/people/Yong.jpg" width="150" alt="Yong Luo"/>
+<div style="static; padding:0px 0px 5px 50px;">
+<img src="https://i1.rgstatic.net/ii/profile.image/705102948093955-1545121051789_Q512/Ceres_Barros.jpg" alt="Ceres Barros" width="150"/>
 </div>
 
-**Postdoctoral Fellow**  
-*University of British Columbia* & *Natural Resources Canada* & *Laval University*
+[Dr. Frances Stewart](http://www.stewartresearch.ca/) (Postdoctoral Fellow 2019-2020 on Parental Leave until 2021)
 
-Yong is working on forest succession modeling.  
-
-*Research interests*  
-  1. How the tree mortality is governed by endogenous factors, such as competition, aging, and species interaction.  
-  2. How the tree mortality affected by recent climate changes such as regional warming and drought.  
-  3. The consequences of mortality in terms of forest carbon sequestration.
-
-Personal Website: [sites.google.com/a/lakeheadu.ca/yong-luo/home](https://sites.google.com/a/lakeheadu.ca/yong-luo/home)
-
-#### [Sebastien Renard](https://www.cef-cfr.ca/index.php?n=Membres.SebastienRenard)
-
-<div style="float:right; padding:0px 0px 10px 50px;">
-<img src="{{ site.baseurl }}/img/people/SebastienRenard.jpg" width="150" alt="Sebastien Renard"/>
+<div style="static; padding:0px 0px 5px 50px;">
+<img src="http://www.stewartresearch.ca/uploads/4/5/7/0/45702893/francesstewart_orig.jpg" alt="Frances Stewart" width="150"/>
 </div>
 
-Sebastien is a PhD student working on high elevation plant dynamics.
+[Ana Raymundo](https://borealbirds.ualberta.ca/2019/07/11/ana-raymundo/) (PhD Student 2018-)
 
-*Abstract* Dans les montagnes, une des caractéristiques paysagères marquantes est la limite des arbres. Elle fait la distinction entre la forêt montagnarde et les milieux alpins où les arbres ne poussent pas. Cette limite est très dépendante des facteurs environnementaux, et notamment le climat. Avec les changements climatiques, cet écosystème montre des signes précurseurs de bouleversements, qui pourraient porter atteinte à l'équilibre de ce milieu, déjà soumis à des conditions extrêmes. Or un grand nombre d'espèces dépendent de ce milieu comme le caribou des montagnes ou le pika (sorte de petit lapin d'altitude). Le cas du pin à écorce blanche est un bon exemple de la complexité des relations en jeu à la limite des arbres en montagne: les pins à écorce blanche connaissent un dépérissement en partie dû aux changements climatiques, ce qui diminue la production de cônes dont l'ours grizzli mange les graines, qui voit à son tour sa population diminuer. Il est donc primordial de mieux comprendre les mécanismes contrôlant la limite des arbres en montagne afin de pouvoir établir des stratégies de gestion et de conservation adaptées. Notre étude consiste à étudier la dynamique spatiale et temporelle de la limite des arbres dans plusieurs régions montagneuses du globe. A l'aide d'analyses spatiales et d'études dendrologiques (étude des cernes de croissance des arbres), nous cherchons à déterminer à différentes échelles (globales, régionales et locales) les mécanismes écologiques contrôlant la limite des arbres. Une meilleure connaissance des processus en jeu à la limite des arbres permettra de mieux conserver cet écosystème soumis à la fois à des conditions extrêmes mais aussi à une pression humaine grandissante, comme dans les sites récréotouristiques des montagnes. 
-
-Personal Website: [www.cef-cfr.ca/index.php?n=Membres.SebastienRenard](https://www.cef-cfr.ca/index.php?n=Membres.SebastienRenard)
-
-#### [Jean Marchal](https://www.cef-cfr.ca/index.php?n=Membres.JeanMarchal)
-
-<div style="float:right; padding:0px 0px 10px 50px;">
-<img src="{{ site.baseurl }}/img/people/jean_marchal_2.jpg" width="150" alt="Jean Marchal"/>
+<div style="static; padding:0px 0px 5px 50px;">
+<img src="https://borealbirds.ualberta.ca/wp-content/uploads/sites/85/2019/07/AnaRaymundo.jpg" alt="Ana Raymundo" width="150"/>
 </div>
 
-Jean is a PhD student working on forest succession and forest fire modeling.
+[Isolde Lane Shaw](https://borealbirds.ualberta.ca/2019/07/11/isolde-lane-shaw/) (PhD Student 2018-)
 
-Networks of protected areas, or reserve systems, are at the core of modern conservation efforts to maintain biodiversity over the long-term. To achieve this goal, protected areas should be first, representative of the territory in which they are embedded, i.e. they "need to represent, or sample, the full variety of biodiversity, ideally at all levels of organization", and second, sustain ecosystems processes and functions that generate and maintain biodiversity. The ranges of boreal and temperate tree species are expected to change under global warming with major consequences to biodiversity and ecosystems functions. Climate change may alter the species' ranges so that they are no longer present or are inadequately represented in existing networks. This challenges the ability of existing networks of protected areas to sustain biodiversity.
-
-The purpose of my work is to develop methods for the design of protected areas networks that are resilient to the effects of climate change on the distribution of forest tree species. Past approaches to this problem have used species distribution models to predict future distributions. Such models have limitations that make their predictions of transient dynamics unreliable. Instead, I will present a mechanistic approach that accounts for key biotic processes and non-climatic physical constraints on migration rate. I will use a grid-based spatially explicit simulation model of forest dynamics at the regional extent (LANDIS-II) that can represent some of the main expected effects of climate change. Using these results I will adapt an existing systematic conservation planning framework (https://beaconsproject.ca) to design networks of protected area effective in achieving conservation goals in a changing climate. 
-
-Personal Website: [www.cef-cfr.ca/index.php?n=Membres.JeanMarchal](https://www.cef-cfr.ca/index.php?n=Membres.JeanMarchal)
-
-#### [Alana Clason](https://bvcentre.ca/people/bio/alana_clason/)
-
-<div style="float:right; padding:0px 0px 10px 50px;">
-<img src="{{ site.baseurl }}/img/people/AlanaClason-web_200_300.jpg" width="150" alt="Alana Clason"/>
+<div style="static; padding:0px 0px 5px 50px;">
+<img src="https://borealbirds.ualberta.ca/wp-content/uploads/sites/85/2019/07/IsoldeLaneShaw.jpg" alt="Isolde Lane Shaw" width="150"/>
 </div>
 
-Alana is a PhD student working on questions related to the northern limits of whitebark pine. 
-
-Alana's research focuses on how climate change will influence the resilience and dynamics of the northern-most populations of whitebark pine (*Pinus albicaulis*) in the Coastal and Rocky Mountains. Incorporating local, global and stochastic processes of forest change to determine the relative resilience and future distribution of these threatened ecosystems, she hopes to delineate restoration priority areas across the northern extent under current and future climate conditions.
-
-Alana now happily calls Smithers home, where she lives with her husband, a happy brood of chickens and an expanding garden. She loves hiking, canoeing, skiing and playing various sports in the Bulkley Valley, as well as sewing and knitting during the long winter nights.
-
-Personal Website: [bvcentre.ca/people/bio/alana_clason/](https://bvcentre.ca/people/bio/alana_clason/)
-
-#### [Sarah Bauduin](https://www.cef-cfr.ca/index.php?n=Membres.SarahBauduin)
-
-<div style="float:right; padding:0px 0px 10px 50px;">
-<img src="{{ site.baseurl }}/img/people/SarahBauduinProfil.jpg" width="150" alt="Sarah Bauduin"/>
-</div>
-
-Sarah is a PhD student working on boreal caribou movement modeling in Gaspésie, Québec.
-
-Ecological networks are one solution, to protect populations nowadays and help them to cope with future climate change and future land use, which is supported by several organisms related to biodiversity conservation like the International Union for Conservation of Nature (IUCN), the World Wide Fund for Nature (WWF) or the Secretariat of the Convention on Biological Diversity (SCBD) (Hannah *et al.*, 2007). This solution suggests integrating current protected areas with new ones inside a connected network; the new protected areas would protect essential areas currently non-protected and areas that may become essential in the future due to climate change. Functional connectivity between the protected areas would enhance individual movements and allow them access to more resources (*e.g.*, food, shelter, etc.).
-
-Personal Website: [www.cef-cfr.ca/index.php?n=Membres.SarahBauduin](https://www.cef-cfr.ca/index.php?n=Membres.SarahBauduin)
-
-#### [Céline Macabiau](https://www.cef-cfr.ca/index.php?n=Membres.CelineMacabiau)
-
-Céline is a PhD student working on spruce grouse in southern Québec.
-
-#### Trevor Schiavone
-
-Coop student starting May 2015. He will be working on `SpaDES` and `SpaDES` GUI development.
-
-#### Brandon Leech
-
-Coop student starting May 2015. He will be working on `SpaDES` and `SpaDES` GUI development.
 
 ### Former Personel
 
+
+[Alex Chubaty](alexchubaty.com) (Postdoctoral Fellow 2017)
+
+<div style="static; padding:0px 0px 5px 50px;">
+<img src="{{ site.baseurl }}/img/people/alexchubatyweb_crop.jpg" alt="Alex M. Chubaty" width="150"/>
+</div>
+
+
+[Alana Clason](https://bvcentre.ca/index.php/people/bio/alana_clason1) (PhD 2018)
+<div style="static; padding:0px 0px 10px 50px;">
+<img src="https://bvcentre.ca/images/made/images/uploads/people_photos/Alana_Clason_200_300.jpg" width="150" alt="Sarah Bauduin"/>
+</div>
+
+
+
+[Sarah Bauduin](https://www.sarahbauduin.fr/) (PhD 2018)
+<div style="static; padding:0px 0px 10px 50px;">
+<img src="https://www.sarahbauduin.fr/wp-content/uploads/2019/08/BauduinSarah_profil.jpg" width="150" alt="Sarah Bauduin"/>
+</div>
+
+
+[Sebastien Renard](https://www.researchgate.net/profile/Sebastien_Renard2)
+
+<div style="static; padding:0px 0px 10px 50px;">
+<img src="https://i1.rgstatic.net/ii/profile.image/288757442990080-1445856547205_Q512/Sebastien_Renard2.jpg" width="150" alt="Sebastien Renard"/>
+</div>
+
+
+
+[Jean Marchal](https://www.wavx.ca/) (PhD 2017)
+<div style="static; padding:0px 0px 10px 50px;">
+<img src="https://www.wavx.ca/theme/images/faces/jean_marchal.png" width="150" alt="Jean Marchal"/>
+</div>
+
+
+[Yong Luo](https://sites.google.com/a/lakeheadu.ca/yong-luo/home) (Postdoctoral Fellow 2017)
+
+<div style="static; padding:0px 0px 10px 50px;">
+<img src="{{ site.baseurl }}/img/people/Yong.jpg" width="150" alt="Yong Luo"/>
+</div>
+
+[Josh Nowak](https://www.speedgoat.io/story/) (PhD 2015)
+<div style="static; padding:0px 0px 10px 50px;">
+<img src="https://www.cfc.umt.edu/research/lukacslab/imx/Josh%20Nowak_2018.jpg" width="150" alt="Josh Nowak"/>
+</div>
+
+
 - Greg Zhang (BSc Coop 2015)
 - [Émilie Tarroux](https://chaireafd.uqat.ca/chercheurs/PageIndividus_f.asp?IdCollaboration=50) (Post Doctoral Fellow 2015)
-- [Josh Nowak](https://www.cef-cfr.ca/index.php?n=Membres.JoshNowak) (PhD 2015)
 - [Julien Beguin](https://www.cef-cfr.ca/index.php?n=Membres.JulienBeguin) (PhD 2013)
 - [Julia Chacon Labella](https://www.researchgate.net/profile/Julia_Chacon-Labella/) (PhD - Visiting 2013)
 - [Pierre Racine](https://www.cef-cfr.ca/index.php?n=Membres.PierreRacine) (Research Professional 2013)
@@ -135,10 +117,10 @@ Coop student starting May 2015. He will be working on `SpaDES` and `SpaDES` GUI 
 - [Pamela Garcia-Cournoyer](https://www.cef-cfr.ca/index.php?n=Membres.PamelaGarciaCournoyer) (MSc 2010)
 - [Émilie Allard](https://www.cef-cfr.ca/index.php?n=Membres.EmilieAllard) (MSc 2009)
 - [Melanie Smith](https://ak.audubon.org/melanie-smith-science-director) (MSc 2008)
+- Céline Macabiau (PhD 2009)
 - Motoshi Honda (MSc 2008)
 - [Alex Fajardo](https://sites.google.com/site/alexfajardosite/) (Post Doctoral Fellow 2006)
-
-
-
+- Trevor Schiavone (Coop student 2015 `SpaDES` GUI development.)
+- Brandon Leech (Coop student 2015`SpaDES` GUI development)
 
 
