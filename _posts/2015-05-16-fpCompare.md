@@ -10,9 +10,9 @@ tags    : [R]
 > Version 0.2.0 of `fpCompare` has been released on CRAN
 
 Comparisons of floating point numbers are problematic due to errors associated with the binary representation of decimal numbers.
-Computer scientists and programmers are aware of these problems and yet people still use numerical methods which fail to account for floating point errors (this pitfall is the first to be highlighted in Circle 1 of Burns (2012) [The R Inferno](http://www.burns-stat.com/pages/Tutor/R_inferno.pdf)).
+Computer scientists and programmers are aware of these problems and yet people still use numerical methods which fail to account for floating point errors (this pitfall is the first to be highlighted in Circle 1 of Burns (2012) [The R Inferno](https://www.burns-stat.com/pages/Tutor/R_inferno.pdf)).
 
-Inspired by [R FAQ 7.31](http://cran.r-project.org/doc/FAQ/R-FAQ.html#Why-doesn_0027t-R-think-these-numbers-are-equal_003f) and [this Stack Overflow answer](http://stackoverflow.com/a/2769618/1380598), the `fpCompare` package provides new relational operators useful for performing floating point number comparisons with a set tolerance:
+Inspired by [R FAQ 7.31](https://cran.r-project.org/doc/FAQ/R-FAQ.html#Why-doesn_0027t-R-think-these-numbers-are-equal_003f) and [this Stack Overflow answer](https://stackoverflow.com/a/2769618/1380598), the `fpCompare` package provides new relational operators useful for performing floating point number comparisons with a set tolerance:
 
 ```r
 set.seed(123)

@@ -18,7 +18,7 @@ For a complete list of changes, see [the package's NEWS file](https://raw.github
 
 ### Websites
 
-**`NetLogoR` package:** [http://NetLogoR.PredictiveEcology.org](http://NetLogoR.PredictiveEcology.org)
+**`NetLogoR` package:** [https://NetLogoR.PredictiveEcology.org](https://NetLogoR.PredictiveEcology.org)
 
 ## Installation
 

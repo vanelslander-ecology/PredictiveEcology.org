@@ -6,7 +6,7 @@ date    : October 21, 2016
 tags    : [reproducible research, R]
 ---
 
-Using [`Rmarkdown`](http://rmarkdown.rstudio.com/) with [Rstudio](https://www.rstudio.com/products/rstudio) and for all stages of my scientific projects has been a remarkable shift in how my work gets done!
+Using [`Rmarkdown`](https://rmarkdown.rstudio.com/) with [Rstudio](https://www.rstudio.com/products/rstudio) and for all stages of my scientific projects has been a remarkable shift in how my work gets done!
 There are so many advantages to this type of workflow, not least of which are reproducibility and transparency (both are crucial for scientists as well as public servants).
 I've been using this approach as much as possible recently, and I'm quite happy with it.
 The entire process can be done using `Rmarkdown` etc. but there are still a few challenges which I'll touch on below.
@@ -24,7 +24,7 @@ Each of the components of your project can be tied together and, crucially, easi
 
 `Rmarkdown` files follow the [`markdown`](https://daringfireball.net/projects/markdown/
 ) mark up language, which is designed to be both human and machine readable.
-Although you edit `.Rmd` files in text form, the files are converted to their 'final' format (`.pdf`, `.html`, etc.) using the [`knitr`](http://yihui.name/knitr/
+Although you edit `.Rmd` files in text form, the files are converted to their 'final' format (`.pdf`, `.html`, etc.) using the [`knitr`](https://yihui.name/knitr/
 ) package and [`pandoc`](pandoc.org).
 It is very easy to incorporate text, images, equations, code, etc. into `.Rmd` files which can then be rendered in a wide variety of file formats.
 
@@ -81,7 +81,7 @@ Another is to use HTML-style comments (`<!-- comments go here -->`) in the `.Rmd
 ### Publication
 
 This one is improving everyday.
-Basic article publication tools are already included with Rstudio and `RMarkdown` (including [citations](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html)); however, for more advanced formatting there are other packages like [`rticles`](https://cran.r-project.org/package=rticles) (which I'm using for my current manuscripts) and [`bookdown`](https://bookdown.org/) for book formatting.
+Basic article publication tools are already included with Rstudio and `RMarkdown` (including [citations](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html)); however, for more advanced formatting there are other packages like [`rticles`](https://cran.r-project.org/package=rticles) (which I'm using for my current manuscripts) and [`bookdown`](https://bookdown.org/) for book formatting.
 As a fallback, you can adopt HTML and LaTeX markup in your `.Rmd` files, and use additional CSS or LaTeX templates as needed.
 
 Owing to the long history of TeX in scientific publications, most journals not only accept `.tex` file submissions but also provide the necessary templates (some of these are included with the `rticles` package), and citation style (`.csl`) files can be downloaded from [https://www.zotero.org/styles](https://www.zotero.org/styles).
@@ -113,6 +113,6 @@ It's worth the effort, and I encourage you to start using `Rmarkdown`.
 
 Gandrud, C. (2015). Reproducible Research with R and RStudio, 2nd edn. Chapman and Hall/CRC Press. [https://github.com/christophergandrud/Rep-Res-Book](https://github.com/christophergandrud/Rep-Res-Book)
 
-Ram, K. (2013). Git can facilitate greater reproducibility and increased transparency in science. Source Code for Biology and Medicine, 8(1), 7. [http://doi.org/10.1186/1751-0473-8-7](http://doi.org/10.1186/1751-0473-8-7)
+Ram, K. (2013). Git can facilitate greater reproducibility and increased transparency in science. Source Code for Biology and Medicine, 8(1), 7. [https://doi.org/10.1186/1751-0473-8-7](https://doi.org/10.1186/1751-0473-8-7)
 
-Wilson, G., Aruliah, D. A., Brown, C. T., Chue Hong, N. P., Davis, M., Guy, R. T., … Wilson, P. (2014). Best practices for scientific computing. PLoS Biology, 12(1), e1001745. [http://doi.org/10.1371/journal.pbio.1001745](http://doi.org/10.1371/journal.pbio.1001745)
+Wilson, G., Aruliah, D. A., Brown, C. T., Chue Hong, N. P., Davis, M., Guy, R. T., … Wilson, P. (2014). Best practices for scientific computing. PLoS Biology, 12(1), e1001745. [https://doi.org/10.1371/journal.pbio.1001745](https://doi.org/10.1371/journal.pbio.1001745)

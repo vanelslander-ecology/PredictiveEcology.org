@@ -20,7 +20,7 @@ This generally means that installing R packages on Windows can be easier for the
 
 #### Install `brew`
 
-This simple one-liner install is from the `brew` homepage, [brew.sh](http://brew.sh).
+This simple one-liner install is from the `brew` homepage, [brew.sh](https://brew.sh).
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"

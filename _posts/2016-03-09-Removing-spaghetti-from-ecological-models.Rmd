@@ -55,6 +55,6 @@ So, this means that we could "remove" the regeneration module, and the model wil
 
 Now the point is not to remove the growth module (what would that model do with just regen and mortality?)... but with this structure, we can replace the growth module with a different one and not break the modularity. Likewise, we can start a simulation with data of "stem counts and size by species", rather than the output of the regen module or growth module or mortality module.
 
-## Next blog post: [Translator Modules](http://predictiveecology.org/2016/03/09/Translating_the_incompatible.html)
+## Next blog post: [Translator Modules](https://predictiveecology.org/2016/03/09/Translating_the_incompatible.html)
 
 

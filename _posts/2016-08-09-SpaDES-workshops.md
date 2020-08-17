@@ -9,7 +9,7 @@ tags: [SpaDES, workshop, raster]
 
 **Updated September 9, 2016**
 
-Alex Chubaty and I will be leading two [introductory SpaDES workshops](http://rpubs.com/PredictiveEcology/SpaDES-Intro-Course-Outline) this fall.
+Alex Chubaty and I will be leading two [introductory SpaDES workshops](https://rpubs.com/PredictiveEcology/SpaDES-Intro-Course-Outline) this fall.
 They will essentially be the same course, but one will be mid September, and the second will be in early December. 
 We will be doing two workshops because there is immediate need for some users, but there are major travel restrictions for other users given the time frame.
 
@@ -24,5 +24,5 @@ We will be doing two workshops because there is immediate need for some users, b
 
 **Where: Pacific Forestry Centre, Victoria, BC**
 
-[Current workshop outline](http://rpubs.com/PredictiveEcology/SpaDES-Intro-Course-Outline)
+[Current workshop outline](https://rpubs.com/PredictiveEcology/SpaDES-Intro-Course-Outline)
 

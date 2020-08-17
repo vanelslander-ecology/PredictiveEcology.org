@@ -20,7 +20,7 @@ There are many other resources about this topic; we will try to be concise and s
 
 ## Loops
 
-Loops have been the achilles heel of R in the past. In version 3.1 and forward, much of this problem appears to be gone. As could be seen in the [http://predictiveecology.org/2015/05/06/Is-R-fast-enough-03.html](Fibonacci  example), pre-allocating a vector and filling it up inside a loop can now be very fast and efficient in native R. To demonstrate these points, below are 6 ways to achieve the same result in R, beginning with a naive loop approach, and working up to the fully vectorized approach. I am using a very fast vectorized function, seq_len, to emphasize the differences between using loops and optimized vectorized functions.
+Loops have been the achilles heel of R in the past. In version 3.1 and forward, much of this problem appears to be gone. As could be seen in the [https://predictiveecology.org/2015/05/06/Is-R-fast-enough-03.html](Fibonacci  example), pre-allocating a vector and filling it up inside a loop can now be very fast and efficient in native R. To demonstrate these points, below are 6 ways to achieve the same result in R, beginning with a naive loop approach, and working up to the fully vectorized approach. I am using a very fast vectorized function, seq_len, to emphasize the differences between using loops and optimized vectorized functions.
 
 
 ```{r Functions, cache=FALSE, eval=TRUE, echo=FALSE, message=FALSE}

@@ -8,7 +8,7 @@ tags: [R, benchmark]
 
 There have been many people, including ourselves, who have asked, "Is R fast enough for simulation modeling?". In other words, can R handle everything we throw at it for simulation modeling?  Low level functions, high level functions, GIS, data wrangling etc... 
 
-After years of working with R as a data analysis and manipulation tool, we weren't convinced that R was fast enough. We realize now that was mostly because of what we see and hear on the internet (e.g., see table in [julialang.org](http://julialang.org)). So, we started benchmarking R with a series of low and high level functions. This is part 1 of a multi-part series of posts about this benchmarking experiment with R in the coming weeks. 
+After years of working with R as a data analysis and manipulation tool, we weren't convinced that R was fast enough. We realize now that was mostly because of what we see and hear on the internet (e.g., see table in [julialang.org](https://julialang.org)). So, we started benchmarking R with a series of low and high level functions. This is part 1 of a multi-part series of posts about this benchmarking experiment with R in the coming weeks. 
 
 The objective of this experiment is to show some speed comparisons between R and other languages and software, including C++ and GIS software. Clearly this is NOT a comparison between R and, say, C++, because many of the functions in R are written in C++ and are wrapped in R. But, if simple R functions are fast, then we can focus our time on more complex things needed for simulation and science.
 
@@ -63,7 +63,7 @@ all(sapply(1:6, function(y) all.equal(m[[y]],m[[y+1]])))
 
 #### Next time
 
-We will redo the Fibonacci series, a common low level benchmarking test that [shows R to be slow](http://julialang.org).  But it turns out to be a case of bad coding...
+We will redo the Fibonacci series, a common low level benchmarking test that [shows R to be slow](https://julialang.org).  But it turns out to be a case of bad coding...
 
 #### Take home message
 

@@ -7,7 +7,7 @@ tags: [R, benchmark]
 comments: true
 ---
 
-In part 2 of this series on benchmarking `R`, we'll explore sorting. This has been a topic on numerous blogs, discussions and posts around the internet, including here: [r-blogger post](http://www.r-bloggers.com/quicksort-speed-just-in-time-compiling-and-vectorizing/). Similarly, [julialang.org](http://julialang.org) showed that sorting was particularly bad in `R`. We, again, felt that this was a case of poor `R` coding, or more accurately, missing the point of whether `R` was capable or not. Another [example here](http://gallery.rcpp.org/articles/sorting/) compares `R` sorting with standard library of C++, called from `R`. 
+In part 2 of this series on benchmarking `R`, we'll explore sorting. This has been a topic on numerous blogs, discussions and posts around the internet, including here: [r-blogger post](https://www.r-bloggers.com/quicksort-speed-just-in-time-compiling-and-vectorizing/). Similarly, [julialang.org](https://julialang.org) showed that sorting was particularly bad in `R`. We, again, felt that this was a case of poor `R` coding, or more accurately, missing the point of whether `R` was capable or not. Another [example here](https://gallery.rcpp.org/articles/sorting/) compares `R` sorting with standard library of C++, called from `R`. 
 
 In all cases, we felt that one of the points of using `R` is that there are concise ways of doing things **because the open source community has brought them to `R`**. So lets take advantage of that! We will cover both real number sorting and integer sorting. 
 
@@ -18,7 +18,7 @@ In all cases, we felt that one of the points of using `R` is that there are conc
 
 
 
-This was in part inspired from a blog post by Wingfeet at http://www.r-bloggers.com/quicksort-speed-just-in-time-compiling-and-vectorizing/ which drew on benchmark tests here: http://julialang.org/ 
+This was in part inspired from a blog post by Wingfeet at https://www.r-bloggers.com/quicksort-speed-just-in-time-compiling-and-vectorizing/ which drew on benchmark tests here: https://julialang.org/ 
 Essentially, that julia test was a benchmark to test the speed of Julia. It showed for the Quicksort, that `R` is 524x slower than C. Below is that version. But, there was no explicit comparison of how the base `R` sort would match with C, nor how any of the more recent packages with sorting capability fare against these procedural versions of low level languages. 
 
 
@@ -102,19 +102,19 @@ Both real numbers and integers can be sorted quickly with R. The slowest functio
 #### Take home points:
 
 1. the basic `R` sorting functions are fast. The `sort(method="quick")` is about as fast as the standard `C++` library sort (11% faster). 
-2. using [data.table](http://cran.r-project.org/web/packages/data.table/index.html) on integers is 32% faster than the `C++` standard library sort.
+2. using [data.table](https://cran.r-project.org/web/packages/data.table/index.html) on integers is 32% faster than the `C++` standard library sort.
 
 In real world situations, where we want to use the easiest, shortest code to produce fast, accurate results, `R` certainly holds its own compared to the standard `C++` library. But of course, there are many ways to do things in `R`. Some are much faster than others.
 
 #### Conclusion
 
-Using the `sort(method="quick")` and [`data.table`](http://cran.r-project.org/web/packages/data.table/index.html) sorting, we were able to sort a vector of real numbers ***412x*** faster than a naive procedural coding (`qsort`) and ***687x*** faster on a vector of integers. These put the `data.table` sort as fast as or substantially faster than C or Fortran or Julia's version of quicksort (based on timings on [julialang.org](http://julialang.org)).
+Using the `sort(method="quick")` and [`data.table`](https://cran.r-project.org/web/packages/data.table/index.html) sorting, we were able to sort a vector of real numbers ***412x*** faster than a naive procedural coding (`qsort`) and ***687x*** faster on a vector of integers. These put the `data.table` sort as fast as or substantially faster than C or Fortran or Julia's version of quicksort (based on timings on [julialang.org](https://julialang.org)).
 
 *YES! `R` is more than fast enough*.  
 
 #### Next time (really! I promised it last time...)
 
-We will redo the Fibonacci series, a common low level benchmarking test that [shows `R` to be slow](http://julialang.org).  But it turns out to be a case of bad coding...
+We will redo the Fibonacci series, a common low level benchmarking test that [shows `R` to be slow](https://julialang.org).  But it turns out to be a case of bad coding...
 
 
 --------------------

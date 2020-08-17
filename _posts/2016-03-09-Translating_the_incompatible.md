@@ -7,7 +7,7 @@ tags: [SpaDES, modules, modularity, sketch]
 comments: true
 ---
 
-Continuing from previous post on [modularity](http://predictiveecology.org/2016/03/09/Removing-spaghetti-from-ecological-models.html), the next issue, of course, is not every module will be compatible out of the box. If we continue with the example from last post, not every growth module will take "stem counts and size by species". One solution to this is the idea of **translator modules**. 
+Continuing from previous post on [modularity](https://predictiveecology.org/2016/03/09/Removing-spaghetti-from-ecological-models.html), the next issue, of course, is not every module will be compatible out of the box. If we continue with the example from last post, not every growth module will take "stem counts and size by species". One solution to this is the idea of **translator modules**. 
 
 ## Translator modules
 
@@ -17,7 +17,7 @@ These will create 3 situations:
 - lossless translators
 - incompatible
 
-In cases where there is no possible translation between data types or formats, then we are out of luck. We won't fit every model together... We will likely not ever build a set of translators to connect [SORTIE](http://www.sortie-nd.org/)  with [FORECAST](http://web.forestry.ubc.ca/ecomodels/moddev/forecast/forecast.htm). It certainly would be useful as a hypothesis testing exercise to have them compatible, but that is another entry.  
+In cases where there is no possible translation between data types or formats, then we are out of luck. We won't fit every model together... We will likely not ever build a set of translators to connect [SORTIE](https://www.sortie-nd.org/)  with [FORECAST](https://web.forestry.ubc.ca/ecomodels/moddev/forecast/forecast.htm). It certainly would be useful as a hypothesis testing exercise to have them compatible, but that is another entry.  
 
 ## Lossy
 

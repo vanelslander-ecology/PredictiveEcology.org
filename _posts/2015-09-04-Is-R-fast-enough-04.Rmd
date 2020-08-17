@@ -19,7 +19,7 @@ There are many other resources about this topic; we will try to be concise and s
 
 ## Loops
 
-Loops have been the achilles heel of R in the past. In version 3.1 and forward, much of this problem appears to be gone. As could be seen in the [Fibonacci  example](http://predictiveecology.org/2015/05/06/Is-R-fast-enough-03.html), pre-allocating a vector and filling it up inside a loop can now be very fast and efficient in native R. To demonstrate these points, below are 6 ways to achieve the same result in R, beginning with a naive loop approach, and working up to the fully vectorized approach. I am using a very fast vectorized function, `seq_len`, to emphasize the differences between using loops and optimized vectorized functions.
+Loops have been the achilles heel of R in the past. In version 3.1 and forward, much of this problem appears to be gone. As could be seen in the [Fibonacci  example](https://predictiveecology.org/2015/05/06/Is-R-fast-enough-03.html), pre-allocating a vector and filling it up inside a loop can now be very fast and efficient in native R. To demonstrate these points, below are 6 ways to achieve the same result in R, beginning with a naive loop approach, and working up to the fully vectorized approach. I am using a very fast vectorized function, `seq_len`, to emphasize the differences between using loops and optimized vectorized functions.
 
 ```{r Functions, cache=FALSE, eval=TRUE, echo=FALSE, message=FALSE}
 library(Rcpp)
@@ -210,7 +210,7 @@ The fully vectorized function is ***`r round(sumLoops[1]/sumLoops[6],0)`x*** fas
 
 Using pipes instead of intermediate objects also did not change the speed very much (slight change by `r round((sumLoops[3]/sumLoops[4]-1)*100,2)`%). Since these are simple tests, larger, or more complex objects, will likely see improvements using pipes.
 
-Note, in this case, the C++, using [Rcpp sugar](http://gallery.rcpp.org/articles/random-number-generation/) was the fastest, `r round(1/(sumLoops[8]/sumLoops[7]),2)`x faster.
+Note, in this case, the C++, using [Rcpp sugar](https://gallery.rcpp.org/articles/random-number-generation/) was the fastest, `r round(1/(sumLoops[8]/sumLoops[7]),2)`x faster.
 
 *Note also, that this example is somewhat artificial, because it is also comparing the random number generating speeds at the same time as the loop speeds. Thus, these benchmarks about loops are simply for illustrative purposes. The speed gains in loops will be determined mostly by what is actually happening within the loops.*
 
@@ -226,7 +226,7 @@ We move on to higher level operations. Specifically, some GIS operations.
 
 #### See also
 
-[http://gallery.rcpp.org/tags/benchmark/](http://gallery.rcpp.org/tags/benchmark/)
+[https://gallery.rcpp.org/tags/benchmark/](https://gallery.rcpp.org/tags/benchmark/)
 
 --------------------
 

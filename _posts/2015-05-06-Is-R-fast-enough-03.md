@@ -9,7 +9,7 @@ comments: true
 
 In part 3 of this series on benchmarking `R`, it will be quick. Just the Fibonacci series. This is one that R gets a really bad reputation about.  Because it is an iterative function, it can't be vectorized, which is the usual way that we make R programs fast. Doing explicit loops in `R` is thought to be slow. So lets look...
 
-Similarly, [julialang.org](http://julialang.org) showed that Fibonacci series was, again, particularly bad in `R`. We, again, felt that this was a case of poor `R` coding, or more accurately, missing the point of whether `R` was capable or not.  
+Similarly, [julialang.org](https://julialang.org) showed that Fibonacci series was, again, particularly bad in `R`. We, again, felt that this was a case of poor `R` coding, or more accurately, missing the point of whether `R` was capable or not.  
 
 ### Fibonacci Series
 

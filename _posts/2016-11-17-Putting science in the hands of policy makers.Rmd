@@ -31,10 +31,10 @@ include_graphics("../img/predictive_ecology_logo.png")
 ```
 
 
-# The [*inSpaDES*](http://w-vic-a105388.pfc.forestry.ca/SpaDESUI-devel/) User Tool 
+# The [*inSpaDES*](https://w-vic-a105388.pfc.forestry.ca/SpaDESUI-devel/) User Tool 
 
   
-Our proof of concept [*inSpaDES*](http://w-vic-a105388.pfc.forestry.ca/SpaDESUI-devel/) tool is currently available inside the Canadian Forest Service firewall. There are many key features that we were able to implement within the year time frame of the ADM Innovation Fund.
+Our proof of concept [*inSpaDES*](https://w-vic-a105388.pfc.forestry.ca/SpaDESUI-devel/) tool is currently available inside the Canadian Forest Service firewall. There are many key features that we were able to implement within the year time frame of the ADM Innovation Fund.
 
 1. A question driven approach, agnostic to topic.
 
@@ -55,7 +55,7 @@ Our proof of concept [*inSpaDES*](http://w-vic-a105388.pfc.forestry.ca/SpaDESUI-
   
 # Using it
 
-Noting that all the specifics are changeable, the [current version](http://w-vic-a105388.pfc.forestry.ca/SpaDESUI-devel/) of the app is as follows: 
+Noting that all the specifics are changeable, the [current version](https://w-vic-a105388.pfc.forestry.ca/SpaDESUI-devel/) of the app is as follows: 
 
 
 ```{r printing2a, eval=knittingToHTML, echo=FALSE,out.extra='style="float:right; margin: 20px; width: 400px"'}
@@ -115,7 +115,7 @@ We are currently very interested in design comments by a wide audience.
 
 # Caveats
 
-Currently, this is a proof of concept. The text that is written in each box is not actually interpreted. We are still waiting to populate the [*inSpaDES*](http://w-vic-a105388.pfc.forestry.ca/SpaDESUI-devel/)  tool with more models to allow for this. But the tool is ready now, it can be modified and updated. See *Improvements to come* below.
+Currently, this is a proof of concept. The text that is written in each box is not actually interpreted. We are still waiting to populate the [*inSpaDES*](https://w-vic-a105388.pfc.forestry.ca/SpaDESUI-devel/)  tool with more models to allow for this. But the tool is ready now, it can be modified and updated. See *Improvements to come* below.
 
 
   
@@ -128,26 +128,26 @@ Currently, this is a proof of concept. The text that is written in each box is n
 
 ## Certifying models
 
-To maximize the power of such an integrated tool, we, as an organization will have to design a system of "certifying" of operational models. Thus a particular [*inSpaDES*](http://w-vic-a105388.pfc.forestry.ca/SpaDESUI-devel/) configuration can be given a name (e.g., "The CFS configuration") because it would have 12 certified CFS models, such as **CanFIRE**, **CBM-CFS3**, **BioSim** etc. Predictions could be relied upon by policy makers, especially when working in conjunction with the relevant scientists.
+To maximize the power of such an integrated tool, we, as an organization will have to design a system of "certifying" of operational models. Thus a particular [*inSpaDES*](https://w-vic-a105388.pfc.forestry.ca/SpaDESUI-devel/) configuration can be given a name (e.g., "The CFS configuration") because it would have 12 certified CFS models, such as **CanFIRE**, **CBM-CFS3**, **BioSim** etc. Predictions could be relied upon by policy makers, especially when working in conjunction with the relevant scientists.
 
 # Needs
 
 1. This proof of concept showed that we can build a software solution to the silo problems that have plagued science in general, but also the Canadian Forest Service. The current push to evaluate **Cumulative Effects** is intimately part of the SpaDES product. 
 
-2. More scientists in CFS to engage their work into being SpaDES-compatible. This is happening slowly through [workshops](https://github.com/PredictiveEcology/SpaDES/wiki), collaborations, [blog posts](http://predictiveecology.org), [how-to documents](https://github.com/PredictiveEcology/SpaDES/wiki/Getting-Started-Guide) and [wiki](https://github.com/PredictiveEcology/SpaDES/wiki), and self-driven work.
+2. More scientists in CFS to engage their work into being SpaDES-compatible. This is happening slowly through [workshops](https://github.com/PredictiveEcology/SpaDES/wiki), collaborations, [blog posts](https://predictiveecology.org), [how-to documents](https://github.com/PredictiveEcology/SpaDES/wiki/Getting-Started-Guide) and [wiki](https://github.com/PredictiveEcology/SpaDES/wiki), and self-driven work.
 
 3. Greater contributions from non-biophysical scientists (e.g., economists). Many of their models are linked to the biophysical world, but model integration is still limited.
 
 # SpaDES Workshops
 
-We have begun to give [SpaDES workshops](http://rpubs.com/PredictiveEcology/SpaDES-Intro-Course-Outline) for the scientists. Soon, we will give much shorter WebEx workshops for users. These user workshops will be much shorter and will be mostly focused on the need for responsibility in interpreting results from complex systems.
+We have begun to give [SpaDES workshops](https://rpubs.com/PredictiveEcology/SpaDES-Intro-Course-Outline) for the scientists. Soon, we will give much shorter WebEx workshops for users. These user workshops will be much shorter and will be mostly focused on the need for responsibility in interpreting results from complex systems.
 
 
 # The tangible outcomes and applications
 
 A version of this is currently being modified for delivery to a consortium of 12 of the largest forest companies in the western boreal forests, at least 2 provincial governments and 1 territorial government, and 3 NGOs (including Ducks Unlimited).
 
-A version of this is likely going to be used by the {BEACONs project](http://www.beaconsproject.ca/), which is research organization building conservation planning.
+A version of this is likely going to be used by the {BEACONs project](https://www.beaconsproject.ca/), which is research organization building conservation planning.
 
 A version of this will be used in the Environment and Climate Change Canada project for the 3rd phase of the caribou recovery plan.
 

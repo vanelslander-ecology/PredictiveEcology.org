@@ -14,7 +14,7 @@ There are many other resources about this topic; we will try to be concise and s
 
 ## Loops
 
-Loops have been the achilles heel of R in the past. In version 3.1 and forward, much of this problem appears to be gone. As could be seen in the [Fibonacci  example](http://predictiveecology.org/2015/05/06/Is-R-fast-enough-03.html), pre-allocating a vector and filling it up inside a loop can now be very fast and efficient in native R. To demonstrate these points, below are 6 ways to achieve the same result in R, beginning with a naive loop approach, and working up to the fully vectorized approach. I am using a very fast vectorized function, `seq_len`, to emphasize the differences between using loops and optimized vectorized functions.
+Loops have been the achilles heel of R in the past. In version 3.1 and forward, much of this problem appears to be gone. As could be seen in the [Fibonacci  example](https://predictiveecology.org/2015/05/06/Is-R-fast-enough-03.html), pre-allocating a vector and filling it up inside a loop can now be very fast and efficient in native R. To demonstrate these points, below are 6 ways to achieve the same result in R, beginning with a naive loop approach, and working up to the fully vectorized approach. I am using a very fast vectorized function, `seq_len`, to emphasize the differences between using loops and optimized vectorized functions.
 
 The basic code below generates random numbers. The sequence goes from a fully unvectorized, looped structure, with no pre-allocation of the output vector, through to pure vectorized code. The intermediate steps are:
 
@@ -149,7 +149,7 @@ The fully vectorized function is ***3489x*** faster than the fully naive loop. N
 
 Using pipes instead of intermediate objects also did not change the speed very much (slight change by -3.34%). Since these are simple tests, larger, or more complex objects, will likely see improvements using pipes.
 
-Note, in this case, the C++, using [Rcpp sugar](http://gallery.rcpp.org/articles/random-number-generation/) was the fastest, 2.44x faster.
+Note, in this case, the C++, using [Rcpp sugar](https://gallery.rcpp.org/articles/random-number-generation/) was the fastest, 2.44x faster.
 
 *Note also, that this example is somewhat artificial, because it is also comparing the random number generating speeds at the same time as the loop speeds. Thus, these benchmarks about loops are simply for illustrative purposes. The speed gains in loops will be determined mostly by what is actually happening within the loops.*
 
@@ -165,7 +165,7 @@ We move on to higher level operations. Specifically, some GIS operations.
 
 #### See also
 
-[http://gallery.rcpp.org/tags/benchmark/](http://gallery.rcpp.org/tags/benchmark/)
+[https://gallery.rcpp.org/tags/benchmark/](https://gallery.rcpp.org/tags/benchmark/)
 
 --------------------
 
