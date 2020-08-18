@@ -166,7 +166,7 @@ My research interests lie in applied ecology, conservation and forecasting of a 
 - [Christian Roy](https://www.researchgate.net/profile/Christian_Roy4) (PhD - 2011) Continental-scale understanding of duck populations.
 - [Pierre Racine](http://www.cef-cfr.ca/index.php?n=Membres.PierreRacine) (Research Professional 2013) Review of existing modeling platforms
 - [Ghislain Rompré](http://www.cef-cfr.ca/index.php?n=Membres.GhislainRompre) (Post Doctoral Fellow 2009) Modeling endangered butterflies.
-- [Pamela Garcia-Cournoyer](http://www.cef-cfr.ca/index.php?n=Membres.PamelaGarciaCournoyer) (MSc 2010) Harvesting and convservation in Quebec.
+- [Pamela Garcia-Cournoyer](http://www.cef-cfr.ca/index.php?n=Membres.PamelaGarciaCournoyer) (MSc 2010) Harvesting and conservation in Quebec.
 - [Émilie Allard](http://www.cef-cfr.ca/index.php?n=Membres.EmilieAllard) (MSc 2009) Understanding deer movement and habitat use in the Upper Laurentian region. 
 - [Melanie Smith](https://ak.audubon.org/melanie-smith-science-director) (MSc 2008) Spatial goshawk modeling.
 - Céline Macabiau (PhD 2009) Spatial population dynamics of spruce grouse in Quebec.
