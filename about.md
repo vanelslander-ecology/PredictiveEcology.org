@@ -3,6 +3,8 @@ layout: page
 title: About
 permalink: /about/
 ---
+<link href="stylesheets/main.css" rel="stylesheet" />
+
 
 ### Predictive Ecology Lab Group
 
@@ -10,9 +12,6 @@ We are located in Victoria, British Columbia, Canada, at the Pacific Forestry Ce
 
 #### Eliot McIntire  
 
-<div style="float:right; padding:0px 0px 10px 50px;">
-<img src="{{ site.baseurl }}/img/people/EliotMcIntire.jpg" alt="Eliot McIntire" width="150"/>
-</div>
 
 **Research Scientist, [Natural Resources Canada](www.nrcan.gc.ca/home)**  
 **Adjunct Professor, [University of British Columbia](www.ubc.ca) & [Université Laval](www.ulaval.ca)**
@@ -28,66 +27,58 @@ My research interests lie in applied ecology, conservation and forecasting of a 
 ### Current Personel
 
 
+<link href="stylesheets/main.css" rel="stylesheet" />
 
-<display:table width="500" border="0" cellpadding="5">
-
+<table rules=none>
 <tr>
 
-<td align="center" valign="center">
-<a href="https://github.com/tati-micheletti/">Dr. Tatiane Micheletti</a>
-(Postdoctoral Fellow 2018-)
-<br />
-<img src="https://borealbirds.ualberta.ca/wp-content/uploads/sites/85/2019/07/TatiMichelleti.jpg" alt="Tati Micheletti" width="150"/>
-</td>
-<td align="center" valign="center">
-<a href="https://ceresbarros.wordpress.com/">Dr. Ceres Barros</a> (Postdoctoral Fellow 2018-) (on Parental Leave until 2021)
-<br />
-<div style="static; padding:0px 0px 5px 50px;">
-<img src="https://i1.rgstatic.net/ii/profile.image/705102948093955-1545121051789_Q512/Ceres_Barros.jpg" alt="Ceres Barros" href="https://ceresbarros.wordpress.com/" width="150"/>
-</div>
-</td>
-</tr>
+  <td style="padding:20px 20px 20px 20px;">
+    <img style="float:right" src="https://borealbirds.ualberta.ca/wp-content/uploads/sites/85/2019/07/TatiMichelleti.jpg" alt="Tati Micheletti" width="150"/>
+    <a href="https://github.com/tati-micheletti/">Dr. Tatiane Micheletti</a>
+  (Postdoctoral Fellow 2018-) Tati is our "integrator", asking questions about managing land in Canada when there are multiple, conflicting management pressures. She has been specializing in SpaDES model development, bird and caribou forecasting, protected areas optimization, and tradeoffs/synergies across disciplines.
+  </td>
 
+  <td style="padding:20px 20px 20px 20px;">
+    <img style="float:right" src="https://i1.rgstatic.net/ii/profile.image/705102948093955-1545121051789_Q512/Ceres_Barros.jpg" alt="Ceres Barros" width="150"/>
+    <a href="https://ceresbarros.wordpress.com/">Dr. Ceres Barros</a> (Postdoctoral Fellow 2018-) (on Parental Leave until 2021)
+  </td>
+
+</tr>
 
 <tr>
+  <td style="padding:20px 20px 20px 20px;">
+    <img style="float:right" src="http://www.stewartresearch.ca/uploads/4/5/7/0/45702893/francesstewart_orig.jpg" alt="Frances Stewart" width="150"/>
+    <a href="http://www.stewartresearch.ca/">Dr. Frances Stewart</a>
+  (Postdoctoral Fellow 2019-2020 on Parental Leave until 2021)
+  </td>
 
-<td align="center" valign="center">
-<a href="http://www.stewartresearch.ca/">Dr. Frances Stewart</a> (Postdoctoral Fellow 2019-2020 on Parental Leave until 2021)
-<br />
-<img src="http://www.stewartresearch.ca/uploads/4/5/7/0/45702893/francesstewart_orig.jpg" alt="Frances Stewart" width="150"/>
-</td>
-<td align="center" valign="center">
-<a href="https://borealbirds.ualberta.ca/2019/07/11/ana-raymundo/">Ana Raymundo (PhD Student 2018-)</a>
-<br />
-<div style="static; padding:0px 0px 5px 50px;">
-<img src="https://borealbirds.ualberta.ca/wp-content/uploads/sites/85/2019/07/AnaRaymundo.jpg" alt="Ana Raymundo" width="150"/>
-</div>
-</td>
+
+  <td style="padding:20px 20px 20px 20px;">
+      <img style="float:right" src="https://borealbirds.ualberta.ca/wp-content/uploads/sites/85/2019/07/AnaRaymundo.jpg" alt="Ana Raymundo" width="150"/>
+    <a href="https://borealbirds.ualberta.ca/2019/07/11/ana-raymundo/">Ana Raymundo</a> 
+    (PhD Student 2018-)
+    Ana is working on questions related to forestry and birds across Canada. A student at Laval University, she is currently in Victoria learning the SpaDES ecosystem.
+  </td>
+
 </tr>
-
 
 <tr>
-
-<td align="center" valign="center">
-<a href="https://borealbirds.ualberta.ca/2019/07/11/isolde-lane-shaw/">Isolde Lane Shaw</a> (PhD Student 2018-)
-(Postdoctoral Fellow 2018-)
-<br />
-<img src="https://borealbirds.ualberta.ca/wp-content/uploads/sites/85/2019/07/IsoldeLaneShaw.jpg" alt="Isolde Lane Shaw" width="150"/>
-</td>
+  <td style="padding:20px 20px 20px 20px;">
+    <img style="float:right" src="https://borealbirds.ualberta.ca/wp-content/uploads/sites/85/2019/07/IsoldeLaneShaw.jpg" alt="Isolde Lane Shaw" width="150"/>
+    <a href="https://borealbirds.ualberta.ca/2019/07/11/isolde-lane-shaw/">Isolde Lane Shaw</a> (PhD Student 2018-)
+    (Postdoctoral Fellow 2018-)
+    
+  </td>
 </tr>
-
 
 </table>
+
 
 
 ### Former Personel
 
 
 [Alex Chubaty](alexchubaty.com) (Postdoctoral Fellow 2017)
-
-<div style="static; padding:0px 0px 5px 50px;">
-<img src="{{ site.baseurl }}/img/people/alexchubatyweb_crop.jpg" alt="Alex M. Chubaty" width="150"/>
-</div>
 
 
 [Alana Clason](https://bvcentre.ca/index.php/people/bio/alana_clason1) (PhD 2018)
@@ -119,9 +110,6 @@ My research interests lie in applied ecology, conservation and forecasting of a 
 
 [Yong Luo](https://sites.google.com/a/lakeheadu.ca/yong-luo/home) (Postdoctoral Fellow 2017)
 
-<div style="static; padding:0px 0px 10px 50px;">
-<img src="{{ site.baseurl }}/img/people/Yong.jpg" width="150" alt="Yong Luo"/>
-</div>
 
 [Josh Nowak](https://www.speedgoat.io/story/) (PhD 2015)
 <div style="static; padding:0px 0px 10px 50px;">
