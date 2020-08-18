@@ -32,7 +32,7 @@ My research interests lie in applied ecology, conservation and forecasting of a 
 
 <link href="stylesheets/main.css" rel="stylesheet" />
 
-<table rules=none>
+<table rules=none border="0" width="100%">
 <tr>
 
   <td style="padding:20px 20px 20px 20px;">
@@ -43,7 +43,7 @@ My research interests lie in applied ecology, conservation and forecasting of a 
 
   <td style="padding:20px 20px 20px 20px;">
     <img style="float:right" src="https://i1.rgstatic.net/ii/profile.image/705102948093955-1545121051789_Q512/Ceres_Barros.jpg" alt="Ceres Barros" width="150"/>
-    <a href="https://ceresbarros.wordpress.com/">Dr. Ceres Barros</a> (Postdoctoral Fellow 2018-) (on Parental Leave until 2021)
+    <a href="https://ceresbarros.wordpress.com/">Dr. Ceres Barros</a> (Postdoctoral Fellow 2018-) (on Parental Leave until 2021) Ceres is working on mixed severity spatial fire modeling and the associated vegetation changes that go with it. 
   </td>
 
 </tr>
@@ -69,70 +69,103 @@ My research interests lie in applied ecology, conservation and forecasting of a 
   <td style="padding:20px 20px 20px 20px;">
     <img style="float:right" src="https://borealbirds.ualberta.ca/wp-content/uploads/sites/85/2019/07/IsoldeLaneShaw.jpg" alt="Isolde Lane Shaw" width="150"/>
     <a href="https://borealbirds.ualberta.ca/2019/07/11/isolde-lane-shaw/">Isolde Lane Shaw</a> (PhD Student 2018-)
-    (Postdoctoral Fellow 2018-)
     
   </td>
 </tr>
 
 </table>
 
+### Research Professional
 
+<table rules=none border="0" width="100%">
+<tr>
+
+  <td style="padding:20px 20px 20px 20px;">
+    <img style="float:right" src="https://i1.rgstatic.net/ii/profile.image/382695852003328-1468253209265_Q128/Ian_Eddy.jpg" alt="Ian Eddy" width="150"/>
+    <a href="https://ca.linkedin.com/in/ian-eddy">Ian Eddy</a>
+  (Canadian Forest Service -- Geospatial Scientist 2018 - ) Ian works part time with our team on various topics related to cumulative effects, GIS, SpaDES, modeling and data analytics.
+  </td>
+</tr>
+
+</table>
 
 ### Former Personel
 
+<table rules=none border="0">
+<tr>
 
-[Alex Chubaty](alexchubaty.com) (Postdoctoral Fellow 2017)
+  <td style="padding:20px 20px 20px 20px;">
+    <img style="float:right" src="https://friresearch.ca/sites/default/files/styles/fri_people_large/public/user-pictures/HLP_2018_07_alex-chubaty-headshot_web.jpg" alt="Alex Chubaty" width="150"/>
+    <a href="https://alexchubaty.com">Dr. Alex Chubaty</a>
+  (Postdoctoral Fellow 2017)
+  </td>
+
+  <td style="padding:20px 20px 20px 20px;">
+    <img style="float:right" src="https://bvcentre.ca/images/made/images/uploads/people_photos/Alana_Clason_200_300.jpg" alt="Alana Clason" width="150"/>
+    <a href="https://bvcentre.ca/index.php/people/bio/alana_clason1">Dr. Alana Clason</a> (PhD 2018) 
+    Dissertation: Whitebark pine at the northern edge: current constraints and future potential northern distribution under a changing climate.
+    Currently a postdoctoral fellow at the Bulkley Valley Research Centre.
+  </td>
+
+</tr>
+
+<tr>
+  <td style="padding:20px 20px 20px 20px;">
+    <img style="float:right" src="https://www.sarahbauduin.fr/wp-content/uploads/2019/08/BauduinSarah_profil.jpg" alt="Sarah Bauduin" width="150"/>
+    <a href="https://www.sarahbauduin.fr/">Dr. Sarah Bauduin</a>
+  (PhD 2017)
+  </td>
+
+  <td style="padding:20px 20px 20px 20px;">
+      <img style="float:right" src="https://www.wavx.ca/theme/images/faces/jean_marchal.png" alt="Jean Marchal" width="150"/>
+    <a href="https://www.wavx.ca/">Dr. Jean Marchal</a> 
+    (PhD 2017)
+  </td>
+
+</tr>
+
+<tr>
+  <td style="padding:20px 20px 20px 20px;">
+    <img style="float:right" src="https://i1.rgstatic.net/ii/profile.image/288757442990080-1445856547205_Q512/Sebastien_Renard2.jpg" alt="Sebastien Renard" width="150"/>
+    <a href="https://www.researchgate.net/profile/Sebastien_Renard2">Sebastien Renard</a> (PhD Student)
+    
+  </td>
+  
+  <td style="padding:20px 20px 20px 20px;">
+    <img style="float:right" src="https://sites.google.com/a/lakeheadu.ca/yong-luo/_/rsrc/1406753393787/home/Yong.jpg" alt="Yong Luo" width="150"/>
+    <a href="https://sites.google.com/a/lakeheadu.ca/yong-luo/home">Dr. Yong Luo</a> (Postdoctoral Fellow 2017)
+    
+  </td>
+</tr>
 
 
-[Alana Clason](https://bvcentre.ca/index.php/people/bio/alana_clason1) (PhD 2018)
-<div style="static; padding:0px 0px 10px 50px;">
-<img src="https://bvcentre.ca/images/made/images/uploads/people_photos/Alana_Clason_200_300.jpg" width="150" alt="Sarah Bauduin"/>
-</div>
+
+<tr>
+  <td style="padding:20px 20px 20px 20px;">
+    <img style="float:right" src="https://www.cfc.umt.edu/research/lukacslab/imx/Josh%20Nowak_2018.jpg" alt="Josh Nowak" width="150"/>
+    <a href="https://www.speedgoat.io/story/">Dr. Josh Nowak</a> (PhD 2015)
+    
+  </td>
+</tr>
 
 
+</table>
 
-[Sarah Bauduin](https://www.sarahbauduin.fr/) (PhD 2018)
-<div style="static; padding:0px 0px 10px 50px;">
-<img src="https://www.sarahbauduin.fr/wp-content/uploads/2019/08/BauduinSarah_profil.jpg" width="150" alt="Sarah Bauduin"/>
-</div>
+#### Prior to 2015
 
-
-[Sebastien Renard](https://www.researchgate.net/profile/Sebastien_Renard2)
-
-<div style="static; padding:0px 0px 10px 50px;">
-<img src="https://i1.rgstatic.net/ii/profile.image/288757442990080-1445856547205_Q512/Sebastien_Renard2.jpg" width="150" alt="Sebastien Renard"/>
-</div>
-
-
-
-[Jean Marchal](https://www.wavx.ca/) (PhD 2017)
-<div style="static; padding:0px 0px 10px 50px;">
-<img src="https://www.wavx.ca/theme/images/faces/jean_marchal.png" width="150" alt="Jean Marchal"/>
-</div>
-
-
-[Yong Luo](https://sites.google.com/a/lakeheadu.ca/yong-luo/home) (Postdoctoral Fellow 2017)
-
-
-[Josh Nowak](https://www.speedgoat.io/story/) (PhD 2015)
-<div style="static; padding:0px 0px 10px 50px;">
-<img src="https://www.cfc.umt.edu/research/lukacslab/imx/Josh%20Nowak_2018.jpg" width="150" alt="Josh Nowak"/>
-</div>
-
-
-- Greg Zhang (BSc Coop 2015)
-- [Émilie Tarroux](https://chaireafd.uqat.ca/chercheurs/PageIndividus_f.asp?IdCollaboration=50) (Post Doctoral Fellow 2015)
-- [Julien Beguin](https://www.cef-cfr.ca/index.php?n=Membres.JulienBeguin) (PhD 2013)
-- [Julia Chacon Labella](https://www.researchgate.net/profile/Julia_Chacon-Labella/) (PhD - Visiting 2013)
-- [Pierre Racine](https://www.cef-cfr.ca/index.php?n=Membres.PierreRacine) (Research Professional 2013)
-- [Ghislain Rompré](https://www.cef-cfr.ca/index.php?n=Membres.GhislainRompre) (Post Doctoral Fellow 2009)
-- [Pamela Garcia-Cournoyer](https://www.cef-cfr.ca/index.php?n=Membres.PamelaGarciaCournoyer) (MSc 2010)
-- [Émilie Allard](https://www.cef-cfr.ca/index.php?n=Membres.EmilieAllard) (MSc 2009)
-- [Melanie Smith](https://ak.audubon.org/melanie-smith-science-director) (MSc 2008)
-- Céline Macabiau (PhD 2009)
-- Motoshi Honda (MSc 2008)
-- [Alex Fajardo](https://sites.google.com/site/alexfajardosite/) (Post Doctoral Fellow 2006)
-- Trevor Schiavone (Coop student 2015 `SpaDES` GUI development.)
-- Brandon Leech (Coop student 2015`SpaDES` GUI development)
+- Trevor Schiavone (Coop student 2015) `SpaDES` GUI development.
+- Brandon Leech (Coop student) 2015 `SpaDES` GUI development.
+- Greg Zhang (BSc Coop 2015) `SpaDES` developer.
+- [Émilie Tarroux](https://chaireafd.uqat.ca/chercheurs/PageIndividus_f.asp?IdCollaboration=50) (Post Doctoral Fellow 2015) Facilitation in the boreal forest.
+- [Julien Beguin](http://www.cef-cfr.ca/index.php?n=Membres.JulienBeguin) (PhD 2013) Caribou, harvesting and fire in the North Shore of Quebec.
+- [Julia Chacon Labella](https://www.researchgate.net/profile/Julia_Chacon-Labella/) (PhD - Visiting 2013) Facilitation in semi-arid ecosystems.
+- [Pierre Racine](http://www.cef-cfr.ca/index.php?n=Membres.PierreRacine) (Research Professional 2013) Review of existing modeling platforms
+- [Ghislain Rompré](http://www.cef-cfr.ca/index.php?n=Membres.GhislainRompre) (Post Doctoral Fellow 2009) Modeling endangered butterflies.
+- [Pamela Garcia-Cournoyer](http://www.cef-cfr.ca/index.php?n=Membres.PamelaGarciaCournoyer) (MSc 2010) Harvesting and convservation in Quebec.
+- [Émilie Allard](http://www.cef-cfr.ca/index.php?n=Membres.EmilieAllard) (MSc 2009) Deer winter movement.
+- [Melanie Smith](https://ak.audubon.org/melanie-smith-science-director) (MSc 2008) Spatial goshawk modeling.
+- Céline Macabiau (PhD 2009) Spatial population dynamics of spruce grouse in Quebec.
+- Motoshi Honda (MSc 2008) Hydrology
+- [Alex Fajardo](https://sites.google.com/site/alexfajardosite/) (Post Doctoral Fellow 2006) Facilitation in Chilean mountain ecosystems.
 
 

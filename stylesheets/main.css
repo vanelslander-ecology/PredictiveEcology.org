@@ -1,5 +1,5 @@
 td {
-   padding: 10;
+  width: 50% ;
 }
 
 @media(max-width: 480px) {
