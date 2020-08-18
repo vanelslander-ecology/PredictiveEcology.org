@@ -12,6 +12,9 @@ We are located in Victoria, British Columbia, Canada, at the Pacific Forestry Ce
 
 #### Eliot McIntire  
 
+<div style="float:right; padding:0px 0px 10px 50px;">
+<img src="{{ site.baseurl }}/img/people/EliotMcIntire.jpg" alt="Eliot McIntire" width="150"/>
+</div>
 
 **Research Scientist, [Natural Resources Canada](www.nrcan.gc.ca/home)**  
 **Adjunct Professor, [University of British Columbia](www.ubc.ca) & [Université Laval](www.ulaval.ca)**
