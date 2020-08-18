@@ -146,6 +146,13 @@ My research interests lie in applied ecology, conservation and forecasting of a 
     <a href="https://www.speedgoat.io/story/">Dr. Josh Nowak</a> (PhD 2015)
     
   </td>
+  
+  <td style="padding:20px 20px 20px 20px;">
+    <img style="float:right" src="https://i1.rgstatic.net/ii/profile.image/426959055396868-1478806379526_Q512/Mario_Van_Telgen.jpg" alt="Mario van Telgen" width="150"/>
+    <a href="https://www.researchgate.net/profile/Mario_Van_Telgen">Mario van Telgen</a> (PhD)
+    
+  </td>
+
 </tr>
 
 
@@ -156,12 +163,14 @@ My research interests lie in applied ecology, conservation and forecasting of a 
 - [Émilie Tarroux](https://chaireafd.uqat.ca/chercheurs/PageIndividus_f.asp?IdCollaboration=50) (Post Doctoral Fellow 2015) Facilitation in the boreal forest.
 - [Julien Beguin](http://www.cef-cfr.ca/index.php?n=Membres.JulienBeguin) (PhD 2013) Caribou, harvesting and fire in the North Shore of Quebec.
 - [Julia Chacon Labella](https://www.researchgate.net/profile/Julia_Chacon-Labella/) (PhD - Visiting 2013) Facilitation in semi-arid ecosystems.
+- [Christian Roy](https://www.researchgate.net/profile/Christian_Roy4) (PhD - 2011) Continental-scale understanding of duck populations.
 - [Pierre Racine](http://www.cef-cfr.ca/index.php?n=Membres.PierreRacine) (Research Professional 2013) Review of existing modeling platforms
 - [Ghislain Rompré](http://www.cef-cfr.ca/index.php?n=Membres.GhislainRompre) (Post Doctoral Fellow 2009) Modeling endangered butterflies.
 - [Pamela Garcia-Cournoyer](http://www.cef-cfr.ca/index.php?n=Membres.PamelaGarciaCournoyer) (MSc 2010) Harvesting and convservation in Quebec.
-- [Émilie Allard](http://www.cef-cfr.ca/index.php?n=Membres.EmilieAllard) (MSc 2009) Deer winter movement.
+- [Émilie Allard](http://www.cef-cfr.ca/index.php?n=Membres.EmilieAllard) (MSc 2009) Understanding deer movement and habitat use in the Upper Laurentian region. 
 - [Melanie Smith](https://ak.audubon.org/melanie-smith-science-director) (MSc 2008) Spatial goshawk modeling.
 - Céline Macabiau (PhD 2009) Spatial population dynamics of spruce grouse in Quebec.
+- [Francesca Marucco](https://www.researchgate.net/profile/Francesca_Marucco) (PhD 2009) Modeling wolf recolonization in the European Alps. (University of Montana, Supervisor: Dan Pletscher).
 - Motoshi Honda (MSc 2008) Hydrology
 - [Alex Fajardo](https://sites.google.com/site/alexfajardosite/) (Post Doctoral Fellow 2006) Facilitation in Chilean mountain ecosystems.
 
