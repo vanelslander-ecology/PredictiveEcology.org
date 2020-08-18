@@ -28,35 +28,56 @@ My research interests lie in applied ecology, conservation and forecasting of a 
 ### Current Personel
 
 
-[Dr. Tatiane Micheletti](https://github.com/tati-micheletti/) (Postdoctoral Fellow 2018-)
 
-<div style="static; padding:0px 0px 5px 50px;">
+<display:table width="500" border="0" cellpadding="5">
+
+<tr>
+
+<td align="center" valign="center">
+<a href="https://github.com/tati-micheletti/">Dr. Tatiane Micheletti</a>
+(Postdoctoral Fellow 2018-)
+<br />
 <img src="https://borealbirds.ualberta.ca/wp-content/uploads/sites/85/2019/07/TatiMichelleti.jpg" alt="Tati Micheletti" width="150"/>
-</div>
-
-[Dr. Ceres Barros](https://ceresbarros.wordpress.com/) (Postdoctoral Fellow 2018-) (on Parental Leave until 2021)
-
+</td>
+<td align="center" valign="center">
+<a href="https://ceresbarros.wordpress.com/">Dr. Ceres Barros</a> (Postdoctoral Fellow 2018-) (on Parental Leave until 2021)
+<br />
 <div style="static; padding:0px 0px 5px 50px;">
-<img src="https://i1.rgstatic.net/ii/profile.image/705102948093955-1545121051789_Q512/Ceres_Barros.jpg" alt="Ceres Barros" width="150"/>
+<img src="https://i1.rgstatic.net/ii/profile.image/705102948093955-1545121051789_Q512/Ceres_Barros.jpg" alt="Ceres Barros" href="https://ceresbarros.wordpress.com/" width="150"/>
 </div>
+</td>
+</tr>
 
-[Dr. Frances Stewart](http://www.stewartresearch.ca/) (Postdoctoral Fellow 2019-2020 on Parental Leave until 2021)
 
-<div style="static; padding:0px 0px 5px 50px;">
+<tr>
+
+<td align="center" valign="center">
+<a href="http://www.stewartresearch.ca/">Dr. Frances Stewart</a> (Postdoctoral Fellow 2019-2020 on Parental Leave until 2021)
+<br />
 <img src="http://www.stewartresearch.ca/uploads/4/5/7/0/45702893/francesstewart_orig.jpg" alt="Frances Stewart" width="150"/>
-</div>
-
-[Ana Raymundo](https://borealbirds.ualberta.ca/2019/07/11/ana-raymundo/) (PhD Student 2018-)
-
+</td>
+<td align="center" valign="center">
+<a href="https://borealbirds.ualberta.ca/2019/07/11/ana-raymundo/">Ana Raymundo (PhD Student 2018-)</a>
+<br />
 <div style="static; padding:0px 0px 5px 50px;">
 <img src="https://borealbirds.ualberta.ca/wp-content/uploads/sites/85/2019/07/AnaRaymundo.jpg" alt="Ana Raymundo" width="150"/>
 </div>
+</td>
+</tr>
 
-[Isolde Lane Shaw](https://borealbirds.ualberta.ca/2019/07/11/isolde-lane-shaw/) (PhD Student 2018-)
 
-<div style="static; padding:0px 0px 5px 50px;">
+<tr>
+
+<td align="center" valign="center">
+<a href="https://borealbirds.ualberta.ca/2019/07/11/isolde-lane-shaw/">Isolde Lane Shaw</a> (PhD Student 2018-)
+(Postdoctoral Fellow 2018-)
+<br />
 <img src="https://borealbirds.ualberta.ca/wp-content/uploads/sites/85/2019/07/IsoldeLaneShaw.jpg" alt="Isolde Lane Shaw" width="150"/>
-</div>
+</td>
+</tr>
+
+
+</table>
 
 
 ### Former Personel
