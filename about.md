@@ -153,9 +153,6 @@ My research interests lie in applied ecology, conservation and forecasting of a 
 
 #### Prior to 2015
 
-- Trevor Schiavone (Coop student 2015) `SpaDES` GUI development.
-- Brandon Leech (Coop student) 2015 `SpaDES` GUI development.
-- Greg Zhang (BSc Coop 2015) `SpaDES` developer.
 - [Émilie Tarroux](https://chaireafd.uqat.ca/chercheurs/PageIndividus_f.asp?IdCollaboration=50) (Post Doctoral Fellow 2015) Facilitation in the boreal forest.
 - [Julien Beguin](http://www.cef-cfr.ca/index.php?n=Membres.JulienBeguin) (PhD 2013) Caribou, harvesting and fire in the North Shore of Quebec.
 - [Julia Chacon Labella](https://www.researchgate.net/profile/Julia_Chacon-Labella/) (PhD - Visiting 2013) Facilitation in semi-arid ecosystems.
@@ -168,4 +165,12 @@ My research interests lie in applied ecology, conservation and forecasting of a 
 - Motoshi Honda (MSc 2008) Hydrology
 - [Alex Fajardo](https://sites.google.com/site/alexfajardosite/) (Post Doctoral Fellow 2006) Facilitation in Chilean mountain ecosystems.
 
+#### Coop students
+
+- Trevor Schiavone (UVic 2015) `SpaDES` GUI development.
+- Brandon Leech (UVic 2015) `SpaDES` GUI development.
+- Greg Zhang (UBC 2015) `SpaDES` developer.
+- Alexander Tso (UBC 2016)
+- Greyson Wang (SFU 2015)
+- Olivia Sung (UBC 2015)
 
