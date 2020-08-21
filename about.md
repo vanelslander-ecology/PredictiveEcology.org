@@ -2,6 +2,7 @@
 layout: page
 title: About
 permalink: /about/
+feature-img: ""
 ---
 <link href="stylesheets/main.css" rel="stylesheet" />
 
