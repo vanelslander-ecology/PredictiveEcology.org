@@ -2,10 +2,7 @@
 layout: page
 title: About
 permalink: /about/
-feature-img: ""
 ---
-<link href="stylesheets/main.css" rel="stylesheet" />
-
 
 ### Predictive Ecology Lab Group
 
@@ -31,11 +28,8 @@ My research interests lie in applied ecology, conservation and forecasting of a 
 ### Current Personel
 
 
-<link href="stylesheets/main.css" rel="stylesheet" />
-
 <table rules=none border="0" width="100%">
 <tr>
-
   <td style="padding:20px 20px 20px 20px;">
     <img style="float:right" src="https://borealbirds.ualberta.ca/wp-content/uploads/sites/85/2019/07/TatiMichelleti.jpg" alt="Tati Micheletti" width="150"/>
     <a href="https://github.com/tati-micheletti/">Dr. Tatiane Micheletti</a>
@@ -46,7 +40,6 @@ My research interests lie in applied ecology, conservation and forecasting of a 
     <img style="float:right" src="https://i1.rgstatic.net/ii/profile.image/705102948093955-1545121051789_Q512/Ceres_Barros.jpg" alt="Ceres Barros" width="150"/>
     <a href="https://ceresbarros.wordpress.com/">Dr. Ceres Barros</a> (Postdoctoral Fellow 2018-) (on Parental Leave until 2021) Ceres is working on mixed severity spatial fire modeling and the associated vegetation changes that go with it. 
   </td>
-
 </tr>
 
 <tr>
@@ -56,45 +49,38 @@ My research interests lie in applied ecology, conservation and forecasting of a 
   (Postdoctoral Fellow 2019-2020 on Parental Leave until 2021)
   </td>
 
-
   <td style="padding:20px 20px 20px 20px;">
       <img style="float:right" src="https://borealbirds.ualberta.ca/wp-content/uploads/sites/85/2019/07/AnaRaymundo.jpg" alt="Ana Raymundo" width="150"/>
     <a href="https://borealbirds.ualberta.ca/2019/07/11/ana-raymundo/">Ana Raymundo</a> 
     (PhD Student 2018-)
     Ana is working on questions related to forestry and birds across Canada. A student at Laval University, she is currently in Victoria learning the SpaDES ecosystem.
   </td>
-
 </tr>
 
 <tr>
   <td style="padding:20px 20px 20px 20px;">
     <img style="float:right" src="https://borealbirds.ualberta.ca/wp-content/uploads/sites/85/2019/07/IsoldeLaneShaw.jpg" alt="Isolde Lane Shaw" width="150"/>
     <a href="https://borealbirds.ualberta.ca/2019/07/11/isolde-lane-shaw/">Isolde Lane Shaw</a> (PhD Student 2018-)
-    
   </td>
 </tr>
-
 </table>
 
 ### Research Professional
 
 <table rules=none border="0" width="100%">
 <tr>
-
   <td style="padding:20px 20px 20px 20px;">
     <img style="float:right" src="https://i1.rgstatic.net/ii/profile.image/382695852003328-1468253209265_Q128/Ian_Eddy.jpg" alt="Ian Eddy" width="150"/>
     <a href="https://ca.linkedin.com/in/ian-eddy">Ian Eddy</a>
   (Canadian Forest Service -- Geospatial Scientist 2018 - ) Ian works part time with our team on various topics related to cumulative effects, GIS, SpaDES, modeling and data analytics.
   </td>
 </tr>
-
 </table>
 
 ### Former Personel
 
 <table rules=none border="0">
 <tr>
-
   <td style="padding:20px 20px 20px 20px;">
     <img style="float:right" src="https://friresearch.ca/sites/default/files/styles/fri_people_large/public/user-pictures/HLP_2018_07_alex-chubaty-headshot_web.jpg" alt="Alex Chubaty" width="150"/>
     <a href="https://alexchubaty.com">Dr. Alex Chubaty</a>
@@ -107,7 +93,6 @@ My research interests lie in applied ecology, conservation and forecasting of a 
     Dissertation: Whitebark pine at the northern edge: current constraints and future potential northern distribution under a changing climate.
     Currently a postdoctoral fellow at the Bulkley Valley Research Centre.
   </td>
-
 </tr>
 
 <tr>
@@ -122,41 +107,33 @@ My research interests lie in applied ecology, conservation and forecasting of a 
     <a href="https://www.wavx.ca/">Dr. Jean Marchal</a> 
     (PhD 2017)
   </td>
-
 </tr>
 
 <tr>
   <td style="padding:20px 20px 20px 20px;">
     <img style="float:right" src="https://i1.rgstatic.net/ii/profile.image/288757442990080-1445856547205_Q512/Sebastien_Renard2.jpg" alt="Sebastien Renard" width="150"/>
     <a href="https://www.researchgate.net/profile/Sebastien_Renard2">Sebastien Renard</a> (PhD Student)
-    
+   
   </td>
   
   <td style="padding:20px 20px 20px 20px;">
     <img style="float:right" src="https://sites.google.com/a/lakeheadu.ca/yong-luo/_/rsrc/1406753393787/home/Yong.jpg" alt="Yong Luo" width="150"/>
     <a href="https://sites.google.com/a/lakeheadu.ca/yong-luo/home">Dr. Yong Luo</a> (Postdoctoral Fellow 2017)
-    
   </td>
 </tr>
-
-
 
 <tr>
   <td style="padding:20px 20px 20px 20px;">
     <img style="float:right" src="https://www.cfc.umt.edu/research/lukacslab/imx/Josh%20Nowak_2018.jpg" alt="Josh Nowak" width="150"/>
     <a href="https://www.speedgoat.io/story/">Dr. Josh Nowak</a> (PhD 2015)
-    
   </td>
   
   <td style="padding:20px 20px 20px 20px;">
     <img style="float:right" src="https://i1.rgstatic.net/ii/profile.image/426959055396868-1478806379526_Q512/Mario_Van_Telgen.jpg" alt="Mario van Telgen" width="150"/>
     <a href="https://www.researchgate.net/profile/Mario_Van_Telgen">Mario van Telgen</a> (PhD)
-    
+   
   </td>
-
 </tr>
-
-
 </table>
 
 #### Prior to 2015
