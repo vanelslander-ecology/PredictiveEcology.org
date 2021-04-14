@@ -44,7 +44,7 @@ My research interests lie in applied ecology, conservation and forecasting of a 
 
 <tr>
   <td style="padding:20px 20px 20px 20px;">
-    <img style="float:right" src="http://www.stewartresearch.ca/uploads/4/5/7/0/45702893/francesstewart_orig.jpg" alt="Frances Stewart" width="150"/>
+    <img style="float:right" src="http://www.stewartresearch.ca/uploads/4/5/7/0/45702893/resized-20190127-151146_orig.jpg" alt="Frances Stewart" width="150"/>
     <a href="http://www.stewartresearch.ca/">Dr. Frances Stewart</a>
   (Postdoctoral Fellow 2019-2020 on Parental Leave until 2021)
   </td>
@@ -62,6 +62,14 @@ My research interests lie in applied ecology, conservation and forecasting of a 
     <img style="float:right" src="https://borealbirds.ualberta.ca/wp-content/uploads/sites/85/2019/07/IsoldeLaneShaw.jpg" alt="Isolde Lane Shaw" width="150"/>
     <a href="https://borealbirds.ualberta.ca/2019/07/11/isolde-lane-shaw/">Isolde Lane Shaw</a> (PhD Student 2018-)
   </td>
+
+  <td style="padding:20px 20px 20px 20px;">
+      <img style="float:right" src="https://www.wlu.ca/academics/research/reports/gnwt-report/assets/images/profiles/genevieve-degre-timmons.jpg" alt="Geneviève Degré-Timmons" width="150"/>
+    <a href="https://www.researchgate.net/profile/Genevieve-Degre-Timmons">Geneviève Degré-Timmons</a> 
+    (MSc Student 2021-)
+    Geneviève is working on questions related to lichen and caribou in Northwest Territories. A student at Laval University.
+  </td>
+  
 </tr>
 </table>
 
