@@ -38,7 +38,7 @@ My research interests lie in applied ecology, conservation and forecasting of a 
 
   <td style="padding:20px 20px 20px 20px;">
     <img style="float:right" src="https://i1.rgstatic.net/ii/profile.image/705102948093955-1545121051789_Q512/Ceres_Barros.jpg" alt="Ceres Barros" width="150"/>
-    <a href="https://ceresbarros.wordpress.com/">Dr. Ceres Barros</a> (Postdoctoral Fellow 2018-) (on Parental Leave until 2021) Ceres is working on mixed severity spatial fire modeling and the associated vegetation changes that go with it. 
+    <a href="https://www.landscapesinmotion.ca/">Dr. Ceres Barros</a> (Postdoctoral Fellow 2018-2021 - <a href="https://github.com/tati-micheletti/">Landscapes in Motion project</a>) Ceres was working on mixed severity spatial fire modeling and the associated vegetation changes that go with it. 2021 - present: Ceres is starting a new postdoc with the Predictive Ecology Lab and the <a href="https://www.forestecology.ca/">Forest Ecology Lab</a> at Wilfrid Laurier University on ecological forecasting of permafrost, disturbance, and vegetation in Northwest Territories.
   </td>
 </tr>
 
