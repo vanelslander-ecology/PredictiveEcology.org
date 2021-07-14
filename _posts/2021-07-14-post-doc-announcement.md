@@ -1,0 +1,39 @@
+---
+layout: post
+title: "POST-DOC OPPORTUNITY: Forecasting land use changes due to resource development to improve boreal caribou conservation"
+author: "Eliot McIntire"
+date: "July 14, 2021"
+tags: [R, SpaDES, Postdoc, Anthropogenic Disturbance, caribou]
+---
+
+Northern ecosystems in Canada are changing at a rate twice as fast as other areas of the globe due to climate change. Climate change can result in direct effects on wildlife (higher mortality, lower reproduction) but also indirect effects on their habitat through changes in vegetation (e.g. shifts in tree species composition within forests) and natural disturbances like wildfire (e.g. increase in the frequency and size of fires). In addition to climate change, northern ecosystems are affected by human disturbance primarily associated with resource development that includes:  forestry, conventional oil and gas development and extraction, mineral mining, wind power, linear features and road development. Boreal caribou are a species of cultural, economic, and ecological importance in northern regions of Canada. Numerous sources have identified these anthropogenic disturbances as the most important contributor to declines of boreal caribou; yet, forecasting these disturbances, and their interactions with vegetation and natural disturbances under climate change remains a challenge. 
+
+We are seeking **a quantitative scientist/modeller** to develop new models that can **forecast the impacts of resource development on boreal caribou resource selection and population demographics in Northwest Territories (NT), Canada**. The goals of this multi-year postdoctoral fellowship are to: (1) compile resource development potential mapping within the boreal region of Northwest Territories, Canada (NT); (2) integrate resource development potential mapping with forecasts of vegetation, wildfire, climate, and caribou developed within the boreal regions within NT; and (3) forecast through time (2021-2100) the regional cumulative effects of resource development, vegetation, wildfire, and climate on habitat supply and boreal caribou population demographics by examining resource development scenarios.
+The fellowship is funded by the **Cumulative Impact Monitoring Program** of the Government of NT and supported by Environment and Climate Change Canada and Natural Resources Canada. The position will become part of the ongoing Western Boreal Initiative, a large, collaborative project aiming to help with the implementation of the **Pan-Canadian Approach to Species-at-Risk Conservation** and is a partnership with academics, government agencies, and First Nations. This project will take advantage of an open modeling framework -- SpaDES, developed within the R language -- to integrate the novel components created here with existing models (vegetation dynamics, wildfire, caribou resource selection and population growth). Results from this work will help inform current and future **cumulative effects on boreal caribou habitat supply and population demography and support caribou range planning and decision making** in the NT. The successful candidate will work with a network of landscape scientists, northern scientists, caribou biologists, R programmers, and quantitative ecologists. 
+
+### Qualifications:
+
+- Ph.D. in ecology, natural resource sciences, geography, applied mathematics, computer science, statistics, or a related field;
+- Evidence of publishing in peer reviewed literature;
+- Experience with modelling of vegetation, soils, hydrology, permafrost, wildfire, or wildlife species;
+- High-level programming skills (e.g., R or Python); 
+- Experience with statistical modelling an asset; 
+- Experience with spatial simulation modelling an asset; 
+- Experience with Geographic Information Systems and remotely sensed data an asset;
+- Experience with climate change projections an asset;
+- Able to interact collaboratively with people of varying backgrounds.
+
+The postdoctoral fellowship will work with Drs. Eliot McIntire (Pacific Forestry Centre, expertise in applied ecology, conservation and forecasting ecosystems and species & UBC), James Hodson (Gov. NT) and C. Lisa Mahon (Environment and Climate Change Canada, U Alberta). Additional collaborators on this project will include Dr. Samuel Hache and Bruce Laurich (Environment and Climate Change Canada), and Drs. Alex Chubaty (FOR-CAST) and Tati Micheletti (UBC) and other post-doctoral fellows and graduate students. The successful candidate will also become part of the Predictive Ecology lab, providing and benefitting from technical support within the group. 
+
+### Location of tenure
+
+The postdoctoral fellow will be administered at the University of British Columbia, Vancouver, BC or through the Canadian Federal Government Postdoctoral programme. The position will be located in Victoria, British Columbia, Canada, at the Pacific Forestry Centre. However, given the current reality of COVID-19, alternative physical locations can be discussed. There may be opportunities for visits to NT to work with collaborators and engage partners although travel with depend on current COVID-19 public health guidance. Field work is not anticipated. 
+
+### Start date, duration, & compensation
+
+The 3-year position will begin as soon as the candidate is available, with an ideal start in September 2021. The annual salary is $53,000 plus benefits. There will be $5000 for travel, publications, and conferences per year. As travel restrictions are still uncertain due to COVID-19, the precise details of this will be adjusted according to provincial and federal recommendations.
+
+### To Apply
+
+Please provide a letter of interest, your CV, and an example of your writing skills in the form of a peer-reviewed manuscript. Your letter should indicate how you meet each of the criteria, and state when you are able to start and when you can relocate to British Columbia. We will start reviewing applications until August 10, 2021 and until a suitable candidate is found. Send application packages to:
+Eliot McIntire eliot.mcIntire@canada.ca 
