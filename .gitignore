@@ -6,11 +6,10 @@ _site
 Gemfile.lock
 *.docx
 _posts/*.docx
-
 ## Ignore rmd and html files in posts
 _posts/*.html
 _posts/.Rhistory
-
 .Rproj.user
 .Rhistory
 PredictiveEcology.org.Rproj
+.secret
