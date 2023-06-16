@@ -1,0 +1,62 @@
+---
+title: 'SpaDES v1.1.0 now on CRAN'
+date: January 26, 2016
+author: Alex Chubaty and Eliot McIntire
+categories: [R, SpaDES]
+comments: false
+---
+> v1.1.0 is now available on [CRAN](https://cran.r-project.org/package=SpaDES)!
+
+`SpaDES` (Spatial Discrete Event Simulation) is a generic simulation platform that can be used to create new model components quickly.
+It's' easy to implement a variety of simulation models including raster-based, event-based, and agent-based models.
+
+The latest version of `SpaDES` introduces several new features and fixes a number of issues from the previous 1.0.1 release, including:
+
+* require R version 3.2.2 or higher;
+* enhanced metadata specification for modules;
+* improved template for creating new modules;
+* enhancements to the module repository, with the new `downloadModule()` and `downloadData()` functions;
+* add 'priority' to events to help resolve ties for events sheduled at the same time;
+* add unit tests and coverage to `newModule()`;
+* improve dependency graph & module diagram;
+* improved documentation and vignettes;
+
+For a complete list of changes, see [the package's NEWS file](https://raw.githubusercontent.com/PredictiveEcology/SpaDES/master/NEWS).
+
+Please note that due to the number and scope of the enhancements, modules previously developed using the previous version may not work.
+
+## Getting started with SpaDES
+
+### Installation
+
+```r
+# install `SpaDES` from CRAN
+install.packages("SpaDES")
+
+
+# install suggested package `fastshp`
+#  (requires development tools, e.g., Rtools)
+install.packages("fastshp", repos = "https://rforge.net", type = "source")
+```
+
+### Documentation
+
+**Vignettes:**
+
+Available at the [wiki](https://github.com/PredictiveEcology/SpaDES/wiki/Help-Vignettes) as well as in your R session:
+
+```r
+browseVignettes(package="SpaDES")
+```
+
+**Website:**
+
+[https://SpaDES.PredictiveEcology.org](https://SpaDES.PredictiveEcology.org)
+
+**Wiki:**
+
+[https://github.com/PredictiveEcology/SpaDES/wiki](https://github.com/PredictiveEcology/SpaDES/wiki)
+
+## Reporting bugs
+
+Contact us via the package GitHub site: [https://github.com/PredictiveEcology/SpaDES/issues](https://github.com/PredictiveEcology/SpaDES/issues).

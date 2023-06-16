@@ -1,0 +1,7 @@
+---
+title: 'Workshops'
+permalink: /workshops/
+comments: false
+---
+
+For a current list of workshops, see <https://spades-workshops.predictiveecology.org/>.

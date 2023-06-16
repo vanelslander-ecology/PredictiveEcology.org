@@ -1,0 +1,78 @@
+---
+title: "Working with SpaDES modules and Rstudio projects"
+author: "Alex Chubaty"
+date: "August 16, 2018"
+output: 
+  html_document: 
+    keep_md: yes
+comments: false
+---
+
+
+A [previous post](/2018/06/14/managing-large-spades-projects) discussed how to manage large SpaDES projects, and suggested the following project directory structure:
+
+```
+myProject/            # a version controlled git repo
+  |_  .git/
+  |_  cache/            # should be .gitignore'd
+  |_  inputs/           # should be .gitignore'd (selectively)
+  |_  manuscripts/
+  |_  modules/
+    |_  module1/      # can be a git submodule
+    |_  module2/      # can be a git submodule
+    |_  module3/      # can be a git submodule
+    |_  module4/      # can be a git submodule
+    |_  module5/      # can be a git submodule
+  |_  outputs/          # should be .gitignore'd
+  ...
+```
+
+The layout of a project directory is somewhat flexible, but this approach works especially well if you're a module developer using [git submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules) for each of your module subdirectories.
+And each module really should be its own git repository:
+
+- people don't need to pull everything in just to work on a single module;
+- makes it possible to use git submodules for [Rstudio] projects;
+- easy to setup additional `SpaDES` module repositoriess.
+
+However, note that you cannot nest a git repository inside another git repository.
+So if you are using git for your project directory, you cannot use `SpaDES` modules as repos inside that project directory (this is what git submodules are for).
+**If git submodules aren’t your thing, then you will need to keep your project repo separate from your module repo!**
+
+```
+modules/                # use this for your simulation modulePath
+  |_  module1/
+  |_  module2/
+  |_  module3/
+  |_  module4/
+  |_  module5/
+
+myProject/
+  |_  cache/            # use this for your simulation cachePath
+  |_  inputs/           # use this for your simulation inputPath
+  |_  manuscripts/
+  |_  outputs/          # use this for your simulation outputPath
+  ...
+```
+
+Alternatively, your `myProject/` directory could be a subdirectory of `modules/`.
+
+```
+modules/                # use this for your simulation modulePath
+  |_  module1/
+  |_  module2/
+  |_  module3/
+  |_  module4/
+  |_  module5/
+  |_  myProject/
+    |_  cache/          # use this for your simulation cachePath
+    |_  inputs/         # use this for your simulation inputPath
+    |_  manuscripts/
+    |_  outputs/        # use this for your simulation outputPath
+  ...
+```
+
+These allow you to have each module and project be a git repository, and if you're worried about storage space it ensures you only keep one copy of a module no matter how many projects it's used with.
+However, the drawback is that it's inconsistent with the way Rstudio projects work, because not all project-related files are in the same directory.
+This means you need to take extra care to ensure that you set your module path using a *relative* file path (*e.g.*, `../modules`), and you'll need to take even more care to update this path if you move the `modules/` directory or are sharing your project code (because your collaborator may store their modules in a different location).
+
+In the end, which approach you use will depend on your level of git-savviness (and that of your collaborators), and how comfortable you are using git submodules.

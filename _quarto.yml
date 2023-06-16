@@ -1,0 +1,49 @@
+project:
+  type: website
+  output-dir: docs
+  preview:
+    browser: false
+    timeout: 0.001
+
+website:
+  title: "PEWebsite"
+  description: "The Predictive Ecology Lab website"
+  favicon: "assets/logo/favicon-32x32.png"
+  navbar:
+    logo: "assets/logo/favicon-196x196.png"
+    search: true
+    right:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+      - software.qmd
+      - SpaDES.qmd
+      - Workshops.qmd
+      - publications.qmd
+      - presentations.qmd
+      - icon: github
+        href: https://github.com/PredictiveEcology
+      - icon: twitter
+        href: https://twitter.com/PredictiveEcol
+  page-footer:
+    left:
+      - text: "This blog is maintained by Dr. Eliot McIntire, a research scientist with the Government of Canada, and Dr. Alex Chubaty. All content is his own or that of contributors ('the lab'), and does not necessarily reflect any official policy of the Government of Canada. Powered by Quarto"
+  sidebar:
+    logo: "assets/logo/favicon-196x196.png"
+  comments:
+      hypothesis:
+        theme: clean
+        openSidebar: false
+  google-analytics: "UA-58633549-2"
+
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    css: assets/css/main.css
+    smooth-scroll: true
+    link-external-newwindow: true
+
+editor: visual
+

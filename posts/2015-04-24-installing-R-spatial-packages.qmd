@@ -1,0 +1,82 @@
+---
+layout  : post
+title   : Installing R spatial packages
+author  : Alex Chubaty
+date    : April 24, 2015
+tags    : [R]
+comments: false
+---
+This guide will show you how to install a variety of packages used for analyzing spatial data in R.
+This is tested for R versions `3.1.2`, `3.1.3`, and `3.2.0`; and for the operating systems explicitly mentioned in this guide.
+
+## Prerequisites and dependencies
+
+### Windows 7
+
+Most R packages that require additional software will come with their own versions of that software.
+This generally means that installing R packages on Windows can be easier for the user than for other OSes because you don't have to explicitly think about additional software dependencies.
+
+### OSX (Mavericks / Yosemite)
+
+#### Install `brew`
+
+This simple one-liner install is from the `brew` homepage, [brew.sh](https://brew.sh).
+
+```bash
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+
+Add the `science` formulae:
+
+```bash
+brew tap homebrew/science
+```
+
+#### Upgrade existing `brew` installation
+
+```bash
+brew update && brew upgrade
+```
+	
+#### Install additional components
+
+```bash
+brew install gdal
+brew install homebrew/science/netcdf
+```
+
+### Linux (Debian 7 / Ubuntu 14.04)
+
+Some of the R packages that require additional system packages come prebuilt as `r-cran-PACKAGE`.
+However, this precompiled version make not always be the most recent, so building it yourself is often best.
+For the R packages we'll be installing, we require the following system packages:
+
+```bash
+### install the system dependencies for spatial packages
+sudo apt-get build-dep r-cran-rgl r-cran-tkrplot
+sudo apt-get install bwidget libgdal-dev libgdal1-dev libgeos-dev libgeos++-dev libgsl0-dev libproj-dev libspatialite-dev netcdf-bin
+
+### on machines not running a desktop environment (e.g., a server you SSH into):
+# Install the X virtual frame buffer:
+sudo apt-get install xauth xfonts-base xvfb
+
+# Start each R session using xvfb to avoid warnings about no DISPLAY being set:
+xvfb-run R
+
+### Install additional useful system dependencies
+sudo apt-get install ca-certificates curl libxml2-dev
+```
+
+## R package installation
+
+```r
+### install `devtools`
+install.packages("devtools")
+
+### install the main spatial packages we use
+spatial.pkgs <- c("geoR", "mapdata", "maps", "maptools", "RandomFields", "plotKML", "rgdal", "rgeos", "shapefiles", "sp", "spatstat", "raster", "rts")
+lapply(spatial.pkgs, install.packages)
+
+### install additional spatial packages
+devtools::install_github("s-u/fastshp")
+```
