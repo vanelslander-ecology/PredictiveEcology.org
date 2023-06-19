@@ -12,9 +12,9 @@ title-block-banner: true
 comments: false
 ---
 
-Welcome to the website of the Predictive Ecology Lab\
+Welcome to the website of the Predictive Ecology Community\
 
-Here you will find \[TO COMPLETE\]
+We are updating these pages over the next days; please stay tuned.
 
 ## Latest news
 
