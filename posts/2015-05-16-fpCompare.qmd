@@ -4,7 +4,6 @@ title   : Reliable comparison of floating point numbers in R
 author  : Alex Chubaty
 date    : May 16, 2015
 tags    : [R]
----
 comments: false
 ---
 > Version 0.2.0 of `fpCompare` has been released on CRAN

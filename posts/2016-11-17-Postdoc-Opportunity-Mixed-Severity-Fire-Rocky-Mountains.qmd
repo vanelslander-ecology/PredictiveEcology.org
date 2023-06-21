@@ -3,10 +3,8 @@ title: 'Postdoc Opportunity - Mixed Severity Fire Modeling in the Rocky Mountain
 author: Eliot McIntire
 date: November 17, 2016
 categories: [Postdoc, position, ad, ecology, fire, modeling, ecological modeling]
----
 comments: false
 ---
-
 
 ![](../assets/img/predictive_ecology_logo.png){style="float:right; margin: 20px;" width="306"}
 

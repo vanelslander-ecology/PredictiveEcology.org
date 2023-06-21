@@ -3,7 +3,6 @@ title: 'Make a live publications page'
 author: Eliot McIntire
 date: Jan 8, 2016
 categories: [Zotero, BibBase, Citations, Publications]
----
 comments: false
 ---
 Creating a live web page with your publications is now easy to do and there are many ways to do so. I will show one that uses [Zotero](https://www.zotero.org/) and [GitHub](https://github.com/).

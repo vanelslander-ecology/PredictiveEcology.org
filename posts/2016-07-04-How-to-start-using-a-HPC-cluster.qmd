@@ -3,9 +3,8 @@ title: 'How to start using Compute Canada cluster with R and SpaDES.'
 author: Eliot McIntire
 date: July 4, 2016
 categories: [supercomputer, HPC, Grex, Simulation, R]
+comments: false
 ---
-
-## comments: false
 
 Is your R script taking too long?
 Do you find yourself rerunning things over and over?

@@ -3,7 +3,6 @@ title: 'PhD Opportunity in spatial simulation of caribou landscapes in the North
 author: Eliot McIntire
 date: April 20, 2016
 categories: [PhD position, Fire, Caribou, Simulation, R]
----
 comments: false
 ---
 

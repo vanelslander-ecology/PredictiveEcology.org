@@ -3,7 +3,6 @@ title: 'Introduction to SpaDES Workshop (updated)'
 author: Eliot McIntire, Alex Chubaty
 date: August 9, 2016
 categories: [SpaDES, workshop, raster]
----
 comments: false
 ---
 **Updated September 9, 2016**

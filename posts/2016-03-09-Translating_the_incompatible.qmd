@@ -3,7 +3,6 @@ title: 'Translating the incompatible'
 author: Eliot McIntire
 date: March 9, 2016
 categories: [SpaDES, modules, modularity, sketch]
----
 comments: false
 ---
 Continuing from previous post on [modularity](https://predictiveecology.org/2016/03/09/Removing-spaghetti-from-ecological-models.html), the next issue, of course, is not every module will be compatible out of the box. If we continue with the example from last post, not every growth module will take "stem counts and size by species". One solution to this is the idea of **translator modules**. 

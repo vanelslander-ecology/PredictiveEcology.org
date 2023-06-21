@@ -3,7 +3,6 @@ title: "Is `R` Fast Enough? - Part 4 - 'Loops'"
 author: Eliot McIntire
 date: Sept 4, 2015
 categories: [R]
----
 comments: false
 ---
 In part 4 of this series on benchmarking `R`, we'll explore loops and a common alternative, vectorizing. This is probably the "biggest" issue making people think that R is a slow language. Essentially, other procedural languages use explicit loops; programmers moving from those languages to R start with the same procedures and find that R is slow. We will discuss a range of ways making loops faster and how vectorizing can help. 

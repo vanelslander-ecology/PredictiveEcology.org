@@ -3,9 +3,9 @@ title: "Is `R` Fast Enough? - Part 2 - 'Sorting'"
 author: Eliot McIntire
 date: April 28, 2015
 categories: [R, benchmark]
----
 comments: false
 ---
+
 In part 2 of this series on benchmarking `R`, we'll explore sorting.
 This has been a topic on numerous blogs, discussions and posts around the internet, including here: [r-blogger post](https://www.r-bloggers.com/quicksort-speed-just-in-time-compiling-and-vectorizing/).
 Similarly, [julialang.org](https://julialang.org) showed that sorting was particularly bad in `R`.

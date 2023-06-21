@@ -3,7 +3,6 @@ title: 'Removing spaghetti from ecological models'
 author: Eliot McIntire
 date: March 9, 2016
 categories: [SpaDES, modules, modularity, sketch]
----
 comments: false
 ---
 Modularity requires a rethink for many people about how to build dependencies between models. Historically, ecological models were built as a single, large entity. Dependencies between different parts of the code base were deep, and hard to disentangle: spaghetti code. This has mostly changed over the past decade; however, the full revolution of modularity is still coming to ecological models.

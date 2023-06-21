@@ -4,7 +4,6 @@ title   : fpCompare version 0.2.1 released
 author  : Alex Chubaty
 date    : September 1, 2015
 tags    : [R]
----
 comments: false
 ---
 > Version 0.2.1 of `fpCompare` has been released on CRAN
