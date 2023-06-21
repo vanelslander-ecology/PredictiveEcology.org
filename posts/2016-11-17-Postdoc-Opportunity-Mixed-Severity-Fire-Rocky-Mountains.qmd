@@ -8,7 +8,7 @@ comments: false
 ---
 
 
-<img src="{{ site.baseurl }}/assets/img/predictive_ecology_logo.png" width="420" style="float:right; margin: 20px; height: 200px; width: 200px" />
+![](../assets/img/predictive_ecology_logo.png){style="float:right; margin: 20px;" width="306"}
 
 We are seeking a landscape ecologist or ecological modeller to lead the development of a **mixed severity fire regime simulation model** that will permit spatial forecasting of forest structure and composition over the 21st century, and backcasting over the past several centuries. The intended applications are to integrated land and forest management on a multi-use landscape of roughly 1,000,000 ha in the foothills of southern Alberta, Canada. There is also an important historical component through the [Mountain Legacy Project](C:\Eliot\Sync\Students\Ads for students\mountainlegacy.ca). 
  
