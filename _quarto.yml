@@ -6,7 +6,7 @@ project:
     timeout: 0.001
 
 website:
-  title: "PEWebsite"
+  title: "Predictive Ecology Community"
   description: "The Predictive Ecology Community website"
   favicon: "assets/logo/favicon-32x32.png"
   navbar:
