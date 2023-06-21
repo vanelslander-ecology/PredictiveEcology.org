@@ -6,7 +6,8 @@ comments: false
 
 ### Predictive Ecology Community
 
-We are located in Victoria, British Columbia, Canada, at the Pacific Forestry Centre. Several lab members are students through Université Laval and are based out of Québec City.
+We are located in Victoria, British Columbia, Canada, at the Pacific Forestry Centre.
+Several lab members are students through Université Laval and are based out of Québec City.
 
 #### Eliot McIntire
 
@@ -19,7 +20,10 @@ We are located in Victoria, British Columbia, Canada, at the Pacific Forestry Ce
 
 <div>
 
-My research interests lie in applied ecology, conservation and forecasting of a broad array of ecosystems and species. Specifically, I am interested in using modern quantitative techniques to understand the natural complexity of ecosystems, and ultimately, to allow forecasting of organisms and ecosystem processes. I use a variety of quantitative techniques, including Hierarchical Bayes, Spatial Analysis, Landscape Simulation Modeling, Structural Equation Modeling, and Non-Linear Models to achieve the best ecological inference from ecological data. Through each of the systems I study, I strive to understand the ecological processes and to test this understanding by forecasting.
+My research interests lie in applied ecology, conservation and forecasting of a broad array of ecosystems and species.
+Specifically, I am interested in using modern quantitative techniques to understand the natural complexity of ecosystems, and ultimately, to allow forecasting of organisms and ecosystem processes.
+I use a variety of quantitative techniques, including Hierarchical Bayes, Spatial Analysis, Landscape Simulation Modeling, Structural Equation Modeling, and Non-Linear Models to achieve the best ecological inference from ecological data.
+Through each of the systems I study, I strive to understand the ecological processes and to test this understanding by forecasting.
 
 </div>
 
