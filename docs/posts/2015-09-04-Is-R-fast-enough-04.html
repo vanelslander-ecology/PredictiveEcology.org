@@ -9,7 +9,7 @@
 <meta name="author" content="Eliot McIntire">
 <meta name="dcterms.date" content="2015-09-04">
 
-<title>PEWebsite - Is R Fast Enough? - Part 4 - ‘Loops’</title>
+<title>Predictive Ecology Community - Is R Fast Enough? - Part 4 - ‘Loops’</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -112,16 +112,9 @@ ga('send', {
 });
 </script>
 <style>html{ scroll-behavior: smooth; }</style>
-<script type="application/json" class="js-hypothesis-config">
-{
-  "theme": "clean",
-  "openSidebar": false
-}
-</script>
-<script async="" src="https://hypothes.is/embed.js"></script>
 
 
-<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="../assets/css/main.scss">
 </head>
 
 <body class="nav-sidebar floating nav-fixed fullcontent">
@@ -135,7 +128,7 @@ ga('send', {
     <img src="../assets/logo/favicon-196x196.png" alt="" class="navbar-logo">
     </a>
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">PEWebsite</span>
+    <span class="navbar-title">Predictive Ecology Community</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -250,131 +243,146 @@ ga('send', {
 
 
 
-<p>comments: false</p>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td>In part 4 of this series on benchmarking <code>R</code>, we’ll explore loops and a common alternative, vectorizing. This is probably the “biggest” issue making people think that R is a slow language. Essentially, other procedural languages use explicit loops; programmers moving from those languages to R start with the same procedures and find that R is slow. We will discuss a range of ways making loops faster and how vectorizing can help.</td>
-</tr>
-<tr class="even">
-<td>There are many other resources about this topic; we will try to be concise and show the worst case, the best case, and many little steps in between.</td>
-</tr>
-<tr class="odd">
-<td>## Loops</td>
-</tr>
-<tr class="even">
-<td>Loops have been the achilles heel of R in the past. In version 3.1 and forward, much of this problem appears to be gone. As could be seen in the <a href="https://predictiveecology.org/2015/05/06/Is-R-fast-enough-03.html">Fibonacci example</a>, pre-allocating a vector and filling it up inside a loop can now be very fast and efficient in native R. To demonstrate these points, below are 6 ways to achieve the same result in R, beginning with a naive loop approach, and working up to the fully vectorized approach. I am using a very fast vectorized function, <code>seq_len</code>, to emphasize the differences between using loops and optimized vectorized functions.</td>
-</tr>
-<tr class="odd">
-<td>The basic code below generates random numbers. The sequence goes from a fully unvectorized, looped structure, with no pre-allocation of the output vector, through to pure vectorized code. The intermediate steps are:</td>
-</tr>
-<tr class="even">
-<td>- Loop - Loop with pre-allocated length of output - sapply (like loops) - sapply with pipe operator - vectorized - vectorized with no intermediate objects - C++ vectorized</td>
-</tr>
-<tr class="odd">
-<td>```r library(magrittr) # for pipe %&gt;% library(data.table) N = 1e5</td>
-</tr>
-<tr class="even">
-<td>unifs &lt;- runif(N) dt = data.table(num=rep(NA_real_, N))</td>
-</tr>
-<tr class="odd">
-<td>mb = microbenchmark::microbenchmark(times=5L,</td>
-</tr>
-<tr class="even">
-<td># no pre-allocating of vector length, generating uniform random numbers once, # then calling them within each loop loopWithNoPreallocate = { set.seed(104) a &lt;- numeric() for (i in 1:N) { a[i] = unifs[i] } a },</td>
-</tr>
-<tr class="odd">
-<td># pre-allocating vector length, generating uniform random numbers once, # then calling them within each loop loopWithPreallocate = { set.seed(104) a &lt;- numeric(N) for (i in 1:N) { a[i] = unifs[i] } a },</td>
-</tr>
-<tr class="even">
-<td># sapply - generally faster than loops sapplyVector1 = { set.seed(104) sapply(unifs,function(x) x) },</td>
-</tr>
-<tr class="odd">
-<td># sapply with pipe operator: no intermediate objects are created sapplyWithPipe = { set.seed(104) unifs &lt;- (runif(N)) %&gt;% sapply(.,function(x) x) },</td>
-</tr>
-<tr class="even">
-<td># use data.table set function, which can be very fast inside a loop datatableSet = { set.seed(104) for(i in 1L:N) { set(dt, i, j = 1L, unifs[i]) } dt },</td>
-</tr>
-<tr class="odd">
-<td># vectorized with intermediate object before return vectorizedWithCopy = { set.seed(104) unifs &lt;- runif(N) unifs },</td>
-</tr>
-<tr class="even">
-<td># no intermediate object before return vectorizedWithNoCopy = { set.seed(104) runif(N) },</td>
-</tr>
-<tr class="odd">
-<td>cpp = { set.seed(104) runifCpp(N) } )</td>
-</tr>
-<tr class="even">
-<td>print(“Units: milliseconds”) ```</td>
-</tr>
-<tr class="odd">
-<td><code>## [1] "Units: milliseconds"</code></td>
-</tr>
-<tr class="even">
-<td><code>r summary(mb, unit="ms")[c(1,2,5,7,8)]</code></td>
-</tr>
-<tr class="odd">
-<td><code>##                    expr          min       median          max neval ## 1 loopWithNoPreallocate 12802.511195 12908.986463 13618.461857     5 ## 2   loopWithPreallocate   141.383047   150.713476   199.640091     5 ## 3         sapplyVector1    64.211709    72.396608   104.804129     5 ## 4        sapplyWithPipe    70.540230    74.944790    82.344498     5 ## 5          datatableSet   274.122245   277.530571   286.644428     5 ## 6    vectorizedWithCopy     3.572677     3.702005     3.952369     5 ## 7  vectorizedWithNoCopy     3.729653     3.873727     4.120712     5 ## 8                   cpp     1.437057     1.578675     1.859143     5</code></td>
-</tr>
-<tr class="even">
-<td><code>r # Test that all results return the same vector all.equalV(loopWithNoPreallocate, datatableSet$num, loopWithPreallocate, sapplyVector1, sapplyWithPipe, vectorizedWithCopy, vectorizedWithNoCopy, cpp[,1])</code></td>
-</tr>
-<tr class="odd">
-<td><code>## Warning in all(sapply(vals[-1], function(x) all.equal(vals[[1]], x))): ## coercing argument of type 'character' to logical</code></td>
-</tr>
-<tr class="even">
-<td><code>## [1] NA</code></td>
-</tr>
-<tr class="odd">
-<td><code>r sumLoops &lt;- round(summary(mb)[[5]],1)</code></td>
-</tr>
-<tr class="even">
-<td>The fully vectorized function is <strong><em>3489x</em></strong> faster than the fully naive loop. Note also that making as few intermediate objects as possible is faster as well. Comparing vectorizedWithCopy and vectorizedWithNoCopy (where the only difference is making one copy of the object) shows virtually no change. This, I believe, is due to some improvements in after version 3.1 of R that reduces copying for vectors and matrices.</td>
-</tr>
-<tr class="odd">
-<td>Using pipes instead of intermediate objects also did not change the speed very much (slight change by -3.34%). Since these are simple tests, larger, or more complex objects, will likely see improvements using pipes.</td>
-</tr>
-<tr class="even">
-<td>Note, in this case, the C++, using <a href="https://gallery.rcpp.org/articles/random-number-generation/">Rcpp sugar</a> was the fastest, 2.44x faster.</td>
-</tr>
-<tr class="odd">
-<td><em>Note also, that this example is somewhat artificial, because it is also comparing the random number generating speeds at the same time as the loop speeds. Thus, these benchmarks about loops are simply for illustrative purposes. The speed gains in loops will be determined mostly by what is actually happening within the loops.</em></td>
-</tr>
-<tr class="even">
-<td>## Conclusions</td>
-</tr>
-<tr class="odd">
-<td><strong><em>Write vectorized code in R</em></strong> where possible. If not possible, pre-allocate prior to writing loops. If speed is crucial, as in simulation studies using <code>SpaDES</code>, consider writing in C++ via <code>Rcpp</code> package, though as we showed in previous posts, this often is not necessary.</td>
-</tr>
-<tr class="even">
-<td>Perhaps more importantly, with the <code>Rcpp</code> package and its infrastructure, we get access to very fast code, but within the higher level <code>R</code> language opening it up to many more users.</td>
-</tr>
-<tr class="odd">
-<td>#### Next time</td>
-</tr>
-<tr class="even">
-<td>We move on to higher level operations. Specifically, some GIS operations.</td>
-</tr>
-<tr class="odd">
-<td>#### See also</td>
-</tr>
-<tr class="even">
-<td><a href="https://gallery.rcpp.org/tags/benchmark/">https://gallery.rcpp.org/tags/benchmark/</a></td>
-</tr>
-</tbody>
-</table>
+<p>In part 4 of this series on benchmarking <code>R</code>, we’ll explore loops and a common alternative, vectorizing. This is probably the “biggest” issue making people think that R is a slow language. Essentially, other procedural languages use explicit loops; programmers moving from those languages to R start with the same procedures and find that R is slow. We will discuss a range of ways making loops faster and how vectorizing can help.</p>
+<p>There are many other resources about this topic; we will try to be concise and show the worst case, the best case, and many little steps in between.</p>
+<section id="loops" class="level2">
+<h2 class="anchored" data-anchor-id="loops">Loops</h2>
+<p>Loops have been the achilles heel of R in the past. In version 3.1 and forward, much of this problem appears to be gone. As could be seen in the <a href="https://predictiveecology.org/2015/05/06/Is-R-fast-enough-03.html">Fibonacci example</a>, pre-allocating a vector and filling it up inside a loop can now be very fast and efficient in native R. To demonstrate these points, below are 6 ways to achieve the same result in R, beginning with a naive loop approach, and working up to the fully vectorized approach. I am using a very fast vectorized function, <code>seq_len</code>, to emphasize the differences between using loops and optimized vectorized functions.</p>
+<p>The basic code below generates random numbers. The sequence goes from a fully unvectorized, looped structure, with no pre-allocation of the output vector, through to pure vectorized code. The intermediate steps are:</p>
+<ul>
+<li>Loop</li>
+<li>Loop with pre-allocated length of output</li>
+<li>sapply (like loops)</li>
+<li>sapply with pipe operator</li>
+<li>vectorized</li>
+<li>vectorized with no intermediate objects</li>
+<li>C++ vectorized</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr) <span class="co"># for pipe %&gt;%</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> <span class="fl">1e5</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>unifs <span class="ot">&lt;-</span> <span class="fu">runif</span>(N) </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">num=</span><span class="fu">rep</span>(<span class="cn">NA_real_</span>, N))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>mb <span class="ot">=</span> microbenchmark<span class="sc">::</span><span class="fu">microbenchmark</span>(<span class="at">times=</span>5L,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># no pre-allocating of vector length, generating uniform random numbers once,</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># then calling them within each loop</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">loopWithNoPreallocate =</span> {</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">set.seed</span>(<span class="dv">104</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    a <span class="ot">&lt;-</span> <span class="fu">numeric</span>()</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N) {</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        a[i] <span class="ot">=</span> unifs[i]</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>      } </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>     a</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># pre-allocating vector length, generating uniform random numbers once,</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># then calling them within each loop</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">loopWithPreallocate =</span> {</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>      <span class="fu">set.seed</span>(<span class="dv">104</span>)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>      a <span class="ot">&lt;-</span> <span class="fu">numeric</span>(N) </span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N) {</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        a[i] <span class="ot">=</span> unifs[i]</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>      a</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># sapply - generally faster than loops</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">sapplyVector1 =</span> {</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>        <span class="fu">set.seed</span>(<span class="dv">104</span>)</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>        <span class="fu">sapply</span>(unifs,<span class="cf">function</span>(x) x)</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  <span class="co"># sapply with pipe operator: no intermediate objects are created</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>  <span class="at">sapplyWithPipe =</span> {</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>        <span class="fu">set.seed</span>(<span class="dv">104</span>)</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>        unifs <span class="ot">&lt;-</span> (<span class="fu">runif</span>(N)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>          <span class="fu">sapply</span>(.,<span class="cf">function</span>(x) x)</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>  <span class="co"># use data.table set function, which can be very fast inside a loop</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>  <span class="at">datatableSet =</span> {</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">set.seed</span>(<span class="dv">104</span>)</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(i <span class="cf">in</span> 1L<span class="sc">:</span>N) {</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>      <span class="fu">set</span>(dt, i, <span class="at">j =</span> 1L, unifs[i])</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    dt</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>  <span class="co"># vectorized with intermediate object before return</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>  <span class="at">vectorizedWithCopy =</span> {</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>      <span class="fu">set.seed</span>(<span class="dv">104</span>)</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>      unifs <span class="ot">&lt;-</span> <span class="fu">runif</span>(N)</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>      unifs</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>  <span class="co"># no intermediate object before return</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>  <span class="at">vectorizedWithNoCopy =</span> {</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>    <span class="fu">set.seed</span>(<span class="dv">104</span>)</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>    <span class="fu">runif</span>(N)</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>  <span class="at">cpp =</span> {</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>    <span class="fu">set.seed</span>(<span class="dv">104</span>)</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>    <span class="fu">runifCpp</span>(N)</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Units: milliseconds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## [1] "Units: milliseconds"</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mb, <span class="at">unit=</span><span class="st">"ms"</span>)[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">8</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>##                    expr          min       median          max neval
+## 1 loopWithNoPreallocate 12802.511195 12908.986463 13618.461857     5
+## 2   loopWithPreallocate   141.383047   150.713476   199.640091     5
+## 3         sapplyVector1    64.211709    72.396608   104.804129     5
+## 4        sapplyWithPipe    70.540230    74.944790    82.344498     5
+## 5          datatableSet   274.122245   277.530571   286.644428     5
+## 6    vectorizedWithCopy     3.572677     3.702005     3.952369     5
+## 7  vectorizedWithNoCopy     3.729653     3.873727     4.120712     5
+## 8                   cpp     1.437057     1.578675     1.859143     5</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test that all results return the same vector</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equalV</span>(loopWithNoPreallocate, </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>           datatableSet<span class="sc">$</span>num, </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>           loopWithPreallocate, </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>           sapplyVector1, sapplyWithPipe, </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>           vectorizedWithCopy, vectorizedWithNoCopy, </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>           cpp[,<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>## Warning in all(sapply(vals[-1], function(x) all.equal(vals[[1]], x))):
+## coercing argument of type 'character' to logical</code></pre>
+<pre><code>## [1] NA</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sumLoops <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">summary</span>(mb)[[<span class="dv">5</span>]],<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The fully vectorized function is <strong><em>3489x</em></strong> faster than the fully naive loop. Note also that making as few intermediate objects as possible is faster as well. Comparing vectorizedWithCopy and vectorizedWithNoCopy (where the only difference is making one copy of the object) shows virtually no change. This, I believe, is due to some improvements in after version 3.1 of R that reduces copying for vectors and matrices.</p>
+<p>Using pipes instead of intermediate objects also did not change the speed very much (slight change by -3.34%). Since these are simple tests, larger, or more complex objects, will likely see improvements using pipes.</p>
+<p>Note, in this case, the C++, using <a href="https://gallery.rcpp.org/articles/random-number-generation/">Rcpp sugar</a> was the fastest, 2.44x faster.</p>
+<p><em>Note also, that this example is somewhat artificial, because it is also comparing the random number generating speeds at the same time as the loop speeds. Thus, these benchmarks about loops are simply for illustrative purposes. The speed gains in loops will be determined mostly by what is actually happening within the loops.</em></p>
+</section>
+<section id="conclusions" class="level2">
+<h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
+<p><strong><em>Write vectorized code in R</em></strong> where possible. If not possible, pre-allocate prior to writing loops. If speed is crucial, as in simulation studies using <code>SpaDES</code>, consider writing in C++ via <code>Rcpp</code> package, though as we showed in previous posts, this often is not necessary.</p>
+<p>Perhaps more importantly, with the <code>Rcpp</code> package and its infrastructure, we get access to very fast code, but within the higher level <code>R</code> language opening it up to many more users.</p>
+<section id="next-time" class="level4">
+<h4 class="anchored" data-anchor-id="next-time">Next time</h4>
+<p>We move on to higher level operations. Specifically, some GIS operations.</p>
+</section>
+<section id="see-also" class="level4">
+<h4 class="anchored" data-anchor-id="see-also">See also</h4>
+<p><a href="https://gallery.rcpp.org/tags/benchmark/">https://gallery.rcpp.org/tags/benchmark/</a></p>
+<hr>
+</section>
 <section id="functions-used" class="level4">
 <h4 class="anchored" data-anchor-id="functions-used">Functions used</h4>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>all.equalV <span class="ot">=</span> <span class="cf">function</span>(...) {</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  vals <span class="ot">&lt;-</span> <span class="fu">list</span>(...)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">all</span>(<span class="fu">sapply</span>(vals[<span class="sc">-</span><span class="dv">1</span>], <span class="cf">function</span>(x) <span class="fu">all.equal</span>(vals[[<span class="dv">1</span>]], x)))</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cppFunction</span>(<span class="st">'NumericMatrix runifCpp(const int N) {</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="st">  NumericMatrix X(N, 1);</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="st">  X(_, 0) = runif(N);</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="st">  return X;</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="st">}'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>all.equalV <span class="ot">=</span> <span class="cf">function</span>(...) {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  vals <span class="ot">&lt;-</span> <span class="fu">list</span>(...)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">all</span>(<span class="fu">sapply</span>(vals[<span class="sc">-</span><span class="dv">1</span>], <span class="cf">function</span>(x) <span class="fu">all.equal</span>(vals[[<span class="dv">1</span>]], x)))</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cppFunction</span>(<span class="st">'NumericMatrix runifCpp(const int N) {</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="st">  NumericMatrix X(N, 1);</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="st">  X(_, 0) = runif(N);</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="st">  return X;</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="st">}'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="system-used" class="level4">
 <h4 class="anchored" data-anchor-id="system-used">System used:</h4>
@@ -408,6 +416,7 @@ ga('send', {
 ## [31] proto_0.3-10</code></pre>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

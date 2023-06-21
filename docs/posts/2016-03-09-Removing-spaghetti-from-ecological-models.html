@@ -9,7 +9,7 @@
 <meta name="author" content="Eliot McIntire">
 <meta name="dcterms.date" content="2016-03-09">
 
-<title>PEWebsite - Removing spaghetti from ecological models</title>
+<title>Predictive Ecology Community - Removing spaghetti from ecological models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -78,16 +78,9 @@ ga('send', {
 });
 </script>
 <style>html{ scroll-behavior: smooth; }</style>
-<script type="application/json" class="js-hypothesis-config">
-{
-  "theme": "clean",
-  "openSidebar": false
-}
-</script>
-<script async="" src="https://hypothes.is/embed.js"></script>
 
 
-<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="../assets/css/main.scss">
 </head>
 
 <body class="nav-sidebar floating nav-fixed fullcontent">
@@ -101,7 +94,7 @@ ga('send', {
     <img src="../assets/logo/favicon-196x196.png" alt="" class="navbar-logo">
     </a>
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">PEWebsite</span>
+    <span class="navbar-title">Predictive Ecology Community</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -219,46 +212,36 @@ ga('send', {
 
 
 
-<p>comments: false</p>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td>Modularity requires a rethink for many people about how to build dependencies between models. Historically, ecological models were built as a single, large entity. Dependencies between different parts of the code base were deep, and hard to disentangle: spaghetti code. This has mostly changed over the past decade; however, the full revolution of modularity is still coming to ecological models.</td>
-</tr>
-<tr class="even">
-<td>#### Data vs.&nbsp;model</td>
-</tr>
-<tr class="odd">
-<td>One thing that opened my perspective on dependencies ties to the difference between models and data. “The difference between models and data, is that the models have their dependencies unresolved”… i.e., having the model is not the end of the dependencies… you have to push further until you hit data to resolve the model. So, we can replace models with data and data with models, because the outputs of models are like data. Likewise, we can replace complex models with simple models… all of this, yes… if the outputs of the models (simple or complex) are equivalent to each other or to the data.</td>
-</tr>
-<tr class="even">
-<td><a href="spades.predictiveecology.org">SpaDES</a> is built around this concept. The metadata for every module is sufficient to give modules some sense of self awareness:</td>
-</tr>
-<tr class="odd">
-<td>- <em>what do I take as inputs?</em> - <em>what do I give as outputs?</em></td>
-</tr>
-<tr class="even">
-<td>If a module is aware of its own needs, then things like automatic model compatibility are determinable. A user doesn’t have to know whether two particular modules work together or not.</td>
-</tr>
-<tr class="odd">
-<td>## Module interdependency</td>
-</tr>
-<tr class="even">
-<td>With SpaDES, we are promoting the idea of <strong>near zero model inter-dependency</strong>, except via their inputs or outputs. So, rather than say that a succession model has three modules that are dependent on one another along a sequence, like this:</td>
-</tr>
-<tr class="odd">
-<td>``` regeneration —&gt; growth ———&gt; mortality | | | |/ |/ |/ |stem counts | |stem counts | |stem counts | | and size | | and size | | and size | | by species | | by species | | by species |</td>
-</tr>
-</tbody>
-</table>
-<pre><code>; instead, we say that each takes inputs (i.e., data) and produces outputs (i.e., data) that are each definable:
-</code></pre>
-<p>regeneration _ growth _ mortality &nbsp; /| &nbsp; /| &nbsp;<br>
-<em>| / </em>| / _|<br>
-|stem counts | |stem counts | |stem counts |<br>
-| and size | | and size | | and size | | by species | | by species | | by species | ————— —————- —————- ```</p>
+<p>Modularity requires a rethink for many people about how to build dependencies between models. Historically, ecological models were built as a single, large entity. Dependencies between different parts of the code base were deep, and hard to disentangle: spaghetti code. This has mostly changed over the past decade; however, the full revolution of modularity is still coming to ecological models.</p>
+<section id="data-vs.-model" class="level4">
+<h4 class="anchored" data-anchor-id="data-vs.-model">Data vs.&nbsp;model</h4>
+<p>One thing that opened my perspective on dependencies ties to the difference between models and data. “The difference between models and data, is that the models have their dependencies unresolved”… i.e., having the model is not the end of the dependencies… you have to push further until you hit data to resolve the model. So, we can replace models with data and data with models, because the outputs of models are like data. Likewise, we can replace complex models with simple models… all of this, yes… if the outputs of the models (simple or complex) are equivalent to each other or to the data.</p>
+<p><a href="spades.predictiveecology.org">SpaDES</a> is built around this concept. The metadata for every module is sufficient to give modules some sense of self awareness:</p>
+<pre><code>- *what do I take as inputs?* 
+- *what do I give as outputs?*  </code></pre>
+<p>If a module is aware of its own needs, then things like automatic model compatibility are determinable. A user doesn’t have to know whether two particular modules work together or not.</p>
+</section>
+<section id="module-interdependency" class="level2">
+<h2 class="anchored" data-anchor-id="module-interdependency">Module interdependency</h2>
+<p>With SpaDES, we are promoting the idea of <strong>near zero model inter-dependency</strong>, except via their inputs or outputs. So, rather than say that a succession model has three modules that are dependent on one another along a sequence, like this:</p>
+<pre><code> regeneration ---&gt;  growth ---------&gt; mortality
+     |               |                   |
+    \|/             \|/                 \|/
+ |stem counts |   |stem counts   |  |stem counts   |         
+ | and size   |   |   and size   |  |   and size   |
+ | by species |   |   by species |  |   by species |
+ ------------     ---------------   ---------------</code></pre>
+<p>; instead, we say that each takes inputs (i.e., data) and produces outputs (i.e., data) that are each definable:</p>
+<pre><code>regeneration        _ growth          _ mortality
+         \          /|     \          /|          \         
+         _\|       /       _\|       /            _\|       
+       |stem counts |       |stem counts   |       |stem counts   |         
+       | and size   |       |   and size   |       |   and size   |
+       | by species |       |   by species |       |   by species |
+      ---------------       ----------------       ----------------</code></pre>
 <p>So, this means that we could “remove” the regeneration module, and the model will still work. We can remove the “growth” module and the model will still work. Whereas in the “interdependent” approach, it wouldn’t.</p>
 <p>Now the point is not to remove the growth module (what would that model do with just regen and mortality?)… but with this structure, we can replace the growth module with a different one and not break the modularity. Likewise, we can start a simulation with data of “stem counts and size by species”, rather than the output of the regen module or growth module or mortality module.</p>
+</section>
 <section id="next-blog-post-translator-modules" class="level2">
 <h2 class="anchored" data-anchor-id="next-blog-post-translator-modules">Next blog post: <a href="https://predictiveecology.org/2016/03/09/Translating_the_incompatible.html">Translator Modules</a></h2>
 

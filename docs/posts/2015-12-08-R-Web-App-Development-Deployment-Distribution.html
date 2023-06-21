@@ -9,7 +9,7 @@
 <meta name="author" content="Olivia Sung">
 <meta name="dcterms.date" content="2015-12-08">
 
-<title>PEWebsite - R Web App Development, Deployment, and Distribution</title>
+<title>Predictive Ecology Community - R Web App Development, Deployment, and Distribution</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -78,16 +78,9 @@ ga('send', {
 });
 </script>
 <style>html{ scroll-behavior: smooth; }</style>
-<script type="application/json" class="js-hypothesis-config">
-{
-  "theme": "clean",
-  "openSidebar": false
-}
-</script>
-<script async="" src="https://hypothes.is/embed.js"></script>
 
 
-<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="../assets/css/main.scss">
 </head>
 
 <body class="nav-sidebar floating nav-fixed fullcontent">
@@ -101,7 +94,7 @@ ga('send', {
     <img src="../assets/logo/favicon-196x196.png" alt="" class="navbar-logo">
     </a>
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">PEWebsite</span>
+    <span class="navbar-title">Predictive Ecology Community</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -219,17 +212,18 @@ ga('send', {
 
 
 
-<p>comments: false</p>
-<hr>
 <p>As <code>R</code> language is becoming popular among scientists to build simple we bapplication along simple integration with <code>RShiny</code>, <code>R</code> web applications are being created at a fast rate. <code>RShiny</code> package is not only easy to integrate but also provides a lightweight user interface that is pleasing to the eyes.</p>
 <p>How is <code>R</code> application developed?</p>
 <p>What is the process to deploy and distribute <code>R</code> web applications?</p>
 <section id="development" class="level2">
 <h2 class="anchored" data-anchor-id="development">Development</h2>
 <p>While web development can be done in many different environments, <a href="https://www.rstudio.com/">RStudio</a> is widely used to develop <code>R</code> applications. Below is a snapshot of what RStudio looks like.</p>
-<blockquote class="blockquote">
-<img src="{{ site.baseurl }}/assets/img/2015-12-08rstudio.png" class="img-fluid" alt="Snapshot of RStudio">
-</blockquote>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/img/2015-12-08rstudio.png" class="img-fluid figure-img" width="1845"></p>
+<figcaption class="figure-caption">Snapshot of RStudio</figcaption>
+</figure>
+</div>
 </section>
 <section id="deployment" class="level2">
 <h2 class="anchored" data-anchor-id="deployment">Deployment</h2>
@@ -258,7 +252,7 @@ ga('send', {
 <p><strong>If you cannot decide between <code>shinyapps.io</code> and <code>Shiny Server Pro</code>, refer to this <a href="https://www.rstudio.com/faq-items/difference-shinyapps-shiny-server/">FAQ</a></strong></p>
 <p><strong>See below feature comparion chart between <code>Shiny Server</code>, <code>Shiny Server Pro</code> and <code>shinyapps.io</code> taken from this <a href="https://www.rstudio.com/products/shinyapps/">page</a></strong></p>
 <blockquote class="blockquote">
-<img src="{{ site.baseurl }}/assets/img/2015-12-08compare.png" class="img-fluid" alt="Comparison Chart">
+<img src="../assets/img/2015-12-08compare.png" class="img-fluid" alt="Comparison Chart">
 </blockquote>
 </section>
 <section id="docker" class="level3">
@@ -295,7 +289,7 @@ ga('send', {
 <h3 class="anchored" data-anchor-id="docker-kitematic">Docker + Kitematic</h3>
 <p>After you have ‘dockerized’ your <code>Shiny</code> application, you can share it on <code>Kitematic</code>. <code>Kitematic</code> is a GUI where users can upload and download <code>Docker</code> images to run it in their <code>Docker</code> containers. This makes distributing very simple and easy as <code>Docker Hub</code> can work like <code>App Store</code>! Below is a snapshot of Kitematic.</p>
 <blockquote class="blockquote">
-<img src="{{ site.baseurl }}/assets/img/2015-12-08kitematic.jpg" class="img-fluid" alt="Snapshot of Kitematic">
+<img src="../assets/img/2015-12-08kitematic.jpg" class="img-fluid" alt="Snapshot of Kitematic">
 </blockquote>
 <p><em>Refer to <a href="https://www.r-bloggers.com/share-your-shiny-apps-with-docker-and-kitematic/">this blog post</a> to learn how you can share your <code>Shiny</code> application with <code>Docker</code> and <code>Kitematic</code></em></p>
 </section>
