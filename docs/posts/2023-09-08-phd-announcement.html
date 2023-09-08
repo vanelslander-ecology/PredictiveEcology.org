@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Alex Chubaty and Eliot McIntire">
-<meta name="dcterms.date" content="2015-08-10">
+<meta name="author" content="Ceres Barros">
+<meta name="dcterms.date" content="2023-09-08">
 
-<title>Predictive Ecology Community - Introducing SpaDES: R Package for Spatial Discrete Event Simulation</title>
+<title>Predictive Ecology Community - PhD position in Ecological Modelling: drought impacts on British Columbia’s forests</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -188,7 +154,7 @@ ga('send', {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Introducing <code>SpaDES</code>: R Package for Spatial Discrete Event Simulation</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">PhD position in Ecological Modelling: drought impacts on British Columbia’s forests</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -198,10 +164,14 @@ ga('send', {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Introducing <code>SpaDES</code>: R Package for Spatial Discrete Event Simulation</h1>
+      <h1 class="title">PhD position in Ecological Modelling: drought impacts on British Columbia’s forests</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">R</div>
-                <div class="quarto-category">SpaDES</div>
+                <div class="quarto-category">LandR</div>
+                <div class="quarto-category">PhD project</div>
+                <div class="quarto-category">drought</div>
+                <div class="quarto-category">climate change</div>
+                <div class="quarto-category">dynamic modelling</div>
               </div>
                   </div>
   </div>
@@ -212,14 +182,14 @@ ga('send', {
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>Alex Chubaty and Eliot McIntire </p>
+               <p>Ceres Barros </p>
             </div>
     </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">August 10, 2015</p>
+        <p class="date">September 8, 2023</p>
       </div>
     </div>
     
@@ -245,58 +215,27 @@ ga('send', {
 
 
 
-<blockquote class="blockquote">
-<p>v1.0.1 is now available on <a href="https://cran.r-project.org/package=SpaDES">CRAN</a>!</p>
-</blockquote>
-<p>Building spatial simulation models often involves reusing various model components, often having to re-implement similar functionality in multiple simulation frameworks (<em>i.e</em>, in different programming languages). When various components of a simulation model become fragmented across multiple platforms, it becomes increasingly difficult to link these various components, and often solutions for this problem are idiosyncratic and specific to the model being implemented. As a result, developing general insights into complex computational models has, in the field of ecology at least, been hampered by modellers’ typically developing models from scratch (Thiele, 2015).</p>
-<p><code>SpaDES</code> is a generic simulation platform that can be used to create new model components quickly. It also provides a framework to link with existing simulation models, so that an already well described and mature model, <em>e.g.</em>, Landis-II (Scheller, 2007), can be used with <em>de novo</em> components. Alternatively one could use several <em>de novo</em> models and several existing models in combination. This approach requires a platform that allows for modular reuse of model components (herein called ‘modules’) as hypotheses that can be evaluated and tested in various ways, as advocated by Thiele (2015).</p>
-<p><code>SpaDES</code> makes it easy to implement a variety of simulation models including raster-based, event-based, and agent-based models. The core simulation components are built upon a discrete event simulation framework that facilitates modularity, and easily enables the user to include additional functionality by running user-built simulation modules. Included are numerous tools to rapidly visualize raster and other maps.</p>
-<p>When beginning development of this package, we sought a general simulation platform at least the following characteristics:</p>
-<ol type="1">
-<li>Allow rapid building of models of a wide diversity of types (<em>e.g.</em>, agent-based models, raster models, differential equation models);</li>
-<li>Run faster and more memory efficiently than current systems for doing similar things (<em>e.g.</em>, NetLogo (Wilensky, 1999), SELES (Fall &amp; Fall, 2001));</li>
-<li>Use a platform that already has strong data analysis, manipulation, and visualization capacities;</li>
-<li>Be open source, but also make it as easy as possible for many people to easily contribute modules and code;</li>
-<li>Be easy to use for a large number of scientists who aren’t formally trained as computer programmers or have limited programming experience;</li>
-<li>Should be built around modularity so that models can be seen as modules that are easily replaceable, not just ‘in theory’ replaceable;</li>
-<li>Allow tight coupling between data and model simulations so that the entire work flow from raw data to result generation or even report generation is not actually something that one has to redesign every time there is a new data set.</li>
-</ol>
-<p>We selected <code>R</code> as the system within which to build <code>SpaDES</code>. <code>R</code> is currently the <em>lingua franca</em> for scientific data analysis. This means that anything developed in <code>SpaDES</code> is simply <code>R</code> code and can be easily shared with journals and the scientific community. We can likewise leverage <code>R</code>’s strengths as a data platform, its excellent visualization and graphics, its capabilities to run external code such as <code>C</code>/<code>C++</code> and easily interact external software such as databases, and its abilities for high performance computing. <code>SpaDES</code> therefore doesn’t need to implement all of these from scratch, as they are achievable with already existing <code>R</code> packages.</p>
-<section id="getting-started" class="level2">
-<h2 class="anchored" data-anchor-id="getting-started">Getting started</h2>
-<section id="installation" class="level3">
-<h3 class="anchored" data-anchor-id="installation">Installation</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install `SpaDES` from CRAN</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"SpaDES"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># install suggested package `fastshp`</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#  (requires development tools, e.g. Rtools)</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"fastshp"</span>, <span class="at">repos=</span><span class="st">"https://rforge.net"</span>, <span class="at">type=</span><span class="st">"source"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="documentation" class="level3">
-<h3 class="anchored" data-anchor-id="documentation">Documentation</h3>
-<p><strong>Vignettes:</strong></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">browseVignettes</span>(<span class="at">package=</span><span class="st">"SpaDES"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Website:</strong></p>
-<p><a href="https://SpaDES.PredictiveEcology.org">https://SpaDES.PredictiveEcology.org</a></p>
-<p><strong>Wiki:</strong></p>
-<p><a href="https://github.com/PredictiveEcology/SpaDES/wiki">https://github.com/PredictiveEcology/SpaDES/wiki</a></p>
-</section>
-</section>
-<section id="reporting-bugs" class="level2">
-<h2 class="anchored" data-anchor-id="reporting-bugs">Reporting bugs</h2>
-<p>Contact us via the package GitHub site: <a href="https://github.com/PredictiveEcology/SpaDES/issues">https://github.com/PredictiveEcology/SpaDES/issues</a>.</p>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<p>Fall, A., &amp; Fall, J. (2001). A domain-specific language for models of landscape dynamics. Ecological Modelling, 141, 1–18.</p>
-<p>Scheller, R. M., Domingo, J. B., Sturtevant, B. R., Williams, J. S., Rudy, A., Gustafson, E. J., &amp; Mladenoff, D. J. (2007). Design, development, and application of LANDIS-II, a spatial landscape simulation model with flexible temporal and spatial resolution. Ecological Modelling, 201, 409–419. <a href="https://dx.doi.org/10.1016/j.ecolmodel.2006.10.009">doi:10.1016/j.ecolmodel.2006.10.009</a></p>
-<p>Thiele, J. C., &amp; Grimm, V. (2015). Replicating and breaking models: good for you and good for ecology. Oikos. <a href="https://dx.doi.org/10.1111/oik.02170">doi:10.1111/oik.02170</a></p>
-<p>Wilensky, U. (1999). NetLogo. Evanston, IL: Center for Connected Learning and Computer-Based Modeling, Northwestern University. <a href="https://ccl.northwestern.edu/netlogo">https://ccl.northwestern.edu/netlogo</a></p>
+<p>The interior forests of British Columbia (BC) are at particular risk from changes in drought regimes accompanying climate changes. Several tree species in interior BC may already be close to their drought tolerance limits, and further increases in drought intensity and severity could directly and indirectly (via pests, disease and fire) impact tree recruitment, growth and background mortality. This will likely lead to important changes in forest composition and structure, as well as ecosystem services such as carbon retention and timber supply. Despite mounting evidence of drought effects on interior BC forests, the degree to which they will directly and indirectly influence forests and their ecosystem services is unknown across large landscape scales, given the combined stochasticity of drought and non-drought disturbances (e.g.&nbsp;fire) and climate uncertainty.</p>
+<p>We are looking for a highly motivated enthusiastic and independent person to embark on a 4-year ecological modelling PhD focused on forecasting drought regimes and their impacts on forest dynamics and forest ecosystem services in BC. In particular, the project is aimed at 1) developing a drought effects module for the forest landscape model LandR (Barros et al.&nbsp;2023 Methods Ecol. Evol.; see also Micheletti et al.&nbsp;2021 Front. Ecol. Evol.); 2) parameterising direct drought effects on tree species growth and mortality from available empirical data; and 3) simulating forest dynamics under the effects of drought, fire and climate warming and how they translate into changes in ecosystem services.</p>
+<p>Candidates for this position should have:</p>
+<ul>
+<li><p>An MSc degree in ecology, forestry, environmental sciences or a related field with a strong interest in applied statistics and ecological mechanistic modelling, or an MSc degree in statistics, mathematics, data sciences, or physics with a strong interest in ecological applications</p></li>
+<li><p>Solid background knowledge of statistical methods applied to ecological questions</p></li>
+<li><p>Experience in programming in R, or a similar programming language (e.g.&nbsp;Python)</p></li>
+<li><p>Experience and/or background knowledge of ecological modelling using statistical and mechanistic approaches</p></li>
+<li><p>Oral and written fluency in English</p></li>
+<li><p>Ability to contribute to a positive environment in an inclusive and diverse team</p></li>
+</ul>
+<p>The position will be based at the University of British Columbia, Vancouver campus, with periods spent at the Ministry of Forests in Victoria.</p>
+<p>In our team, we strive to create a positive and safe work environment. We believe that diverse backgrounds are essential for academic excellence. We therefore encourage applications from members of underrepresented groups.</p>
+<p>To apply, please e-mail a one page statement describing your motivation to carry out a PhD project on this topic, a current <em>curriculum vitae</em>, copies of your academic transcripts and contact information for two academic references, using “Application: Ecological Modelling PhD, UBC” as the e-mail subject. Send your e-mail to:</p>
+<p>ignacio[dot]barbeito[at]ubc[dot]ca</p>
+<p>ceres[dot]barros[at]gov[dot]bc[dot]ca</p>
+<p>The deadline for applications is September 30th 2023. Start date is flexible and expected to be by no later than May 1st 2024.</p>
+<p>Feel free to send inquiries about this position.</p>
+<p>While we thank all candidates for applying, only short-listed candidates will be contacted for interviews.</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
