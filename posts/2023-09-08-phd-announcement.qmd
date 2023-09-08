@@ -1,0 +1,55 @@
+---
+title: "PhD position in Ecological Modelling: drought impacts on British Columbia's forests"
+author: "Ceres Barros"
+date: "September 8, 2023"
+categories:
+  - R
+  - LandR
+  - PhD project
+  - drought
+  - climate change
+  - dynamic modelling
+comments: false
+---
+
+The interior forests of British Columbia (BC) are at particular risk from changes in drought regimes accompanying climate changes.
+Several tree species in interior BC may already be close to their drought tolerance limits, and further increases in drought intensity and severity could directly and indirectly (via pests, disease and fire) impact tree recruitment, growth and background mortality.
+This will likely lead to important changes in forest composition and structure, as well as ecosystem services such as carbon retention and timber supply.
+Despite mounting evidence of drought effects on interior BC forests, the degree to which they will directly and indirectly influence forests and their ecosystem services is unknown across large landscape scales, given the combined stochasticity of drought and non-drought disturbances (e.g. fire) and climate uncertainty.
+
+We are looking for a highly motivated enthusiastic and independent person to embark on a 4-year ecological modelling PhD focused on forecasting drought regimes and their impacts on forest dynamics and forest ecosystem services in BC.
+In particular, the project is aimed at 1) developing a drought effects module for the forest landscape model LandR (Barros et al. 2023 Methods Ecol. Evol.; see also Micheletti et al. 2021 Front. Ecol. Evol.); 2) parameterising direct drought effects on tree species growth and mortality from available empirical data; and 3) simulating forest dynamics under the effects of drought, fire and climate warming and how they translate into changes in ecosystem services.
+
+Candidates for this position should have:
+
+-   An MSc degree in ecology, forestry, environmental sciences or a related field with a strong interest in applied statistics and ecological mechanistic modelling, or an MSc degree in statistics, mathematics, data sciences, or physics with a strong interest in ecological applications
+
+-   Solid background knowledge of statistical methods applied to ecological questions
+
+-   Experience in programming in R, or a similar programming language (e.g. Python)
+
+-   Experience and/or background knowledge of ecological modelling using statistical and mechanistic approaches
+
+-   Oral and written fluency in English
+
+-   Ability to contribute to a positive environment in an inclusive and diverse team
+
+The position will be based at the University of British Columbia, Vancouver campus, with periods spent at the Ministry of Forests in Victoria.
+
+In our team, we strive to create a positive and safe work environment.
+We believe that diverse backgrounds are essential for academic excellence.
+We therefore encourage applications from members of underrepresented groups.
+
+To apply, please e-mail a one page statement describing your motivation to carry out a PhD project on this topic, a current *curriculum vitae*, copies of your academic transcripts and contact information for two academic references, using "Application: Ecological Modelling PhD, UBC" as the e-mail subject.
+Send your e-mail to:
+
+ignacio\[dot\]barbeito\[at\]ubc\[dot\]ca
+
+ceres\[dot\]barros\[at\]gov\[dot\]bc\[dot\]ca
+
+The deadline for applications is September 30th 2023.
+Start date is flexible and expected to be by no later than May 1st 2024.
+
+Feel free to send inquiries about this position.
+
+While we thank all candidates for applying, only short-listed candidates will be contacted for interviews.
