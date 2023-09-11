@@ -4,4 +4,6 @@ permalink: /workshops/
 comments: false
 ---
 
-For a current list of workshops, see <https://spades-workshops.predictiveecology.org/>.
+
+
+For older workshops (prior to 2021, see <https://spades-workshops.predictiveecology.org/>).

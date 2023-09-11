@@ -1,0 +1,10 @@
+---
+title: 'News'
+permalink: /News/
+comments: false
+---
+
+## Latest news
+
+::: {#posts-listings}
+:::
