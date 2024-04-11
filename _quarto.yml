@@ -16,7 +16,6 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
-      - software.qmd
       - SpaDES.qmd
       - Workshops.qmd
       - publications.qmd
