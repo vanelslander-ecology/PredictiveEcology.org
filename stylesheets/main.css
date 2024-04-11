@@ -1,9 +1,0 @@
-td {
-  width: 50% ;
-}
-
-@media(max-width: 480px) {
-  td {
-    display: table-row;
-  }
-}
