@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Alex Chubaty">
-<meta name="dcterms.date" content="2016-10-21">
 
-<title>Predictive Ecology Community - Rmarkdown in a scientific workflow</title>
+<title>Predictive Ecology Community - Tutorials</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,25 +23,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../assets/logo/favicon-32x32.png" rel="icon" type="image/png">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./assets/logo/favicon-32x32.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -80,7 +78,7 @@ ga('send', {
 <style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="../assets/css/main.scss">
+<link rel="stylesheet" href="assets/css/main.scss">
 </head>
 
 <body class="nav-sidebar floating nav-fixed fullcontent">
@@ -90,10 +88,10 @@ ga('send', {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../assets/logo/favicon-196x196.png" alt="" class="navbar-logo">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./assets/logo/favicon-196x196.png" alt="" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Predictive Ecology Community</span>
     </a>
   </div>
@@ -104,29 +102,29 @@ ga('send', {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../index.html" rel="" target="" aria-current="page">
+    <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html" rel="" target="">
+    <a class="nav-link" href="./about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="dropdown-header">
  <span class="menu-text">software.qmd</span></li>
   <li class="nav-item">
-    <a class="nav-link" href="../SpaDES.html" rel="" target="">
+    <a class="nav-link" href="./SpaDES.html" rel="" target="">
  <span class="menu-text">SpaDES</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Workshops.html" rel="" target="">
+    <a class="nav-link" href="./Workshops.html" rel="" target="">
  <span class="menu-text">Workshops</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../publications.html" rel="" target="">
+    <a class="nav-link" href="./publications.html" rel="" target="">
  <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../presentations.html" rel="" target="">
+    <a class="nav-link" href="./presentations.html" rel="" target="">
  <span class="menu-text">Presentations</span></a>
   </li>  
   <li class="nav-item compact">
@@ -151,47 +149,19 @@ ga('send', {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Rmarkdown in a scientific workflow</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Tutorials</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">Rmarkdown in a scientific workflow</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>Alex Chubaty </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">October 21, 2016</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
-      <a href="../index.html" class="sidebar-logo-link">
-      <img src="../assets/logo/favicon-196x196.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./assets/logo/favicon-196x196.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       </div>
 </nav>
@@ -199,68 +169,27 @@ ga('send', {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Tutorials</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<p>Using <a href="https://rmarkdown.rstudio.com/"><code>Rmarkdown</code></a> with <a href="https://www.rstudio.com/products/rstudio">Rstudio</a> and for all stages of my scientific projects has been a remarkable shift in how my work gets done! There are so many advantages to this type of workflow, not least of which are reproducibility and transparency (both are crucial for scientists as well as public servants). I’ve been using this approach as much as possible recently, and I’m quite happy with it. The entire process can be done using <code>Rmarkdown</code> etc. but there are still a few challenges which I’ll touch on below.</p>
-<section id="what-is-rmarkdown" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-rmarkdown">What is <code>Rmarkdown</code>?</h2>
-<p>The folks behind the RStudio IDE have completely changed how a majority of R users work with and program in R. Not only have they provided an exceptional IDE for working with and debugging R code, Rstudio also includes a number of important features that facilitate project management, package management, interactive graphics, and dynamic document generation.</p>
-<p>This is where <code>Rmarkdown</code> come in.</p>
-<p><code>Rmarkdown</code> documents allow you to combine your “data, code, and narrative” in a single file, similar to project notebooks in MatLab, Mathematica, and others. This facilitates the integration of project development, data analyses, and report writing. Each of the components of your project can be tied together and, crucially, easily rerun when data are updated or changes need to be made to other steps in the research workflow.</p>
-<p><code>Rmarkdown</code> files follow the <a href="https://daringfireball.net/projects/markdown/"><code>markdown</code></a> mark up language, which is designed to be both human and machine readable. Although you edit <code>.Rmd</code> files in text form, the files are converted to their ‘final’ format (<code>.pdf</code>, <code>.html</code>, etc.) using the <a href="https://yihui.name/knitr/"><code>knitr</code></a> package and <a href="pandoc.org"><code>pandoc</code></a>. It is very easy to incorporate text, images, equations, code, etc. into <code>.Rmd</code> files which can then be rendered in a wide variety of file formats.</p>
-<p>Importantly, because <code>Rmarkdown</code> files (<code>.Rmd</code>) are text files, they are easily incorporated into a <code>git</code> or other version control system. This further enhances the utility of <code>Rmarkdown</code> for scientific projects because with version control, one can see the evolution of a project from start to finish.</p>
-</section>
-<section id="using-rmarkdown-throughout-the-scientific-workflow" class="level2">
-<h2 class="anchored" data-anchor-id="using-rmarkdown-throughout-the-scientific-workflow">Using <code>Rmarkdown</code> throughout the scientific workflow</h2>
-<section id="initial-project-conception" class="level3">
-<h3 class="anchored" data-anchor-id="initial-project-conception">Initial project conception</h3>
-<p>Most (all?) researchers maintain a project notebook of some type to track the development of their projects. These notebooks are crucial for accountability and tracking project history and progress, and are invaluable references during the final stages of a project (<em>i.e.</em>, writing manuscripts). Text, code, equations, and data can all be maintained in an <code>.Rmd</code> file. Handwritten project sketches and notes can also be digitized for inclusion.</p>
-</section>
-<section id="data-analyses" class="level3">
-<h3 class="anchored" data-anchor-id="data-analyses">Data analyses</h3>
-<p>This is where most discussion about using <code>Rmarkdown</code> occurs. R code is run and the output of analyses can be directly inserted into the text narrative, as inline results, separate code blocks, tables, and figures. This makes rerunning things a breeze, and can be used to generate dynamic reports.</p>
-<p>Using version control, you don’t have to worry about maintaining old code and commenting it out as the project matures – just delete it (it’s still available in the version control history). This means you can always keep your <code>.Rmd</code> files up to date and ready to share with collaborators (or reviewers).</p>
-<p>One important additional note: <code>knitr</code> supports caching of <code>Rmarkdown</code> code blocks, which means you don’t need to rerun all analyses when updating a report.</p>
-</section>
-<section id="collaboration" class="level3">
-<h3 class="anchored" data-anchor-id="collaboration">Collaboration</h3>
-<p>I use a collaborative workflow using R, <code>Rmarkdown</code>, and <a href="https://github.com">GitHub</a>. However, most of my colleagues do not. This has been the most difficult challenge to overcome. How do I convince people to 1) adopt an open and reproducible workflow (<em>e.g.</em>, use <code>Rmarkdown</code> instead of MS Word), and 2) use version control (<em>i.e.</em>, <code>git</code>)?</p>
-<p>In many cases, after spending some time with my colleagues to highlight the advantages and teach them how to use the tools, they are happily converted. However, even with most collaborators adopting this workflow, if even a single one doesn’t it can add additional work to my plate.</p>
-<p>Currently, I’ll push changes to the project’s GitHub repository, usually tagging my collaborators in the relevant commit messages for them to take a look. I’ll also send an email (with the current version attached) and solicit feedback via GitHub.</p>
-<p>For my collaborators using GitHub regularly, it’s easy – they make changes, we merge, and rebuild the documents as needed. But I still get emails back with a modified / annotated version of the file I sent out, which means I need to be the one to manually make changes and push them to GitHub. Getting (late) feedback on an old version of a draft sent out by email when the current GitHub version has seen substantial changes is even more frustrating to deal with. Annoying, but not the end of the world.</p>
-<p>I’m not discouraged! The time spend incorporating changes is mostly about copy-paste into the current version – no different than my old workflow using MS Word. I think the time saved in other parts of the workflow make up for the additional time spent here.</p>
-<p>I’m looking forward to more of my colleagues using <code>.Rmd</code> files, though I note that currently there is no good way of annotating documents. One method is to add text directly, which appears in the final rendered document. Another is to use HTML-style comments (<code>&lt;!-- comments go here --&gt;</code>) in the <code>.Rmd</code> file which will not appear in the final rendered document. <em>Edit</em>: Using GitHub directly to comment on specific lines within a commit can also work reasonably well, but you don’t get all annotations from multiple versions in a single location.</p>
-</section>
-<section id="publication" class="level3">
-<h3 class="anchored" data-anchor-id="publication">Publication</h3>
-<p>This one is improving everyday. Basic article publication tools are already included with Rstudio and <code>RMarkdown</code> (including <a href="https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html">citations</a>); however, for more advanced formatting there are other packages like <a href="https://cran.r-project.org/package=rticles"><code>rticles</code></a> (which I’m using for my current manuscripts) and <a href="https://bookdown.org/"><code>bookdown</code></a> for book formatting. As a fallback, you can adopt HTML and LaTeX markup in your <code>.Rmd</code> files, and use additional CSS or LaTeX templates as needed.</p>
-<p>Owing to the long history of TeX in scientific publications, most journals not only accept <code>.tex</code> file submissions but also provide the necessary templates (some of these are included with the <code>rticles</code> package), and citation style (<code>.csl</code>) files can be downloaded from <a href="https://www.zotero.org/styles">https://www.zotero.org/styles</a>.</p>
-</section>
-<section id="communication" class="level3">
-<h3 class="anchored" data-anchor-id="communication">Communication</h3>
-<section id="email" class="level4">
-<h4 class="anchored" data-anchor-id="email">Email</h4>
-<p>One of the major selling points of markdown is that it’s a human-readable markup language (contrast against LaTeX or HTML). In principle, you can use markdown formatting for emails but most email programs will render them as text unless your recipient has a markdown converter (there are a few for <em>e.g.</em>, Gmail).</p>
-</section>
-<section id="blogs" class="level4">
-<h4 class="anchored" data-anchor-id="blogs">Blogs</h4>
-<p>Most blogging platforms support markdown (by default or with additional plugins). This blog renders the markdown files (generated from <code>.Rmd</code> files) we upload into HTML format with all the appropriate syntax highlighting, etc. It’s a phenomenal way to create content locally and render the results reliably on a blog.</p>
-</section>
-</section>
-</section>
-<section id="final-thoughts" class="level2">
-<h2 class="anchored" data-anchor-id="final-thoughts">Final thoughts</h2>
-<p>How successful have I been? I firmly believe that adopting this new workflow has improved productivity as well as the calibre of the work I do. Especially over the medium to long term. Additionally, adopting a reproducible workflow not only improves scientific transparency and accountability, but it has enhanced the <em>reusability</em> of my work. Copying and pasting code from old projects actually works the first time – because I’m tracking these old projects using ‘living documentation’ that includes everything needed to run the code again: data, scripts, and associated explanations.</p>
-<p>It’s worth the effort, and I encourage you to start using <code>Rmarkdown</code>.</p>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
-<p>Gandrud, C. (2015). Reproducible Research with R and RStudio, 2nd edn. Chapman and Hall/CRC Press. <a href="https://github.com/christophergandrud/Rep-Res-Book">https://github.com/christophergandrud/Rep-Res-Book</a></p>
-<p>Ram, K. (2013). Git can facilitate greater reproducibility and increased transparency in science. Source Code for Biology and Medicine, 8(1), 7. <a href="https://doi.org/10.1186/1751-0473-8-7">https://doi.org/10.1186/1751-0473-8-7</a></p>
-<p>Wilson, G., Aruliah, D. A., Brown, C. T., Chue Hong, N. P., Davis, M., Guy, R. T., … Wilson, P. (2014). Best practices for scientific computing. PLoS Biology, 12(1), e1001745. <a href="https://doi.org/10.1371/journal.pbio.1001745">https://doi.org/10.1371/journal.pbio.1001745</a></p>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="todo" class="level2">
+<h2 class="anchored" data-anchor-id="todo">TODO</h2>
 
 
 </section>
@@ -649,5 +578,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

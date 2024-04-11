@@ -1,5 +1,5 @@
 ---
-title: "Predictive Ecology Community"
+title: "PEWebsite"
 listing:
   contents: posts
   sort: "date desc"
@@ -14,7 +14,9 @@ comments: false
 
 Welcome to the website of the Predictive Ecology Community\
 
+We are updating these pages over the next weeks; please stay tuned.
 
-## PERFICT
+## Latest news
 
-We are updating these pages over the next days; please stay tuned.
+::: {#posts-listings}
+:::
