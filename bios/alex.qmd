@@ -1,0 +1,20 @@
+---
+title: "Dr Alex Chubaty"
+name: "Alex Chubaty"
+image: https://friresearch.ca/sites/default/files/styles/fri_people_large/public/user-pictures/HLP_2018_07_alex-chubaty-headshot_web.jpg
+comments: false
+about: 
+  id: alex
+  template: solana
+  image: https://friresearch.ca/sites/default/files/styles/fri_people_large/public/user-pictures/HLP_2018_07_alex-chubaty-headshot_web.jpg
+  image-shape: rounded
+  links: 
+    - icon: globe
+      text: webpage
+      href: https://alexchubaty.com
+---
+
+::: {#alex}
+(Postdoctoral Fellow 2017)
+:::
+

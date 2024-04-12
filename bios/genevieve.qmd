@@ -1,0 +1,21 @@
+---
+title: "Geneviève Degré-Timmons"
+name: "Geneviève Degré-Timmons"
+image: https://i1.rgstatic.net/ii/profile.image/11431281175709732-1689860714934_Q128/Genevieve-Degre-Timmons.jpg
+comments: false
+about: 
+  id: genevieve
+  template: solana
+  image: https://i1.rgstatic.net/ii/profile.image/11431281175709732-1689860714934_Q128/Genevieve-Degre-Timmons.jpg
+  image-shape: rounded
+  links: 
+    - icon: globe
+      text: webpage
+      href: https://www.researchgate.net/profile/Genevieve-Degre-Timmons
+---
+
+::: {#genevieve}
+(PhD Student 2021 - )
+
+Geneviève is working on questions related to lichen and caribou in Northwest Territories. A student at Laval University. \|
+:::

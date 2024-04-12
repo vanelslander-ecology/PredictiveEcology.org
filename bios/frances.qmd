@@ -1,0 +1,19 @@
+---
+title: "Dr Frances Stewart"
+name: "Frances Stewart"
+image: http://www.stewartresearch.ca/uploads/4/5/7/0/45702893/resized-20190127-151146_orig.jpg
+comments: false
+about: 
+  id: frances
+  template: solana
+  image: http://www.stewartresearch.ca/uploads/4/5/7/0/45702893/resized-20190127-151146_orig.jpg
+  image-shape: rounded
+  links: 
+    - icon: globe
+      text: webpage
+      href: https://www.stewartresearch.ca/
+---
+
+::: {#frances}
+(Postdoctoral Fellow 2019-2021)
+:::

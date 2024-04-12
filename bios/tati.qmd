@@ -1,0 +1,24 @@
+---
+title: "Dr Tati Micheletti"
+name: "Tati Micheletti"
+image: https://avatars.githubusercontent.com/u/33500569?v=4
+comments: false
+about: 
+  id: tati
+  template: solana
+  image: https://avatars.githubusercontent.com/u/33500569?v=4
+  image-shape: rounded
+  links: 
+    - icon: globe
+      text: webpage
+      href: http://micheletti.science/?i=1
+    - icon: github
+      text: GitHub
+      href: https://github.com/tati-micheletti/
+---
+
+::: {#tati}
+
+Tati is our "integrator", asking questions about managing land in Canada when there are multiple, conflicting management pressures. She has been specializing in SpaDES model development, bird and caribou forecasting, protected areas optimization, and trade-offs/synergies across disciplines.
+
+:::
