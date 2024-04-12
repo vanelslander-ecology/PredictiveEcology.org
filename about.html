@@ -31,10 +31,11 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./assets/logo/favicon-32x32.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
@@ -69,6 +70,91 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-current-personnel .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-image','listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-current-personnel'] = new List('listing-current-personnel', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-research-professional .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-image','listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-research-professional'] = new List('listing-research-professional', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-former-personnel .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-image','listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-former-personnel'] = new List('listing-former-personnel', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 
 <script type="text/javascript">
 
@@ -85,6 +171,35 @@ ga('send', {
 </script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="assets/css/main.scss">
 </head>
@@ -175,186 +290,418 @@ ga('send', {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+
+
+
+<div class="quarto-about-solana content page-columns page-full">
+  <div class="about-entity page-columns page-full">
+    <div class="entity-contents page-columns page-full">
+      <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">About</h1>
 </div>
-
-
-
 <div class="quarto-title-meta">
-
-    
-  
-    
   </div>
-  
-
-
-</header>
-
-
-<section id="predictive-ecology-community" class="level3">
-<h3 class="anchored" data-anchor-id="predictive-ecology-community">Predictive Ecology Community</h3>
+</header> <div class="about-links">
+  <a href="https://predictiveecology.org/" class="about-link" rel="" target="">
+    <i class="bi bi-globe"></i>
+     <span class="about-link-text">Predictive Ecology Blog</span>
+  </a>
+  <a href="https://github.com/PredictiveEcology" class="about-link" rel="" target="">
+    <i class="bi bi-github"></i>
+     <span class="about-link-text">GitHub</span>
+  </a>
+</div>
+      <div class="about-contents page-columns page-full"><div id="about" class="page-columns page-full">
+<section id="predictive-ecology-community" class="level3 page-columns page-full">
+<h3 data-anchor-id="predictive-ecology-community">Predictive Ecology Community</h3>
 <p>We are located in Victoria, British Columbia, Canada, at the Pacific Forestry Centre. Several lab members are students through Université Laval and are based out of Québec City.</p>
-<section id="eliot-mcintire" class="level4">
-<h4 class="anchored" data-anchor-id="eliot-mcintire">Eliot McIntire</h4>
-<div style="float:right; padding:0px 0px 10px 50px;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="assets/img/people/EliotMcIntire.jpg" class="img-fluid figure-img" width="250"></p>
+<section id="eliot-mcintire" class="level4 page-columns page-full">
+<h4 data-anchor-id="eliot-mcintire">Eliot McIntire</h4>
+<div style="float:right; padding:0px 0px 10px 50px;" class="page-columns page-full">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p class="page-columns page-full"><img src="assets/img/people/EliotMcIntire.jpg" class="img-fluid figure-img column-body" width="250"></p>
 <figcaption>Eliot McIntire</figcaption>
 </figure>
 </div>
 </div>
 <p><strong>Research Scientist, <a href="www.nrcan.gc.ca/home">Natural Resources Canada</a></strong><br>
 <strong>Adjunct Professor, <a href="www.ubc.ca">University of British Columbia</a> &amp; <a href="www.ulaval.ca">Université Laval</a></strong></p>
-<div>
 <p>My research interests lie in applied ecology, conservation and forecasting of a broad array of ecosystems and species. Specifically, I am interested in using modern quantitative techniques to understand the natural complexity of ecosystems, and ultimately, to allow forecasting of organisms and ecosystem processes. I use a variety of quantitative techniques, including Hierarchical Bayes, Spatial Analysis, Landscape Simulation Modeling, Structural Equation Modeling, and Non-Linear Models to achieve the best ecological inference from ecological data. Through each of the systems I study, I strive to understand the ecological processes and to test this understanding by forecasting.</p>
+<p><a href="https://spades.predictiveecology.org">SpaDES</a></p>
+</section>
+</section>
+</div></div>
+    </div>
+    <img src="assets/logo/favicon-96x96.png" class="about-image
+  rounded " style="width: 15em;">
+  </div>
 </div>
-<p><a href="https://predictiveecology.org/">Predictive Ecology Blog</a> <a href="https://github.com/PredictiveEcology">Predictive Ecology on GitHub</a> <a href="https://spades.predictiveecology.org">SpaDES</a></p>
-</section>
-</section>
+
 <section id="current-personnel" class="level3">
-<h3 class="anchored" data-anchor-id="current-personnel">Current Personnel</h3>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://avatars.githubusercontent.com/u/33500569?v=4.png" class="img-fluid figure-img" width="232"></p>
-<figcaption>Tati Micheletti</figcaption>
-</figure>
+<h3 data-anchor-id="current-personnel">Current Personnel</h3>
+<div id="listing-current-personnel" class="quarto-listing quarto-listing-container-default">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-left" data-index="0" data-listing-file-modified-sort="1712900118889" data-listing-reading-time-sort="1" data-listing-word-count-sort="32">
+<div class="thumbnail">
+<p><a href="./bios/ana.html" class="no-external"></a></p><a href="./bios/ana.html" class="no-external">
+<p><img src="https://borealbirds.ca/wp-content/uploads/2022/06/AnaRaymundo-430x524.jpg.webp" class="thumbnail-image" style="height: 250px;"></p>
+</a><p><a href="./bios/ana.html" class="no-external"></a></p>
 </div>
-<p><a href="https://github.com/tati-micheletti/">Dr.&nbsp;Tatiane Micheletti</a> (Postdoctoral Fellow 2018-) Tati is our “integrator”, asking questions about managing land in Canada when there are multiple, conflicting management pressures. She has been specializing in SpaDES model development, bird and caribou forecasting, protected areas optimization, and tradeoffs/synergies across disciplines.</p></td>
-<td><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://borealbirds.ca/wp-content/uploads/2022/06/AnaRaymundo-430x524.jpg.webp" class="img-fluid figure-img" width="190"></p>
-<figcaption>Ana Raymundo</figcaption>
-</figure>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./bios/ana.html" class="no-external">Ana Raymundo</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./bios/ana.html" class="no-external"></a>
 </div>
-<p><a href="https://borealbirds.ualberta.ca/2019/07/11/ana-raymundo/">Ana Raymundo</a> (PhD Student 2018-) Ana is working on questions related to forestry and birds across Canada. A student at Laval University, she is currently in Victoria learning the SpaDES ecosystem.</p></td>
-</tr>
-<tr class="even">
-<td><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://borealbirds.ca/wp-content/uploads/2022/06/Isolde-Lane-Shaw-upscale-2-430x524.jpg.webp" class="img-fluid figure-img" width="190"></p>
-<figcaption>Isolde Lane Shaw</figcaption>
-</figure>
+<div class="listing-description">
+<a href="./bios/ana.html" class="no-external">(PhD Student 2018 - )</a>
 </div>
-<p><a href="https://borealbirds.ualberta.ca/2019/07/11/isolde-lane-shaw/">Isolde Lane Shaw</a> (PhD Student 2018-)</p></td>
-<td><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.wlu.ca/academics/research/reports/gnwt-report/assets/images/profiles/genevieve-degre-timmons.jpg" class="img-fluid figure-img" width="232"></p>
-<figcaption>Geneviève Degré-Timmons</figcaption>
-</figure>
 </div>
-<p><a href="https://www.researchgate.net/profile/Genevieve-Degre-Timmons">Geneviève Degré-Timmons</a> (MSc Student 2021-) Geneviève is working on questions related to lichen and caribou in Northwest Territories. A student at Laval University.</p></td>
-</tr>
-</tbody>
-</table>
+<div class="metadata">
+<p><a href="./bios/ana.html" class="no-external"></a></p><a href="./bios/ana.html" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-left" data-index="1" data-listing-file-modified-sort="1712900118889" data-listing-reading-time-sort="1" data-listing-word-count-sort="24">
+<div class="thumbnail">
+<p><a href="./bios/genevieve.html" class="no-external"></a></p><a href="./bios/genevieve.html" class="no-external">
+<p><img src="https://i1.rgstatic.net/ii/profile.image/11431281175709732-1689860714934_Q128/Genevieve-Degre-Timmons.jpg" class="thumbnail-image" style="height: 250px;"></p>
+</a><p><a href="./bios/genevieve.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./bios/genevieve.html" class="no-external">Geneviève Degré-Timmons</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./bios/genevieve.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./bios/genevieve.html" class="no-external">(PhD Student 2021 - )</a>
+</div>
+</div>
+<div class="metadata">
+<p><a href="./bios/genevieve.html" class="no-external"></a></p><a href="./bios/genevieve.html" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-left" data-index="2" data-listing-file-modified-sort="1712900118889" data-listing-reading-time-sort="1" data-listing-word-count-sort="12">
+<div class="thumbnail">
+<p><a href="./bios/isolde.html" class="no-external"></a></p><a href="./bios/isolde.html" class="no-external">
+<p><img src="https://borealbirds.ca/wp-content/uploads/2022/06/Isolde-Lane-Shaw-upscale-2-430x524.jpg.webp" class="thumbnail-image" style="height: 250px;"></p>
+</a><p><a href="./bios/isolde.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./bios/isolde.html" class="no-external">Isolde Lane Shaw</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./bios/isolde.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./bios/isolde.html" class="no-external">(PhD Student 2018 - )</a>
+</div>
+</div>
+<div class="metadata">
+<p><a href="./bios/isolde.html" class="no-external"></a></p><a href="./bios/isolde.html" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-left" data-index="3" data-listing-file-modified-sort="1712900118889" data-listing-reading-time-sort="1" data-listing-word-count-sort="38">
+<div class="thumbnail">
+<p><a href="./bios/tati.html" class="no-external"></a></p><a href="./bios/tati.html" class="no-external">
+<p><img src="https://avatars.githubusercontent.com/u/33500569?v=4" class="thumbnail-image" style="height: 250px;"></p>
+</a><p><a href="./bios/tati.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./bios/tati.html" class="no-external">Dr Tati Micheletti</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./bios/tati.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./bios/tati.html" class="no-external">Tati is our “integrator”, asking questions about managing land in Canada when there are multiple, conflicting management pressures. She has been specializing in SpaDES model development, bird and caribou forecasting, protected areas optimization, and trade-offs/synergies across disciplines.</a>
+</div>
+</div>
+<div class="metadata">
+<p><a href="./bios/tati.html" class="no-external"></a></p><a href="./bios/tati.html" class="no-external">
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
 </section>
 <section id="research-professional" class="level3">
-<h3 class="anchored" data-anchor-id="research-professional">Research Professional</h3>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://media.licdn.com/dms/image/C5603AQGZ0O9dY7MY6A/profile-displayphoto-shrink_800_800/0/1517441920541?e=2147483647&amp;v=beta&amp;t=TkfotiDMOrioFqtLxJGvHJM2CZ365ZwRU02RtagdXEI.png" class="img-fluid figure-img" width="232"></p>
-<figcaption>Ian Eddy</figcaption>
-</figure>
+<h3 data-anchor-id="research-professional">Research Professional</h3>
+<div id="listing-research-professional" class="quarto-listing quarto-listing-container-default">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-left" data-index="0" data-listing-file-modified-sort="1712900118889" data-listing-reading-time-sort="1" data-listing-word-count-sort="29">
+<div class="thumbnail">
+<p><a href="./bios/ian.html" class="no-external"></a></p><a href="./bios/ian.html" class="no-external">
+<p><img src="https://media.licdn.com/dms/image/C5603AQGZ0O9dY7MY6A/profile-displayphoto-shrink_800_800/0/1517441920541?e=2147483647&amp;v=beta&amp;t=TkfotiDMOrioFqtLxJGvHJM2CZ365ZwRU02RtagdXEI" class="thumbnail-image" style="height: 250px;"></p>
+</a><p><a href="./bios/ian.html" class="no-external"></a></p>
 </div>
-<p><a href="https://ca.linkedin.com/in/ian-eddy">Ian Eddy</a> (Canadian Forest Service -- Geospatial Scientist 2018 - ) Ian works part time with our team on various topics related to cumulative effects, GIS, SpaDES, modeling and data analytics.</p></td>
-</tr>
-</tbody>
-</table>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./bios/ian.html" class="no-external">Ian Eddy</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./bios/ian.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./bios/ian.html" class="no-external">(Canadian Forest Service – Geospatial Scientist 2018 - )</a>
+</div>
+</div>
+<div class="metadata">
+<p><a href="./bios/ian.html" class="no-external"></a></p><a href="./bios/ian.html" class="no-external">
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
 </section>
 <section id="former-personnel" class="level3">
-<h3 class="anchored" data-anchor-id="former-personnel">Former Personnel</h3>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://i1.rgstatic.net/ii/profile.image/705102948093955-1545121051789_Q512/Ceres_Barros.jpg" class="img-fluid figure-img" width="232"></p>
-<figcaption>Ceres Barros</figcaption>
-</figure>
+<h3 data-anchor-id="former-personnel">Former Personnel</h3>
+<div id="listing-former-personnel" class="quarto-listing quarto-listing-container-default">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-left" data-index="0" data-listing-file-modified-sort="1712900118889" data-listing-reading-time-sort="1" data-listing-word-count-sort="29">
+<div class="thumbnail">
+<p><a href="./bios/alana.html" class="no-external"></a></p><a href="./bios/alana.html" class="no-external">
+<p><img src="http://www.alanaclason.ca/uploads/1/9/2/0/1920735/published/profile-f-pic.jpg?1543515225" class="thumbnail-image" style="height: 250px;"></p>
+</a><p><a href="./bios/alana.html" class="no-external"></a></p>
 </div>
-<p><a href="https://www.landscapesinmotion.ca/">Dr.&nbsp;Ceres Barros</a> (Postdoctoral Fellow 2018-2023) Ceres was working on mixed severity spatial fire modeling and the associated vegetation changes that go with it, as part of the <a href="https://github.com/tati-micheletti/">Landscapes in Motion project</a>. She then worked on on ecological forecasting of permafrost, disturbance, and vegetation in Northwest Territories, in a collaboration with the <a href="https://www.forestecology.ca/">Forest Ecology Lab</a> at Wilfrid Laurier University, as part of the <a href="https://northernwaterfutures.wordpress.com/">Northern Water Futures</a> project.</p></td>
-<td><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="http://www.stewartresearch.ca/uploads/4/5/7/0/45702893/resized-20190127-151146_orig.jpg" class="img-fluid figure-img" width="412"></p>
-<figcaption>Frances Stewart</figcaption>
-</figure>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./bios/alana.html" class="no-external">Dr Alana Clason</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./bios/alana.html" class="no-external"></a>
 </div>
-<p><a href="http://www.stewartresearch.ca/">Dr.&nbsp;Frances Stewart</a> (Postdoctoral Fellow 2019-2021)</p></td>
-</tr>
-<tr class="even">
-<td><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://friresearch.ca/sites/default/files/styles/fri_people_large/public/user-pictures/HLP_2018_07_alex-chubaty-headshot_web.jpg" class="img-fluid figure-img" width="232"></p>
-<figcaption>Alex Chubaty</figcaption>
-</figure>
+<div class="listing-description">
+<a href="./bios/alana.html" class="no-external">(PhD 2018)</a>
 </div>
-<p><a href="https://alexchubaty.com">Dr.&nbsp;Alex Chubaty</a> (Postdoctoral Fellow 2017)</p></td>
-<td><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://bvcentre.ca/images/made/images/uploads/people_photos/Alana_Clason_200_300.jpg" class="img-fluid figure-img" width="155"></p>
-<figcaption>Alana Clason</figcaption>
-</figure>
 </div>
-<p><a href="https://bvcentre.ca/index.php/people/bio/alana_clason1">Dr.&nbsp;Alana Clason</a> (PhD 2018) Dissertation: Whitebark pine at the northern edge: current constraints and future potential northern distribution under a changing climate. Currently a postdoctoral fellow at the Bulkley Valley Research Centre.</p></td>
-</tr>
-<tr class="odd">
-<td><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.sarahbauduin.fr/wp-content/uploads/2019/08/BauduinSarah_profil.jpg" class="img-fluid figure-img" width="174"></p>
-<figcaption>Sarah Bauduin</figcaption>
-</figure>
+<div class="metadata">
+<p><a href="./bios/alana.html" class="no-external"></a></p><a href="./bios/alana.html" class="no-external">
+</a>
 </div>
-<p><a href="https://www.sarahbauduin.fr/">Dr.&nbsp;Sarah Bauduin</a> (PhD 2017)</p></td>
-<td><p><img src="https://www.wavx.ca/theme/images/faces/jean_marchal.png" class="img-fluid" width="170"></p>
-<p><a href="https://www.wavx.ca/">Dr.&nbsp;Jean Marchal</a> (PhD 2017)</p></td>
-</tr>
-<tr class="even">
-<td><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://i1.rgstatic.net/ii/profile.image/288757442990080-1445856547205_Q512/Sebastien_Renard2.jpg" class="img-fluid figure-img" width="232"></p>
-<figcaption>Sebastien Renard</figcaption>
-</figure>
 </div>
-<p><a href="https://www.researchgate.net/profile/Sebastien_Renard2">Sebastien Renard</a> (PhD Student)</p></td>
-<td><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://sites.google.com/a/lakeheadu.ca/yong-luo/_/rsrc/1406753393787/home/Yong.jpg" class="img-fluid figure-img" width="174"></p>
-<figcaption>Yong Luo</figcaption>
-</figure>
+<div class="quarto-post image-left" data-index="1" data-listing-file-modified-sort="1712900118889" data-listing-reading-time-sort="1" data-listing-word-count-sort="4">
+<div class="thumbnail">
+<p><a href="./bios/alex.html" class="no-external"></a></p><a href="./bios/alex.html" class="no-external">
+<p><img src="https://friresearch.ca/sites/default/files/styles/fri_people_large/public/user-pictures/HLP_2018_07_alex-chubaty-headshot_web.jpg" class="thumbnail-image" style="height: 250px;"></p>
+</a><p><a href="./bios/alex.html" class="no-external"></a></p>
 </div>
-<p><a href="https://sites.google.com/a/lakeheadu.ca/yong-luo/home">Dr.&nbsp;Yong Luo</a> (Postdoctoral Fellow 2017)</p></td>
-</tr>
-<tr class="odd">
-<td><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://pbs.twimg.com/profile_images/1030880418554245120/PTIxTrMS_400x400.jpg" class="img-fluid figure-img" width="232"></p>
-<figcaption>Josh Nowak</figcaption>
-</figure>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./bios/alex.html" class="no-external">Dr Alex Chubaty</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./bios/alex.html" class="no-external"></a>
 </div>
-<p><a href="https://www.speedgoat.io/story/">Dr.&nbsp;Josh Nowak</a> (PhD 2015)</p></td>
-<td><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://i1.rgstatic.net/ii/profile.image/426959055396868-1478806379526_Q512/Mario_Van_Telgen.jpg" class="img-fluid figure-img" width="232"></p>
-<figcaption>Mario van Telgen</figcaption>
-</figure>
+<div class="listing-description">
+<a href="./bios/alex.html" class="no-external">(Postdoctoral Fellow 2017)</a>
 </div>
-<p><a href="https://www.researchgate.net/profile/Mario_Van_Telgen">Mario van Telgen</a> (PhD)</p></td>
-</tr>
-</tbody>
-</table>
+</div>
+<div class="metadata">
+<p><a href="./bios/alex.html" class="no-external"></a></p><a href="./bios/alex.html" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-left" data-index="2" data-listing-file-modified-sort="1712900118889" data-listing-reading-time-sort="1" data-listing-word-count-sort="118">
+<div class="thumbnail">
+<p><a href="./bios/ceres.html" class="no-external"></a></p><a href="./bios/ceres.html" class="no-external">
+<p><img src="https://i1.rgstatic.net/ii/profile.image/705102948093955-1545121051789_Q512/Ceres-Barros.jpg" class="thumbnail-image" style="height: 250px;"></p>
+</a><p><a href="./bios/ceres.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./bios/ceres.html" class="no-external">Dr Ceres Barros</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./bios/ceres.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./bios/ceres.html" class="no-external">(Postdoctoral Fellow 2018-2023; Canadian Forest Service – Research Scientist 2024 - )</a>
+</div>
+</div>
+<div class="metadata">
+<p><a href="./bios/ceres.html" class="no-external"></a></p><a href="./bios/ceres.html" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-left" data-index="3" data-listing-file-modified-sort="1712900118889" data-listing-reading-time-sort="1" data-listing-word-count-sort="4">
+<div class="thumbnail">
+<p><a href="./bios/frances.html" class="no-external"></a></p><a href="./bios/frances.html" class="no-external">
+<p><img src="http://www.stewartresearch.ca/uploads/4/5/7/0/45702893/resized-20190127-151146_orig.jpg" class="thumbnail-image" style="height: 250px;"></p>
+</a><p><a href="./bios/frances.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./bios/frances.html" class="no-external">Dr Frances Stewart</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./bios/frances.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./bios/frances.html" class="no-external">(Postdoctoral Fellow 2019-2021)</a>
+</div>
+</div>
+<div class="metadata">
+<p><a href="./bios/frances.html" class="no-external"></a></p><a href="./bios/frances.html" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-left" data-index="4" data-listing-file-modified-sort="1712900118889" data-listing-reading-time-sort="1" data-listing-word-count-sort="3">
+<div class="thumbnail">
+<p><a href="./bios/jean.html" class="no-external"></a></p><a href="./bios/jean.html" class="no-external">
+<p><img src="https://media.licdn.com/dms/image/C5603AQFRQZ7GqwxVLQ/profile-displayphoto-shrink_800_800/0/1563118335993?e=2147483647&amp;v=beta&amp;t=SpkJ_iGWz6NCV6InOjYHc56Es3WTQ4XeqyAhhLmiHDA" class="thumbnail-image" style="height: 250px;"></p>
+</a><p><a href="./bios/jean.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./bios/jean.html" class="no-external">Dr.&nbsp;Jean Marchal</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./bios/jean.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./bios/jean.html" class="no-external">(PhD 2017)</a>
+</div>
+</div>
+<div class="metadata">
+<p><a href="./bios/jean.html" class="no-external"></a></p><a href="./bios/jean.html" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-left" data-index="5" data-listing-file-modified-sort="1712900118889" data-listing-reading-time-sort="1" data-listing-word-count-sort="3">
+<div class="thumbnail">
+<p><a href="./bios/josh.html" class="no-external"></a></p><a href="./bios/josh.html" class="no-external">
+<p><img src="https://pbs.twimg.com/profile_images/1030880418554245120/PTIxTrMS_400x400.jpg" class="thumbnail-image" style="height: 250px;"></p>
+</a><p><a href="./bios/josh.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./bios/josh.html" class="no-external">Dr Josh Nowak</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./bios/josh.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./bios/josh.html" class="no-external">(PhD 2015)</a>
+</div>
+</div>
+<div class="metadata">
+<p><a href="./bios/josh.html" class="no-external"></a></p><a href="./bios/josh.html" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-left" data-index="6" data-listing-file-modified-sort="1712900118889" data-listing-reading-time-sort="1" data-listing-word-count-sort="3">
+<div class="thumbnail">
+<p><a href="./bios/mario.html" class="no-external"></a></p><a href="./bios/mario.html" class="no-external">
+<p><img src="https://i1.rgstatic.net/ii/profile.image/426959055396868-1478806379526_Q512/Mario_Van_Telgen.jpg" class="thumbnail-image" style="height: 250px;"></p>
+</a><p><a href="./bios/mario.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./bios/mario.html" class="no-external">Mario van Telgen</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./bios/mario.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./bios/mario.html" class="no-external">(PhD)</a>
+</div>
+</div>
+<div class="metadata">
+<p><a href="./bios/mario.html" class="no-external"></a></p><a href="./bios/mario.html" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-left" data-index="7" data-listing-file-modified-sort="1712900118889" data-listing-reading-time-sort="1" data-listing-word-count-sort="3">
+<div class="thumbnail">
+<p><a href="./bios/sarah.html" class="no-external"></a></p><a href="./bios/sarah.html" class="no-external">
+<p><img src="https://www.sarahbauduin.fr/wp-content/uploads/2019/08/BauduinSarah_profil.jpg" class="thumbnail-image" style="height: 250px;"></p>
+</a><p><a href="./bios/sarah.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./bios/sarah.html" class="no-external">Dr.&nbsp;Sarah Bauduin</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./bios/sarah.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./bios/sarah.html" class="no-external">(PhD 2017)</a>
+</div>
+</div>
+<div class="metadata">
+<p><a href="./bios/sarah.html" class="no-external"></a></p><a href="./bios/sarah.html" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-left" data-index="8" data-listing-file-modified-sort="1712900118889" data-listing-reading-time-sort="1" data-listing-word-count-sort="2">
+<div class="thumbnail">
+<p><a href="./bios/sebastien.html" class="no-external"></a></p><a href="./bios/sebastien.html" class="no-external">
+<p><img src="https://i1.rgstatic.net/ii/profile.image/288757442990080-1445856547205_Q512/Sebastien_Renard2.jpg" class="thumbnail-image" style="height: 250px;"></p>
+</a><p><a href="./bios/sebastien.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./bios/sebastien.html" class="no-external">Sebastien Renard</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./bios/sebastien.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./bios/sebastien.html" class="no-external">(PhD)</a>
+</div>
+</div>
+<div class="metadata">
+<p><a href="./bios/sebastien.html" class="no-external"></a></p><a href="./bios/sebastien.html" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-left" data-index="9" data-listing-file-modified-sort="1712900118889" data-listing-reading-time-sort="1" data-listing-word-count-sort="4">
+<div class="thumbnail">
+<p><a href="./bios/yong.html" class="no-external"></a></p><a href="./bios/yong.html" class="no-external">
+<p><img src="https://media.licdn.com/dms/image/C5603AQFp66Ozi5vv4Q/profile-displayphoto-shrink_200_200/0/1517372657629?e=2147483647&amp;v=beta&amp;t=Tj3XfSbweQsOwQNzZEDjQbXZLBvDPUQtvvM--JxP3t0" class="thumbnail-image" style="height: 250px;"></p>
+</a><p><a href="./bios/yong.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./bios/yong.html" class="no-external">Dr.&nbsp;Yong Luo</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./bios/yong.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./bios/yong.html" class="no-external">(Postdoctoral Fellow 2017)</a>
+</div>
+</div>
+<div class="metadata">
+<p><a href="./bios/yong.html" class="no-external"></a></p><a href="./bios/yong.html" class="no-external">
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
 <section id="prior-to-2015" class="level4">
-<h4 class="anchored" data-anchor-id="prior-to-2015">Prior to 2015</h4>
+<h4 data-anchor-id="prior-to-2015">Prior to 2015</h4>
 <ul>
 <li><a href="https://chaireafd.uqat.ca/chercheurs/PageIndividus_f.asp?IdCollaboration=50">Émilie Tarroux</a> (Post Doctoral Fellow 2015) Facilitation in the boreal forest.</li>
 <li><a href="http://www.cef-cfr.ca/index.php?n=Membres.JulienBeguin">Julien Beguin</a> (PhD 2013) Caribou, harvesting and fire in the North Shore of Quebec.</li>
@@ -372,7 +719,7 @@ ga('send', {
 </ul>
 </section>
 <section id="co-op-students" class="level4">
-<h4 class="anchored" data-anchor-id="co-op-students">Co-op students</h4>
+<h4 data-anchor-id="co-op-students">Co-op students</h4>
 <ul>
 <li>Trevor Schiavone (UVic 2015) <code>SpaDES</code> GUI development.</li>
 <li>Brandon Leech (UVic 2015) <code>SpaDES</code> GUI development.</li>
@@ -381,6 +728,8 @@ ga('send', {
 <li>Greyson Wang (SFU 2015)</li>
 <li>Olivia Sung (UBC 2015)</li>
 </ul>
+
+
 
 
 </section>
@@ -551,13 +900,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   } else {
     toggleColorMode(false);
   }
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     

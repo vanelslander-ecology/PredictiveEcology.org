@@ -46,5 +46,25 @@
       "/posts/2015-04-23-Is-R-fast-enough-01.html",
       "/posts/2015-04-22-new-site.html"
     ]
+  },
+  {
+    "listing": "/about.html",
+    "items": [
+      "/bios/ana.html",
+      "/bios/genevieve.html",
+      "/bios/isolde.html",
+      "/bios/tati.html",
+      "/bios/ian.html",
+      "/bios/alana.html",
+      "/bios/alex.html",
+      "/bios/ceres.html",
+      "/bios/frances.html",
+      "/bios/jean.html",
+      "/bios/josh.html",
+      "/bios/mario.html",
+      "/bios/sarah.html",
+      "/bios/sebastien.html",
+      "/bios/yong.html"
+    ]
   }
 ]
