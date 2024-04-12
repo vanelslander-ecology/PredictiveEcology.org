@@ -3,10 +3,8 @@ title: "Predictive Ecology Community"
 permalink: /about/
 comments: false
 about: 
-  id: about
+  id: about-pec
   template: solana
-  image: assets/logo/favicon-96x96.png
-  image-shape: rounded
   links: 
     - icon: globe
       text: Predictive Ecology Blog
@@ -71,35 +69,36 @@ listing:
     page-size: 100
 ---
 
-:::{#about}
-
+::: {#about-pec}
 We are located in Victoria, British Columbia, Canada, at the Pacific Forestry Centre. Several lab members are students through Université Laval and are based out of Québec City.
 
 #### Eliot McIntire
 
-<!-- ::: {style="float:right; padding:0px 0px 10px 50px;"} -->
 ![Eliot McIntire](assets/img/people/EliotMcIntire.jpg){width="250" style="float:right; padding:0px 0px 10px 50px;"}
-<!-- ::: -->
 
 **Research Scientist, [Natural Resources Canada](www.nrcan.gc.ca/home)**\
 **Adjunct Professor, [University of British Columbia](www.ubc.ca) & [Université Laval](www.ulaval.ca)**
 
-My research interests lie in applied ecology, conservation and forecasting of a broad array of ecosystems and species. Specifically, I am interested in using modern quantitative techniques to understand the natural complexity of ecosystems, and ultimately, to allow forecasting of organisms and ecosystem processes. I use a variety of quantitative techniques, including Hierarchical Bayes, Spatial Analysis, Landscape Simulation Modeling, Structural Equation Modeling, and Non-Linear Models to achieve the best ecological inference from ecological data. Through each of the systems I study, I strive to understand the ecological processes and to test this understanding by forecasting.
+My research interests lie in applied ecology, conservation and forecasting of a broad array of ecosystems and species. Specifically, I am interested in using modern quantitative techniques to understand the natural complexity of ecosystems, ultimately, to allow forecasting of organisms and ecosystem processes. I use a variety of quantitative techniques, including Hierarchical Bayes, Spatial Analysis, Landscape Simulation Modeling, Structural Equation Modeling, and Non-Linear Models to achieve the best ecological inference from ecological data. Through each of the systems I study, I strive to understand the ecological processes and to test this understanding by forecasting.
 
 [SpaDES](https://spades.predictiveecology.org)
+:::
 
-::: 
+------------------------------------------------------------------------
 
 ### Current Personnel
-:::{#current-personnel}
+
+::: {#current-personnel}
 :::
 
 ### Research Professional
-:::{#research-professional}
+
+::: {#research-professional}
 :::
 
 ### Former Personnel
-:::{#former-personnel}
+
+::: {#former-personnel}
 :::
 
 #### Prior to 2015
