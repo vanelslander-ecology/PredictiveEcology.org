@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -49,13 +49,7 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -64,7 +58,6 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -174,33 +167,6 @@ ga('send', {
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
 <link rel="stylesheet" href="assets/css/main.scss">
 </head>
 
@@ -208,9 +174,9 @@ window.Quarto = {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
+      <div class="navbar-brand-container">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
     <img src="./assets/logo/favicon-196x196.png" alt="" class="navbar-logo">
     </a>
@@ -225,68 +191,68 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
-<span class="menu-text">About</span></a>
+    <a class="nav-link" href="./about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./SpaDES.html"> 
-<span class="menu-text">SpaDES</span></a>
+    <a class="nav-link" href="./SpaDES.html" rel="" target="">
+ <span class="menu-text">SpaDES</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Workshops.html"> 
-<span class="menu-text">Workshops</span></a>
+    <a class="nav-link" href="./Workshops.html" rel="" target="">
+ <span class="menu-text">Workshops</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./publications.html"> 
-<span class="menu-text">Publications</span></a>
+    <a class="nav-link" href="./publications.html" rel="" target="">
+ <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./presentations.html"> 
-<span class="menu-text">Presentations</span></a>
+    <a class="nav-link" href="./presentations.html" rel="" target="">
+ <span class="menu-text">Presentations</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/PredictiveEcology"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/PredictiveEcology" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
-<span class="menu-text"></span></a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/PredictiveEcol"> <i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/PredictiveEcol" rel="" target=""><i class="bi bi-twitter" role="img">
 </i> 
-<span class="menu-text"></span></a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Predictive Ecology Community</li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Predictive Ecology Community</li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
     </div>
   </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="./assets/logo/favicon-196x196.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     
 <!-- main -->
@@ -294,10 +260,9 @@ window.Quarto = {
 
 
 
-
-<div class="quarto-about-solana content page-columns page-full">
-  <div class="about-entity page-columns page-full">
-    <div class="entity-contents page-columns page-full">
+<div class="quarto-about-solana column-body">
+  <div class="about-entity">
+    <div class="entity-contents">
       <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Predictive Ecology Community</h1>
@@ -314,14 +279,14 @@ window.Quarto = {
      <span class="about-link-text">GitHub</span>
   </a>
 </div>
-      <div class="about-contents page-columns page-full"><div id="about-pec" class="page-columns page-full">
+      <div class="about-contents"><div id="about-pec">
 <p>We are located in Victoria, British Columbia, Canada, at the Pacific Forestry Centre. Several lab members are students through Université Laval and are based out of Québec City.</p>
-<section id="eliot-mcintire" class="level4 page-columns page-full">
+<section id="eliot-mcintire" class="level4">
 <h4 data-anchor-id="eliot-mcintire">Eliot McIntire</h4>
-<div class="quarto-figure quarto-figure-center page-columns page-full" style="float:right; padding:0px 0px 10px 50px;">
-<figure class="figure page-columns page-full">
-<p class="page-columns page-full"><img src="assets/img/people/EliotMcIntire.jpg" class="img-fluid figure-img column-body" width="250"></p>
-<figcaption>Eliot McIntire</figcaption>
+<div class="quarto-figure quarto-figure-center" style="float:right; padding:0px 0px 10px 50px;">
+<figure class="figure">
+<p><img src="assets/img/people/EliotMcIntire.jpg" class="img-fluid figure-img" width="250"></p>
+<figcaption class="figure-caption">Eliot McIntire</figcaption>
 </figure>
 </div>
 <p><strong>Research Scientist, <a href="www.nrcan.gc.ca/home">Natural Resources Canada</a></strong><br>
@@ -339,92 +304,88 @@ window.Quarto = {
 <h3 data-anchor-id="current-personnel">Current Personnel</h3>
 <div id="listing-current-personnel" class="quarto-listing quarto-listing-container-default">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-left" data-index="0" data-listing-file-modified-sort="1712948135875" data-listing-reading-time-sort="1" data-listing-word-count-sort="32">
+<div class="quarto-post image-left" data-index="0" data-listing-file-modified-sort="1712950517619" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./bios/ana.html" class="no-external"></a></p><a href="./bios/ana.html" class="no-external">
-<p><img src="https://borealbirds.ca/wp-content/uploads/2022/06/AnaRaymundo-430x524.jpg.webp" class="thumbnail-image" style="height: 250px;"></p>
-</a><p><a href="./bios/ana.html" class="no-external"></a></p>
+<p><a href="./bios/ana.html"> <img src="https://borealbirds.ca/wp-content/uploads/2022/06/AnaRaymundo-430x524.jpg.webp" class="thumbnail-image" style="height: 250px;"> </a></p>
 </div>
 <div class="body">
+<a href="./bios/ana.html">
 <h3 class="no-anchor listing-title">
-<a href="./bios/ana.html" class="no-external">Ana Raymundo</a>
+Ana Raymundo
 </h3>
 <div class="listing-subtitle">
-<a href="./bios/ana.html" class="no-external"></a>
+
 </div>
 <div class="listing-description">
-<a href="./bios/ana.html" class="no-external">(PhD Student 2018 - )</a>
+(PhD Student 2018 - )
 </div>
-</div>
-<div class="metadata">
-<p><a href="./bios/ana.html" class="no-external"></a></p><a href="./bios/ana.html" class="no-external">
 </a>
 </div>
+<div class="metadata">
+<a href="./bios/ana.html"> </a>
 </div>
-<div class="quarto-post image-left" data-index="1" data-listing-file-modified-sort="1712948135875" data-listing-reading-time-sort="1" data-listing-word-count-sort="24">
+</div>
+<div class="quarto-post image-left" data-index="1" data-listing-file-modified-sort="1712950517619" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./bios/genevieve.html" class="no-external"></a></p><a href="./bios/genevieve.html" class="no-external">
-<p><img src="https://i1.rgstatic.net/ii/profile.image/11431281175709732-1689860714934_Q128/Genevieve-Degre-Timmons.jpg" class="thumbnail-image" style="height: 250px;"></p>
-</a><p><a href="./bios/genevieve.html" class="no-external"></a></p>
+<p><a href="./bios/genevieve.html"> <img src="https://i1.rgstatic.net/ii/profile.image/11431281175709732-1689860714934_Q128/Genevieve-Degre-Timmons.jpg" class="thumbnail-image" style="height: 250px;"> </a></p>
 </div>
 <div class="body">
+<a href="./bios/genevieve.html">
 <h3 class="no-anchor listing-title">
-<a href="./bios/genevieve.html" class="no-external">Geneviève Degré-Timmons</a>
+Geneviève Degré-Timmons
 </h3>
 <div class="listing-subtitle">
-<a href="./bios/genevieve.html" class="no-external"></a>
+
 </div>
 <div class="listing-description">
-<a href="./bios/genevieve.html" class="no-external">(PhD Student 2021 - )</a>
+(PhD Student 2021 - )
 </div>
-</div>
-<div class="metadata">
-<p><a href="./bios/genevieve.html" class="no-external"></a></p><a href="./bios/genevieve.html" class="no-external">
 </a>
 </div>
+<div class="metadata">
+<a href="./bios/genevieve.html"> </a>
 </div>
-<div class="quarto-post image-left" data-index="2" data-listing-file-modified-sort="1712948135875" data-listing-reading-time-sort="1" data-listing-word-count-sort="12">
+</div>
+<div class="quarto-post image-left" data-index="2" data-listing-file-modified-sort="1712950517619" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./bios/isolde.html" class="no-external"></a></p><a href="./bios/isolde.html" class="no-external">
-<p><img src="https://borealbirds.ca/wp-content/uploads/2022/06/Isolde-Lane-Shaw-upscale-2-430x524.jpg.webp" class="thumbnail-image" style="height: 250px;"></p>
-</a><p><a href="./bios/isolde.html" class="no-external"></a></p>
+<p><a href="./bios/isolde.html"> <img src="https://borealbirds.ca/wp-content/uploads/2022/06/Isolde-Lane-Shaw-upscale-2-430x524.jpg.webp" class="thumbnail-image" style="height: 250px;"> </a></p>
 </div>
 <div class="body">
+<a href="./bios/isolde.html">
 <h3 class="no-anchor listing-title">
-<a href="./bios/isolde.html" class="no-external">Isolde Lane Shaw</a>
+Isolde Lane Shaw
 </h3>
 <div class="listing-subtitle">
-<a href="./bios/isolde.html" class="no-external"></a>
+
 </div>
 <div class="listing-description">
-<a href="./bios/isolde.html" class="no-external">(PhD Student 2018 - )</a>
+(PhD Student 2018 - )
 </div>
-</div>
-<div class="metadata">
-<p><a href="./bios/isolde.html" class="no-external"></a></p><a href="./bios/isolde.html" class="no-external">
 </a>
 </div>
+<div class="metadata">
+<a href="./bios/isolde.html"> </a>
 </div>
-<div class="quarto-post image-left" data-index="3" data-listing-file-modified-sort="1712948135875" data-listing-reading-time-sort="1" data-listing-word-count-sort="38">
+</div>
+<div class="quarto-post image-left" data-index="3" data-listing-file-modified-sort="1712950517619" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./bios/tati.html" class="no-external"></a></p><a href="./bios/tati.html" class="no-external">
-<p><img src="https://avatars.githubusercontent.com/u/33500569?v=4" class="thumbnail-image" style="height: 250px;"></p>
-</a><p><a href="./bios/tati.html" class="no-external"></a></p>
+<p><a href="./bios/tati.html"> <img src="https://avatars.githubusercontent.com/u/33500569?v=4" class="thumbnail-image" style="height: 250px;"> </a></p>
 </div>
 <div class="body">
+<a href="./bios/tati.html">
 <h3 class="no-anchor listing-title">
-<a href="./bios/tati.html" class="no-external">Dr Tati Micheletti</a>
+Dr Tati Micheletti
 </h3>
 <div class="listing-subtitle">
-<a href="./bios/tati.html" class="no-external"></a>
+
 </div>
 <div class="listing-description">
-<a href="./bios/tati.html" class="no-external">Tati is our “integrator”, asking questions about managing land in Canada when there are multiple, conflicting management pressures. She has been specializing in SpaDES model development, bird and caribou forecasting, protected areas optimization, and trade-offs/synergies across disciplines.</a>
+Tati is our “integrator”, asking questions about managing land in Canada when there are multiple, conflicting management pressures. She has been specializing in SpaDES model development, bird and caribou forecasting, protected areas optimization, and trade-offs/synergies across disciplines.
 </div>
+</a>
 </div>
 <div class="metadata">
-<p><a href="./bios/tati.html" class="no-external"></a></p><a href="./bios/tati.html" class="no-external">
-</a>
+<a href="./bios/tati.html"> </a>
 </div>
 </div>
 </div>
@@ -437,26 +398,25 @@ No matching items
 <h3 data-anchor-id="research-professional">Research Professional</h3>
 <div id="listing-research-professional" class="quarto-listing quarto-listing-container-default">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-left" data-index="0" data-listing-file-modified-sort="1712948135875" data-listing-reading-time-sort="1" data-listing-word-count-sort="29">
+<div class="quarto-post image-left" data-index="0" data-listing-file-modified-sort="1712950517619" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./bios/ian.html" class="no-external"></a></p><a href="./bios/ian.html" class="no-external">
-<p><img src="https://media.licdn.com/dms/image/C5603AQGZ0O9dY7MY6A/profile-displayphoto-shrink_800_800/0/1517441920541?e=2147483647&amp;v=beta&amp;t=TkfotiDMOrioFqtLxJGvHJM2CZ365ZwRU02RtagdXEI" class="thumbnail-image" style="height: 250px;"></p>
-</a><p><a href="./bios/ian.html" class="no-external"></a></p>
+<p><a href="./bios/ian.html"> <img src="https://media.licdn.com/dms/image/C5603AQGZ0O9dY7MY6A/profile-displayphoto-shrink_800_800/0/1517441920541?e=2147483647&amp;v=beta&amp;t=TkfotiDMOrioFqtLxJGvHJM2CZ365ZwRU02RtagdXEI" class="thumbnail-image" style="height: 250px;"> </a></p>
 </div>
 <div class="body">
+<a href="./bios/ian.html">
 <h3 class="no-anchor listing-title">
-<a href="./bios/ian.html" class="no-external">Ian Eddy</a>
+Ian Eddy
 </h3>
 <div class="listing-subtitle">
-<a href="./bios/ian.html" class="no-external"></a>
+
 </div>
 <div class="listing-description">
-<a href="./bios/ian.html" class="no-external">(Canadian Forest Service – Geospatial Scientist 2018 - )</a>
+(Canadian Forest Service – Geospatial Scientist 2018 - )
 </div>
+</a>
 </div>
 <div class="metadata">
-<p><a href="./bios/ian.html" class="no-external"></a></p><a href="./bios/ian.html" class="no-external">
-</a>
+<a href="./bios/ian.html"> </a>
 </div>
 </div>
 </div>
@@ -469,224 +429,214 @@ No matching items
 <h3 data-anchor-id="former-personnel">Former Personnel</h3>
 <div id="listing-former-personnel" class="quarto-listing quarto-listing-container-default">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-left" data-index="0" data-listing-file-modified-sort="1712948135875" data-listing-reading-time-sort="1" data-listing-word-count-sort="29">
+<div class="quarto-post image-left" data-index="0" data-listing-file-modified-sort="1712950517619" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./bios/alana.html" class="no-external"></a></p><a href="./bios/alana.html" class="no-external">
-<p><img src="http://www.alanaclason.ca/uploads/1/9/2/0/1920735/published/profile-f-pic.jpg?1543515225" class="thumbnail-image" style="height: 250px;"></p>
-</a><p><a href="./bios/alana.html" class="no-external"></a></p>
+<p><a href="./bios/alana.html"> <img src="http://www.alanaclason.ca/uploads/1/9/2/0/1920735/published/profile-f-pic.jpg?1543515225" class="thumbnail-image" style="height: 250px;"> </a></p>
 </div>
 <div class="body">
+<a href="./bios/alana.html">
 <h3 class="no-anchor listing-title">
-<a href="./bios/alana.html" class="no-external">Dr Alana Clason</a>
+Dr Alana Clason
 </h3>
 <div class="listing-subtitle">
-<a href="./bios/alana.html" class="no-external"></a>
+
 </div>
 <div class="listing-description">
-<a href="./bios/alana.html" class="no-external">(PhD 2018)</a>
+(PhD 2018)
 </div>
-</div>
-<div class="metadata">
-<p><a href="./bios/alana.html" class="no-external"></a></p><a href="./bios/alana.html" class="no-external">
 </a>
 </div>
+<div class="metadata">
+<a href="./bios/alana.html"> </a>
 </div>
-<div class="quarto-post image-left" data-index="1" data-listing-file-modified-sort="1712948135875" data-listing-reading-time-sort="1" data-listing-word-count-sort="4">
+</div>
+<div class="quarto-post image-left" data-index="1" data-listing-file-modified-sort="1712950517619" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./bios/alex.html" class="no-external"></a></p><a href="./bios/alex.html" class="no-external">
-<p><img src="https://friresearch.ca/sites/default/files/styles/fri_people_large/public/user-pictures/HLP_2018_07_alex-chubaty-headshot_web.jpg" class="thumbnail-image" style="height: 250px;"></p>
-</a><p><a href="./bios/alex.html" class="no-external"></a></p>
+<p><a href="./bios/alex.html"> <img src="https://friresearch.ca/sites/default/files/styles/fri_people_large/public/user-pictures/HLP_2018_07_alex-chubaty-headshot_web.jpg" class="thumbnail-image" style="height: 250px;"> </a></p>
 </div>
 <div class="body">
+<a href="./bios/alex.html">
 <h3 class="no-anchor listing-title">
-<a href="./bios/alex.html" class="no-external">Dr Alex Chubaty</a>
+Dr Alex Chubaty
 </h3>
 <div class="listing-subtitle">
-<a href="./bios/alex.html" class="no-external"></a>
+
 </div>
 <div class="listing-description">
-<a href="./bios/alex.html" class="no-external">(Postdoctoral Fellow 2017)</a>
+(Postdoctoral Fellow 2017)
 </div>
-</div>
-<div class="metadata">
-<p><a href="./bios/alex.html" class="no-external"></a></p><a href="./bios/alex.html" class="no-external">
 </a>
 </div>
+<div class="metadata">
+<a href="./bios/alex.html"> </a>
 </div>
-<div class="quarto-post image-left" data-index="2" data-listing-file-modified-sort="1712948135875" data-listing-reading-time-sort="1" data-listing-word-count-sort="118">
+</div>
+<div class="quarto-post image-left" data-index="2" data-listing-file-modified-sort="1712950517619" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./bios/ceres.html" class="no-external"></a></p><a href="./bios/ceres.html" class="no-external">
-<p><img src="https://i1.rgstatic.net/ii/profile.image/705102948093955-1545121051789_Q512/Ceres-Barros.jpg" class="thumbnail-image" style="height: 250px;"></p>
-</a><p><a href="./bios/ceres.html" class="no-external"></a></p>
+<p><a href="./bios/ceres.html"> <img src="https://i1.rgstatic.net/ii/profile.image/705102948093955-1545121051789_Q512/Ceres-Barros.jpg" class="thumbnail-image" style="height: 250px;"> </a></p>
 </div>
 <div class="body">
+<a href="./bios/ceres.html">
 <h3 class="no-anchor listing-title">
-<a href="./bios/ceres.html" class="no-external">Dr Ceres Barros</a>
+Dr Ceres Barros
 </h3>
 <div class="listing-subtitle">
-<a href="./bios/ceres.html" class="no-external"></a>
+
 </div>
 <div class="listing-description">
-<a href="./bios/ceres.html" class="no-external">(Postdoctoral Fellow 2018-2023; Canadian Forest Service – Research Scientist 2024 - )</a>
+(Postdoctoral Fellow 2018-2023; Canadian Forest Service – Research Scientist 2024 - )
 </div>
-</div>
-<div class="metadata">
-<p><a href="./bios/ceres.html" class="no-external"></a></p><a href="./bios/ceres.html" class="no-external">
 </a>
 </div>
+<div class="metadata">
+<a href="./bios/ceres.html"> </a>
 </div>
-<div class="quarto-post image-left" data-index="3" data-listing-file-modified-sort="1712948135875" data-listing-reading-time-sort="1" data-listing-word-count-sort="4">
+</div>
+<div class="quarto-post image-left" data-index="3" data-listing-file-modified-sort="1712950517619" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./bios/frances.html" class="no-external"></a></p><a href="./bios/frances.html" class="no-external">
-<p><img src="http://www.stewartresearch.ca/uploads/4/5/7/0/45702893/resized-20190127-151146_orig.jpg" class="thumbnail-image" style="height: 250px;"></p>
-</a><p><a href="./bios/frances.html" class="no-external"></a></p>
+<p><a href="./bios/frances.html"> <img src="http://www.stewartresearch.ca/uploads/4/5/7/0/45702893/resized-20190127-151146_orig.jpg" class="thumbnail-image" style="height: 250px;"> </a></p>
 </div>
 <div class="body">
+<a href="./bios/frances.html">
 <h3 class="no-anchor listing-title">
-<a href="./bios/frances.html" class="no-external">Dr Frances Stewart</a>
+Dr Frances Stewart
 </h3>
 <div class="listing-subtitle">
-<a href="./bios/frances.html" class="no-external"></a>
+
 </div>
 <div class="listing-description">
-<a href="./bios/frances.html" class="no-external">(Postdoctoral Fellow 2019-2021)</a>
+(Postdoctoral Fellow 2019-2021)
 </div>
-</div>
-<div class="metadata">
-<p><a href="./bios/frances.html" class="no-external"></a></p><a href="./bios/frances.html" class="no-external">
 </a>
 </div>
+<div class="metadata">
+<a href="./bios/frances.html"> </a>
 </div>
-<div class="quarto-post image-left" data-index="4" data-listing-file-modified-sort="1712948135875" data-listing-reading-time-sort="1" data-listing-word-count-sort="3">
+</div>
+<div class="quarto-post image-left" data-index="4" data-listing-file-modified-sort="1712950517619" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./bios/jean.html" class="no-external"></a></p><a href="./bios/jean.html" class="no-external">
-<p><img src="https://media.licdn.com/dms/image/C5603AQFRQZ7GqwxVLQ/profile-displayphoto-shrink_800_800/0/1563118335993?e=2147483647&amp;v=beta&amp;t=SpkJ_iGWz6NCV6InOjYHc56Es3WTQ4XeqyAhhLmiHDA" class="thumbnail-image" style="height: 250px;"></p>
-</a><p><a href="./bios/jean.html" class="no-external"></a></p>
+<p><a href="./bios/jean.html"> <img src="https://media.licdn.com/dms/image/C5603AQFRQZ7GqwxVLQ/profile-displayphoto-shrink_800_800/0/1563118335993?e=2147483647&amp;v=beta&amp;t=SpkJ_iGWz6NCV6InOjYHc56Es3WTQ4XeqyAhhLmiHDA" class="thumbnail-image" style="height: 250px;"> </a></p>
 </div>
 <div class="body">
+<a href="./bios/jean.html">
 <h3 class="no-anchor listing-title">
-<a href="./bios/jean.html" class="no-external">Dr.&nbsp;Jean Marchal</a>
+Dr.&nbsp;Jean Marchal
 </h3>
 <div class="listing-subtitle">
-<a href="./bios/jean.html" class="no-external"></a>
+
 </div>
 <div class="listing-description">
-<a href="./bios/jean.html" class="no-external">(PhD 2017)</a>
+(PhD 2017)
 </div>
-</div>
-<div class="metadata">
-<p><a href="./bios/jean.html" class="no-external"></a></p><a href="./bios/jean.html" class="no-external">
 </a>
 </div>
+<div class="metadata">
+<a href="./bios/jean.html"> </a>
 </div>
-<div class="quarto-post image-left" data-index="5" data-listing-file-modified-sort="1712948135875" data-listing-reading-time-sort="1" data-listing-word-count-sort="3">
+</div>
+<div class="quarto-post image-left" data-index="5" data-listing-file-modified-sort="1712950517619" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./bios/josh.html" class="no-external"></a></p><a href="./bios/josh.html" class="no-external">
-<p><img src="https://pbs.twimg.com/profile_images/1030880418554245120/PTIxTrMS_400x400.jpg" class="thumbnail-image" style="height: 250px;"></p>
-</a><p><a href="./bios/josh.html" class="no-external"></a></p>
+<p><a href="./bios/josh.html"> <img src="https://pbs.twimg.com/profile_images/1030880418554245120/PTIxTrMS_400x400.jpg" class="thumbnail-image" style="height: 250px;"> </a></p>
 </div>
 <div class="body">
+<a href="./bios/josh.html">
 <h3 class="no-anchor listing-title">
-<a href="./bios/josh.html" class="no-external">Dr Josh Nowak</a>
+Dr Josh Nowak
 </h3>
 <div class="listing-subtitle">
-<a href="./bios/josh.html" class="no-external"></a>
+
 </div>
 <div class="listing-description">
-<a href="./bios/josh.html" class="no-external">(PhD 2015)</a>
+(PhD 2015)
 </div>
-</div>
-<div class="metadata">
-<p><a href="./bios/josh.html" class="no-external"></a></p><a href="./bios/josh.html" class="no-external">
 </a>
 </div>
+<div class="metadata">
+<a href="./bios/josh.html"> </a>
 </div>
-<div class="quarto-post image-left" data-index="6" data-listing-file-modified-sort="1712948135875" data-listing-reading-time-sort="1" data-listing-word-count-sort="3">
+</div>
+<div class="quarto-post image-left" data-index="6" data-listing-file-modified-sort="1712950517619" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./bios/mario.html" class="no-external"></a></p><a href="./bios/mario.html" class="no-external">
-<p><img src="https://i1.rgstatic.net/ii/profile.image/426959055396868-1478806379526_Q512/Mario_Van_Telgen.jpg" class="thumbnail-image" style="height: 250px;"></p>
-</a><p><a href="./bios/mario.html" class="no-external"></a></p>
+<p><a href="./bios/mario.html"> <img src="https://i1.rgstatic.net/ii/profile.image/426959055396868-1478806379526_Q512/Mario_Van_Telgen.jpg" class="thumbnail-image" style="height: 250px;"> </a></p>
 </div>
 <div class="body">
+<a href="./bios/mario.html">
 <h3 class="no-anchor listing-title">
-<a href="./bios/mario.html" class="no-external">Mario van Telgen</a>
+Mario van Telgen
 </h3>
 <div class="listing-subtitle">
-<a href="./bios/mario.html" class="no-external"></a>
+
 </div>
 <div class="listing-description">
-<a href="./bios/mario.html" class="no-external">(PhD)</a>
+(PhD)
 </div>
-</div>
-<div class="metadata">
-<p><a href="./bios/mario.html" class="no-external"></a></p><a href="./bios/mario.html" class="no-external">
 </a>
 </div>
+<div class="metadata">
+<a href="./bios/mario.html"> </a>
 </div>
-<div class="quarto-post image-left" data-index="7" data-listing-file-modified-sort="1712948135875" data-listing-reading-time-sort="1" data-listing-word-count-sort="3">
+</div>
+<div class="quarto-post image-left" data-index="7" data-listing-file-modified-sort="1712950517619" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./bios/sarah.html" class="no-external"></a></p><a href="./bios/sarah.html" class="no-external">
-<p><img src="https://www.sarahbauduin.fr/wp-content/uploads/2019/08/BauduinSarah_profil.jpg" class="thumbnail-image" style="height: 250px;"></p>
-</a><p><a href="./bios/sarah.html" class="no-external"></a></p>
+<p><a href="./bios/sarah.html"> <img src="https://www.sarahbauduin.fr/wp-content/uploads/2019/08/BauduinSarah_profil.jpg" class="thumbnail-image" style="height: 250px;"> </a></p>
 </div>
 <div class="body">
+<a href="./bios/sarah.html">
 <h3 class="no-anchor listing-title">
-<a href="./bios/sarah.html" class="no-external">Dr.&nbsp;Sarah Bauduin</a>
+Dr.&nbsp;Sarah Bauduin
 </h3>
 <div class="listing-subtitle">
-<a href="./bios/sarah.html" class="no-external"></a>
+
 </div>
 <div class="listing-description">
-<a href="./bios/sarah.html" class="no-external">(PhD 2017)</a>
+(PhD 2017)
 </div>
-</div>
-<div class="metadata">
-<p><a href="./bios/sarah.html" class="no-external"></a></p><a href="./bios/sarah.html" class="no-external">
 </a>
 </div>
+<div class="metadata">
+<a href="./bios/sarah.html"> </a>
 </div>
-<div class="quarto-post image-left" data-index="8" data-listing-file-modified-sort="1712948135875" data-listing-reading-time-sort="1" data-listing-word-count-sort="2">
+</div>
+<div class="quarto-post image-left" data-index="8" data-listing-file-modified-sort="1712950517619" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./bios/sebastien.html" class="no-external"></a></p><a href="./bios/sebastien.html" class="no-external">
-<p><img src="https://i1.rgstatic.net/ii/profile.image/288757442990080-1445856547205_Q512/Sebastien_Renard2.jpg" class="thumbnail-image" style="height: 250px;"></p>
-</a><p><a href="./bios/sebastien.html" class="no-external"></a></p>
+<p><a href="./bios/sebastien.html"> <img src="https://i1.rgstatic.net/ii/profile.image/288757442990080-1445856547205_Q512/Sebastien_Renard2.jpg" class="thumbnail-image" style="height: 250px;"> </a></p>
 </div>
 <div class="body">
+<a href="./bios/sebastien.html">
 <h3 class="no-anchor listing-title">
-<a href="./bios/sebastien.html" class="no-external">Sebastien Renard</a>
+Sebastien Renard
 </h3>
 <div class="listing-subtitle">
-<a href="./bios/sebastien.html" class="no-external"></a>
+
 </div>
 <div class="listing-description">
-<a href="./bios/sebastien.html" class="no-external">(PhD)</a>
+(PhD)
 </div>
-</div>
-<div class="metadata">
-<p><a href="./bios/sebastien.html" class="no-external"></a></p><a href="./bios/sebastien.html" class="no-external">
 </a>
 </div>
+<div class="metadata">
+<a href="./bios/sebastien.html"> </a>
 </div>
-<div class="quarto-post image-left" data-index="9" data-listing-file-modified-sort="1712948135875" data-listing-reading-time-sort="1" data-listing-word-count-sort="4">
+</div>
+<div class="quarto-post image-left" data-index="9" data-listing-file-modified-sort="1712950517619" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./bios/yong.html" class="no-external"></a></p><a href="./bios/yong.html" class="no-external">
-<p><img src="https://media.licdn.com/dms/image/C5603AQFp66Ozi5vv4Q/profile-displayphoto-shrink_200_200/0/1517372657629?e=2147483647&amp;v=beta&amp;t=Tj3XfSbweQsOwQNzZEDjQbXZLBvDPUQtvvM--JxP3t0" class="thumbnail-image" style="height: 250px;"></p>
-</a><p><a href="./bios/yong.html" class="no-external"></a></p>
+<p><a href="./bios/yong.html"> <img src="https://media.licdn.com/dms/image/C5603AQFp66Ozi5vv4Q/profile-displayphoto-shrink_200_200/0/1517372657629?e=2147483647&amp;v=beta&amp;t=Tj3XfSbweQsOwQNzZEDjQbXZLBvDPUQtvvM--JxP3t0" class="thumbnail-image" style="height: 250px;"> </a></p>
 </div>
 <div class="body">
+<a href="./bios/yong.html">
 <h3 class="no-anchor listing-title">
-<a href="./bios/yong.html" class="no-external">Dr.&nbsp;Yong Luo</a>
+Dr.&nbsp;Yong Luo
 </h3>
 <div class="listing-subtitle">
-<a href="./bios/yong.html" class="no-external"></a>
+
 </div>
 <div class="listing-description">
-<a href="./bios/yong.html" class="no-external">(Postdoctoral Fellow 2017)</a>
+(Postdoctoral Fellow 2017)
 </div>
+</a>
 </div>
 <div class="metadata">
-<p><a href="./bios/yong.html" class="no-external"></a></p><a href="./bios/yong.html" class="no-external">
-</a>
+<a href="./bios/yong.html"> </a>
 </div>
 </div>
 </div>
@@ -773,33 +723,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
   }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-      }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
-        }
-      });
-    }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
-    }
-  }
   const toggleColorMode = (alternate) => {
     // Switch the stylesheets
     const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
@@ -866,15 +789,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  let localAlternateSentinel = 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -946,32 +867,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/predictiveecology\.org");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          if (link.getAttribute("rel") === null) {
-            link.setAttribute("rel", "noopener");
-          }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -981,17 +880,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1003,130 +893,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
+      return note.innerHTML;
     });
   }
       let selectedAnnoteEl;
@@ -1170,7 +937,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1196,32 +962,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1279,6 +1019,20 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp("https:\/\/predictiveecology\.org");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+      }
+    }
 });
 </script>
 </div> <!-- /content -->
@@ -1299,7 +1053,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-
 
 
 
