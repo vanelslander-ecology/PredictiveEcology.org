@@ -31,10 +31,11 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./assets/logo/favicon-32x32.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
@@ -62,6 +63,35 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-workshops .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-image','listing-title','listing-description','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-workshops'] = new List('listing-workshops', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 
 <script type="text/javascript">
 
@@ -78,11 +108,13 @@ ga('send', {
 </script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="assets/css/main.scss">
 </head>
 
-<body class="nav-sidebar floating nav-fixed fullcontent">
+<body class="nav-sidebar floating nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -166,30 +198,79 @@ ga('send', {
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+
+
+<div class="quarto-about-solana column-body">
+  <div class="about-entity">
+    <div class="entity-contents">
+      <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Workshops</h1>
 </div>
-
-
-
 <div class="quarto-title-meta">
-
-    
-  
-    
   </div>
-  
+</header> 
+      <div class="about-contents"><div id="workshops-top">
+<p>After an extended COVID hiatus, we will be holding workshops around <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/ele.13994">PERFICT</a> and the SpaDES metapackage for R as a means of achieving a PERFICT approach.</p>
+<p><strong>We will be adding content here over the next weeks.</strong></p>
+</div></div>
+    </div>
+  </div>
+</div>
 
-</header>
 
+<div class="no-row-height column-margin column-container"><div class="">
+<div class="quarto-figure quarto-figure-right">
+<figure class="figure">
+<p><a href="https://onlinelibrary.wiley.com/doi/full/10.1111/ele.13994"><img src="https://onlinelibrary.wiley.com/cms/asset/680b22bc-1a97-4ab6-8f90-6fd1557e9e27/ele13994-fig-0001-m.jpg" class="img-fluid figure-img" style="width:120.0%"></a></p>
+</figure>
+</div>
+</div></div><section id="upcoming-workshops" class="level2">
+<h2 data-anchor-id="upcoming-workshops">Upcoming workshops</h2>
+<div id="listing-workshops" class="quarto-listing quarto-listing-container-grid">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-categories="R,SpaDES Workshops,Training" data-listing-date-sort="1712880000000" data-listing-file-modified-sort="1712965252439" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<a href="./workshops/June-2024-SpaDES-workshop.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="https://besjournals.onlinelibrary.wiley.com/cms/asset/db13319c-88b4-4821-9eaa-a2e62364b399/mee314034-fig-0004-m.jpg" class="thumbnail-image card-img" style="height: 250px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+SpaDES Workshop (Planned June 2024)
+</h5>
+<div class="card-text listing-description">
+Under construction
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Apr 12, 2024
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
+</section>
+<section id="past-workshops" class="level2">
+<h2 data-anchor-id="past-workshops">Past workshops</h2>
 <p>For older workshops (prior to 2021, see <a href="https://spades-workshops.predictiveecology.org/" class="uri">https://spades-workshops.predictiveecology.org/</a>).</p>
 
 
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -327,13 +408,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   } else {
     toggleColorMode(false);
   }
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
@@ -560,7 +634,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
- This blog is maintained by Dr. Eliot McIntire, with contributions by Alex Chubaty, Ceres Barros, and Tati Micheletti. Powered by Quarto
+ This site is maintained by Dr. Eliot McIntire and Ceres Barros, with contributions by Alex Chubaty, Tati Micheletti and others. Powered by Quarto
   </li>  
 </ul>
     </div>   

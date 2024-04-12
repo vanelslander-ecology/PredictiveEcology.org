@@ -448,18 +448,18 @@
     "text": "This is an all-in-one package manager that is simple and focused around a single function, Require. This is different than other approaches to package management such as packrat, checkpoint, and renv as it focuses on a “script-based” solution to a reproducible work flow. Thus, all packages, version numbering, and sources are contained within an R script.\nView on CRAN; GitHub; Website\n\n\n\n\n\nMetapackage for implementing a variety of event-based models, with a focus on spatially explicit models. These include raster-based, event-based, and agent-based models. The core simulation components (provided by SpaDES.core) are built upon a discrete event simulation (DES) framework that facilitates modularity, and easily enables the user to include additional functionality by running user-built simulation modules (see also SpaDES.tools). Included are numerous tools to visualize rasters and other maps (via quickPlot), and caching methods for reproducible simulations (via reproducible). Additional functionality is provided by the SpaDES.addins and SpaDES.shiny packages.\nView on CRAN; GitHub; Website\nSee also:\n\nSpaDES.addins: https://spades-addins.predictiveecology.org\nSpaDES.core: https://spades-core.predictiveecology.org/\nSpaDES.shiny: https://spades-shiny.predictiveecology.org/\nSpaDES.tools: https://spades-tools.predictiveecology.org/\n\n\n\n\n\n\n\nA high-level plotting system, built using grid graphics, that is optimized for speed and modularity. This has great utility for quick visualizations when testing code, with the key benefit that visualizations are updated independently of one another.\nView on CRAN; GitHub; Website\n\n\n\n\n\n\nBuilt on top of git2r and archivist, this package aims at making high-level, robust, machine and OS independent tools for making deeply reproducible and reusable content in R. This extends beyond the package management utilites of packrat and checkpoint by including tools for caching and accessing GitHub repositories.\nView on CRAN; GitHub; Website\n\n\n\n\n\n\nComparisons of floating point numbers are problematic due to errors associated with the binary representation of decimal numbers. Despite being aware of these problems, people still use numerical methods that fail to account for these and other rounding errors (this pitfall is the first to be highlighted in Circle 1 of Burns (2012) The R Inferno). This package provides new relational operators useful for performing floating point number comparisons with a set tolerance.\nView on CRAN; GitHub; Website\n\n\n\n\n\n\nNetLogoR is an R package which aims to help translating agent-based models built in NetLogo (Wilensky, 1999) into R or help directly with creating new agent-based models in R following the NetLogo framework.\nNetLogoR provides the necessary NetLogo’s primitives as well as complementary functions to build agent-based models. A programming guide derived from the NetLogo’s Programming Guide is available.\nThis package is under construction and therefore function errors and mismatches with the documentation may occur.\nView on CRAN; GitHub; Website"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "PEWebsite",
+    "objectID": "workshops/June-2024-SpaDES-workshop.html",
+    "href": "workshops/June-2024-SpaDES-workshop.html",
+    "title": "SpaDES Workshop (Planned June 2024)",
     "section": "",
-    "text": "Welcome to the website of the Predictive Ecology Community\nWe are updating these pages over the next weeks; please stay tuned."
+    "text": "Under construction"
   },
   {
-    "objectID": "index.html#latest-news",
-    "href": "index.html#latest-news",
-    "title": "PEWebsite",
-    "section": "Latest news",
-    "text": "Latest news"
+    "objectID": "publications.html",
+    "href": "publications.html",
+    "title": "Publications",
+    "section": "",
+    "text": "This list is currently only for Eliot McIntire. To see other members’ publications, see AlexChubaty, Yong Luo, AlanaClason, Sarah Bauduin, Jean Marchal, Sébastien Renard, Ceres Barros"
   },
   {
     "objectID": "presentations.html#invited-talks",
@@ -476,18 +476,39 @@
     "text": "Presentations"
   },
   {
-    "objectID": "publications.html",
-    "href": "publications.html",
-    "title": "Publications",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PEWebsite",
     "section": "",
-    "text": "This list is currently only for Eliot McIntire. To see other members’ publications, see AlexChubaty, Yong Luo, AlanaClason, Sarah Bauduin, Jean Marchal, Sébastien Renard, Ceres Barros"
+    "text": "Welcome to the website of the Predictive Ecology Community\nWe are updating these pages over the next weeks; please stay tuned."
+  },
+  {
+    "objectID": "index.html#latest-news",
+    "href": "index.html#latest-news",
+    "title": "PEWebsite",
+    "section": "Latest news",
+    "text": "Latest news"
   },
   {
     "objectID": "Workshops.html",
     "href": "Workshops.html",
     "title": "Workshops",
     "section": "",
-    "text": "For older workshops (prior to 2021, see https://spades-workshops.predictiveecology.org/)."
+    "text": "After an extended COVID hiatus, we will be holding workshops around PERFICT and the SpaDES metapackage for R as a means of achieving a PERFICT approach.\nWe will be adding content here over the next weeks."
+  },
+  {
+    "objectID": "Workshops.html#upcoming-workshops",
+    "href": "Workshops.html#upcoming-workshops",
+    "title": "Workshops",
+    "section": "Upcoming workshops",
+    "text": "Upcoming workshops\n\n\n\n\n\n\n\n\n\n\nSpaDES Workshop (Planned June 2024)\n\n\n\n\n\n\nApr 12, 2024\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "Workshops.html#past-workshops",
+    "href": "Workshops.html#past-workshops",
+    "title": "Workshops",
+    "section": "Past workshops",
+    "text": "Past workshops\nFor older workshops (prior to 2021, see https://spades-workshops.predictiveecology.org/)."
   },
   {
     "objectID": "posts/2016-04-13-SpaDES-v1.1.2-now-on-CRAN.html",

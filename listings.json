@@ -48,6 +48,12 @@
     ]
   },
   {
+    "listing": "/Workshops.html",
+    "items": [
+      "/workshops/June-2024-SpaDES-workshop.html"
+    ]
+  },
+  {
     "listing": "/about.html",
     "items": [
       "/bios/eliot.html",
