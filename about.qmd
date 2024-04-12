@@ -1,5 +1,5 @@
 ---
-title: 'About'
+title: "Predictive Ecology Community"
 permalink: /about/
 comments: false
 about: 
@@ -72,7 +72,6 @@ listing:
 ---
 
 :::{#about}
-### Predictive Ecology Community
 
 We are located in Victoria, British Columbia, Canada, at the Pacific Forestry Centre. Several lab members are students through Université Laval and are based out of Québec City.
 
