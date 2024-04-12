@@ -34,6 +34,10 @@ website:
       hypothesis:
         theme: clean
         openSidebar: false
+  # If you are forking our repo to develop content please disable our Google Analytics tag during development.
+  # If building your own site, replace our GA tag with your own GA tag before deployment.
+  # This will prevent your activity being tracked and counted in our analytics dashboard.
+  # Thank you!
   google-analytics: "UA-58633549-2"
 
 format:
