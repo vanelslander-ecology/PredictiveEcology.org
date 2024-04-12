@@ -27,7 +27,7 @@ website:
         href: https://twitter.com/PredictiveEcol
   page-footer:
     left:
-      - text: "This blog is maintained by Dr. Eliot McIntire, with contributions by Alex Chubaty, Ceres Barros, and Tati Micheletti. Powered by Quarto"
+      - text: "This site is maintained by Dr. Eliot McIntire and Ceres Barros, with contributions by Alex Chubaty, Tati Micheletti and others. Powered by Quarto"
   sidebar:
     logo: "assets/logo/favicon-196x196.png"
   comments:
