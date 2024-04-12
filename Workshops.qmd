@@ -1,9 +1,47 @@
 ---
-title: 'Workshops'
-permalink: /workshops/
+title: "Workshops"
+permalink: /Workshops/
 comments: false
+about: 
+  id: workshops-top
+  template: solana
+listing: 
+  - id: workshops
+    type: grid
+    contents: 
+      - workshops/June-2024-SpaDES-workshop.qmd
+    sort: date
+    fields: [image, title, description, date]
+    max-description-length: 1000000
+    image-height: 250px
+    image-align: left
+    sort-ui: false
+    filter-ui: false
+    categories: false
+    feed: false
+    page-size: 100
 ---
 
 
+
+::: {#workshops-top}
+
+
+After an extended COVID hiatus, we will be holding workshops around [PERFICT](https://onlinelibrary.wiley.com/doi/full/10.1111/ele.13994) and the SpaDES metapackage for R as a means of achieving a PERFICT approach. 
+
+**We will be adding content here over the next weeks.**
+
+:::
+
+::: {.column-margin}
+[![](https://onlinelibrary.wiley.com/cms/asset/680b22bc-1a97-4ab6-8f90-6fd1557e9e27/ele13994-fig-0001-m.jpg){fig-align="right" width=120%}](https://onlinelibrary.wiley.com/doi/full/10.1111/ele.13994)
+:::
+
+## Upcoming workshops
+
+::: {#workshops}
+:::
+
+## Past workshops
 
 For older workshops (prior to 2021, see <https://spades-workshops.predictiveecology.org/>).

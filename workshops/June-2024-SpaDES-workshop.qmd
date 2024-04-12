@@ -1,0 +1,13 @@
+---
+title: "SpaDES Workshop (Planned June 2024)"
+author: "Eliot McIntire"
+date: "April 12, 2024"
+image: https://besjournals.onlinelibrary.wiley.com/cms/asset/db13319c-88b4-4821-9eaa-a2e62364b399/mee314034-fig-0004-m.jpg
+categories:
+  - R
+  - SpaDES Workshops
+  - Training
+comments: false
+---
+
+Under construction
