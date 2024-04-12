@@ -1,0 +1,24 @@
+---
+title: "Isolde Lane Shaw"
+name: "Isolde Lane Shaw"
+image: https://borealbirds.ca/wp-content/uploads/2022/06/Isolde-Lane-Shaw-upscale-2-430x524.jpg.webp
+comments: false
+about: 
+  id: isolde
+  template: solana
+  image: https://borealbirds.ca/wp-content/uploads/2022/06/Isolde-Lane-Shaw-upscale-2-430x524.jpg.webp
+  image-shape: rounded
+  links: 
+    - icon: globe
+      text: webpage
+      href: https://borealbirds.ualberta.ca/2019/07/11/isolde-lane-shaw/
+---
+
+::: {#isolde}
+
+(PhD Student 2018 - )
+
+A student at Laval University.  
+
+:::
+

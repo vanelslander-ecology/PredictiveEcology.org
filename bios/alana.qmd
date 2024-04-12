@@ -1,0 +1,23 @@
+---
+title: "Dr Alana Clason"
+name: "Alana Clason"
+image: http://www.alanaclason.ca/uploads/1/9/2/0/1920735/published/profile-f-pic.jpg?1543515225
+comments: false
+about: 
+  id: alana
+  template: solana
+  image: http://www.alanaclason.ca/uploads/1/9/2/0/1920735/published/profile-f-pic.jpg?1543515225
+  image-shape: rounded
+  links: 
+    - icon: globe
+      text: webpage
+      href: http://www.alanaclason.ca/
+---
+
+::: {#alana}
+(PhD 2018)
+
+Dissertation: Whitebark pine at the northern edge: current constraints and future potential northern distribution under a changing climate.
+
+Currently a postdoctoral fellow at the Bulkley Valley Research Centre.
+:::
