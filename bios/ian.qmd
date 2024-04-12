@@ -15,9 +15,7 @@ about:
 ---
 
 ::: {#ian}
-
 (Canadian Forest Service -- Geospatial Scientist 2018 - )
 
 Ian works part time with our team on various topics related to cumulative effects, GIS, SpaDES, modeling and data analytics.
-
 :::

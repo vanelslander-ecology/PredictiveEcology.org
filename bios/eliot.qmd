@@ -1,0 +1,29 @@
+---
+title: "Dr Eliot McIntire"
+name: "Eliot McIntire"
+image: https://nafew.org/wp-content/uploads/2022/01/eliot-mc-intire-modal.jpg
+comments: false
+about: 
+  id: eliot
+  template: solana
+  image: https://nafew.org/wp-content/uploads/2022/01/eliot-mc-intire-modal.jpg
+  image-shape: rounded
+  links: 
+    - icon: globe
+      text: webpage
+      href: https:/www.researchgate.net/profile/Eliot-Mcintire
+    - icon: github
+      text: GitHub
+      href: https://github.com/eliotmcintire 
+    - icon: envelope
+      text: e-mail
+      href: "mailto: eliot.mcintire@nrcan-rncan.gc.ca"
+---
+
+::: {#eliot}
+
+**Research Scientist, [Natural Resources Canada](www.nrcan.gc.ca/home)**\
+**Adjunct Professor, [University of British Columbia](www.ubc.ca) & [Université Laval](www.ulaval.ca)**
+
+My research interests lie in applied ecology, conservation and forecasting of a broad array of ecosystems and species. Specifically, I am interested in using modern quantitative techniques to understand the natural complexity of ecosystems, ultimately, to allow forecasting of organisms and ecosystem processes. I use a variety of quantitative techniques, including Hierarchical Bayes, Spatial Analysis, Landscape Simulation Modeling, Structural Equation Modeling, and Non-Linear Models to achieve the best ecological inference from ecological data. Through each of the systems I study, I strive to understand the ecological processes and to test this understanding by forecasting.
+:::

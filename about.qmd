@@ -13,9 +13,25 @@ about:
       text: GitHub
       href: https://github.com/PredictiveEcology
 listing: 
-  - id: current-personnel
+  - id: researchers
     contents: 
+      - bios/eliot.qmd
+      - bios/ceres.qmd
+      - bios/celine.qmd
+      - bios/alex.qmd
       - bios/tati.qmd
+    sort: false
+    fields: [image, title, description]
+    max-description-length: 1000000
+    image-height: 250px
+    image-align: left
+    sort-ui: false
+    filter-ui: false
+    categories: false
+    feed: false
+    page-size: 100
+  - id: current-students
+    contents: 
       - bios/ana.qmd
       - bios/isolde.qmd
       - bios/genevieve.qmd
@@ -46,9 +62,7 @@ listing:
     page-size: 100
   - id: former-personnel
     contents:
-      - bios/ceres.qmd
       - bios/frances.qmd
-      - bios/alex.qmd
       - bios/alana.qmd
       - bios/yong.qmd
       - bios/jean.qmd
@@ -70,25 +84,18 @@ listing:
 ---
 
 ::: {#about-pec}
-We are located in Victoria, British Columbia, Canada, at the Pacific Forestry Centre. Several lab members are students through Université Laval and are based out of Québec City.
 
-#### Eliot McIntire
+The Predictive Ecology Community began in Victoria, British Columbia, Canada, at the Pacific Forestry Centre. Soon after, students and postdocs joined from Université Laval, based out of Québec City. Currently, the Predictive Ecology Community has active members in Europe and across Canada. 
+:::
 
-![Eliot McIntire](assets/img/people/EliotMcIntire.jpg){width="250" style="float:right; padding:0px 0px 10px 50px;"}
-
-**Research Scientist, [Natural Resources Canada](www.nrcan.gc.ca/home)**\
-**Adjunct Professor, [University of British Columbia](www.ubc.ca) & [Université Laval](www.ulaval.ca)**
-
-My research interests lie in applied ecology, conservation and forecasting of a broad array of ecosystems and species. Specifically, I am interested in using modern quantitative techniques to understand the natural complexity of ecosystems, ultimately, to allow forecasting of organisms and ecosystem processes. I use a variety of quantitative techniques, including Hierarchical Bayes, Spatial Analysis, Landscape Simulation Modeling, Structural Equation Modeling, and Non-Linear Models to achieve the best ecological inference from ecological data. Through each of the systems I study, I strive to understand the ecological processes and to test this understanding by forecasting.
-
-[SpaDES](https://spades.predictiveecology.org)
+::: {#researchers}
 :::
 
 ------------------------------------------------------------------------
 
 ### Current Personnel
 
-::: {#current-personnel}
+::: {#current-students}
 :::
 
 ### Research Professional

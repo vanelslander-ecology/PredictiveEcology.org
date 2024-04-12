@@ -1,0 +1,28 @@
+---
+title: "Dr Celine Boisvenue"
+name: "Celine Boisvenue"
+image: https://mdpi-res.com/data/editors/editor_43196.png?1635994156
+comments: false
+about:
+  id: celine
+  template: solana
+  image: https://mdpi-res.com/data/editors/editor_43196.png?1635994156
+  image-shape: rounded
+  links:
+    - icon: globe
+      text: webpage
+      href: https:/www.researchgate.net/profile/Celine-Boisvenue
+    - icon: github
+      text: GitHub
+      href: https://github.com/cboisvenue
+    - icon: envelope
+      text: e-mail
+      href: "mailto: celine.boisvenue@nrcan-rncan.gc.ca"
+---
+
+::: {#celine}
+
+**Research Scientist, [Natural Resources Canada](www.nrcan.gc.ca/home)**\
+**Adjunct Professor, [University of British Columbia](www.ubc.ca) **
+
+:::
