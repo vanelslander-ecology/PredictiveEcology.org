@@ -15,6 +15,7 @@ about:
 ---
 
 ::: {#alex}
-(Postdoctoral Fellow 2017)
-:::
+President, [FOR-CAST Research & Analytics](https://for-cast.ca/)
 
+Previously, Alex was a Postdoctoral Fellow with the Predictive Ecology group from 2015-2017
+:::
