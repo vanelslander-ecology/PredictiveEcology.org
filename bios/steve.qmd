@@ -21,6 +21,6 @@ about:
 ---
 
 ::: {#steve}
-**Professor, [Université Laval](www.ulaval.ca)**
+Professor, [Université Laval](www.ulaval.ca)
 
 :::

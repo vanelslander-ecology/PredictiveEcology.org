@@ -21,7 +21,7 @@ about:
 ---
 
 ::: {#ceres}
-(Postdoctoral Fellow 2018-2023; Canadian Forest Service -- Research Scientist 2024 - )
+Research Scientist, Natural Resources Canada 
 
 As part of the Predictive Ecology Lab, Ceres worked on mixed severity spatial fire modelling and the associated vegetation changes that go with it, as part of the [Landscapes in Motion project](https://www.landscapesinmotion.ca/). She then worked on on ecological forecasting of permafrost, disturbance, and vegetation in Northwest Territories, in a collaboration with the [Forest Ecology Lab](https://www.forestecology.ca/) at Wilfrid Laurier University, as part of the [Northern Water Futures](https://northernwaterfutures.wordpress.com/) project.
 

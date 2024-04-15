@@ -21,6 +21,6 @@ about:
 ---
 
 ::: {#celine}
-**Research Scientist, [Natural Resources Canada](www.nrcan.gc.ca/home)**\
-**Adjunct Professor, [University of British Columbia](www.ubc.ca)**
+Research Scientist, [Natural Resources Canada](www.nrcan.gc.ca/home)\
+Adjunct Professor, [University of British Columbia](www.ubc.ca)
 :::
