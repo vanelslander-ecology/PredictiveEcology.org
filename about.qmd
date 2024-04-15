@@ -23,6 +23,7 @@ listing:
       - bios/alex.qmd
       - bios/tati.qmd
       - bios/steve.qmd
+      - bios/julie.qmd
     sort: false
     fields: [image, title, description]
     max-description-length: 1000000

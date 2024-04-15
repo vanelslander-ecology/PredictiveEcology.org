@@ -1,0 +1,23 @@
+---
+title: "Dr Julie Turner"
+name: "Julie Turner"
+image: https://www.julwturner.com/uploads/1/1/7/0/117088110/awkwardtocarry_orig.jpg
+comments: false
+about: 
+  id: julie
+  template: solana
+  image: https://www.julwturner.com/uploads/1/1/7/0/117088110/awkwardtocarry_orig.jpg
+  image-shape: rounded
+  links: 
+    - icon: globe
+      text: webpage
+      href:   https://www.julwturner.com/
+    - icon: github
+      text: GitHub
+      href: https://github.com/JWTurn
+---
+
+::: {#julie}
+Julie is currently with Biodiversity Pathways, collaborating with the Predictive Ecology group on issues related to caribou.
+
+:::

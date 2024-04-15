@@ -1,12 +1,12 @@
 ---
 title: "Geneviève Degré-Timmons"
 name: "Geneviève Degré-Timmons"
-image: https://i1.rgstatic.net/ii/profile.image/11431281175709732-1689860714934_Q128/Genevieve-Degre-Timmons.jpg
+image: /assets/img/genevieve.jpeg
 comments: false
 about: 
   id: genevieve
   template: solana
-  image: https://i1.rgstatic.net/ii/profile.image/11431281175709732-1689860714934_Q128/Genevieve-Degre-Timmons.jpg
+  image: ../assets/img/genevieve.jpeg
   image-shape: rounded
   links: 
     - icon: globe
