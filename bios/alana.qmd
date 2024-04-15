@@ -1,12 +1,12 @@
 ---
 title: "Dr Alana Clason"
 name: "Alana Clason"
-image: http://www.alanaclason.ca/uploads/1/9/2/0/1920735/published/profile-f-pic.jpg
+image: https://bvcentre.ca/wp-content/uploads/2023/10/Alana-Clason.jpg
 comments: false
 about: 
   id: alana
   template: solana
-  image: http://www.alanaclason.ca/uploads/1/9/2/0/1920735/published/profile-f-pic.jpg
+  image: https://bvcentre.ca/wp-content/uploads/2023/10/Alana-Clason.jpg
   image-shape: rounded
   links: 
     - icon: globe

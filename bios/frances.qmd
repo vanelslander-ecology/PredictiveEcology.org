@@ -1,12 +1,12 @@
 ---
 title: "Dr Frances Stewart"
 name: "Frances Stewart"
-image: http://www.stewartresearch.ca/uploads/4/5/7/0/45702893/resized-20190127-151146_orig.jpg
+image: https://www.wlu.ca/academics/faculties/faculty-of-science/faculty-profiles/frances-stewart/frances-stewart.jpg
 comments: false
 about: 
   id: frances
   template: solana
-  image: http://www.stewartresearch.ca/uploads/4/5/7/0/45702893/resized-20190127-151146_orig.jpg
+  image: https://www.wlu.ca/academics/faculties/faculty-of-science/faculty-profiles/frances-stewart/frances-stewart.jpg
   image-shape: rounded
   links: 
     - icon: globe
@@ -15,5 +15,5 @@ about:
 ---
 
 ::: {#frances}
-(Postdoctoral Fellow 2019-2021)
+Frances was a Postdoctoral Fellow with the Predictive Ecology group fro m2019-2021.
 :::
