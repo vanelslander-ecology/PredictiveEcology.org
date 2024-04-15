@@ -34,6 +34,8 @@ listing:
     feed: false
     page-size: 100
   - id: current-students
+    type: grid
+    grid-columns: 4
     contents: 
       - bios/ana.qmd
       - bios/isolde.qmd
@@ -50,6 +52,8 @@ listing:
     feed: false
     page-size: 100
   - id: research-professional
+    type: grid
+    grid-columns: 4
     contents:
       - bios/ian.qmd
     sort: 
@@ -64,6 +68,8 @@ listing:
     feed: false
     page-size: 100
   - id: former-personnel
+    type: grid
+    grid-columns: 4
     contents:
       - bios/frances.qmd
       - bios/alana.qmd
