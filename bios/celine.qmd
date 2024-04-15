@@ -1,13 +1,13 @@
 ---
 title: "Dr Celine Boisvenue"
 name: "Celine Boisvenue"
-image: https://mdpi-res.com/data/editors/editor_43196.png?1635994156
+image: /assets/img/celine.jpg
 comments: false
 about:
   id: celine
   template: solana
-  image: https://mdpi-res.com/data/editors/editor_43196.png?1635994156
-  image-shape: rounded
+  image: ../assets/img/celine.jpg
+  image-width: 50%
   links:
     - icon: globe
       text: webpage
@@ -21,8 +21,6 @@ about:
 ---
 
 ::: {#celine}
-
 **Research Scientist, [Natural Resources Canada](www.nrcan.gc.ca/home)**\
-**Adjunct Professor, [University of British Columbia](www.ubc.ca) **
-
+**Adjunct Professor, [University of British Columbia](www.ubc.ca)**
 :::
