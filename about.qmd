@@ -14,12 +14,15 @@ about:
       href: https://github.com/PredictiveEcology
 listing: 
   - id: researchers
+    type: grid
+    grid-columns: 4
     contents: 
       - bios/eliot.qmd
       - bios/ceres.qmd
       - bios/celine.qmd
       - bios/alex.qmd
       - bios/tati.qmd
+      - bios/steve.qmd
     sort: false
     fields: [image, title, description]
     max-description-length: 1000000
@@ -84,8 +87,7 @@ listing:
 ---
 
 ::: {#about-pec}
-
-The Predictive Ecology Community began in Victoria, British Columbia, Canada, at the Pacific Forestry Centre. Soon after, students and postdocs joined from Université Laval, based out of Québec City. Currently, the Predictive Ecology Community has active members in Europe and across Canada. 
+The Predictive Ecology Community began in Victoria, British Columbia, Canada, at the Pacific Forestry Centre. Soon after, students and postdocs joined from Université Laval, based out of Québec City. Currently, the Predictive Ecology Community has active members in Europe and across Canada.
 :::
 
 ::: {#researchers}

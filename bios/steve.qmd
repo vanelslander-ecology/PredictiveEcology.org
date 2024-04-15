@@ -1,0 +1,26 @@
+---
+title: "Dr Steve Cumming"
+name: "Steve Cumming"
+image: https://www.ffgg.ulaval.ca/departements/sbf/sites/default/files/cummings_steven_150x200.jpg
+comments: false
+about: 
+  id: steve
+  template: solana
+  image: https://www.ffgg.ulaval.ca/departements/sbf/sites/default/files/cummings_steven_150x200.jpg
+  image-shape: rounded
+  links: 
+    - icon: globe
+      text: webpage
+      href: https://www.ffgg.ulaval.ca/departements/sbf/professeurs/steve-cumming
+    - icon: github
+      text: GitHub
+      href: https://github.com/stevecumming 
+    - icon: envelope
+      text: e-mail
+      href: "mailto: Steve.Cumming@sbf.ulaval.ca"
+---
+
+::: {#steve}
+**Professor, [Université Laval](www.ulaval.ca)**
+
+:::

@@ -7,9 +7,22 @@ about:
   template: solana
 listing: 
   - id: workshops
-    type: grid
+    type: table
     contents: 
       - workshops/June-2024-SpaDES-workshop.qmd
+    sort: "date asc"
+    fields: [image, title, description, date]
+    max-description-length: 1000000
+    image-height: 250px
+    image-align: left
+    sort-ui: false
+    filter-ui: false
+    categories: false
+    feed: false
+    page-size: 30
+  - id: past-workshops
+    type: table
+    contents: 
       - workshops/April-2024-EFI-SpaDES-Workshop.qmd
     sort: "date asc"
     fields: [image, title, description, date]
@@ -20,25 +33,18 @@ listing:
     filter-ui: false
     categories: false
     feed: false
-    page-size: 100
+    page-size: 30
 ---
 
-
-
 ::: {#workshops-top}
-
-
-
 :::
 
 ::: {layout="[[60,40], [100]]"}
-
-After an extended COVID hiatus, we will be holding workshops around [PERFICT](https://onlinelibrary.wiley.com/doi/full/10.1111/ele.13994) and the SpaDES metapackage for R as a means of achieving a PERFICT approach. 
+After an extended COVID hiatus, we will be holding workshops around [PERFICT](https://onlinelibrary.wiley.com/doi/full/10.1111/ele.13994) and the SpaDES metapackage for R as a means of achieving a PERFICT approach.
 
 [![](https://onlinelibrary.wiley.com/cms/asset/680b22bc-1a97-4ab6-8f90-6fd1557e9e27/ele13994-fig-0001-m.jpg)](https://onlinelibrary.wiley.com/doi/full/10.1111/ele.13994)
 
 **We will be adding content here over the next weeks.**
-
 :::
 
 ## Upcoming workshops
@@ -47,5 +53,8 @@ After an extended COVID hiatus, we will be holding workshops around [PERFICT](ht
 :::
 
 ## Past workshops
+
+::: {#past-workshops}
+:::
 
 For older workshops (prior to 2021, see <https://spades-workshops.predictiveecology.org/>).
