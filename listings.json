@@ -1,12 +1,5 @@
 [
   {
-    "listing": "/Workshops.html",
-    "items": [
-      "/workshops/June-2024-SpaDES-workshop.html",
-      "/workshops/April-2024-EFI-SpaDES-Workshop.html"
-    ]
-  },
-  {
     "listing": "/index.html",
     "items": [
       "/posts/2023-09-08-phd-announcement.html",
@@ -55,6 +48,13 @@
     ]
   },
   {
+    "listing": "/Workshops.html",
+    "items": [
+      "/workshops/June-2024-SpaDES-workshop.html",
+      "/workshops/April-2024-EFI-SpaDES-Workshop.html"
+    ]
+  },
+  {
     "listing": "/about.html",
     "items": [
       "/bios/eliot.html",
@@ -63,6 +63,7 @@
       "/bios/alex.html",
       "/bios/tati.html",
       "/bios/steve.html",
+      "/bios/julie.html",
       "/bios/ana.html",
       "/bios/genevieve.html",
       "/bios/isolde.html",
