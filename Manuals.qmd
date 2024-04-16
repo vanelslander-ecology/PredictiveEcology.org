@@ -2,9 +2,6 @@
 title: "Manuals"
 permalink: /Manuals/
 comments: false
-about: 
-  id: manuals-top
-  template: solana
 listing: 
   - id: Manuals
     type: table
@@ -13,9 +10,8 @@ listing:
         image: https://landr-manual.predictiveecology.org/modules/Biomass_core/figures/Biomass_coreOutPlots1.png
         title: "LandR Manual"
         description: "Manual for using the LandR ecosystem of modules"
-        date: "2024-04-16"
         categories: [SpaDES, LandR, HTML]
-    fields: [image, title, description, date]
+    fields: [image, title, description]
     max-description-length: 1000000
     image-height: 150px
     image-align: left
