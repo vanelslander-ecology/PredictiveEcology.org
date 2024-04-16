@@ -4,11 +4,13 @@ permalink: /SpaDES/
 comments: false
 ---
 
-## Websites
+SpaDES is a metapackage for R that facilitates PERFICT workflows. It began as a tool for spatial simulation for Ecology, but it has evolved over time. 
+
+## Links
 
 **`SpaDES` metapackage:** <https://SpaDES.PredictiveEcology.org>
 
-**`SpaDES` users group:** <https://groups.google.com/d/forum/spades-users>
+**`SpaDES` open discussions/questions:**https://github.com/PredictiveEcology/SpaDES/discussions
 
 **`SpaDES` wiki:** <https://github.com/PredictiveEcology/SpaDES/wiki>
 
@@ -21,14 +23,3 @@ comments: false
 -   `SpaDES.core`: <https://spades-core.predictiveecology.org/>
 -   `SpaDES.shiny`: <https://spades-shiny.predictiveecology.org/>
 -   `SpaDES.tools`: <https://spades-tools.predictiveecology.org/>
-
-## Presentations
-
-```{=html}
-<script src="https://bibbase.org/show?bib=https%3A%2F%2Fapi.zotero.org%2Fusers%2F1482%2Fcollections%2FRG586MVG%2Fitems%3Fkey%3DL01f7EYtoVM7a0BZeSBan70l%26format%3Dbibtex%26limit%3D100&jsonp=1&theme=side&authorFirst=1"></script>
-```
-## Software releases
-
-```{=html}
-<script src="https://bibbase.org/show?bib=https%3A%2F%2Fapi.zotero.org%2Fusers%2F1482%2Fcollections%2FVQ8W4S4V%2Fitems%3Fkey%3DL01f7EYtoVM7a0BZeSBan70l%26format%3Dbibtex%26limit%3D100&jsonp=1&theme=side&authorFirst=1"></script>
-```
