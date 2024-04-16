@@ -2,7 +2,7 @@
 title: "Ecological Forecasting Initiative - SpaDES Workshop April 2024"
 author: "Tati Micheletti"
 date: "April 15, 2024"
-image: https://github.com/tati-micheletti/Micheletti_SpaDES/blob/main/figures/forecastedAbundance.png?raw=true
+image: https://besjournals.onlinelibrary.wiley.com/cms/asset/db13319c-88b4-4821-9eaa-a2e62364b399/mee314034-fig-0004-m.jpg
 categories:
   - R
   - SpaDES Workshops
@@ -10,7 +10,5 @@ categories:
   - EFI
 comments: false
 ---
-
-A 1 1/2 hour brief overview of how to use SpaDES to help achieve [a PERFICT workflow](https://onlinelibrary.wiley.com/doi/abs/10.1111/ele.13994).
 
 ## [Workshop Site](https://github.com/tati-micheletti/Micheletti_SpaDES?tab=readme-ov-file#creating-and-integrating-simple-models-in-spades)

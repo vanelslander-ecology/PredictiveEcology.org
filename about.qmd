@@ -17,17 +17,11 @@ listing:
     type: grid
     grid-columns: 4
     contents: 
-      - bios/eliot.qmd
-      - bios/ceres.qmd
-      - bios/celine.qmd
-      - bios/alex.qmd
-      - bios/tati.qmd
-      - bios/steve.qmd
-      - bios/julie.qmd
+      - bios/community/*.qmd
     sort: false
     fields: [image, title, description]
     max-description-length: 1000000
-    image-height: 250px
+    image-height: 200px
     image-align: left
     sort-ui: false
     filter-ui: false
@@ -38,14 +32,12 @@ listing:
     type: grid
     grid-columns: 4
     contents: 
-      - bios/ana.qmd
-      - bios/isolde.qmd
-      - bios/genevieve.qmd
+      - bios/current/*.qmd
     sort: 
       - "name"
     fields: [image, title, description]
     max-description-length: 1000000
-    image-height: 250px
+    image-height: 200px
     image-align: left
     sort-ui: false
     filter-ui: false
@@ -61,7 +53,7 @@ listing:
       - "name"
     fields: [image, title, description]
     max-description-length: 1000000
-    image-height: 250px
+    image-height: 200px
     image-align: left
     sort-ui: false
     filter-ui: false
@@ -84,7 +76,7 @@ listing:
       - "name"
     fields: [image, title, description]
     max-description-length: 1000000
-    image-height: 250px
+    image-height: 200px
     image-align: left
     sort-ui: false
     filter-ui: false

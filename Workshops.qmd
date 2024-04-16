@@ -23,17 +23,66 @@ listing:
   - id: past-workshops
     type: table
     contents: 
-      - workshops/April-2024-EFI-SpaDES-Workshop.qmd
-    sort: "date asc"
+      - path: https://github.com/tati-micheletti/Micheletti_SpaDES?tab=readme-ov-file#creating-and-integrating-simple-models-in-spades
+        image: https://github.com/tati-micheletti/Micheletti_SpaDES/blob/main/figures/forecastedAbundance.png?raw=true
+        title: "SpaDES Workshop at EFI"
+        description: "Spades Workshop at EFI"
+        date: "2024-04-15"
+        categories: [SpaDES, Training, HTML]
+    sort: "date desc"
     fields: [image, title, description, date]
     max-description-length: 1000000
-    image-height: 250px
+    image-height: 150px
     image-align: left
     sort-ui: false
     filter-ui: false
     categories: false
     feed: false
     page-size: 30
+  - id: preCOVID-workshops
+    type: table
+    contents: 
+      - path: https://spades-workshops.predictiveecology.org/articles/index.html
+        image: /../assets/img/avatar.png
+        title: "SpaDES training - Pacific Foresty Centre"
+        description: "General SpaDES training focusing on module creation"
+        date: "2021-01-15"
+        categories: [SpaDES, Training, HTML]        
+      - path: https://spades-workshops.predictiveecology.org/articlesOct2019/index.html
+        image: /../assets/img/avatar.png
+        title: "SpaDES training - Pacific Foresty Centre"
+        description: "General SpaDES training focusing on module creation"
+        date: "2019-01-15"
+        categories: [SpaDES, Training, HTML]        
+      - path: https://spades-workshops.predictiveecology.org/articlesSept2018/index.html
+        image: /../assets/img/avatar.png
+        title: "SpaDES training - Pacific Foresty Centre"
+        description: "General SpaDES training focusing on module creation"
+        date: "2018-09-15"
+        categories: [SpaDES, Training, HTML]        
+      - path: https://spades-workshops.predictiveecology.org/articlesMay2018/index.html
+        image: /../assets/img/avatar.png
+        title: "SpaDES training - Pacific Foresty Centre"
+        description: "General SpaDES training focusing on module creation"
+        date: "2018-05-15"
+        categories: [SpaDES, Training, HTML]        
+      - path: https://rpubs.com/PredictiveEcology/SpaDES-Intro-Course-Outline
+        image: /../assets/img/avatar.png
+        title: "SpaDES training - Pacific Foresty Centre"
+        description: "General SpaDES training focusing on module creation"
+        date: "2016-12-07"
+        categories: [SpaDES, Training, HTML]        
+    sort: "date desc"
+    fields: [image, title, description, date]
+    max-description-length: 1000000
+    image-height: 150px
+    image-align: left
+    sort-ui: false
+    filter-ui: false
+    categories: false
+    feed: false
+    page-size: 30
+    
 ---
 
 ::: {#workshops-top}
@@ -57,4 +106,7 @@ After an extended COVID hiatus, we will be holding workshops around [PERFICT](ht
 ::: {#past-workshops}
 :::
 
-For older workshops (prior to 2021, see <https://spades-workshops.predictiveecology.org/>).
+## Pre-COVID workshops
+
+::: {#preCOVID-workshops}
+:::

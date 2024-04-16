@@ -1,0 +1,64 @@
+---
+title: "WebApps"
+permalink: /WebApps/
+comments: false
+about: 
+  id: WebApps-top
+  template: solana
+listing: 
+  - id: WebApps
+    type: table
+    contents: 
+      - workshops/June-2024-SpaDES-workshop.qmd
+    sort: "date asc"
+    fields: [image, title, description, date]
+    max-description-length: 1000000
+    image-height: 250px
+    image-align: left
+    sort-ui: false
+    filter-ui: false
+    categories: false
+    feed: false
+    page-size: 30
+  - id: past-workshops
+    type: table
+    contents: 
+      - path: https://github.com/mcanouil/quarto-version-badge
+        title: "SpaDES Workshop at EFI"
+        description: "Spades Workshop at EFI"
+        date: "2024-04-15"
+        categories: [SpaDES, Training, HTML]
+      - workshops/April-2024-EFI-SpaDES-Workshop.qmd
+    sort: "date asc"
+    fields: [image, title, description, date]
+    max-description-length: 1000000
+    image-height: 250px
+    image-align: left
+    sort-ui: false
+    filter-ui: false
+    categories: false
+    feed: false
+    page-size: 30
+---
+
+::: {#workshops-top}
+:::
+
+::: {layout="[[60,40], [100]]"}
+
+[![](https://onlinelibrary.wiley.com/cms/asset/680b22bc-1a97-4ab6-8f90-6fd1557e9e27/ele13994-fig-0001-m.jpg)](https://onlinelibrary.wiley.com/doi/full/10.1111/ele.13994)
+
+**We will be adding content here over the next weeks.**
+:::
+
+## Upcoming workshops
+
+::: {#workshops}
+:::
+
+## Past workshops
+
+::: {#past-workshops}
+:::
+
+For older workshops (prior to 2021, see <https://spades-workshops.predictiveecology.org/>).
