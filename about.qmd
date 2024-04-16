@@ -87,7 +87,7 @@ listing:
 
 This site assembles an up to date collection of contributors to Predictive Ecology, primarily through the use of [SpaDES](https://predictiveecology.org/SpaDES.html). We are connected through the common goal of upholding the principles of [PERFICT](https://onlinelibrary.wiley.com/doi/full/10.1111/ele.13994) so that we can create a dynamic network of interconnected science modules. The community has active members in Europe and across Canada.
 
-The Predictive Ecology Community began in Victoria, British Columbia, Canada, at the Pacific Forestry Centre and at Laval University in 2015. Students and postdocs were primarily at University of British Columbia and Université Laval.
+The Predictive Ecology Community began in Victoria, British Columbia, Canada, at the Pacific Forestry Centre and at Laval University, Quebec in 2015. Since then, students and postdocs have been primarily at University of British Columbia and Université Laval.
 
 ### Researchers
 
