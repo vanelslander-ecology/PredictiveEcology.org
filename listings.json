@@ -1,18 +1,5 @@
 [
   {
-    "listing": "/WebApps.html",
-    "items": [
-      "/workshops/June-2024-SpaDES-workshop.html",
-      "/workshops/April-2024-EFI-SpaDES-Workshop.html"
-    ]
-  },
-  {
-    "listing": "/Workshops.html",
-    "items": [
-      "/workshops/June-2024-SpaDES-workshop.html"
-    ]
-  },
-  {
     "listing": "/index.html",
     "items": [
       "/posts/2023-09-08-phd-announcement.html",
@@ -61,10 +48,23 @@
     ]
   },
   {
+    "listing": "/Workshops.html",
+    "items": [
+      "/workshops/June-2024-SpaDES-workshop.html"
+    ]
+  },
+  {
+    "listing": "/WebApps.html",
+    "items": [
+      "/workshops/June-2024-SpaDES-workshop.html"
+    ]
+  },
+  {
     "listing": "/about.html",
     "items": [
       "/bios/community/aaaeliot.html",
       "/bios/community/alex.html",
+      "/bios/community/barry.html",
       "/bios/community/celine.html",
       "/bios/community/ceres.html",
       "/bios/community/julie.html",
