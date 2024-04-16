@@ -1075,28 +1075,14 @@
     "href": "SpaDES.html",
     "title": "SpaDES",
     "section": "",
-    "text": "SpaDES metapackage: https://SpaDES.PredictiveEcology.org\nSpaDES users group: https://groups.google.com/d/forum/spades-users\nSpaDES wiki: https://github.com/PredictiveEcology/SpaDES/wiki\nOther SpaDES ecosystem packages:\n\nquickPlot: https://quickplot.predictiveecology.org/\nRequire: https://Require.predictiveecology.org/\nreproducible: https://reproducible.predictiveecology.org/\nSpaDES.addins: https://spades-addins.predictiveecology.org\nSpaDES.core: https://spades-core.predictiveecology.org/\nSpaDES.shiny: https://spades-shiny.predictiveecology.org/\nSpaDES.tools: https://spades-tools.predictiveecology.org/"
+    "text": "SpaDES is a metapackage for R that facilitates PERFICT workflows. It began as a tool for spatial simulation for Ecology, but it has evolved over time."
   },
   {
-    "objectID": "SpaDES.html#websites",
-    "href": "SpaDES.html#websites",
+    "objectID": "SpaDES.html#links",
+    "href": "SpaDES.html#links",
     "title": "SpaDES",
-    "section": "",
-    "text": "SpaDES metapackage: https://SpaDES.PredictiveEcology.org\nSpaDES users group: https://groups.google.com/d/forum/spades-users\nSpaDES wiki: https://github.com/PredictiveEcology/SpaDES/wiki\nOther SpaDES ecosystem packages:\n\nquickPlot: https://quickplot.predictiveecology.org/\nRequire: https://Require.predictiveecology.org/\nreproducible: https://reproducible.predictiveecology.org/\nSpaDES.addins: https://spades-addins.predictiveecology.org\nSpaDES.core: https://spades-core.predictiveecology.org/\nSpaDES.shiny: https://spades-shiny.predictiveecology.org/\nSpaDES.tools: https://spades-tools.predictiveecology.org/"
-  },
-  {
-    "objectID": "SpaDES.html#presentations",
-    "href": "SpaDES.html#presentations",
-    "title": "SpaDES",
-    "section": "Presentations",
-    "text": "Presentations"
-  },
-  {
-    "objectID": "SpaDES.html#software-releases",
-    "href": "SpaDES.html#software-releases",
-    "title": "SpaDES",
-    "section": "Software releases",
-    "text": "Software releases"
+    "section": "Links",
+    "text": "Links\nSpaDES metapackage: https://SpaDES.PredictiveEcology.org\nSpaDES open discussions/questions:https://github.com/PredictiveEcology/SpaDES/discussions\nSpaDES wiki: https://github.com/PredictiveEcology/SpaDES/wiki\nOther SpaDES ecosystem packages:\n\nquickPlot: https://quickplot.predictiveecology.org/\nRequire: https://Require.predictiveecology.org/\nreproducible: https://reproducible.predictiveecology.org/\nSpaDES.addins: https://spades-addins.predictiveecology.org\nSpaDES.core: https://spades-core.predictiveecology.org/\nSpaDES.shiny: https://spades-shiny.predictiveecology.org/\nSpaDES.tools: https://spades-tools.predictiveecology.org/"
   },
   {
     "objectID": "about.html",
