@@ -1,5 +1,9 @@
 [
   {
+    "listing": "/Manuals.html",
+    "items": []
+  },
+  {
     "listing": "/index.html",
     "items": [
       "/posts/2023-09-08-phd-announcement.html",
@@ -54,12 +58,6 @@
     ]
   },
   {
-    "listing": "/WebApps.html",
-    "items": [
-      "/workshops/June-2024-SpaDES-workshop.html"
-    ]
-  },
-  {
     "listing": "/about.html",
     "items": [
       "/bios/community/aaaeliot.html",
@@ -67,6 +65,7 @@
       "/bios/community/barry.html",
       "/bios/community/celine.html",
       "/bios/community/ceres.html",
+      "/bios/community/frances.html",
       "/bios/community/julie.html",
       "/bios/community/steve.html",
       "/bios/community/tati.html",
@@ -75,7 +74,6 @@
       "/bios/current/isolde.html",
       "/bios/ian.html",
       "/bios/alana.html",
-      "/bios/frances.html",
       "/bios/jean.html",
       "/bios/josh.html",
       "/bios/mario.html",
