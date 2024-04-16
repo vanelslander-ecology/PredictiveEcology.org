@@ -101,13 +101,41 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-image','listing-title','listing-description','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-image','listing-title','listing-description','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] },{ data: ['listing-date-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author"],
+      searchColumns: ["listing-path","listing-image","listing-title","listing-description","listing-date","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
     window['quarto-listings']['listing-past-workshops'] = new List('listing-past-workshops', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-preCOVID-workshops .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-image','listing-title','listing-description','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] },{ data: ['listing-date-sort'] }],
+      
+      searchColumns: ["listing-path","listing-image","listing-title","listing-description","listing-date","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-preCOVID-workshops'] = new List('listing-preCOVID-workshops', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -286,7 +314,7 @@ Date
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-categories="R,SpaDES Workshops,Training" data-listing-date-sort="1717977600000" data-listing-file-modified-sort="1713219398708" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="SpaDES Workshop (Planned June 2024)" data-listing-filename-sort="June-2024-SpaDES-workshop.qmd">
+<tr data-index="0" data-categories="R,SpaDES Workshops,Training" data-listing-date-sort="1717977600000" data-listing-file-modified-sort="1713233297930" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="SpaDES Workshop (Planned June 2024)" data-listing-filename-sort="June-2024-SpaDES-workshop.qmd">
 <td>
 <span class="listing-image"><img src="https://besjournals.onlinelibrary.wiley.com/cms/asset/db13319c-88b4-4821-9eaa-a2e62364b399/mee314034-fig-0004-m.jpg" style="height: 250px;"></span>
 </td>
@@ -329,15 +357,15 @@ Date
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-categories="R,SpaDES Workshops,Training,EFI" data-listing-date-sort="1713139200000" data-listing-file-modified-sort="1713219398708" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Ecological Forecasting Initiative - SpaDES Workshop April 2024" data-listing-filename-sort="April-2024-EFI-SpaDES-Workshop.qmd">
+<tr data-index="0" data-categories="SpaDES,Training,HTML" data-listing-date-sort="1713139200000" data-listing-title-sort="SpaDES Workshop at EFI">
 <td>
-<span class="listing-image"><img src="https://github.com/tati-micheletti/Micheletti_SpaDES/blob/main/figures/forecastedAbundance.png?raw=true" style="height: 250px;"></span>
+<span class="listing-image"><img src="https://github.com/tati-micheletti/Micheletti_SpaDES/blob/main/figures/forecastedAbundance.png?raw=true" style="height: 150px;"></span>
 </td>
 <td>
-<a href="./workshops/April-2024-EFI-SpaDES-Workshop.html" class="title listing-title">Ecological Forecasting Initiative - SpaDES Workshop April 2024</a>
+<a href="https://github.com/tati-micheletti/Micheletti_SpaDES?tab=readme-ov-file#creating-and-integrating-simple-models-in-spades" class="title listing-title">SpaDES Workshop at EFI</a>
 </td>
 <td>
-<span class="listing-description">A 1 1/2 hour brief overview of how to use SpaDES to help achieve a PERFICT workflow.</span>
+<span class="listing-description">Spades Workshop at EFI</span>
 </td>
 <td>
 <span class="listing-date">Apr 15, 2024</span>
@@ -350,7 +378,105 @@ Date
 No matching items
 </div>
 </div>
-<p>For older workshops (prior to 2021, see <a href="https://spades-workshops.predictiveecology.org/" class="uri">https://spades-workshops.predictiveecology.org/</a>).</p>
+</section>
+<section id="pre-covid-workshops" class="level2">
+<h2 data-anchor-id="pre-covid-workshops">Pre-COVID workshops</h2>
+<div id="listing-preCOVID-workshops" class="quarto-listing quarto-listing-container-table">
+
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+</th>
+<th>
+Title
+</th>
+<th>
+Description
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-categories="SpaDES,Training,HTML" data-listing-date-sort="1610668800000" data-listing-title-sort="SpaDES training - Pacific Foresty Centre">
+<td>
+<span class="listing-image"><img src="./../assets/img/avatar.png" style="height: 150px;"></span>
+</td>
+<td>
+<a href="https://spades-workshops.predictiveecology.org/articles/index.html" class="title listing-title">SpaDES training - Pacific Foresty Centre</a>
+</td>
+<td>
+<span class="listing-description">General SpaDES training focusing on module creation</span>
+</td>
+<td>
+<span class="listing-date">Jan 15, 2021</span>
+</td>
+</tr>
+<tr data-index="1" data-categories="SpaDES,Training,HTML" data-listing-date-sort="1547510400000" data-listing-title-sort="SpaDES training - Pacific Foresty Centre">
+<td>
+<span class="listing-image"><img src="./../assets/img/avatar.png" style="height: 150px;"></span>
+</td>
+<td>
+<a href="https://spades-workshops.predictiveecology.org/articlesOct2019/index.html" class="title listing-title">SpaDES training - Pacific Foresty Centre</a>
+</td>
+<td>
+<span class="listing-description">General SpaDES training focusing on module creation</span>
+</td>
+<td>
+<span class="listing-date">Jan 15, 2019</span>
+</td>
+</tr>
+<tr data-index="2" data-categories="SpaDES,Training,HTML" data-listing-date-sort="1536969600000" data-listing-title-sort="SpaDES training - Pacific Foresty Centre">
+<td>
+<span class="listing-image"><img src="./../assets/img/avatar.png" style="height: 150px;"></span>
+</td>
+<td>
+<a href="https://spades-workshops.predictiveecology.org/articlesSept2018/index.html" class="title listing-title">SpaDES training - Pacific Foresty Centre</a>
+</td>
+<td>
+<span class="listing-description">General SpaDES training focusing on module creation</span>
+</td>
+<td>
+<span class="listing-date">Sep 15, 2018</span>
+</td>
+</tr>
+<tr data-index="3" data-categories="SpaDES,Training,HTML" data-listing-date-sort="1526342400000" data-listing-title-sort="SpaDES training - Pacific Foresty Centre">
+<td>
+<span class="listing-image"><img src="./../assets/img/avatar.png" style="height: 150px;"></span>
+</td>
+<td>
+<a href="https://spades-workshops.predictiveecology.org/articlesMay2018/index.html" class="title listing-title">SpaDES training - Pacific Foresty Centre</a>
+</td>
+<td>
+<span class="listing-description">General SpaDES training focusing on module creation</span>
+</td>
+<td>
+<span class="listing-date">May 15, 2018</span>
+</td>
+</tr>
+<tr data-index="4" data-categories="SpaDES,Training,HTML" data-listing-date-sort="1481068800000" data-listing-title-sort="SpaDES training - Pacific Foresty Centre">
+<td>
+<span class="listing-image"><img src="./../assets/img/avatar.png" style="height: 150px;"></span>
+</td>
+<td>
+<a href="https://rpubs.com/PredictiveEcology/SpaDES-Intro-Course-Outline" class="title listing-title">SpaDES training - Pacific Foresty Centre</a>
+</td>
+<td>
+<span class="listing-description">General SpaDES training focusing on module creation</span>
+</td>
+<td>
+<span class="listing-date">Dec 7, 2016</span>
+</td>
+</tr>
+</tbody>
+
+</table>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
 
 
 
