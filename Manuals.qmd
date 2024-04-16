@@ -1,0 +1,32 @@
+---
+title: "Manuals"
+permalink: /Manuals/
+comments: false
+about: 
+  id: manuals-top
+  template: solana
+listing: 
+  - id: Manuals
+    type: table
+    contents: 
+      - path: https://landr-manual.predictiveecology.org/landr-biomass_core-module.html?q=climate#biomass-core-vs-lbse-enhan1
+        image: https://landr-manual.predictiveecology.org/modules/Biomass_core/figures/Biomass_coreOutPlots1.png
+        title: "LandR Manual"
+        description: "Manual for using the LandR ecosystem of modules"
+        date: "2024-04-16"
+        categories: [SpaDES, LandR, HTML]
+    fields: [image, title, description, date]
+    max-description-length: 1000000
+    image-height: 150px
+    image-align: left
+    sort-ui: false
+    filter-ui: false
+    categories: false
+    feed: false
+    page-size: 30
+---
+
+
+::: {#Manuals}
+:::
+

@@ -19,6 +19,7 @@ website:
         text: About
       - SpaDES.qmd
       - Workshops.qmd
+      - Manuals.qmd
       - publications.qmd
       - presentations.qmd
       - icon: github

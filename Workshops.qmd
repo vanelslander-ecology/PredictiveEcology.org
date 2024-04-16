@@ -82,7 +82,6 @@ listing:
     categories: false
     feed: false
     page-size: 30
-    
 ---
 
 ::: {#workshops-top}

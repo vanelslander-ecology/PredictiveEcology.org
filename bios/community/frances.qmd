@@ -1,0 +1,21 @@
+---
+title: "Dr Frances Stewart"
+name: "Frances Stewart"
+image: https://www.wlu.ca/academics/faculties/faculty-of-science/faculty-profiles/frances-stewart/frances-stewart.jpg
+comments: false
+about: 
+  id: frances
+  template: solana
+  image: https://www.wlu.ca/academics/faculties/faculty-of-science/faculty-profiles/frances-stewart/frances-stewart.jpg
+  image-shape: rounded
+  links: 
+    - icon: globe
+      text: webpage
+      href: https://www.stewartresearch.ca/
+---
+
+::: {#frances}
+Canada Research Chair, Northern Wildlife, Laurier University.
+
+Frances initially joined the Predictive Ecology community as a Postdoctoral Fellow with the from 2019-2021. She is now the head of the Wild Lab at Laurier University.
+:::
