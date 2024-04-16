@@ -10,7 +10,7 @@ SpaDES is a metapackage for R that facilitates PERFICT workflows. It began as a 
 
 **`SpaDES` metapackage:** <https://SpaDES.PredictiveEcology.org>
 
-**`SpaDES` open discussions/questions:**https://github.com/PredictiveEcology/SpaDES/discussions
+**`SpaDES` open discussions/questions:** <https://github.com/PredictiveEcology/SpaDES/discussions>
 
 **`SpaDES` wiki:** <https://github.com/PredictiveEcology/SpaDES/wiki>
 
