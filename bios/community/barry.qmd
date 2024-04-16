@@ -1,0 +1,26 @@
+---
+title: "Dr. Barry Cooke"
+name: "Barry Cooke"
+image: https://i1.rgstatic.net/ii/profile.image/558097560870912-1510072235475_Q512/Barry-Cooke.jpg
+comments: false
+about: 
+  id: barry
+  template: solana
+  image: https://i1.rgstatic.net/ii/profile.image/558097560870912-1510072235475_Q512/Barry-Cooke.jpg
+  image-shape: rounded
+  links: 
+    - icon: globe
+      text: webpage
+      href: https://www.researchgate.net/profile/Barry-Cooke
+    - icon: github
+      text: GitHub
+      href: https://github.com/BarryCooke 
+    - icon: envelope
+      text: e-mail
+      href: "mailto: Barry.Cooke@NRCan-RNCan.gc.ca"
+---
+
+
+::: {#barry}
+Research Scientist, Natural Resources Canada
+:::

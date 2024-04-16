@@ -89,7 +89,7 @@ This site assembles an up to date collection of contributors to Predictive Ecolo
 
 The Predictive Ecology Community began in Victoria, British Columbia, Canada, at the Pacific Forestry Centre and at Laval University in 2015. Students and postdocs were primarily at University of British Columbia and Université Laval.
 
-### Community
+### Researchers
 
 
 ::: {#researchers}
