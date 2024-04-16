@@ -11,6 +11,11 @@ listing:
         title: "LandR Manual"
         description: "Manual for using the LandR ecosystem of modules"
         categories: [SpaDES, LandR, HTML]
+      - path: https://predictiveecology.github.io/LandWeb/
+        image: https://predictiveecology.github.io/LandWeb/figures/LandWeb_gg.png
+        title: "LandWeb Manual"
+        description: "The LandWeb project"
+        categories: [SpaDES, LandR, HTML]
     fields: [image, title, description]
     max-description-length: 1000000
     image-height: 150px
@@ -24,3 +29,5 @@ listing:
 
 ::: {#Manuals}
 :::
+
+
