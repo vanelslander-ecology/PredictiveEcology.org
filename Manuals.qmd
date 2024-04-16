@@ -9,7 +9,7 @@ listing:
   - id: Manuals
     type: table
     contents: 
-      - path: https://landr-manual.predictiveecology.org/landr-biomass_core-module.html?q=climate#biomass-core-vs-lbse-enhan1
+      - path: https://landr-manual.predictiveecology.org/index.html
         image: https://landr-manual.predictiveecology.org/modules/Biomass_core/figures/Biomass_coreOutPlots1.png
         title: "LandR Manual"
         description: "Manual for using the LandR ecosystem of modules"
@@ -26,7 +26,5 @@ listing:
     page-size: 30
 ---
 
-
 ::: {#Manuals}
 :::
-
