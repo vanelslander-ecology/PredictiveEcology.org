@@ -1,13 +1,33 @@
 ---
-title: 'Training'
+title: "Training"
 permalink: /Training/
 comments: false
+listing: 
+  - id: Training
+    type: table
+    contents: 
+      - path: https://ceresbarros.github.io/SpaDES4Dummies/
+        image: https://ceresbarros.github.io/SpaDES4Dummies/Part1_DummyModel_files/figure-html/data_analysis-1.png
+        title: "SpaDES for Dummies"
+        description: "Guide to the SpaDES modelling toolkit in R"
+        categories: [SpaDES, Dummies]
+      - path: https://html-preview.github.io/?url=https://github.com/tati-micheletti/Micheletti_SpaDES/blob/main/HandsOn.html
+        image: /../assets/img/HandsOn.png
+        title: "Creating and integrating simple models in SpaDES"
+        description: "This guide provides a simple and yet comprehensive guide to creating and then integrating SpaDES compatible modules (hereby “SpaDES modules”)."
+        categories: [SpaDES, Integrating]
+    fields: [image, title, description]
+    max-description-length: 1000000
+    image-height: 150px
+    image-align: left
+    sort-ui: false
+    filter-ui: false
+    categories: false
+    feed: false
+    page-size: 30
 ---
 
-## TODO
-
-## Tutorials
-
-## Workshops
+::: {#Training}
+:::
 
 
