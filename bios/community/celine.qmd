@@ -6,7 +6,7 @@ comments: false
 about:
   id: celine
   template: solana
-  image: https://github.com/cboisvenue/photo/celine-photo2023.jpg
+  image: https://github.com/cboisvenue/photo/blob/main/celine-photo2023.jpg?raw=true
   image-shape: rounded
   links:
     - icon: globe
