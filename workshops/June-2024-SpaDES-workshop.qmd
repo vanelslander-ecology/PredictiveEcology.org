@@ -1,10 +1,18 @@
 ---
 title: "Reproducible workflows for landscapes with SpaDES and PERFICT"
+author: "Eliot McIntire"
+description: "A multi-day workshop focusing on learning robust approaches to building reuseable, reproducibe workflows for ecological applications"
+date: "June 10, 2024"
 image: https://besjournals.onlinelibrary.wiley.com/cms/asset/db13319c-88b4-4821-9eaa-a2e62364b399/mee314034-fig-0004-m.jpg
+categories:
+  - R
+  - SpaDES Workshops
+  - Training
 comments: false
 ---
 
 
+If you are interested in participating, please sign up here. Please also indicate preferences of which topics are of interest and at what level. We will attempt to customize the workshop accordingly.
 
 
 
