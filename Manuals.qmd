@@ -10,12 +10,12 @@ listing:
         image: https://landr-manual.predictiveecology.org/modules/Biomass_core/figures/Biomass_coreOutPlots1.png
         title: "LandR Manual"
         description: "Manual for using the LandR ecosystem of modules"
-        categories: [SpaDES, LandR, HTML]
+        categories: [SpaDES, LandR]
       - path: https://predictiveecology.github.io/LandWeb/
         image: https://predictiveecology.github.io/LandWeb/figures/LandWeb_gg.png
         title: "LandWeb Manual"
         description: "The LandWeb project"
-        categories: [SpaDES, LandR, HTML]
+        categories: [SpaDES, LandR]
     fields: [image, title, description]
     max-description-length: 1000000
     image-height: 150px

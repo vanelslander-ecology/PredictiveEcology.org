@@ -28,9 +28,9 @@ listing:
         title: "SpaDES Workshop at EFI"
         description: "Spades Workshop at EFI"
         date: "2024-04-15"
-        categories: [SpaDES, Training, HTML]
+        categories: [SpaDES, Training]
     sort: "date desc"
-    fields: [image, title, description, date]
+    fields: [image, title, description, date, video]
     max-description-length: 1000000
     image-height: 150px
     image-align: left
@@ -47,31 +47,31 @@ listing:
         title: "SpaDES training - Pacific Foresty Centre"
         description: "General SpaDES training focusing on module creation"
         date: "2021-01-15"
-        categories: [SpaDES, Training, HTML]        
+        categories: [SpaDES, Training]        
       - path: https://spades-workshops.predictiveecology.org/articlesOct2019/index.html
         image: /../assets/img/avatar.png
         title: "SpaDES training - Pacific Foresty Centre"
         description: "General SpaDES training focusing on module creation"
         date: "2019-01-15"
-        categories: [SpaDES, Training, HTML]        
+        categories: [SpaDES, Training]        
       - path: https://spades-workshops.predictiveecology.org/articlesSept2018/index.html
         image: /../assets/img/avatar.png
         title: "SpaDES training - Pacific Foresty Centre"
         description: "General SpaDES training focusing on module creation"
         date: "2018-09-15"
-        categories: [SpaDES, Training, HTML]        
+        categories: [SpaDES, Training]        
       - path: https://spades-workshops.predictiveecology.org/articlesMay2018/index.html
         image: /../assets/img/avatar.png
         title: "SpaDES training - Pacific Foresty Centre"
         description: "General SpaDES training focusing on module creation"
         date: "2018-05-15"
-        categories: [SpaDES, Training, HTML]        
+        categories: [SpaDES, Training]        
       - path: https://rpubs.com/PredictiveEcology/SpaDES-Intro-Course-Outline
         image: /../assets/img/avatar.png
         title: "SpaDES training - Pacific Foresty Centre"
         description: "General SpaDES training focusing on module creation"
         date: "2016-12-07"
-        categories: [SpaDES, Training, HTML]        
+        categories: [SpaDES, Training]        
     sort: "date desc"
     fields: [image, title, description, date]
     max-description-length: 1000000
@@ -104,6 +104,11 @@ After an extended COVID hiatus, we will be holding workshops around [PERFICT](ht
 
 ::: {#past-workshops}
 :::
+
+#### Videos
+
+{{< video https://www.youtube.com/watch?v=LyWoID3PU3Q >}}
+
 
 ## Pre-COVID workshops
 
