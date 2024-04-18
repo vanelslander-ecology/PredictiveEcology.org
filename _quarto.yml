@@ -14,9 +14,11 @@ website:
     search: true
     right:
       - href: index.qmd
-        text: Home
+        text: News
       - href: about.qmd
         text: About
+      - href: Projects.qmd
+        text: Projects
       - SpaDES.qmd
       - Workshops.qmd
       - Training.qmd

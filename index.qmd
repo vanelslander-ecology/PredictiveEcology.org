@@ -1,5 +1,5 @@
 ---
-title: "PEWebsite"
+title: "News"
 listing:
   contents: posts
   sort: "date desc"
