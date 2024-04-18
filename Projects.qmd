@@ -16,28 +16,28 @@ listing:
         image: https://github.com/PredictiveEcology/WBI_studyAreas/raw/main/figures/WBI_studyArea_gg.png
         title: "Western Boreal Initiative"
         description: "A large project that is addressing climate and cumulative effects on landscapes of the western boreal forests of Canada"
-        date: "2024-04-17"
+        Last-updated: "2024-04-17"
         categories: [SpaDES, WBI, Projects]        
       - path: https://www.landscapesinmotion.ca/
         image: https://images.squarespace-cdn.com/content/v1/59822aebc534a526009b3de1/1622820471171-1RV90OBOTGPGPK2EVCYI/GIF-making-file-size-smaller.gif?format=2500w
         title: "Landscapes in Motion"
         description: "A study to inform future management and policy in this important region of Alberta."
-        date: "2022-04-17"
+        Last-updated: "2022-04-17"
         categories: [SpaDES, LiM, Projects]    
       - path: https://github.com/bcgov/castor
         image: https://github.com/bcgov/castor/blob/main/documentation/images/castor_explorer_map.jpg?raw=true
         title: "CASTOR"
         description: "Castor - Forest and Land Use Simulator"
-        date: "2024-04-17"
+        Last-updated: "2024-04-17"
         categories: [SpaDES, CASTOR, Projects]    
       - path: https://friresearch.ca/project/landweb-simulation-modelling
         image: http://friresearch.ca/data/HLP_2018_04_aerial-burn-patterns-blog.jpg
         title: "LANDWEB"
         description: "Define historical NRV conditions at landscape scales across 140 million ha of the western boreal"
-        date: "2024-04-17"
+        Last-updated: "2024-04-17"
         categories: [SpaDES, LandWeb, Projects]            
-    sort: "date desc"
-    fields: [image, title, description, date]
+    sort: "Last-updated desc"
+    fields: [image, title, description, Last-updated]
     max-description-length: 1000000
     image-height: 250px
     image-align: left
