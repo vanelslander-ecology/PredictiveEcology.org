@@ -4,9 +4,9 @@ project:
 book:
   title: "training"
   author:
-    - " E. McIntire"
+    - "E. McIntire"
     - "C. Barros"
-  date: last-updated
+  date: last-modified
   chapters:
     - index.qmd
     - intro.qmd
