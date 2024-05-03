@@ -1,0 +1,253 @@
+# Castor workflow with `setupProject`
+
+```{r setup}
+knitr::opts_chunk$set(tidy = TRUE, 
+                      warning = FALSE, 
+                      message = FALSE, 
+                      error = FALSE)
+options(repos = "http://cran.us.r-project.org")
+```
+
+[Castor](https://github.com/bcgov/castor) is a forest and land-use model
+used to simulate forest harvest and its effects on multiple forest
+values, which include not only timber, but also habitat for several
+wildlife (e.g. caribou, fisher). It is a fully open-source model,
+implemented in `SpaDES`, developped and maintained by researchers at the
+Forest Analysis and Inventory Branch, BC Ministry of Forests.
+
+In this chapter, we demonstrate how to setup a Castor workflow using
+`setupProject` from the
+[`SpaDES.project`](https://spades-project.predictiveecology.org/)
+package. The code was adapted from [this Castor
+scenario](https://github.com/bcgov/castor/blob/main/R/scenarios/comparison_stsm/base_case_harvest_flow_20230628.Rmd),
+with some modifications to streamline the code and accomodate the use of
+`SpaDES.project` functions[^castorexample-1].
+
+## Workflow setup
+
+```{r wfsetup}
+## install/load necessary packages
+repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
+install.packages(c("remotes", "DiagrammeR"), repos = repos)
+remotes::install_github("PredictiveEcology/SpaDES.project@transition")   ## to deal with modules in nested GH folders.
+library(SpaDES.project)
+
+## get Castor modules
+setupFunctions(paths = list("projectPath" = "~/"),
+               functions = c("CeresBarros/PredictiveEcology.org@quarto-website/tutos/castorExample/getCastorModulesAndDB.R",
+                             "CeresBarros/PredictiveEcology.org@quarto-website/tutos/castorExample/params.R"),
+               overwrite = TRUE)
+outMod <- getCastorModulesAndDB(paths = list("modulePath" = "~/tutos/castorExample/modules/",
+                                        "projectPath" = "~/tutos/castorExample"),
+                           modules = c("dataCastor", 
+                                       "growingStockCastor", 
+                                       "forestryCastor", 
+                                       "blockingCastor"),
+                           dbURL = "https://drive.google.com/file/d/1-2POunzC7aFbkKK5LeBJNsFYMBBY8dNx/view?usp=sharing",
+                           dbPath = "R/scenarios/comparison_stsm")
+
+## setup the workflow paths, dependencies and modules
+## as well as simulation parameters, (some) inputs and outputs
+out <- setupProject(
+  paths = list("inputPath" = "modules/forestryCastor/inputs",
+               "outputPath" = "/R/scenarios/comparison_stsm/outputs",
+               "modulePath" = "modules/",
+               "cachePath" = "modules/forestryCastor",
+               "projectPath" = "~/tutos/castorExample"),
+  modules = names(outMod$modules),
+  functions = "bcgov/castor@main/R/functions/R_Postgres.R",
+  ## install and load
+  require = "dplyr",
+  ## install but don't load these:
+  packages = c(
+    "DBI", 
+    "keyring",
+    "rgdal", 
+    "RPostgreSQL", 
+    "sp",
+    "terra"
+  ),
+  params = "params.R",
+  times = list(start = 0, end = 20),
+  outputs = {
+    data.frame(objectName = c("harvestReport",
+                              "growingStockReport"))
+  },
+  scenario = {
+    data.table(name = "stsm_base_case",
+               description = paste("Priority queue = oldest first. Adjacency constraint",
+                                   "= None. Includes roads (mst) and blocks (pre).",
+                                   "Harvest flow = 147,300 m3/year in decade 1, 133,500",
+                                   "m3/year in decade 2, 132,300 m3/year in decades 3 to",
+                                   "14 and 135,400 m3/year in decades 15 to 25.",
+                                   "Minimum harvest age = 80 and minimum harvest volume = 150"))
+  },
+  harvestFlow = {
+    rbindlist(list(data.table(compartment = "tsa99",
+                              partition = ' age > 79 AND vol > 149 ', 
+                              period = rep( seq (from = 1,
+                                                 to = 1, 
+                                                 by = 1),
+                                            1), 
+                              flow = 1473000, 
+                              partition_type = 'live'),
+                   data.table(compartment = "tsa99",
+                              partition = ' age > 79 AND vol > 149 ', 
+                              period = rep( seq (from = 2,
+                                                 to = 2, 
+                                                 by = 1),
+                                            1), 
+                              flow = 1335000, 
+                              partition_type = 'live'),
+                   data.table(compartment = "tsa99",
+                              partition = ' age > 79 AND vol > 149 ', 
+                              period = rep( seq (from = 3,
+                                                 to = 14, 
+                                                 by = 1),
+                                            1), 
+                              flow = 1323000, 
+                              partition_type = 'live'),
+                   data.table(compartment = "tsa99",
+                              partition = ' age > 79 AND vol > 149 ', 
+                              period = rep( seq (from = 15,
+                                                 to = 25, 
+                                                 by = 1),
+                                            1), 
+                              flow = 1354000, 
+                              partition_type = 'live')  
+    ))
+  },
+  Restart = TRUE
+)
+```
+
+
+## Initialise the model and inspect `simList`
+
+```{r}
+## initialize simulation
+castorInit <- do.call(SpaDES.core::simInit, out)
+
+## inspect the `simList`
+SpaDES.core::params(castorInit) 
+SpaDES.core::inputs(castorInit)
+SpaDES.core::outputs(castorInit)
+SpaDES.core::moduleDiagram(castorInit)
+SpaDES.core::objectDiagram(castorInit)
+SpaDES.core::times(castorInit) 
+
+## scheduled events - only init events have been scheduled by simInit
+SpaDES.core::events(castorInit) 
+```
+
+## Run simulation
+
+We can now run the simulation. 
+
+```{r}
+castorSim <- SpaDES.core::spades(castorInit)
+
+## we now have outputs
+SpaDES.core::outputs(castorSim)
+
+## completed events -- or the full (emergent) workflow
+SpaDES.core::completed(castorSim)
+```
+
+Notice how the `outputs` have now been populated.
+
+`completed(castorSim)` shows chaining of events that was produced and run by `spades`.
+The sequence of steps in this workflo therefore arises from each module's events 
+and their scheduling, rather than being imposed by a "hierarchically superior" file
+or operation.
+
+We suggest omitting the  `blockingCastor` module in `setupProject()` and rerunning
+the workflow again to see how `spades` is capable of re-generating a new workflow with 
+little effort from the user. 
+
+```{r}
+modules <- c("dataCastor", 
+             "growingStockCastor", 
+             "forestryCastor")
+
+out <- setupProject(
+  paths = list("inputPath" = "modules/forestryCastor/inputs",
+               "outputPath" = "/R/scenarios/comparison_stsm/outputs",
+               "modulePath" = "modules/",
+               "cachePath" = "modules/forestryCastor",
+               "projectPath" = "~/tutos/castorExample/"),
+  modules = modules,
+  functions = "bcgov/castor@main/R/functions/R_Postgres.R",
+  ## install and load
+  require = "dplyr",
+  ## install but don't load these:
+  packages = c(
+    "DBI", 
+    "keyring",
+    "rgdal", 
+    "RPostgreSQL", 
+    "sp",
+    "terra"
+  ),
+  params = "params.R",
+  times = list(start = 0, end = 20),
+  outputs = {
+    data.frame(objectName = c("harvestReport",
+                              "growingStockReport"))
+  },
+  scenario = {
+    data.table(name = "stsm_base_case",
+               description = paste("Priority queue = oldest first. Adjacency constraint",
+                                   "= None. Includes roads (mst) and blocks (pre).",
+                                   "Harvest flow = 147,300 m3/year in decade 1, 133,500",
+                                   "m3/year in decade 2, 132,300 m3/year in decades 3 to",
+                                   "14 and 135,400 m3/year in decades 15 to 25.",
+                                   "Minimum harvest age = 80 and minimum harvest volume = 150"))
+  },
+  harvestFlow = {
+    rbindlist(list(data.table(compartment = "tsa99",
+                              partition = ' age > 79 AND vol > 149 ', 
+                              period = rep( seq (from = 1,
+                                                 to = 1, 
+                                                 by = 1),
+                                            1), 
+                              flow = 1473000, 
+                              partition_type = 'live'),
+                   data.table(compartment = "tsa99",
+                              partition = ' age > 79 AND vol > 149 ', 
+                              period = rep( seq (from = 2,
+                                                 to = 2, 
+                                                 by = 1),
+                                            1), 
+                              flow = 1335000, 
+                              partition_type = 'live'),
+                   data.table(compartment = "tsa99",
+                              partition = ' age > 79 AND vol > 149 ', 
+                              period = rep( seq (from = 3,
+                                                 to = 14, 
+                                                 by = 1),
+                                            1), 
+                              flow = 1323000, 
+                              partition_type = 'live'),
+                   data.table(compartment = "tsa99",
+                              partition = ' age > 79 AND vol > 149 ', 
+                              period = rep( seq (from = 15,
+                                                 to = 25, 
+                                                 by = 1),
+                                            1), 
+                              flow = 1354000, 
+                              partition_type = 'live')  
+    ))
+  },
+  Restart = TRUE
+)
+
+## intialize and run simulation in one go
+castorSim2 <- do.call(SpaDES.core::simInitAndSpades, out)
+```
+
+[^castorexample-1]: `SpaDES.project` is currently being adapted to deal
+    with modules nested in folders of GitHub repositories (instead of
+    living in their own GitHub repositories), as is the case of Castor
+    modules. Hence, the code in this example is subject to changes in
+    the near future.
