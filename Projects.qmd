@@ -50,11 +50,10 @@ listing:
 
 This page is still under construction
 
-This table links to a collection of projects that the Predictive Ecology Community, as presented on this web page, is involved in. There may be other SpaDES projects that we are not aware of that are not presented here. 
-
+This table links to a collection of projects that the Predictive Ecology
+Community, as presented on this web page, is involved in. There may be
+other SpaDES projects that we are not aware of that are not presented
+here.
 
 ::: {workshops}
 :::
-
-
-
