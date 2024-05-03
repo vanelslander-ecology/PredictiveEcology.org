@@ -91,7 +91,6 @@ The Predictive Ecology Community began in Victoria, British Columbia, Canada, at
 
 ### Researchers
 
-
 ::: {#researchers}
 :::
 
