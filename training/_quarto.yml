@@ -15,7 +15,7 @@ book:
       - castorExample.qmd
     - references.qmd
 
-bibliography: references.bib
+bibliography: references/references.bib
 
 format:
   html:
