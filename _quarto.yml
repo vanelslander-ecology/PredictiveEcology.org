@@ -20,7 +20,12 @@ website:
         href: Projects.qmd
       - SpaDES.qmd
       - Workshops.qmd
-      - Training.qmd
+      - text: "Training"
+        menu:
+          - text: "Training Book"
+            href: training/_book/index.html
+          - text: "Other training resources"
+            href: otherTraining.qmd
       - Manuals.qmd
       - publications.qmd
       - presentations.qmd

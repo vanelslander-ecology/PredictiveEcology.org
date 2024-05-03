@@ -10,5 +10,8 @@
   },
   "references.qmd": {
     "references.html": "b07359ed"
+  },
+  "castorExample.qmd": {
+    "castorExample.html": "0afa509b"
   }
 }

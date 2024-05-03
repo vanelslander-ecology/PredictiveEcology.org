@@ -1,9 +1,11 @@
 # Preface {.unnumbered}
 
-This is a Quarto book.
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
 
-```{r}
-1 + 1
-```
+
+# Acknowledgements {.unnumbered}
+
+We thank the various contributors, SpaDES developers and SpaDES users that continue
+to make the open-source ecosystem of SpaDES modules grow.
+
+We also thank the Quarto team for their great work.

@@ -1,10 +1,27 @@
 # Castor workflow with `setupProject`
 
 ```{r setup}
-knitr::opts_chunk$set(tidy = TRUE, 
+#| include: false
+knitr::opts_chunk$set(tidy = FALSE, 
                       warning = FALSE, 
                       message = FALSE, 
                       error = FALSE)
+
+## truncate text output
+hook_output <- knitr::knit_hooks$get("output")
+
+knitr::knit_hooks$set(output = function(x, options) {
+  if (!is.null(n <- options$outlines)) {
+    x <- xfun::split_lines(x)
+    if (length(x) > n) {
+      # truncate the output
+      x <- c(head(x, n), "....\n")
+    }
+    x <- paste(x, collapse = "\n")
+  }
+  hook_output(x, options)
+})
+
 options(repos = "http://cran.us.r-project.org")
 ```
 
@@ -12,16 +29,18 @@ options(repos = "http://cran.us.r-project.org")
 used to simulate forest harvest and its effects on multiple forest
 values, which include not only timber, but also habitat for several
 wildlife (e.g. caribou, fisher). It is a fully open-source model,
-implemented in `SpaDES`, developped and maintained by researchers at the
+implemented in `SpaDES`, developed and maintained by researchers at the
 Forest Analysis and Inventory Branch, BC Ministry of Forests.
 
-In this chapter, we demonstrate how to setup a Castor workflow using
+In this chapter, we demonstrate how to set up a Castor workflow using
 `setupProject` from the
 [`SpaDES.project`](https://spades-project.predictiveecology.org/)
 package. The code was adapted from [this Castor
 scenario](https://github.com/bcgov/castor/blob/main/R/scenarios/comparison_stsm/base_case_harvest_flow_20230628.Rmd),
-with some modifications to streamline the code and accomodate the use of
+with some modifications to streamline the code and accommodate the use of
 `SpaDES.project` functions[^castorexample-1].
+
+A bare-bones version of this example is also available in this [.R script ](https://github.com/PredictiveEcology/PredictiveEcology.org/blob/training-book/tutos/castorExample/castorExample.R)
 
 ## Workflow setup
 
@@ -34,19 +53,19 @@ library(SpaDES.project)
 
 ## get Castor modules
 setupFunctions(paths = list("projectPath" = "~/"),
-               functions = c("CeresBarros/PredictiveEcology.org@quarto-website/tutos/castorExample/getCastorModulesAndDB.R",
-                             "CeresBarros/PredictiveEcology.org@quarto-website/tutos/castorExample/params.R"),
+               functions = c("PredictiveEcology/PredictiveEcology.org@training-book/tutos/castorExample/getCastorModulesAndDB.R",
+                             "PredictiveEcology/PredictiveEcology.org@training-book/tutos/castorExample/params.R"),
                overwrite = TRUE)
 outMod <- getCastorModulesAndDB(paths = list("modulePath" = "~/tutos/castorExample/modules/",
-                                        "projectPath" = "~/tutos/castorExample"),
-                           modules = c("dataCastor", 
-                                       "growingStockCastor", 
-                                       "forestryCastor", 
-                                       "blockingCastor"),
-                           dbURL = "https://drive.google.com/file/d/1-2POunzC7aFbkKK5LeBJNsFYMBBY8dNx/view?usp=sharing",
-                           dbPath = "R/scenarios/comparison_stsm")
+                                             "projectPath" = "~/tutos/castorExample"),
+                                modules = c("dataCastor", 
+                                            "growingStockCastor", 
+                                            "forestryCastor", 
+                                            "blockingCastor"),
+                                dbURL = "https://drive.google.com/file/d/1-2POunzC7aFbkKK5LeBJNsFYMBBY8dNx/view?usp=sharing",
+                                dbPath = "R/scenarios/comparison_stsm")
 
-## setup the workflow paths, dependencies and modules
+## set up the workflow paths, dependencies and modules
 ## as well as simulation parameters, (some) inputs and outputs
 out <- setupProject(
   paths = list("inputPath" = "modules/forestryCastor/inputs",
@@ -124,48 +143,134 @@ out <- setupProject(
 
 ## Initialise the model and inspect `simList`
 
-```{r}
+`setupProject()` returns a names list containing values that can be passed to
+`simInit()` arguments. 
+
+We use `do.call()` to pass the whole list of arguments to `simInit`.
+
+```{r simInit}
+#| results: hide
+
 ## initialize simulation
 castorInit <- do.call(SpaDES.core::simInit, out)
+```
+
+Another (more verbose) option would to call `simInit` directly:
+
+```{r simInit2}
+#| eval: false
+
+## initialize simulation
+castorInit <- SpaDES.core::simInit(
+  times = out$times,
+  params = out$params, 
+  modules = out$modules, 
+  objects = list(scenario = out$scenario, 
+                 harvestFlow = out$harvestFlow)
+)
+```
+
+
+Use the following functions to access workflow/model properties. `events()`, for
+instance will output the scheduled events, which at this point are only the `init`
+events of each module as you can see in the output below.
+
+``` {r}
+#| eval: false
 
 ## inspect the `simList`
 SpaDES.core::params(castorInit) 
 SpaDES.core::inputs(castorInit)
 SpaDES.core::outputs(castorInit)
-SpaDES.core::moduleDiagram(castorInit)
-SpaDES.core::objectDiagram(castorInit)
 SpaDES.core::times(castorInit) 
 
-## scheduled events - only init events have been scheduled by simInit
+## scheduled events
 SpaDES.core::events(castorInit) 
+```
+
+```{r}
+#| echo: false
+
+SpaDES.core::events(castorInit) 
+```
+
+## Visualize the workflow
+
+`moduleDiagram()` and `objectDiagram()` are great to visualise how each module
+interacts with the other. Recall that these interactions arise from object "exchanges"
+between modules, which are deduced by `simInit()` from module metadata (@fig-objectDiagram)
+-- i.e., if a module's inputs are another's outputs, then the first module will follow the second.
+
+```{r}
+#| eval: false
+
+SpaDES.core::moduleDiagram(castorInit)
+SpaDES.core::objectDiagram(castorInit)
+```
+
+```{r fig-moduleDiagram}
+#| echo: false
+#| fig-height: 6
+#| fig-width: 6
+#| message: false
+#| warning: false
+#| fig-cap: "Diagram of module connections."
+
+SpaDES.core::moduleDiagram(castorInit)
+```
+
+```{r fig-objectDiagram}
+#| echo: false
+#| fig-align: center
+#| fig-cap: "Diagram of module inter-dependencies with object names."
+#| fig-width: 10
+
+knitr::include_graphics(normalizePath("assets/img/castorExample_objDiagram.png", winslash = "/"),
+                        dpi = NA)
 ```
 
 ## Run simulation
 
-We can now run the simulation. 
+`spades()` runs the simulation, beginning with the execution of the `init` events.
+Notice how the result of `outputs()` differs from previously.
 
 ```{r}
+#| eval: false
+
 castorSim <- SpaDES.core::spades(castorInit)
 
 ## we now have outputs
 SpaDES.core::outputs(castorSim)
-
-## completed events -- or the full (emergent) workflow
-SpaDES.core::completed(castorSim)
 ```
 
-Notice how the `outputs` have now been populated.
+```{r}
+#| include: false
 
-`completed(castorSim)` shows chaining of events that was produced and run by `spades`.
-The sequence of steps in this workflo therefore arises from each module's events 
-and their scheduling, rather than being imposed by a "hierarchically superior" file
-or operation.
+castorSim <- SpaDES.core::spades(castorInit)
+```
+
+```{r}
+#| echo: false
+
+SpaDES.core::outputs(castorSim)
+```
+
+`completed(castorSim)` shows the chaining of events that was produced and run by `spades()`.
+The sequence of steps in the workflow therefore arises from each module's events 
+and their scheduling, rather than being explicitly imposed by the user.
+
+```{r}
+#| outlines: 5
+SpaDES.core::completed(castorSim)
+```
 
 We suggest omitting the  `blockingCastor` module in `setupProject()` and rerunning
 the workflow again to see how `spades` is capable of re-generating a new workflow with 
 little effort from the user. 
 
 ```{r}
+#| eval: false
+
 modules <- c("dataCastor", 
              "growingStockCastor", 
              "forestryCastor")
@@ -242,12 +347,12 @@ out <- setupProject(
   Restart = TRUE
 )
 
-## intialize and run simulation in one go
+## initialize and run simulation in one go
 castorSim2 <- do.call(SpaDES.core::simInitAndSpades, out)
 ```
 
 [^castorexample-1]: `SpaDES.project` is currently being adapted to deal
-    with modules nested in folders of GitHub repositories (instead of
-    living in their own GitHub repositories), as is the case of Castor
-    modules. Hence, the code in this example is subject to changes in
-    the near future.
+with modules nested in folders of GitHub repositories (instead of
+living in their own GitHub repositories), as is the case of Castor
+modules. Hence, the code in this example is subject to changes in
+the near future.

@@ -205,7 +205,7 @@
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
   pdftitle={training},
-  pdfauthor={Norah Jones},
+  pdfauthor={E. McIntire; C. Barros},
   colorlinks=true,
   linkcolor={blue},
   filecolor={Maroon},
@@ -214,8 +214,8 @@
   pdfcreator={LaTeX via pandoc}}
 
 \title{training}
-\author{Norah Jones}
-\date{2024-02-05}
+\author{E. McIntire \and C. Barros}
+\date{Invalid Date}
 
 \begin{document}
 \maketitle
@@ -252,35 +252,384 @@ To learn more about Quarto books visit
 
 \chapter{Introduction}\label{introduction}
 
-This is a book created from markdown and executable code.
-
-See Knuth (1984) for additional discussion of literate programming.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\DecValTok{1} \SpecialCharTok{+} \DecValTok{1}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-[1] 2
-\end{verbatim}
-
 \bookmarksetup{startatroot}
 
-\chapter{Summary}\label{summary}
+\chapter{\texorpdfstring{Castor workflow with
+\texttt{setupProject}}{Castor workflow with setupProject}}\label{castor-workflow-with-setupproject}
 
-In summary, this book has no content whatsoever.
+\href{https://github.com/bcgov/castor}{Castor} is a forest and land-use
+model used to simulate forest harvest and its effects on multiple forest
+values, which include not only timber, but also habitat for several
+wildlife (e.g.~caribou, fisher). It is a fully open-source model,
+implemented in \texttt{SpaDES}, developed and maintained by researchers
+at the Forest Analysis and Inventory Branch, BC Ministry of Forests.
+
+In this chapter, we demonstrate how to set up a Castor workflow using
+\texttt{setupProject} from the
+\href{https://spades-project.predictiveecology.org/}{\texttt{SpaDES.project}}
+package. The code was adapted from
+\href{https://github.com/bcgov/castor/blob/main/R/scenarios/comparison_stsm/base_case_harvest_flow_20230628.Rmd}{this
+Castor scenario}, with some modifications to streamline the code and
+accommodate the use of \texttt{SpaDES.project} functions\footnote{\texttt{SpaDES.project}
+  is currently being adapted to deal with modules nested in folders of
+  GitHub repositories (instead of living in their own GitHub
+  repositories), as is the case of Castor modules. Hence, the code in
+  this example is subject to changes in the near future.}.
+
+A bare-bones version of this example is also available in this
+\href{https://github.com/PredictiveEcology/PredictiveEcology.org/blob/training-book/tutos/castorExample/castorExample.R}{.R
+script}
+
+\section{Workflow setup}\label{workflow-setup}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\DecValTok{1} \SpecialCharTok{+} \DecValTok{1}
+\DocumentationTok{\#\# install/load necessary packages}
+\NormalTok{repos }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"predictiveecology.r{-}universe.dev"}\NormalTok{, }\FunctionTok{getOption}\NormalTok{(}\StringTok{"repos"}\NormalTok{))}
+\FunctionTok{install.packages}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"remotes"}\NormalTok{, }\StringTok{"DiagrammeR"}\NormalTok{), }\AttributeTok{repos =}\NormalTok{ repos)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-[1] 2
+package 'remotes' successfully unpacked and MD5 sums checked
+package 'DiagrammeR' successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+    C:\Users\cbarros\AppData\Local\Temp\Rtmp6vk4AY\downloaded_packages
 \end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"PredictiveEcology/SpaDES.project@transition"}\NormalTok{)   }\DocumentationTok{\#\# to deal with modules in nested GH folders.}
+\FunctionTok{library}\NormalTok{(SpaDES.project)}
+
+\DocumentationTok{\#\# get Castor modules}
+\FunctionTok{setupFunctions}\NormalTok{(}\AttributeTok{paths =} \FunctionTok{list}\NormalTok{(}\StringTok{"projectPath"} \OtherTok{=} \StringTok{"\textasciitilde{}/"}\NormalTok{),}
+               \AttributeTok{functions =} \FunctionTok{c}\NormalTok{(}\StringTok{"PredictiveEcology/PredictiveEcology.org@training{-}book/tutos/castorExample/getCastorModulesAndDB.R"}\NormalTok{,}
+                             \StringTok{"PredictiveEcology/PredictiveEcology.org@training{-}book/tutos/castorExample/params.R"}\NormalTok{),}
+               \AttributeTok{overwrite =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{outMod }\OtherTok{\textless{}{-}} \FunctionTok{getCastorModulesAndDB}\NormalTok{(}\AttributeTok{paths =} \FunctionTok{list}\NormalTok{(}\StringTok{"modulePath"} \OtherTok{=} \StringTok{"\textasciitilde{}/tutos/castorExample/modules/"}\NormalTok{,}
+                                             \StringTok{"projectPath"} \OtherTok{=} \StringTok{"\textasciitilde{}/tutos/castorExample"}\NormalTok{),}
+                                \AttributeTok{modules =} \FunctionTok{c}\NormalTok{(}\StringTok{"dataCastor"}\NormalTok{, }
+                                            \StringTok{"growingStockCastor"}\NormalTok{, }
+                                            \StringTok{"forestryCastor"}\NormalTok{, }
+                                            \StringTok{"blockingCastor"}\NormalTok{),}
+                                \AttributeTok{dbURL =} \StringTok{"https://drive.google.com/file/d/1{-}2POunzC7aFbkKK5LeBJNsFYMBBY8dNx/view?usp=sharing"}\NormalTok{,}
+                                \AttributeTok{dbPath =} \StringTok{"R/scenarios/comparison\_stsm"}\NormalTok{)}
+
+\DocumentationTok{\#\# set up the workflow paths, dependencies and modules}
+\DocumentationTok{\#\# as well as simulation parameters, (some) inputs and outputs}
+\NormalTok{out }\OtherTok{\textless{}{-}} \FunctionTok{setupProject}\NormalTok{(}
+  \AttributeTok{paths =} \FunctionTok{list}\NormalTok{(}\StringTok{"inputPath"} \OtherTok{=} \StringTok{"modules/forestryCastor/inputs"}\NormalTok{,}
+               \StringTok{"outputPath"} \OtherTok{=} \StringTok{"/R/scenarios/comparison\_stsm/outputs"}\NormalTok{,}
+               \StringTok{"modulePath"} \OtherTok{=} \StringTok{"modules/"}\NormalTok{,}
+               \StringTok{"cachePath"} \OtherTok{=} \StringTok{"modules/forestryCastor"}\NormalTok{,}
+               \StringTok{"projectPath"} \OtherTok{=} \StringTok{"\textasciitilde{}/tutos/castorExample"}\NormalTok{),}
+  \AttributeTok{modules =} \FunctionTok{names}\NormalTok{(outMod}\SpecialCharTok{$}\NormalTok{modules),}
+  \AttributeTok{functions =} \StringTok{"bcgov/castor@main/R/functions/R\_Postgres.R"}\NormalTok{,}
+  \DocumentationTok{\#\# install and load}
+  \AttributeTok{require =} \StringTok{"dplyr"}\NormalTok{,}
+  \DocumentationTok{\#\# install but don\textquotesingle{}t load these:}
+  \AttributeTok{packages =} \FunctionTok{c}\NormalTok{(}
+    \StringTok{"DBI"}\NormalTok{, }
+    \StringTok{"keyring"}\NormalTok{,}
+    \StringTok{"rgdal"}\NormalTok{, }
+    \StringTok{"RPostgreSQL"}\NormalTok{, }
+    \StringTok{"sp"}\NormalTok{,}
+    \StringTok{"terra"}
+\NormalTok{  ),}
+  \AttributeTok{params =} \StringTok{"params.R"}\NormalTok{,}
+  \AttributeTok{times =} \FunctionTok{list}\NormalTok{(}\AttributeTok{start =} \DecValTok{0}\NormalTok{, }\AttributeTok{end =} \DecValTok{20}\NormalTok{),}
+  \AttributeTok{outputs =}\NormalTok{ \{}
+    \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{objectName =} \FunctionTok{c}\NormalTok{(}\StringTok{"harvestReport"}\NormalTok{,}
+                              \StringTok{"growingStockReport"}\NormalTok{))}
+\NormalTok{  \},}
+  \AttributeTok{scenario =}\NormalTok{ \{}
+    \FunctionTok{data.table}\NormalTok{(}\AttributeTok{name =} \StringTok{"stsm\_base\_case"}\NormalTok{,}
+               \AttributeTok{description =} \FunctionTok{paste}\NormalTok{(}\StringTok{"Priority queue = oldest first. Adjacency constraint"}\NormalTok{,}
+                                   \StringTok{"= None. Includes roads (mst) and blocks (pre)."}\NormalTok{,}
+                                   \StringTok{"Harvest flow = 147,300 m3/year in decade 1, 133,500"}\NormalTok{,}
+                                   \StringTok{"m3/year in decade 2, 132,300 m3/year in decades 3 to"}\NormalTok{,}
+                                   \StringTok{"14 and 135,400 m3/year in decades 15 to 25."}\NormalTok{,}
+                                   \StringTok{"Minimum harvest age = 80 and minimum harvest volume = 150"}\NormalTok{))}
+\NormalTok{  \},}
+  \AttributeTok{harvestFlow =}\NormalTok{ \{}
+    \FunctionTok{rbindlist}\NormalTok{(}\FunctionTok{list}\NormalTok{(}\FunctionTok{data.table}\NormalTok{(}\AttributeTok{compartment =} \StringTok{"tsa99"}\NormalTok{,}
+                              \AttributeTok{partition =} \StringTok{\textquotesingle{} age \textgreater{} 79 AND vol \textgreater{} 149 \textquotesingle{}}\NormalTok{, }
+                              \AttributeTok{period =} \FunctionTok{rep}\NormalTok{( }\FunctionTok{seq}\NormalTok{ (}\AttributeTok{from =} \DecValTok{1}\NormalTok{,}
+                                                 \AttributeTok{to =} \DecValTok{1}\NormalTok{, }
+                                                 \AttributeTok{by =} \DecValTok{1}\NormalTok{),}
+                                            \DecValTok{1}\NormalTok{), }
+                              \AttributeTok{flow =} \DecValTok{1473000}\NormalTok{, }
+                              \AttributeTok{partition\_type =} \StringTok{\textquotesingle{}live\textquotesingle{}}\NormalTok{),}
+                   \FunctionTok{data.table}\NormalTok{(}\AttributeTok{compartment =} \StringTok{"tsa99"}\NormalTok{,}
+                              \AttributeTok{partition =} \StringTok{\textquotesingle{} age \textgreater{} 79 AND vol \textgreater{} 149 \textquotesingle{}}\NormalTok{, }
+                              \AttributeTok{period =} \FunctionTok{rep}\NormalTok{( }\FunctionTok{seq}\NormalTok{ (}\AttributeTok{from =} \DecValTok{2}\NormalTok{,}
+                                                 \AttributeTok{to =} \DecValTok{2}\NormalTok{, }
+                                                 \AttributeTok{by =} \DecValTok{1}\NormalTok{),}
+                                            \DecValTok{1}\NormalTok{), }
+                              \AttributeTok{flow =} \DecValTok{1335000}\NormalTok{, }
+                              \AttributeTok{partition\_type =} \StringTok{\textquotesingle{}live\textquotesingle{}}\NormalTok{),}
+                   \FunctionTok{data.table}\NormalTok{(}\AttributeTok{compartment =} \StringTok{"tsa99"}\NormalTok{,}
+                              \AttributeTok{partition =} \StringTok{\textquotesingle{} age \textgreater{} 79 AND vol \textgreater{} 149 \textquotesingle{}}\NormalTok{, }
+                              \AttributeTok{period =} \FunctionTok{rep}\NormalTok{( }\FunctionTok{seq}\NormalTok{ (}\AttributeTok{from =} \DecValTok{3}\NormalTok{,}
+                                                 \AttributeTok{to =} \DecValTok{14}\NormalTok{, }
+                                                 \AttributeTok{by =} \DecValTok{1}\NormalTok{),}
+                                            \DecValTok{1}\NormalTok{), }
+                              \AttributeTok{flow =} \DecValTok{1323000}\NormalTok{, }
+                              \AttributeTok{partition\_type =} \StringTok{\textquotesingle{}live\textquotesingle{}}\NormalTok{),}
+                   \FunctionTok{data.table}\NormalTok{(}\AttributeTok{compartment =} \StringTok{"tsa99"}\NormalTok{,}
+                              \AttributeTok{partition =} \StringTok{\textquotesingle{} age \textgreater{} 79 AND vol \textgreater{} 149 \textquotesingle{}}\NormalTok{, }
+                              \AttributeTok{period =} \FunctionTok{rep}\NormalTok{( }\FunctionTok{seq}\NormalTok{ (}\AttributeTok{from =} \DecValTok{15}\NormalTok{,}
+                                                 \AttributeTok{to =} \DecValTok{25}\NormalTok{, }
+                                                 \AttributeTok{by =} \DecValTok{1}\NormalTok{),}
+                                            \DecValTok{1}\NormalTok{), }
+                              \AttributeTok{flow =} \DecValTok{1354000}\NormalTok{, }
+                              \AttributeTok{partition\_type =} \StringTok{\textquotesingle{}live\textquotesingle{}}\NormalTok{)  }
+\NormalTok{    ))}
+\NormalTok{  \},}
+  \AttributeTok{Restart =} \ConstantTok{TRUE}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{\texorpdfstring{Initialise the model and inspect
+\texttt{simList}}{Initialise the model and inspect simList}}\label{initialise-the-model-and-inspect-simlist}
+
+\texttt{setupProject()} returns a names list containing values that can
+be passed to \texttt{simInit()} arguments.
+
+We use \texttt{do.call()} to pass the whole list of arguments to
+\texttt{simInit}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# initialize simulation}
+\NormalTok{castorInit }\OtherTok{\textless{}{-}} \FunctionTok{do.call}\NormalTok{(SpaDES.core}\SpecialCharTok{::}\NormalTok{simInit, out)}
+\end{Highlighting}
+\end{Shaded}
+
+Another (more verbose) option would to call \texttt{simInit} directly:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# initialize simulation}
+\NormalTok{castorInit }\OtherTok{\textless{}{-}}\NormalTok{ SpaDES.core}\SpecialCharTok{::}\FunctionTok{simInit}\NormalTok{(}
+  \AttributeTok{times =}\NormalTok{ out}\SpecialCharTok{$}\NormalTok{times,}
+  \AttributeTok{params =}\NormalTok{ out}\SpecialCharTok{$}\NormalTok{params, }
+  \AttributeTok{modules =}\NormalTok{ out}\SpecialCharTok{$}\NormalTok{modules, }
+  \AttributeTok{objects =} \FunctionTok{list}\NormalTok{(}\AttributeTok{scenario =}\NormalTok{ out}\SpecialCharTok{$}\NormalTok{scenario, }
+                 \AttributeTok{harvestFlow =}\NormalTok{ out}\SpecialCharTok{$}\NormalTok{harvestFlow)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Use the following functions to access workflow/model properties.
+\texttt{events()}, for instance will output the scheduled events, which
+at this point are only the \texttt{init} events of each module as you
+can see in the output below.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# inspect the \textasciigrave{}simList\textasciigrave{}}
+\NormalTok{SpaDES.core}\SpecialCharTok{::}\FunctionTok{params}\NormalTok{(castorInit) }
+\NormalTok{SpaDES.core}\SpecialCharTok{::}\FunctionTok{inputs}\NormalTok{(castorInit)}
+\NormalTok{SpaDES.core}\SpecialCharTok{::}\FunctionTok{outputs}\NormalTok{(castorInit)}
+\NormalTok{SpaDES.core}\SpecialCharTok{::}\FunctionTok{times}\NormalTok{(castorInit) }
+
+\DocumentationTok{\#\# scheduled events}
+\NormalTok{SpaDES.core}\SpecialCharTok{::}\FunctionTok{events}\NormalTok{(castorInit) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   eventTime         moduleName eventType eventPriority
+       <num>             <char>    <char>         <num>
+1:         0         checkpoint      init             0
+2:         0               save      init             0
+3:         0           progress      init             0
+4:         0               load      init             0
+5:         0         dataCastor      init             1
+6:         0 growingStockCastor      init             1
+7:         0     blockingCastor      init             1
+8:         0     forestryCastor      init             1
+\end{verbatim}
+
+\section{Visualize the workflow}\label{visualize-the-workflow}
+
+\texttt{moduleDiagram()} and \texttt{objectDiagram()} are great to
+visualise how each module interacts with the other. Recall that these
+interactions arise from object ``exchanges'' between modules, which are
+deduced by \texttt{simInit()} from module metadata
+(Figure~\ref{fig-objectDiagram}) -- i.e., if a module's inputs are
+another's outputs, then the first module will follow the second.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{SpaDES.core}\SpecialCharTok{::}\FunctionTok{moduleDiagram}\NormalTok{(castorInit)}
+\NormalTok{SpaDES.core}\SpecialCharTok{::}\FunctionTok{objectDiagram}\NormalTok{(castorInit)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+\centering{
+
+\includegraphics{castorExample_files/figure-pdf/fig-moduleDiagram-1.pdf}
+
+}
+
+\caption{\label{fig-moduleDiagram}Diagram of module connections.}
+
+\end{figure}%
+
+\begin{figure}
+
+\centering{
+
+\includegraphics{assets/img/castorExample_objDiagram.png}
+
+}
+
+\caption{\label{fig-objectDiagram}Diagram of module inter-dependencies
+with object names.}
+
+\end{figure}%
+
+\section{Run simulation}\label{run-simulation}
+
+\texttt{spades()} runs the simulation, beginning with the execution of
+the \texttt{init} events. Notice how the result of \texttt{outputs()}
+differs from previously.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{castorSim }\OtherTok{\textless{}{-}}\NormalTok{ SpaDES.core}\SpecialCharTok{::}\FunctionTok{spades}\NormalTok{(castorInit)}
+
+\DocumentationTok{\#\# we now have outputs}
+\NormalTok{SpaDES.core}\SpecialCharTok{::}\FunctionTok{outputs}\NormalTok{(castorSim)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+          objectName
+1      harvestReport
+2 growingStockReport
+                                                                  file     fun
+1      C:/R/scenarios/comparison_stsm/outputs/harvestReport_year20.rds saveRDS
+2 C:/R/scenarios/comparison_stsm/outputs/growingStockReport_year20.rds saveRDS
+  package saveTime saved arguments
+1    base       20  TRUE        NA
+2    base       20  TRUE        NA
+\end{verbatim}
+
+\texttt{completed(castorSim)} shows the chaining of events that was
+produced and run by \texttt{spades()}. The sequence of steps in the
+workflow therefore arises from each module's events and their
+scheduling, rather than being explicitly imposed by the user.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{SpaDES.core}\SpecialCharTok{::}\FunctionTok{completed}\NormalTok{(castorSim)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+    eventTime         moduleName          eventType eventPriority
+        <num>             <char>             <char>         <num>
+ 1:         0         checkpoint               init             0
+ 2:         0               save               init             0
+ 3:         0           progress               init             0
+....
+\end{verbatim}
+
+We suggest omitting the \texttt{blockingCastor} module in
+\texttt{setupProject()} and rerunning the workflow again to see how
+\texttt{spades} is capable of re-generating a new workflow with little
+effort from the user.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modules }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"dataCastor"}\NormalTok{, }
+             \StringTok{"growingStockCastor"}\NormalTok{, }
+             \StringTok{"forestryCastor"}\NormalTok{)}
+
+\NormalTok{out }\OtherTok{\textless{}{-}} \FunctionTok{setupProject}\NormalTok{(}
+  \AttributeTok{paths =} \FunctionTok{list}\NormalTok{(}\StringTok{"inputPath"} \OtherTok{=} \StringTok{"modules/forestryCastor/inputs"}\NormalTok{,}
+               \StringTok{"outputPath"} \OtherTok{=} \StringTok{"/R/scenarios/comparison\_stsm/outputs"}\NormalTok{,}
+               \StringTok{"modulePath"} \OtherTok{=} \StringTok{"modules/"}\NormalTok{,}
+               \StringTok{"cachePath"} \OtherTok{=} \StringTok{"modules/forestryCastor"}\NormalTok{,}
+               \StringTok{"projectPath"} \OtherTok{=} \StringTok{"\textasciitilde{}/tutos/castorExample/"}\NormalTok{),}
+  \AttributeTok{modules =}\NormalTok{ modules,}
+  \AttributeTok{functions =} \StringTok{"bcgov/castor@main/R/functions/R\_Postgres.R"}\NormalTok{,}
+  \DocumentationTok{\#\# install and load}
+  \AttributeTok{require =} \StringTok{"dplyr"}\NormalTok{,}
+  \DocumentationTok{\#\# install but don\textquotesingle{}t load these:}
+  \AttributeTok{packages =} \FunctionTok{c}\NormalTok{(}
+    \StringTok{"DBI"}\NormalTok{, }
+    \StringTok{"keyring"}\NormalTok{,}
+    \StringTok{"rgdal"}\NormalTok{, }
+    \StringTok{"RPostgreSQL"}\NormalTok{, }
+    \StringTok{"sp"}\NormalTok{,}
+    \StringTok{"terra"}
+\NormalTok{  ),}
+  \AttributeTok{params =} \StringTok{"params.R"}\NormalTok{,}
+  \AttributeTok{times =} \FunctionTok{list}\NormalTok{(}\AttributeTok{start =} \DecValTok{0}\NormalTok{, }\AttributeTok{end =} \DecValTok{20}\NormalTok{),}
+  \AttributeTok{outputs =}\NormalTok{ \{}
+    \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{objectName =} \FunctionTok{c}\NormalTok{(}\StringTok{"harvestReport"}\NormalTok{,}
+                              \StringTok{"growingStockReport"}\NormalTok{))}
+\NormalTok{  \},}
+  \AttributeTok{scenario =}\NormalTok{ \{}
+    \FunctionTok{data.table}\NormalTok{(}\AttributeTok{name =} \StringTok{"stsm\_base\_case"}\NormalTok{,}
+               \AttributeTok{description =} \FunctionTok{paste}\NormalTok{(}\StringTok{"Priority queue = oldest first. Adjacency constraint"}\NormalTok{,}
+                                   \StringTok{"= None. Includes roads (mst) and blocks (pre)."}\NormalTok{,}
+                                   \StringTok{"Harvest flow = 147,300 m3/year in decade 1, 133,500"}\NormalTok{,}
+                                   \StringTok{"m3/year in decade 2, 132,300 m3/year in decades 3 to"}\NormalTok{,}
+                                   \StringTok{"14 and 135,400 m3/year in decades 15 to 25."}\NormalTok{,}
+                                   \StringTok{"Minimum harvest age = 80 and minimum harvest volume = 150"}\NormalTok{))}
+\NormalTok{  \},}
+  \AttributeTok{harvestFlow =}\NormalTok{ \{}
+    \FunctionTok{rbindlist}\NormalTok{(}\FunctionTok{list}\NormalTok{(}\FunctionTok{data.table}\NormalTok{(}\AttributeTok{compartment =} \StringTok{"tsa99"}\NormalTok{,}
+                              \AttributeTok{partition =} \StringTok{\textquotesingle{} age \textgreater{} 79 AND vol \textgreater{} 149 \textquotesingle{}}\NormalTok{, }
+                              \AttributeTok{period =} \FunctionTok{rep}\NormalTok{( }\FunctionTok{seq}\NormalTok{ (}\AttributeTok{from =} \DecValTok{1}\NormalTok{,}
+                                                 \AttributeTok{to =} \DecValTok{1}\NormalTok{, }
+                                                 \AttributeTok{by =} \DecValTok{1}\NormalTok{),}
+                                            \DecValTok{1}\NormalTok{), }
+                              \AttributeTok{flow =} \DecValTok{1473000}\NormalTok{, }
+                              \AttributeTok{partition\_type =} \StringTok{\textquotesingle{}live\textquotesingle{}}\NormalTok{),}
+                   \FunctionTok{data.table}\NormalTok{(}\AttributeTok{compartment =} \StringTok{"tsa99"}\NormalTok{,}
+                              \AttributeTok{partition =} \StringTok{\textquotesingle{} age \textgreater{} 79 AND vol \textgreater{} 149 \textquotesingle{}}\NormalTok{, }
+                              \AttributeTok{period =} \FunctionTok{rep}\NormalTok{( }\FunctionTok{seq}\NormalTok{ (}\AttributeTok{from =} \DecValTok{2}\NormalTok{,}
+                                                 \AttributeTok{to =} \DecValTok{2}\NormalTok{, }
+                                                 \AttributeTok{by =} \DecValTok{1}\NormalTok{),}
+                                            \DecValTok{1}\NormalTok{), }
+                              \AttributeTok{flow =} \DecValTok{1335000}\NormalTok{, }
+                              \AttributeTok{partition\_type =} \StringTok{\textquotesingle{}live\textquotesingle{}}\NormalTok{),}
+                   \FunctionTok{data.table}\NormalTok{(}\AttributeTok{compartment =} \StringTok{"tsa99"}\NormalTok{,}
+                              \AttributeTok{partition =} \StringTok{\textquotesingle{} age \textgreater{} 79 AND vol \textgreater{} 149 \textquotesingle{}}\NormalTok{, }
+                              \AttributeTok{period =} \FunctionTok{rep}\NormalTok{( }\FunctionTok{seq}\NormalTok{ (}\AttributeTok{from =} \DecValTok{3}\NormalTok{,}
+                                                 \AttributeTok{to =} \DecValTok{14}\NormalTok{, }
+                                                 \AttributeTok{by =} \DecValTok{1}\NormalTok{),}
+                                            \DecValTok{1}\NormalTok{), }
+                              \AttributeTok{flow =} \DecValTok{1323000}\NormalTok{, }
+                              \AttributeTok{partition\_type =} \StringTok{\textquotesingle{}live\textquotesingle{}}\NormalTok{),}
+                   \FunctionTok{data.table}\NormalTok{(}\AttributeTok{compartment =} \StringTok{"tsa99"}\NormalTok{,}
+                              \AttributeTok{partition =} \StringTok{\textquotesingle{} age \textgreater{} 79 AND vol \textgreater{} 149 \textquotesingle{}}\NormalTok{, }
+                              \AttributeTok{period =} \FunctionTok{rep}\NormalTok{( }\FunctionTok{seq}\NormalTok{ (}\AttributeTok{from =} \DecValTok{15}\NormalTok{,}
+                                                 \AttributeTok{to =} \DecValTok{25}\NormalTok{, }
+                                                 \AttributeTok{by =} \DecValTok{1}\NormalTok{),}
+                                            \DecValTok{1}\NormalTok{), }
+                              \AttributeTok{flow =} \DecValTok{1354000}\NormalTok{, }
+                              \AttributeTok{partition\_type =} \StringTok{\textquotesingle{}live\textquotesingle{}}\NormalTok{)  }
+\NormalTok{    ))}
+\NormalTok{  \},}
+  \AttributeTok{Restart =} \ConstantTok{TRUE}
+\NormalTok{)}
+
+\DocumentationTok{\#\# initialize and run simulation in one go}
+\NormalTok{castorSim2 }\OtherTok{\textless{}{-}} \FunctionTok{do.call}\NormalTok{(SpaDES.core}\SpecialCharTok{::}\NormalTok{simInitAndSpades, out)}
+\end{Highlighting}
+\end{Shaded}
 
 \bookmarksetup{startatroot}
 
@@ -290,11 +639,7 @@ In summary, this book has no content whatsoever.
 \markboth{References}{References}
 
 \phantomsection\label{refs}
-\begin{CSLReferences}{1}{0}
-\bibitem[\citeproctext]{ref-knuth84}
-Knuth, Donald E. 1984. {``Literate Programming.''} \emph{Comput. J.} 27
-(2): 97--111. \url{https://doi.org/10.1093/comjnl/27.2.97}.
-
+\begin{CSLReferences}{0}{1}
 \end{CSLReferences}
 
 

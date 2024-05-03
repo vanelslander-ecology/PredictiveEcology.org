@@ -3,12 +3,16 @@ project:
 
 book:
   title: "training"
-  author: "Norah Jones"
-  date: "02/05/2024"
+  author:
+    - " E. McIntire"
+    - "C. Barros"
+  date: last-updated
   chapters:
     - index.qmd
     - intro.qmd
-    - castorExample.qmd
+    - part: realexamples.qmd
+      chapters:
+      - castorExample.qmd
     - references.qmd
 
 bibliography: references.bib
@@ -21,8 +25,6 @@ format:
     css: assets/css/main.scss
     smooth-scroll: true
     link-external-newwindow: true
-  pdf:
-    documentclass: scrreprt
 
 execute:
   freeze: auto
