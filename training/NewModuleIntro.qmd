@@ -1,12 +1,4 @@
----
-title: 'New Module - Introduction'
-format: 
-  html:
-    page-layout: full
-comments: false
-editor_options: 
-  chunk_output_type: console
----
+# Introduction
 
 SpaDES modules are comprised of R code that has metadata and the gets put into functions. With this in mind, we can start with some simple R code.
 

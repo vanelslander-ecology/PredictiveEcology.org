@@ -1,0 +1,5 @@
+# New Module
+
+<!-- 
+Some text that introduces this section
+--->

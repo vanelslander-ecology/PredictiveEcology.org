@@ -10,6 +10,9 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
+    - part: NewModule.qmd
+      chapters:
+      - NewModuleIntro.qmd
     - part: realexamples.qmd
       chapters:
       - castorExample.qmd
