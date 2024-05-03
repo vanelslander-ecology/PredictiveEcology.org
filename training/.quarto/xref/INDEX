@@ -13,5 +13,14 @@
   },
   "castorExample.qmd": {
     "castorExample.html": "0afa509b"
+  },
+  "realexamples.qmd": {
+    "realexamples.html": "81234c9b"
+  },
+  "NewModuleIntro.qmd": {
+    "NewModuleIntro.html": "f5869016"
+  },
+  "NewModule.qmd": {
+    "NewModule.html": "6eb10b96"
   }
 }

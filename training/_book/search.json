@@ -1,0 +1,121 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "training",
+    "section": "",
+    "text": "Preface\n\n\nAcknowledgements\nWe thank the various contributors, SpaDES developers and SpaDES users that continue to make the open-source ecosystem of SpaDES modules grow.\nWe also thank the Quarto team for their great work.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "NewModuleIntro.html",
+    "href": "NewModuleIntro.html",
+    "title": "2  Introduction",
+    "section": "",
+    "text": "2.0.1 Make the module\nNow we use the SpaDES function newModule to make a new module. (see )\nSpaDES.core::newModule(name = \"My_linear_model\", path = \".\")\nThis will create a new folder with several files in it. See ?newModule for details. For now, run the above and open the .R that is created.",
+    "crumbs": [
+      "New Module",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "NewModuleIntro.html#run-the-new-module",
+    "href": "NewModuleIntro.html#run-the-new-module",
+    "title": "2  Introduction",
+    "section": "2.1 Run the new module",
+    "text": "2.1 Run the new module\nNow, we have inputs and outputs defined, our code has been place in 2 spots, and we have default value for y.\n\nSpaDES.core::simInitAndSpades(modules = \"My_linear_model\", paths = list(modulePath = \"tutos/NewModuleIntro\"))\n\nWe now have a SpaDES module that has metadata, generates random starting data (if the user doesn’t supply an alternative), fits a linear model, outputs that model, and plots the fit.",
+    "crumbs": [
+      "New Module",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "NewModuleIntro.html#questions",
+    "href": "NewModuleIntro.html#questions",
+    "title": "2  Introduction",
+    "section": "2.2 Questions",
+    "text": "2.2 Questions\n\nWhat are some things we “gained” from putting our simple 3 lines of code into a module?\n\n\nWe can turn off plotting easily. Set .plotInitialTime = NA in the simInitAndSpades call.\n\n\nWhat are some things we “lost”?\n\n\nMore complicated. (overkill for these 3 lines?)\n\n\nWhat if we used an R package that wasn’t in the base packages list?\n\n\nSee ?defineModule for all the metadata items. Specifically, see reqdPkgs.\n\n\nWhat is the sim? See ?simList",
+    "crumbs": [
+      "New Module",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "NewModuleIntro.html#see-also",
+    "href": "NewModuleIntro.html#see-also",
+    "title": "2  Introduction",
+    "section": "2.3 See also",
+    "text": "2.3 See also\nSee also: ?expectsInput, ?createsOutput, ?simInitAndSpades, ?newModule",
+    "crumbs": [
+      "New Module",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "realexamples.html",
+    "href": "realexamples.html",
+    "title": "“Real-world” examples of SpaDES workflows",
+    "section": "",
+    "text": "This section will take you through several “real-world” examples that use SpaDES to build and execute a workflow. By “real-world” we mean workflows that use models that have been/are used in research or application.\nBecause we will not explain each model or the SpaDES modules in detail, we encourage learning more about these models from the sources noted in the chapters.",
+    "crumbs": [
+      "\"Real-world\" examples of SpaDES workflows"
+    ]
+  },
+  {
+    "objectID": "castorExample.html",
+    "href": "castorExample.html",
+    "title": "3  Castor workflow with setupProject",
+    "section": "",
+    "text": "3.1 Workflow setup\n## install/load necessary packages\nrepos &lt;- c(\"predictiveecology.r-universe.dev\", getOption(\"repos\"))\ninstall.packages(c(\"remotes\", \"DiagrammeR\"), repos = repos)\n\npackage 'remotes' successfully unpacked and MD5 sums checked\npackage 'DiagrammeR' successfully unpacked and MD5 sums checked\n\nThe downloaded binary packages are in\n    C:\\Users\\cbarros\\AppData\\Local\\Temp\\RtmpoTgWVO\\downloaded_packages\n\nremotes::install_github(\"PredictiveEcology/SpaDES.project@transition\")   ## to deal with modules in nested GH folders.\nlibrary(SpaDES.project)\n\n## get Castor modules\nsetupFunctions(paths = list(\"projectPath\" = \"~/\"),\n               functions = c(\"PredictiveEcology/PredictiveEcology.org@training-book/tutos/castorExample/getCastorModulesAndDB.R\",\n                             \"PredictiveEcology/PredictiveEcology.org@training-book/tutos/castorExample/params.R\"),\n               overwrite = TRUE)\noutMod &lt;- getCastorModulesAndDB(paths = list(\"modulePath\" = \"~/tutos/castorExample/modules/\",\n                                             \"projectPath\" = \"~/tutos/castorExample\"),\n                                modules = c(\"dataCastor\", \n                                            \"growingStockCastor\", \n                                            \"forestryCastor\", \n                                            \"blockingCastor\"),\n                                dbURL = \"https://drive.google.com/file/d/1-2POunzC7aFbkKK5LeBJNsFYMBBY8dNx/view?usp=sharing\",\n                                dbPath = \"R/scenarios/comparison_stsm\")\n\n## set up the workflow paths, dependencies and modules\n## as well as simulation parameters, (some) inputs and outputs\nout &lt;- setupProject(\n  paths = list(\"inputPath\" = \"modules/forestryCastor/inputs\",\n               \"outputPath\" = \"/R/scenarios/comparison_stsm/outputs\",\n               \"modulePath\" = \"modules/\",\n               \"cachePath\" = \"modules/forestryCastor\",\n               \"projectPath\" = \"~/tutos/castorExample\"),\n  modules = names(outMod$modules),\n  functions = \"bcgov/castor@main/R/functions/R_Postgres.R\",\n  ## install and load\n  require = \"dplyr\",\n  ## install but don't load these:\n  packages = c(\n    \"DBI\", \n    \"keyring\",\n    \"rgdal\", \n    \"RPostgreSQL\", \n    \"sp\",\n    \"terra\"\n  ),\n  params = \"params.R\",\n  times = list(start = 0, end = 20),\n  outputs = {\n    data.frame(objectName = c(\"harvestReport\",\n                              \"growingStockReport\"))\n  },\n  scenario = {\n    data.table(name = \"stsm_base_case\",\n               description = paste(\"Priority queue = oldest first. Adjacency constraint\",\n                                   \"= None. Includes roads (mst) and blocks (pre).\",\n                                   \"Harvest flow = 147,300 m3/year in decade 1, 133,500\",\n                                   \"m3/year in decade 2, 132,300 m3/year in decades 3 to\",\n                                   \"14 and 135,400 m3/year in decades 15 to 25.\",\n                                   \"Minimum harvest age = 80 and minimum harvest volume = 150\"))\n  },\n  harvestFlow = {\n    rbindlist(list(data.table(compartment = \"tsa99\",\n                              partition = ' age &gt; 79 AND vol &gt; 149 ', \n                              period = rep( seq (from = 1,\n                                                 to = 1, \n                                                 by = 1),\n                                            1), \n                              flow = 1473000, \n                              partition_type = 'live'),\n                   data.table(compartment = \"tsa99\",\n                              partition = ' age &gt; 79 AND vol &gt; 149 ', \n                              period = rep( seq (from = 2,\n                                                 to = 2, \n                                                 by = 1),\n                                            1), \n                              flow = 1335000, \n                              partition_type = 'live'),\n                   data.table(compartment = \"tsa99\",\n                              partition = ' age &gt; 79 AND vol &gt; 149 ', \n                              period = rep( seq (from = 3,\n                                                 to = 14, \n                                                 by = 1),\n                                            1), \n                              flow = 1323000, \n                              partition_type = 'live'),\n                   data.table(compartment = \"tsa99\",\n                              partition = ' age &gt; 79 AND vol &gt; 149 ', \n                              period = rep( seq (from = 15,\n                                                 to = 25, \n                                                 by = 1),\n                                            1), \n                              flow = 1354000, \n                              partition_type = 'live')  \n    ))\n  },\n  Restart = TRUE\n)",
+    "crumbs": [
+      "\"Real-world\" examples of SpaDES workflows",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Castor workflow with `setupProject`</span>"
+    ]
+  },
+  {
+    "objectID": "castorExample.html#initialise-the-model-and-inspect-simlist",
+    "href": "castorExample.html#initialise-the-model-and-inspect-simlist",
+    "title": "3  Castor workflow with setupProject",
+    "section": "3.2 Initialise the model and inspect simList",
+    "text": "3.2 Initialise the model and inspect simList\nsetupProject() returns a names list containing values that can be passed to simInit() arguments.\nWe use do.call() to pass the whole list of arguments to simInit.\n\n## initialize simulation\ncastorInit &lt;- do.call(SpaDES.core::simInit, out)\n\nAnother (more verbose) option would to call simInit directly:\n\n## initialize simulation\ncastorInit &lt;- SpaDES.core::simInit(\n  times = out$times,\n  params = out$params, \n  modules = out$modules, \n  objects = list(scenario = out$scenario, \n                 harvestFlow = out$harvestFlow)\n)\n\nUse the following functions to access workflow/model properties. events(), for instance will output the scheduled events, which at this point are only the init events of each module as you can see in the output below.\n\n## inspect the `simList`\nSpaDES.core::params(castorInit) \nSpaDES.core::inputs(castorInit)\nSpaDES.core::outputs(castorInit)\nSpaDES.core::times(castorInit) \n\n## scheduled events\nSpaDES.core::events(castorInit) \n\n\n\n   eventTime         moduleName eventType eventPriority\n       &lt;num&gt;             &lt;char&gt;    &lt;char&gt;         &lt;num&gt;\n1:         0         checkpoint      init             0\n2:         0               save      init             0\n3:         0           progress      init             0\n4:         0               load      init             0\n5:         0         dataCastor      init             1\n6:         0 growingStockCastor      init             1\n7:         0     blockingCastor      init             1\n8:         0     forestryCastor      init             1",
+    "crumbs": [
+      "\"Real-world\" examples of SpaDES workflows",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Castor workflow with `setupProject`</span>"
+    ]
+  },
+  {
+    "objectID": "castorExample.html#visualize-the-workflow",
+    "href": "castorExample.html#visualize-the-workflow",
+    "title": "3  Castor workflow with setupProject",
+    "section": "3.3 Visualize the workflow",
+    "text": "3.3 Visualize the workflow\nmoduleDiagram() and objectDiagram() are great to visualise how each module interacts with the other. Recall that these interactions arise from object “exchanges” between modules, which are deduced by simInit() from module metadata (Figure 3.2) – i.e., if a module’s inputs are another’s outputs, then the first module will follow the second.\n\nSpaDES.core::moduleDiagram(castorInit)\nSpaDES.core::objectDiagram(castorInit)\n\n\n\n\n\n\n\n\n\nFigure 3.1: Diagram of module connections.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3.2: Diagram of module inter-dependencies with object names.",
+    "crumbs": [
+      "\"Real-world\" examples of SpaDES workflows",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Castor workflow with `setupProject`</span>"
+    ]
+  },
+  {
+    "objectID": "castorExample.html#run-simulation",
+    "href": "castorExample.html#run-simulation",
+    "title": "3  Castor workflow with setupProject",
+    "section": "3.4 Run simulation",
+    "text": "3.4 Run simulation\nspades() runs the simulation, beginning with the execution of the init events. Notice how the result of outputs() differs from previously.\n\ncastorSim &lt;- SpaDES.core::spades(castorInit)\n\n## we now have outputs\nSpaDES.core::outputs(castorSim)\n\n\n\n          objectName\n1      harvestReport\n2 growingStockReport\n                                                                  file     fun\n1      C:/R/scenarios/comparison_stsm/outputs/harvestReport_year20.rds saveRDS\n2 C:/R/scenarios/comparison_stsm/outputs/growingStockReport_year20.rds saveRDS\n  package saveTime saved arguments\n1    base       20  TRUE        NA\n2    base       20  TRUE        NA\n\n\ncompleted(castorSim) shows the chaining of events that was produced and run by spades(). The sequence of steps in the workflow therefore arises from each module’s events and their scheduling, rather than being explicitly imposed by the user.\n\nSpaDES.core::completed(castorSim)\n\n    eventTime         moduleName          eventType eventPriority\n        &lt;num&gt;             &lt;char&gt;             &lt;char&gt;         &lt;num&gt;\n 1:         0         checkpoint               init             0\n 2:         0               save               init             0\n 3:         0           progress               init             0\n....\n\n\nWe suggest omitting the blockingCastor module in setupProject() and rerunning the workflow again to see how spades is capable of re-generating a new workflow with little effort from the user.\n\nmodules &lt;- c(\"dataCastor\", \n             \"growingStockCastor\", \n             \"forestryCastor\")\n\nout &lt;- setupProject(\n  paths = list(\"inputPath\" = \"modules/forestryCastor/inputs\",\n               \"outputPath\" = \"/R/scenarios/comparison_stsm/outputs\",\n               \"modulePath\" = \"modules/\",\n               \"cachePath\" = \"modules/forestryCastor\",\n               \"projectPath\" = \"~/tutos/castorExample/\"),\n  modules = modules,\n  functions = \"bcgov/castor@main/R/functions/R_Postgres.R\",\n  ## install and load\n  require = \"dplyr\",\n  ## install but don't load these:\n  packages = c(\n    \"DBI\", \n    \"keyring\",\n    \"rgdal\", \n    \"RPostgreSQL\", \n    \"sp\",\n    \"terra\"\n  ),\n  params = \"params.R\",\n  times = list(start = 0, end = 20),\n  outputs = {\n    data.frame(objectName = c(\"harvestReport\",\n                              \"growingStockReport\"))\n  },\n  scenario = {\n    data.table(name = \"stsm_base_case\",\n               description = paste(\"Priority queue = oldest first. Adjacency constraint\",\n                                   \"= None. Includes roads (mst) and blocks (pre).\",\n                                   \"Harvest flow = 147,300 m3/year in decade 1, 133,500\",\n                                   \"m3/year in decade 2, 132,300 m3/year in decades 3 to\",\n                                   \"14 and 135,400 m3/year in decades 15 to 25.\",\n                                   \"Minimum harvest age = 80 and minimum harvest volume = 150\"))\n  },\n  harvestFlow = {\n    rbindlist(list(data.table(compartment = \"tsa99\",\n                              partition = ' age &gt; 79 AND vol &gt; 149 ', \n                              period = rep( seq (from = 1,\n                                                 to = 1, \n                                                 by = 1),\n                                            1), \n                              flow = 1473000, \n                              partition_type = 'live'),\n                   data.table(compartment = \"tsa99\",\n                              partition = ' age &gt; 79 AND vol &gt; 149 ', \n                              period = rep( seq (from = 2,\n                                                 to = 2, \n                                                 by = 1),\n                                            1), \n                              flow = 1335000, \n                              partition_type = 'live'),\n                   data.table(compartment = \"tsa99\",\n                              partition = ' age &gt; 79 AND vol &gt; 149 ', \n                              period = rep( seq (from = 3,\n                                                 to = 14, \n                                                 by = 1),\n                                            1), \n                              flow = 1323000, \n                              partition_type = 'live'),\n                   data.table(compartment = \"tsa99\",\n                              partition = ' age &gt; 79 AND vol &gt; 149 ', \n                              period = rep( seq (from = 15,\n                                                 to = 25, \n                                                 by = 1),\n                                            1), \n                              flow = 1354000, \n                              partition_type = 'live')  \n    ))\n  },\n  Restart = TRUE\n)\n\n## initialize and run simulation in one go\ncastorSim2 &lt;- do.call(SpaDES.core::simInitAndSpades, out)",
+    "crumbs": [
+      "\"Real-world\" examples of SpaDES workflows",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Castor workflow with `setupProject`</span>"
+    ]
+  },
+  {
+    "objectID": "castorExample.html#footnotes",
+    "href": "castorExample.html#footnotes",
+    "title": "3  Castor workflow with setupProject",
+    "section": "",
+    "text": "SpaDES.project is currently being adapted to deal with modules nested in folders of GitHub repositories (instead of living in their own GitHub repositories), as is the case of Castor modules. Hence, the code in this example is subject to changes in the near future.↩︎",
+    "crumbs": [
+      "\"Real-world\" examples of SpaDES workflows",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Castor workflow with `setupProject`</span>"
+    ]
+  }
+]
