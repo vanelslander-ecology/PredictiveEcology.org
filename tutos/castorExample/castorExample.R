@@ -10,14 +10,19 @@ install.packages(c("remotes", "DiagrammeR"), repos = repos)
 remotes::install_github("PredictiveEcology/SpaDES.project@transition")   ## to deal with modules in nested GH folders.
 library(SpaDES.project)
 
-## this is a workaround to deal with nested modules
-source("getCastorModules.R")
-outMod <- getCastorModules(paths = list("modulePath" = "modules/",
-                                        "projectPath" = "."),
-                           modules = c("dataCastor", 
-                                       "growingStockCastor", 
-                                       "forestryCastor", 
-                                       "blockingCastor"))
+## get Castor modules
+setupFunctions(paths = list("projectPath" = "~/"),
+               functions = c("CeresBarros/PredictiveEcology.org@quarto-website/tutos/castorExample/getCastorModulesAndDB.R",
+                             "CeresBarros/PredictiveEcology.org@quarto-website/tutos/castorExample/params.R"),
+               overwrite = TRUE)
+outMod <- getCastorModulesAndDB(paths = list("modulePath" = "~/tutos/castorExample/modules/",
+                                             "projectPath" = "~/tutos/castorExample"),
+                                modules = c("dataCastor", 
+                                            "growingStockCastor", 
+                                            "forestryCastor", 
+                                            "blockingCastor"),
+                                dbURL = "https://drive.google.com/file/d/1-2POunzC7aFbkKK5LeBJNsFYMBBY8dNx/view?usp=sharing",
+                                dbPath = "R/scenarios/comparison_stsm")
 
 ## setup the workflow paths, dependencies and modules
 ## as well as simulation parameters, (some) inputs and outputs
@@ -26,8 +31,8 @@ out <- setupProject(
                "outputPath" = "/R/scenarios/comparison_stsm/outputs",
                "modulePath" = "modules/",
                "cachePath" = "modules/forestryCastor",
-               "projectPath" = "."),
-  modules = names(outMod),
+               "projectPath" = "~/tutos/castorExample"),
+  modules = names(outMod$modules),
   functions = "bcgov/castor@main/R/functions/R_Postgres.R",
   ## install and load
   require = "dplyr",
@@ -92,7 +97,6 @@ out <- setupProject(
   },
   Restart = TRUE
 )
-
 
 ## initialize simulation
 castorInit <- do.call(SpaDES.core::simInit, out)
