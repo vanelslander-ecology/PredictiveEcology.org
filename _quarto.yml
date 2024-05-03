@@ -46,7 +46,7 @@ website:
   # If building your own site, replace our GA tag with your own GA tag before deployment.
   # This will prevent your activity being tracked and counted in our analytics dashboard.
   # Thank you!
-  google-analytics: "UA-58633549-2"
+  google-analytics: "G-1689MGK5S2"
 
 format:
   html:
