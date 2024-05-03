@@ -30,16 +30,17 @@ getCastorModules <- function(modules = c("dataCastor",
     message("All module .R scripts were found locally.",
             "\n  If other module files are missing, set overwrite = TRUE")
   }
-  modFiles <- list.files(file.path("modules/castor/R/SpaDES-modules", modules),
-                         recursive = TRUE, full.names = TRUE)
-  modFilesNew <- sub("modules/castor/R/SpaDES-modules", 
+  
+  modFiles <- normalizePath(list.files(file.path(paths$modulePath, "castor/R/SpaDES-modules", modules),
+                                       recursive = TRUE, full.names = TRUE), winslash = "/", mustWork = FALSE)
+  modFilesNew <- sub(normalizePath(file.path(paths$modulePath, "castor/R/SpaDES-modules"), winslash = "/", mustWork = FALSE), 
                      normalizePath(paths$modulePath, winslash = "/", mustWork = FALSE), 
                      modFiles, fixed =TRUE)
-    
+  
   invisible(lapply(unique(dirname(modFilesNew)), dir.create, recursive = TRUE, showWarnings = FALSE))
   invisible(reproducible::linkOrCopy(modFiles, modFilesNew, overwrite = overwrite))
-  unlink("modules/castor", recursive = TRUE)  ## delete unnecessary repo content
-
+  unlink(file.path(paths$modulePath, "castor"), recursive = TRUE)  ## delete unnecessary repo content
+  
   out <- finalModPaths
   names(out) <- modules
   return(out)
