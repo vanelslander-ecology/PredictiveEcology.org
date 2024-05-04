@@ -4,6 +4,9 @@
 .Ruserdata
 
 /.quarto/
+*/.quarto/
 /_site/
+
+*/_book/
 
 docs/
