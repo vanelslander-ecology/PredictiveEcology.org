@@ -1,8 +1,8 @@
+---
+execute: 
+  eval: false
+---
 # Introduction
-
-```{r setup, include = FALSE}
-knitr::opts_chunk$set(eval = FALSE)
-```
 
 SpaDES modules are comprised of R code that has metadata and the gets
 put into functions. With this in mind, we can start with some simple R
@@ -14,7 +14,6 @@ We can examine the following code chunk. First, we ask: what are the
 **inputs** and the **outputs**?
 
 ```{r}
-
 # create some data
 x <- y + rnorm(10)
 # fit a linear model
