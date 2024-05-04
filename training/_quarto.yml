@@ -2,11 +2,21 @@ project:
   type: book
 
 book:
-  title: "training"
+  title: "Robust and nimble scientific workflows, using SpaDES"
   author:
     - "E. McIntire"
     - "C. Barros"
   date: last-modified
+  cover-image: assets/logo/predictive_ecology_logo.png
+  favicon:  assets/logo/favicon-16x16.png
+  site-url: https://predictiveecology.org/
+
+  navbar:
+    right:
+      - icon: github
+        href: https://github.com/PredictiveEcology/PredictiveEcology.org/training/
+        aria-label: GitHub
+
   chapters:
     - index.qmd
     - intro.qmd
@@ -27,11 +37,20 @@ format:
       dark: darkly
     grid:
       sidebar-width: 350px
+    number-sections: true
+    fig-cap-location: bottom
+    tbl-cap-location: top
+    title-block-banner: true
+    title-block-categories: false
+    code-fold: show
+    code-overflow: scroll
+    code-copy: true
     css: assets/css/main.scss
     smooth-scroll: true
     link-external-newwindow: true
 
 execute:
   freeze: auto
+  cache: true
 
 
