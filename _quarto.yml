@@ -1,6 +1,9 @@
 project:
   type: website
   output-dir: docs
+  render:
+    - "!training/"
+    - "!tutos/"
   preview:
     browser: false
     timeout: 0.001
