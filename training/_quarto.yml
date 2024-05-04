@@ -40,7 +40,7 @@ format:
     number-sections: true
     fig-cap-location: bottom
     tbl-cap-location: top
-    title-block-banner: true
+    title-block-banner: false
     title-block-categories: false
     code-fold: show
     code-overflow: scroll
