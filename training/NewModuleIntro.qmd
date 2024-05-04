@@ -36,7 +36,7 @@ So, our metadata are:
 
 We will next put them into the correct places in the new SpaDES module.
 
-### Make the module
+## Make the module
 
 Now we use the `SpaDES` function `newModule` to make a new module. (see )
 
@@ -65,7 +65,7 @@ outputObjects = bindrows(
   )
 ```
 
-### Put code in `Init` function
+## Put code in `Init` function
 
 First, we move the first two lines of code into a function. We will choose the `Init` function. We will discuss why in a bit.
 
@@ -77,7 +77,7 @@ Init <- function(sim) {
 }
 ```
 
-### Sharing inputs and outputs
+## Sharing inputs and outputs
 
 You may have noticed that the `Init` function template defines a function with a `sim` argument. This is an object we haven't learned about yet; we will just think of it as a list where we can put objects we want to share with other modules or "just keep them for later", such as our **inputs** and **outputs**.
 
@@ -93,7 +93,7 @@ Init <- function(sim) {
 
 Now we have a module that creates two objects, `x` and `out` and puts them in the `sim` objects. This all happens in a function called `Init`. Next: the `plot(out)`
 
-### Events
+## Events
 
 We can look at our 3 lines of example and think, "this is 2 steps: a first that does the model and a second that plots it" (of course, you can divide this up in several ways; we will go with this for now.).
 
@@ -108,7 +108,7 @@ plotFun <- function(sim) {
 
 The template already has some default code that actually puts the events in an order without us needing to do anything. It also has a parameter that determines whether the plot will happen or not. We will just accept the defaults for now.
 
-### Default Values
+## Default Values
 
 Recall, we don't have a value for `y`. This means that if you run the following, you will get an error:
 
