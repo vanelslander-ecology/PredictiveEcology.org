@@ -45,6 +45,9 @@ A bare-bones version of this example is also available in this [.R script ](http
 ## Workflow setup
 
 ```{r wfsetup}
+#| message: false
+#| warning: false
+#| results: hide
 ## install/load necessary packages
 repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
 install.packages(c("remotes", "DiagrammeR"), repos = repos)
@@ -260,7 +263,7 @@ The sequence of steps in the workflow therefore arises from each module's events
 and their scheduling, rather than being explicitly imposed by the user.
 
 ```{r}
-#| outlines: 5
+#| outlines: 10
 SpaDES.core::completed(castorSim)
 ```
 
