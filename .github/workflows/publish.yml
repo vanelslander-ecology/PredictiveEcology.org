@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - quarto-website
+      - training-book
 
 name: Quarto Publish
 
@@ -44,9 +45,25 @@ jobs:
             any::Require
             any::rmarkdown
 
-      - name: Render and Publish
+      - name: Render Quarto Website
+        uses: quarto-dev/quarto-actions/render@v2
+        with:
+          to: html
+          path: source-folder
+
+      - name: Render Quarto Book
+        uses: quarto-dev/quarto-actions/render@v2
+        with:
+          to: html
+          path: training/
+
+      - name: Copy book files
+        run: Rscript -e 'source("renderCopyBook.R")'
+
+      - name: Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
+          render: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
