@@ -47,14 +47,10 @@ jobs:
 
       - name: Render Quarto Website
         uses: quarto-dev/quarto-actions/render@v2
-        with:
-          to: html
-          path: source-folder
 
       - name: Render Quarto Book
         uses: quarto-dev/quarto-actions/render@v2
         with:
-          to: html
           path: training/
 
       - name: Copy book files
