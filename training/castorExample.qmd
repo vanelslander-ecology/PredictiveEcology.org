@@ -50,7 +50,7 @@ A bare-bones version of this example is also available in this [.R script ](http
 #| results: hide
 ## install/load necessary packages
 repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
-install.packages(c("remotes", "DiagrammeR", "reproducible"), repos = repos)
+install.packages(c("remotes", "DiagrammeR", "reproducible", "googledrive"), repos = repos)
 remotes::install_github("PredictiveEcology/SpaDES.project@transition")   ## to deal with modules in nested GH folders.
 library(SpaDES.project)
 
