@@ -12,10 +12,35 @@ book:
   site-url: https://predictiveecology.org/
 
   navbar:
+    logo: "assets/logo/favicon-196x196.png"
+    search: true
     right:
+      - text: "News"
+        href: ../index.qmd
+      - text: "About"
+        href: ../about.qmd
+      - text: "Projects"
+        href: ../Projects.qmd
+      - text: "SpaDES"
+        href: ../SpaDES.qmd
+      - text: "Workshops"
+        href: ../Workshops.qmd
+      - text: "Training"
+        menu:
+          - text: "Training Book"
+            href: index.html
+          - text: "Other training resources"
+            href: ../otherTraining.qmd
+      - text: "Manuals"
+        href: ../Manuals.qmd
+      - text: "Publications"
+        href: ../publications.qmd
+      - text: "Presentations"
+        href: ../presentations.qmd
       - icon: github
-        href: https://github.com/PredictiveEcology/PredictiveEcology.org/training/
-        aria-label: GitHub
+        href: https://github.com/PredictiveEcology
+      - icon: twitter
+        href: https://twitter.com/PredictiveEcol
 
   chapters:
     - index.qmd
