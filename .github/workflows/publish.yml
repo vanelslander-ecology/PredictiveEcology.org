@@ -42,6 +42,7 @@ jobs:
             any::httr
             any::kableExtra
             any::knitr
+            any::quarto
             any::Require
             any::rmarkdown
 
