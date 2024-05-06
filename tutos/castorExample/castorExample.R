@@ -6,23 +6,24 @@
 
 ## install/load necessary packages
 repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
-install.packages(c("remotes", "DiagrammeR"), repos = repos)
+install.packages(c("remotes", "DiagrammeR", "reproducible"), repos = repos)
 remotes::install_github("PredictiveEcology/SpaDES.project@transition")   ## to deal with modules in nested GH folders.
 library(SpaDES.project)
 
 ## get Castor modules
 setupFunctions(paths = list("projectPath" = "~/"),
-               functions = c("CeresBarros/PredictiveEcology.org@quarto-website/tutos/castorExample/getCastorModulesAndDB.R",
-                             "CeresBarros/PredictiveEcology.org@quarto-website/tutos/castorExample/params.R"),
+               functions = c("PredictiveEcology/PredictiveEcology.org@training-book/tutos/castorExample/getCastorModulesAndDB.R",
+                             "PredictiveEcology/PredictiveEcology.org@training-book/tutos/castorExample/params.R"),
                overwrite = TRUE)
 outMod <- getCastorModulesAndDB(paths = list("modulePath" = "~/tutos/castorExample/modules/",
                                              "projectPath" = "~/tutos/castorExample"),
-                                modules = c("dataCastor", 
-                                            "growingStockCastor", 
-                                            "forestryCastor", 
+                                modules = c("dataCastor",
+                                            "growingStockCastor",
+                                            "forestryCastor",
                                             "blockingCastor"),
                                 dbURL = "https://drive.google.com/file/d/1-2POunzC7aFbkKK5LeBJNsFYMBBY8dNx/view?usp=sharing",
-                                dbPath = "R/scenarios/comparison_stsm")
+                                dbPath = "~/tutos/castorExample/R/scenarios/comparison_stsm")
+
 
 ## setup the workflow paths, dependencies and modules
 ## as well as simulation parameters, (some) inputs and outputs
@@ -38,10 +39,10 @@ out <- setupProject(
   require = "dplyr",
   ## install but don't load these:
   packages = c(
-    "DBI", 
+    "DBI",
     "keyring",
-    "rgdal", 
-    "RPostgreSQL", 
+    "rgdal",
+    "RPostgreSQL",
     "sp",
     "terra"
   ),
@@ -62,37 +63,37 @@ out <- setupProject(
   },
   harvestFlow = {
     rbindlist(list(data.table(compartment = "tsa99",
-                              partition = ' age > 79 AND vol > 149 ', 
+                              partition = ' age > 79 AND vol > 149 ',
                               period = rep( seq (from = 1,
-                                                 to = 1, 
+                                                 to = 1,
                                                  by = 1),
-                                            1), 
-                              flow = 1473000, 
+                                            1),
+                              flow = 1473000,
                               partition_type = 'live'),
                    data.table(compartment = "tsa99",
-                              partition = ' age > 79 AND vol > 149 ', 
+                              partition = ' age > 79 AND vol > 149 ',
                               period = rep( seq (from = 2,
-                                                 to = 2, 
+                                                 to = 2,
                                                  by = 1),
-                                            1), 
-                              flow = 1335000, 
+                                            1),
+                              flow = 1335000,
                               partition_type = 'live'),
                    data.table(compartment = "tsa99",
-                              partition = ' age > 79 AND vol > 149 ', 
+                              partition = ' age > 79 AND vol > 149 ',
                               period = rep( seq (from = 3,
-                                                 to = 14, 
+                                                 to = 14,
                                                  by = 1),
-                                            1), 
-                              flow = 1323000, 
+                                            1),
+                              flow = 1323000,
                               partition_type = 'live'),
                    data.table(compartment = "tsa99",
-                              partition = ' age > 79 AND vol > 149 ', 
+                              partition = ' age > 79 AND vol > 149 ',
                               period = rep( seq (from = 15,
-                                                 to = 25, 
+                                                 to = 25,
                                                  by = 1),
-                                            1), 
-                              flow = 1354000, 
-                              partition_type = 'live')  
+                                            1),
+                              flow = 1354000,
+                              partition_type = 'live')
     ))
   },
   Restart = TRUE
@@ -102,15 +103,15 @@ out <- setupProject(
 castorInit <- do.call(SpaDES.core::simInit, out)
 
 ## inspect the `simList`
-SpaDES.core::params(castorInit) 
+SpaDES.core::params(castorInit)
 SpaDES.core::inputs(castorInit)
 SpaDES.core::outputs(castorInit)
 SpaDES.core::moduleDiagram(castorInit)
 SpaDES.core::objectDiagram(castorInit)
-SpaDES.core::times(castorInit) 
+SpaDES.core::times(castorInit)
 
 ## scheduled events - only init events have been scheduled by simInit
-SpaDES.core::events(castorInit) 
+SpaDES.core::events(castorInit)
 
 ## run simulation
 castorSim <- SpaDES.core::spades(castorInit)
