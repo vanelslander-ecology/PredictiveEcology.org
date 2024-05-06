@@ -41,10 +41,11 @@ In this chapter, we demonstrate how to set up a Castor workflow using
 [`SpaDES.project`](https://spades-project.predictiveecology.org/)
 package. The code was adapted from [this Castor
 scenario](https://github.com/bcgov/castor/blob/main/R/scenarios/comparison_stsm/base_case_harvest_flow_20230628.Rmd),
-with some modifications to streamline the code and accommodate the use of
-`SpaDES.project` functions[^castorexample-1].
+with some modifications to streamline the code and accommodate the use
+of `SpaDES.project` functions[^castorexample-1].
 
-A bare-bones version of this example is also available in this [.R script ](https://github.com/PredictiveEcology/PredictiveEcology.org/blob/training-book/tutos/castorExample/castorExample.R)
+A bare-bones version of this example is also available in this [.R
+script](https://github.com/PredictiveEcology/PredictiveEcology.org/blob/training-book/tutos/castorExample/castorExample.R)
 
 ## Workflow setup
 
@@ -54,8 +55,8 @@ A bare-bones version of this example is also available in this [.R script ](http
 #| results: hide
 ## install/load necessary packages
 repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
-install.packages(c("remotes", "DiagrammeR", "reproducible", "googledrive"), repos = repos)
-remotes::install_github("PredictiveEcology/SpaDES.project@transition")   ## to deal with modules in nested GH folders.
+# install.packages(c("remotes", "reproducible", "googledrive"), repos = repos)
+# remotes::install_github("PredictiveEcology/SpaDES.project@transition")   ## to deal with modules in nested GH folders.
 library(SpaDES.project)
 
 ## get Castor modules
@@ -147,11 +148,10 @@ out <- setupProject(
 )
 ```
 
-
 ## Initialise the model and inspect `simList`
 
-`setupProject()` returns a names list containing values that can be passed to
-`simInit()` arguments. 
+`setupProject()` returns a names list containing values that can be
+passed to `simInit()` arguments.
 
 We use `do.call()` to pass the whole list of arguments to `simInit`.
 
@@ -177,12 +177,12 @@ castorInit <- SpaDES.core::simInit(
 )
 ```
 
+Use the following functions to access workflow/model properties.
+`events()`, for instance will output the scheduled events, which at this
+point are only the `init` events of each module as you can see in the
+output below.
 
-Use the following functions to access workflow/model properties. `events()`, for
-instance will output the scheduled events, which at this point are only the `init`
-events of each module as you can see in the output below.
-
-``` {r inspectSimList}
+```{r inspectSimList}
 #| eval: false
 
 ## inspect the `simList`
@@ -203,10 +203,12 @@ SpaDES.core::events(castorInit)
 
 ## Visualize the workflow
 
-`moduleDiagram()` and `objectDiagram()` are great to visualise how each module
-interacts with the other. Recall that these interactions arise from object "exchanges"
-between modules, which are deduced by `simInit()` from module metadata (@fig-objectDiagram)
--- i.e., if a module's inputs are another's outputs, then the first module will follow the second.
+`moduleDiagram()` and `objectDiagram()` are great to visualise how each
+module interacts with the other. Recall that these interactions arise
+from object "exchanges" between modules, which are deduced by
+`simInit()` from module metadata (@fig-objectDiagram) -- i.e., if a
+module's inputs are another's outputs, then the first module will follow
+the second.
 
 ```{r diagrams}
 #| eval: false
@@ -238,8 +240,9 @@ knitr::include_graphics(normalizePath("assets/img/castorExample_objDiagram.png",
 
 ## Run simulation
 
-`spades()` runs the simulation, beginning with the execution of the `init` events.
-Notice how the result of `outputs()` differs from previously.
+`spades()` runs the simulation, beginning with the execution of the
+`init` events. Notice how the result of `outputs()` differs from
+previously.
 
 ```{r runsim}
 #| eval: false
@@ -262,18 +265,19 @@ castorSim <- SpaDES.core::spades(castorInit)
 SpaDES.core::outputs(castorSim)
 ```
 
-`completed(castorSim)` shows the chaining of events that was produced and run by `spades()`.
-The sequence of steps in the workflow therefore arises from each module's events 
-and their scheduling, rather than being explicitly imposed by the user.
+`completed(castorSim)` shows the chaining of events that was produced
+and run by `spades()`. The sequence of steps in the workflow therefore
+arises from each module's events and their scheduling, rather than being
+explicitly imposed by the user.
 
 ```{r}
 #| outlines: 10
 SpaDES.core::completed(castorSim)
 ```
 
-We suggest omitting the  `blockingCastor` module in `setupProject()` and rerunning
-the workflow again to see how `spades` is capable of re-generating a new workflow with 
-little effort from the user. 
+We suggest omitting the `blockingCastor` module in `setupProject()` and
+rerunning the workflow again to see how `spades` is capable of
+re-generating a new workflow with little effort from the user.
 
 ```{r}
 #| eval: false
