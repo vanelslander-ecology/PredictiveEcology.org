@@ -23,6 +23,10 @@ knitr::knit_hooks$set(output = function(x, options) {
 })
 
 options(repos = "http://cran.us.r-project.org")
+
+if (Sys.getenv("USERNAME") == "GHA") {
+  googledrive::drive_auth(path = Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"))
+}
 ```
 
 [Castor](https://github.com/bcgov/castor) is a forest and land-use model
@@ -50,7 +54,7 @@ A bare-bones version of this example is also available in this [.R script ](http
 #| results: hide
 ## install/load necessary packages
 repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
-install.packages(c("remotes", "DiagrammeR", "reproducible"), repos = repos)
+install.packages(c("remotes", "DiagrammeR", "reproducible", "googledrive"), repos = repos)
 remotes::install_github("PredictiveEcology/SpaDES.project@transition")   ## to deal with modules in nested GH folders.
 library(SpaDES.project)
 
@@ -72,7 +76,7 @@ outMod <- getCastorModulesAndDB(paths = list("modulePath" = "~/tutos/castorExamp
 ## as well as simulation parameters, (some) inputs and outputs
 out <- setupProject(
   paths = list("inputPath" = "modules/forestryCastor/inputs",
-               "outputPath" = "/R/scenarios/comparison_stsm/outputs",
+               "outputPath" = "R/scenarios/comparison_stsm/outputs",
                "modulePath" = "modules/",
                "cachePath" = "modules/forestryCastor",
                "projectPath" = "~/tutos/castorExample"),
@@ -178,7 +182,7 @@ Use the following functions to access workflow/model properties. `events()`, for
 instance will output the scheduled events, which at this point are only the `init`
 events of each module as you can see in the output below.
 
-``` {r}
+``` {r inspectSimList}
 #| eval: false
 
 ## inspect the `simList`
@@ -191,7 +195,7 @@ SpaDES.core::times(castorInit)
 SpaDES.core::events(castorInit) 
 ```
 
-```{r}
+```{r events}
 #| echo: false
 
 SpaDES.core::events(castorInit) 
@@ -204,7 +208,7 @@ interacts with the other. Recall that these interactions arise from object "exch
 between modules, which are deduced by `simInit()` from module metadata (@fig-objectDiagram)
 -- i.e., if a module's inputs are another's outputs, then the first module will follow the second.
 
-```{r}
+```{r diagrams}
 #| eval: false
 
 SpaDES.core::moduleDiagram(castorInit)
@@ -237,7 +241,7 @@ knitr::include_graphics(normalizePath("assets/img/castorExample_objDiagram.png",
 `spades()` runs the simulation, beginning with the execution of the `init` events.
 Notice how the result of `outputs()` differs from previously.
 
-```{r}
+```{r runsim}
 #| eval: false
 
 castorSim <- SpaDES.core::spades(castorInit)

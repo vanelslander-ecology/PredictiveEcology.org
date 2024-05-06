@@ -24,6 +24,8 @@ jobs:
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      USERNAME: GHA
+      GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
 
     steps:
       - name: Check out repository
@@ -42,6 +44,7 @@ jobs:
         with:
           packages:
             any::data.table
+            any::googledrive
             any::httr
             any::kableExtra
             any::knitr

@@ -25,8 +25,8 @@ getCastorModulesAndDB <- function(modules = c("dataCastor",
     stop("Provide 'paths'")
   }
 
-  if (!requireNamespace("reproducible")) {
-    stop("Install 'reproducible'")
+  if (!requireNamespace("reproducible") | !requireNamespace("googledrive") ) {
+    stop("Install 'reproducible' and 'googledrive'")
   }
 
   finalModPaths <- normalizePath(file.path(paths$modulePath, modules, paste0(modules, ".R")), winslash = "/",
