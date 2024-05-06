@@ -1,2 +1,0 @@
-"file" "checksum" "filesize" "algorithm"
-"stsm_compare_noroads_noblocks_castordb.sqlite" "37c6772d2172330d" "87224320" "xxhash64"
