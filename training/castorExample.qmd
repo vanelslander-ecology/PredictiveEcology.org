@@ -23,6 +23,10 @@ knitr::knit_hooks$set(output = function(x, options) {
 })
 
 options(repos = "http://cran.us.r-project.org")
+
+if (Sys.getenv("USERNAME") == "GHA") {
+  googledrive::drive_auth(path = Sys.getenv("GOOGLE_APPLICATION_CREDENTIALS"))
+}
 ```
 
 [Castor](https://github.com/bcgov/castor) is a forest and land-use model
