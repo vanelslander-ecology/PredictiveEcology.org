@@ -253,13 +253,13 @@ castorSim <- SpaDES.core::spades(castorInit)
 SpaDES.core::outputs(castorSim)
 ```
 
-```{r}
+```{r runsim2}
 #| include: false
 
 castorSim <- SpaDES.core::spades(castorInit)
 ```
 
-```{r}
+```{r outputs}
 #| echo: false
 
 SpaDES.core::outputs(castorSim)
@@ -270,7 +270,7 @@ and run by `spades()`. The sequence of steps in the workflow therefore
 arises from each module's events and their scheduling, rather than being
 explicitly imposed by the user.
 
-```{r}
+```{r completedevents}
 #| outlines: 10
 SpaDES.core::completed(castorSim)
 ```
@@ -279,7 +279,7 @@ We suggest omitting the `blockingCastor` module in `setupProject()` and
 rerunning the workflow again to see how `spades` is capable of
 re-generating a new workflow with little effort from the user.
 
-```{r}
+```{r newWF}
 #| eval: false
 
 modules <- c("dataCastor", 
