@@ -45,13 +45,8 @@ jobs:
             any::Require
             any::rmarkdown
 
-      - name: Render Quarto Website
-        uses: quarto-dev/quarto-actions/render@v2
-
-      - name: Render Quarto Book
-        uses: quarto-dev/quarto-actions/render@v2
-        with:
-          path: training/
+      - name: Build site 🔧
+        run: Rscript renderCopyBook.R
 
       - name: Copy book files
         run: Rscript -e 'source("renderCopyBook.R")'
