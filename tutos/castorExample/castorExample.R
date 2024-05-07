@@ -10,7 +10,7 @@ install.packages(c("remotes", "DiagrammeR", "reproducible"), repos = repos)
 remotes::install_github("PredictiveEcology/SpaDES.project@transition")   ## to deal with modules in nested GH folders.
 library(SpaDES.project)
 
-## get Castor modules
+## get Castor modules and functions
 setupFunctions(paths = list("projectPath" = "~/"),
                functions = c("PredictiveEcology/PredictiveEcology.org@training-book/tutos/castorExample/getCastorModulesAndDB.R",
                              "PredictiveEcology/PredictiveEcology.org@training-book/tutos/castorExample/params.R"),

@@ -66,7 +66,7 @@ install.packages(c("remotes", "reproducible", "googledrive"), repos = repos)
 remotes::install_github("PredictiveEcology/SpaDES.project@transition")   ## to deal with modules in nested GH folders.
 library(SpaDES.project)
 
-## get Castor modules
+## get Castor modules and functions
 setupFunctions(paths = list("projectPath" = "~/"),
                functions = c("PredictiveEcology/PredictiveEcology.org@training-book/tutos/castorExample/getCastorModulesAndDB.R",
                              "PredictiveEcology/PredictiveEcology.org@training-book/tutos/castorExample/params.R"),
@@ -373,7 +373,7 @@ castorSim2 <- do.call(SpaDES.core::simInitAndSpades, out)
 ```
 
 [^castorexample-1]: `SpaDES.project` is currently being adapted to deal
-with modules nested in folders of GitHub repositories (instead of
-living in their own GitHub repositories), as is the case of Castor
-modules. Hence, the code in this example is subject to changes in
-the near future.
+    with modules nested in folders of GitHub repositories (instead of
+    living in their own GitHub repositories), as is the case of Castor
+    modules. Hence, the code in this example is subject to changes in
+    the near future.
