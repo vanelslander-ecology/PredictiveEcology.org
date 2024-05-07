@@ -51,6 +51,7 @@ book:
       - ModulesAndEvents.qmd
       - Scheduling.qmd
       - simList.qmd
+      - ModuleInputs.qmd
     - part: realexamples.qmd
       chapters:
       - castorExample.qmd

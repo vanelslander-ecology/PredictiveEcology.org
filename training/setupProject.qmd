@@ -58,7 +58,7 @@ This example, taken from [Tati Micheletti](https://github.com/tati-micheletti/Mi
 
 `setupProject` does a series of very specific things, in a particular order, so that the chances of package conflicts and user errors are minimized. 
 
-```{r setupProject2, eval=TRUE}
+```{r setupProject2, eval=FALSE}
 ##################### PART II: Download the modules and install the needed packages
 
 Setup <- SpaDES.project::setupProject(
@@ -78,7 +78,7 @@ Setup <- SpaDES.project::setupProject(
 
 
 
-```{r runSimInit}
+```{r runSimInit, eval=FALSE}
 ##################### PART III: Run SpaDES
 
 results <- do.call(SpaDES.core::simInitAndSpades, Setup)
@@ -86,6 +86,6 @@ results <- do.call(SpaDES.core::simInitAndSpades, Setup)
 ```
 
 
-```{r evaluteResults}
+```{r evaluteResults, eval=FALSE}
 SpaDES.core::completed(results)
 ```
