@@ -56,18 +56,21 @@ Modules encapsulate events, which encapsulate functions.
 
 Modules include the following elements:
 
-- a function call to `defineModule` that defines the metadata (mandatory)
-- a function definition for `doEvent.`*moduleName* (mandatory)
+-   a function call to `defineModule` that defines the metadata
+    (mandatory)
+-   a function definition for `doEvent.`*moduleName* (mandatory)
 
-There are many optional pieces too. The default template produces many of these optional pieces, which means it is "noisy". This also means we can ignore most of it for now.
+There are many optional pieces too. The default template produces many
+of these optional pieces, which means it is "noisy". This also means we
+can ignore most of it for now.
 
 Optional pieces include:
 
-- other functions (optional)
-- a documentation file (*moduleName*.rmd)
+-   other functions (optional)
+-   a documentation file (*moduleName*.rmd)
 
-
-These are all contained within a file structure like this, with other optional files:
+These are all contained within a file structure like this, with other
+optional files:
 
 ```         
 /moduleRepository
@@ -102,8 +105,7 @@ within modules, R packages, or user code.
 
 #### Key functions in the SpaDES ecosystem
 
-In re-usable workflows, functions become particularly effective if
-they:
+In re-usable workflows, functions become particularly effective if they:
 
 1.  Are rerun-efficient, meaning the first time they run they "do"
     something, but the second and subsequent times, they give the same
@@ -112,9 +114,17 @@ they:
     sensible or identical outputs (if inputs are the same) using any
     person's computer.
 
-To achieve these qualities, functions must use some sort of caching (i.e., evaluate the call and skip the content of the function if the call is deemed identical to a previous version of the call), they must address any computer or operating system issues (such as paths, package dependencies etc.).  
+To achieve these qualities, functions must use some sort of caching
+(i.e., evaluate the call and skip the content of the function if the
+call is deemed identical to a previous version of the call), they must
+address any computer or operating system issues (such as paths, package
+dependencies etc.).
 
-Two key functions help achieve these points, [`?reproducible::Cache`](https://reproducible.predictiveecology.org/reference/Cache.html) and [`?reproducible::prepInputs`](https://reproducible.predictiveecology.org/reference/prepInputs.html)
+Two key functions help achieve these points,
+[`?reproducible::Cache`](https://reproducible.predictiveecology.org/reference/Cache.html)
+and
+[`?reproducible::prepInputs`](https://reproducible.predictiveecology.org/reference/prepInputs.html)
+
 ##### `Cache()`
 
 `Cache()` is a function that can be wrapped around other functions that
@@ -158,23 +168,30 @@ For example, modules can be:
 
 #### Static
 
-**Static** modules can be defined as modules that "run once". This means that they may have only one event. Or a sequence of events that occur one after the other with no rescheduling. 
+**Static** modules can be defined as modules that "run once". This means
+that they may have only one event. Or a sequence of events that occur
+one after the other with no rescheduling.
 
-These could include:
-- Data preparation modules;
-- one (maybe just the "init" event) or few events and their primary goal is to get and deal with data;
-- GIS modules that do a number of GIS operations to get data into the necessary formats;
-- Data Visualization modules that specialize in creating a set of visuals from a known set of inputs.
-    
+These could include: - Data preparation modules; - one (maybe just the
+"init" event) or few events and their primary goal is to get and deal
+with data; - GIS modules that do a number of GIS operations to get data
+into the necessary formats; - Data Visualization modules that specialize
+in creating a set of visuals from a known set of inputs.
+
 #### Dynamic
 
-**Dynamic** modules are modules that have *events that recur*. There are at least 2 types of such models: those that have **cyclic dependencies**, i.e., its outputs are also its inputs (possibly with other modules in between) and those that do not.
+**Dynamic** modules are modules that have *events that recur*. There are
+at least 2 types of such models: those that have **cyclic
+dependencies**, i.e., its outputs are also its inputs (possibly with
+other modules in between) and those that do not.
 
-- landscape simulation modules (e.g., wildfire, vegetation change)
-- wildlife population modules with Markov dependency (e.g., population matrix models)
-- wildlife population modules without Markov-dependency (e.g., population models that only depend on habitat covariates)
-- Data Visualization modules that get used e.g., annually after other modules.
-
+-   landscape simulation modules (e.g., wildfire, vegetation change)
+-   wildlife population modules with Markov dependency (e.g., population
+    matrix models)
+-   wildlife population modules without Markov-dependency (e.g.,
+    population models that only depend on habitat covariates)
+-   Data Visualization modules that get used e.g., annually after other
+    modules.
 
 In @barros2023 we classified modules with respect to *what* the modules
 try to accomplish:
