@@ -234,7 +234,7 @@ scheduleEvent(sim, end(sim), "scheduling", "plot")
 
 ### Update module metadata
 
-Like in [New Module Introducion](NewModuleIntro.qmd), we have to update
+Like in @sec-moduleintro, we have to update
 the module metadata ... what are the inputs, outputs, parameters.
 `SpaDES` will not error if the metadata are not correct, but it will try
 to point out the problems.
