@@ -1,0 +1,91 @@
+---
+author: "Eliot McIntire"
+date: last-modified
+editor_options:
+  chunk_output_type: console
+---
+
+# `setupProject` with simple modules
+
+```{r setup}
+#| include: false
+knitr::opts_chunk$set(tidy = FALSE, 
+                      eval = FALSE,
+                      warning = FALSE, 
+                      message = FALSE, 
+                      error = FALSE)
+
+## truncate text output
+hook_output <- knitr::knit_hooks$get("output")
+
+knitr::knit_hooks$set(output = function(y, options) {
+  if (!is.null(n <- options$outlines)) {
+    y <- xfun::split_lines(y)
+    if (length(y) > n) {
+      # truncate the output
+      y <- c(head(y, n), "....\n")
+    }
+    y <- paste(y, collapse = "\n")
+  }
+  hook_output(y, options)
+})
+
+options(repos = "http://cran.us.r-project.org")
+if (!require("Require")) {
+  install.packages("Require", repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
+}
+
+```
+
+`SpaDES.project::setupProject` deals with a number of challenges that crop up with working with multiple modules created by potentially many people.
+
+```{r setupProject, eval=FALSE}
+getOrUpdatePkg <- function(p, minVer = "0") {
+  if (!isFALSE(try(packageVersion(p) < minVer, silent = TRUE) )) {
+    repo <- c("predictiveecology.r-universe.dev", getOption("repos"))
+    install.packages(p, repos = repo)
+  }
+}
+
+getOrUpdatePkg("remotes")
+
+remotes::install_github("PredictiveEcology/Require@simplify4")
+
+getOrUpdatePkg("SpaDES.project", "0.0.8.9049")
+```
+
+This example, taken from [Tati Micheletti](https://github.com/tati-micheletti/Micheletti_SpaDES/blob/main/demo.R) shows how to get several modules and run them together.
+
+`setupProject` does a series of very specific things, in a particular order, so that the chances of package conflicts and user errors are minimized. 
+
+```{r setupProject2, eval=TRUE}
+##################### PART II: Download the modules and install the needed packages
+
+Setup <- SpaDES.project::setupProject(
+  
+  paths = list(projectPath = "integratingSpaDESmodules"),
+  
+  modules = c("tati-micheletti/speciesAbundance@main",
+              "tati-micheletti/temperature@main",
+              "tati-micheletti/speciesAbundTempLM@main"),
+  
+  times = list(start = 2013,
+               end = 2032),
+  
+  Restart = TRUE
+)
+```
+
+
+
+```{r runSimInit}
+##################### PART III: Run SpaDES
+
+results <- do.call(SpaDES.core::simInitAndSpades, Setup)
+
+```
+
+
+```{r evaluteResults}
+SpaDES.core::completed(results)
+```
