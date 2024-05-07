@@ -1,4 +1,4 @@
-# `SpaDES` 101 {#sec-spades101}
+# `SpaDES` 101
 
 ```{=html}
 <!-- 

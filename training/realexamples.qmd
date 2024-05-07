@@ -11,4 +11,4 @@ the chapters.
 
 In this section we assume that readers are familiar with SpaDES, namely
 creating and using SpaDES modules. If not, we encourage going through
-the chapters in @sec-spades101 .
+the chapters in [`SpaDES` 101](SpaDESbasics.qmd#section).
