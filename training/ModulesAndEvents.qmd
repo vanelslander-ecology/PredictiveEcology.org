@@ -37,9 +37,13 @@ Require::Require(c("reproducible"))
 
 ```
 
-## Modules vs. Events
+## Modules vs. Events vs. Functions
 
-A module is a collection of R scripts that includes:
+A **module** is a collection of R scripts structured in a particular way. A module is very similar in structure to an R package, so will look familiar if you know what that looks like. **Events** are ways to name chunks of code that can be run in a particular sequence or at a particular time. **Functions** are the basic building blocks in R and other languages. We work with all three of these to make robust and re-useable workflows.
+
+### Modules
+
+Modules include:
 
 - `defineModule`  (mandatory)
 - `doEvent.*moduleName*` function (mandatory)
@@ -47,6 +51,7 @@ A module is a collection of R scripts that includes:
 - a documentation file (*moduleName*.rmd)
 
 These are all contained within a file structure like this, with other optional files:
+
 ```
 /moduleRepository
   |_ moduleName/
@@ -60,9 +65,13 @@ These are all contained within a file structure like this, with other optional f
       |_ moduleName.Rmd         # documentation, usage info, etc.
 ```
 
+To make a new module see: [New Module Introducion](NewModuleIntro.qmd)
+
 ### Events
 
 Events are named chunks of code that can be scheduled to be run once or many times. These are scheduled with `scheduleEvent`. There are several commonly occurring module types that can be grouped based on the events that they contain.
+
+To see how to schedule events, see: [Scheduling](Scheduling.qmd)
 
 ### Functions
 
@@ -92,28 +101,32 @@ See [`?reproducible::Cache`](https://reproducible.predictiveecology.org/referenc
 
 #### `prepInputs`
 
-[`?reproducible::prepInputs`](https://reproducible.predictiveecology.org/reference/prepInputs.html)
-
-
+`prepInputs` is a workhorse function that helps users point to cloud or local datasets: 
+[`?reproducible::prepInputs`](https://reproducible.predictiveecology.org/reference/prepInputs.html). It has internal 
 
 For more information
 
 
 
-#### Module types, based on Events and Functions used
+### Module types
 
-- Data preparation modules may have:
+Even though all modules are built with the same structures (events & functions), for convenience, we can categorize different types of modules.
 
+For example, modules can be:
+
+**Static**:
+
+    - Data preparation
     - one (maybe just the "init" event) or few events and their primary goal is to get and deal with data
     - Do GIS operations
     - Use `reproducible::prepInputs`
     
-- Dynamic modules
+- **Dynamic**
 
     - modules that repeat certain events
     - modules that use explicit iterations or time and whose inputs can vary each time
 
-- Data Visualization modules
+- 
 
     - 
 
