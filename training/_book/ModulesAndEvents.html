@@ -295,10 +295,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#modules-vs.-events" id="toc-modules-vs.-events" class="nav-link active" data-scroll-target="#modules-vs.-events"><span class="header-section-number">2.1</span> Modules vs.&nbsp;Events</a>
+  <li><a href="#modules-vs.-events-vs.-functions" id="toc-modules-vs.-events-vs.-functions" class="nav-link active" data-scroll-target="#modules-vs.-events-vs.-functions"><span class="header-section-number">2.1</span> Modules vs.&nbsp;Events vs.&nbsp;Functions</a>
   <ul class="collapse">
-  <li><a href="#events" id="toc-events" class="nav-link" data-scroll-target="#events"><span class="header-section-number">2.1.1</span> Events</a></li>
-  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">2.1.2</span> Functions</a></li>
+  <li><a href="#modules" id="toc-modules" class="nav-link" data-scroll-target="#modules"><span class="header-section-number">2.1.1</span> Modules</a></li>
+  <li><a href="#events" id="toc-events" class="nav-link" data-scroll-target="#events"><span class="header-section-number">2.1.2</span> Events</a></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">2.1.3</span> Functions</a></li>
+  <li><a href="#module-types" id="toc-module-types" class="nav-link" data-scroll-target="#module-types"><span class="header-section-number">2.1.4</span> Module types</a></li>
   </ul></li>
   <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">2.2</span> Questions</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">2.3</span> See also</a></li>
@@ -338,9 +340,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="modules-vs.-events" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="modules-vs.-events"><span class="header-section-number">2.1</span> Modules vs.&nbsp;Events</h2>
-<p>A module is a collection of R scripts that includes:</p>
+<section id="modules-vs.-events-vs.-functions" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="modules-vs.-events-vs.-functions"><span class="header-section-number">2.1</span> Modules vs.&nbsp;Events vs.&nbsp;Functions</h2>
+<p>A <strong>module</strong> is a collection of R scripts structured in a particular way. A module is very similar in structure to an R package, so will look familiar if you know what that looks like. <strong>Events</strong> are ways to name chunks of code that can be run in a particular sequence or at a particular time. <strong>Functions</strong> are the basic building blocks in R and other languages. We work with all three of these to make robust and re-useable workflows.</p>
+<section id="modules" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="modules"><span class="header-section-number">2.1.1</span> Modules</h3>
+<p>Modules include:</p>
 <ul>
 <li><code>defineModule</code> (mandatory)</li>
 <li><code>doEvent.*moduleName*</code> function (mandatory)</li>
@@ -358,15 +363,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       |_ LICENSE.txt            # describes module's legal usage
       |_ moduleName.R           # module code file (incl. metadata)
       |_ moduleName.Rmd         # documentation, usage info, etc.</code></pre>
-<section id="events" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="events"><span class="header-section-number">2.1.1</span> Events</h3>
-<p>Events are named chunks of code that can be scheduled to be run once or many times. These are scheduled with <code>scheduleEvent</code>. There are several commonly occurring module types that can be grouped based on the events that they contain.</p>
+<p>To make a new module see: <a href="./NewModuleIntro.html">New Module Introducion</a></p>
 </section>
-<section id="functions" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="functions"><span class="header-section-number">2.1.2</span> Functions</h3>
+<section id="events" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="events"><span class="header-section-number">2.1.2</span> Events</h3>
+<p>Events are named chunks of code that can be scheduled to be run once or many times. These are scheduled with <code>scheduleEvent</code>. There are several commonly occurring module types that can be grouped based on the events that they contain.</p>
+<p>To see how to schedule events, see: <a href="./Scheduling.html">Scheduling</a></p>
+</section>
+<section id="functions" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="functions"><span class="header-section-number">2.1.3</span> Functions</h3>
 <p>Essentially, everything in R is or uses functions. Modules define functions (<code>doEvent.*moduleName*</code>), events call specific functions, and functions can be defined within modules, R packages, or user code.</p>
-<section id="key-functions-in-the-spades-ecosystem" class="level4" data-number="2.1.2.1">
-<h4 data-number="2.1.2.1" class="anchored" data-anchor-id="key-functions-in-the-spades-ecosystem"><span class="header-section-number">2.1.2.1</span> Key functions in the SpaDES ecosystem</h4>
+<section id="key-functions-in-the-spades-ecosystem" class="level4" data-number="2.1.3.1">
+<h4 data-number="2.1.3.1" class="anchored" data-anchor-id="key-functions-in-the-spades-ecosystem"><span class="header-section-number">2.1.3.1</span> Key functions in the SpaDES ecosystem</h4>
 <p>In re-useable workflows, functions become particularly effective if they:</p>
 <ol type="1">
 <li>Are rerun-tolerant, meaning the first time they run they “do” something, but the second and subsequent times, they give the same output as the first time, but they skip the “doing” part</li>
@@ -374,8 +382,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <p>Two key functions help achieve these points, <code>Cache</code> and <code>prepInputs</code></p>
 </section>
-<section id="cache" class="level4" data-number="2.1.2.2">
-<h4 data-number="2.1.2.2" class="anchored" data-anchor-id="cache"><span class="header-section-number">2.1.2.2</span> <code>Cache</code></h4>
+<section id="cache" class="level4" data-number="2.1.3.2">
+<h4 data-number="2.1.3.2" class="anchored" data-anchor-id="cache"><span class="header-section-number">2.1.3.2</span> <code>Cache</code></h4>
 <p><code>Cache</code> is a function that can be wrapped around other functions that turns that function into a rerun-tolerant function. <code>reproducible::Cache</code> has several important modifications that work for <em>some</em> objects that don’t cache well using “normal” caching, such as <code>terra</code> objects that are actually pointers to locations on disk rather than normal R objects.</p>
 <div class="cell" data-hash="ModulesAndEvents_cache/html/Cache_ddeeddb532c2f47f7edfc6fb3fd416fa">
 <details open="">
@@ -388,31 +396,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>See <a href="https://reproducible.predictiveecology.org/reference/Cache.html"><code>?reproducible::Cache</code></a></p>
 </section>
-<section id="prepinputs" class="level4" data-number="2.1.2.3">
-<h4 data-number="2.1.2.3" class="anchored" data-anchor-id="prepinputs"><span class="header-section-number">2.1.2.3</span> <code>prepInputs</code></h4>
-<p><a href="https://reproducible.predictiveecology.org/reference/prepInputs.html"><code>?reproducible::prepInputs</code></a></p>
+<section id="prepinputs" class="level4" data-number="2.1.3.3">
+<h4 data-number="2.1.3.3" class="anchored" data-anchor-id="prepinputs"><span class="header-section-number">2.1.3.3</span> <code>prepInputs</code></h4>
+<p><code>prepInputs</code> is a workhorse function that helps users point to cloud or local datasets: <a href="https://reproducible.predictiveecology.org/reference/prepInputs.html"><code>?reproducible::prepInputs</code></a>. It has internal</p>
 <p>For more information</p>
 </section>
-<section id="module-types-based-on-events-and-functions-used" class="level4" data-number="2.1.2.4">
-<h4 data-number="2.1.2.4" class="anchored" data-anchor-id="module-types-based-on-events-and-functions-used"><span class="header-section-number">2.1.2.4</span> Module types, based on Events and Functions used</h4>
+</section>
+<section id="module-types" class="level3" data-number="2.1.4">
+<h3 data-number="2.1.4" class="anchored" data-anchor-id="module-types"><span class="header-section-number">2.1.4</span> Module types</h3>
+<p>Even though all modules are built with the same structures (events &amp; functions), for convenience, we can categorize different types of modules.</p>
+<p>For example, modules can be:</p>
+<p><strong>Static</strong>:</p>
+<pre><code>- Data preparation
+- one (maybe just the "init" event) or few events and their primary goal is to get and deal with data
+- Do GIS operations
+- Use `reproducible::prepInputs`</code></pre>
 <ul>
-<li><p>Data preparation modules may have:</p>
-<ul>
-<li>one (maybe just the “init” event) or few events and their primary goal is to get and deal with data</li>
-<li>Do GIS operations</li>
-<li>Use <code>reproducible::prepInputs</code></li>
-</ul></li>
-<li><p>Dynamic modules</p>
-<ul>
-<li>modules that repeat certain events</li>
-<li>modules that use explicit iterations or time and whose inputs can vary each time</li>
-</ul></li>
+<li><p><strong>Dynamic</strong></p></li>
+<li><p>Dynamic modules</p></li>
+<li></li>
 <li><p>Data Visualization modules</p>
 <ul>
 <li></li>
 </ul></li>
 </ul>
-</section>
 </section>
 </section>
 <section id="questions" class="level2" data-number="2.2">
