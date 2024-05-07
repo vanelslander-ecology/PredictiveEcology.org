@@ -51,9 +51,9 @@ book:
     - part: NewModule.qmd
       chapters:
       - NewModuleIntro.qmd
+      - Scheduling.qmd
+      - simList.qmd
     - part: realexamples.qmd
-      chapters:
-      - castorExample.qmd
     - references.qmd
 
 bibliography: references/references.bib

@@ -1,3 +1,11 @@
+---
+title       : "Scheduling events"
+author      : "Eliot McIntire"
+date        : "May 2024"
+editor_options:
+  chunk_output_type: console
+---
+
 ```{r setup}
 #| include: false
 knitr::opts_chunk$set(tidy = FALSE, 
@@ -28,6 +36,8 @@ if (!require("Require")) {
 Require::Require(c("ggplot2", "SpaDES.core"))
 
 ```
+
+## Scheduling events in SpaDES
 
 See [New Module Introducion](NewModuleIntro.qmd) for creation of a simple module.
 
@@ -191,7 +201,6 @@ A complete version of this new module can be found at [scheduling.R](../../tutos
 
 
 
-
 ## Questions
 
 1.  how are some ways that `scheduleEvent` is different from a "loop"?
@@ -207,3 +216,10 @@ A complete version of this new module can be found at [scheduling.R](../../tutos
 ## See also
 
 See also: `?scheduleEvent`, `?P`, `?time`, `?start`, `?end`
+
+## More learning on this subject
+
+[My First Module](https://spades-workshops.predictiveecology.org/articlesMay2018/MyFirstModule.html)
+
+[Creating a seed dispersal module](https://spades-workshops.predictiveecology.org/articles/02c-Convert_R_code_to_SpaDES_module.html)
+
