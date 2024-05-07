@@ -68,5 +68,5 @@ getCastorModulesAndDB <- function(modules = c("dataCastor",
                                        fun = NA)
   }
 
-  return(list(modules = out, dbFilePath = targetFilePath))
+  return(list(modules = out, dbFilePath = repOut$targetFilePath))
 }
