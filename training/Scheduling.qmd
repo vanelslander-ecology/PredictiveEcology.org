@@ -5,6 +5,8 @@ editor_options:
   chunk_output_type: console
 ---
 
+# Scheduling events {#sec-schedulingEvents}
+
 ```{r setup}
 #| include: false
 knitr::opts_chunk$set(tidy = FALSE, 
@@ -36,7 +38,6 @@ Require::Require(c("ggplot2", "SpaDES.core"))
 
 ```
 
-# Scheduling events {#sec-schedulingEvents}
 
 Here, we will talk about **scheduling events** in a SpaDES module using
 a function in called
