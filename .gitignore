@@ -16,3 +16,5 @@ outputs
 .Rdata
 .secret
 .secrets
+
+training/integratingSpaDESmodules/
