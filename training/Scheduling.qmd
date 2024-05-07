@@ -1,0 +1,209 @@
+```{r setup}
+#| include: false
+knitr::opts_chunk$set(tidy = FALSE, 
+                      eval = FALSE,
+                      warning = FALSE, 
+                      message = FALSE, 
+                      error = FALSE)
+
+## truncate text output
+hook_output <- knitr::knit_hooks$get("output")
+
+knitr::knit_hooks$set(output = function(x, options) {
+  if (!is.null(n <- options$outlines)) {
+    x <- xfun::split_lines(x)
+    if (length(x) > n) {
+      # truncate the output
+      x <- c(head(x, n), "....\n")
+    }
+    x <- paste(x, collapse = "\n")
+  }
+  hook_output(x, options)
+})
+
+options(repos = "http://cran.us.r-project.org")
+if (!require("Require")) {
+  install.packages("Require", repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
+}
+Require::Require(c("ggplot2", "SpaDES.core"))
+
+```
+
+See [New Module Introducion](NewModuleIntro.qmd) for creation of a simple module.
+
+Here, we will talk about [scheduling events](https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/scheduleEvent). 
+
+Scheduling events allows us to control when things happen in a sequnence. This can be as simple as "this module will just do one thing" to "this module will do several things, some of which repeat". We will use a simple example where there is one thing that happens "once" and one thing that happens several times. In "normal" R-speak, we will write a loop.
+
+Return to example in [New Module Introducion](NewModuleIntro.qmd). This time, we will predict from the linear model, with updated values of the `y`. In this simple example, we will pretend that each prediction is "one year into the future" and that our `y` will slowly get bigger.
+
+```{r,eval=TRUE}
+# .inputObjects ##############
+y <- rnorm(10)
+
+# Init #####
+x <- y + rnorm(10)
+# fit a linear model
+out <- lm(x ~ y)
+pred <- list()
+
+# Prediction #####
+startYear <- 2023
+years <- startYear:(startYear + 10) + 1
+for (year in years - startYear) {
+  pred[[year]] <- predict(out, newdata = data.frame(y = rnorm(10) + year))
+}
+
+# Plot ####
+predictions <- data.frame(year = rep(years, each = 10), prediction = unlist(pred))
+# plot the predictions
+ggplot(predictions, aes(x = year, y = prediction, colour = year)) + geom_point() + geom_smooth()
+```
+In the above code, there are 4 sections. These will each be copied into the SpaDES module below, in their respective sections. We have added 1 new section, called "Prediction". 
+
+
+## Convert to a module
+
+```{r newodule,eval=FALSE}
+SpaDES.core::newModule(name = "scheduling", path = ".")
+```
+
+Open the module file, which will be printed in the console. We can scroll down to the `Init` function. Copy the `Init`, the `.inputObjects`, the `Plot` part into the new modules, as we did in [New Module Introducion](NewModuleIntro.qmd). 
+
+We must make the same decisions about "local" that are OK if they don't get keps and "global" objects that we want to keep. These *global* objects get put into `sim`. Your new module should have these 3 new sections:
+
+```{r,eval=FALSE}
+Init <- function(sim) {
+  x <- sim$y + rnorm(10)
+  # fit a linear model
+  sim$out <- lm(x ~ sim$y)
+  sim$pred <- list()
+}
+
+plotFun <- function(sim) {
+  sim$predictions <- data.frame(year = rep(sim$years, each = 10), prediction = unlist(sim$pred))
+  # plot the predictions
+  sim$gg <- ggplot(sim$predictions, aes(x = year, y = prediction, colour = year)) + geom_point() + geom_smooth()
+  print(sim$gg)
+}
+
+.inputObjects <- function(sim) {
+  sim$y <- rnorm(10)
+}
+```
+
+## New Event Function -- Prediction
+
+The new part is the `for` loop. This part takes new covariates (new values for `y`) that emulates "predicted" covariates, derives a newly predicted `x`, and we then keep these *predicted* `x` values each year. 
+
+We use `scheduleEvent` to do this. Copy the `Prediction` part into a new function:
+
+```{r,eval=FALSE} 
+Prediction <- function(sim) {
+  startYear <- 2023
+  sim$years <- startYear:(startYear + 10) + 1
+  for (year in sim$years - startYear) {
+    sim$pred[[year]] <- predict(sim$out, newdata = data.frame(y = rnorm(10) + year))
+  }
+  return(invisible(sim))
+}
+
+```
+
+## Scheduling
+
+Now we need to tell SpaDES when to do each of the steps or "events". The `Init`, we do once, at the start. The `plotFn` we do once, but this time it is at the "end". The `.inputObjects` always happens once and "before the start". The last part (i.e., the prediction event) must happen 10 times, and it must start after `Init` and before the `plotFn`. 
+
+### doEvent
+
+There is a special function in a `SpaDES` module called `doEvent`. SpaDES calls this function once, passing the argument `event = "init"`. That means that R will enter into this function only once and run only the `init` part, unless we specifically tell it to do more. We use the `scheduleEvent` function. We place this function anywhere we want, in general. In this example, we will place it in a few places.
+
+#### In the `init`
+
+We look at the `init` event and we see 2 `scheduleEvent` calls that come with the template. We will use those to learn. In each "event", we often see one part that "does something" and another part that "schedules something". In the default template, we "do" the `Init` function and we schedule `plot` and `save`. We can delete the `save` event, as we won't do that here. But we will replace it with "schedule prediction"
+
+See `?start`, `?scheduleEvent`, `?P`
+```{r defaultInit,eval=FALSE}
+sim <- Init(sim)
+
+# schedule future event(s)
+sim <- scheduleEvent(sim, P(sim)$.plotInitialTime, "scheduling", "plot")
+# sim <- scheduleEvent(sim, P(sim)$.saveInitialTime, "scheduling", "save")
+
+# here we create a new event type == "predictions" and we schedule it for `start(sim)`
+sim <- scheduleEvent(sim, start(sim), "scheduling", "predictions") 
+```
+
+Copy the above code chunk to the `init` section so that it looks like this:
+```{r newInit,eval=FALSE}
+switch(
+    eventType,
+    init = {
+      sim <- Init(sim)
+      
+      # schedule future event(s)
+      sim <- scheduleEvent(sim, P(sim)$.plotInitialTime, "scheduling", "plot")
+      # sim <- scheduleEvent(sim, P(sim)$.saveInitialTime, "scheduling", "save")
+      
+      # here we create a new event type == "predictions" and we schedule it for `start(sim)`
+      sim <- scheduleEvent(sim, start(sim), "scheduling", "predictions") 
+    }
+```
+
+### The new event
+
+We add code to make a new event, called `"predictions"` (it must match what we wrote in the `scheduleEvent`). In this event, we "do" the prediction, then we schedule the next prediction at "time plus 1"
+
+See `?time`
+```{r predictionEvent,eval=FALSE} 
+predictions = {
+  # do the Prediction
+  sim <- Prediction(sim)
+  
+  # schedule the next Prediction
+  sim <- scheduleEvent(sim, time(sim) + 1, "scheduling", "predictions") 
+}
+```
+
+### Double check existing events
+
+If we ran the above changes, we would see an error because the `plotFn` is, by default, scheduled to run at the time that is specified by `.plotInitialTime`, which by default is `start(sim)`. We have no data yet at that time. So, we have to update the 
+
+```{r,eval=FALSE}
+scheduleEvent(sim, end(sim), "scheduling", "plot")
+```
+
+
+### Update module metadata
+
+Like in [New Module Introducion](NewModuleIntro.qmd), we have to update the module metadata ... what are the inputs, outputs, parameters. `SpaDES` will not error if the metadata are not correct, but it will try to point out the problems.
+
+## Run
+
+The resulting module can now be run.
+
+```{r run,eval=FALSE} 
+SpaDES.core::simInitAndSpades(modules = "scheduling", paths = list(modulePath = "."))
+
+```
+
+A complete version of this new module can be found at [scheduling.R](../../tutos/scheduling/scheduling.R). You can copy this over top of the new module that you created here, i.e., keep the same folder structure.
+
+
+
+
+## Questions
+
+1.  how are some ways that `scheduleEvent` is different from a "loop"?
+    -   We can change the "step" length between events.
+    -   We can interweave events, e.g., a fire event then a tree growth event
+    
+2.  When is a loop better than scheduling?
+    -   Loops are much faster than scheduling. 
+    -   But really, avoid loops in R if you can help it
+3.  Chances are that the first versions of this module didn't work. How do you fix it?
+    -   [Learn how to debug in R and SpaDES](https://github.com/PredictiveEcology/SpaDES/wiki/Debugging)
+
+## See also
+
+See also: `?scheduleEvent`, `?P`, `?time`, `?start`, `?end`
