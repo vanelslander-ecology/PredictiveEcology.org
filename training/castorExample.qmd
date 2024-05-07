@@ -237,7 +237,7 @@ SpaDES.core::moduleDiagram(castorInit)
 ```
 
 ```{r fig-objectDiagram}
-#| echo: true
+#| echo: false
 #| fig-align: center
 #| fig-cap: "Diagram of module inter-dependencies with object names."
 #| fig-width: 10
