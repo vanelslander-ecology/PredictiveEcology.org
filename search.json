@@ -585,7 +585,7 @@
     "href": "Workshops.html#upcoming-workshops",
     "title": "Workshops",
     "section": "Upcoming workshops",
-    "text": "Upcoming workshops\n\n\n\n\n\n\n\n\nTitle\n\n\nDescription\n\n\nDate\n\n\n\n\n\n\n\n\n\nReproducible workflows for landscapes with SpaDES and PERFICT\n\n\nA multi-day workshop focusing on learning robust approaches to building reuseable, reproducible workflows for ecological applications\n\n\nApr 17, 2024\n\n\n\n\n\n\nNo matching items"
+    "text": "Upcoming workshops\n\n\n\n\n\n\n\n\nTitle\n\n\nDescription\n\n\nDate\n\n\n\n\n\n\n\n\n\nRobust and nimble scientific workflows, using SpaDES\n\n\nA multi-day workshop focusing on learning robust approaches to building reuseable, reproducible workflows for ecological applications\n\n\nMay 7, 2024\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "Workshops.html#past-workshops",
@@ -1080,9 +1080,37 @@
   {
     "objectID": "workshops/June-2024-SpaDES-workshop.html",
     "href": "workshops/June-2024-SpaDES-workshop.html",
-    "title": "Reproducible workflows for landscapes with SpaDES and PERFICT",
+    "title": "Robust and nimble scientific workflows, using SpaDES",
     "section": "",
-    "text": "If you are interested in participating, please sign up here. Please also indicate preferences of which topics are of interest and at what level. We will attempt to customize the workshop accordingly.\n\nLoading…"
+    "text": "Signup is still active below – please add your email address if you are interested"
+  },
+  {
+    "objectID": "workshops/June-2024-SpaDES-workshop.html#date-june-11---13-2024",
+    "href": "workshops/June-2024-SpaDES-workshop.html#date-june-11---13-2024",
+    "title": "Robust and nimble scientific workflows, using SpaDES",
+    "section": "Date: June 11 - 13, 2024",
+    "text": "Date: June 11 - 13, 2024"
+  },
+  {
+    "objectID": "workshops/June-2024-SpaDES-workshop.html#location-virtual-with-ms-teams",
+    "href": "workshops/June-2024-SpaDES-workshop.html#location-virtual-with-ms-teams",
+    "title": "Robust and nimble scientific workflows, using SpaDES",
+    "section": "Location: Virtual with MS Teams",
+    "text": "Location: Virtual with MS Teams\nThe dates have been finalized!\nThanks to all who filled in the survey below."
+  },
+  {
+    "objectID": "workshops/June-2024-SpaDES-workshop.html#tentative-logistics",
+    "href": "workshops/June-2024-SpaDES-workshop.html#tentative-logistics",
+    "title": "Robust and nimble scientific workflows, using SpaDES",
+    "section": "Tentative Logistics",
+    "text": "Tentative Logistics\nThe workshop will be flexible in that you can attend/skip the sessions at your leisure and according to your own availability. Each session will be a combination of relatively short video presentations with “work-on-your-own” time, so that you can advance as fast as you want. We will maintain the virtual chat open throughout the day, including between video sessions, to allow for questions, troubleshooting, conversations etc. A detailed agenda of session times and topics, and details for the virtual room, will be circulated closer to the date.\nWe expect the workshop to run every day from 8:30am to 3:00pm Pacific Time. Our goal is to create a schedule of individual learning modules that we will follow precisely like a conference, so that people can disconnect and reconnect as needed.\nWe are developing a book that we will use for the workshop. We are slowly building up the chapters, please visit if you are curious, but the content will be edited on an ongoing basis until the workshop. (https://predictiveecology.org/training/_book/)\nWe will be updating the logistics for the Workshop here: (https://predictiveecology.org/workshops/June-2024-SpaDES-workshop.html)\nWe look forward to connecting with you all in June!\nCeres and Eliot"
+  },
+  {
+    "objectID": "workshops/June-2024-SpaDES-workshop.html#signup",
+    "href": "workshops/June-2024-SpaDES-workshop.html#signup",
+    "title": "Robust and nimble scientific workflows, using SpaDES",
+    "section": "Signup",
+    "text": "Signup\nIf you are interested in participating, please sign up here. Please also indicate preferences of which topics are of interest and at what level. We will attempt to customize the workshop accordingly.\n\n&lt;p&gt;Loading…&lt;/p&gt;"
   },
   {
     "objectID": "presentations.html#invited-talks",
