@@ -1,5 +1,7 @@
-# New Module
+# `SpaDES` 101 {#sec-spades101}
 
+```{=html}
 <!-- 
 Some text that introduces this section
 --->
+```

@@ -1,4 +1,4 @@
-# "Real-world" examples of SpaDES workflows
+# "Real-world" examples of `SpaDES` workflows
 
 This section will take you through several "real-world" examples that
 use SpaDES to build and execute a workflow. By "real-world" we mean
@@ -8,3 +8,7 @@ application.
 Because we will not explain each model or the SpaDES modules in detail,
 we encourage learning more about these models from the sources noted in
 the chapters.
+
+In this section we assume that readers are familiar with SpaDES, namely
+creating and using SpaDES modules. If not, we encourage going through
+the chapters in @sec-spades101 .

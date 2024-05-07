@@ -45,7 +45,7 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
-    - part: NewModule.qmd
+    - part: SpaDESbasics.qmd
       chapters:
       - NewModuleIntro.qmd
       - Scheduling.qmd
