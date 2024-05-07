@@ -8,7 +8,7 @@ editor_options:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(cache = TRUE, echo = TRUE, eval = FALSE)
-Require::Require("SpaDES.core")
+Require::Require(c("quickPlot", "terra", "SpaDES.core"))
 ```
 
 ## The `simList` {#sec-simlist}
