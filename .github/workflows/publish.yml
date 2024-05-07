@@ -56,9 +56,6 @@ jobs:
       - name: Build site 🔧
         run: Rscript renderCopyBook.R
 
-      - name: Copy book files
-        run: Rscript -e 'source("renderCopyBook.R")'
-
       - name: Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:
