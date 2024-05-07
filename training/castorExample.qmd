@@ -2,6 +2,8 @@
 
 ```{r setup}
 #| include: false
+#| cache: false
+
 knitr::opts_chunk$set(tidy = FALSE, 
                       warning = FALSE, 
                       message = FALSE, 
@@ -60,6 +62,8 @@ script](https://github.com/PredictiveEcology/PredictiveEcology.org/blob/training
 #| message: false
 #| warning: false
 #| results: hide
+#| cache: false 
+
 ## install/load necessary packages
 repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
 install.packages(c("remotes", "reproducible", "googledrive"), repos = repos)
