@@ -1,4 +1,10 @@
-# Castor workflow with `setupProject`
+---
+title: "Castor workflow with `setupProject`"
+author: "Ceres Barros"
+date: last-modified
+editor_options:
+  chunk_output_type: console
+---
 
 ```{r setup}
 #| include: false
