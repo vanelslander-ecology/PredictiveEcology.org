@@ -66,7 +66,7 @@ can ignore most of it for now.
 
 Optional pieces include:
 
--   other functions (optional)
+-   other functions in the R folder or the main *moduleName*`.R` file
 -   a documentation file (*moduleName*.rmd)
 
 These are all contained within a file structure like this, with other
@@ -103,22 +103,36 @@ functions (`doEvent.*moduleName*`), events call specific functions (we
 some times call these "event functions"), and functions can be defined
 within modules, R packages, or user code.
 
-#### Key functions in the SpaDES ecosystem
+#### Rerun-tolerant functions
 
-In re-usable workflows, functions become particularly effective if they:
+In re-usable workflows, functions become particularly effective if they
+are **rerun-tolerant**, see @tip-Rerun (we use *tolerant* in part to
+reflect the fact that the *computer* tolerates it but also the *human*
+because they don't have to wait).
 
-1.  Are rerun-efficient, meaning the first time they run they "do"
+::: {#tip-Rerun .callout-tip}
+1.  are **rerun-efficient**, meaning the first time they run they "do"
     something, but the second and subsequent times, they give the same
     output as the first time, but they skip the "doing" part
-2.  And rerun-tolerant, meaning they can be run error-free and with
+
+-   optionally the efficiency can be by **memory** caching ("memoising")
+    and/or more persistent **disk** caching.
+
+2.  and **rerun-robust**, meaning they can be run error-free and with
     sensible or identical outputs (if inputs are the same) using any
     person's computer.
+:::
 
 To achieve these qualities, functions must use some sort of caching
 (i.e., evaluate the call and skip the content of the function if the
-call is deemed identical to a previous version of the call), they must
-address any computer or operating system issues (such as paths, package
-dependencies etc.).
+call is deemed identical to a previous version of the call), and they
+must address any computer or operating system issues (such as paths,
+package dependencies etc.).
+
+Base R has some functions that are like this and some that are not. For
+example `library` is **rerun-tolerant** because it does something the
+first time, which may be slow, and subsequent times in the same session
+it is fast (**memory** efficient, but not **disk** efficient)
 
 Two key functions help achieve these points,
 [`?reproducible::Cache`](https://reproducible.predictiveecology.org/reference/Cache.html)
@@ -150,6 +164,10 @@ See
 or local datasets:
 [`?reproducible::prepInputs`](https://reproducible.predictiveecology.org/reference/prepInputs.html).
 
+In this example, we point to a url only and `prepInputs` downloads it,
+does checksumming, unzips it and loads it into R using the default
+`terra::vect` because it is a `shp` file after the unzipping.
+
 ```{r prepInputs,eval=FALSE}
 ecozoneOfCanada <- reproducible::prepInputs(
   url = "http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/ecozone_shp.zip")
@@ -162,9 +180,9 @@ For more information
 
 Even though all modules are built with the same structures (events &
 functions), for convenience, we can categorize different types of
-modules.
+modules in different ways.
 
-For example, modules can be:
+For example, modules can be categorized by:
 
 #### Static
 
