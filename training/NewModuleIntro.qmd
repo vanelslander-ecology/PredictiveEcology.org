@@ -5,7 +5,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-## Creating a new module
+# Introduction to SpaDES Modules {#sec-moduleintro}
 
 ```{r setup}
 #| include: false
@@ -37,11 +37,11 @@ if (!require("Require")) {
 
 ```
 
-## New Module Introduction
-
 SpaDES modules are comprised of R code that has metadata and the gets
 put into functions. With this in mind, we can start with some simple R
 code.
+
+## Some R code to convert
 
 We will start by thinking about metadata: *What is metadata?*
 
