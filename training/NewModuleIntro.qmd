@@ -18,16 +18,16 @@ knitr::opts_chunk$set(tidy = FALSE,
 ## truncate text output
 hook_output <- knitr::knit_hooks$get("output")
 
-knitr::knit_hooks$set(output = function(x, options) {
+knitr::knit_hooks$set(output = function(y, options) {
   if (!is.null(n <- options$outlines)) {
-    x <- xfun::split_lines(x)
-    if (length(x) > n) {
+    y <- xfun::split_lines(y)
+    if (length(y) > n) {
       # truncate the output
-      x <- c(head(x, n), "....\n")
+      y <- c(head(y, n), "....\n")
     }
-    x <- paste(x, collapse = "\n")
+    y <- paste(y, collapse = "\n")
   }
-  hook_output(x, options)
+  hook_output(y, options)
 })
 
 options(repos = "http://cran.us.r-project.org")
@@ -50,17 +50,17 @@ We can examine the following code chunk. First, we ask: what are the
 
 ```{r,eval=FALSE}
 # create some data
-x <- y + rnorm(10)
+y <- x + rnorm(10)
 # fit a linear model
-out <- lm(x ~ y)
+out <- lm(y ~ x)
 
 # plot the fit
 plot(out)
 ```
 
-The **inputs** to this chunk are just one: the object `y`. This code
-will not work (i.e., it will cause an error) if `y` is not defined. The
-**outputs** are `x` and `out`. Both of these are created within this
+The **inputs** to this chunk are just one: the object `x`. This code
+will not work (i.e., it will cause an error) if `x` is not defined. The
+**outputs** are `y` and `out`. Both of these are created within this
 chunk.
 
 Next, *what are the package dependencies?*. We see that there are three
@@ -79,8 +79,8 @@ function (n, mean = 0, sd = 1)
 
 So, our metadata are:
 
--   Inputs: `y`
--   Outputs: `x`, `out`
+-   Inputs: `x`
+-   Outputs: `y`, `out`
 -   Package dependencies: Base packages only
 
 We will next put them into the correct places in the new SpaDES module.
@@ -100,27 +100,27 @@ that it creates.
 
 ## Module metadata
 
-Scroll down to `inputObjects` and `expectsInputs()`. We will declare `y`
+Scroll down to `inputObjects` and `expectsInputs()`. We will declare `x`
 as an "input" by putting it there.
 
 ```{r, eval=FALSE}
 inputObjects = bindrows(
-    expectsInput(objectName = "x", objectClass = "numeric", 
+    expectsInput(objectName = "y", objectClass = "numeric", 
                  desc = "The inputs for the linear model", sourceURL = NA)
   )
 ```
 
 Next, scroll down to `outputObjects` and `createsOutput()`. We will
-declare `x` and `out` as "outputs" by putting them there. Don't forget
+declare `y` and `out` as "outputs" by putting them there. Don't forget
 the **comma at the end of each `createsOutput()`** as each is an
 argument to `bindrows`.
 
 ```{r, eval=FALSE}
 outputObjects = bindrows(
-    createsOutput(objectName = "y", objectClass = "numeric", 
+    createsOutput(objectName = "x", objectClass = "numeric", 
                   desc = "The randomly created varible that is used as a response variable"),
     createsOutput(objectName = "out", objectClass = "lm", 
-                  desc = "A linear model object from the equation (y ~ x)")
+                  desc = "A linear model object from the equation (x ~ y)")
   )
 ```
 
@@ -131,8 +131,8 @@ We will choose the `Init` function. We will discuss why bellow.
 
 ```{r,eval=FALSE}
 Init <- function(sim) {
-  x <- y + rnorm(10)
-  out <- lm(x ~ y)
+  y <- x + rnorm(10)
+  out <- lm(y ~ x)
   return(invisible(sim))
 }
 ```
@@ -152,13 +152,13 @@ every instance of our **inputs** and
 
 ```{r, eval=FALSE}
 Init <- function(sim) {
-  sim$x <- sim$y + rnorm(10)
-  sim$out <- lm(sim$x ~ sim$y)
+  sim$y <- sim$x + rnorm(10)
+  sim$out <- lm(sim$y ~ sim$x)
   return(invisible(sim))
 }
 ```
 
-Now we have a module that creates two objects, `x` and `out` and puts
+Now we have a module that creates two objects, `y` and `out` and puts
 them inside `sim`. This all happens in the function called `Init`
 <!--maybe unnecessary?-->
 
@@ -189,7 +189,7 @@ just accept the defaults for now.
 
 ## Default Values
 
-Recall, we don't have a value for `y`. This means that if you run the
+Recall, we don't have a value for `x`. This means that if you run the
 following, you will get an error:
 
 ```{r, eval=FALSE}
@@ -205,20 +205,20 @@ Copy this to the module, replacing the contents of the template
 
 ```{r,eval=FALSE}
 .inputObjects <- function(sim) {
-  if (!suppliedElsewhere("y", sim))
-    sim$y <- rnorm(10, mean = 20, sd = 2)
+  if (!suppliedElsewhere("x", sim))
+    sim$x <- rnorm(10, mean = 20, sd = 2)
   return(invisible(sim))
 }
 ```
 
-`!suppliedElsewhere("y", sim)` will check if `y` is in `sim` and if not,
+`!suppliedElsewhere("x", sim)` will check if `x` is in `sim` and if not,
 will run the subsequent code lines (see
 [`?suppliedElsewhere`](https://rdrr.io/cran/SpaDES.core/man/suppliedElsewhere.html)).
 
 ## Run the new module
 
 Now, we have **inputs** and **outputs** defined, our code has been
-places in 2 spots (events), and we have default value for `y`.
+places in 2 spots (events), and we have default value for `x`.
 
 ```{r, eval=FALSE}
 SpaDES.core::simInitAndSpades(modules = "My_linear_model", paths = list(modulePath = "tutos/NewModuleIntro"))
