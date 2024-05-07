@@ -35,7 +35,7 @@ if (!require("Require")) {
 
 ```
 
-# Introduction to SpaDES Modules
+# Introduction to SpaDES Modules {#sec-moduleintro}
 
 SpaDES modules are comprised of R code that has metadata and the gets
 put into functions. With this in mind, we can start with some simple R

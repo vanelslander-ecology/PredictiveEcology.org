@@ -1,10 +1,12 @@
 ---
-title       : "Modules, Events and Functions"
 author      : "Eliot McIntire"
-date        : "May 2024"
+date        : last-modified
 editor_options:
   chunk_output_type: console
+bibliography: references.bib
 ---
+
+# Modules, Events and Functions {#sec-modseventsfuns}
 
 ```{r setup}
 #| include: false
@@ -37,22 +39,25 @@ Require::Require(c("reproducible"))
 
 ```
 
-## Modules vs. Events vs. Functions
-
 A **module** is a collection of R scripts structured in a particular
-way. A module is very similar in structure to an R package, so will look
-familiar if you know what that looks like. **Events** are ways to name
-chunks of code that can be run in a particular sequence or at a
-particular time. **Functions** are the basic building blocks in R and
-other languages. We work with all three of these to make robust and
-re-useable workflows.
+way. A module is very similar in structure to an R package, in the sense
+that it defines a collection of functions to be used, so will be
+familiar if you know what packages look like.
+
+**Events** are ways to name chunks of code that can be run in a
+particular sequence or at a particular time.
+
+**Functions** are the basic building blocks in R and other languages. We
+work with all three of these to make robust and re-useable workflows.
+
+Modules encapsulate events, which encapsulate functions.
 
 ### Modules
 
 Modules include:
 
--   `defineModule` (mandatory)
--   `doEvent.*moduleName*` function (mandatory)
+-   `defineModule()` function (mandatory; in *moduleName*.R)
+-   `doEvent.*moduleName*()` function (mandatory; in *moduleName*.R)
 -   other functions (optional)
 -   a documentation file (*moduleName*.rmd)
 
@@ -62,76 +67,77 @@ optional files:
 ```         
 /moduleRepository
   |_ moduleName/
-      |_ R/                     # contains additional .R (helper) files
+      |_ R/                     # contains additional/optional .R (helper) files
       |_ data/                  # directory for all included data
           |_ CHECKSUMS.txt      # contains checksums for data files
-      |_ tests/                 # contains unit tests for module code
+      |_ tests/                 # contains (optional) unit tests for module code
       |_ citation.bib           # bibtex citation for the module
       |_ LICENSE.txt            # describes module's legal usage
       |_ moduleName.R           # module code file (incl. metadata)
       |_ moduleName.Rmd         # documentation, usage info, etc.
 ```
 
-To make a new module see: [New Module Introducion](NewModuleIntro.qmd)
+To make a new module, see: @sec-moduleintro.
 
 ### Events
 
 Events are named chunks of code that can be scheduled to be run once or
-many times. These are scheduled with `scheduleEvent`. There are several
-commonly occurring module types that can be grouped based on the events
-that they contain.
+many times. These are scheduled with `scheduleEvent()`. There are
+several commonly occurring module types that can be grouped based on the
+events that they contain (see @sec-moduletypes).
 
-To see how to schedule events, see: [Scheduling](Scheduling.qmd)
+To see how to schedule events, see: @sec-schedulingEvents.
 
 ### Functions
 
 Essentially, everything in R is or uses functions. Modules define
-functions (`doEvent.*moduleName*`), events call specific functions, and
-functions can be defined within modules, R packages, or user code.
+functions (`doEvent.*moduleName*`), events call specific functions (we
+some times call these "event functions"), and functions can be defined
+within modules, R packages, or user code.
 
 #### Key functions in the SpaDES ecosystem
 
-In re-useable workflows, functions become particularly effective if
+In re-usable workflows, functions become particularly effective if
 they:
 
-1.  Are rerun-tolerant, meaning the first time they run they "do"
+1.  Are rerun-efficient, meaning the first time they run they "do"
     something, but the second and subsequent times, they give the same
     output as the first time, but they skip the "doing" part
-2.  Can be run from any person's computer and "work", i.e., give the
-    same result
+2.  And rerun-tolerant, meaning they can be run error-free and with
+    sensible or identical outputs (if inputs are the same) using any
+    person's computer.
 
 Two key functions help achieve these points, `Cache` and `prepInputs`
 
-#### `Cache`
+##### `Cache()`
 
-`Cache` is a function that can be wrapped around other functions that
+`Cache()` is a function that can be wrapped around other functions that
 turns that function into a rerun-tolerant function.
 `reproducible::Cache` has several important modifications that work for
 *some* objects that don't cache well using "normal" caching, such as
 `terra` objects that are actually pointers to locations on disk rather
 than normal R objects.
 
-```{r Cache,eval=FALSE}
+```{r Cache, eval=FALSE}
 library(reproducible)
 
 a <- rnorm(1e7)
 b <- rnorm(1e7) |> Cache()
-
 ```
 
 See
 [`?reproducible::Cache`](https://reproducible.predictiveecology.org/reference/Cache.html)
 
-#### `prepInputs`
+##### `prepInputs()`
 
-`prepInputs` is a workhorse function that helps users point to cloud or
-local datasets:
+`prepInputs()` is a workhorse function that helps users point to cloud
+or local datasets:
 [`?reproducible::prepInputs`](https://reproducible.predictiveecology.org/reference/prepInputs.html).
 It has internal
 
 For more information
 
-### Module types
+### Module types {#sec-moduletypes}
 
 Even though all modules are built with the same structures (events &
 functions), for convenience, we can categorize different types of
@@ -141,24 +147,33 @@ For example, modules can be:
 
 **Static**:
 
-```         
-- Data preparation
-- one (maybe just the "init" event) or few events and their primary goal is to get and deal with data
-- Do GIS operations
-- Use `reproducible::prepInputs`
-```
+-   Data preparation
 
--   **Dynamic**
+-   One (maybe just the "init" event) or few events and their primary
+    goal is to get and deal with data
 
--   Dynamic modules
+-   Do GIS operations
 
--   
+-   Often use `reproducible::prepInputs()`
+
+**Dynamic:**
+
+-   Dynamic modules, i.e. with time dependence
 
 -   Data Visualization modules
 
-    -   
+In @barros2023 we classified modules with respect to *what* the modules
+try to accomplish:
 
-## Questions
+-   "data/calibration modules" prepare model inputs and parameters
+
+-   "prediction/simulation modules" generate predictions using either
+    static or dynamic mechanisms
+
+-   "validation modules" evaluate predictions against independent data.
+
+There are no strict rules to classify a SpaDES module, just as there are
+no strict rule classify an R script.
 
 ## See also
 

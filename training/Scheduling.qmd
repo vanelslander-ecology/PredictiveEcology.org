@@ -1,5 +1,4 @@
 ---
-title       : "Scheduling events"
 author      : "Eliot McIntire"
 date        : "May 2024"
 editor_options:
@@ -37,7 +36,7 @@ Require::Require(c("ggplot2", "SpaDES.core"))
 
 ```
 
-## Scheduling events in SpaDES {#sec-schedulingEvents}
+# Scheduling events {#sec-schedulingEvents}
 
 See [New Module Introducion](NewModuleIntro.qmd) for creation of a simple module.
 
