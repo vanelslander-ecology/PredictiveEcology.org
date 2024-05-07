@@ -74,7 +74,7 @@ In the above code, there are 4 sections. These will each be copied into the SpaD
 ## Convert to a module
 
 ```{r newodule,eval=FALSE}
-SpaDES.core::newModule(name = "scheduling", path = ".")
+SpaDES.core::newModule(name = "scheduling", path = "tutos/scheduling")
 ```
 
 Open the module file, which will be printed in the console. We can scroll down to the `Init` function. Copy the `Init`, the `.inputObjects`, the `Plot` part into the new modules, as we did in [New Module Introducion](NewModuleIntro.qmd). 
@@ -194,7 +194,7 @@ Like in [New Module Introducion](NewModuleIntro.qmd), we have to update the modu
 The resulting module can now be run.
 
 ```{r run,eval=FALSE} 
-SpaDES.core::simInitAndSpades(modules = "scheduling", paths = list(modulePath = "."))
+SpaDES.core::simInitAndSpades(modules = "scheduling", paths = list(modulePath = "tutos/scheduling"))
 
 ```
 

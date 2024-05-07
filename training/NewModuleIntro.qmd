@@ -88,7 +88,7 @@ We will next put them into the correct places in the new SpaDES module.
 We use the `SpaDES.core` function `newModule()` to make a new module.
 
 ```{r, eval=FALSE}
-SpaDES.core::newModule(name = "My_linear_model", path = ".")
+SpaDES.core::newModule(name = "My_linear_model", path = "tutos/NewModuleIntro")
 ```
 
 This will create a new folder with several files in it. See
