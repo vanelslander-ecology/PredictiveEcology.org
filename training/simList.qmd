@@ -30,7 +30,15 @@ In `SpaDES`, this place is called the `simList`. It is a rich data
 object that acts like a list or an environment, i.e., we can put objects
 into it and use them later.
 
-```{r simListCreate,message=FALSE}
+```{r simListCreate, eval = FALSE}
+sim <- simInit()
+sim$a <- 1
+sim$b <- sim$a + 2
+sim$b
+envir(sim)
+```
+
+```{r simListCreate2, message = FALSE, echo = FALSE}
 sim <- SpaDES.core::simInit()
 sim$a <- 1
 sim$b <- sim$a + 2
@@ -76,7 +84,7 @@ See also [`?'.simList-class'`](https://rdrr.io/cran/SpaDES.core/man/simList-clas
 
 ::: columns-2
 ```{r simList-accessors, echo=FALSE, eval=TRUE}
-emptySim <- simInit()
+emptySim <- SpaDES.core::simInit()
 slots <- paste0(slotNames(emptySim))
 accessors <- c("modules", "params", "events", "current", "completed", "depends",
                "times", "inputs", "outputs", "paths", "envir", "objects") |>
@@ -103,8 +111,12 @@ calls.
 
 ### Initiliaze an empty `simList` object
 
-```{r empty-simList}
+```{r empty-simList, eval = FALSE}
 emptySim <- simInit()
+```
+
+```{r empty-simList2, echo = FALSE}
+emptySim <- SpaDES.core::simInit()
 ```
 
 ### Inspect the empty `simList` object
@@ -134,7 +146,7 @@ Use the `simList` accessor functions to determine the following:
 7.  the objects (functions, data, etc.) used in the simulation;
 8.  the file paths used for simulation inputs and outputs.
 
-```{r inspect-simList,eval=FALSE}
+```{r inspect-simList, eval=FALSE}
 # list modules used in the simulation
 modules(mySim)
 
