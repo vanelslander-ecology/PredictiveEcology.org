@@ -245,7 +245,6 @@ outputs that model, and plots the fit.
 
 ## See also
 
-See also:
 [`?expectsInput`](https://rdrr.io/cran/SpaDES.core/man/expectsInput.html),
 [`?createsOutput`](https://rdrr.io/cran/SpaDES.core/man/createsOutput.html),
 [`?simInitAndSpades`](https://rdrr.io/cran/SpaDES.core/man/simInitAndSpades.html),
