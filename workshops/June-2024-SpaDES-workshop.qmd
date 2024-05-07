@@ -1,8 +1,8 @@
 ---
-title: "Reproducible workflows for landscapes with SpaDES and PERFICT"
+title: "Robust and nimble scientific workflows, using SpaDES"
 author: "Eliot McIntire"
 description: "A multi-day workshop focusing on learning robust approaches to building reuseable, reproducible workflows for ecological applications"
-date: "April 17, 2024"
+date: last-modified
 image: https://besjournals.onlinelibrary.wiley.com/cms/asset/db13319c-88b4-4821-9eaa-a2e62364b399/mee314034-fig-0004-m.jpg
 categories:
   - R
@@ -11,11 +11,41 @@ categories:
 comments: false
 ---
 
+*Signup is still active below -- please add your email address if you are interested*
 
-If you are interested in participating, please sign up here. Please also indicate preferences of which topics are of interest and at what level. We will attempt to customize the workshop accordingly.
+## Date: June 11 - 13, 2024
 
+## Location: Virtual with MS Teams
 
+The dates have been finalized!  
 
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc0RlY9xjbaaIskoX_zR8qy-UBb95JZ5TVjOtyIlJLNYs9CEQ/viewform?embedded=true" width="680" height="2982" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+Thanks to all who filled in the survey below.
 
+## Tentative Logistics
 
+The workshop will be flexible in that you can attend/skip the sessions at your leisure and according to your own availability. Each session will be a combination of relatively short video presentations with “work-on-your-own” time, so that you can advance as fast as you want. We will maintain the virtual chat open throughout the day, including between video sessions, to allow for questions, troubleshooting, conversations etc. 
+A detailed agenda of session times and topics, and details for the virtual room, will be circulated closer to the date.
+
+We expect the workshop to run every day from 8:30am to 3:00pm Pacific Time. Our goal is to create a schedule of individual learning modules that we will follow precisely like a conference, so that people can disconnect and reconnect as needed.
+
+We are developing a book that we will use for the workshop. We are slowly building up the chapters, please visit if you are curious, but the content will be edited on an ongoing basis until the workshop.
+(https://predictiveecology.org/training/_book/)
+
+We will be updating the logistics for the Workshop here:
+(https://predictiveecology.org/workshops/June-2024-SpaDES-workshop.html)
+
+We look forward to connecting with you all in June!
+
+Ceres and Eliot
+
+## Signup
+
+If you are interested in participating, please sign up here. Please also
+indicate preferences of which topics are of interest and at what level.
+We will attempt to customize the workshop accordingly.
+
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc0RlY9xjbaaIskoX_zR8qy-UBb95JZ5TVjOtyIlJLNYs9CEQ/viewform?embedded=true" width="680" height="2982" frameborder="0" marginheight="0" marginwidth="0">
+
+Loading…
+
+</iframe>
