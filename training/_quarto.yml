@@ -48,9 +48,9 @@ book:
     - part: SpaDESbasics.qmd
       chapters:
       - NewModuleIntro.qmd
+      - ModulesAndEvents.qmd
       - Scheduling.qmd
       - simList.qmd
-      - ModulesAndEvents.qmd
     - part: realexamples.qmd
       chapters:
       - castorExample.qmd
