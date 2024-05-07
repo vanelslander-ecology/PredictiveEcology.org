@@ -6,11 +6,11 @@
 
 ## install/load necessary packages
 repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
-install.packages(c("remotes", "DiagrammeR", "reproducible"), repos = repos)
+install.packages(c("remotes", "reproducible", "googledrive"), repos = repos)
 remotes::install_github("PredictiveEcology/SpaDES.project@transition")   ## to deal with modules in nested GH folders.
 library(SpaDES.project)
 
-## get Castor modules
+## get Castor modules and functions
 setupFunctions(paths = list("projectPath" = "~/"),
                functions = c("PredictiveEcology/PredictiveEcology.org@training-book/tutos/castorExample/getCastorModulesAndDB.R",
                              "PredictiveEcology/PredictiveEcology.org@training-book/tutos/castorExample/params.R"),
@@ -24,12 +24,11 @@ outMod <- getCastorModulesAndDB(paths = list("modulePath" = "~/tutos/castorExamp
                                 dbURL = "https://drive.google.com/file/d/1-2POunzC7aFbkKK5LeBJNsFYMBBY8dNx/view?usp=sharing",
                                 dbPath = "~/tutos/castorExample/R/scenarios/comparison_stsm")
 
-
-## setup the workflow paths, dependencies and modules
+## set up the workflow paths, dependencies and modules
 ## as well as simulation parameters, (some) inputs and outputs
 out <- setupProject(
   paths = list("inputPath" = "modules/forestryCastor/inputs",
-               "outputPath" = "/R/scenarios/comparison_stsm/outputs",
+               "outputPath" = "R/scenarios/comparison_stsm/outputs",
                "modulePath" = "modules/",
                "cachePath" = "modules/forestryCastor",
                "projectPath" = "~/tutos/castorExample"),
@@ -40,6 +39,7 @@ out <- setupProject(
   ## install but don't load these:
   packages = c(
     "DBI",
+    "DiagrammeR",
     "keyring",
     "rgdal",
     "RPostgreSQL",

@@ -4,8 +4,8 @@ project:
 book:
   title: "Robust and nimble scientific workflows, using SpaDES"
   author:
-    - "E. McIntire"
-    - "C. Barros"
+    - "Eliot McIntire"
+    - "Ceres Barros"
   date: last-modified
   cover-image: assets/logo/predictive_ecology_logo.png
   favicon:  assets/logo/favicon-16x16.png
@@ -45,13 +45,15 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
-    - part: NewModule.qmd
+    - part: SpaDESbasics.qmd
       chapters:
       - NewModuleIntro.qmd
+      - ModulesAndEvents.qmd
       - Scheduling.qmd
       - simList.qmd
-      - ModulesAndEvents.qmd
     - part: realexamples.qmd
+      chapters:
+      - castorExample.qmd
     - references.qmd
 
 bibliography: references/references.bib

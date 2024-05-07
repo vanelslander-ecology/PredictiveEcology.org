@@ -1,5 +1,6 @@
-# Introduction
+# Introduction {.unnumbered}
 
+```{=html}
 <!--
 
 - welcome note
@@ -7,3 +8,4 @@
 - something about companion slides/presentations used during workshops?
 
 -->
+```

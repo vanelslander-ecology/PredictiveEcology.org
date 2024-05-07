@@ -1,7 +1,15 @@
-# Castor workflow with `setupProject`
+---
+title: "Castor workflow with `setupProject`"
+author: "Ceres Barros"
+date: last-modified
+editor_options:
+  chunk_output_type: console
+---
 
 ```{r setup}
 #| include: false
+#| cache: false
+
 knitr::opts_chunk$set(tidy = FALSE, 
                       warning = FALSE, 
                       message = FALSE, 
@@ -49,24 +57,55 @@ In this chapter, we demonstrate how to set up a Castor workflow using
 package. The code was adapted from [this Castor
 scenario](https://github.com/bcgov/castor/blob/main/R/scenarios/comparison_stsm/base_case_harvest_flow_20230628.Rmd),
 with some modifications to streamline the code and accommodate the use
-of `SpaDES.project` functions[^castorexample-1].
+of `SpaDES.project` functions.
 
 A bare-bones version of this example is also available in this [.R
 script](https://github.com/PredictiveEcology/PredictiveEcology.org/blob/training-book/tutos/castorExample/castorExample.R)
 
 ## Workflow setup
 
+`SpaDES.project` functions expect SpaDES modules to either exist
+locally, or at root level of separate repositories. This is not the case
+with Castor modules, which are in a nested folder (i.e. a folder in a
+folder tree) of a single GitHub repository.
+
+`SpaDES.project` will eventually be able to deal with this[^1], but for now
+we work around this issue by using a custom function called
+`getCastorModulesAndDB`. This function will also download the demo
+SQLite database from Google Drive[^2]. You'll be prompted to authorise
+this operation and a browser window will open for this. Make sure you
+give `tidyverse` read/write access to your files:
+
+```{r fig-gdriveauth}
+#| echo: false
+#| fig-align: center
+#| fig-width: 5
+
+figPath <- normalizePath(file.path(qmdPath, "assets/img/gdriveauth.png"),
+                winslash = "/")
+
+knitr::include_graphics(figPath, rel_path = FALSE, dpi = NA)
+```
+
+After the "workaround" `setupProject` does all the heavy-lifting of setting up the
+workflow, namely installing all package dependencies listed in the several modules
+and in `setupProject(..., packages)`, creating all the necessary folders, sourcing 
+additional files and creating parameter, inputs and outputs lists -- see 
+[`?setupProject`](https://spades-project.predictiveecology.org/reference/setupProject.html).
+
 ```{r wfsetup}
 #| message: false
 #| warning: false
 #| results: hide
+#| cache: false 
+
 ## install/load necessary packages
 repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
 install.packages(c("remotes", "reproducible", "googledrive"), repos = repos)
 remotes::install_github("PredictiveEcology/SpaDES.project@transition")   ## to deal with modules in nested GH folders.
 library(SpaDES.project)
 
-## get Castor modules
+## get Castor modules and functions
 setupFunctions(paths = list("projectPath" = "~/"),
                functions = c("PredictiveEcology/PredictiveEcology.org@training-book/tutos/castorExample/getCastorModulesAndDB.R",
                              "PredictiveEcology/PredictiveEcology.org@training-book/tutos/castorExample/params.R"),
@@ -159,7 +198,7 @@ out <- setupProject(
 ## Initialise the model and inspect `simList`
 
 `setupProject()` returns a names list containing values that can be
-passed to `simInit()` arguments.
+passed as argument to [`simInit()`](https://rdrr.io/cran/SpaDES.core/man/simInit.html)[^3]. 
 
 We use `do.call()` to pass the whole list of arguments to `simInit`.
 
@@ -175,7 +214,6 @@ Another (more verbose) option would to call `simInit` directly:
 ```{r simInit2}
 #| eval: false
 
-## initialize simulation
 castorInit <- SpaDES.core::simInit(
   times = out$times,
   params = out$params, 
@@ -237,18 +275,15 @@ SpaDES.core::moduleDiagram(castorInit)
 ```
 
 ```{r fig-objectDiagram}
-#| echo: true
+#| echo: false
 #| fig-align: center
 #| fig-cap: "Diagram of module inter-dependencies with object names."
 #| fig-width: 10
 
-normalizePath(file.path(qmdPath, "assets/img/castorExample_objDiagram.png"),
+figPath <- normalizePath(file.path(qmdPath, "assets/img/castorExample_objDiagram.png"),
                 winslash = "/")
-# 
-# knitr::include_graphics(
-#   normalizePath(file.path(qmdPath, "assets/img/castorExample_objDiagram.png"),
-#                 winslash = "/"),
-#   dpi = NA)
+
+knitr::include_graphics(figPath, rel_path = FALSE, dpi = NA)
 ```
 
 ## Run simulation
@@ -375,8 +410,12 @@ out <- setupProject(
 castorSim2 <- do.call(SpaDES.core::simInitAndSpades, out)
 ```
 
-[^castorexample-1]: `SpaDES.project` is currently being adapted to deal
-with modules nested in folders of GitHub repositories (instead of
-living in their own GitHub repositories), as is the case of Castor
-modules. Hence, the code in this example is subject to changes in
-the near future.
+[^1]: `SpaDES.project` is currently being adapted to deal with modules
+    nested in folders of GitHub repositories (instead of living in their
+    own GitHub repositories). Hence, the code in this example is subject to 
+    changes in the near future.
+
+[^2]: Using the `googledrive` R package. See [`?googledrive::drive_auth`](https://rdrr.io/cran/googledrive/man/drive_auth.html)
+    for more information.
+
+[^3]: See also @sec-simlist.

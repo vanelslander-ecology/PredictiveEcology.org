@@ -8,12 +8,14 @@ editor_options:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(cache = TRUE, echo = TRUE, eval = FALSE)
-Require::Require("SpaDES.core")
+Require::Require(c("SpaDES.core"))
 ```
 
-## The `simList`
+## The `simList` {#sec-simlist}
 
-In `R`, there is a default environment, called the `.GlobalEnv`. When you start typing in R and you create an object, it is "put" in the `.GlobalEnv`
+In `R`, there is a default environment, called the `.GlobalEnv`. When
+you start typing in R and you create an object, it is "put" in the
+`.GlobalEnv`
 
 ```{r}
 # this is in the .GlobalEnv
@@ -21,37 +23,51 @@ a <- 1
 environment()
 ```
 
-This `.GlobalEnv` is convenient to begin in R, but it quickly becomes limiting. We need more places to put objects, and we need a way to be more in control of the things that we want to keep, share, modify etc. In `SpaDES`, this place is called the `simList`. It is a rich data object that acts like a list or an environment, i.e., we can put objects into it and use them later.
+This `.GlobalEnv` is convenient to begin in R, but it quickly becomes
+limiting. We need more places to put objects, and we need a way to be
+more in control of the things that we want to keep, share, modify etc.
+In `SpaDES`, this place is called the `simList`. It is a rich data
+object that acts like a list or an environment, i.e., we can put objects
+into it and use them later.
 
-```{r simListCreate,message=FALSE}
+```{r simListCreate}
+sim <- simInit()
+sim$a <- 1
+sim$b <- sim$a + 2
+sim$b
+envir(sim)
+```
+
+```{r simListCreate2, message = FALSE, echo = FALSE}
 sim <- SpaDES.core::simInit()
 sim$a <- 1
 sim$b <- sim$a + 2
 sim$b
 envir(sim)
-
 ```
 
 ## Where does `simList` come from?
 
 There are 2 main ways in `SpaDES.core` to create a `simList`:
 
-1. using `simInit()` creates a `simList` object.
-2. using `spades()`, which returns a modified `simList` object.
+1.  using [`simInit()`](https://rdrr.io/cran/SpaDES.core/man/simInit.html) creates a `simList` object.
+2.  using [`spades()`](https://rdrr.io/cran/SpaDES.core/man/spades.html) , which returns a modified `simList` object.
 
 ## How can we specify a `simList`?
 
-A `simList` object is simply a structured data type containing various elements.
+A `simList` object is simply a structured data type containing various
+elements.
 
 The main components of a `simList` are:
 
-1. A list of modules used;
-2. The event queue;
-3. A description of the data (object) dependencies.
+1.  A list of modules used;
+2.  The event queue;
+3.  A description of the data (object) dependencies.
 
 ## How `SpaDES` works: simLists
 
-We can examine the `simList` object structure in the usual R fashion by printing (`show`ing) it, or by using `str()`:
+We can examine the `simList` object structure in the usual R fashion by
+printing (`show`ing) it, or by using `str()`:
 
 ```{r simlist-structure, echo=TRUE, eval=FALSE}
 emptySim <- simInit()
@@ -59,15 +75,16 @@ emptySim  # same as show(emptySim)
 str(emptySim)
 ```
 
-**NOTE:** `simList`s are S4 objects, so we can use `getSlots()` and `slotNames()` to examine the object.
+**NOTE:** `simList`s are S4 objects, so we can use `getSlots()` and
+`slotNames()` to examine the object.
 
-See also `?'.simList-class'`
+See also [`?'.simList-class'`](https://rdrr.io/cran/SpaDES.core/man/simList-class.html)
 
 ## Accessing the parts of a simLists
 
-<div class="columns-2">
+::: columns-2
 ```{r simList-accessors, echo=FALSE, eval=TRUE}
-emptySim <- simInit()
+emptySim <- SpaDES.core::simInit()
 slots <- paste0(slotNames(emptySim))
 accessors <- c("modules", "params", "events", "current", "completed", "depends",
                "times", "inputs", "outputs", "paths", "envir", "objects") |>
@@ -83,15 +100,14 @@ other_accessors <- c("packages", "globals", "start", "end", "timeunit", "timeuni
 data.frame(other_accessors = other_accessors) |>
   knitr::kable(format = "html", padding = 0)
 ```
-</div>
+:::
 
+## Model specification
 
-  ## Model specification
+Simple examples (using demo modules) of `simInit()` and `spades()`
+calls.
 
-  Simple examples (using demo modules) of `simInit()` and `spades()` calls.
-
-- examine `simList` structure before and after the `spades()` call
-
+-   examine `simList` structure before and after the `spades()` call
 
 ### Initiliaze an empty `simList` object
 
@@ -99,10 +115,15 @@ data.frame(other_accessors = other_accessors) |>
 emptySim <- simInit()
 ```
 
+```{r empty-simList2, eval = TRUE, echo = FALSE}
+emptySim <- SpaDES.core::simInit()
+```
+
 ### Inspect the empty `simList` object
 
-1. What are the names of each of the slots in the simList?
-2. What do each of these slots contain? Hint: see [`?.simList-class`](https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/simList-class)
+1.  What are the names of each of the slots in the simList?
+2.  What do each of these slots contain? Hint: see
+    [`?.simList-class`](https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/simList-class)
 
 ```{r inspect-emptySim}
 str(emptySim)
@@ -111,21 +132,21 @@ getSlots('simList')
 ?'.simList-class'
 ```
 
-
 ### Inspect the new `simList` object
 
 Use the `simList` accessor functions to determine the following:
 
-1. the modules included in the simulation and their package dependencies;
-2. the global parameter values used;
-3. the module-specific parameter values used;
-4. the simulation start and end times;
-5. the timeunits used by the modules in the simulation;
-6. the scheduled and completed event queues;
-7. the objects (functions, data, etc.) used in the simulation;
-8. the file paths used for simulation inputs and outputs.
+1.  the modules included in the simulation and their package
+    dependencies;
+2.  the global parameter values used;
+3.  the module-specific parameter values used;
+4.  the simulation start and end times;
+5.  the timeunits used by the modules in the simulation;
+6.  the scheduled and completed event queues;
+7.  the objects (functions, data, etc.) used in the simulation;
+8.  the file paths used for simulation inputs and outputs.
 
-```{r inspect-simList,eval=FALSE}
+```{r inspect-simList, eval=FALSE}
 # list modules used in the simulation
 modules(mySim)
 

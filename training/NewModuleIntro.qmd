@@ -8,7 +8,6 @@ editor_options:
 
 ## Creating a new module
 
-
 ```{r setup}
 #| include: false
 knitr::opts_chunk$set(tidy = FALSE, 
@@ -96,7 +95,7 @@ Now we use the `SpaDES` function `newModule` to make a new module. (see
 SpaDES.core::newModule(name = "My_linear_model", path = ".")
 ```
 
-This will create a new folder with several files in it. See `?newModule`
+This will create a new folder with several files in it. See [`?newModule`](https://rdrr.io/cran/SpaDES.core/man/newModule.html)
 for details. For now, run the above and open the `.R` that is created.
 
 ## Edit metadata
@@ -226,11 +225,11 @@ outputs that model, and plots the fit.
 2.  What are some things we "lost"?
     -   More complicated. (overkill for these 3 lines?)
 3.  What if we used an R package that wasn't in the base packages list?
-    -   See `?defineModule` for all the metadata items. Specifically,
+    -   See [`?defineModule`](https://rdrr.io/cran/SpaDES.core/man/defineModule.html) for all the metadata items. Specifically,
         see `reqdPkgs`.
-4.  What is the `sim`? See `?simList`
+4.  What is the `sim`? See [`?'.simList-class'`](https://rdrr.io/cran/SpaDES.core/man/simList-class.html)
 
 ## See also
 
-See also: `?expectsInput`, `?createsOutput`, `?simInitAndSpades`,
-`?newModule`
+See also: [`?expectsInput`](https://rdrr.io/cran/SpaDES.core/man/expectsInput.html), [`?createsOutput`](https://rdrr.io/cran/SpaDES.core/man/createsOutput.html), [`?simInitAndSpades`](https://rdrr.io/cran/SpaDES.core/man/simInitAndSpades.html),
+[`?newModule`](https://rdrr.io/cran/SpaDES.core/man/newModule.html)
