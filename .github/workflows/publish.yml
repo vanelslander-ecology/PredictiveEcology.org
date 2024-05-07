@@ -51,6 +51,7 @@ jobs:
             any::quarto
             any::Require
             any::rmarkdown
+            any::terra
 
       - name: Build site 🔧
         run: Rscript renderCopyBook.R
