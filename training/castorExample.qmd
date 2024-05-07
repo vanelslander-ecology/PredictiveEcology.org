@@ -179,7 +179,6 @@ Another (more verbose) option would to call `simInit` directly:
 ```{r simInit2}
 #| eval: false
 
-## initialize simulation
 castorInit <- SpaDES.core::simInit(
   times = out$times,
   params = out$params, 
