@@ -1,6 +1,6 @@
 ---
-author      : "Eliot McIntire"
-date        : last-updated
+author: "Eliot McIntire"
+date: last-modified
 editor_options:
   chunk_output_type: console
 ---
