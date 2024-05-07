@@ -1,0 +1,134 @@
+---
+title       : "Modules, Events and Functions"
+author      : "Eliot McIntire"
+date        : "May 2024"
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup}
+#| include: false
+knitr::opts_chunk$set(tidy = FALSE, 
+                      eval = FALSE,
+                      warning = FALSE, 
+                      message = FALSE, 
+                      error = FALSE)
+
+## truncate text output
+hook_output <- knitr::knit_hooks$get("output")
+
+knitr::knit_hooks$set(output = function(x, options) {
+  if (!is.null(n <- options$outlines)) {
+    x <- xfun::split_lines(x)
+    if (length(x) > n) {
+      # truncate the output
+      x <- c(head(x, n), "....\n")
+    }
+    x <- paste(x, collapse = "\n")
+  }
+  hook_output(x, options)
+})
+
+options(repos = "http://cran.us.r-project.org")
+if (!require("Require")) {
+  install.packages("Require", repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
+}
+Require::Require(c("reproducible"))
+
+```
+
+## Modules vs. Events
+
+A module is a collection of R scripts that includes:
+
+- `defineModule`  (mandatory)
+- `doEvent.*moduleName*` function (mandatory)
+- other functions (optional)
+- a documentation file (*moduleName*.rmd)
+
+These are all contained within a file structure like this, with other optional files:
+```
+/moduleRepository
+  |_ moduleName/
+      |_ R/                     # contains additional .R (helper) files
+      |_ data/                  # directory for all included data
+          |_ CHECKSUMS.txt      # contains checksums for data files
+      |_ tests/                 # contains unit tests for module code
+      |_ citation.bib           # bibtex citation for the module
+      |_ LICENSE.txt            # describes module's legal usage
+      |_ moduleName.R           # module code file (incl. metadata)
+      |_ moduleName.Rmd         # documentation, usage info, etc.
+```
+
+### Events
+
+Events are named chunks of code that can be scheduled to be run once or many times. These are scheduled with `scheduleEvent`. There are several commonly occurring module types that can be grouped based on the events that they contain.
+
+### Functions
+
+Essentially, everything in R is or uses functions. Modules define functions (`doEvent.*moduleName*`), events call specific functions, and functions can be defined within modules, R packages, or user code.
+
+#### Key functions in the SpaDES ecosystem
+
+In re-useable workflows, functions become particularly effective if they:
+
+1. Are rerun-tolerant, meaning the first time they run they "do" something, but the second and subsequent times, they give the same output as the first time, but they skip the "doing" part
+2. Can be run from any person's computer and "work", i.e., give the same result
+
+Two key functions help achieve these points, `Cache` and `prepInputs`
+
+#### `Cache`
+
+`Cache` is a function that can be wrapped around other functions that turns that function into a rerun-tolerant function. `reproducible::Cache` has several important modifications that work for *some* objects that don't cache well using "normal" caching, such as `terra` objects that are actually pointers to locations on disk rather than normal R objects.
+
+```{r Cache,eval=FALSE}
+library(reproducible)
+
+a <- rnorm(1e7)
+b <- rnorm(1e7) |> Cache()
+
+```
+See [`?reproducible::Cache`](https://reproducible.predictiveecology.org/reference/Cache.html)
+
+#### `prepInputs`
+
+[`?reproducible::prepInputs`](https://reproducible.predictiveecology.org/reference/prepInputs.html)
+
+
+
+For more information
+
+
+
+#### Module types, based on Events and Functions used
+
+- Data preparation modules may have:
+
+    - one (maybe just the "init" event) or few events and their primary goal is to get and deal with data
+    - Do GIS operations
+    - Use `reproducible::prepInputs`
+    
+- Dynamic modules
+
+    - modules that repeat certain events
+    - modules that use explicit iterations or time and whose inputs can vary each time
+
+- Data Visualization modules
+
+    - 
+
+
+
+## Questions
+
+
+## See also
+
+See also: `?scheduleEvent`, `?P`, `?time`, `?start`, `?end`
+
+## More learning on this subject
+
+[My First Module](https://spades-workshops.predictiveecology.org/articlesMay2018/MyFirstModule.html)
+
+[Creating a seed dispersal module](https://spades-workshops.predictiveecology.org/articles/02c-Convert_R_code_to_SpaDES_module.html)
+

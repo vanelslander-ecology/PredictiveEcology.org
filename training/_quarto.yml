@@ -1,8 +1,5 @@
 project:
   type: book
-  render:
-    - "*.qmd"
-    - "!castorExample.qmd"
 
 book:
   title: "Robust and nimble scientific workflows, using SpaDES"
@@ -53,6 +50,7 @@ book:
       - NewModuleIntro.qmd
       - Scheduling.qmd
       - simList.qmd
+      - ModulesAndEvents.qmd
     - part: realexamples.qmd
     - references.qmd
 
