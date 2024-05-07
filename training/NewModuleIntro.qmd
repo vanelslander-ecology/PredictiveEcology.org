@@ -5,6 +5,8 @@ editor_options:
   chunk_output_type: console
 ---
 
+## Creating a new module
+
 ```{r setup}
 #| include: false
 knitr::opts_chunk$set(tidy = FALSE, 
@@ -35,7 +37,7 @@ if (!require("Require")) {
 
 ```
 
-# Introduction to SpaDES Modules {#sec-moduleintro}
+## New Module Introduction
 
 SpaDES modules are comprised of R code that has metadata and the gets
 put into functions. With this in mind, we can start with some simple R
@@ -61,12 +63,12 @@ will not work (i.e., it will cause an error) if `y` is not defined. The
 **outputs** are `x` and `out`. Both of these are created within this
 chunk.
 
-Next, *what are the package dependencies?* We see that there are two
-functions: `rnorm` and `lm`. We don't know what packages they are in, so
-we can find out by typing them at the R prompt. At the bottom, it says
-that the function `rnorm` is in the `stats` package, and so is `lm`.
-Fortunately for us, this is a default ("base") package in R and it is
-always pre-loaded. So, nothing to do here.
+Next, *what are the package dependencies?*. We see that there are three
+functions: `rnorm`, `lm` and `plot`. We don't know what packages they are in, so
+we can find out by typing them at the R prompt. At the bottom of the function, it says
+that the function `rnorm` is in the `stats` package. Fortunately for us,
+this is a default ("base") package in R and it is always pre-loaded. So,
+nothing to do here.
 
 ```{r, eval=FALSE}
 > rnorm
@@ -103,7 +105,8 @@ as an "input" by putting it there.
 
 ```{r, eval=FALSE}
 inputObjects = bindrows(
-    expectsInput(objectName = "y", objectClass = "numeric", desc = "The inputs for the linear model", sourceURL = NA)
+    expectsInput(objectName = "x", objectClass = "numeric", 
+                 desc = "The inputs for the linear model", sourceURL = NA)
   )
 ```
 
@@ -114,8 +117,10 @@ argument to `bindrows`.
 
 ```{r, eval=FALSE}
 outputObjects = bindrows(
-    createsOutput(objectName = "x", objectClass = "numeric", desc = "The randomly created varible that is used as a response variable"),
-    createsOutput(objectName = "out", objectClass = "lm", desc = "A linear model object from the equation (x ~ y)")
+    createsOutput(objectName = "y", objectClass = "numeric", 
+                  desc = "The randomly created varible that is used as a response variable"),
+    createsOutput(objectName = "out", objectClass = "lm", 
+                  desc = "A linear model object from the equation (y ~ x)")
   )
 ```
 
