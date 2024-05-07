@@ -27,6 +27,13 @@ options(repos = "http://cran.us.r-project.org")
 if (Sys.getenv("USERNAME") == "GHA") {
   googledrive::drive_auth(path = Sys.getenv("GOOGLE_APP_CREDENTIALS"))
 }
+
+qmdPath <- normalizePath(getwd(), winslash = "/")
+
+if (!interactive()) { 
+  dir.create("~/tutos/castorExample", recursive = TRUE)
+  knitr::opts_knit$set(root.dir = "~/tutos/castorExample")
+}
 ```
 
 [Castor](https://github.com/bcgov/castor) is a forest and land-use model
@@ -230,13 +237,18 @@ SpaDES.core::moduleDiagram(castorInit)
 ```
 
 ```{r fig-objectDiagram}
-#| echo: false
+#| echo: true
 #| fig-align: center
 #| fig-cap: "Diagram of module inter-dependencies with object names."
 #| fig-width: 10
 
-knitr::include_graphics(normalizePath("assets/img/castorExample_objDiagram.png", winslash = "/"),
-                        dpi = NA)
+normalizePath(file.path(qmdPath, "assets/img/castorExample_objDiagram.png"),
+                winslash = "/")
+# 
+# knitr::include_graphics(
+#   normalizePath(file.path(qmdPath, "assets/img/castorExample_objDiagram.png"),
+#                 winslash = "/"),
+#   dpi = NA)
 ```
 
 ## Run simulation
