@@ -156,22 +156,25 @@ modules.
 
 For example, modules can be:
 
-**Static**:
+#### Static
 
--   Data preparation
+**Static** modules can be defined as modules that "run once". This means that they may have only one event. Or a sequence of events that occur one after the other with no rescheduling. 
 
--   One (maybe just the "init" event) or few events and their primary
-    goal is to get and deal with data
+These could include:
+- Data preparation modules;
+- one (maybe just the "init" event) or few events and their primary goal is to get and deal with data;
+- GIS modules that do a number of GIS operations to get data into the necessary formats;
+- Data Visualization modules that specialize in creating a set of visuals from a known set of inputs.
+    
+#### Dynamic
 
--   Do GIS operations
+**Dynamic** modules are modules that have *events that recur*. There are at least 2 types of such models: those that have **cyclic dependencies**, i.e., its outputs are also its inputs (possibly with other modules in between) and those that do not.
 
--   Often use `reproducible::prepInputs()`
+- landscape simulation modules (e.g., wildfire, vegetation change)
+- wildlife population modules with Markov dependency (e.g., population matrix models)
+- wildlife population modules without Markov-dependency (e.g., population models that only depend on habitat covariates)
+- Data Visualization modules that get used e.g., annually after other modules.
 
-**Dynamic:**
-
--   Dynamic modules, i.e. with time dependence
-
--   Data Visualization modules
 
 In @barros2023 we classified modules with respect to *what* the modules
 try to accomplish:

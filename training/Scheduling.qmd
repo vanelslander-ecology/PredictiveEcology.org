@@ -79,6 +79,7 @@ predictions <- data.frame(year = rep(years, each = 10), prediction = unlist(pred
 ggplot(predictions, aes(x = year, y = prediction, colour = year)) + geom_point() + geom_smooth()
 ```
 
+In the above code, there are 4 sections. These will each be copied into the SpaDES module below, in their respective sections. We have added 1 new section, called "Prediction".
 
 ## Convert to a module
 
