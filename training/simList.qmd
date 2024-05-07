@@ -11,7 +11,7 @@ knitr::opts_chunk$set(cache = TRUE, echo = TRUE, eval = FALSE)
 Require::Require("SpaDES.core")
 ```
 
-## The `simList`
+## The `simList` {#sec-simlist}
 
 In `R`, there is a default environment, called the `.GlobalEnv`. When you start typing in R and you create an object, it is "put" in the `.GlobalEnv`
 
@@ -36,8 +36,8 @@ envir(sim)
 
 There are 2 main ways in `SpaDES.core` to create a `simList`:
 
-1. using `simInit()` creates a `simList` object.
-2. using `spades()`, which returns a modified `simList` object.
+1.  using [`simInit()`](https://rdrr.io/cran/SpaDES.core/man/simInit.html) creates a `simList` object.
+2.  using [`spades()`](https://rdrr.io/cran/SpaDES.core/man/spades.html) , which returns a modified `simList` object.
 
 ## How can we specify a `simList`?
 
@@ -61,7 +61,7 @@ str(emptySim)
 
 **NOTE:** `simList`s are S4 objects, so we can use `getSlots()` and `slotNames()` to examine the object.
 
-See also `?'.simList-class'`
+See also [`?'.simList-class'`](https://rdrr.io/cran/SpaDES.core/man/simList-class.html)
 
 ## Accessing the parts of a simLists
 
@@ -102,7 +102,8 @@ emptySim <- simInit()
 ### Inspect the empty `simList` object
 
 1. What are the names of each of the slots in the simList?
-2. What do each of these slots contain? Hint: see [`?.simList-class`](https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/simList-class)
+2.  What do each of these slots contain? Hint: see
+    [`?.simList-class`](https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/simList-class)
 
 ```{r inspect-emptySim}
 str(emptySim)
