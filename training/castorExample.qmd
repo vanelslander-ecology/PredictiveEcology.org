@@ -242,13 +242,10 @@ SpaDES.core::moduleDiagram(castorInit)
 #| fig-cap: "Diagram of module inter-dependencies with object names."
 #| fig-width: 10
 
-normalizePath(file.path(qmdPath, "assets/img/castorExample_objDiagram.png"),
+figPath <- normalizePath(file.path(qmdPath, "assets/img/castorExample_objDiagram.png"),
                 winslash = "/")
-# 
-# knitr::include_graphics(
-#   normalizePath(file.path(qmdPath, "assets/img/castorExample_objDiagram.png"),
-#                 winslash = "/"),
-#   dpi = NA)
+
+knitr::include_graphics(figPath, rel_path = FALSE, dpi = NA)
 ```
 
 ## Run simulation
