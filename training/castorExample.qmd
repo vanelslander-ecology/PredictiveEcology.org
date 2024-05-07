@@ -69,8 +69,8 @@ locally, or at root level of separate repositories. This is not the case
 with Castor modules, which are in a nested folder (i.e. a folder in a
 folder tree) of a single GitHub repository.
 
-`SpaDES.project` will eventually be able to deal with this[^1], but for now
-we work around this issue by using a custom function called
+`SpaDES.project` will eventually be able to deal with this[^1], but for
+now we work around this issue by using a custom function called
 `getCastorModulesAndDB`. This function will also download the demo
 SQLite database from Google Drive[^2]. You'll be prompted to authorise
 this operation and a browser window will open for this. Make sure you
@@ -87,10 +87,11 @@ figPath <- normalizePath(file.path(qmdPath, "assets/img/gdriveauth.png"),
 knitr::include_graphics(figPath, rel_path = FALSE, dpi = NA)
 ```
 
-After the "workaround" `setupProject` does all the heavy-lifting of setting up the
-workflow, namely installing all package dependencies listed in the several modules
-and in `setupProject(..., packages)`, creating all the necessary folders, sourcing 
-additional files and creating parameter, inputs and outputs lists -- see 
+After the "workaround" `setupProject` does all the heavy-lifting of
+setting up the workflow, namely installing all package dependencies
+listed in the several modules and in `setupProject(..., packages)`,
+creating all the necessary folders, sourcing additional files and
+creating parameter, inputs and outputs lists -- see
 [`?setupProject`](https://spades-project.predictiveecology.org/reference/setupProject.html).
 
 ```{r wfsetup}
@@ -198,7 +199,8 @@ out <- setupProject(
 ## Initialise the model and inspect `simList`
 
 `setupProject()` returns a names list containing values that can be
-passed as argument to [`simInit()`](https://rdrr.io/cran/SpaDES.core/man/simInit.html)[^3]. 
+passed as argument to
+[`simInit()`](https://rdrr.io/cran/SpaDES.core/man/simInit.html)[^3].
 
 We use `do.call()` to pass the whole list of arguments to `simInit`.
 
@@ -412,10 +414,11 @@ castorSim2 <- do.call(SpaDES.core::simInitAndSpades, out)
 
 [^1]: `SpaDES.project` is currently being adapted to deal with modules
     nested in folders of GitHub repositories (instead of living in their
-    own GitHub repositories). Hence, the code in this example is subject to 
-    changes in the near future.
+    own GitHub repositories). Hence, the code in this example is subject
+    to changes in the near future.
 
-[^2]: Using the `googledrive` R package. See [`?googledrive::drive_auth`](https://rdrr.io/cran/googledrive/man/drive_auth.html)
+[^2]: Using the `googledrive` R package. See
+    [`?googledrive::drive_auth`](https://rdrr.io/cran/googledrive/man/drive_auth.html)
     for more information.
 
 [^3]: See also @sec-simlist.
