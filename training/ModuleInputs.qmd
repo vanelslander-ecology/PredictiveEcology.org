@@ -1,0 +1,139 @@
+---
+author      : "Eliot McIntire"
+date        : "May 2024"
+editor_options:
+  chunk_output_type: console
+---
+
+# Module Inputs
+
+```{r setup}
+#| include: false
+knitr::opts_chunk$set(tidy = FALSE, 
+                      eval = FALSE,
+                      warning = FALSE, 
+                      message = FALSE, 
+                      error = FALSE)
+
+## truncate text output
+hook_output <- knitr::knit_hooks$get("output")
+
+knitr::knit_hooks$set(output = function(y, options) {
+  if (!is.null(n <- options$outlines)) {
+    y <- xfun::split_lines(y)
+    if (length(y) > n) {
+      # truncate the output
+      y <- c(head(y, n), "....\n")
+    }
+    y <- paste(y, collapse = "\n")
+  }
+  hook_output(y, options)
+})
+
+options(repos = "http://cran.us.r-project.org")
+if (!require("Require")) {
+  install.packages("Require", repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
+}
+
+```
+
+We have seen functions called `.inputObjects` and `reproducible::prepInputs` that help deal with [Inputs Tip @tip-Inputs]. We will show these used within a SpaDES module.
+
+::: {#tip-Inputs .callout-tip}
+The **inputs** of a SpaDES module can be any R object and should be specified in the `inputObjects` section of the metadata if it is needed for the module to run. These should be used in the `sim` using e.g., `sim$` somewhere in the module. 
+:::
+
+## How to supply **Inputs**
+
+There are several ways to get objects into the `simList`: 
+
+- User passes during `simInit`:
+
+  - using the `objects` argument (if it is an object);
+  - using the `inputs` argument (if it is from disk);
+  
+- Developer creates defaults and specifies them in `.inputObjects`;
+- A different module creates them prior to the running of this module.
+
+Ultimately, it is the last of these that is the power of SpaDES. i.e., modularity. 
+
+### During `simInit`
+
+A user can pass **objects** into the `simInit` and these will be put into the `simList`
+
+```{r duringSimInit1}
+a <- 1
+sim <- SpaDES.core::simInit(objects = list(a = a))
+```
+
+See [`?SpaDES.core::simInit`](https://reproducible.predictiveecology.org/reference/suppliedElsewhere.html).
+
+### Passing **inputs** by user during `simInit`
+
+A user can pass **objects** into the `simInit` and these will be put into the `simList`
+
+```{r duringSimInit2}
+b <- 1
+tf <- tempfile(fileext = ".rds")
+saveRDS(b, file = tf)
+sim <- SpaDES.core::simInit(inputs = data.frame(object = "b", file = tf))
+# now it is "sim$b"
+```
+
+
+### `.inputObjects`
+
+For every **Input** that is specified in the metadata, the module developer has the option of specifying a default. In R, functions can be given defaults when they are defined like this:
+
+```{r functionDefault, results=FALSE}
+rnormMean5 <- function(n = 1) { # the n = 1 is the default value
+  rnorm(n = n, mean = 5)
+}
+rnormMean5() # can be run without any arguments
+```
+
+This works for only the simplest cases. In the case of a module, objects can be arbitrarily complicated and so this approach doesn't work well. Instead, there is a function that is called every time a module is initialized where a developer can put anything they want to specify defaults. It is generally most useful to use `if (!SpaDES.core::suppliedElsewhere())` i.e., if the object isn't there, then give it a value.
+
+```{r example}
+.inputObjects <- function(sim) {
+
+  if (!suppliedElsewhere(sim$y)) {
+    sim$y <- rnorm(100)
+  }
+
+  return(sim)
+}
+```
+
+
+#### Advanced `.inputObjects` example
+
+In the Biomass_core module (this is an implementation of the LANDIS-II Biomass Succession Extension), there are many **Inputs** as defined in the *metadata*. The module needs each one of these to work. The developers have created a `.inputObjects` function that will fill in these **Inputs** with defaults if the user hasn't supplied them (using `!SpaDES.core::suppliedElsewhere`). 
+
+We will look at a few examples in this module:
+[Biomass_core::.inputObjects](https://github.com/PredictiveEcology/Biomass_core/blob/d5c214b69f35e7a9f57c59ca7d08329b49328e86/Biomass_core.R#L1964).
+
+First, an object called `studyArea`. [The developer tests whether it exists and creates an error if it does not exist](https://github.com/PredictiveEcology/Biomass_core/blob/d5c214b69f35e7a9f57c59ca7d08329b49328e86/Biomass_core.R#L1972).
+
+Second, some [GIS tests that evaluate whether 2 objects are in the same CRS](https://github.com/PredictiveEcology/Biomass_core/blob/d5c214b69f35e7a9f57c59ca7d08329b49328e86/Biomass_core.R#L2052) (i.e., they need to be the same projection, etc. for this module to work)
+
+Third, if an object is missing, [it may make sense to fill in the details with parameters from the Internet](https://github.com/PredictiveEcology/Biomass_core/blob/d5c214b69f35e7a9f57c59ca7d08329b49328e86/Biomass_core.R#L2066).
+
+
+### From another module
+
+We will leave this section for a subsequent chapter when we are working with multiple modules.
+
+## Questions
+
+1. In `.inputObjects`, why don't we just write `if (!is.null(sim$y))`? See [`?SpaDES.core::suppliedElsewhere`](https://reproducible.predictiveecology.org/reference/suppliedElsewhere.html)
+
+- It turns out that other modules may create this object "after" this module is run, and this test will fail.
+
+
+## See also
+
+See also: 
+[`?SpaDES.core::suppliedElsewhere`](https://reproducible.predictiveecology.org/reference/suppliedElsewhere.html)
+[`?SpaDES.core::expectsInputs`](https://reproducible.predictiveecology.org/reference/expectsInputs.html)
+[`?SpaDES.core::simInit`](https://reproducible.predictiveecology.org/reference/simInit.html)

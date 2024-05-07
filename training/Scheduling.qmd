@@ -38,23 +38,24 @@ Require::Require(c("ggplot2", "SpaDES.core"))
 
 # Scheduling events {#sec-schedulingEvents}
 
-Here, we will talk about [scheduling
-events](https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/scheduleEvent)
-in a SpaDES module. See @sec-moduleintro for how to create a simple
-module.
+Here, we will talk about **scheduling events** in a SpaDES module using
+a function in called
+[`SpaDES.core ::scheduleEvents()`](https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/scheduleEvent).
+Please see @sec-moduleintro for how to create a simple module before
+attempting this section.
 
 Scheduling events allows us to control when things happen in a sequence.
 This can be as simple as "this module will just do one thing" to "this
 module will do several things, some of which repeat".
 
-Bellow, we will use a simple example where there is one thing that
+Below, we will use a simple example where there is one thing that
 happens once and one thing that happens several times. In "normal"
-R-speak, we will write a loop.
+R-speak, *we will write a loop*.
 
-Return to the example in @sec-moduleintro. This time, we will predict
-from the linear model, with updated values of the `y`. In this simple
-example, we will pretend that each prediction is "one year into the
-future" and that our `y` will slowly get bigger.
+We return to the example in @sec-moduleintro, but this time, we will add
+a *predict* step from the linear model, with updated values of the `y`.
+In this simple example, we will pretend that each prediction is "one
+year into the future" and that our `y` will slowly get bigger.
 
 ```{r, eval=TRUE}
 # .inputObjects  #####
@@ -79,24 +80,29 @@ predictions <- data.frame(year = rep(years, each = 10), prediction = unlist(pred
 ggplot(predictions, aes(x = year, y = prediction, colour = year)) + geom_point() + geom_smooth()
 ```
 
-In the above code, there are 4 sections. These will each be copied into the SpaDES module below, in their respective sections. We have added 1 new section, called "Prediction".
+In the above code, there are 4 sections. These will each be copied into
+the SpaDES module below, in their respective sections. We have added 1
+new section, called "Prediction".
 
 ## Convert to a module
 
 In the above code, there are 4 sections. These will each be copied into
-the SpaDES module below, in their respective sections. We have added 1 new section, called
-"Prediction".
+the SpaDES module below, in their respective sections. We have added 1
+new section, called "Prediction".
 
 ```{r newodule, eval=FALSE}
 SpaDES.core::newModule(name = "scheduling", path = "tutos/scheduling")
 ```
 
-Open the module file, which will be printed in the console. Scroll down to the `Init` function and copy the `Init`, the
-`.inputObjects`, the `Plot` parts in the code above into the new module, as we did in @sec-moduleintro.
+Open the module file, which will be printed in the console. Scroll down
+to the `Init` function and copy the `Init`, the `.inputObjects`, the
+`Plot` parts in the code above into the new module, as we did in
+@sec-moduleintro.
 
-We must make the same decisions about "local objects" (objects that are OK not to be kept for later) and about "global objects" (those that we want to keep). These *global*
-objects get put into `sim`. Your new module should have these 3 new
-sections/functions:
+We must make the same decisions about "local objects" (objects that are
+OK not to be kept for later) and about "global objects" (those that we
+want to keep). These *global* objects get put into `sim`. Your new
+module should have these 3 new sections/functions:
 
 ```{r,eval=FALSE}
 Init <- function(sim) {
@@ -124,7 +130,8 @@ The new part is the `for` loop. This part takes new covariates (new
 values for `y`), emulating "predicted" covariates, derives a newly
 predicted `x`, and we then keep these *predicted* `x` values each year.
 
-We'll use `scheduleEvent()` bellow to do this iteration. For now, copy the `Prediction` part into a new function:
+We'll use `scheduleEvent()` below to do this iteration. For now, copy
+the `Prediction` part into a new function:
 
 ```{r, eval=FALSE}
 Prediction <- function(sim) {
@@ -139,11 +146,13 @@ Prediction <- function(sim) {
 
 ## Scheduling
 
-Now we need to tell SpaDES when to do and iterate each of the steps or "events". The
-`Init` we do once, at the start. The `plotFn` we do once, but this time
-it is at the "end". The `.inputObjects` always only happens once and "before
-the start" (`Init`) -- it is scheduled automatically so nothing to do here. The last part (i.e., the prediction event) must happen 10
-times, and it must start after `Init` and before the `plotFn`.
+Now we need to tell SpaDES when to do and when to iterate each of the steps or
+"events". The `Init` we do once, at the start. The `plotFn` we do once,
+but this time it is at the "end". The `.inputObjects` always only
+happens once and "before the start" (`Init`) -- it is scheduled
+automatically so nothing to do here. The last part (i.e., the prediction
+event) must happen 10 times, and it must start after `Init` and before
+the `plotFn`.
 
 ### doEvent
 
@@ -151,22 +160,21 @@ There is a special function in a `SpaDES` module called `doEvent()`.
 SpaDES calls this function once, passing the argument `event = "init"`.
 That means that R will enter into this function only once and run only
 the `init` part, unless we specifically tell it to do more, using the
-`scheduleEvent` function. 
+`scheduleEvent` function.
 
-We place this function anywhere we want inside `doEvent`, in
-general. In this example, we will place it in a few places.
+We place this function anywhere we want inside `doEvent`, in general. In
+this example, we will place it in a few places.
 
 #### In the `init` event
 
 We look at the `init` event (code inside `event = "init"`) and we see 2
-`scheduleEvent` calls that come
-with the template. We will use those to learn. In each "event", we often
-see one part that "does something" and another part that "schedules
-something". 
+`scheduleEvent` calls that come with the template. We will use those to
+learn. In each "event", we often see one part that "does something" and
+another part that "schedules something".
 
-In the default template, we "do" the `Init` function and we
-schedule `plot` and `save`. We can delete the `save` event, as we won't
-do that here. But we will replace it with "schedule prediction".
+In the default template, we "do" the `Init` function and we schedule
+`plot` and `save`. We can delete the `save` event, as we won't do that
+here. But we will replace it with "schedule prediction".
 
 See
 [`?start`](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html),
@@ -234,10 +242,9 @@ scheduleEvent(sim, end(sim), "scheduling", "plot")
 
 ### Update module metadata
 
-Like in @sec-moduleintro, we have to update
-the module metadata ... what are the inputs, outputs, parameters.
-`SpaDES` will not error if the metadata are not correct, but it will try
-to point out the problems.
+Like in @sec-moduleintro, we have to update the module metadata ... what
+are the inputs, outputs, parameters. `SpaDES` will not error if the
+metadata are not correct, but it will try to point out the problems.
 
 ## Run
 

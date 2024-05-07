@@ -52,7 +52,7 @@ work with all three of these to make robust and re-useable workflows.
 
 Modules encapsulate events, which encapsulate functions.
 
-### Modules
+## Modules
 
 Modules include the following elements:
 
@@ -87,7 +87,7 @@ optional files:
 
 To make a new module, see: @sec-moduleintro.
 
-### Events
+## Events
 
 Events are named chunks of code that can be scheduled to be run once or
 many times. These are scheduled with `scheduleEvent()`. There are
@@ -96,14 +96,14 @@ events that they contain (see @sec-moduletypes).
 
 To see how to schedule events, see: @sec-schedulingEvents.
 
-### Functions
+## Functions
 
 Essentially, everything in R is or uses functions. Modules define
 functions (`doEvent.*moduleName*`), events call specific functions (we
 some times call these "event functions"), and functions can be defined
 within modules, R packages, or user code.
 
-#### Rerun-tolerant functions
+### Rerun-tolerant functions
 
 In re-usable workflows, functions become particularly effective if they
 are **rerun-tolerant**, see @tip-Rerun (we use *tolerant* in part to
@@ -111,6 +111,8 @@ reflect the fact that the *computer* tolerates it but also the *human*
 because they don't have to wait).
 
 ::: {#tip-Rerun .callout-tip}
+Functions are **rerun-tolerant** if they
+
 1.  are **rerun-efficient**, meaning the first time they run they "do"
     something, but the second and subsequent times, they give the same
     output as the first time, but they skip the "doing" part
@@ -118,9 +120,9 @@ because they don't have to wait).
 -   optionally the efficiency can be by **memory** caching ("memoising")
     and/or more persistent **disk** caching.
 
-2.  and **rerun-robust**, meaning they can be run error-free and with
-    sensible or identical outputs (if inputs are the same) using any
-    person's computer.
+2.  and are **rerun-robust**, meaning they can be run error-free and
+    with sensible or identical outputs (if inputs are the same) using
+    any person's computer.
 :::
 
 To achieve these qualities, functions must use some sort of caching
@@ -139,7 +141,7 @@ Two key functions help achieve these points,
 and
 [`?reproducible::prepInputs`](https://reproducible.predictiveecology.org/reference/prepInputs.html)
 
-##### `Cache()`
+### `Cache()`
 
 `Cache()` is a function that can be wrapped around other functions that
 turns that function into a rerun-tolerant function.
@@ -148,17 +150,21 @@ turns that function into a rerun-tolerant function.
 `terra` objects that are actually pointers to locations on disk rather
 than normal R objects.
 
+The following code will result in `d` being the same vector as `b`, and
+it will be returned quickly.
+
 ```{r Cache, eval=FALSE}
 library(reproducible)
 
 a <- rnorm(1e7)
 b <- rnorm(1e7) |> Cache()
+d <- rnorm(1e7) |> Cache()
 ```
 
 See
 [`?reproducible::Cache`](https://reproducible.predictiveecology.org/reference/Cache.html)
 
-##### `prepInputs()`
+### `prepInputs()`
 
 `prepInputs()` is a workhorse function that helps users point to cloud
 or local datasets:
@@ -176,7 +182,7 @@ ecozoneOfCanada <- reproducible::prepInputs(
 For more information
 [`?reproducible::prepInputs`](https://reproducible.predictiveecology.org/reference/prepInputs.html)
 
-### Module types {#sec-moduletypes}
+## Module types {#sec-moduletypes}
 
 Even though all modules are built with the same structures (events &
 functions), for convenience, we can categorize different types of
@@ -184,7 +190,7 @@ modules in different ways.
 
 For example, modules can be categorized by:
 
-#### Static
+### Static
 
 **Static** modules can be defined as modules that "run once". This means
 that they may have only one event. Or a sequence of events that occur
@@ -196,7 +202,7 @@ with data; - GIS modules that do a number of GIS operations to get data
 into the necessary formats; - Data Visualization modules that specialize
 in creating a set of visuals from a known set of inputs.
 
-#### Dynamic
+### Dynamic
 
 **Dynamic** modules are modules that have *events that recur*. There are
 at least 2 types of such models: those that have **cyclic

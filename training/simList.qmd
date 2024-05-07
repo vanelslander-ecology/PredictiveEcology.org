@@ -1,7 +1,6 @@
 ---
-title       : "simList -- What is in it?"
 author      : "Eliot McIntire"
-date        : "May 2024"
+date        : last-updated
 editor_options:
   chunk_output_type: console
 ---
@@ -11,7 +10,7 @@ knitr::opts_chunk$set(cache = TRUE, echo = TRUE, eval = FALSE)
 Require::Require(c("SpaDES.core"))
 ```
 
-## The `simList` {#sec-simlist}
+# The `simList` - What s it? {#sec-simlist}
 
 In `R`, there is a default environment, called the `.GlobalEnv`. When
 you start typing in R and you create an object, it is "put" in the
