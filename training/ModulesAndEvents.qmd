@@ -54,15 +54,20 @@ Modules encapsulate events, which encapsulate functions.
 
 ### Modules
 
-Modules include:
+Modules include the following elements:
 
--   `defineModule()` function (mandatory; in *moduleName*.R)
--   `doEvent.*moduleName*()` function (mandatory; in *moduleName*.R)
--   other functions (optional)
--   a documentation file (*moduleName*.rmd)
+- a function call to `defineModule` that defines the metadata (mandatory)
+- a function definition for `doEvent.`*moduleName* (mandatory)
 
-These are all contained within a file structure like this, with other
-optional files:
+There are many optional pieces too. The default template produces many of these optional pieces, which means it is "noisy". This also means we can ignore most of it for now.
+
+Optional pieces include:
+
+- other functions (optional)
+- a documentation file (*moduleName*.rmd)
+
+
+These are all contained within a file structure like this, with other optional files:
 
 ```         
 /moduleRepository
@@ -107,8 +112,9 @@ they:
     sensible or identical outputs (if inputs are the same) using any
     person's computer.
 
-Two key functions help achieve these points, `Cache` and `prepInputs`
+To achieve these qualities, functions must use some sort of caching (i.e., evaluate the call and skip the content of the function if the call is deemed identical to a previous version of the call), they must address any computer or operating system issues (such as paths, package dependencies etc.).  
 
+Two key functions help achieve these points, [`?reproducible::Cache`](https://reproducible.predictiveecology.org/reference/Cache.html) and [`?reproducible::prepInputs`](https://reproducible.predictiveecology.org/reference/prepInputs.html)
 ##### `Cache()`
 
 `Cache()` is a function that can be wrapped around other functions that
@@ -133,9 +139,14 @@ See
 `prepInputs()` is a workhorse function that helps users point to cloud
 or local datasets:
 [`?reproducible::prepInputs`](https://reproducible.predictiveecology.org/reference/prepInputs.html).
-It has internal
+
+```{r prepInputs,eval=FALSE}
+ecozoneOfCanada <- reproducible::prepInputs(
+  url = "http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/ecozone_shp.zip")
+```
 
 For more information
+[`?reproducible::prepInputs`](https://reproducible.predictiveecology.org/reference/prepInputs.html)
 
 ### Module types {#sec-moduletypes}
 
