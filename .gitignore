@@ -6,7 +6,13 @@
 /.quarto/
 */.quarto/
 /_site/
-
 */_book/
-
 docs/
+.Rprofile
+modules/*
+cache
+inputs
+outputs
+.Rdata
+.secret
+.secrets
