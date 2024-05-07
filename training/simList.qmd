@@ -10,7 +10,7 @@ knitr::opts_chunk$set(cache = TRUE, echo = TRUE, eval = FALSE)
 Require::Require(c("SpaDES.core"))
 ```
 
-# The `simList` - What s it? {#sec-simlist}
+# The `simList` - What is it? {#sec-simlist}
 
 In `R`, there is a default environment, called the `.GlobalEnv`. When
 you start typing in R and you create an object, it is "put" in the
