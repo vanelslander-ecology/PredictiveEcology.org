@@ -35,7 +35,6 @@ if (!require("Require")) {
   install.packages("Require", repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
 }
 Require::Require(c("ggplot2", "SpaDES.core"))
-
 ```
 
 
@@ -204,30 +203,36 @@ switch(
       
       # schedule future event(s)
       sim <- scheduleEvent(sim, P(sim)$.plotInitialTime, "scheduling", "plot")
-      # sim <- scheduleEvent(sim, P(sim)$.saveInitialTime, "scheduling", "save")
       
       # here we create a new event type == "predictions" and we schedule it for `start(sim)`
-      sim <- scheduleEvent(sim, start(sim), "scheduling", "predictions") 
-    }
+    sim <- scheduleEvent(sim, start(sim), "scheduling", "predictions") 
+  },
+  ...
+)
 ```
 
 ### The new event
 
-We add code to make a new event, called `"predictions"` (it must match
-what we wrote in the `scheduleEvent`). In this event, we "do" the
+We add code to make a new event, called `"predictions"` (the name must match
+what we wrote in the `scheduleEvent` above). In this event, we "do" the
 prediction, then we schedule the next prediction at "time plus 1"
 
 See
 [`?time`](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html).
 
 ```{r predictionEvent,eval=FALSE}
+switch(
+  eventType,
+  init = {...},
 predictions = {
   # do the Prediction
   sim <- Prediction(sim)
   
   # schedule the next Prediction
   sim <- scheduleEvent(sim, time(sim) + 1, "scheduling", "predictions") 
-}
+  },
+  ...
+)
 ```
 
 ### Double check existing events
@@ -243,9 +248,16 @@ scheduleEvent(sim, end(sim), "scheduling", "plot")
 
 ### Update module metadata
 
-Like in @sec-moduleintro, we have to update the module metadata ... what
-are the inputs, outputs, parameters. `SpaDES` will not error if the
+Like in @sec-moduleintro, we have to update the module metadata... what
+the inputs, outputs, parameters *are*. `SpaDES` will not error if the
 metadata are not correct, but it will try to point out the problems.
+
+Here's an example:
+```{r}
+createsOutput(objectName = "predictions", objectClass = "data.frame", 
+              desc = "Table of predictions and years")
+```
+
 
 ## Run
 
@@ -253,31 +265,36 @@ The resulting module can now be run.
 
 ```{r run,eval=FALSE}
 SpaDES.core::simInitAndSpades(modules = "scheduling", paths = list(modulePath = "tutos/scheduling"))
-
 ```
 
 A complete version of this new module can be found at
-[scheduling.R](../../tutos/scheduling/scheduling.R). You can copy this
+[scheduling.R](https://github.com/PredictiveEcology/PredictiveEcology.org/blob/training-book/tutos/scheduling/scheduling/scheduling.R). You can copy this
 over top of the new module that you created here, i.e., keep the same
 folder structure.
 
 ## Questions
 
 1.  how are some ways that `scheduleEvent` is different from a "loop"?
-    -   We can change the "step" length between events.
-    -   We can interweave events, e.g., a fire event then a tree growth
-        event
+
+  -   We can change the "step" length between events.
+  
+  -   We can interweave events, e.g., a fire event then a tree growth
+event
+
 2.  When is a loop better than scheduling?
-    -   Loops are much faster than scheduling.
-    -   But really, avoid loops in R if you can help it
+
+  -   Loops are much faster than scheduling.
+
+  -   But really, avoid loops in R if you can help it
+
 3.  Chances are that the first versions of this module didn't work. How
-    do you fix it?
-    -   [Learn how to debug in R and
-        SpaDES](https://github.com/PredictiveEcology/SpaDES/wiki/Debugging)
+do you fix it?
+
+  -   [Learn how to debug in R and
+SpaDES](https://github.com/PredictiveEcology/SpaDES/wiki/Debugging)
 
 ## See also
 
-See also:
 [`?scheduleEvent`](https://rdrr.io/cran/SpaDES.core/man/scheduleEvent.html),
 [`?P`](https://rdrr.io/cran/SpaDES.core/man/params.html),
 [`?time`](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html),
