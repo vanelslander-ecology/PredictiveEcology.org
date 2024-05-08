@@ -66,7 +66,7 @@ modularity.
 
 ### During `simInit`
 
-A user can pass **objects** into the `simInit` and these will be put
+A user can directly pass **objects** into the `simInit` and these will be put
 into the `simList`
 
 ```{r duringSimInit1}
@@ -104,17 +104,18 @@ rnormMean5() # can be run without any arguments
 ```
 
 This works for only the simplest cases. In the case of a module, objects
-can be arbitrarily complicated and so this approach doesn't work well.
+can be arbitrarily complicated and so this approach will not be suitable.
+
 Instead, there is a function that is called every time a module is
-initialized where a developer can put anything they want to specify
+initialized (i.e. by `simInit()`) where a developer can put anything they want to specify as
 defaults. It is generally most useful to use
-`if (!SpaDES.core::suppliedElsewhere())` i.e., if the object isn't
-there, then give it a value.
+`if (!SpaDES.core::suppliedElsewhere("obj", sim))` i.e., if the object isn't
+in `sim`, then give it a value.
 
 ```{r example}
 .inputObjects <- function(sim) {
 
-  if (!suppliedElsewhere(sim$y)) {
+  if (!suppliedElsewhere("y", sim)) {
     sim$y <- rnorm(100)
   }
 
@@ -125,11 +126,13 @@ there, then give it a value.
 #### Advanced `.inputObjects` example
 
 In the Biomass_core module (this is an implementation of the LANDIS-II
-Biomass Succession Extension), there are many **Inputs** as defined in
-the *metadata*. The module needs each one of these to work. The
+Biomass Succession Extension v3.2), there are many **Inputs** as defined in
+the *metadata*. The module needs each one of these to work. 
+
+The
 developers have created a `.inputObjects` function that will fill in
 these **Inputs** with defaults if the user hasn't supplied them (using
-`!SpaDES.core::suppliedElsewhere`).
+`!SpaDES.core::suppliedElsewhere()`).
 
 We will look at a few examples in this module:
 [Biomass_core::.inputObjects](https://github.com/PredictiveEcology/Biomass_core/blob/d5c214b69f35e7a9f57c59ca7d08329b49328e86/Biomass_core.R#L1964).
@@ -140,30 +143,29 @@ exist](https://github.com/PredictiveEcology/Biomass_core/blob/d5c214b69f35e7a9f5
 
 Second, some [GIS tests that evaluate whether 2 objects are in the same
 CRS](https://github.com/PredictiveEcology/Biomass_core/blob/d5c214b69f35e7a9f57c59ca7d08329b49328e86/Biomass_core.R#L2052)
-(i.e., they need to be the same projection, etc. for this module to
+(i.e., they need to be the same projection, etc., for this module to
 work)
 
 Third, if an object is missing, [it may make sense to fill in the
-details with parameters from the
-Internet](https://github.com/PredictiveEcology/Biomass_core/blob/d5c214b69f35e7a9f57c59ca7d08329b49328e86/Biomass_core.R#L2066).
+details with parameters from the Internet](https://github.com/PredictiveEcology/Biomass_core/blob/d5c214b69f35e7a9f57c59ca7d08329b49328e86/Biomass_core.R#L2066).
 
 ### From another module
 
-We will leave this section for a subsequent chapter when we are working
+We will leave this section for the @sec-manymodules chapter, where we are work
 with multiple modules.
 
 ## Questions
 
 1.  In `.inputObjects`, why don't we just write `if (!is.null(sim$y))`?
     See
-    [`?SpaDES.core::suppliedElsewhere`](https://reproducible.predictiveecology.org/reference/suppliedElsewhere.html)
+    [`?SpaDES.core::suppliedElsewhere`](https://rdrr.io/cran/SpaDES.core/man/suppliedElsewhere.html)
 
--   It turns out that other modules may create this object "after" this
-    module is run, and this test will fail.
+    -   It turns out that other modules may create this object "after" this module is run, and this test will fail.
 
 ## See also
 
-See also:
-[`?SpaDES.core::suppliedElsewhere`](https://reproducible.predictiveecology.org/reference/suppliedElsewhere.html)
-[`?SpaDES.core::expectsInputs`](https://reproducible.predictiveecology.org/reference/expectsInputs.html)
-[`?SpaDES.core::simInit`](https://reproducible.predictiveecology.org/reference/simInit.html)
+[`?SpaDES.core::suppliedElsewhere`](https://rdrr.io/cran/SpaDES.core/man/suppliedElsewhere.html)
+
+[`?SpaDES.core::expectsInputs`](https://rdrr.io/cran/SpaDES.core/man/expectsInputs.html)
+
+[`?SpaDES.core::simInit`](https://rdrr.io/cran/SpaDES.core/man/simInit.html)
