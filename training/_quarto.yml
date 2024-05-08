@@ -52,6 +52,10 @@ book:
       - Scheduling.qmd
       - simList.qmd
       - ModuleInputs.qmd
+    - part: SpaDESworkflows.qmd
+      chapters:
+      - multipleModules.qmd
+      - setupProject.qmd
     - part: realexamples.qmd
       chapters:
       - castorExample.qmd
