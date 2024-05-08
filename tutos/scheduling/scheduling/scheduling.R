@@ -60,7 +60,6 @@ doEvent.scheduling = function(sim, eventTime, eventType) {
 
       # schedule future event(s)
       sim <- scheduleEvent(sim, end(sim), "scheduling", "plot")
-      # sim <- scheduleEvent(sim, P(sim)$.saveInitialTime, "scheduling", "save")
 
       # here we create a new event type == "predictions" and we schedule it for `start(sim)`
       sim <- scheduleEvent(sim, start(sim), "scheduling", "predictions")
