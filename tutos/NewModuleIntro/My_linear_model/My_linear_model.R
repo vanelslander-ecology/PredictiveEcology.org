@@ -38,11 +38,10 @@ defineModule(sim, list(
                     "Should caching of events or module be used?")
   ),
   inputObjects = bindrows(
-    #expectsInput("objectName", "objectClass", "input object description", sourceURL, ...),
-    expectsInput(objectName = "y", objectClass = "numeric", desc = "The inputs for the linear model", sourceURL = NA)
+    expectsInput(objectName = "x", objectClass = "numeric", desc = "The inputs for the linear model", sourceURL = NA)
   ),
   outputObjects = bindrows(
-    createsOutput(objectName = "x", objectClass = "numeric", desc = "The randomly created varible that is used as a response variable"),
+    createsOutput(objectName = "y", objectClass = "numeric", desc = "The randomly created varible that is used as a response variable"),
     createsOutput(objectName = "out", objectClass = "lm", desc = "A linear model object from the equation (x ~ y)")
   )
 ))
@@ -130,8 +129,8 @@ doEvent.My_linear_model = function(sim, eventTime, eventType) {
 ### template initialization
 Init <- function(sim) {
   # # ! ----- EDIT BELOW ----- ! #
-  sim$x <- sim$y + rnorm(length(sim$y))
-  sim$out <- lm(sim$x ~ sim$y)
+  sim$y <- sim$x + rnorm(length(sim$x))
+  sim$out <- lm(sim$y ~ sim$x)
   # ! ----- STOP EDITING ----- ! #
 
   return(invisible(sim))
@@ -177,8 +176,8 @@ Event2 <- function(sim) {
 }
 
 .inputObjects <- function(sim) {
-  if (!suppliedElsewhere("y", sim))
-    sim$y <- rnorm(100, mean = 20, sd = 2)
+  if (!suppliedElsewhere("x", sim))
+    sim$x <- rnorm(10, mean = 20, sd = 2)
   return(invisible(sim))
 }
 
