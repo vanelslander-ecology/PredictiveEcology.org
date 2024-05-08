@@ -1,12 +1,11 @@
 # Preface {.unnumbered}
 
-***This book is a work in progress. Please visit this again as chapters are added and modified.***
-
-
+***This book is a work in progress. Please visit this again as chapters
+are being added and modified.***
 
 # Acknowledgements {.unnumbered}
 
-We thank the various contributors, SpaDES developers and SpaDES users that continue
-to make the open-source ecosystem of SpaDES modules grow.
+We thank the various contributors, SpaDES developers and SpaDES users
+that continue to make the open-source ecosystem of SpaDES modules grow.
 
 We also thank the Quarto team for their great work.
