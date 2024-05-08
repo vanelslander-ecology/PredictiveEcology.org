@@ -96,7 +96,7 @@ For every **Input** that is specified in the metadata, the module
 developer has the option of specifying a default. In R, functions can be
 given defaults when they are defined like this:
 
-```{r functionDefault, results=FALSE}
+```{r functionDefault}
 rnormMean5 <- function(n = 1) { # the n = 1 is the default value
   rnorm(n = n, mean = 5)
 }
