@@ -2,326 +2,330 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://predictiveecology.org/Packages.html</loc>
-    <lastmod>2024-05-08T14:19:43.192Z</lastmod>
+    <lastmod>2024-05-08T15:53:27.307Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/Tutorials.html</loc>
-    <lastmod>2024-05-08T14:19:42.568Z</lastmod>
+    <lastmod>2024-05-08T15:53:26.643Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/Training.html</loc>
-    <lastmod>2024-05-08T14:19:41.996Z</lastmod>
+    <lastmod>2024-05-08T15:53:26.047Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/index.html</loc>
-    <lastmod>2024-05-08T14:19:41.376Z</lastmod>
+    <lastmod>2024-05-08T15:53:25.403Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/bios/current/ana.html</loc>
-    <lastmod>2024-05-08T14:19:38.132Z</lastmod>
+    <lastmod>2024-05-08T15:53:22.059Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/bios/current/genevieve.html</loc>
-    <lastmod>2024-05-08T14:19:37.552Z</lastmod>
+    <lastmod>2024-05-08T15:53:21.491Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/bios/sarah.html</loc>
-    <lastmod>2024-05-08T14:19:36.996Z</lastmod>
+    <lastmod>2024-05-08T15:53:20.919Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/bios/sebastien.html</loc>
-    <lastmod>2024-05-08T14:19:36.448Z</lastmod>
+    <lastmod>2024-05-08T15:53:20.355Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/bios/alana.html</loc>
-    <lastmod>2024-05-08T14:19:35.880Z</lastmod>
+    <lastmod>2024-05-08T15:53:19.811Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/bios/mario.html</loc>
-    <lastmod>2024-05-08T14:19:35.328Z</lastmod>
+    <lastmod>2024-05-08T15:53:19.247Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/bios/community/celine.html</loc>
-    <lastmod>2024-05-08T14:19:34.784Z</lastmod>
+    <lastmod>2024-05-08T15:53:18.659Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/bios/community/alex.html</loc>
-    <lastmod>2024-05-08T14:19:34.220Z</lastmod>
+    <lastmod>2024-05-08T15:53:18.095Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/bios/community/steve.html</loc>
-    <lastmod>2024-05-08T14:19:33.656Z</lastmod>
+    <lastmod>2024-05-08T15:53:17.527Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/bios/community/frances.html</loc>
-    <lastmod>2024-05-08T14:19:33.068Z</lastmod>
+    <lastmod>2024-05-08T15:53:16.939Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/posts/2015-05-12-Is-R-fast-enough-04.html</loc>
-    <lastmod>2024-05-08T14:19:32.476Z</lastmod>
+    <lastmod>2024-05-08T15:53:16.359Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/posts/2015-12-08-R-Web-App-Development-Deployment-Distribution.html</loc>
-    <lastmod>2024-05-08T14:19:31.604Z</lastmod>
+    <lastmod>2024-05-08T15:53:15.511Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/posts/2021-05-25-missing-cran-packages.html</loc>
-    <lastmod>2024-05-08T14:19:30.684Z</lastmod>
+    <lastmod>2024-05-08T15:53:14.583Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/posts/2017-09-05-SpaDES-v2.0.0-now-on-CRAN.html</loc>
-    <lastmod>2024-05-08T14:19:29.704Z</lastmod>
+    <lastmod>2024-05-08T15:53:13.571Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/posts/2024-04-17-SpaDES Workshop announcement.html</loc>
-    <lastmod>2024-05-08T14:19:28.848Z</lastmod>
+    <lastmod>2024-05-08T15:53:12.723Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/posts/2015-04-23-Is-R-fast-enough-01.html</loc>
-    <lastmod>2024-05-08T14:19:28.096Z</lastmod>
+    <lastmod>2024-05-08T15:53:11.947Z</lastmod>
   </url>
   <url>
-    <loc>https://predictiveecology.org/posts/2015-09-04-Is-R-fast-enough-04.html</loc>
-    <lastmod>2024-05-08T14:19:27.092Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/posts/2020-08-20-PostDocNorthernEcosystemModeling.html</loc>
-    <lastmod>2024-05-08T14:19:26.232Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/posts/2018-02-06-NetLogoR-now-on-CRAN.html</loc>
-    <lastmod>2024-05-08T14:19:25.516Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/posts/2015-09-01-fpCompare-0-2-1.html</loc>
-    <lastmod>2024-05-08T14:19:24.492Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/posts/2016-04-18-SpaDES-v1.1.3-now-on-CRAN.html</loc>
-    <lastmod>2024-05-08T14:19:23.772Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/posts/2016-11-17-Postdoc-Opportunity-Mixed-Severity-Fire-Rocky-Mountains.html</loc>
-    <lastmod>2024-05-08T14:19:22.936Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/posts/2015-05-06-Is-R-fast-enough-03.html</loc>
-    <lastmod>2024-05-08T14:19:22.096Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/posts/2016-03-09-SpaDES_as_a_playground.html</loc>
-    <lastmod>2024-05-08T14:19:21.112Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/posts/2016-10-07-SpaDES-v1.3.1-now-on-CRAN.html</loc>
-    <lastmod>2024-05-08T14:19:20.488Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/posts/2018-06-14-managing-large-spades-projects.html</loc>
-    <lastmod>2024-05-08T14:19:19.428Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/posts/2018-08-16-working-with-modules-and-projects.html</loc>
-    <lastmod>2024-05-08T14:19:18.624Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/posts/2015-04-22-new-site.html</loc>
-    <lastmod>2024-05-08T14:19:17.840Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/posts/2015-04-24-installing-R-spatial-packages.html</loc>
-    <lastmod>2024-05-08T14:19:16.988Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/posts/2022-06-14-post-doc-announcement.html</loc>
-    <lastmod>2024-05-08T14:19:16.048Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/posts/2016-03-09-Translating_the_incompatible.html</loc>
-    <lastmod>2024-05-08T14:19:15.288Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/posts/2016-07-04-How-to-start-using-a-HPC-cluster.html</loc>
-    <lastmod>2024-05-08T14:19:14.568Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/benchmarking.html</loc>
-    <lastmod>2024-05-08T14:19:13.492Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/Workshops.html</loc>
-    <lastmod>2024-05-08T14:19:12.236Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/Projects.html</loc>
-    <lastmod>2024-05-08T14:19:11.488Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/Modules.html</loc>
-    <lastmod>2024-05-08T14:19:10.824Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/Manuals.html</loc>
-    <lastmod>2024-05-08T14:19:10.276Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/publications.html</loc>
-    <lastmod>2024-05-08T14:19:09.384Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/News.html</loc>
-    <lastmod>2024-05-08T14:19:10.556Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/PERFICT.html</loc>
-    <lastmod>2024-05-08T14:19:11.092Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/about.html</loc>
-    <lastmod>2024-05-08T14:19:13.204Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/posts/2021-07-14-post-doc-announcement.html</loc>
-    <lastmod>2024-05-08T14:19:13.896Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/posts/2016-04-20-New-Phd-Position-Caribou-Landscapes-NWT.html</loc>
-    <lastmod>2024-05-08T14:19:14.892Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/posts/2023-09-08-phd-announcement.html</loc>
-    <lastmod>2024-05-08T14:19:15.640Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/posts/2016-11-17-Putting_science_in_the_hands_of_policy_makers.html</loc>
-    <lastmod>2024-05-08T14:19:16.520Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/posts/2015-04-28-Is-R-fast-enough-02.html</loc>
-    <lastmod>2024-05-08T14:19:17.536Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/posts/2016-04-20-SpaDES-v1.1.4-now-on-CRAN.html</loc>
-    <lastmod>2024-05-08T14:19:18.288Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/posts/2016-02-16-SpaDES-v1.1.1-now-on-CRAN.html</loc>
-    <lastmod>2024-05-08T14:19:19.064Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/posts/2015-08-10-Introducing-SpaDES.html</loc>
-    <lastmod>2024-05-08T14:19:19.984Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/posts/2016-03-09-Removing-spaghetti-from-ecological-models.html</loc>
-    <lastmod>2024-05-08T14:19:20.824Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/posts/2016-04-13-SpaDES-v1.1.2-now-on-CRAN.html</loc>
-    <lastmod>2024-05-08T14:19:21.576Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/posts/2020-08-17-do.call-and-alist.html</loc>
-    <lastmod>2024-05-08T14:19:22.588Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/posts/2016-01-08-Citation-List-On-GitHub.html</loc>
-    <lastmod>2024-05-08T14:19:23.284Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/posts/2016-03-09-SpaDES_as_a_musical_conductor.html</loc>
-    <lastmod>2024-05-08T14:19:24.060Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/posts/2016-01-26-SpaDES-v1.1.0-now-on-CRAN.html</loc>
-    <lastmod>2024-05-08T14:19:24.988Z</lastmod>
-  </url>
-  <url>
-    <loc>https://predictiveecology.org/posts/2016-08-09-SpaDES-workshops.html</loc>
-    <lastmod>2024-05-08T14:19:25.836Z</lastmod>
+    <loc>https://predictiveecology.org/posts/2024-05-07-SpaDES Workshop Confirmation.html</loc>
+    <lastmod>2024-05-08T15:53:10.911Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/posts/2016-11-07-conditionally-end-SpaDES-simulation.html</loc>
-    <lastmod>2024-05-08T14:19:26.540Z</lastmod>
+    <lastmod>2024-05-08T15:53:10.023Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2016-08-09-SpaDES-workshops.html</loc>
+    <lastmod>2024-05-08T15:53:09.315Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2016-01-26-SpaDES-v1.1.0-now-on-CRAN.html</loc>
+    <lastmod>2024-05-08T15:53:08.511Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2016-03-09-SpaDES_as_a_musical_conductor.html</loc>
+    <lastmod>2024-05-08T15:53:07.531Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2016-01-08-Citation-List-On-GitHub.html</loc>
+    <lastmod>2024-05-08T15:53:06.723Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2020-08-17-do.call-and-alist.html</loc>
+    <lastmod>2024-05-08T15:53:06.071Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2016-04-13-SpaDES-v1.1.2-now-on-CRAN.html</loc>
+    <lastmod>2024-05-08T15:53:05.023Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2016-03-09-Removing-spaghetti-from-ecological-models.html</loc>
+    <lastmod>2024-05-08T15:53:04.239Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2015-08-10-Introducing-SpaDES.html</loc>
+    <lastmod>2024-05-08T15:53:03.403Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2016-02-16-SpaDES-v1.1.1-now-on-CRAN.html</loc>
+    <lastmod>2024-05-08T15:53:02.459Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2016-04-20-SpaDES-v1.1.4-now-on-CRAN.html</loc>
+    <lastmod>2024-05-08T15:53:01.687Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2015-04-28-Is-R-fast-enough-02.html</loc>
+    <lastmod>2024-05-08T15:53:00.919Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2016-11-17-Putting_science_in_the_hands_of_policy_makers.html</loc>
+    <lastmod>2024-05-08T15:52:59.895Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2023-09-08-phd-announcement.html</loc>
+    <lastmod>2024-05-08T15:52:59.003Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2016-04-20-New-Phd-Position-Caribou-Landscapes-NWT.html</loc>
+    <lastmod>2024-05-08T15:52:58.239Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2021-07-14-post-doc-announcement.html</loc>
+    <lastmod>2024-05-08T15:52:57.183Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/about.html</loc>
+    <lastmod>2024-05-08T15:52:56.483Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/PERFICT.html</loc>
+    <lastmod>2024-05-08T15:52:54.271Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/News.html</loc>
+    <lastmod>2024-05-08T15:52:53.679Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/publications.html</loc>
+    <lastmod>2024-05-08T15:52:52.463Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/Manuals.html</loc>
+    <lastmod>2024-05-08T15:52:53.391Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/Modules.html</loc>
+    <lastmod>2024-05-08T15:52:53.951Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/Projects.html</loc>
+    <lastmod>2024-05-08T15:52:54.691Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/Workshops.html</loc>
+    <lastmod>2024-05-08T15:52:55.507Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/benchmarking.html</loc>
+    <lastmod>2024-05-08T15:52:56.783Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2016-07-04-How-to-start-using-a-HPC-cluster.html</loc>
+    <lastmod>2024-05-08T15:52:57.895Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2016-03-09-Translating_the_incompatible.html</loc>
+    <lastmod>2024-05-08T15:52:58.647Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2022-06-14-post-doc-announcement.html</loc>
+    <lastmod>2024-05-08T15:52:59.427Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2015-04-24-installing-R-spatial-packages.html</loc>
+    <lastmod>2024-05-08T15:53:00.379Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2015-04-22-new-site.html</loc>
+    <lastmod>2024-05-08T15:53:01.227Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2018-08-16-working-with-modules-and-projects.html</loc>
+    <lastmod>2024-05-08T15:53:02.023Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2018-06-14-managing-large-spades-projects.html</loc>
+    <lastmod>2024-05-08T15:53:02.839Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2016-10-07-SpaDES-v1.3.1-now-on-CRAN.html</loc>
+    <lastmod>2024-05-08T15:53:03.887Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2016-03-09-SpaDES_as_a_playground.html</loc>
+    <lastmod>2024-05-08T15:53:04.539Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2015-05-06-Is-R-fast-enough-03.html</loc>
+    <lastmod>2024-05-08T15:53:05.543Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2016-11-17-Postdoc-Opportunity-Mixed-Severity-Fire-Rocky-Mountains.html</loc>
+    <lastmod>2024-05-08T15:53:06.403Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2016-04-18-SpaDES-v1.1.3-now-on-CRAN.html</loc>
+    <lastmod>2024-05-08T15:53:07.207Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2015-09-01-fpCompare-0-2-1.html</loc>
+    <lastmod>2024-05-08T15:53:07.999Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2018-02-06-NetLogoR-now-on-CRAN.html</loc>
+    <lastmod>2024-05-08T15:53:09.011Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2020-08-20-PostDocNorthernEcosystemModeling.html</loc>
+    <lastmod>2024-05-08T15:53:09.731Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/posts/2015-09-04-Is-R-fast-enough-04.html</loc>
+    <lastmod>2024-05-08T15:53:10.599Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/posts/2016-06-24-SpaDES-v1.2.0-now-on-CRAN.html</loc>
-    <lastmod>2024-05-08T14:19:27.572Z</lastmod>
+    <lastmod>2024-05-08T15:53:11.387Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/posts/2016-10-21-Rmarkdown-science-workflow.html</loc>
-    <lastmod>2024-05-08T14:19:28.548Z</lastmod>
+    <lastmod>2024-05-08T15:53:12.419Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/posts/2016-10-15-SpaDES-workshop.html</loc>
-    <lastmod>2024-05-08T14:19:29.144Z</lastmod>
+    <lastmod>2024-05-08T15:53:13.019Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/posts/2018-01-31-SpaDES-v2.0.1-now-on-CRAN.html</loc>
-    <lastmod>2024-05-08T14:19:30.236Z</lastmod>
+    <lastmod>2024-05-08T15:53:14.103Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/posts/2015-05-16-fpCompare.html</loc>
-    <lastmod>2024-05-08T14:19:31.156Z</lastmod>
+    <lastmod>2024-05-08T15:53:15.063Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/posts/2016-02-09-Summary-Statistics-SpaDES-Module.html</loc>
-    <lastmod>2024-05-08T14:19:31.908Z</lastmod>
+    <lastmod>2024-05-08T15:53:15.815Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/bios/community/tati.html</loc>
-    <lastmod>2024-05-08T14:19:32.772Z</lastmod>
+    <lastmod>2024-05-08T15:53:16.647Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/bios/community/ceres.html</loc>
-    <lastmod>2024-05-08T14:19:33.384Z</lastmod>
+    <lastmod>2024-05-08T15:53:17.251Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/bios/community/aaaeliot.html</loc>
-    <lastmod>2024-05-08T14:19:33.948Z</lastmod>
+    <lastmod>2024-05-08T15:53:17.823Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/bios/community/barry.html</loc>
-    <lastmod>2024-05-08T14:19:34.492Z</lastmod>
+    <lastmod>2024-05-08T15:53:18.367Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/bios/community/julie.html</loc>
-    <lastmod>2024-05-08T14:19:35.056Z</lastmod>
+    <lastmod>2024-05-08T15:53:18.947Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/bios/yong.html</loc>
-    <lastmod>2024-05-08T14:19:35.608Z</lastmod>
+    <lastmod>2024-05-08T15:53:19.527Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/bios/jean.html</loc>
-    <lastmod>2024-05-08T14:19:36.152Z</lastmod>
+    <lastmod>2024-05-08T15:53:20.083Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/bios/josh.html</loc>
-    <lastmod>2024-05-08T14:19:36.716Z</lastmod>
+    <lastmod>2024-05-08T15:53:20.647Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/bios/ian.html</loc>
-    <lastmod>2024-05-08T14:19:37.268Z</lastmod>
+    <lastmod>2024-05-08T15:53:21.207Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/bios/current/isolde.html</loc>
-    <lastmod>2024-05-08T14:19:37.860Z</lastmod>
+    <lastmod>2024-05-08T15:53:21.767Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/Apps.html</loc>
-    <lastmod>2024-05-08T14:19:38.408Z</lastmod>
+    <lastmod>2024-05-08T15:53:22.327Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/SpaDES.html</loc>
-    <lastmod>2024-05-08T14:19:41.676Z</lastmod>
+    <lastmod>2024-05-08T15:53:25.727Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/workshops/June-2024-SpaDES-workshop.html</loc>
-    <lastmod>2024-05-08T14:19:42.288Z</lastmod>
+    <lastmod>2024-05-08T15:53:26.363Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/presentations.html</loc>
-    <lastmod>2024-05-08T14:19:42.840Z</lastmod>
+    <lastmod>2024-05-08T15:53:26.939Z</lastmod>
   </url>
 </urlset>
