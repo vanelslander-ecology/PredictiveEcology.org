@@ -42,9 +42,9 @@ We have seen functions called `.inputObjects` and
 We will show these used within a SpaDES module.
 
 ::: {#tip-Inputs .callout-tip}
-The **inputs** of a SpaDES module can be any R object and should be
+The **inputs** of a SpaDES module can be any R object, and should be
 specified in the `inputObjects` section of the metadata if it is needed
-for the module to run. These should be used in the `sim` using e.g.,
+for the module to run. All inputs should be used in the `sim` using e.g.,
 `sim$` somewhere in the module.
 :::
 
@@ -55,6 +55,7 @@ There are several ways to get objects into the `simList`:
 -   User passes during `simInit`:
 
     -   using the `objects` argument (if it is an object);
+    
     -   using the `inputs` argument (if it is from disk);
 
 -   Developer creates defaults and specifies them in `.inputObjects`;
@@ -74,13 +75,7 @@ a <- 1
 sim <- SpaDES.core::simInit(objects = list(a = a))
 ```
 
-See
-[`?SpaDES.core::simInit`](https://reproducible.predictiveecology.org/reference/suppliedElsewhere.html).
-
-### Passing **inputs** by user during `simInit`
-
-A user can pass **objects** into the `simInit` and these will be put
-into the `simList`
+or do pass them via an `.rds` file
 
 ```{r duringSimInit2}
 b <- 1
@@ -89,6 +84,9 @@ saveRDS(b, file = tf)
 sim <- SpaDES.core::simInit(inputs = data.frame(object = "b", file = tf))
 # now it is "sim$b"
 ```
+
+See
+[`?SpaDES.core::simInit`](https://rdrr.io/cran/SpaDES.core/man/suppliedElsewhere.html).
 
 ### `.inputObjects`
 
