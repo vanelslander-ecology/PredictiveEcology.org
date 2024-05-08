@@ -1,0 +1,163 @@
+---
+author: 
+  - "Ceres Barros"
+  - "Eliot McIntire"
+date: last-modified
+editor_options:
+  chunk_output_type: console
+bibliography: references/references.bib
+---
+
+```{r setup}
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+# Best practices for $R^3T$ workflows
+
+Developing repeatable, reproducible, reusable and transparent ($R^3T$)
+workflows in R (and probably across many other languages) requires not
+only automating workflow steps/processes, which we can achieve with
+SpaDES, but also to be attentive to the way we code and setup the actual
+(SpaDES) workflow.
+
+Here are some general and workflow best practices that we recommend to
+SpaDES users and any R programmers in general.
+
+## General best practices
+
+-   Script, script, script -- this means script *everything* you do,
+    including package installation;
+
+-   "DOComment" your code -- use comments that describe the intention of
+    the code, not necessarily a code translation into human language:
+
+    ::: {.callout-tip collapse = "false"} Not a very useful comment (we
+    can check ?lm):
+
+    ```{r}
+    ## lm fits a linear model
+    lm(biomass ~ height)
+    ```
+
+    A more useful comment (we can check ?lm):
+
+    ```{r}
+    ## model linear relationship between biomass and height
+    lm(biomass ~ height)
+    ```
+
+    :::
+
+-   Minimize the number of software/languages used -- the more jumps
+    between languages/software the less robust and reproducible the
+    workflow is. Remember: other users will need to install the same
+    software and be able to the same jumps/operations that you did
+    without you looking over their shoulder.
+
+-   Modularise and "functionise" -- avoid loooooong scripts, which are
+    harder to read, learn and debug.
+
+    -   SpaDES helps the modularisation part a great deal but it is
+        still up to the developer to create functions and to decide what
+        workflow components can/should be broken into separate modules
+        or events;
+
+    -   When using embedded module and event caching, think about what
+        workflow steps can be cached to speed up development and re-runs
+        and consider turning these into separate modules or events;
+
+    -   Consider "packaging" your functions so they can be used across
+        projects and SpaDES modules.
+
+    [!Functions and modules as key tools for $R^3T$, but also for
+    building integrated and continuous workflows; McIntire et al.
+    (2022)](https://onlinelibrary.wiley.com/cms/asset/680b22bc-1a97-4ab6-8f90-6fd1557e9e27/ele13994%20-fig-0001-m.jpg)
+
+-   Centralize workflow in a single script -- this is quite intuitive
+    when using SpaDES, as usually there is a "controller" script that
+    sets up and runs the workflow.
+
+-   Use project-oriented and self-contained workflows -- pick a
+    structure that is self-explanatory and make sure that the project
+    can be "moved" between users/machines without changing the code.
+
+    -   Don't use absolute paths -- use relative paths (relative to
+        project directory) -- RStudio Projects and SpaDES.project do
+        this automatically.
+
+    -   You can even install your R packages into project-level
+        libraries, to allow for different package versions between
+        projects in the same machine
+
+-   Version control -- great for collaboration, great for tracking
+    changes, great to recover old versions of a project/code
+
+-   Test (!) -- test your code and your workflow if you want them to
+    endure and persist through time and users
+
+    -   Use a combination of *assertions*, *unit tests* and *integration
+        tests*[^1]
+
+## Best practices for SpaDES workflows
+
+-   Don't make objects in `.GlobalEnv` -- instead, add default object
+    values to your module (e.g. via `.inputObjects`), or save them into
+    files that are loaded by `setupProject` or `simInit`. See
+
+    1.  
+
+    -   Why not? There are many reasons why things can get messed up
+        with modelling in R... e.g., package dependency issues
+        (especially version numbers that collide during development
+        stages), internet availability, modules finding objects in the
+        `.GlobalEnv` when they shouldn't, etc...
+        `SpaDES.project::setupProject` and `simInit` deal with these
+        issues by loading and using namespaces/packages and objects
+        directly into a separate environment (the `simList`).
+
+-   Don't install packages "manually" and "separately" -- script package
+    installation in a reproducible way, i.e. that includes reference to
+    package versions. Even better, let `setupProject` deal with package
+    installation
+
+    -   Why not? When you have many modules, each with a list of
+        packages it needs it will be hard to figure out what packages
+        need to be installed or updated. `setupProject` was designed to
+        deal with this issue using the `Require` package.
+
+-   Don't pre-load packages -- let `simInit` do it when the simulation
+    is being initialized and only *after* it has asserted that packages
+    are available and in the correct versions.
+
+    -   Why not? There are many reasons why things can get messed up
+        with modelling in R... e.g., package dependency issues
+        (especially version numbers that collide during development
+        stages), internet availability. Pre-loading a package prevents
+        it from being updated, which can make `setupProject` (and
+        `simInit`) fail if they attempt to update a package to respect
+        module requirements.
+
+## See also
+
+-   [EFI's reproducible forecasting
+    workflows](https://ecoforecast.org/reproducible-forecasting-workflows/)
+
+-   [The Practice of Reproducible
+    Research](http://www.practicereproducibleresearch.org/)
+
+-   [Advanced R - Style guide; by Hadley
+    Wickham](http://adv-r.had.co.nz/Style.html)
+
+-   [Types of testing; by
+    Codecov](https://about.codecov.io/blog/types-of-testing-unit-vs-integration/)
+
+-   Paper by Sarma *et al.* @sarma2016 on code testing
+
+[^1]: *Assertions* and *unit tests* are smaller and generally test
+    specific operations within a workflow (e.g.
+    `if (1 + x != 2) stop("there is an error")`) or things like object
+    integrity (e.g.
+    `if (!is(x, "data.frame") stop("there is an error")`). *Integration
+    tests* are larger in the sense that they test many components of a
+    workflow and whether they work well together (they can also test an
+    entire workflow)

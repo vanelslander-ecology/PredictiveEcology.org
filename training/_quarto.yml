@@ -59,6 +59,7 @@ book:
     - part: realexamples.qmd
       chapters:
       - castorExample.qmd
+    - bestPractices.qmd
     - references.qmd
 
 bibliography: references/references.bib
