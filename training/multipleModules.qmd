@@ -1,6 +1,6 @@
 # Multiple Modules {@sec-manymodules}
 
-Under construction. 
+Under construction.
 
 ```{=html}
 <!--

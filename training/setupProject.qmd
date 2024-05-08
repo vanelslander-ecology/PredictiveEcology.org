@@ -37,9 +37,9 @@ if (!require("Require")) {
 
 ```
 
-[`SpaDES.project::setupProject()`](https://spades-project.predictiveecology.org/reference/setupProject.html) deals with a number of challenges that
-crop up with working with multiple modules created by potentially many
-people.
+[`SpaDES.project::setupProject()`](https://spades-project.predictiveecology.org/reference/setupProject.html)
+deals with a number of challenges that crop up with working with
+multiple modules created by potentially many people.
 
 We will demonstrate its use with an example created by [Tati
 Micheletti](https://github.com/tati-micheletti/Micheletti_SpaDES/blob/main/demo.R)
@@ -68,8 +68,9 @@ getOrUpdatePkg("SpaDES.project", "0.0.8.9049")
 order, so that the chances of package conflicts and user errors are
 minimized.
 
-Note how it downloads the listed modules directly from their GitHub repositories 
-(e.g. [tati-micheletti/speciesAbundance](https://github.com/tati-micheletti/speciesAbundance))
+Note how it downloads the listed modules directly from their GitHub
+repositories (e.g.
+[tati-micheletti/speciesAbundance](https://github.com/tati-micheletti/speciesAbundance))
 
 ```{r setupProject2}
 ##################### PART II: Download the modules and install the needed packages
@@ -89,9 +90,9 @@ Setup <- SpaDES.project::setupProject(
 )
 ```
 
-The output of `setupProject` is a list of argument values that can be passed to
-`simInit` or `simInitAndSpaDES`. The latter will not only initialise the workflow
-but also run it.
+The output of `setupProject` is a list of argument values that can be
+passed to `simInit` or `simInitAndSpaDES`. The latter will not only
+initialise the workflow but also run it.
 
 ```{r runSimInit}
 ##################### PART III: Run SpaDES
@@ -104,10 +105,8 @@ results <- do.call(SpaDES.core::simInitAndSpades, Setup)
 SpaDES.core::completed(results)
 ```
 
-
 ## See also
 
 [`?SpaDES.core::simInit`](https://rdrr.io/cran/SpaDES.core/man/simInit.html)
 
 [`?SpaDES.core::simInitAndSpaDES`](https://rdrr.io/cran/SpaDES.core/man/simInitAndSpaDES.html)
-
