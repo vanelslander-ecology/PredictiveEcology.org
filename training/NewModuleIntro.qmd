@@ -48,7 +48,7 @@ We will start by thinking about metadata: *What is metadata?*
 We can examine the following code chunk. First, we ask: what are the
 **inputs** and the **outputs**?
 
-```{r,eval=FALSE}
+```{r}
 # create some data
 y <- x + rnorm(10)
 # fit a linear model
@@ -70,7 +70,7 @@ that the function `rnorm` is in the `stats` package. Fortunately for us,
 this is a default ("base") package in R and it is always pre-loaded. So,
 nothing to do here.
 
-```{r, eval=FALSE}
+```{r}
 > rnorm
 function (n, mean = 0, sd = 1) 
 ...
@@ -89,7 +89,7 @@ We will next put them into the correct places in the new SpaDES module.
 
 We use the `SpaDES.core` function `newModule()` to make a new module.
 
-```{r, eval=FALSE}
+```{r}
 SpaDES.core::newModule(name = "My_linear_model", path = "tutos/NewModuleIntro")
 ```
 
@@ -103,7 +103,7 @@ that it creates.
 Scroll down to `inputObjects` and `expectsInputs()`. We will declare `x`
 as an "input" by putting it there.
 
-```{r, eval=FALSE}
+```{r}
 inputObjects = bindrows(
     expectsInput(objectName = "y", objectClass = "numeric", 
                  desc = "The inputs for the linear model", sourceURL = NA)
@@ -115,7 +115,7 @@ declare `y` and `out` as "outputs" by putting them there. Don't forget
 the **comma at the end of each `createsOutput()`** as each is an
 argument to `bindrows`.
 
-```{r, eval=FALSE}
+```{r}
 outputObjects = bindrows(
     createsOutput(objectName = "x", objectClass = "numeric", 
                   desc = "The randomly created varible that is used as a response variable"),
@@ -129,7 +129,7 @@ outputObjects = bindrows(
 First, we move the first two lines of the previous code into a function.
 We will choose the `Init` function. We will discuss why bellow.
 
-```{r,eval=FALSE}
+```{r}
 Init <- function(sim) {
   y <- x + rnorm(10)
   out <- lm(y ~ x)
@@ -150,7 +150,7 @@ normal R notation `<-`. We have to make this modification 5 times for
 every instance of our **inputs** and
 **outputs**.<!--what do you mean 5 times?-->
 
-```{r, eval=FALSE}
+```{r}
 Init <- function(sim) {
   sim$y <- sim$x + rnorm(10)
   sim$out <- lm(sim$y ~ sim$x)
@@ -175,7 +175,7 @@ sequence... first, lets put the plotting step in a function. We will
 choose the `plotFun` function. We will also add the `sim$` because the
 `out` will come from another step and is in the `sim` "list".
 
-```{r, eval=FALSE}
+```{r}
 plotFun <- function(sim) {
   plot(sim$out)
   return(invisible(sim))
@@ -192,7 +192,7 @@ just accept the defaults for now.
 Recall, we don't have a value for `x`. This means that if you run the
 following, you will get an error:
 
-```{r, eval=FALSE}
+```{r}
 SpaDES.core::simInitAndSpades(modules = "My_linear_model", paths = list(modulePath = "tutos/NewModuleIntro"))
 ```
 
@@ -203,7 +203,7 @@ Just like functions in R, we can supply default values for our
 Copy this to the module, replacing the contents of the template
 `.inputObjects` function.
 
-```{r,eval=FALSE}
+```{r}
 .inputObjects <- function(sim) {
   if (!suppliedElsewhere("x", sim))
     sim$x <- rnorm(10, mean = 20, sd = 2)
@@ -220,7 +220,7 @@ will run the subsequent code lines (see
 Now, we have **inputs** and **outputs** defined, our code has been
 places in 2 spots (events), and we have default value for `x`.
 
-```{r, eval=FALSE}
+```{r}
 SpaDES.core::simInitAndSpades(modules = "My_linear_model", paths = list(modulePath = "tutos/NewModuleIntro"))
 ```
 

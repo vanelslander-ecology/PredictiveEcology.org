@@ -90,7 +90,7 @@ In the above code, there are 4 sections. These will each be copied into
 the SpaDES module below, in their respective sections. We have added 1
 new section, called "Prediction".
 
-```{r newodule, eval=FALSE}
+```{r newodule}
 SpaDES.core::newModule(name = "scheduling", path = "tutos/scheduling")
 ```
 
@@ -104,7 +104,7 @@ OK not to be kept for later) and about "global objects" (those that we
 want to keep). These *global* objects get put into `sim`. Your new
 module should have these 3 new sections/functions:
 
-```{r,eval=FALSE}
+```{r}
 Init <- function(sim) {
   y <- sim$x + rnorm(10)
   # fit a linear model
@@ -133,7 +133,7 @@ predicted `x`, and we then keep these *predicted* `x` values each year.
 We'll use `scheduleEvent()` below to do this iteration. For now, copy
 the `Prediction` part into a new function:
 
-```{r, eval=FALSE}
+```{r}
 Prediction <- function(sim) {
   startYear <- 2023
   sim$years <- startYear:(startYear + 10) + 1
@@ -181,7 +181,7 @@ See
 [`?scheduleEvent`]()https://rdrr.io/cran/SpaDES.core/man/scheduleEvent.html,
 [`?P`](https://rdrr.io/cran/SpaDES.core/man/params.html)
 
-```{r defaultInit,eval=FALSE}
+```{r defaultInit}
 sim <- Init(sim)
 
 # schedule future event(s)
@@ -195,10 +195,10 @@ sim <- scheduleEvent(sim, start(sim), "scheduling", "predictions")
 Copy the above code chunk to the `init` section so that it looks like
 this:
 
-```{r newInit,eval=FALSE}
+```{r newInit}
 switch(
-    eventType,
-    init = {
+  eventType,
+  init = {
       sim <- Init(sim)
       
       # schedule future event(s)
@@ -220,7 +220,7 @@ prediction, then we schedule the next prediction at "time plus 1"
 See
 [`?time`](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html).
 
-```{r predictionEvent,eval=FALSE}
+```{r predictionEvent}
 switch(
   eventType,
   init = {...},
@@ -242,7 +242,7 @@ is, by default, scheduled to run at the time that is specified by
 `.plotInitialTime`, which by default is `start(sim)`. We have no data
 yet at that time. So, we have to update the
 
-```{r,eval=FALSE}
+```{r}
 scheduleEvent(sim, end(sim), "scheduling", "plot")
 ```
 
@@ -263,7 +263,7 @@ createsOutput(objectName = "predictions", objectClass = "data.frame",
 
 The resulting module can now be run.
 
-```{r run,eval=FALSE}
+```{r run}
 SpaDES.core::simInitAndSpades(modules = "scheduling", paths = list(modulePath = "tutos/scheduling"))
 ```
 
