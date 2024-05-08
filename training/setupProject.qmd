@@ -5,7 +5,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-# `setupProject` with simple modules
+# Simple workflow with `setupProject`
 
 ```{r setup}
 #| include: false
@@ -37,9 +37,17 @@ if (!require("Require")) {
 
 ```
 
-`SpaDES.project::setupProject` deals with a number of challenges that crop up with working with multiple modules created by potentially many people.
+[`SpaDES.project::setupProject()`](https://spades-project.predictiveecology.org/reference/setupProject.html) deals with a number of challenges that
+crop up with working with multiple modules created by potentially many
+people.
 
-```{r setupProject, eval=FALSE}
+We will demonstrate its use with an example created by [Tati
+Micheletti](https://github.com/tati-micheletti/Micheletti_SpaDES/blob/main/demo.R)
+where a workflow with several modules is setup and run.
+
+## Installation
+
+```{r setupProject}
 getOrUpdatePkg <- function(p, minVer = "0") {
   if (!isFALSE(try(packageVersion(p) < minVer, silent = TRUE) )) {
     repo <- c("predictiveecology.r-universe.dev", getOption("repos"))
@@ -54,11 +62,16 @@ remotes::install_github("PredictiveEcology/Require@simplify4")
 getOrUpdatePkg("SpaDES.project", "0.0.8.9049")
 ```
 
-This example, taken from [Tati Micheletti](https://github.com/tati-micheletti/Micheletti_SpaDES/blob/main/demo.R) shows how to get several modules and run them together.
+## Using `setupProject`
 
-`setupProject` does a series of very specific things, in a particular order, so that the chances of package conflicts and user errors are minimized. 
+`setupProject` does a series of very specific things, in a particular
+order, so that the chances of package conflicts and user errors are
+minimized.
 
-```{r setupProject2, eval=FALSE}
+Note how it downloads the listed modules directly from their GitHub repositories 
+(e.g. [tati-micheletti/speciesAbundance](https://github.com/tati-micheletti/speciesAbundance))
+
+```{r setupProject2}
 ##################### PART II: Download the modules and install the needed packages
 
 Setup <- SpaDES.project::setupProject(
@@ -76,16 +89,25 @@ Setup <- SpaDES.project::setupProject(
 )
 ```
 
+The output of `setupProject` is a list of argument values that can be passed to
+`simInit` or `simInitAndSpaDES`. The latter will not only initialise the workflow
+but also run it.
 
-
-```{r runSimInit, eval=FALSE}
+```{r runSimInit}
 ##################### PART III: Run SpaDES
 
 results <- do.call(SpaDES.core::simInitAndSpades, Setup)
 
 ```
 
-
-```{r evaluteResults, eval=FALSE}
+```{r evaluteResults}
 SpaDES.core::completed(results)
 ```
+
+
+## See also
+
+[`?SpaDES.core::simInit`](https://rdrr.io/cran/SpaDES.core/man/simInit.html)
+
+[`?SpaDES.core::simInitAndSpaDES`](https://rdrr.io/cran/SpaDES.core/man/simInitAndSpaDES.html)
+
