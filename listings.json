@@ -6,7 +6,6 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/2024-05-07-SpaDES Workshop Confirmation.html",
       "/posts/2024-04-17-SpaDES Workshop announcement.html",
       "/posts/2023-09-08-phd-announcement.html",
       "/posts/2022-06-14-post-doc-announcement.html",
@@ -54,6 +53,20 @@
     ]
   },
   {
+    "listing": "/Workshops.html",
+    "items": [
+      "/workshops/June-2024-SpaDES-workshop.html"
+    ]
+  },
+  {
+    "listing": "/Projects.html",
+    "items": []
+  },
+  {
+    "listing": "/Manuals.html",
+    "items": []
+  },
+  {
     "listing": "/about.html",
     "items": [
       "/bios/community/aaaeliot.html",
@@ -76,20 +89,6 @@
       "/bios/sarah.html",
       "/bios/sebastien.html",
       "/bios/yong.html"
-    ]
-  },
-  {
-    "listing": "/Manuals.html",
-    "items": []
-  },
-  {
-    "listing": "/Projects.html",
-    "items": []
-  },
-  {
-    "listing": "/Workshops.html",
-    "items": [
-      "/workshops/June-2024-SpaDES-workshop.html"
     ]
   }
 ]
