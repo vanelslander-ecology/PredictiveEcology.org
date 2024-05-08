@@ -1,0 +1,95 @@
+project:
+  type: book
+
+book:
+  title: "Robust and nimble scientific workflows, using SpaDES"
+  author:
+    - "Eliot McIntire"
+    - "Ceres Barros"
+  date: last-modified
+  cover-image: assets/logo/predictive_ecology_logo.png
+  favicon:  assets/logo/favicon-16x16.png
+  site-url: https://predictiveecology.org/
+
+  navbar:
+    logo: "assets/logo/favicon-196x196.png"
+    search: true
+    right:
+      - text: "News"
+        href: ../index.qmd
+      - text: "About"
+        href: ../about.qmd
+      - text: "Projects"
+        href: ../Projects.qmd
+      - text: "SpaDES"
+        href: ../SpaDES.qmd
+      - text: "Workshops"
+        href: ../Workshops.qmd
+      - text: "Training"
+        menu:
+          - text: "Training Book"
+            href: index.html
+          - text: "Other training resources"
+            href: ../otherTraining.qmd
+      - text: "Manuals"
+        href: ../Manuals.qmd
+      - text: "Publications"
+        href: ../publications.qmd
+      - text: "Presentations"
+        href: ../presentations.qmd
+      - icon: github
+        href: https://github.com/PredictiveEcology
+      - icon: twitter
+        href: https://twitter.com/PredictiveEcol
+
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - part: SpaDESbasics.qmd
+      chapters:
+      - NewModuleIntro.qmd
+      - ModulesAndEvents.qmd
+      - Scheduling.qmd
+      - simList.qmd
+      - ModuleInputs.qmd
+    - part: SpaDESworkflows.qmd
+      chapters:
+      - multipleModules.qmd
+      # - setupProject.qmd
+    - part: realexamples.qmd
+      chapters:
+      - castorExample.qmd
+    - references.qmd
+
+bibliography: references/references.bib
+
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    grid:
+      sidebar-width: 350px
+    number-sections: true
+    fig-cap-location: bottom
+    tbl-cap-location: top
+    title-block-banner: false
+    title-block-categories: false
+    code-fold: show
+    code-overflow: scroll
+    code-copy: true
+    css: assets/css/main.scss
+    smooth-scroll: true
+    link-external-newwindow: true
+
+execute:
+  freeze: auto
+  cache: true
+
+editor:
+  mode: visual
+  markdown:
+    wrap: 72
+    references:
+      location: document
+

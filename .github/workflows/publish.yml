@@ -2,11 +2,11 @@ on:
   pull_request:
     types: [opened, synchronize, closed, reopened]
     branches:
-      - quarto-website
+      - main
 
   push:
     branches:
-      - quarto-website
+      - main
 
 name: Quarto Publish
 
@@ -20,6 +20,11 @@ jobs:
     permissions:
       contents: write
       pages: write
+
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      USERNAME: GHA
+      GOOGLE_APP_CREDENTIALS: ${{ secrets.GOOGLE_AUTHENTICATION_CREDENTIALS }}
 
     steps:
       - name: Check out repository
@@ -38,15 +43,22 @@ jobs:
         with:
           packages:
             any::data.table
+            any::googledrive
             any::httr
             any::kableExtra
             any::knitr
+            any::quarto
             any::Require
             any::rmarkdown
+            any::terra
 
-      - name: Render and Publish
+      - name: Build site 🔧
+        run: Rscript R/renderCopyBook.R
+
+      - name: Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
+          render: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

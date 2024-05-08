@@ -1,0 +1,8 @@
+/.quarto/
+_book/
+_freeze/
+
+*_files/
+*_cache/
+.Rprofile
+*.tif

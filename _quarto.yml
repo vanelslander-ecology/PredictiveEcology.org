@@ -1,6 +1,10 @@
 project:
   type: website
   output-dir: docs
+  render:
+    - "*.qmd"
+    - "!training/"
+    - "!tutos/"
   preview:
     browser: false
     timeout: 0.001
@@ -14,14 +18,18 @@ website:
     search: true
     right:
       - href: index.qmd
-        text: News
-      - href: about.qmd
-        text: About
-      - href: Projects.qmd
-        text: Projects
+      - text: "About"
+        href: about.qmd
+      - text: "Projects"
+        href: Projects.qmd
       - SpaDES.qmd
       - Workshops.qmd
-      - Training.qmd
+      - text: "Training"
+        menu:
+          - text: "Training Book"
+            href: training/_book/index.html
+          - text: "Other training resources"
+            href: otherTraining.qmd
       - Manuals.qmd
       - publications.qmd
       - presentations.qmd
@@ -53,7 +61,12 @@ format:
     smooth-scroll: true
     link-external-newwindow: true
 
-editor: visual
+editor:
+  mode: visual
+  markdown:
+    wrap: 72
+    references:
+      location: document
 
 execute:
   freeze: auto

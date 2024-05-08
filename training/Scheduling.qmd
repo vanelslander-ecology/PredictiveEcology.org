@@ -1,0 +1,311 @@
+---
+author: "Eliot McIntire"
+date: last-modified
+editor_options:
+  chunk_output_type: console
+---
+
+# Scheduling events {#sec-schedulingEvents}
+
+```{r setup}
+#| include: false
+knitr::opts_chunk$set(tidy = FALSE, 
+                      eval = FALSE,
+                      warning = FALSE, 
+                      message = FALSE, 
+                      error = FALSE)
+
+## truncate text output
+hook_output <- knitr::knit_hooks$get("output")
+
+knitr::knit_hooks$set(output = function(x, options) {
+  if (!is.null(n <- options$outlines)) {
+    x <- xfun::split_lines(x)
+    if (length(x) > n) {
+      # truncate the output
+      x <- c(head(x, n), "....\n")
+    }
+    x <- paste(x, collapse = "\n")
+  }
+  hook_output(x, options)
+})
+
+options(repos = "http://cran.us.r-project.org")
+if (!require("Require")) {
+  install.packages("Require", repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
+}
+Require::Require(c("ggplot2", "SpaDES.core"))
+```
+
+Here, we will talk about **scheduling events** in a SpaDES module using
+a function in called
+[`SpaDES.core ::scheduleEvents()`](https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/scheduleEvent).
+Please see @sec-moduleintro for how to create a simple module before
+attempting this section.
+
+Scheduling events allows us to control when things happen in a sequence.
+This can be as simple as "this module will just do one thing" to "this
+module will do several things, some of which repeat".
+
+Below, we will use a simple example where there is one thing that
+happens once and one thing that happens several times. In "normal"
+R-speak, *we will write a loop*.
+
+We return to the example in @sec-moduleintro, but this time, we will add
+a *predict* step from the linear model, with updated values of the `y`.
+In this simple example, we will pretend that each prediction is "one
+year into the future" and that our `y` will slowly get bigger.
+
+```{r, eval=TRUE}
+# .inputObjects  #####
+x <- rnorm(10)
+
+# Init #####
+y <- x + rnorm(10)
+# fit a linear model
+out <- lm(y ~ x)
+pred <- list()
+
+# Prediction #####
+startYear <- 2023
+years <- startYear:(startYear + 10) + 1
+for (year in years - startYear) {
+  pred[[year]] <- predict(out, newdata = data.frame(y = rnorm(10) + year))
+}
+
+# Plot #####
+predictions <- data.frame(year = rep(years, each = 10), prediction = unlist(pred))
+# plot the predictions
+ggplot(predictions, aes(x = year, y = prediction, colour = year)) + geom_point() + geom_smooth()
+```
+
+In the above code, there are 4 sections. These will each be copied into
+the SpaDES module below, in their respective sections. We have added 1
+new section, called "Prediction".
+
+## Convert to a module
+
+In the above code, there are 4 sections. These will each be copied into
+the SpaDES module below, in their respective sections. We have added 1
+new section, called "Prediction".
+
+```{r newodule}
+SpaDES.core::newModule(name = "scheduling", path = "tutos/scheduling")
+```
+
+Open the module file, which will be printed in the console. Scroll down
+to the `Init` function and copy the `Init`, the `.inputObjects`, the
+`Plot` parts in the code above into the new module, as we did in
+@sec-moduleintro.
+
+We must make the same decisions about "local objects" (objects that are
+OK not to be kept for later) and about "global objects" (those that we
+want to keep). These *global* objects get put into `sim`. Your new
+module should have these 3 new sections/functions:
+
+```{r}
+Init <- function(sim) {
+  y <- sim$x + rnorm(10)
+  # fit a linear model
+  sim$out <- lm(y ~ sim$x)
+  sim$pred <- list()
+}
+
+plotFun <- function(sim) {
+  sim$predictions <- data.frame(year = rep(sim$years, each = 10), prediction = unlist(sim$pred))
+  # plot the predictions
+  sim$gg <- ggplot(sim$predictions, aes(x = year, y = prediction, colour = year)) + geom_point() + geom_smooth()
+  print(sim$gg)
+}
+
+.inputObjects <- function(sim) {
+  sim$x <- rnorm(10)
+}
+```
+
+## New Event Function -- Prediction
+
+The new part is the `for` loop. This part takes new covariates (new
+values for `y`), emulating "predicted" covariates, derives a newly
+predicted `x`, and we then keep these *predicted* `x` values each year.
+
+We'll use `scheduleEvent()` below to do this iteration. For now, copy
+the `Prediction` part into a new function:
+
+```{r}
+Prediction <- function(sim) {
+  startYear <- 2023
+  sim$years <- startYear:(startYear + 10) + 1
+  for (year in sim$years - startYear) {
+    sim$pred[[year]] <- predict(sim$out, newdata = data.frame(y = rnorm(10) + year))
+  }
+  return(invisible(sim))
+}
+```
+
+## Scheduling
+
+Now we need to tell SpaDES when to do and when to iterate each of the
+steps or "events". The `Init` we do once, at the start. The `plotFn` we
+do once, but this time it is at the "end". The `.inputObjects` always
+only happens once and "before the start" (`Init`) -- it is scheduled
+automatically so nothing to do here. The last part (i.e., the prediction
+event) must happen 10 times, and it must start after `Init` and before
+the `plotFn`.
+
+### doEvent
+
+There is a special function in a `SpaDES` module called `doEvent()`.
+SpaDES calls this function once, passing the argument `event = "init"`.
+That means that R will enter into this function only once and run only
+the `init` part, unless we specifically tell it to do more, using the
+`scheduleEvent` function.
+
+We place this function anywhere we want inside `doEvent`, in general. In
+this example, we will place it in a few places.
+
+#### In the `init` event
+
+We look at the `init` event (code inside `event = "init"`) and we see 2
+`scheduleEvent` calls that come with the template. We will use those to
+learn. In each "event", we often see one part that "does something" and
+another part that "schedules something".
+
+In the default template, we "do" the `Init` function and we schedule
+`plot` and `save`. We can delete the `save` event, as we won't do that
+here. But we will replace it with "schedule prediction".
+
+See
+[`?start`](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html),
+[`?scheduleEvent`]()https://rdrr.io/cran/SpaDES.core/man/scheduleEvent.html,
+[`?P`](https://rdrr.io/cran/SpaDES.core/man/params.html)
+
+```{r defaultInit}
+sim <- Init(sim)
+
+# schedule future event(s)
+sim <- scheduleEvent(sim, P(sim)$.plotInitialTime, "scheduling", "plot")
+# sim <- scheduleEvent(sim, P(sim)$.saveInitialTime, "scheduling", "save")
+
+# here we create a new event type == "predictions" and we schedule it for `start(sim)`
+sim <- scheduleEvent(sim, start(sim), "scheduling", "predictions") 
+```
+
+Copy the above code chunk to the `init` section so that it looks like
+this:
+
+```{r newInit}
+switch(
+  eventType,
+  init = {
+    sim <- Init(sim)
+    
+    # schedule future event(s)
+    sim <- scheduleEvent(sim, P(sim)$.plotInitialTime, "scheduling", "plot")
+    
+    # here we create a new event type == "predictions" and we schedule it for `start(sim)`
+    sim <- scheduleEvent(sim, start(sim), "scheduling", "predictions") 
+  },
+  ...
+)
+```
+
+### The new event
+
+We add code to make a new event, called `"predictions"` (the name must
+match what we wrote in the `scheduleEvent` above). In this event, we
+"do" the prediction, then we schedule the next prediction at "time plus
+1"
+
+See
+[`?time`](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html).
+
+```{r predictionEvent}
+switch(
+  eventType,
+  init = {...},
+  predictions = {
+    # do the Prediction
+    sim <- Prediction(sim)
+    
+    # schedule the next Prediction
+    sim <- scheduleEvent(sim, time(sim) + 1, "scheduling", "predictions") 
+  },
+  ...
+)
+```
+
+### Double check existing events
+
+If we ran the above changes, we would see an error because `plotFn` is,
+by default, scheduled to run at the time that is specified by
+`.plotInitialTime`, which by default is `start(sim)`. We have no data
+yet at that time. So, we have to schedule `plotFn` to run at `end(sim)`:
+
+```{r}
+scheduleEvent(sim, end(sim), "scheduling", "plot")
+```
+
+### Update module metadata
+
+Like in @sec-moduleintro, we have to update the module metadata... what
+the inputs, outputs, parameters *are*. `SpaDES` will not error if the
+metadata are not correct, but it will try to point out the problems.
+
+Here's an example:
+
+```{r}
+createsOutput(objectName = "predictions", objectClass = "data.frame", 
+              desc = "Table of predictions and years")
+```
+
+## Run
+
+The resulting module can now be run.
+
+```{r run}
+SpaDES.core::simInitAndSpades(modules = "scheduling", paths = list(modulePath = "tutos/scheduling"))
+```
+
+A complete version of this new module can be found at
+[scheduling.R](https://github.com/PredictiveEcology/PredictiveEcology.org/blob/training-book/tutos/scheduling/scheduling/scheduling.R).
+You can copy this over top of the new module that you created here,
+i.e., keep the same folder structure.
+
+## Questions
+
+1.  how are some ways that `scheduleEvent` is different from a "loop"?
+    -   We can change the "step" length between events.
+    -   We can interweave events, e.g., a fire event then a tree growth
+        event
+
+```{=html}
+<!-- -->
+```
+2.  When is a loop better than scheduling?
+    -   Loops are much faster than scheduling.
+    -   But really, avoid loops in R if you can help it
+
+```{=html}
+<!-- -->
+```
+3.  Chances are that the first versions of this module didn't work. How
+    do you fix it?
+    -   [Learn how to debug in R and
+        SpaDES](https://github.com/PredictiveEcology/SpaDES/wiki/Debugging)
+
+## See also
+
+[`?scheduleEvent`](https://rdrr.io/cran/SpaDES.core/man/scheduleEvent.html),
+[`?P`](https://rdrr.io/cran/SpaDES.core/man/params.html),
+[`?time`](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html),
+[`?start`](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html),
+[`?end`](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html)
+
+## More learning on this subject
+
+[My First
+Module](https://spades-workshops.predictiveecology.org/articlesMay2018/MyFirstModule.html)
+
+[Creating a seed dispersal
+module](https://spades-workshops.predictiveecology.org/articles/02c-Convert_R_code_to_SpaDES_module.html)

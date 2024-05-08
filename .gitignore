@@ -4,7 +4,17 @@
 .Ruserdata
 
 /.quarto/
+*/.quarto/
 /_site/
-
+*/_book/
 docs/
-training/
+.Rprofile
+modules/*
+cache
+inputs
+outputs
+.Rdata
+.secret
+.secrets
+
+training/integratingSpaDESmodules/

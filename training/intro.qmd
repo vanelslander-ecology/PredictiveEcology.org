@@ -1,0 +1,13 @@
+# Introduction {.unnumbered}
+
+Under construction.
+
+```{=html}
+<!--
+
+- welcome note
+- book structure and how to use it
+- something about companion slides/presentations used during workshops?
+
+-->
+```

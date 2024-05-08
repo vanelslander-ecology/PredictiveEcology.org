@@ -1,0 +1,14 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+R/scenarios/*/*.sqlite
+R/functions/
+.Rprofile
+modules/
+inputs/
+outputs/
+cache/
+
+*.tif

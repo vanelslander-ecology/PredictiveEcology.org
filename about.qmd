@@ -85,9 +85,18 @@ listing:
     page-size: 100
 ---
 
-This site assembles an up to date collection of contributors to Predictive Ecology, primarily through the use of [SpaDES](https://predictiveecology.org/SpaDES.html). We are connected through the common goal of upholding the principles of [PERFICT](https://onlinelibrary.wiley.com/doi/full/10.1111/ele.13994) so that we can create a dynamic network of interconnected science modules. The community has active members in Europe and across Canada.
+This site assembles an up to date collection of contributors to
+Predictive Ecology, primarily through the use of
+[SpaDES](https://predictiveecology.org/SpaDES.html). We are connected
+through the common goal of upholding the principles of
+[PERFICT](https://onlinelibrary.wiley.com/doi/full/10.1111/ele.13994) so
+that we can create a dynamic network of interconnected science modules.
+The community has active members in Europe and across Canada.
 
-The Predictive Ecology Community began in Victoria, British Columbia, Canada, at the Pacific Forestry Centre and at Laval University, Quebec in 2015. Since then, students and postdocs have been primarily at University of British Columbia and Université Laval.
+The Predictive Ecology Community began in Victoria, British Columbia,
+Canada, at the Pacific Forestry Centre and at Laval University, Quebec
+in 2015. Since then, students and postdocs have been primarily at
+University of British Columbia and Université Laval.
 
 ### Researchers
 
@@ -113,19 +122,43 @@ The Predictive Ecology Community began in Victoria, British Columbia, Canada, at
 
 #### Prior to 2015
 
--   [Émilie Tarroux](https://chaireafd.uqat.ca/chercheurs/PageIndividus_f.asp?IdCollaboration=50) (Post Doctoral Fellow 2015) Facilitation in the boreal forest.
--   [Julien Beguin](http://www.cef-cfr.ca/index.php?n=Membres.JulienBeguin) (PhD 2013) Caribou, harvesting and fire in the North Shore of Quebec.
--   [Julia Chacon Labella](https://www.researchgate.net/profile/Julia_Chacon-Labella/) (PhD - Visiting 2013) Facilitation in semi-arid ecosystems.
--   [Christian Roy](https://www.researchgate.net/profile/Christian_Roy4) (PhD - 2011) Continental-scale understanding of duck populations.
--   [Pierre Racine](http://www.cef-cfr.ca/index.php?n=Membres.PierreRacine) (Research Professional 2013) Review of existing modeling platforms
--   [Ghislain Rompré](http://www.cef-cfr.ca/index.php?n=Membres.GhislainRompre) (Post Doctoral Fellow 2009) Modeling endangered butterflies.
--   [Pamela Garcia-Cournoyer](http://www.cef-cfr.ca/index.php?n=Membres.PamelaGarciaCournoyer) (MSc 2010) Harvesting and conservation in Quebec.
--   [Émilie Allard](http://www.cef-cfr.ca/index.php?n=Membres.EmilieAllard) (MSc 2009) Understanding deer movement and habitat use in the Upper Laurentian region.
--   [Melanie Smith](https://ak.audubon.org/melanie-smith-science-director) (MSc 2008) Spatial goshawk modeling.
--   Céline Macabiau (PhD 2009) Spatial population dynamics of spruce grouse in Quebec.
--   [Francesca Marucco](https://www.researchgate.net/profile/Francesca_Marucco) (PhD 2009) Modeling wolf recolonization in the European Alps. (University of Montana, Supervisor: Dan Pletscher).
+-   [Émilie
+    Tarroux](https://chaireafd.uqat.ca/chercheurs/PageIndividus_f.asp?IdCollaboration=50)
+    (Post Doctoral Fellow 2015) Facilitation in the boreal forest.
+-   [Julien
+    Beguin](http://www.cef-cfr.ca/index.php?n=Membres.JulienBeguin)
+    (PhD 2013) Caribou, harvesting and fire in the North Shore of
+    Quebec.
+-   [Julia Chacon
+    Labella](https://www.researchgate.net/profile/Julia_Chacon-Labella/)
+    (PhD - Visiting 2013) Facilitation in semi-arid ecosystems.
+-   [Christian Roy](https://www.researchgate.net/profile/Christian_Roy4)
+    (PhD - 2011) Continental-scale understanding of duck populations.
+-   [Pierre
+    Racine](http://www.cef-cfr.ca/index.php?n=Membres.PierreRacine)
+    (Research Professional 2013) Review of existing modeling platforms
+-   [Ghislain
+    Rompré](http://www.cef-cfr.ca/index.php?n=Membres.GhislainRompre)
+    (Post Doctoral Fellow 2009) Modeling endangered butterflies.
+-   [Pamela
+    Garcia-Cournoyer](http://www.cef-cfr.ca/index.php?n=Membres.PamelaGarciaCournoyer)
+    (MSc 2010) Harvesting and conservation in Quebec.
+-   [Émilie
+    Allard](http://www.cef-cfr.ca/index.php?n=Membres.EmilieAllard)
+    (MSc 2009) Understanding deer movement and habitat use in the Upper
+    Laurentian region.
+-   [Melanie
+    Smith](https://ak.audubon.org/melanie-smith-science-director)
+    (MSc 2008) Spatial goshawk modeling.
+-   Céline Macabiau (PhD 2009) Spatial population dynamics of spruce
+    grouse in Quebec.
+-   [Francesca
+    Marucco](https://www.researchgate.net/profile/Francesca_Marucco)
+    (PhD 2009) Modeling wolf recolonization in the European Alps.
+    (University of Montana, Supervisor: Dan Pletscher).
 -   Motoshi Honda (MSc 2008) Hydrology
--   [Alex Fajardo](https://sites.google.com/site/alexfajardosite/) (Post Doctoral Fellow 2006) Facilitation in Chilean mountain ecosystems.
+-   [Alex Fajardo](https://sites.google.com/site/alexfajardosite/) (Post
+    Doctoral Fellow 2006) Facilitation in Chilean mountain ecosystems.
 
 #### Co-op students
 
