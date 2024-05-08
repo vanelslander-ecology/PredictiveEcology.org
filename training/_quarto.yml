@@ -55,7 +55,7 @@ book:
     - part: SpaDESworkflows.qmd
       chapters:
       - multipleModules.qmd
-      - setupProject.qmd
+      # - setupProject.qmd
     - part: realexamples.qmd
       chapters:
       - castorExample.qmd
