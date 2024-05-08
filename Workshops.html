@@ -205,10 +205,21 @@ gtag('config', 'G-1689MGK5S2', { 'anonymize_ip': true});
     <a class="nav-link" href="./Workshops.html" rel="" target="">
  <span class="menu-text">Workshops</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./Training.html" rel="" target="">
- <span class="menu-text">Training</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-training" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Training</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-training">    
+        <li>
+    <a class="dropdown-item" href="./training/_book/index.html" rel="" target="">
+ <span class="dropdown-text">Training Book</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./otherTraining.html" rel="" target="">
+ <span class="dropdown-text">Other training resources</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="./Manuals.html" rel="" target="">
  <span class="menu-text">Manuals</span></a>
@@ -321,7 +332,7 @@ Date
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-categories="R,SpaDES Workshops,Training" data-listing-date-sort="1715183507000" data-listing-file-modified-sort="1715183507371" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Robust and nimble scientific workflows, using SpaDES" data-listing-filename-sort="June-2024-SpaDES-workshop.qmd">
+<tr data-index="0" data-categories="R,SpaDES Workshops,Training" data-listing-date-sort="1715185425000" data-listing-file-modified-sort="1715185425673" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Robust and nimble scientific workflows, using SpaDES" data-listing-filename-sort="June-2024-SpaDES-workshop.qmd">
 <td>
 <span class="listing-image"><img src="https://besjournals.onlinelibrary.wiley.com/cms/asset/db13319c-88b4-4821-9eaa-a2e62364b399/mee314034-fig-0004-m.jpg" style="height: 250px;"></span>
 </td>
@@ -841,7 +852,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp("https:\/\/predictiveecology\.org");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
