@@ -3,11 +3,9 @@ author      : "Eliot McIntire"
 date        : last-modified
 editor_options:
   chunk_output_type: console
-bibliography: references.bib
 ---
 
 # Modules, Events and Functions {#sec-modseventsfuns}
-
 
 ```{r setup}
 #| include: false
