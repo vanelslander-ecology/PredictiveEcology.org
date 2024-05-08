@@ -37,7 +37,6 @@ if (!require("Require")) {
 Require::Require(c("ggplot2", "SpaDES.core"))
 ```
 
-
 Here, we will talk about **scheduling events** in a SpaDES module using
 a function in called
 [`SpaDES.core ::scheduleEvents()`](https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/scheduleEvent).
@@ -146,10 +145,10 @@ Prediction <- function(sim) {
 
 ## Scheduling
 
-Now we need to tell SpaDES when to do and when to iterate each of the steps or
-"events". The `Init` we do once, at the start. The `plotFn` we do once,
-but this time it is at the "end". The `.inputObjects` always only
-happens once and "before the start" (`Init`) -- it is scheduled
+Now we need to tell SpaDES when to do and when to iterate each of the
+steps or "events". The `Init` we do once, at the start. The `plotFn` we
+do once, but this time it is at the "end". The `.inputObjects` always
+only happens once and "before the start" (`Init`) -- it is scheduled
 automatically so nothing to do here. The last part (i.e., the prediction
 event) must happen 10 times, and it must start after `Init` and before
 the `plotFn`.
@@ -213,9 +212,10 @@ switch(
 
 ### The new event
 
-We add code to make a new event, called `"predictions"` (the name must match
-what we wrote in the `scheduleEvent` above). In this event, we "do" the
-prediction, then we schedule the next prediction at "time plus 1"
+We add code to make a new event, called `"predictions"` (the name must
+match what we wrote in the `scheduleEvent` above). In this event, we
+"do" the prediction, then we schedule the next prediction at "time plus
+1"
 
 See
 [`?time`](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html).
@@ -237,8 +237,8 @@ switch(
 
 ### Double check existing events
 
-If we ran the above changes, we would see an error because `plotFn`
-is, by default, scheduled to run at the time that is specified by
+If we ran the above changes, we would see an error because `plotFn` is,
+by default, scheduled to run at the time that is specified by
 `.plotInitialTime`, which by default is `start(sim)`. We have no data
 yet at that time. So, we have to schedule `plotFn` to run at `end(sim)`:
 
@@ -253,11 +253,11 @@ the inputs, outputs, parameters *are*. `SpaDES` will not error if the
 metadata are not correct, but it will try to point out the problems.
 
 Here's an example:
+
 ```{r}
 createsOutput(objectName = "predictions", objectClass = "data.frame", 
               desc = "Table of predictions and years")
 ```
-
 
 ## Run
 
@@ -268,30 +268,31 @@ SpaDES.core::simInitAndSpades(modules = "scheduling", paths = list(modulePath = 
 ```
 
 A complete version of this new module can be found at
-[scheduling.R](https://github.com/PredictiveEcology/PredictiveEcology.org/blob/training-book/tutos/scheduling/scheduling/scheduling.R). You can copy this
-over top of the new module that you created here, i.e., keep the same
-folder structure.
+[scheduling.R](https://github.com/PredictiveEcology/PredictiveEcology.org/blob/training-book/tutos/scheduling/scheduling/scheduling.R).
+You can copy this over top of the new module that you created here,
+i.e., keep the same folder structure.
 
 ## Questions
 
 1.  how are some ways that `scheduleEvent` is different from a "loop"?
+    -   We can change the "step" length between events.
+    -   We can interweave events, e.g., a fire event then a tree growth
+        event
 
-  -   We can change the "step" length between events.
-  
-  -   We can interweave events, e.g., a fire event then a tree growth
-event
-
+```{=html}
+<!-- -->
+```
 2.  When is a loop better than scheduling?
+    -   Loops are much faster than scheduling.
+    -   But really, avoid loops in R if you can help it
 
-  -   Loops are much faster than scheduling.
-
-  -   But really, avoid loops in R if you can help it
-
+```{=html}
+<!-- -->
+```
 3.  Chances are that the first versions of this module didn't work. How
-do you fix it?
-
-  -   [Learn how to debug in R and
-SpaDES](https://github.com/PredictiveEcology/SpaDES/wiki/Debugging)
+    do you fix it?
+    -   [Learn how to debug in R and
+        SpaDES](https://github.com/PredictiveEcology/SpaDES/wiki/Debugging)
 
 ## See also
 
