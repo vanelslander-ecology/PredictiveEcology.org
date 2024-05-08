@@ -2,12 +2,11 @@ on:
   pull_request:
     types: [opened, synchronize, closed, reopened]
     branches:
-      - quarto-website
+      - main
 
   push:
     branches:
-      - quarto-website
-      - training-book
+      - main
 
 name: Quarto Publish
 
@@ -54,7 +53,7 @@ jobs:
             any::terra
 
       - name: Build site 🔧
-        run: Rscript renderCopyBook.R
+        run: Rscript R/renderCopyBook.R
 
       - name: Publish
         uses: quarto-dev/quarto-actions/publish@v2
