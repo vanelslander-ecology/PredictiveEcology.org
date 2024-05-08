@@ -38,12 +38,14 @@ defineModule(sim, list(
                     "Should caching of events or module be used?")
   ),
   inputObjects = bindrows(
-    #expectsInput("objectName", "objectClass", "input object description", sourceURL, ...),
-    expectsInput(objectName = NA, objectClass = NA, desc = NA, sourceURL = NA)
+    expectsInput(objectName = "x", objectClass = "numeric", desc = "The inputs for the linear model", sourceURL = NA)
   ),
   outputObjects = bindrows(
-    #createsOutput("objectName", "objectClass", "output object description", ...),
-    createsOutput(objectName = NA, objectClass = NA, desc = NA)
+    createsOutput(objectName = "y", objectClass = "numeric", desc = "The randomly created varible that is used as a response variable"),
+    createsOutput(objectName = "out", objectClass = "lm", desc = "A linear model object from the equation (x ~ y)"),
+    createsOutput(objectName = "pred", objectClass = "list", desc = "List of prediction vectors, one per year")
+    createsOutput(objectName = "gg", objectClass = "ggplot2", desc = "Plot of predictions per year")
+    createsOutput(objectName = "predictions", objectClass = "data.frame", desc = "Table of predictions and years")
   )
 ))
 
