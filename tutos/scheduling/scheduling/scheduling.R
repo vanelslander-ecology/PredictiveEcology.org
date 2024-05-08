@@ -107,10 +107,10 @@ doEvent.scheduling = function(sim, eventTime, eventType) {
 
 Init <- function(sim) {
   sim$N <- length(sim$y)
-  x <- sim$y + rnorm(sim$N)
+  y <- sim$x + rnorm(sim$N)
   # fit a linear model
-  y <- sim$y
-  sim$out <- lm(x ~ y)
+  x <- sim$x
+  sim$out <- lm(y ~ x)
   sim$pred <- list()
 
   startYear <- start(sim)
@@ -129,8 +129,8 @@ plotFun <- function(sim) {
 }
 
 .inputObjects <- function(sim) {
-  if (!SpaDES.core::suppliedElsewhere("y", sim))
-    sim$y <- rnorm(10)
+  if (!SpaDES.core::suppliedElsewhere("x", sim))
+    sim$x <- rnorm(10)
   return(invisible(sim))
 }
 

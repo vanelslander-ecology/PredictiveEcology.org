@@ -59,12 +59,12 @@ year into the future" and that our `y` will slowly get bigger.
 
 ```{r, eval=TRUE}
 # .inputObjects  #####
-y <- rnorm(10)
+x <- rnorm(10)
 
 # Init #####
-x <- y + rnorm(10)
+y <- x + rnorm(10)
 # fit a linear model
-out <- lm(x ~ y)
+out <- lm(y ~ x)
 pred <- list()
 
 # Prediction #####
@@ -106,9 +106,9 @@ module should have these 3 new sections/functions:
 
 ```{r,eval=FALSE}
 Init <- function(sim) {
-  x <- sim$y + rnorm(10)
+  y <- sim$x + rnorm(10)
   # fit a linear model
-  sim$out <- lm(x ~ sim$y)
+  sim$out <- lm(y ~ sim$x)
   sim$pred <- list()
 }
 
@@ -120,7 +120,7 @@ plotFun <- function(sim) {
 }
 
 .inputObjects <- function(sim) {
-  sim$y <- rnorm(10)
+  sim$x <- rnorm(10)
 }
 ```
 
