@@ -8,7 +8,7 @@ editor_options:
 bibliography: references/references.bib
 ---
 
-```{r setup}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(eval = FALSE)
 ```
 
