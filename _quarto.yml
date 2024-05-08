@@ -61,7 +61,12 @@ format:
     smooth-scroll: true
     link-external-newwindow: true
 
-editor: visual
+editor:
+  mode: visual
+  markdown:
+    wrap: 72
+    references:
+      location: document
 
 execute:
   freeze: auto
