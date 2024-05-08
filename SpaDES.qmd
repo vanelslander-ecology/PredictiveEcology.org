@@ -4,7 +4,7 @@ permalink: /SpaDES/
 comments: false
 ---
 
-SpaDES is a metapackage for R that facilitates PERFICT workflows. It began as a tool for spatial simulation for Ecology, but it has evolved over time. 
+SpaDES is a metapackage for R that facilitates PERFICT workflows. It began as a tool for spatial simulation for Ecology, but it has evolved over time to the more general Spatial Discrete Event System. 
 
 ## Links
 
