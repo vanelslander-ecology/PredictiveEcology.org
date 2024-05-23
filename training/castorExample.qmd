@@ -108,8 +108,8 @@ library(SpaDES.project)
 
 ## get Castor modules and functions
 setupFunctions(paths = list("projectPath" = "~/"),
-               functions = c("PredictiveEcology/PredictiveEcology.org@training-book/tutos/castorExample/getCastorModulesAndDB.R",
-                             "PredictiveEcology/PredictiveEcology.org@training-book/tutos/castorExample/params.R"),
+               functions = c("PredictiveEcology/PredictiveEcology.org@main/tutos/castorExample/getCastorModulesAndDB.R",
+                             "PredictiveEcology/PredictiveEcology.org@main/tutos/castorExample/params.R"),
                overwrite = TRUE)
 outMod <- getCastorModulesAndDB(paths = list("modulePath" = "~/tutos/castorExample/modules/",
                                              "projectPath" = "~/tutos/castorExample"),
