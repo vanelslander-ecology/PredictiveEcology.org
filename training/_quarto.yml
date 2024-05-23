@@ -52,6 +52,7 @@ book:
       - Scheduling.qmd
       - simList.qmd
       - ModuleInputs.qmd
+      - Caching.qmd
     - part: SpaDESworkflows.qmd
       chapters:
       - multipleModules.qmd

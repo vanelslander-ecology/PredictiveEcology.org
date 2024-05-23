@@ -1,0 +1,9 @@
+---
+title: "System setup for SpaDES"
+author:
+  - "Eliot J. B. McIntire"
+date: '`r strftime(Sys.Date(), "%B %d %Y")`'
+editor_options:
+  chunk_output_type: console
+---
+
