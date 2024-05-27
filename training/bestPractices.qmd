@@ -100,11 +100,11 @@ SpaDES users and any R programmers in general.
 
 ## Best practices for SpaDES workflows
 
--   limit the number of objects in `.GlobalEnv`. Instead, put them in 
-    functions -- such as with `setupProject` as arguments -- or inside a module. 
-    When objects are in modules, you can add default object
-    values (e.g. via `.inputObjects`), or save them into
-    files that are loaded by `setupProject` or `simInit`. See
+-   limit the number of objects in `.GlobalEnv`. Instead, put them in
+    functions -- such as with `setupProject` as arguments -- or inside a
+    module. When objects are in modules, you can add default object
+    values (e.g. via `.inputObjects`), or save them into files that are
+    loaded by `setupProject` or `simInit`. See
 
     1.  
 
