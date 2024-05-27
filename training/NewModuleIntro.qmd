@@ -105,7 +105,7 @@ as an "input" by putting it there.
 
 ```{r}
 inputObjects = bindrows(
-    expectsInput(objectName = "y", objectClass = "numeric", 
+    expectsInput(objectName = "x", objectClass = "numeric", 
                  desc = "The inputs for the linear model", sourceURL = NA)
   )
 ```
@@ -117,7 +117,7 @@ argument to `bindrows`.
 
 ```{r}
 outputObjects = bindrows(
-    createsOutput(objectName = "x", objectClass = "numeric", 
+    createsOutput(objectName = "y", objectClass = "numeric", 
                   desc = "The randomly created varible that is used as a response variable"),
     createsOutput(objectName = "out", objectClass = "lm", 
                   desc = "A linear model object from the equation (x ~ y)")
