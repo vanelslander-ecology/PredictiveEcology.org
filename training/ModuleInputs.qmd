@@ -5,7 +5,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-# Module Inputs {@sec-moduleinputs}
+# Module Inputs {#sec-moduleinputs}
 
 ```{r setup}
 #| include: false
