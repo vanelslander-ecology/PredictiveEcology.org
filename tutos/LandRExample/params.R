@@ -1,9 +1,9 @@
 list(
   .globals = list('dataYear' = 2001L    ## will not be used as the layers have been pre-preped, but just in case...
-                  , 'sppEquivCol' = sim$sppEquivCol
-                  , 'vegLeadingProportion' = sim$vegLeadingProportion
+                  , 'sppEquivCol' = sppEquivCol
+                  , 'vegLeadingProportion' = vegLeadingProportion
                   , '.sslVerify' = 0L
-                  , '.useCache' = sim$eventCaching),
+                  , '.useCache' = eventCaching),
   Biomass_borealDataPrep = list(
     'fitDeciduousCoverDiscount' = TRUE
     , 'subsetDataAgeModel' = FALSE
@@ -17,7 +17,7 @@ list(
       quote(LandR::updateSpeciesTable(speciesTable = sim$species, params = sim$speciesParams)))
     # next two are used when assigning pixelGroup membership; what resolution for
     #   age and biomass
-    , 'pixelGroupAgeClass' = sim$successionTimestep
+    , 'pixelGroupAgeClass' = successionTimestep
     , 'pixelGroupBiomassClass' = 100
     , 'rstLCCYear' = 2005L
     , 'useCloudCacheForStats' = FALSE
@@ -32,13 +32,13 @@ list(
     , 'initialBiomassSource' = 'cohortData'
     , 'plotOverstory' = TRUE
     , 'seedingAlgorithm' = 'wardDispersal'
-    , 'successionTimestep' = sim$successionTimestep
+    , 'successionTimestep' = successionTimestep
     , '.plotInitialTime' = times$start
     , '.plotInterval' = 1L
     , '.plots' = c('object', 'raw')
     , '.plotMaps' = FALSE
     , '.saveInitialTime' = NA
-    , '.useCache' = sim$eventCaching[1] # experiment doesn't like when init is cached
-    , '.useParallel' = sim$useParallel
+    , '.useCache' = eventCaching[1] # experiment doesn't like when init is cached
+    , '.useParallel' = useParallel
   )
 )

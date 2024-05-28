@@ -169,7 +169,7 @@ out <- setupProject(
   ),
   ## SIMULATION SETUP ------------------------------------
   times = list(start = 2001, end = 2031),
-  params = c("CeresBarros/LandR-tutorials@main/LandRDemo_coreVeg/params.R")
+  params = c("PredictiveEcology/PredictiveEcology.org@main/tutos/LandRExample/params.R")
 )
 ```
 
