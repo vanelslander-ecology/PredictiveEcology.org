@@ -1,0 +1,216 @@
+---
+title: "LandR workflow with `setupProject`"
+author: "Ceres Barros"
+date: last-modified
+editor_options:
+  chunk_output_type: console
+bibliography: references/references.bib
+---
+
+```{r setup}
+#| include: false
+#| cache: false
+
+knitr::opts_chunk$set(tidy = FALSE, 
+                      warning = FALSE, 
+                      message = FALSE, 
+                      error = FALSE)
+
+## truncate text output
+hook_output <- knitr::knit_hooks$get("output")
+
+knitr::knit_hooks$set(output = function(x, options) {
+  if (!is.null(n <- options$outlines)) {
+    x <- xfun::split_lines(x)
+    if (length(x) > n) {
+      # truncate the output
+      x <- c(head(x, n), "....\n")
+    }
+    x <- paste(x, collapse = "\n")
+  }
+  hook_output(x, options)
+})
+
+options(repos = "http://cran.us.r-project.org")
+
+if (Sys.getenv("USERNAME") == "GHA") {
+  googledrive::drive_auth(path = Sys.getenv("GOOGLE_APP_CREDENTIALS"))
+}
+
+qmdPath <- normalizePath(getwd(), winslash = "/")
+
+if (!interactive()) { 
+  dir.create("~/tutos/LandRExample", recursive = TRUE)
+  knitr::opts_knit$set(root.dir = "~/tutos/LandRExample")
+}
+```
+
+[LandR](https://landr-manual.predictiveecology.org/) is a forest
+landscape model implemented as a collection of `SpaDES` modules in R. It
+is a reimplementation of LANDIS-II Biomass Succession Extension v.3.2.1,
+which at its core is very similar to v7. See the [LandR
+Manual](https://landr-manual.predictiveecology.org/), @barros2023 and
+@scheller2015 for full details about forest dynamics simulated in LandR.
+
+LandR fully open-source and users are expected to use, modify it and
+expand it (e.g. by creating new modules) as they see fit, as long has
+modifications are adequately reported. We hope that new modules are
+shared with others in the LandR community of users so that all can
+benefit.
+
+Each LandR module is hosted in its own GitHub repository. When using and
+developing LandR modules, note that modules should be semi-independent.
+This is, they should be able to run error-free on their own, even they
+don't produce useful outputs in this way. A good example are the "data
+preparation" and "data calibration" modules *Biomass_speciesData* and
+*Biomass_borealDataPrep* which can run on their own but will not produce
+any forest landscape simulations, only the input objects and parameters
+that *Biomass_core* (the "simulation module") needs.
+
+In this example, we will setup the workflow published in @barros2023
+using `setupProject` from the
+[`SpaDES.project`](https://spades-project.predictiveecology.org/)
+package and current versions of the LandR modules.
+
+
+
+```{r pkgSetup}
+#| message: false
+#| warning: false
+#| results: hide
+#| cache: false 
+
+repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
+install.packages(c("remotes"), repos = repos)
+remotes::install_github("PredictiveEcology/SpaDES.project@transition")
+# library(SpaDES.project)
+
+devtools::load_all("../SpaDES.project/")
+
+out <- setupProject(
+  ## INPUT OBJECTS -----------------------------------
+  sppEquivCol = "Boreal",
+  vegLeadingProportion = 0,
+  successionTimestep = 10L,
+  eventCaching = c(".inputObjects", "init"),
+  useParallel = FALSE,
+  studyAreaLarge = {
+    originalcrs <- "+proj=longlat +datum=NAD83 +no_defs +ellps=GRS80 +towgs84=0,0,0"
+    Biomass_corecrs <- "+proj=lcc +lat_1=49 +lat_2=77 +lat_0=0 +lon_0=-95 +x_0=0 +y_0=0 +datum=NAD83 +units=m +no_defs +ellps=GRS80 +towgs84=0,0,0"
+    largeExtent <- c(xmin = -104.757, xmax = -104.2197, ymin = 55.68663, ymax = 56.20319)
+    
+    studyAreaL <- terra::vect(terra::ext(largeExtent))
+    studyAreaL <-  terra::vect(terra::geom(studyAreaL), "polygons", crs = originalcrs, atts = data.frame(id = 1:length(studyAreaL)))
+    studyAreaL <- terra::project(studyAreaL, Biomass_corecrs)
+    studyAreaL
+  },
+  studyArea = {
+    originalcrs <- "+proj=longlat +datum=NAD83 +no_defs +ellps=GRS80 +towgs84=0,0,0"
+    Biomass_corecrs <- "+proj=lcc +lat_1=49 +lat_2=77 +lat_0=0 +lon_0=-95 +x_0=0 +y_0=0 +datum=NAD83 +units=m +no_defs +ellps=GRS80 +towgs84=0,0,0"
+    
+    smallExtent <- c(xmin = -104.757, xmax = -104.48835, ymin = 55.68663, ymax = 55.94491)
+    studyAreaS <- terra::vect(terra::ext(smallExtent))
+    studyAreaS <-  terra::vect(terra::geom(studyAreaS), "polygons", crs = originalcrs, atts = data.frame(id = 1:length(studyAreaS)))
+    studyAreaS <- terra::project(studyAreaS, Biomass_corecrs)
+    studyAreaS
+  },
+  ## species lists
+  sppEquiv = {
+    data("sppEquivalencies_CA", package = "LandR")
+    sppEquivalencies_CA[grep("Pin", LandR), `:=`(EN_generic_short = "Pine",
+                                                 EN_generic_full = "Pine",
+                                                 Leading = "Pine leading")]
+    sppEquivalencies_CA[grep("Betu_pap", LandR), `:=`(EN_generic_short = "Birch",
+                                                      EN_generic_full = "Birch",
+                                                      Leading = "Birch leading")]
+    ## all Popu will be merged
+    sppEquivalencies_CA[grep("Popu_", LandR), `:=`(EN_generic_short = "Poplar",
+                                                   EN_generic_full = "Poplar",
+                                                   Leading = "Poplar leading")]
+    sppEquivalencies_CA[grep("Popu_", LandR), Boreal := "Popu_Spp"]
+    
+    ## define spp column to use for model
+    # sppEquivCol <- "Boreal"
+    sppEquivalencies_CA <- sppEquivalencies_CA[!"", on = sppEquivCol]
+    sppEquivalencies_CA <- na.omit(sppEquivalencies_CA, sppEquivCol)
+    sppEquivalencies_CA
+  },
+  sppColorVect = {
+    LandR::sppColors(sppEquiv, sppEquivCol, newVals = "Mixed", palette = "Accent")
+  },
+  speciesParams = {
+    list(
+      "shadetolerance" = list(
+        Betu_Pap = 1
+        , Lari_Lar = 1
+        , Pice_Gla = 2
+        , Pice_Mar = 3
+        , Pinu_Ban = 1.5
+        , Popu_Spp = 1
+      )
+    )
+  },
+  paths = list("packagePath" = "packages/",
+               "projectPath" = "~/tutos/LandRDemo_coreVeg"),
+  packages = c(
+    "PredictiveEcology/SpaDES.experiment@development (HEAD)",
+    "terra"  ## needed for studyArea, but don't load.
+  ),
+  options = list(
+    "reproducible.destinationPath" = paths$inputPath,
+    "spades.inputPath" = paths$inputPath
+  ),
+    modules = c(
+    "CeresBarros/Biomass_speciesData@master",
+    "CeresBarros/Biomass_borealDataPrep@master",
+    "CeresBarros/Biomass_speciesParameters@master",
+    "CeresBarros/Biomass_core@master",
+    "CeresBarros/Biomass_validationKNN@master"
+  ),
+  ## SIMULATION SETUP ------------------------------------
+  times = list(start = 2001, end = 2031),
+  params = c("CeresBarros/LandR-tutorials@main/LandRDemo_coreVeg/params.R")
+)
+```
+
+If you have a look at @sec-castorSetup in the @sec-castorEg chapter, you
+will see some differences in the way we setup the two workflows:
+
+-   `paths`. Here we leave the defaults for all paths (see
+    [`?setupPaths()`](https://spades-project.predictiveecology.org/reference/setup.html)
+    for the list of path options) except where the workflow will be set
+    up (`projectPath`) and the location of the package library
+    (`packagePath`, which will be placed in `projectPath`).
+
+-   `options`. We also set a couple of "global options" that determine
+    the where data will be downloaded to
+    ("reproducible.destinationPath"), which will be the same as the
+    default directory to look for inputs ("spades.inputPath"). Notice
+    how we used `paths$` to get these directory paths from the `paths`
+    object that `setupProject` creates (based on the `paths` argument
+    above) prior to setting the options.
+
+-   other arguments (`...`). Almost all other arguments in the call
+    above were passed to `...`. `studyArea` and `studyAreaL` are two
+    polygon shapefiles that *must* be provided by the user. To avoid
+    creating them on the `.GlobalEnv` first, we take advantage of
+    `setupProject`'s ability to run the code in `{ }` and make these
+    polygons. The other object have defaults, but we want to pass
+    different values like different species lists (`sppEquiv`) and trait
+    values (`speciesParams`).
+
+```{r runSim}
+#| message: false
+#| warning: false
+#| results: hide
+#| cache: false 
+
+## remove validation module, can only be run after simulation's done
+out$modules <- out$modules[out$modules != "Biomass_validationKNN"]  
+
+## initialise simulation and cache
+simInitOut <- do.call(SpaDES.core::simInit, out) |>
+  reproducible::Cache()
+
+simOut <- SpaDES.core::spades(simInitOut)
+```

@@ -1,10 +1,11 @@
 ---
-title: "Castor workflow with `setupProject`"
 author: "Ceres Barros"
 date: last-modified
 editor_options:
   chunk_output_type: console
 ---
+
+# Castor workflow with `setupProject` {#sec-castorEg}
 
 ```{r setup}
 #| include: false
@@ -62,7 +63,7 @@ of `SpaDES.project` functions.
 A bare-bones version of this example is also available in this [.R
 script](https://github.com/PredictiveEcology/PredictiveEcology.org/blob/training-book/tutos/castorExample/castorExample.R)
 
-## Workflow setup
+## Workflow setup {#sec-castorSetup}
 
 `SpaDES.project` functions expect SpaDES modules to either exist
 locally, or at root level of separate repositories. This is not the case
