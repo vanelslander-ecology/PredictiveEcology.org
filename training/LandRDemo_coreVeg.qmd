@@ -253,11 +253,8 @@ also notice that `init` events are retrieved from cache, this time around.
 #| eval: false
 #| cache: false 
 
-simInitOut <- do.call(SpaDES.core::simInit, out) |>
-  reproducible::Cache()
-SpaDES.core::P(simInitOut, param = ".plots", module = "Biomass_core") <- "screen"
-
-simOut <- SpaDES.core::spades(simInitOut)
+simInitOut <- do.call(SpaDES.core::simInit, out)
+simOut <- SpaDES.core::spades(simInitOut, debug = "init")
 ```
 
 ### Many replicates {#sec-LandRReplication}
