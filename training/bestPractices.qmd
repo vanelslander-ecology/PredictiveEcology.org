@@ -35,6 +35,7 @@ SpaDES users and any R programmers in general.
     can check ?lm):
 
     ```{r}
+    #| eval: false
     ## lm fits a linear model
     lm(biomass ~ height)
     ```
@@ -42,6 +43,7 @@ SpaDES users and any R programmers in general.
     A more useful comment (we can check ?lm):
 
     ```{r}
+    #| eval: false
     ## model linear relationship between biomass and height
     lm(biomass ~ height)
     ```
