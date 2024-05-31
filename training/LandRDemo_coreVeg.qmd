@@ -5,6 +5,12 @@ date: last-modified
 editor_options:
   chunk_output_type: console
 bibliography: references/references.bib
+execute:
+  tidy: false
+  warning: false
+  message: false
+  error: false
+  cache: 2
 ---
 
 ```{r setup}

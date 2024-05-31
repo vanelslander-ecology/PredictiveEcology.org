@@ -3,6 +3,12 @@ author: "Ceres Barros"
 date: last-modified
 editor_options:
   chunk_output_type: console
+execute:
+  tidy: false
+  warning: false
+  message: false
+  error: false
+  cache: 2
 ---
 
 # Castor workflow with `setupProject` {#sec-castorEg}
@@ -10,11 +16,6 @@ editor_options:
 ```{r setup}
 #| include: false
 #| cache: false
-
-knitr::opts_chunk$set(tidy = FALSE, 
-                      warning = FALSE, 
-                      message = FALSE, 
-                      error = FALSE)
 
 ## truncate text output
 hook_output <- knitr::knit_hooks$get("output")
@@ -96,8 +97,6 @@ creating parameter, inputs and outputs lists -- see
 [`?setupProject`](https://spades-project.predictiveecology.org/reference/setupProject.html).
 
 ```{r wfsetup}
-#| message: false
-#| warning: false
 #| results: hide
 #| cache: false 
 
@@ -270,8 +269,6 @@ SpaDES.core::objectDiagram(castorInit)
 #| echo: false
 #| fig-height: 6
 #| fig-width: 6
-#| message: false
-#| warning: false
 #| fig-cap: "Diagram of module connections."
 
 SpaDES.core::moduleDiagram(castorInit)
