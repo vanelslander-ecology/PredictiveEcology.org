@@ -5,7 +5,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-# Simple workflow with `setupProject`
+# Simple workflow with setupProject
 
 ```{r setup}
 #| include: false

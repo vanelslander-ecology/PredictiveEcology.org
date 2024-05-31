@@ -1,0 +1,7 @@
+
+# Setting up your computer and system {.unnumbered}
+
+This brief section of the book shows how to set up R, Rstudio, SpaDES, and an example SpaDES module. 
+
+
+
