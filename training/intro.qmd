@@ -77,14 +77,16 @@ useing highly **modular** code that has **metadata** attached.
 
 ### Modularity
 
-Modular code means that scripts can be broken up into themes that
-bundled into meaningful chunks that can be easily moved, swapped,
-replaced or scrapped easily. A nice example of this is @barros2023 where
-a module was included or removed to identify the value of "adding more
-complexity". One simple conclusion followed Occam's Razor: simpler data
-and models predicted simpler characteristics of the forest than the
-complex data and models. In other words, adding complexity to a model
-made the model perform worse for some characteristics.
+Modular code for ecological analyses has been long proposed
+[@reynolds1997]. Modularity means that scripts can be broken up into
+themes that bundled into meaningful chunks that can be easily moved,
+swapped, replaced or scrapped easily. A nice example of this is
+@barros2023 where a module was included or removed to identify the value
+of "adding more complexity". One simple conclusion followed Occam's
+Razor: simpler data and models predicted simpler characteristics of the
+forest than the complex data and models. In other words, adding
+complexity to a model made the model perform worse for some
+characteristics.
 
 ### Metadata
 
@@ -95,12 +97,28 @@ understand their code and it allows R to know how to connect this chunk
 of code with others. It allows SpaDES to chain or weave together
 modules.
 
-```{=html}
-<!--
+### Methods vs. Results
 
-- welcome note
-- book structure and how to use it
-- something about companion slides/presentations used during workshops?
+Scientists have embraced the idea of module code by creating and using
+functions bundled into packages, e.g., R packages. This is analogous to
+the **Methods** section: i.e., to describes how you will do something.
+This has massively accelerated Ecology and other data sciences. However,
+even if you know all the functions that a paper used, it doesn't create
+the Results. *SpaDES modules can be thought of as the code needed to
+make the **Results**.* In other words, SpaDES enables us to bundle the
+actual code needed to recreate all the steps to make the Results.
 
--->
-```
+### Nimbleness
+
+When combined with **modularity** we can weave together new Results that
+use *new data*, *updated data*, a *new module*, a *new study area*, a
+*new visualization*, address *new stakeholder's needs* and more.
+
+## Our challenge
+
+With the limited training provided in this book, applied ecologists can
+work towards creating PERFICT code. Embracing the transparency and
+nimbleness it provides, we can pivot more rapidly to the current
+management needs. When we are asked at the end of a 3 year project,
+*"can we redo everything because we have a new stakeholder who feels
+that our assumptions are wrong?"*, ***our answer can be "yes"***.
