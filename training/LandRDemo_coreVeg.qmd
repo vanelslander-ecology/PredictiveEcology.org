@@ -223,8 +223,6 @@ Please note that it may take over an hour to download all necessary raw
 data and fit model parameters. 
 
 ```{r runSim}
-#| message: false
-#| warning: false
 #| results: hide
 #| cache: false 
 
