@@ -1,5 +1,4 @@
 ---
-title: "Installing R and Spatial Packages"
 author:
   - "Alex Chubaty"
   - "Eliot McIntire"
@@ -8,7 +7,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-# Prerequisites
+# Installing R and Spatial Packages
 
 To use SpaDES, a user must have R installed, plus some dependencies. Furthermore, it will be easier if the user also has Rtools installed. Finally, our group works with Rstudio so many directions will rely on Rstudio tools. Having Rstudio installed will make it easier for training and learning.
 
