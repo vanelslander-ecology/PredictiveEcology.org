@@ -95,32 +95,43 @@ library(SpaDES.project)
 
 out <- setupProject(
   ## INPUT OBJECTS -----------------------------------
+  ## these need to come *before* any formal arguments, as they are needed for params.R
   sppEquivCol = "Boreal",
   vegLeadingProportion = 0,
   successionTimestep = 10L,
   eventCaching = c(".inputObjects", "init"),
   useParallel = FALSE,
-  studyAreaLarge = {
-    originalcrs <- "+proj=longlat +datum=NAD83 +no_defs +ellps=GRS80 +towgs84=0,0,0"
-    Biomass_corecrs <- "+proj=lcc +lat_1=49 +lat_2=77 +lat_0=0 +lon_0=-95 +x_0=0 +y_0=0 +datum=NAD83 +units=m +no_defs +ellps=GRS80 +towgs84=0,0,0"
-    largeExtent <- c(xmin = -104.757, xmax = -104.2197, ymin = 55.68663, ymax = 56.20319)
-    
-    studyAreaL <- terra::vect(terra::ext(largeExtent))
-    studyAreaL <-  terra::vect(terra::geom(studyAreaL), "polygons", crs = originalcrs, atts = data.frame(id = 1:length(studyAreaL)))
-    studyAreaL <- terra::project(studyAreaL, Biomass_corecrs)
-    studyAreaL
-  },
-  studyArea = {
-    originalcrs <- "+proj=longlat +datum=NAD83 +no_defs +ellps=GRS80 +towgs84=0,0,0"
-    Biomass_corecrs <- "+proj=lcc +lat_1=49 +lat_2=77 +lat_0=0 +lon_0=-95 +x_0=0 +y_0=0 +datum=NAD83 +units=m +no_defs +ellps=GRS80 +towgs84=0,0,0"
-    
-    smallExtent <- c(xmin = -104.757, xmax = -104.48835, ymin = 55.68663, ymax = 55.94491)
-    studyAreaS <- terra::vect(terra::ext(smallExtent))
-    studyAreaS <-  terra::vect(terra::geom(studyAreaS), "polygons", crs = originalcrs, atts = data.frame(id = 1:length(studyAreaS)))
-    studyAreaS <- terra::project(studyAreaS, Biomass_corecrs)
-    studyAreaS
-  },
-  ## species lists
+  paths = list("packagePath" = "packages/",
+               "projectPath" = "~/tutos/LandRDemo_coreVeg"),
+  packages = c(
+    ## these are needed but don't load
+    "PredictiveEcology/SpaDES.experiment@development (HEAD)",
+    "terra"  
+  ),
+  options = list(
+    "reproducible.destinationPath" = paths$inputPath,
+    "spades.inputPath" = paths$inputPath,
+    "spades.moduleCodeChecks" = FALSE,
+    "repos" = repos
+  ),
+  modules = c(
+    "PredictiveEcology/Biomass_speciesData@development",
+    "PredictiveEcology/Biomass_borealDataPrep@development",
+    "PredictiveEcology/Biomass_speciesParameters@development",
+    "PredictiveEcology/Biomass_core@development",
+    "PredictiveEcology/Biomass_validationKNN@development"
+    # "Biomass_speciesData",
+    # "Biomass_borealDataPrep",
+    # "Biomass_speciesParameters",
+    # "Biomass_core",
+    # "Biomass_validationKNN"
+  ),
+  ## SIMULATION SETUP ------------------------------------
+  times = list(start = 2001, end = 2031),
+  params = "PredictiveEcology/PredictiveEcology.org@training-book/tutos/LandRDemo_coreVeg/params.R",
+  ## (more) INPUT OBJECTS -----------------------------------
+  ## these come after, so that we don't need to pre-install/load LandR
+  ## species lists/traits
   sppEquiv = {
     data("sppEquivalencies_CA", package = "LandR")
     sppEquivalencies_CA[grep("Pin", LandR), `:=`(EN_generic_short = "Pine",
@@ -136,13 +147,9 @@ out <- setupProject(
     sppEquivalencies_CA[grep("Popu_", LandR), Boreal := "Popu_Spp"]
     
     ## define spp column to use for model
-    # sppEquivCol <- "Boreal"
     sppEquivalencies_CA <- sppEquivalencies_CA[!"", on = sppEquivCol]
     sppEquivalencies_CA <- na.omit(sppEquivalencies_CA, sppEquivCol)
     sppEquivalencies_CA
-  },
-  sppColorVect = {
-    LandR::sppColors(sppEquiv, sppEquivCol, newVals = "Mixed", palette = "Accent")
   },
   speciesParams = {
     list(
@@ -156,26 +163,26 @@ out <- setupProject(
       )
     )
   },
-  paths = list("packagePath" = "packages/",
-               "projectPath" = "~/tutos/LandRDemo_coreVeg"),
-  packages = c(
-    "PredictiveEcology/SpaDES.experiment@development (HEAD)",
-    "terra"  ## needed for studyArea, but don't load.
-  ),
-  options = list(
-    "reproducible.destinationPath" = paths$inputPath,
-    "spades.inputPath" = paths$inputPath
-  ),
-    modules = c(
-    "CeresBarros/Biomass_speciesData@master",
-    "CeresBarros/Biomass_borealDataPrep@master",
-    "CeresBarros/Biomass_speciesParameters@master",
-    "CeresBarros/Biomass_core@master",
-    "CeresBarros/Biomass_validationKNN@master"
-  ),
-  ## SIMULATION SETUP ------------------------------------
-  times = list(start = 2001, end = 2031),
-  params = c("PredictiveEcology/PredictiveEcology.org@main/tutos/LandRExample/params.R")
+  studyArea = {
+    originalcrs <- "+proj=longlat +datum=NAD83 +no_defs +ellps=GRS80 +towgs84=0,0,0"
+    Biomass_corecrs <- "+proj=lcc +lat_1=49 +lat_2=77 +lat_0=0 +lon_0=-95 +x_0=0 +y_0=0 +datum=NAD83 +units=m +no_defs +ellps=GRS80 +towgs84=0,0,0"
+    
+    smallExtent <- c(xmin = -104.757, xmax = -104.48835, ymin = 55.68663, ymax = 55.94491)
+    studyAreaS <- terra::vect(terra::ext(smallExtent))
+    studyAreaS <-  terra::vect(terra::geom(studyAreaS), "polygons", crs = originalcrs, atts = data.frame(id = 1:length(studyAreaS)))
+    studyAreaS <- terra::project(studyAreaS, Biomass_corecrs)
+    studyAreaS
+  },
+  studyAreaLarge = {
+    originalcrs <- "+proj=longlat +datum=NAD83 +no_defs +ellps=GRS80 +towgs84=0,0,0"
+    Biomass_corecrs <- "+proj=lcc +lat_1=49 +lat_2=77 +lat_0=0 +lon_0=-95 +x_0=0 +y_0=0 +datum=NAD83 +units=m +no_defs +ellps=GRS80 +towgs84=0,0,0"
+    largeExtent <- c(xmin = -104.757, xmax = -104.2197, ymin = 55.68663, ymax = 56.20319)
+    
+    studyAreaL <- terra::vect(terra::ext(largeExtent))
+    studyAreaL <-  terra::vect(terra::geom(studyAreaL), "polygons", crs = originalcrs, atts = data.frame(id = 1:length(studyAreaL)))
+    studyAreaL <- terra::project(studyAreaL, Biomass_corecrs)
+    studyAreaL
+  }
 )
 ```
 
