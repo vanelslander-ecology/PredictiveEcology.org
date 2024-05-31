@@ -101,12 +101,13 @@ modules.
 
 Scientists have embraced the idea of modular code by creating and using
 functions bundled into packages, e.g., R packages. This is analogous to
-the **Methods** section: i.e., to describes how you will do something.
-This has massively accelerated Ecology and other data sciences. However,
-even if you know all the functions that a paper used, it doesn't create
-the Results. *SpaDES modules can be thought of as the code needed to
-make the **Results**.* In other words, SpaDES enables us to bundle the
-actual code needed to recreate all the steps to make the Results.
+the **Methods** section: i.e., these describe how you will do something.
+The use of packages in this way has massively accelerated Ecology and
+other data sciences. However, even if you know all the functions that a
+paper used, it doesn't create the Results. *SpaDES modules can be
+thought of as the code needed to make the **Results**.* In other words,
+SpaDES enables us to bundle the actual code needed to recreate all the
+steps to make the Results.
 
 ### Nimbleness
 
