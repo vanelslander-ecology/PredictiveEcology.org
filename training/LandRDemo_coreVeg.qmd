@@ -78,11 +78,9 @@ using `setupProject` from the
 [`SpaDES.project`](https://spades-project.predictiveecology.org/)
 package and current versions of the LandR modules.
 
+## Workflow setup
 
-
-```{r pkgSetup}
-#| message: false
-#| warning: false
+```{r setupProject}
 #| results: hide
 #| cache: false 
 
