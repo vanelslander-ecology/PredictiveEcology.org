@@ -122,4 +122,4 @@ work towards creating PERFICT code. Embracing the transparency and
 nimbleness it provides, we can pivot more rapidly to the current
 management needs. When we are asked at the end of a 3 year project,
 *"can we redo everything because we have a new stakeholder who feels
-that our assumptions are wrong?"*, ***our answer can be "yes"***.
+that our assumptions are wrong?"*, ***our answer should be "yes"***.
