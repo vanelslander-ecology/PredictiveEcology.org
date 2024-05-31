@@ -1,5 +1,8 @@
 project:
   type: book
+  preview:
+    port: 4200
+    browser: false
 
 book:
   title: "Robust and nimble scientific workflows, using SpaDES"
@@ -45,6 +48,11 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
+    - part: settingUp.qmd
+      chapters:
+      - installRandSpatialPkgs.qmd
+      - PackagesForBook.qmd
+      - TroubleshootingPackageInstallation.qmd
     - part: SpaDESbasics.qmd
       chapters:
       - NewModuleIntro.qmd
@@ -58,8 +66,8 @@ book:
       - multipleModules.qmd
       # - setupProject.qmd
     - part: realexamples.qmd
-      chapters:
-      - castorExample.qmd
+      # chapters:
+      # - castorExample.qmd
     - bestPractices.qmd
     - references.qmd
 
@@ -89,7 +97,7 @@ execute:
   cache: true
 
 editor:
-  mode: visual
+  mode: source
   markdown:
     wrap: 72
     references:

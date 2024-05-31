@@ -1,0 +1,109 @@
+---
+title: "Installing R and Spatial Packages"
+author:
+  - "Alex Chubaty"
+  - "Eliot McIntire"
+date: last-modified
+editor_options:
+  chunk_output_type: console
+---
+
+# Prerequisites
+
+To use SpaDES, a user must have R installed, plus some dependencies. Furthermore, it will be easier if the user also has Rtools installed. Finally, our group works with Rstudio so many directions will rely on Rstudio tools. Having Rstudio installed will make it easier for training and learning.
+
+##  Install R
+
+### Windows
+
+1. Download and run the [R installer](https://cran.r-project.org/bin/windows/base) (as administrator!).
+2. Download and install the latest [**Rtools**](http://cran.r-project.org/bin/windows/Rtools/) (as administrator!). Be sure to check the "add rtools to PATH" option during installation if necessary (Rtools v4.0).
+
+### macOS
+
+1. Download and run the R installer from <https://cran.r-project.org/bin/macosx>.
+2. Install Xcode commandline tools from the terminal:
+
+```bash
+xcode-select --install
+```
+
+3. Install homebrew from the terminal (instructions at <https://brew.sh/>)
+4. Install GDAL and other spatial packages (instructions at <https://www.alexchubaty.com/post/2020-01-08-using-latest-gdal-macos-redux/>)
+5. Install OpenMP support for data.table:
+
+```bash
+brew update && brew install llvm
+```
+6. Install GLPK (needed for full `igraph` functionality; used with `SpaDES.core::moduleGraph`):
+
+```bash
+brew install glpk
+```
+
+Then, reinstall `igraph` from source so it is compiled with GLPK:
+
+```r
+install.packages("igraph", type = "source")
+```
+
+### Linux
+
+Install via `apt` or `yum` depending on your distribution.
+Instructions for Ubuntu 18.04 LTS are shown below.
+
+1. Install R and its development libraries:
+
+```r
+sudo apt install r-base r-base-dev
+```
+
+2. Install java and configure R to use it:
+
+```r
+sudo apt build-dep -y r-cran-rjava
+sudo R CMD javareconf
+```
+
+3. Install dependencies for spatial and other packages:
+
+```r
+sudo apt build-dep -y r-cran-tkrplot
+
+sudo apt-get install -y \
+ccache \
+gdal-bin \
+git \
+libcairo2-dev \
+libcurl4-gnutls-dev \
+libgdal-dev \
+libgeos-dev \
+libgit2-dev \
+libgmp-dev \
+libjq-dev \
+libmagick++-dev \
+libproj-dev \
+libprotobuf-dev \
+libprotoc-dev \
+libssh2-1-dev \
+libssl-dev \
+libudunits2-dev \
+libv8-dev \
+libxml2-dev \
+libxt-dev \
+pandoc \
+pandoc-citeproc \
+protobuf-compiler \
+python-gdal \
+python3-gdal \
+curl \
+r-cran-littler
+```
+
+## Install Rstudio
+
+Download and run the installer for your operating system from <https://www.rstudio.com/products/rstudio/download/#download>.
+
+## See also
+
+[Hands on programming with R](https://rstudio-education.github.io/hopr/starting.html)

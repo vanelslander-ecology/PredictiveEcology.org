@@ -1,6 +1,12 @@
 ---
 author: "Eliot McIntire"
 date: last-modified
+execute:
+  eval: false
+  tidy: false
+  warning: false
+  message: false
+  error: false
 editor_options:
   chunk_output_type: console
 ---
@@ -9,11 +15,6 @@ editor_options:
 
 ```{r setup}
 #| include: false
-knitr::opts_chunk$set(tidy = FALSE, 
-                      eval = FALSE,
-                      warning = FALSE, 
-                      message = FALSE, 
-                      error = FALSE)
 
 ## truncate text output
 hook_output <- knitr::knit_hooks$get("output")
@@ -48,7 +49,7 @@ We will start by thinking about metadata: *What is metadata?*
 We can examine the following code chunk. First, we ask: what are the
 **inputs** and the **outputs**?
 
-```{r}
+```{r start}
 # create some data
 y <- x + rnorm(10)
 # fit a linear model
@@ -64,13 +65,13 @@ will not work (i.e., it will cause an error) if `x` is not defined. The
 chunk.
 
 Next, *what are the package dependencies?*. We see that there are three
-functions: `rnorm`, `lm` and `plot`. We don't know what packages they are in, so
-we can find out by typing them at the R prompt. At the bottom of the function, it says
-that the function `rnorm` is in the `stats` package. Fortunately for us,
-this is a default ("base") package in R and it is always pre-loaded. So,
-nothing to do here.
+functions: `rnorm`, `lm` and `plot`. We don't know what packages they
+are in, so we can find out by typing them at the R prompt. At the bottom
+of the function, it says that the function `rnorm` is in the `stats`
+package. Fortunately for us, this is a default ("base") package in R and
+it is always pre-loaded. So, nothing to do here.
 
-```{r}
+```{r second}
 > rnorm
 function (n, mean = 0, sd = 1) 
 ...
@@ -89,7 +90,7 @@ We will next put them into the correct places in the new SpaDES module.
 
 We use the `SpaDES.core` function `newModule()` to make a new module.
 
-```{r}
+```{r newModule}
 SpaDES.core::newModule(name = "My_linear_model", path = "tutos/NewModuleIntro")
 ```
 
@@ -103,7 +104,7 @@ that it creates.
 Scroll down to `inputObjects` and `expectsInputs()`. We will declare `x`
 as an "input" by putting it there.
 
-```{r}
+```{r metadata}
 inputObjects = bindrows(
     expectsInput(objectName = "x", objectClass = "numeric", 
                  desc = "The inputs for the linear model", sourceURL = NA)

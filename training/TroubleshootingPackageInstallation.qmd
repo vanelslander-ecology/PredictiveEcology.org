@@ -1,0 +1,13 @@
+---
+author:
+  - "Eliot McIntire"
+date: last-modified
+editor_options:
+  chunk_output_type: console
+---
+
+# Troubleshooting R package installation {#sec-TroubleShoot}
+
+
+
+## See also

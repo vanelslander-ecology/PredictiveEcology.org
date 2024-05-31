@@ -10,6 +10,8 @@ listing:
 page-layout: full
 title-block-banner: true
 comments: false
+editor: 
+  mode: source
 ---
 
 Welcome to the website of the Predictive Ecology Community\
