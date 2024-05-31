@@ -236,7 +236,7 @@ simInitOut <- do.call(SpaDES.core::simInit, out) |>
 simOut <- SpaDES.core::spades(simInitOut)
 ```
 
-#### Turn plotting on *after* the fact
+#### Turn plotting on *after* setting up the workflow
 
 We can change parameters and re-run the simulation to, e.g., activate live 
 plotting in *Biomass_core*. 
