@@ -19,7 +19,6 @@ list(
     #   age and biomass
     , 'pixelGroupAgeClass' = successionTimestep
     , 'pixelGroupBiomassClass' = 100
-    , 'rstLCCYear' = 2005L
     , 'useCloudCacheForStats' = FALSE
     , 'cloudFolderID' = NA
     , '.plots' = c('object', 'raw')
