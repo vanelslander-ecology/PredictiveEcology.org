@@ -85,11 +85,8 @@ package and current versions of the LandR modules.
 #| cache: false 
 
 repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
-install.packages(c("remotes"), repos = repos)
-remotes::install_github("PredictiveEcology/SpaDES.project@transition")
+install.packages(c("SpaDES.project"), repos = repos)
 library(SpaDES.project)
-
-# devtools::load_all("../SpaDES.project/")
 
 out <- setupProject(
   ## INPUT OBJECTS -----------------------------------
