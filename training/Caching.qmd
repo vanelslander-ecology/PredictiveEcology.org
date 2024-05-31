@@ -83,6 +83,7 @@ the example below, we will use `terra::project` three times, with
 timings.
 
 ### From disk
+
 ```{r function-level}
 # Data setup
 library(terra)
@@ -106,7 +107,8 @@ system.time(map3 <- terra::project(ras, newCRS) |> Cache())
 
 ### From disk and memory
 
-We can set an option so that objects will also be saved to disk as normal, but they will also be saved as RAM objects -- "memoising".
+We can set an option so that objects will also be saved to disk as
+normal, but they will also be saved as RAM objects -- "memoising".
 
 ```{r memoise}
 optOrig <- options("reproducible.useMemoise" = TRUE)
@@ -222,7 +224,5 @@ Some of our team regularly add:
 
 3.  If using SpaDES, use cache at the event level, if the event is
     non-stochastic
-
-
 
 <!-- NEVER CACHE SIMINIT()-->
