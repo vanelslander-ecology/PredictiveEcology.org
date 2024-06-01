@@ -3,6 +3,8 @@ project:
   preview:
     port: 4200
     browser: false
+  pre-render:
+    - R/installpkgs.R
 
 book:
   title: "Robust and nimble scientific workflows, using SpaDES"
