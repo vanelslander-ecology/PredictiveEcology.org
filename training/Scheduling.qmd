@@ -275,16 +275,14 @@ i.e., keep the same folder structure.
     -   We can interweave events, e.g., a fire event then a tree growth
         event
 
-```{=html}
 <!-- -->
-```
+
 2.  When is a loop better than scheduling?
     -   Loops are much faster than scheduling.
     -   But really, avoid loops in R if you can help it
 
-```{=html}
 <!-- -->
-```
+
 3.  Chances are that the first versions of this module didn't work. How
     do you fix it?
     -   [Learn how to debug in R and
