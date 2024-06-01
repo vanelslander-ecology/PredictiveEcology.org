@@ -6,13 +6,36 @@ editor_options:
   chunk_output_type: console
 ---
 
-# R packages for book
+# Pre-installing R packages for book
 
-The objective of this book is to facilitate lightweight project code. To do this, packages and any code that are used must be easy to install and use. As a result, under most circumstances, users don't need to "pre-install" packages because each chapter will install its own packages. Furthermore, packages, once installed for one project, will be cached locally so that the next project will be able to install quickly from local package cache. We have attempted to allow all sections to be run without administrator priviledges. 
+The objective of this book is to facilitate lightweight project code and
+setting up R^3^T workflows[^1]. To do this, packages and any code that
+are used must be easy to install and use. We accomplish this by having
+each chapter installing its own packages, and avoiding having users
+"pre-installing" packages.
 
-## Common setup
+Furthermore, packages, once installed for one project, will be cached
+locally so that the next project will be able to install quickly from
+the local package cache. We have also attempted to allow all sections to
+be run without administrator privileges.
 
-If you can run the following code, then you will be able to run code in any of the chapters in this book. This code installs a few packages (notably `SpaDES.project` and `Require` and their dependencies), then it downloads and installs a single SpaDES module. This module happens to have many package dependencies (over 130 packages). 
+Nonetheless, there might be situations where users of this book will
+need to pre-install packages in one go – e.g., they will run chapter
+code without internet access. The following instructions are meant to
+cover this use case.
+
+## Installation code
+
+If you can run the following code, then you will be able to run code in
+any of the chapters in this book. This code installs a few packages
+(notably `SpaDES.project`, `Require` and their dependencies), then it
+downloads and installs a single SpaDES module (*Biomass-core*). This
+module happens to have many package dependencies (over 130 packages)
+covering all the dependencies needed in this book. It also downloads an
+extra package `diskframe` that is not a dependency of *Biomass_core*,
+but brings with it many other packages.
+
+<!--ELIOT: need to add castor deps below-->
 
 ```{r setupProject}
 #| cache: true
@@ -31,8 +54,9 @@ out <- setupProject(
 
 ```
 
-
 ## See also
 
-@sec-TroubleShoot
+@sec-TroubleShoot on R package installation troubleshooting
 
+[^1]: See this [introduction to R^3^T
+    workflows](https://ceresbarros.github.io/reproducible-workflowsWS/presentations/20230712_BESMacroSIG2023_ReproducibleWorkflowsWS.pdf).
