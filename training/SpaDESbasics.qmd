@@ -1,4 +1,4 @@
-# `SpaDES` 101
+# SpaDES 101
 
 Under construction.
 

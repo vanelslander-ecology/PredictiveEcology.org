@@ -16,7 +16,7 @@ View on [CRAN](https://cran.r-project.org/package=Require); [GitHub](https://git
 
 ### [`SpaDES`](https://spades.predictiveecology.org)
 
-#### Develop and Run Spatially Explicit Discrete Event Simulation Models
+#### Spatially Explicit Discrete System
 
 Metapackage for implementing a variety of event-based models, with a focus on spatially explicit models. These include raster-based, event-based, and agent-based models. The core simulation components (provided by [`SpaDES.core`](https://spades-core.predictiveecology.org/)) are built upon a discrete event simulation (DES) framework that facilitates modularity, and easily enables the user to include additional functionality by running user-built simulation modules (see also [`SpaDES.tools`](https://spades-tools.predictiveecology.org/)). Included are numerous tools to visualize rasters and other maps (via [`quickPlot`](https://quickplot.predictiveecology.org/)), and caching methods for reproducible simulations (via [`reproducible`](https://reproducible.predictiveecology.org/)). Additional functionality is provided by the [`SpaDES.addins`](https://spades-addins.predictiveecology.org/) and [`SpaDES.shiny`](https://spades-shiny.predictiveecology.org/) packages.
 

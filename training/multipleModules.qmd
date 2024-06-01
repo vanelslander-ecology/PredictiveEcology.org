@@ -1,4 +1,4 @@
-# Multiple Modules {@sec-manymodules}
+# Multiple Modules {#sec-manymodules}
 
 Under construction.
 

@@ -201,5 +201,7 @@ objects(mySimOut)
 ## See also
 
 [`?.simList-class`](https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/simList-class)
+
 [`?simInit`](https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/simInit)
+
 [`?spades`](https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/spades)

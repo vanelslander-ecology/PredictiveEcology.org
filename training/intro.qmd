@@ -1,13 +1,125 @@
+---
+date: last-modified
+output:
+  bookdown::html_document2:
+    toc: true
+    toc_float: true
+    theme: sandstone
+    number_sections: false
+    df_print: paged
+    keep_md: yes
+always_allow_html: true
+bibliography: references.bib
+---
+
 # Introduction {.unnumbered}
 
-Under construction.
+## The three big problems in applied ecology
 
-```{=html}
-<!--
+Applied ecology -- the study of ecological systems that are affected by
+humans activities -- can be seen as addressing these problems:
 
-- welcome note
-- book structure and how to use it
-- something about companion slides/presentations used during workshops?
+1.  **many species are declining or uncontrollably increasing**
+2.  **many processes (like fire and food web dynamics) are changing**
+3.  **most problems require trans-disciplinary solutions**
 
--->
-```
+Alongside these problems, ecologists must grapple with new expectations
+for how they do their work to inform these problems.
+
+## The expectations
+
+To address these problems in the 21st century, applied ecologists must
+uphold standards of:
+
+1.  **transparency** -- analyses must be able to be inspected,
+    understood, and scrutinized by many eyes;
+2.  **reproducibilty** -- analyses must be able to be reproduced by
+    others and into the future;
+3.  **nimbleness** -- analyses must be able to respond **quickly** to
+    new data, new insights, new drivers, and new management needs;
+4.  **forecasting** -- analyses must demonstrate that they are proving
+    reliable insights into the future, not just the past;
+5.  **validation** -- analyses must clearly demonstrate why they should
+    be trusted and used;
+6.  **broad participation** -- every step of a project must include
+    knowledge and participation from outside the scientific community.
+
+It can be very challenging to address each of these.
+
+## PERFICT
+
+This book is intended to show a way to show applied ecologists an
+approach that we have developed using the SpaDES set of R packages. This
+approach will allow ecologists to get towards a PERFICT approach
+[@mcintire2022]. Briefly, PERFICT is:
+
+-   **P**redict regularly from models thare are
+
+-   **E**valuated,
+
+-   **R**eusable,
+
+-   **F**reely accessible, and
+
+-   **I**nteroperable, and that are part of
+
+-   **C**ontinuous workflows that are
+
+-   **T**ested regularly
+
+With this approach, we can better meet the expectations, and better
+address the problems.
+
+## SpaDES
+
+SpaDES is a set of R packages that facilitate the process creating and
+useing highly **modular** code that has **metadata** attached.
+
+### Modularity
+
+Modular code for ecological analyses has been long proposed
+[@reynolds1997]. Modularity means that scripts can be broken up into
+themes that bundled into meaningful chunks that can be easily moved,
+swapped, replaced or scrapped easily. A nice example of this is
+@barros2023 where a module was included or removed to identify the value
+of "adding more complexity". One simple conclusion followed Occam's
+Razor: simpler data and models predicted simpler characteristics of the
+forest than the complex data and models. In other words, adding
+complexity to a model made the model perform worse for some
+characteristics.
+
+### Metadata
+
+Metadata in a SpaDES context includes identifying what data are
+**expected** by a chunk of code and what data are **created** by a chunk
+of code: the **inputs** and **outputs**. This forces an ecologist to
+understand their code and it allows R to know how to connect this chunk
+of code with others. It allows SpaDES to chain or weave together
+modules.
+
+### Methods vs. Results
+
+Scientists have embraced the idea of modular code by creating and using
+functions bundled into packages, e.g., R packages. This is analogous to
+the **Methods** section: i.e., these describe how you will do something.
+The use of packages in this way has massively accelerated Ecology and
+other data sciences. However, even if you know all the functions that a
+paper used, it doesn't create the Results. *SpaDES modules can be
+thought of as the code needed to make the **Results**.* In other words,
+SpaDES enables us to bundle the actual code needed to recreate all the
+steps to make the Results.
+
+### Nimbleness
+
+When combined with **modularity** we can weave together new Results that
+use *new data*, *updated data*, a *new module*, a *new study area*, a
+*new visualization*, address *new stakeholder's needs* and more.
+
+## Our challenge
+
+With the limited training provided in this book, applied ecologists can
+work towards creating PERFICT code. Embracing the transparency and
+nimbleness it provides, we can pivot more rapidly to the current
+management needs. When we are asked at the end of a 3 year project,
+*"can we redo everything because we have a new stakeholder who feels
+that our assumptions are wrong?"*, ***our answer should be "yes"***.

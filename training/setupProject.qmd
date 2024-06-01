@@ -5,7 +5,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-# Simple workflow with `setupProject`
+# Simple workflow with setupProject
 
 ```{r setup}
 #| include: false
@@ -29,12 +29,6 @@ knitr::knit_hooks$set(output = function(y, options) {
   }
   hook_output(y, options)
 })
-
-options(repos = "http://cran.us.r-project.org")
-if (!require("Require")) {
-  install.packages("Require", repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
-}
-
 ```
 
 [`SpaDES.project::setupProject()`](https://spades-project.predictiveecology.org/reference/setupProject.html)

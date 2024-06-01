@@ -82,6 +82,8 @@ listing:
     categories: false
     feed: false
     page-size: 30
+editor: 
+  mode: source    
 ---
 
 ::: {#workshops-top}

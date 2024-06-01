@@ -5,7 +5,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-# Module Inputs
+# Module Inputs {#sec-moduleinputs}
 
 ```{r setup}
 #| include: false
@@ -30,11 +30,6 @@ knitr::knit_hooks$set(output = function(y, options) {
   hook_output(y, options)
 })
 
-options(repos = "http://cran.us.r-project.org")
-if (!require("Require")) {
-  install.packages("Require", repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
-}
-
 ```
 
 We have seen functions called `.inputObjects` and
@@ -44,8 +39,8 @@ We will show these used within a SpaDES module.
 ::: {#tip-Inputs .callout-tip}
 The **inputs** of a SpaDES module can be any R object, and should be
 specified in the `inputObjects` section of the metadata if it is needed
-for the module to run. All inputs should be used in the `sim` using e.g.,
-`sim$` somewhere in the module.
+for the module to run. All inputs should be used in the `sim` using
+e.g., `sim$` somewhere in the module.
 :::
 
 ## How to supply **Inputs**
@@ -55,7 +50,7 @@ There are several ways to get objects into the `simList`:
 -   User passes during `simInit`:
 
     -   using the `objects` argument (if it is an object);
-    
+
     -   using the `inputs` argument (if it is from disk);
 
 -   Developer creates defaults and specifies them in `.inputObjects`;
@@ -67,8 +62,8 @@ modularity.
 
 ### During `simInit`
 
-A user can directly pass **objects** into the `simInit` and these will be put
-into the `simList`
+A user can directly pass **objects** into the `simInit` and these will
+be put into the `simList`
 
 ```{r duringSimInit1}
 a <- 1
@@ -102,13 +97,14 @@ rnormMean5() # can be run without any arguments
 ```
 
 This works for only the simplest cases. In the case of a module, objects
-can be arbitrarily complicated and so this approach will not be suitable.
+can be arbitrarily complicated and so this approach will not be
+suitable.
 
 Instead, there is a function that is called every time a module is
-initialized (i.e. by `simInit()`) where a developer can put anything they want to specify as
-defaults. It is generally most useful to use
-`if (!SpaDES.core::suppliedElsewhere("obj", sim))` i.e., if the object isn't
-in `sim`, then give it a value.
+initialized (i.e. by `simInit()`) where a developer can put anything
+they want to specify as defaults. It is generally most useful to use
+`if (!SpaDES.core::suppliedElsewhere("obj", sim))` i.e., if the object
+isn't in `sim`, then give it a value.
 
 ```{r example}
 .inputObjects <- function(sim) {
@@ -124,11 +120,10 @@ in `sim`, then give it a value.
 #### Advanced `.inputObjects` example
 
 In the Biomass_core module (this is an implementation of the LANDIS-II
-Biomass Succession Extension v3.2), there are many **Inputs** as defined in
-the *metadata*. The module needs each one of these to work. 
+Biomass Succession Extension v3.2), there are many **Inputs** as defined
+in the *metadata*. The module needs each one of these to work.
 
-The
-developers have created a `.inputObjects` function that will fill in
+The developers have created a `.inputObjects` function that will fill in
 these **Inputs** with defaults if the user hasn't supplied them (using
 `!SpaDES.core::suppliedElsewhere()`).
 
@@ -145,12 +140,13 @@ CRS](https://github.com/PredictiveEcology/Biomass_core/blob/d5c214b69f35e7a9f57c
 work)
 
 Third, if an object is missing, [it may make sense to fill in the
-details with parameters from the Internet](https://github.com/PredictiveEcology/Biomass_core/blob/d5c214b69f35e7a9f57c59ca7d08329b49328e86/Biomass_core.R#L2066).
+details with parameters from the
+Internet](https://github.com/PredictiveEcology/Biomass_core/blob/d5c214b69f35e7a9f57c59ca7d08329b49328e86/Biomass_core.R#L2066).
 
 ### From another module
 
-We will leave this section for the @sec-manymodules chapter, where we are work
-with multiple modules.
+We will leave this section for the @sec-manymodules chapter, where we
+are work with multiple modules.
 
 ## Questions
 
@@ -158,7 +154,8 @@ with multiple modules.
     See
     [`?SpaDES.core::suppliedElsewhere`](https://rdrr.io/cran/SpaDES.core/man/suppliedElsewhere.html)
 
-    -   It turns out that other modules may create this object "after" this module is run, and this test will fail.
+    -   It turns out that other modules may create this object "after"
+        this module is run, and this test will fail.
 
 ## See also
 

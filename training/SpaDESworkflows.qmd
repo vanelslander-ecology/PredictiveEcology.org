@@ -1,13 +1,16 @@
-# `SpaDES` workflows and projects
+# SpaDES workflows and projects
 
-One of the advantages of `SpaDES` is that workflows arise from the 
-combinations of modules (and of their events) being put together by a user.
-Because SpaDES automatically  chains, schedules and executes events within and across modules, if the group of modules changes, so do the workflow steps being executed.
+One of the advantages of `SpaDES` is that workflows arise from the
+combinations of modules (and of their events) being put together by a
+user. Because SpaDES automatically chains, schedules and executes events
+within and across modules, if the group of modules changes, so do the
+workflow steps being executed.
 
-When module developers make sure modules are able to obtain defaults values 
-for all their inputs and when many modules have inputs and outputs in common,
-recombining modules to creating new workflows can happen at relatively little 
-cost for a user.
+When module developers make sure modules are able to obtain defaults
+values for all their inputs and when many modules have inputs and
+outputs in common, recombining modules to creating new workflows can
+happen at relatively little cost for a user.
 
-In this section, we will cover how to chain together many modules and how to create
-entire project workflows with `SpaDES.project`.
+In this section, we will cover how to chain together many modules and
+how to create entire project workflows with `SpaDES.project`.
+

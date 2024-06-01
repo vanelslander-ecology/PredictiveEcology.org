@@ -1,19 +1,21 @@
 ---
-title: "Castor workflow with `setupProject`"
 author: "Ceres Barros"
 date: last-modified
 editor_options:
   chunk_output_type: console
+execute:
+  tidy: false
+  warning: false
+  message: false
+  error: false
+  cache: 2
 ---
+
+# Castor workflow with `setupProject` {#sec-castorEg}
 
 ```{r setup}
 #| include: false
 #| cache: false
-
-knitr::opts_chunk$set(tidy = FALSE, 
-                      warning = FALSE, 
-                      message = FALSE, 
-                      error = FALSE)
 
 ## truncate text output
 hook_output <- knitr::knit_hooks$get("output")
@@ -62,7 +64,7 @@ of `SpaDES.project` functions.
 A bare-bones version of this example is also available in this [.R
 script](https://github.com/PredictiveEcology/PredictiveEcology.org/blob/training-book/tutos/castorExample/castorExample.R)
 
-## Workflow setup
+## Workflow setup {#sec-castorSetup}
 
 `SpaDES.project` functions expect SpaDES modules to either exist
 locally, or at root level of separate repositories. This is not the case
@@ -95,8 +97,6 @@ creating parameter, inputs and outputs lists -- see
 [`?setupProject`](https://spades-project.predictiveecology.org/reference/setupProject.html).
 
 ```{r wfsetup}
-#| message: false
-#| warning: false
 #| results: hide
 #| cache: false 
 
@@ -108,8 +108,8 @@ library(SpaDES.project)
 
 ## get Castor modules and functions
 setupFunctions(paths = list("projectPath" = "~/"),
-               functions = c("PredictiveEcology/PredictiveEcology.org@training-book/tutos/castorExample/getCastorModulesAndDB.R",
-                             "PredictiveEcology/PredictiveEcology.org@training-book/tutos/castorExample/params.R"),
+               functions = c("PredictiveEcology/PredictiveEcology.org@main/tutos/castorExample/getCastorModulesAndDB.R",
+                             "PredictiveEcology/PredictiveEcology.org@main/tutos/castorExample/params.R"),
                overwrite = TRUE)
 outMod <- getCastorModulesAndDB(paths = list("modulePath" = "~/tutos/castorExample/modules/",
                                              "projectPath" = "~/tutos/castorExample"),
@@ -269,8 +269,6 @@ SpaDES.core::objectDiagram(castorInit)
 #| echo: false
 #| fig-height: 6
 #| fig-width: 6
-#| message: false
-#| warning: false
 #| fig-cap: "Diagram of module connections."
 
 SpaDES.core::moduleDiagram(castorInit)

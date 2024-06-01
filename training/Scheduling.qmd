@@ -30,11 +30,7 @@ knitr::knit_hooks$set(output = function(x, options) {
   hook_output(x, options)
 })
 
-options(repos = "http://cran.us.r-project.org")
-if (!require("Require")) {
-  install.packages("Require", repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
-}
-Require::Require(c("ggplot2", "SpaDES.core"))
+Require::Require(c("ggplot2", "SpaDES.core"), install = FALSE)
 ```
 
 Here, we will talk about **scheduling events** in a SpaDES module using
@@ -279,16 +275,14 @@ i.e., keep the same folder structure.
     -   We can interweave events, e.g., a fire event then a tree growth
         event
 
-```{=html}
 <!-- -->
-```
+
 2.  When is a loop better than scheduling?
     -   Loops are much faster than scheduling.
     -   But really, avoid loops in R if you can help it
 
-```{=html}
 <!-- -->
-```
+
 3.  Chances are that the first versions of this module didn't work. How
     do you fix it?
     -   [Learn how to debug in R and
@@ -297,9 +291,13 @@ i.e., keep the same folder structure.
 ## See also
 
 [`?scheduleEvent`](https://rdrr.io/cran/SpaDES.core/man/scheduleEvent.html),
+
 [`?P`](https://rdrr.io/cran/SpaDES.core/man/params.html),
+
 [`?time`](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html),
+
 [`?start`](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html),
+
 [`?end`](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html)
 
 ## More learning on this subject

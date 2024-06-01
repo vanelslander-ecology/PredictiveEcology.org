@@ -1,5 +1,10 @@
 project:
   type: book
+  preview:
+    port: 4200
+    browser: false
+  pre-render:
+    - R/installpkgs.R
 
 book:
   title: "Robust and nimble scientific workflows, using SpaDES"
@@ -45,6 +50,11 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
+    - part: settingUp.qmd
+      chapters:
+      - installRandSpatialPkgs.qmd
+      - PackagesForBook.qmd
+      - TroubleshootingPackageInstallation.qmd
     - part: SpaDESbasics.qmd
       chapters:
       - NewModuleIntro.qmd
@@ -52,6 +62,7 @@ book:
       - Scheduling.qmd
       - simList.qmd
       - ModuleInputs.qmd
+      - Caching.qmd
     - part: SpaDESworkflows.qmd
       chapters:
       - multipleModules.qmd
@@ -59,6 +70,7 @@ book:
     - part: realexamples.qmd
       chapters:
       - castorExample.qmd
+    - bestPractices.qmd
     - references.qmd
 
 bibliography: references/references.bib
@@ -87,7 +99,7 @@ execute:
   cache: true
 
 editor:
-  mode: visual
+  mode: source
   markdown:
     wrap: 72
     references:

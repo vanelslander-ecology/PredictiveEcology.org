@@ -3,11 +3,10 @@ author      : "Eliot McIntire"
 date        : last-modified
 editor_options:
   chunk_output_type: console
-bibliography: references.bib
+bibliography: references/references.bib
 ---
 
 # Modules, Events and Functions {#sec-modseventsfuns}
-
 
 ```{r setup}
 #| include: false
@@ -32,12 +31,7 @@ knitr::knit_hooks$set(output = function(x, options) {
   hook_output(x, options)
 })
 
-options(repos = "http://cran.us.r-project.org")
-if (!require("Require")) {
-  install.packages("Require", repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
-}
-Require::Require(c("reproducible"))
-
+Require::Require(c("reproducible"), install = FALSE)
 ```
 
 A **module** is a collection of R scripts structured in a particular
@@ -234,10 +228,15 @@ no strict rule classify an R script.
 ## See also
 
 See also: @sec-schedulingEvents,
+
 [`?scheduleEvent`](https://rdrr.io/cran/SpaDES.core/man/scheduleEvent.html),
+
 [`?P`](https://rdrr.io/cran/SpaDES.core/man/params.html),
+
 [`?time`](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html),
+
 [`?start`](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html),
+
 [`?end`](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html)
 
 ## More learning on this subject
