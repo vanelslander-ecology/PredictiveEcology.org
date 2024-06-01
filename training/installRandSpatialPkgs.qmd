@@ -37,25 +37,25 @@ and learning.
 1.  Download and run the R installer from
     <https://cran.r-project.org/bin/macosx>.
 
-2.  Install Xcode commandline tools from the terminal:
+2.  Install **Xcode** commandline tools from the terminal:
 
 ``` bash
 xcode-select --install
 ```
 
-3.  Install homebrew from the terminal (instructions at
+3.  Install **homebrew** from the terminal (instructions at
     <https://brew.sh/>)
 
-4.  Install GDAL and other spatial packages (instructions at
+4.  Install **GDAL** and other spatial packages (instructions at
     <https://www.alexchubaty.com/post/2020-01-08-using-latest-gdal-macos-redux/>)
 
-5.  Install OpenMP support for data.table:
+5.  Install **OpenMP** support for data.table:
 
 ``` bash
 brew update && brew install llvm
 ```
 
-6.  Install GLPK (needed for full `igraph` functionality; used with
+6.  Install **GLPK** (needed for full `igraph` functionality; used with
     `SpaDES.core::moduleGraph`):
 
 ``` bash
@@ -79,7 +79,7 @@ for Ubuntu 18.04 LTS are shown below.
 sudo apt install r-base r-base-dev
 ```
 
-2.  Install java and configure R to use it:
+2.  Install **java** and configure R to use it:
 
 ``` r
 sudo apt build-dep -y r-cran-rjava
