@@ -30,11 +30,7 @@ knitr::knit_hooks$set(output = function(x, options) {
   hook_output(x, options)
 })
 
-options(repos = "http://cran.us.r-project.org")
-if (!require("Require")) {
-  install.packages("Require", repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
-}
-Require::Require(c("ggplot2", "SpaDES.core"))
+Require::Require(c("ggplot2", "SpaDES.core"), install = FALSE)
 ```
 
 Here, we will talk about **scheduling events** in a SpaDES module using

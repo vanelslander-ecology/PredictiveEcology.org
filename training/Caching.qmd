@@ -22,10 +22,6 @@ hasSuggests <- all(sapply(SuggestedPkgsNeeded, require, character.only = TRUE, q
 useSuggests <- !(tolower(Sys.getenv("_R_CHECK_DEPENDS_ONLY_")) == "true")
 
 knitr::opts_chunk$set(eval = hasSuggests && useSuggests)
-
-options(repos = "http://cran.us.r-project.org")  ## set mirror first
-repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
-install.packages(c("reproducible"), repos = repos)
 ```
 
 # Reproducible workflow

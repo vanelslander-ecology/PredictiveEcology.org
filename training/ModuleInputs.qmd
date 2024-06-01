@@ -30,11 +30,6 @@ knitr::knit_hooks$set(output = function(y, options) {
   hook_output(y, options)
 })
 
-options(repos = "http://cran.us.r-project.org")
-if (!require("Require")) {
-  install.packages("Require", repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
-}
-
 ```
 
 We have seen functions called `.inputObjects` and

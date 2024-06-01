@@ -31,12 +31,7 @@ knitr::knit_hooks$set(output = function(x, options) {
   hook_output(x, options)
 })
 
-options(repos = "http://cran.us.r-project.org")
-if (!require("Require")) {
-  install.packages("Require", repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
-}
-Require::Require(c("reproducible"))
-
+Require::Require(c("reproducible"), install = FALSE)
 ```
 
 A **module** is a collection of R scripts structured in a particular
