@@ -68,8 +68,8 @@ book:
       - multipleModules.qmd
       # - setupProject.qmd
     - part: realexamples.qmd
-      # chapters:
-      # - castorExample.qmd
+      chapters:
+      - castorExample.qmd
     - bestPractices.qmd
     - references.qmd
 
