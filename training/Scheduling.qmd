@@ -72,7 +72,8 @@ for (year in years - startYear) {
 # Plot #####
 predictions <- data.frame(year = rep(years, each = 10), prediction = unlist(pred))
 # plot the predictions
-ggplot(predictions, aes(x = year, y = prediction, colour = year)) + geom_point() + geom_smooth()
+ggplot(predictions, aes(x = year, y = prediction, colour = year)) + 
+  geom_point() + geom_smooth()
 ```
 
 In the above code, there are 4 sections. These will each be copied into

@@ -73,7 +73,7 @@ address the problems.
 ## SpaDES
 
 SpaDES is a set of R packages that facilitate the process creating and
-useing highly **modular** code that has **metadata** attached.
+(re-)using highly **modular** code that has **metadata** attached.
 
 ### Modularity
 
