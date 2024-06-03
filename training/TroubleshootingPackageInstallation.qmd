@@ -8,9 +8,11 @@ editor_options:
 
 # Troubleshooting R package installation {#sec-TroubleShoot}
 
-It is common for errors to occur when installing packages in R. The following are issues that we commonly face and their solutions.
+It is common for errors to occur when installing packages in R. The
+following are issues that we commonly face and their solutions.
 
-In all cases, it is likely that one solution will not totally resolve the issue. More than one may be required.
+In all cases, it is likely that one solution will not totally resolve
+the issue. More than one may be required.
 
 ## Can't install a package
 
@@ -18,41 +20,60 @@ In all cases, it is likely that one solution will not totally resolve the issue.
 
 #### Multiple R sessions open on Windows
 
-Some packages have files that cannot be deleted if they are being used. This is primarily true for packages with compiled code. This will create several cascading problems, even after restarting R.
+Some packages have files that cannot be deleted if they are being used.
+This is primarily true for packages with compiled code. This will create
+several cascading problems, even after restarting R.
 
 #### LOCK folder
 
-Once a failure has happened, there may be a LOCK folder. R can't install anything until that LOCK folder is removed.
+Once a failure has happened, there may be a LOCK folder. R can't install
+anything until that LOCK folder is removed.
 
 #### Diagnosing
 
-A possible way to help diagnose the issue is to use combinations of: 
+A possible way to help diagnose the issue is to use combinations of:
 
-- `loadedNamespaces()` which shows which packages are actually loaded
-- `sessionInfo()` which shows several other things as well, including package versions
-- `packageVersion("ggplot2")` will let you see which version your session has access to (already loaded or on disk in the library but not yet loaded)
+-   `loadedNamespaces()` which shows which packages are actually loaded
+-   `sessionInfo()` which shows several other things as well, including
+    package versions
+-   `packageVersion("ggplot2")` will let you see which version your
+    session has access to (already loaded or on disk in the library but
+    not yet loaded)
 
 ### Possible Solutions
 
 #### Restart R
 
-The number one solution for many problems is to restart R. If using Rstudio, the keyboard shortcut is commonly CTRL-SHIFT-F10.
+The number one solution for many problems is to restart R. If using
+Rstudio, the keyboard shortcut is commonly CTRL-SHIFT-F10.
 
 #### Close other R or Rstudio sessions
 
-If you have more than one session open, each one may have packages loaded. That means you can't install (update), delete or uninstall a package that already exists.
+If you have more than one session open, each one may have packages
+loaded. That means you can't install (update), delete or uninstall a
+package that already exists.
 
 #### Delete LOCK folder(s)
 
-Once a package failure occurs, it is likely that there will be a LOCK folder in the R package directory. The error message may be helpful and tell you where this is. You will have to make sure all R sessions are closed, this session is restarted (and possibly closed), then you can delete that folder and it should work. If you can't delete it, ensure Rstudio and R are completely closed and possibly other softward such as Git version control software. 
+Once a package failure occurs, it is likely that there will be a LOCK
+folder in the R package directory. The error message may be helpful and
+tell you where this is. You will have to make sure all R sessions are
+closed, this session is restarted (and possibly closed), then you can
+delete that folder and it should work. If you can't delete it, ensure
+Rstudio and R are completely closed and possibly other softward such as
+Git version control software.
 
-#### Close Rstudio 
+#### Close Rstudio
 
-By default, Rstudio pre-loads packages before user input. This is convenient under some conditions, but is very difficult to deal with when it doesn't work correctly. You may have to close Rstudio, open an R session (without Rstudio) and run the code that does the installations
+By default, Rstudio pre-loads packages before user input. This is
+convenient under some conditions, but is very difficult to deal with
+when it doesn't work correctly. You may have to close Rstudio, open an R
+session (without Rstudio) and run the code that does the installations
 
 #### Turn of R diagnostics temporarily
 
-You can turn off code diagnostics temporarily. This will prevent Rstudio from loading libraries in the background.
+You can turn off code diagnostics temporarily. This will prevent Rstudio
+from loading libraries in the background.
 
 ```{r eval=FALSE}
 Require::Install("rstudio.prefs")
@@ -63,19 +84,21 @@ rstudio.prefs::use_rstudio_prefs(
 
 This can alternatively be accessed with the Rstudio GUI:
 
-1. Tools -- Global Options
-![](assets/GUI to remove Code Diagnostics 1.PNG).
+1.  Tools -- Global Options
+    ![](assets/GUI%20to%20remove%20Code%20Diagnostics%201.PNG).
 
-2. Code -- Diagnostics -- Uncheck "Show diagnostics for R"
+2.  Code -- Diagnostics -- Uncheck "Show diagnostics for R"
 
-![](assets/GUI to remove Code Diagnostics.PNG).
+![](assets/GUI%20to%20remove%20Code%20Diagnostics.PNG).
 
-
-Restart R after running the above. Do the package installations again. If it fails again, see other solutions and try them.
+Restart R after running the above. Do the package installations again.
+If it fails again, see other solutions and try them.
 
 #### Update packages in personal library
 
-Package versions may collide between the personal library and the project library. Try to update the packages in the personal library. To determine where this is, you can try:
+Package versions may collide between the personal library and the
+project library. Try to update the packages in the personal library. To
+determine where this is, you can try:
 
 ```{r eval=FALSE}
 PersonalLib <- Sys.getenv("R_LIBS_USER")
@@ -89,15 +112,20 @@ update.packages(PersonalLib, ask = FALSE)
 
 #### You installed it to a different library
 
-As people migrate to using "project" libraries, i.e., a unique R package library for each project, sometimes, the "personal" library (the one that you get by default with a normal R installation) can cause problems.
+As people migrate to using "project" libraries, i.e., a unique R package
+library for each project, sometimes, the "personal" library (the one
+that you get by default with a normal R installation) can cause
+problems.
 
 ### Possible Solutions
 
 #### Become aware of personal vs. project library
 
-`.libPaths()` is your friend. This tells you "what folder the current R session is using as a package library".
+`.libPaths()` is your friend. This tells you "what folder the current R
+session is using as a package library".
 
-The default place for a personal library in R depends on operating system. For windows, it is something like: 
+The default place for a personal library in R depends on operating
+system. For windows, it is something like:
 
 ```{r eval=FALSE}
 > Sys.getenv("R_LIBS_USER")
@@ -111,7 +139,9 @@ For Linux, it is something like:
 [1] "/home/emcintir/R/x86_64-pc-linux-gnu-library/4.3"
 ```
 
-If you have a project-specific library, including if you use `SpaDES.project` or `renv`, it will be somewhere else. For `SpaDES.project` it will be something like:
+If you have a project-specific library, including if you use
+`SpaDES.project` or `renv`, it will be somewhere else. For
+`SpaDES.project` it will be something like:
 
 ```{r eval=FALSE}
 # Windows
@@ -123,14 +153,18 @@ If you have a project-specific library, including if you use `SpaDES.project` or
 [1] "/home/emcintir/.local/share/R/SpaDES.project/packages/x86_64-pc-linux-gnu/4.3"
 ```
 
-When you install a package, look where it is getting installed, look where you want it to be and compare these. 
-#### Package loaded in RAM collides with package on disk
+When you install a package, look where it is getting installed, look
+where you want it to be and compare these. \#### Package loaded in RAM
+collides with package on disk
 
-If you previously loaded a package via e.g., `library(ggplot2)`, then you happen to update it to a newer version, the newer version will be on disk in you library, but `packageVersion("ggplot2")` will show the older one. For this, you must restart R and it will be solved.
-
-
+If you previously loaded a package via e.g., `library(ggplot2)`, then
+you happen to update it to a newer version, the newer version will be on
+disk in you library, but `packageVersion("ggplot2")` will show the older
+one. For this, you must restart R and it will be solved.
 
 ## See also
 
-An alternative way to address package management is using the [`renv`](https://rstudio.github.io/renv/articles/renv.html) package. Some people have great success with this. Some of us find it not very amenable to modular workflows.
-
+An alternative way to address package management is using the
+[`renv`](https://rstudio.github.io/renv/articles/renv.html) package.
+Some people have great success with this. Some of us find it not very
+amenable to modular workflows.
