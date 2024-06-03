@@ -20,6 +20,11 @@ if (!"Require" %in% installed.packages()) {
 }
 
 Require::Install(c("ggplot2",
+                   "googledrive",
+                   "httr",
+                   "kableExtra",
+                   "knitr",
+                   "rmarkdown"
                    "reproducible",
                    "SpaDES.core",
                    "terra"))
