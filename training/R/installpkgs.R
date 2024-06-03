@@ -6,7 +6,7 @@
 ## steps from qmds (when theya re not part of example code)
 
 # This repo doesn't work for Eliot for some reason
-# options(repos = "http://cran.us.r-project.org")  ## set mirror first
+options(repos = "https://cran.us.r-project.org")  ## set mirror first
 
 if (!"Require" %in% installed.packages()) {
   install.packages("Require")
