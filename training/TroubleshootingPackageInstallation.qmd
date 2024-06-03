@@ -4,133 +4,181 @@ author:
 date: last-modified
 editor_options:
   chunk_output_type: console
+knitr: 
+  eval: false
 ---
 
 # Troubleshooting R package installation {#sec-TroubleShoot}
 
-It is common for errors to occur when installing packages in R. The following are issues that we commonly face and their solutions.
+It is common for errors to occur when installing packages in R. The
+following are issues that we commonly face and their solutions.
 
-In all cases, it is likely that one solution will not totally resolve the issue. More than one may be required.
+In all cases, it is likely that one solution will not totally resolve
+the issue. More than one may be required.
+
+## General diagnosing tools
+
+The following help diagnose many of the issues mentioned below.
+
+-   `loadedNamespaces()` shows which packages are actually loaded
+
+-   `sessionInfo()` shows several other things as well, including
+    package versions. Very useful when called after restarting R to see
+    if there are any packages being pre-loaded
+
+-   `packageVersion("<packagename>")` shows which version of the package
+    your session *currently* has access to (already loaded or on disk in
+    the library but not yet loaded). It might not necessarily correspond
+    to the installed version.
 
 ## Can't install a package
 
-### Possible causes
+### Package has already been loaded
 
-#### Multiple R sessions open on Windows
+Some packages have files that cannot be deleted if they are being used
+in the current or *another* R session. This is primarily true for
+packages with compiled code. This will create several cascading
+problems, even after restarting the current R session.
 
-Some packages have files that cannot be deleted if they are being used. This is primarily true for packages with compiled code. This will create several cascading problems, even after restarting R.
+#### Potential solutions
 
-#### LOCK folder
+-   **Restart R** – The number one solution for many problems is to
+    restart R. If using RStudio, the keyboard shortcut is commonly
+    CTRL-SHIFT-F10.
 
-Once a failure has happened, there may be a LOCK folder. R can't install anything until that LOCK folder is removed.
+-   **Close other R or RStudio sessions** – If you have more than one
+    session open, each one may have packages loaded. That means you
+    can't install (update), delete or uninstall a package that has
+    already been loaded elsewhere.
 
-#### Diagnosing
+-   **Close RStudio and install in a separate R session** – By default,
+    RStudio pre-loads packages before user input. This is convenient
+    under some conditions, but is very difficult to deal with when it
+    doesn't work correctly – e.g. when these packages need to be
+    updated. You may have to close RStudio, open a separate R session
+    (without RStudio) and install the packages there.
 
-A possible way to help diagnose the issue is to use combinations of: 
+-   **Update packages in user library –** Package versions may collide
+    between the user library and the project library. Try to update the
+    packages in the user library. To determine where this is, you can
+    try:
 
-- `loadedNamespaces()` which shows which packages are actually loaded
-- `sessionInfo()` which shows several other things as well, including package versions
-- `packageVersion("ggplot2")` will let you see which version your session has access to (already loaded or on disk in the library but not yet loaded)
+    `{r} userLib <- Sys.getenv("R_LIBS_USER")}`
 
-### Possible Solutions
+    then update the packages there:
 
-#### Restart R
+    `{r} update.packages(userLib, ask = FALSE)}`
 
-The number one solution for many problems is to restart R. If using Rstudio, the keyboard shortcut is commonly CTRL-SHIFT-F10.
+-   **Turn off R diagnostics** – Alternatively (or in complement) to the
+    solution above, you can turn off R code diagnostics (temporarily or
+    permanently), in your RStudio's *Global Options*. This can greatly
+    reduce the number of pre-loaded packages at the expense of losing
+    some RStudio functionality. Via RStudio GUI:
 
-#### Close other R or Rstudio sessions
+    1.  Go to *Tools* \> *Global Options* \> *Code*
 
-If you have more than one session open, each one may have packages loaded. That means you can't install (update), delete or uninstall a package that already exists.
+    2.  Open the *Diagnostics* tab, and uncheck "Show diagnostics for R"
 
-#### Delete LOCK folder(s)
+        Restart R after doing the above. Try the package installations
+        again. If they fail again, see other solutions and try them.
 
-Once a package failure occurs, it is likely that there will be a LOCK folder in the R package directory. The error message may be helpful and tell you where this is. You will have to make sure all R sessions are closed, this session is restarted (and possibly closed), then you can delete that folder and it should work. If you can't delete it, ensure Rstudio and R are completely closed and possibly other softward such as Git version control software. 
+        ![Turning of R diagnostics with RStudio – a potential solution
+        to prevent RStudio from pre-loading several R
+        packages.](assets/img/GOptions_RDiagnostics.PNG){fig-align="center"
+        width="469"}
 
-#### Close Rstudio 
+        Alternatively, you can:
 
-By default, Rstudio pre-loads packages before user input. This is convenient under some conditions, but is very difficult to deal with when it doesn't work correctly. You may have to close Rstudio, open an R session (without Rstudio) and run the code that does the installations
+        ```{r}
+        install.packages("RStudio.prefs")
+        RStudio.prefs::use_RStudio_prefs(
+          show_diagnostics_r = FALSE
+        )
+        ```
 
-#### Turn of R diagnostics temporarily
+### 00LOCK folder issues
 
-You can turn off code diagnostics temporarily. This will prevent Rstudio from loading libraries in the background.
+Once a package installation failure happened and interrupted the
+process, there may be a 00LOCK folder that R cannot remove, nor
+overwrite. R can't install anything until that 00LOCK folder is removed.
 
-```{r eval=FALSE}
-Require::Install("rstudio.prefs")
-rstudio.prefs::use_rstudio_prefs(
-  show_diagnostics_r = FALSE
-)
-```
+#### Potential solutions
 
-This can alternatively be accessed with the Rstudio GUI:
+-   **Delete 00LOCK folder(s)** – The error message of the package
+    installation failure will indicate if this is the issue and tell you
+    where the 00LOCK folder is located. Make sure all other R sessions
+    are closed and that the current session is restarted (and possibly
+    closed), before deleting the 00LOCK folder. Then try installing the
+    package again. If you can't delete it, ensure RStudio and R are
+    completely closed and possibly other software such as Git version
+    control software (e.g. GitKraken, Bitbucket).
 
-1. Tools -- Global Options
-![](assets/GUI to remove Code Diagnostics 1.PNG).
+### Missing dependencies
 
-2. Code -- Diagnostics -- Uncheck "Show diagnostics for R"
+Although this happens less and less because functions like
+`install.packages` now default to installing package dependencies, it
+can still happen that one of the target package's dependencies is
+missing or failed to install. The error message will indicate which one,
+but bear in mind that when installing many packages/dependencies the
+reason why the dependency wasn't installed may be burried in previous
+messages and warnings. So read the installation output carefully.
 
-![](assets/GUI to remove Code Diagnostics.PNG).
+#### Potential solutions
 
-
-Restart R after running the above. Do the package installations again. If it fails again, see other solutions and try them.
-
-#### Update packages in personal library
-
-Package versions may collide between the personal library and the project library. Try to update the packages in the personal library. To determine where this is, you can try:
-
-```{r eval=FALSE}
-PersonalLib <- Sys.getenv("R_LIBS_USER")
-## then update the packages there
-update.packages(PersonalLib, ask = FALSE)
-```
+The solution will depend on the reason why the dependency package failed
+to install. See solutions in [Package has already been loaded] and
+[00LOCK folder issues].
 
 ## Installed a package, but it isn't showing up
 
-### Possible Causes
+### You installed it to a different library
 
-#### You installed it to a different library
+As people migrate to using "project" libraries, i.e., a unique R package
+library for each project, sometimes, the user library (the one that you
+get by default with a normal R installation) can cause problems.
 
-As people migrate to using "project" libraries, i.e., a unique R package library for each project, sometimes, the "personal" library (the one that you get by default with a normal R installation) can cause problems.
+#### Possible Solutions
 
-### Possible Solutions
+-   **Become aware of user vs. project library –** `.libPaths()` is your
+    friend. It tells you what folder the current R session is using as a
+    package library. The default place for a personal library in R
+    depends on operating system. For windows, it is something like:
 
-#### Become aware of personal vs. project library
+    ```{r}
+    > Sys.getenv("R_LIBS_USER") [1] "C:\\Users\\emcintir\\AppData\\Local/R/win-library/4.4"}
+    ```
 
-`.libPaths()` is your friend. This tells you "what folder the current R session is using as a package library".
+    For Linux, it is something like:
 
-The default place for a personal library in R depends on operating system. For windows, it is something like: 
+    ```{r}
+    > Sys.getenv("R_LIBS_USER") [1] "/home/emcintir/R/x86_64-pc-linux-gnu-library/4.3"}
+    ```
 
-```{r eval=FALSE}
-> Sys.getenv("R_LIBS_USER")
-[1] "C:\\Users\\emcintir\\AppData\\Local/R/win-library/4.4"
-```
+    If you have a project-specific library, including if you use
+    `SpaDES.project` or `renv`, `.libPaths()` will point to somewhere
+    else. For `SpaDES.project` it will be something like:
 
-For Linux, it is something like:
+    ```{r}
+    # Windows 
+    > .libPaths() [1] "C:/Users/emcintir/AppData/Roaming/R/data/R/SpaDES.project/packages/x86_64-w64-mingw32/4.4"  
 
-```{r eval=FALSE}
-> Sys.getenv("R_LIBS_USER")
-[1] "/home/emcintir/R/x86_64-pc-linux-gnu-library/4.3"
-```
+    # Linux 
+    > .libPaths() [1] "/home/emcintir/.local/share/R/SpaDES.project/packages/x86_64-pc-linux-gnu/4.3"}
+    ```
 
-If you have a project-specific library, including if you use `SpaDES.project` or `renv`, it will be somewhere else. For `SpaDES.project` it will be something like:
+    When you install a package, look where it is getting installed and
+    compare it to where you want it to be installed.
 
-```{r eval=FALSE}
-# Windows
-> .libPaths()
-[1] "C:/Users/emcintir/AppData/Roaming/R/data/R/SpaDES.project/packages/x86_64-w64-mingw32/4.4"
+### Package loaded in RAM collides with package on disk
 
-# Linux
-> .libPaths()
-[1] "/home/emcintir/.local/share/R/SpaDES.project/packages/x86_64-pc-linux-gnu/4.3"
-```
-
-When you install a package, look where it is getting installed, look where you want it to be and compare these. 
-#### Package loaded in RAM collides with package on disk
-
-If you previously loaded a package via e.g., `library(ggplot2)`, then you happen to update it to a newer version, the newer version will be on disk in you library, but `packageVersion("ggplot2")` will show the older one. For this, you must restart R and it will be solved.
-
-
+If you previously loaded a package via e.g., `library(ggplot2)`, then
+you happen to update it to a newer version, the newer version will be on
+disk in your library, but `packageVersion("ggplot2")` will show the
+older one. Restart R and it will be solved.
 
 ## See also
 
-An alternative way to address package management is using the [`renv`](https://rstudio.github.io/renv/articles/renv.html) package. Some people have great success with this. Some of us find it not very amenable to modular workflows.
-
+An alternative way to address package management is using the
+[`renv`](https://RStudio.github.io/renv/articles/renv.html) package.
+Some people have great success with this. Some of us find it not very
+amenable to modular workflows.
