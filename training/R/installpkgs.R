@@ -16,10 +16,6 @@ Require::getCRANrepos(ind = 1)
 repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
 options(repos = repos)
 
-libpath <- "packages/"
-dir.create(libpath, showWarnings = FALSE)
-.libPaths(libpath)
-
 Require::Install(c("ggplot2",
                    "googledrive",
                    "httr",
