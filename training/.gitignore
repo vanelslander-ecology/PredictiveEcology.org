@@ -4,7 +4,6 @@ _freeze/
 
 *_files/
 *_cache/
-.Rprofile
 *.tif
 
 packages/

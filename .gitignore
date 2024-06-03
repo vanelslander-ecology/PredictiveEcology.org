@@ -18,3 +18,5 @@ outputs
 .secrets
 
 training/integratingSpaDESmodules/
+
+!training/.Rprofile
