@@ -21,7 +21,7 @@ Require::Install(c("ggplot2",
                    "httr",
                    "kableExtra",
                    "knitr",
-                   "rmarkdown"
+                   "rmarkdown",
                    "reproducible",
                    "SpaDES.core",
                    "terra"))
