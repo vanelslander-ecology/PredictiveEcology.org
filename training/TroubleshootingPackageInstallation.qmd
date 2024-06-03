@@ -63,11 +63,11 @@ problems, even after restarting the current R session.
     packages in the user library. To determine where this is, you can
     try:
 
-    `{r} userLib <- Sys.getenv("R_LIBS_USER")}`
+    `{r} userLib <- Sys.getenv("R_LIBS_USER")`
 
     then update the packages there:
 
-    `{r} update.packages(userLib, ask = FALSE)}`
+    `{r} update.packages(userLib, ask = FALSE)`
 
 -   **Turn off R diagnostics** – Alternatively (or in complement) to the
     solution above, you can turn off R code diagnostics (temporarily or
