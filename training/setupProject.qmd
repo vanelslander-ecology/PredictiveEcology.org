@@ -3,17 +3,18 @@ author: "Eliot McIntire"
 date: last-modified
 editor_options:
   chunk_output_type: console
+execute:
+  eval: false
+  tidy: false
+  warning: false
+  message: false
+  error: false
 ---
 
 # Simple workflow with setupProject
 
 ```{r setup}
 #| include: false
-knitr::opts_chunk$set(tidy = FALSE, 
-                      eval = FALSE,
-                      warning = FALSE, 
-                      message = FALSE, 
-                      error = FALSE)
 
 ## truncate text output
 hook_output <- knitr::knit_hooks$get("output")
@@ -31,9 +32,12 @@ knitr::knit_hooks$set(output = function(y, options) {
 })
 ```
 
-[`SpaDES.project::setupProject()`](https://spades-project.predictiveecology.org/reference/setupProject.html)
-deals with a number of challenges that crop up with working with
-multiple modules created by potentially many people.
+[`SpaDES.project`](https://spades-project.predictiveecology.org/) is a
+package that deals with a number of challenges that crop up creating and
+using workflows. These become particularly acute when working with
+multiple modules created by potentially many people. [See here to see a
+longer list of project
+challenges](https://spades-project.predictiveecology.org/#project-challenges).
 
 We will demonstrate its use with an example created by [Tati
 Micheletti](https://github.com/tati-micheletti/Micheletti_SpaDES/blob/main/demo.R)
@@ -42,18 +46,9 @@ where a workflow with several modules is setup and run.
 ## Installation
 
 ```{r setupProject}
-getOrUpdatePkg <- function(p, minVer = "0") {
-  if (!isFALSE(try(packageVersion(p) < minVer, silent = TRUE) )) {
-    repo <- c("predictiveecology.r-universe.dev", getOption("repos"))
-    install.packages(p, repos = repo)
-  }
-}
-
-getOrUpdatePkg("remotes")
-
-remotes::install_github("PredictiveEcology/Require@simplify4")
-
-getOrUpdatePkg("SpaDES.project", "0.0.8.9049")
+repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
+if (!require("SpaDES.project"))
+  install.packages(c("SpaDES.project", "SpaDES.core"), repos = repos)
 ```
 
 ## Using `setupProject`
@@ -78,28 +73,31 @@ Setup <- SpaDES.project::setupProject(
               "tati-micheletti/speciesAbundTempLM@main"),
   
   times = list(start = 2013,
-               end = 2032),
+               end = 2032)
   
-  Restart = TRUE
 )
 ```
 
 The output of `setupProject` is a list of argument values that can be
-passed to `simInit` or `simInitAndSpaDES`. The latter will not only
+passed to `simInit2` or `simInitAndSpaDES2`. The latter will not only
 initialise the workflow but also run it.
 
 ```{r runSimInit}
 ##################### PART III: Run SpaDES
-
-results <- do.call(SpaDES.core::simInitAndSpades, Setup)
-
+results <- SpaDES.core::simInitAndSpades2(Setup)
 ```
 
 ```{r evaluteResults}
 SpaDES.core::completed(results)
 ```
 
+## Examples
+
+In the remainding chapters of this section, we will explore several examples, including learning of several arguments to the function `setupProject`. But we will start very simple first.
+
 ## See also
+
+[`?SpaDES.project::setupProject`](https://spades-project.predictiveecology.org/reference/setupProject.html)
 
 [`?SpaDES.core::simInit`](https://rdrr.io/cran/SpaDES.core/man/simInit.html)
 
