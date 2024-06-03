@@ -30,7 +30,8 @@ knitr::knit_hooks$set(output = function(x, options) {
   hook_output(x, options)
 })
 
-Require::Require(c("ggplot2", "SpaDES.core"), install = FALSE)
+# Require::Require(c("ggplot2", "SpaDES.core"), install = FALSE)
+library("ggplot2", lib.loc = libpath)
 ```
 
 Here, we will talk about **scheduling events** in a SpaDES module using
