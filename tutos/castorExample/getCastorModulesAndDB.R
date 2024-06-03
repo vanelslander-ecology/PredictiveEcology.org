@@ -63,7 +63,7 @@ getCastorModulesAndDB <- function(modules = c("dataCastor",
       dbPath <- normalizePath(getwd(), winslash = "/")
     }
 
-    repOut <- reproducible::prepInputs(url = dbURL,
+    repOut <- reproducible::preProcess(url = dbURL,
                                        destinationPath = dbPath,
                                        fun = NA)
   }
