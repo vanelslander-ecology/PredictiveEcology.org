@@ -27,13 +27,11 @@ cover this use case.
 ## Installation code
 
 If you can run the following code, then you will be able to run code in
-any of the chapters in this book. This code installs a few packages
-(notably `SpaDES.project`, `Require` and their dependencies), then it
-downloads and installs a single SpaDES module (*Biomass-core*). This
-module happens to have many package dependencies (over 130 packages)
-covering all the dependencies needed in this book. It also downloads an
-extra package `diskframe` that is not a dependency of *Biomass_core*,
-but brings with it many other packages.
+any of the chapters in this book. This code begins by installing `SpaDES.project`, 
+`reproducible` and their dependencies, then uses `setupProject` to 
+download and install a single SpaDES module (*Biomass-core*) and its many 
+dependencies (over 130 packages). Finally, `setupProject` also downloads a
+list of other R packages from GitHub and installs them (the code in `sideEffects = {}`).
 
 ```{r setupProject}
 #| cache: true
