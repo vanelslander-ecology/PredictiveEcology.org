@@ -1,0 +1,120 @@
+---
+author: "Eliot McIntire"
+date: last-modified
+editor_options:
+  chunk_output_type: console
+execute:
+  tidy: false
+warning: false
+message: false
+error: false
+cache: false
+---
+
+# Simple workflow with 2 chunks
+
+```{r setup,eval=TRUE}
+#| include: false
+
+
+## truncate text output
+hook_output <- knitr::knit_hooks$get("output")
+
+knitr::knit_hooks$set(output = function(y, options) {
+if (!is.null(n <- options$outlines)) {
+y <- xfun::split_lines(y)
+if (length(y) > n) {
+# truncate the output
+y <- c(head(y, n), "....\n")
+}
+y <- paste(y, collapse = "\n")
+}
+hook_output(y, options)
+})
+libPath <- ifelse(dir.exists("packages"), "packages", "training/packages") # if run interactively vs knited
+.libPaths(libPath)
+```
+
+## Using `SpaDES.core::newModule`
+
+### Some R code to convert
+
+We will start by thinking about metadata: *What is metadata?*
+
+We can examine the following code chunk. First, we ask: what are the
+**inputs** and the **outputs**?
+
+```{r start}
+# create some data
+x <- rnorm(10)
+y <- x + rnorm(10)
+# fit a linear model
+out <- lm(y ~ x)
+
+# plot the fit
+plot(out)
+```
+
+Examining this, we have 4 lines: make some data, fit a model, visualize the fit.
+
+Lets imagine that the first 3 lines are conceptually different -- *fit a dummy model* --
+and the last line is conceptually "unique" -- *visualize it*. Lets put these into 2 "modules", and then run them in sequence.
+
+For now, we just say, *if you want to keep an object, assign it to "sim"*.
+We will explain this in much more detail later. Here, we want to keep the `model` that we fit. But we don't care about the `x` and `y`. We only assign the `model` to `sim`. 
+
+```{r newModule1}
+library(SpaDES.core)
+nm1 <- "modelFit"
+modulePath <- Require::tempdir2()
+newModule(nm1, path = modulePath, open = FALSE,
+          events = list(
+            init = {
+              x <- rnorm(10)
+              y <- rnorm(10) + x
+              sim$model <- lm(y ~ x)
+              return(sim)
+            }
+          )
+)
+```
+
+Then we run it:
+
+```{r}
+# Run just the first module
+out1 <- simInitAndSpades(module = nm1, paths = list(modulePath = modulePath))
+
+# Look at our model. This is "like a list"
+out1$model
+```
+
+
+
+
+We add a second step, visualize it. 
+```{r newModule2}
+nm2 <- "visualize"
+newModule(nm2, path = modulePath, open = FALSE,
+          events = list(
+            init = {
+              plot(sim$model)
+              return(sim)
+            }
+          )
+)
+```
+
+And run both together:
+```{r,eval=FALSE}
+out2 <- simInitAndSpades(module = c(nm1, nm2), paths = list(modulePath = modulePath))
+```
+
+
+## See also
+
+[`?SpaDES.project::setupProject`](https://spades-project.predictiveecology.org/reference/setupProject.html)
+
+[`?SpaDES.core::simInit`](https://rdrr.io/cran/SpaDES.core/man/simInit.html)
+
+[`?SpaDES.core::simInitAndSpaDES`](https://rdrr.io/cran/SpaDES.core/man/simInitAndSpaDES.html)

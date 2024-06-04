@@ -1,5 +1,5 @@
 # Setting up your computer and system {.unnumbered}
 
-This brief section shows how to set up R, Rstudio, SpaDES, and
+This brief section shows how to set up R, RStudio, SpaDES, and
 pre-install R packages necessary to run all chapter code, if you need to
 do so.
