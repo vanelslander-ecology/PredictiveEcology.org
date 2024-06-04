@@ -1,5 +1,4 @@
 ---
-title: "Introduction to Cache"
 author:
   - "Eliot J. B. McIntire"
 date: '`r strftime(Sys.Date(), "%B %d %Y")`'
@@ -24,7 +23,7 @@ useSuggests <- !(tolower(Sys.getenv("_R_CHECK_DEPENDS_ONLY_")) == "true")
 knitr::opts_chunk$set(eval = hasSuggests && useSuggests)
 ```
 
-# Reproducible workflow
+# Introduction to Cache {#sec-caching}
 
 The objective of a reproducible workflow is is likely that an entire
 work flow from raw data to publication, decision support, report
