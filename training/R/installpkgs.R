@@ -8,16 +8,13 @@ if (!"Require" %in% installed.packages()) {
   install.packages("Require")
 }
 
-# Require::getCRANrepos(ind = 1)   ## this was screwing this up
-repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
-options(repos = repos)
-
 Require::Install(c("ggplot2",
                    "googledrive",
                    "httr",
                    "kableExtra",
                    "knitr",
                    "rmarkdown",
-                   "reproducible",
-                   "SpaDES.core",
+                   "reproducible (HEAD)",
+                   "SpaDES.core (HEAD)",
+                   "testthat",
                    "terra"))

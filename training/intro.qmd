@@ -14,6 +14,131 @@ bibliography: references.bib
 
 # Introduction {.unnumbered}
 
+This book is presents a collection of approaches and examples that aim
+to facilitate the building of *nimble* *workflows* that follow in the
+principles of repeatability, reproducibility, reusability and
+transparency (**R^3^T**).
+
+The approaches presented here use **SpaDES** packages and associated
+packages, like `reproducible` and `Require`, that we (the authors) have
+developed to face a variety of issues that we experienced during our own
+journeys as modellers and, more generally, scientists.
+
+Many of these issues we faced because most of us were ecologists by
+training (not computer scientists, not engineers, etc.), who lacked a
+strong programming foundation. So, we expect many who have other
+backgrounds and maybe very strong programming skills to find this set of
+solutions foreign and perhaps unnecessary, limited, or over-complicated
+for many applications outside the realm of ecological sciences. We
+certainly don't expect NASA scientists to overhaul their own workflows
+and follow ours -- but feel free too and send us your feedback!
+
+Still, we hope that many ecologists and those in related sciences (e.g.
+forestry, wildlife management, etc.), academics or practitioners, can
+appreciate the value of transforming their work into R^3^T, nimble
+workflows and find these solution useful. Mostly we hope that ecological
+modellers can embrace these tools to work towards expanding the
+ecological modelling community and the reusability and testing of the
+models it produces.
+
+<!--Eliot please have a look above. I'm undecided whether much of the text should be moved to the preface. -->
+
+## Why SpaDES?
+
+SpaDES is a set of R packages that facilitate implementing nimble
+*workflows* that follow in the principles of repeatability,
+reproducibility, reusability and transparency (**R^3^T**), via the
+creation and use of highly **modular** code that has **metadata**
+attached.
+
+### Modularity
+
+Modular code for ecological analyses has been long proposed
+[@reynolds1997]. Modularity means that scripts can be broken up into
+themes that bundled into meaningful chunks that can be easily moved,
+swapped, replaced or scrapped easily. A nice example of this is
+@barros2023 where a module was included or removed to identify the value
+of "adding more complexity". One simple conclusion followed Occam's
+Razor: simpler data and models predicted simpler characteristics of the
+forest than the complex data and models. In other words, adding
+complexity to a model made the model perform worse for some
+characteristics.
+
+### Metadata
+
+Metadata in a SpaDES context includes identifying what objects
+<!--Eliot, you had "data" but I wonder if people see data as something different and less general-->
+are **expected** by a chunk of code and what objects are **created** by
+a chunk of code: the **inputs** and **outputs**. This forces a user to
+understand their code and its linkages, and it allows R to know how to
+connect this chunk of code with others. Importantly, it allows SpaDES to
+chain modules such that the workflow structure can be defined from the
+bottom-up, rather than top-down.
+
+### Nimbleness
+
+Together SpaDES's modularity, standardized structure and metatada,
+improve workflow nimbleness, where we can weave together new Results
+that use *new data*, *updated data*, a *new module*, a *new study area*,
+a *new visualization*, address *new stakeholder's needs* and more.
+
+#### Aren't packages and functions sufficient?
+
+Scientists have embraced the idea of modular code by creating and using
+functions, often bundled into packages, e.g., R packages. This is
+analogous to the **Methods** section of a journal paper: i.e., the
+methods (functions) describe *how* you will do something. The use of
+packages in this way has massively accelerated Ecology and other data
+sciences.
+
+However, even if you know all the functions that a paper used, this in
+itself is not sufficient to reproduce the **Results**. *SpaDES modules
+can be thought of the recipe needed to make the Results*. In other
+words, a SpaDES module enables a developer to bundle the functions in a
+specific order so that one can recreate the steps to make the Results. A
+user can then use the module directly, rather instead of trying to
+recreate the necessary sequence of functions.
+
+### I use `targets` for my workflows. How does SpaDES differ?
+
+There are two major differences between `targets` and the SpaDES
+approach:
+
+-   **`targets` is "top-down", SpaDES is "bottom-up"** – with `targets`,
+    the workflow is entirely defined by the script developer (as in
+    [Make](https://www.gnu.org/software/make/)). This is, they define
+    the connections and the *sequence* between each "target" (the code
+    sections that call functions and execute operations), when they will
+    be iterated and for "how many times". Re-arranging "targets"
+    sequences and iterations may therefore be hard, if the "target" code
+    is not well known/understood.
+
+    SpaDES is meant to enable mixing-and-matching different modules that
+    share the same inputs/outputs easily – i.e. without having to have
+    deep knowledge of the module code. SpaDES will read each module's
+    metadata and from it deduce the sequence in which modules need to be
+    chained. SpaDES will also iterate module code when necessary,
+    following the developer's "scheduling" instructions. The workflow
+    sequence, therefore, *arises* from the set of modules that is being
+    used[^intro-1].
+
+-   **SpaDES has "embedded" metadata** – or at least it makes the
+    developer think about it[^intro-2]. Each module is defined by not
+    only listing the inputs and outputs, but also their descriptions and
+    types of object class, the module's description, it's operating time
+    scale and what packages and other modules it depends on, and much
+    more. Some of the metadata is essential to chain modules (lists of
+    inputs and outputs), other isn't, but can greatly facilitate
+    workflow setup (e.g. declaring module dependencies), while other
+    metadata are simply good to have (e.g. a description of the module).
+
+Finally, both `targets` and SpaDES have embedded caching mechanisms that
+in SpaDES's case can be used and controlled at several levels (by the
+user, in the module code, etc.) – see @sec-caching on SpaDES caching
+mechanisms.
+
+<!--Ceres is here-->
+
 ## The three big problems in applied ecology
 
 Applied ecology -- the study of ecological systems that are affected by
@@ -70,51 +195,6 @@ approach will allow ecologists to get towards a PERFICT approach
 With this approach, we can better meet the expectations, and better
 address the problems.
 
-## SpaDES
-
-SpaDES is a set of R packages that facilitate the process creating and
-(re-)using highly **modular** code that has **metadata** attached.
-
-### Modularity
-
-Modular code for ecological analyses has been long proposed
-[@reynolds1997]. Modularity means that scripts can be broken up into
-themes that bundled into meaningful chunks that can be easily moved,
-swapped, replaced or scrapped easily. A nice example of this is
-@barros2023 where a module was included or removed to identify the value
-of "adding more complexity". One simple conclusion followed Occam's
-Razor: simpler data and models predicted simpler characteristics of the
-forest than the complex data and models. In other words, adding
-complexity to a model made the model perform worse for some
-characteristics.
-
-### Metadata
-
-Metadata in a SpaDES context includes identifying what data are
-**expected** by a chunk of code and what data are **created** by a chunk
-of code: the **inputs** and **outputs**. This forces an ecologist to
-understand their code and it allows R to know how to connect this chunk
-of code with others. It allows SpaDES to chain or weave together
-modules.
-
-### Methods vs. Results
-
-Scientists have embraced the idea of modular code by creating and using
-functions bundled into packages, e.g., R packages. This is analogous to
-the **Methods** section: i.e., these describe how you will do something.
-The use of packages in this way has massively accelerated Ecology and
-other data sciences. However, even if you know all the functions that a
-paper used, it doesn't create the Results. *SpaDES modules can be
-thought of as the code needed to make the **Results**.* In other words,
-SpaDES enables us to bundle the actual code needed to recreate all the
-steps to make the Results.
-
-### Nimbleness
-
-When combined with **modularity** we can weave together new Results that
-use *new data*, *updated data*, a *new module*, a *new study area*, a
-*new visualization*, address *new stakeholder's needs* and more.
-
 ## Our challenge
 
 With the limited training provided in this book, applied ecologists can
@@ -123,3 +203,11 @@ nimbleness it provides, we can pivot more rapidly to the current
 management needs. When we are asked at the end of a 3 year project,
 *"can we redo everything because we have a new stakeholder who feels
 that our assumptions are wrong?"*, ***our answer should be "yes"***.
+
+[^intro-1]: Note that SpaDES still allows a user to impose module
+    sequencing if they wish to.
+
+[^intro-2]: SpaDES won't force most metadata to be filled, so it's at
+    the discretion of the module developer how much detail they want to
+    provide.
+
