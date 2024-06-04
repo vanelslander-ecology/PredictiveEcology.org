@@ -17,6 +17,4 @@ outputs
 .secret
 .secrets
 
-training/integratingSpaDESmodules/
-
 !training/.Rprofile
