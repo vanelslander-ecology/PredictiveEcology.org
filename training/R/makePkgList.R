@@ -13,4 +13,4 @@ cat(paste0("Require::Install(\n",
            paste(pkgList, collapse = "', \n'"),
            "')",
            ")"),
-    file = "training/R/pkgList.R")
+    file = "R/pkgList.R")
