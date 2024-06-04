@@ -7,5 +7,9 @@ _freeze/
 *.tif
 
 packages/
+
+## files from chapters
 integratingSpaDESmodules/
 Introduction/
+pkgList.csv
+CHECKSUMS.txt

@@ -19,8 +19,10 @@ outputs
 
 !training/.Rprofile
 
-## files from examples can end up here if not in `training.Rproj`
+## files from chapters can end up here if not in `training.Rproj`
 Introduction/
 integratingSpaDESmodules/
+pkgList.csv
+CHECKSUMS.txt
 
 
