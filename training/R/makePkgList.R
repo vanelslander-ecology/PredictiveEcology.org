@@ -7,7 +7,7 @@ pkgList <- Require::pkgSnapshot2(libPaths = c("training/packages/", "training/pa
                                               .libPaths(),
                                               SpaDES.project:::.libPathDefault("castorExample"),
                                               SpaDES.project:::.libPathDefault("integratingSpaDESmodules")))
-pkgList <- c(pkgList, "diskframe")
+pkgList <- c(pkgList, "disk.frame")
 
 write.csv(pkgList, "training/R/pkgList.csv")
 
