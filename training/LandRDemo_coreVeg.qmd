@@ -185,42 +185,44 @@ If you have a look at @sec-castorSetup in the @sec-castorEg chapter, you
 will see some differences in the way we setup the two workflows:
 
 -   `paths`. Here we left the defaults for all paths (see
-[`?setupPaths()`](https://spades-project.predictiveecology.org/reference/setup.html)
-for the list of path options) except for the project location (`projectPath`) 
-and the location of the package library (`packagePath`, which will be placed 
-inside `projectPath`).
+    [`?setupPaths()`](https://spades-project.predictiveecology.org/reference/setup.html)
+    for the list of path options) except for the project location
+    (`projectPath`) and the location of the package library
+    (`packagePath`, which will be placed inside `projectPath`).
 
 -   `options`. We also set a couple of "global options" that determine
-the where data will be downloaded to
-("reproducible.destinationPath"). This will be the same as the
-default directory to look for inputs ("spades.inputPath"). Notice
-how we used `paths$` to get these directory paths from the `paths`
-object that `setupProject` creates (based on the `paths` argument
-above) prior to setting the options.
+    the where data will be downloaded to
+    ("reproducible.destinationPath"). This will be the same as the
+    default directory to look for inputs ("spades.inputPath"). Notice
+    how we used `paths$` to get these directory paths from the `paths`
+    object that `setupProject` creates (based on the `paths` argument
+    above) prior to setting the options.
 
 -   other arguments (`...`). Almost all other arguments in the call
-above were passed to `...`. These are objects that need to be supplied
-by the user for these modules (e.g. `studyArea` and `studyAreaLarge`)
-or whose defaults we want to override (e.g., the species table, `sppEquiv`, 
-and trait values, `speciesParams`). To avoid creating them on the `.GlobalEnv`
-first, we take advantage of `setupProject`'s ability to run the code 
-in `{ }` and make these polygons. Note that these arguments are passed
-prior to any 'formal arguments' (see 
-[`?formalArgs()`](https://www.rdocumentation.org/packages/methods/versions/3.6.2/topics/methodUtilities))
+    above were passed to `...`. These are objects that need to be
+    supplied by the user for these modules (e.g. `studyArea` and
+    `studyAreaLarge`) or whose defaults we want to override (e.g., the
+    species table, `sppEquiv`, and trait values, `speciesParams`). To
+    avoid creating them on the `.GlobalEnv` first, we take advantage of
+    `setupProject`'s ability to run the code in `{ }` and make these
+    polygons. Note that these arguments are passed prior to any 'formal
+    arguments' (see
+    [`?formalArgs()`](https://www.rdocumentation.org/packages/methods/versions/3.6.2/topics/methodUtilities))
 
 ## Run simulation
 
 ### One replicate
 
-Before running the simulation we need to exclude the *Biomass_validationKNN*
-module. This module validates simulation outputs agains data and therefore can
-only be run *after* the simulation is complete.
+Before running the simulation we need to exclude the
+*Biomass_validationKNN* module. This module validates simulation outputs
+agains data and therefore can only be run *after* the simulation is
+complete.
 
-We will initialize the simulation with `SpaDES.core::simInit()` so that we can use
-the same `simList` object in @sec-LandRReplication.
+We will initialize the simulation with `SpaDES.core::simInit()` so that
+we can use the same `simList` object in @sec-LandRReplication.
 
 Please note that it may take over an hour to download all necessary raw
-data and fit model parameters. 
+data and fit model parameters.
 
 ```{r runSim}
 #| results: hide
@@ -238,16 +240,17 @@ simOut <- SpaDES.core::spades(simInitOut)
 
 #### Turn plotting on *after* setting up the workflow
 
-We can change parameters and re-run the simulation to, e.g., activate live 
-plotting in *Biomass_core*. 
+We can change parameters and re-run the simulation to, e.g., activate
+live plotting in *Biomass_core*.
 
-Note that because `simOut` is actually a copy of `simInitOut` 
-(see the output of `SpaDES.core::completed(simInitOut)`), this 
-means that `simInitOut` has to be re-generated for this purpose, otherwise
-`spades` will try to resume the simulation from the last year.
+Note that because `simOut` is actually a copy of `simInitOut` (see the
+output of `SpaDES.core::completed(simInitOut)`), this means that
+`simInitOut` has to be re-generated for this purpose, otherwise `spades`
+will try to resume the simulation from the last year.
 
-Thanks to `Cache()`, it will only take seconds to "reset" `simInitOut`. You will
-also notice that `init` events are retrieved from cache, this time around.
+Thanks to `Cache()`, it will only take seconds to "reset" `simInitOut`.
+You will also notice that `init` events are retrieved from cache, this
+time around.
 
 ```{r runSim}
 #| eval: false
