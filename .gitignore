@@ -7,7 +7,7 @@
 */.quarto/
 /_site/
 */_book/
-docs/
+!docs/
 .Rprofile
 modules/*
 cache
@@ -17,4 +17,12 @@ outputs
 .secret
 .secrets
 
-training/integratingSpaDESmodules/
+!training/.Rprofile
+
+## files from chapters can end up here if not in `training.Rproj`
+Introduction/
+integratingSpaDESmodules/
+pkgList.csv
+CHECKSUMS.txt
+
+

@@ -4,7 +4,12 @@ _freeze/
 
 *_files/
 *_cache/
-.Rprofile
 *.tif
 
 packages/
+
+## files from chapters
+integratingSpaDESmodules/
+Introduction/
+pkgList.csv
+CHECKSUMS.txt
