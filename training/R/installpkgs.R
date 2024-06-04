@@ -4,9 +4,6 @@
 
 ## installs packages necessary to render book, and alleviates installation
 ## steps from qmds (when theya re not part of example code)
-
-options(repos = list(CRAN = "http://cran.r-project.org"))  ## set mirror first
-
 if (!"Require" %in% installed.packages()) {
   install.packages("Require")
 }
