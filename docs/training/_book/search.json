@@ -127,7 +127,18 @@
     "href": "PackagesForBook.html",
     "title": "2  Pre-installing R packages for book",
     "section": "",
-    "text": "2.1 Installation code\nIf you can run the following code, then you will be able to run code in any of the chapters in this book. This code installs a few packages (notably SpaDES.project, Require and their dependencies), then it downloads and installs a single SpaDES module (Biomass-core). This module happens to have many package dependencies (over 130 packages) covering all the dependencies needed in this book. It also downloads an extra package diskframe that is not a dependency of Biomass_core, but brings with it many other packages.\nCode\ninstall.packages(\"SpaDES.project\", \n                 repos = c(\"predictiveecology.r-universe.dev\", \n                           getOption(\"repos\")), dependencies = TRUE)\n\nlibrary(SpaDES.project)\nout &lt;- setupProject(\n  name = \"Introduction\",\n  modules = \"PredictiveEcology/Biomass_core@main\",\n  packages = \"disk.frame\"\n)",
+    "text": "2.1 Installation code\nIf you can run the following code, then you will be able to run code in any of the chapters in this book. This code begins by installing SpaDES.project, reproducible and their dependencies, then uses setupProject to download and install a single SpaDES module (Biomass-core) and its many dependencies (over 130 packages), as well as a list of other R packages from GitHub to install.\nCode\nrepos &lt;- c(\"predictiveecology.r-universe.dev\", getOption(\"repos\"))\ninstall.packages(c(\"SpaDES.project\", \"reproducible\"),\n                 repos = repos, dependencies = TRUE)\n\nlibrary(SpaDES.project)\n\nout &lt;- setupProject(\n  sideEffects = \"PredictiveEcology/PredictiveEcology.org@14-fix-webpage-build/training/R/pkgList.R\",\n  options = list(repos = repos),\n  name = \"Introduction\",\n  modules = \"PredictiveEcology/Biomass_core@main\"\n)\nCheck out$pkgList to see what packages are installed.",
+    "crumbs": [
+      "Setting up your computer and system",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pre-installing R packages for book</span>"
+    ]
+  },
+  {
+    "objectID": "PackagesForBook.html#code-explained",
+    "href": "PackagesForBook.html#code-explained",
+    "title": "2  Pre-installing R packages for book",
+    "section": "2.2 Code explained",
+    "text": "2.2 Code explained\nIf you care to know what the code is “doing”, read on.\nThe setupProject call above internally uses Require to download and install any missing packages. Although the packages themselves are installed in a folder associated with the dummy project “Introduction” (see .libPaths() after running the code), Require caches the downloaded package installation files in a user-accessible folder (so independent from any project).\nThis means that, should you, e.g., switch projects and attempt to reinstall the same or a subset of these packages, setupProject (via Require) would access the package cache and reinstall them in whatever new project folder library.\nThe same is true should you lose internet connection, since the downloads do not need to happen again.",
     "crumbs": [
       "Setting up your computer and system",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pre-installing R packages for book</span>"
@@ -137,8 +148,8 @@
     "objectID": "PackagesForBook.html#see-also",
     "href": "PackagesForBook.html#see-also",
     "title": "2  Pre-installing R packages for book",
-    "section": "2.2 See also",
-    "text": "2.2 See also\nChapter 3 on R package installation troubleshooting",
+    "section": "2.3 See also",
+    "text": "2.3 See also\nChapter 3 on R package installation troubleshooting",
     "crumbs": [
       "Setting up your computer and system",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pre-installing R packages for book</span>"
