@@ -27,11 +27,11 @@ cover this use case.
 ## Installation code
 
 If you can run the following code, then you will be able to run code in
-any of the chapters in this book. This code begins by installing `SpaDES.project`, 
-`reproducible` and their dependencies, then uses `setupProject` to 
-download and install a single SpaDES module (*Biomass-core*) and its many 
-dependencies (over 130 packages). Finally, `setupProject` also downloads a
-list of other R packages from GitHub and installs them (the code in `sideEffects = {}`).
+any of the chapters in this book. This code begins by installing
+`SpaDES.project`, `reproducible` and their dependencies, then uses
+`setupProject` to download and install a single SpaDES module
+(*Biomass-core*) and its many dependencies (over 130 packages), as well
+as a list of other R packages from GitHub to install.
 
 ```{r setupProject}
 #| cache: true
@@ -53,11 +53,26 @@ out <- setupProject(
 )
 ```
 
+Check `out$pkgList` to see what packages are installed.
 
+## Code explained
 
+If you care to know what the code is "doing", read on.
 
+The `setupProject` call above internally uses `Require` to download and
+install any missing packages. Although the packages themselves are
+installed in a folder associated with the dummy project "Introduction"
+(see `.libPaths()` after running the code), `Require` *caches* the
+downloaded package installation files in a user-accessible folder (so
+independent from any project).
 
+This means that, should you, e.g., switch projects and attempt to
+reinstall the same or a subset of these packages, `setupProject` (via
+`Require`) would access the package cache and reinstall them in whatever
+new project folder library.
 
+The same is true should you lose internet connection, since the
+downloads do not need to happen again.
 
 ## See also
 
