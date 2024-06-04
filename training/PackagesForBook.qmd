@@ -53,7 +53,7 @@ out <- setupProject(
     pkgList[[2]]
     },
   options = list(repos = repos),
-  paths = list(packagePath = .libPaths()[1])
+  paths = list(packagePath = .libPaths()[1]),
   name = "Introduction",
   modules = "PredictiveEcology/Biomass_core@main",
   packages = pkgList
