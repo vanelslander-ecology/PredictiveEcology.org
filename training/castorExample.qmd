@@ -193,8 +193,6 @@ out <- setupProject(
   },
   Restart = TRUE
 )
-
-warning(.libPaths())
 ```
 
 ## Initialise the model and inspect `simList`
