@@ -30,7 +30,8 @@ knitr::knit_hooks$set(output = function(x, options) {
   hook_output(x, options)
 })
 
-Require::Require(c("ggplot2", "SpaDES.core"), install = FALSE)
+# Require::Require(c("ggplot2", "SpaDES.core"), install = FALSE)
+library("ggplot2")
 ```
 
 Here, we will talk about **scheduling events** in a SpaDES module using
@@ -72,7 +73,8 @@ for (year in years - startYear) {
 # Plot #####
 predictions <- data.frame(year = rep(years, each = 10), prediction = unlist(pred))
 # plot the predictions
-ggplot(predictions, aes(x = year, y = prediction, colour = year)) + geom_point() + geom_smooth()
+ggplot(predictions, aes(x = year, y = prediction, colour = year)) + 
+  geom_point() + geom_smooth()
 ```
 
 In the above code, there are 4 sections. These will each be copied into

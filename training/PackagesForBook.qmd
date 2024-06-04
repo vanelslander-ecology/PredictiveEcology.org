@@ -27,32 +27,52 @@ cover this use case.
 ## Installation code
 
 If you can run the following code, then you will be able to run code in
-any of the chapters in this book. This code installs a few packages
-(notably `SpaDES.project`, `Require` and their dependencies), then it
-downloads and installs a single SpaDES module (*Biomass-core*). This
-module happens to have many package dependencies (over 130 packages)
-covering all the dependencies needed in this book. It also downloads an
-extra package `diskframe` that is not a dependency of *Biomass_core*,
-but brings with it many other packages.
-
-<!--ELIOT: need to add castor deps below-->
+any of the chapters in this book. This code begins by installing
+`SpaDES.project`, `reproducible` and their dependencies, then uses
+`setupProject` to download and install a single SpaDES module
+(*Biomass-core*) and its many dependencies (over 130 packages), as well
+as a list of other R packages from GitHub to install.
 
 ```{r setupProject}
 #| cache: true
 #| echo: true
 #| eval: false
-install.packages("SpaDES.project", 
-                 repos = c("predictiveecology.r-universe.dev", 
-                           getOption("repos")), dependencies = TRUE)
+
+repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
+install.packages(c("SpaDES.project", "reproducible"),
+                 repos = repos, dependencies = TRUE)
 
 library(SpaDES.project)
-out <- setupProject(
-  name = "Introduction",
-  modules = "PredictiveEcology/Biomass_core@main",
-  packages = "disk.frame"
-)
 
+out <- setupProject(
+  pkgList = "https://raw.githubusercontent.com/PredictiveEcology/PredictiveEcology.org/14-fix-webpage-build/training/R/pkgList.R"
+  packages = pkgList
+  options = list(repos = repos),
+  name = "Introduction",
+  modules = "PredictiveEcology/Biomass_core@main"
+)
 ```
+
+Check `out$pkgList` to see what packages are installed.
+
+## Code explained
+
+If you care to know what the code is "doing", read on.
+
+The `setupProject` call above internally uses `Require` to download and
+install any missing packages. Although the packages themselves are
+installed in a folder associated with the dummy project "Introduction"
+(see `.libPaths()` after running the code), `Require` *caches* the
+downloaded package installation files in a user-accessible folder (so
+independent from any project).
+
+This means that, should you, e.g., switch projects and attempt to
+reinstall the same or a subset of these packages, `setupProject` (via
+`Require`) would access the package cache and reinstall them in whatever
+new project folder library.
+
+The same is true should you lose internet connection, since the
+downloads do not need to happen again.
 
 ## See also
 

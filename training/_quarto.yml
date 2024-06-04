@@ -5,6 +5,8 @@ project:
     browser: false
   pre-render:
     - R/installpkgs.R
+  post-render:
+    - R/makePkgList.R
 
 book:
   title: "Robust and nimble scientific workflows, using SpaDES"

@@ -42,15 +42,11 @@ jobs:
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
           packages:
-            any::data.table
-            any::googledrive
             any::httr
-            any::kableExtra
             any::knitr
             any::quarto
-            any::Require
             any::rmarkdown
-            any::terra
+            any::terra ## must be here, won't work from r setup script
 
       - name: Build site 🔧
         run: Rscript R/renderCopyBook.R

@@ -31,9 +31,6 @@ knitr::knit_hooks$set(output = function(y, options) {
   hook_output(y, options)
 })
 
-libPath <- ifelse(dir.exists("packages"), "packages", "training/packages") # if run interactively vs knited
-.libPaths(libPath)
-options(repos = "http://cran.r-project.org")
 if (!require("Require")) {
   install.packages("Require", repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
 }

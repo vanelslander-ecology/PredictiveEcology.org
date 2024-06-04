@@ -32,7 +32,7 @@ knitr::knit_hooks$set(output = function(x, options) {
   hook_output(x, options)
 })
 
-options(repos = "http://cran.us.r-project.org")
+options(repos = list(CRAN = "http://cran.r-project.org"))
 
 if (Sys.getenv("USERNAME") == "GHA") {
   googledrive::drive_auth(path = Sys.getenv("GOOGLE_APP_CREDENTIALS"))
@@ -102,7 +102,8 @@ creating parameter, inputs and outputs lists -- see
 
 ## install/load necessary packages
 repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
-install.packages(c("SpaDES.project", "googledrive", "reproducible"), repos = repos)
+install.packages(c("SpaDES.project", "googledrive", "reproducible"), 
+                 repos = repos, dependencies = TRUE)
 library(SpaDES.project)
 
 ## get Castor modules and functions
@@ -128,6 +129,7 @@ out <- setupProject(
                "cachePath" = "modules/forestryCastor",
                "projectPath" = "~/tutos/castorExample"),
   modules = names(outMod$modules),
+  options = list(repos = repos),
   functions = "bcgov/castor@main/R/functions/R_Postgres.R",
   ## install and load
   require = "dplyr",
