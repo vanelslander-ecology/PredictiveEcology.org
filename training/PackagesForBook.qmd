@@ -45,8 +45,7 @@ install.packages(c("SpaDES.project", "reproducible"),
 library(SpaDES.project)
 
 out <- setupProject(
-  pkgList = "https://raw.githubusercontent.com/PredictiveEcology/PredictiveEcology.org/14-fix-webpage-build/training/R/pkgList.R"
-  packages = pkgList
+  sideEffects = "PredictiveEcology/PredictiveEcology.org@14-fix-webpage-build/training/R/pkgList.R",
   options = list(repos = repos),
   name = "Introduction",
   modules = "PredictiveEcology/Biomass_core@main"
