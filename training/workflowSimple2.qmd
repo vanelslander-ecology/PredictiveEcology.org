@@ -1,0 +1,118 @@
+---
+author: "Eliot McIntire"
+date: last-modified
+editor_options:
+  chunk_output_type: console
+execute:
+  tidy: false
+warning: false
+message: false
+error: false
+cache: false
+---
+
+
+# Simple workflow with existing modules
+
+
+```{r setup,eval=TRUE}
+#| include: false
+
+
+## truncate text output
+hook_output <- knitr::knit_hooks$get("output")
+
+knitr::knit_hooks$set(output = function(y, options) {
+  if (!is.null(n <- options$outlines)) {
+    y <- xfun::split_lines(y)
+    if (length(y) > n) {
+      # truncate the output
+      y <- c(head(y, n), "....\n")
+    }
+    y <- paste(y, collapse = "\n")
+  }
+  hook_output(y, options)
+})
+libPath <- ifelse(dir.exists("packages"), "packages", "training/packages") # if run interactively vs knited
+.libPaths(libPath)
+```
+
+
+Once we want to run a project that is more sophisticated, we can start using `SpaDES.project`.
+[`SpaDES.project`](https://spades-project.predictiveecology.org/) is a
+package that deals with a number of challenges that crop up creating and
+using workflows. These become particularly acute when working with
+multiple modules created by potentially many people.
+[See here to see a longer list of project challenges](
+https://spades-project.predictiveecology.org/#project-challenges).
+
+We will demonstrate its use with an example created by [Tati
+Micheletti](https://github.com/tati-micheletti/Micheletti_SpaDES/blob/main/demo.R)
+where a workflow with several modules is setup and run.
+
+## Installation
+
+```{r setupProject}
+repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
+if (!require("SpaDES.project"))
+  install.packages(c("SpaDES.project", "SpaDES.core"), repos = repos)
+```
+
+## Using `setupProject`
+
+`setupProject` does a series of very specific things, in a particular
+order, so that the chances of package conflicts and user errors are
+minimized.
+
+Note how it downloads the listed modules directly from their GitHub
+repositories (e.g.
+[tati-micheletti/speciesAbundance](https://github.com/tati-micheletti/speciesAbundance))
+
+
+```{r,echo=FALSE,eval=TRUE}
+# cleanup / restore state
+td <- file.path(tempdir(), "integratingSpaDESmodules")
+knitr::opts_knit$set(root.dir = Require::checkPath(td, create = TRUE ))
+lp <- SpaDES.project:::.libPathDefault("integratingSpaDESmodules")
+.libPaths(lp)
+opts <- options("Require.cloneFrom" = libPath)
+Require::Install("SpaDES.core (HEAD)")
+options(opts)
+```
+
+```{r setupProject2,eval=TRUE}
+##################### PART II: Download the modules and install the needed packages
+Setup <- SpaDES.project::setupProject(
+  
+  paths = list(projectPath = "integratingSpaDESmodules"),
+  
+  modules = c("tati-micheletti/speciesAbundance@main",
+              "tati-micheletti/temperature@main",
+              "tati-micheletti/speciesAbundTempLM@main"),
+  
+  times = list(start = 2013,
+               end = 2014)
+  
+)
+```
+
+The output of `setupProject` is a list of argument values that can be
+passed to `simInitAndSpaDES2` (with the "2" it accepts a list of arguments, instead of the arguments themselves).
+
+
+```{r runSimInit}
+results <- SpaDES.core::simInitAndSpades2(Setup)
+```
+
+```{r evaluteResults}
+SpaDES.core::completed(results)
+```
+
+## Examples
+
+In the remainding chapters of this section, we will explore several examples, including learning of several arguments to the function `setupProject`. But we will start very simple first.
+
+```{r setdown,eval=TRUE}
+.libPaths(libPath)
+```
+

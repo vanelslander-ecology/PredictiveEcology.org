@@ -20,7 +20,6 @@ always_allow_html: true
 # My_linear_model Module
 
 <!-- the following are text references used in captions for LaTeX compatibility -->
-
 (ref:My-linear-model) *My_linear_model*
 
 ```{r setup-My-linear-model, include=FALSE}
@@ -48,32 +47,28 @@ download.file(url = "https://img.shields.io/badge/Made%20with-Markdown-1f425f.pn
 
 Provide a brief summary of what the module does / how to use the module.
 
-Module documentation should be written so that others can use your
-module. This is a template for module documentation, and should be
-changed to reflect your module.
+Module documentation should be written so that others can use your module.
+This is a template for module documentation, and should be changed to reflect your module.
 
 ### Module inputs and parameters
 
-Describe input data required by the module and how to obtain it (e.g.,
-directly from online sources or supplied by other modules) If
-`sourceURL` is specified,
-`downloadData("My_linear_model", "C:/Eliot/GitHub/PredictiveEcology.org")`
-may be sufficient. Table \@ref(tab:moduleInputs-My-linear-model) shows
-the full list of module inputs.
+Describe input data required by the module and how to obtain it (e.g., directly from online sources or supplied by other modules)
+If `sourceURL` is specified, `downloadData("My_linear_model", "C:/Eliot/GitHub/PredictiveEcology.org/tutos/NewModuleIntro")` may be sufficient.
+Table \@ref(tab:moduleInputs-My-linear-model) shows the full list of module inputs.
 
 ```{r moduleInputs-My-linear-model, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE}
-df_inputs <- SpaDES.core::moduleInputs("My_linear_model", "C:/Eliot/GitHub/PredictiveEcology.org")
+df_inputs <- SpaDES.core::moduleInputs("My_linear_model", "C:/Eliot/GitHub/PredictiveEcology.org/tutos/NewModuleIntro")
 knitr::kable(df_inputs,
-             caption = "List of (ref:My-linear-model) input objects and their description.") %>%
+             caption = "List of (ref:My-linear-model) input objects and their description.") |>
   kableExtra::kable_styling(latex_options = "scale_down", full_width = TRUE)
 ```
 
-Provide a summary of user-visible parameters (Table
-\@ref(tab:moduleParams-My-linear-model))
+Provide a summary of user-visible parameters (Table \@ref(tab:moduleParams-My-linear-model))
+
 
 ```{r moduleParams-My-linear-model, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE}
-df_params <- SpaDES.core::moduleParams("My_linear_model", "C:/Eliot/GitHub/PredictiveEcology.org")
-knitr::kable(df_params, caption = "List of (ref:My-linear-model) parameters and their description.") %>%
+df_params <- SpaDES.core::moduleParams("My_linear_model", "C:/Eliot/GitHub/PredictiveEcology.org/tutos/NewModuleIntro")
+knitr::kable(df_params, caption = "List of (ref:My-linear-model) parameters and their description.") |>
   kableExtra::kable_styling(latex_options = "scale_down", full_width = TRUE)
 ```
 
@@ -91,21 +86,18 @@ Write what is saved.
 
 ### Module outputs
 
-Description of the module outputs (Table
-\@ref(tab:moduleOutputs-My-linear-model)).
+Description of the module outputs (Table \@ref(tab:moduleOutputs-My-linear-model)).
 
 ```{r moduleOutputs-My-linear-model, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE}
-df_outputs <- SpaDES.core::moduleOutputs("My_linear_model", "C:/Eliot/GitHub/PredictiveEcology.org")
-knitr::kable(df_outputs, caption = "List of (ref:My-linear-model) outputs and their description.") %>%
+df_outputs <- SpaDES.core::moduleOutputs("My_linear_model", "C:/Eliot/GitHub/PredictiveEcology.org/tutos/NewModuleIntro")
+knitr::kable(df_outputs, caption = "List of (ref:My-linear-model) outputs and their description.") |>
   kableExtra::kable_styling(latex_options = "scale_down", full_width = TRUE)
 ```
 
 ### Links to other modules
 
-Describe any anticipated linkages to other modules, such as modules that
-supply input data or do post-hoc analysis.
+Describe any anticipated linkages to other modules, such as modules that supply input data or do post-hoc analysis.
 
 ### Getting help
 
--   provide a way for people to obtain help (e.g., module repository
-    issues page)
+-   provide a way for people to obtain help (e.g., module repository issues page)

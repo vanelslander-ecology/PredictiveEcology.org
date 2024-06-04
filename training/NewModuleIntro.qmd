@@ -31,11 +31,12 @@ knitr::knit_hooks$set(output = function(y, options) {
   hook_output(y, options)
 })
 
-options(repos = "http://cran.us.r-project.org")
+libPath <- ifelse(dir.exists("packages"), "packages", "training/packages") # if run interactively vs knited
+.libPaths(libPath)
+options(repos = "http://cran.r-project.org")
 if (!require("Require")) {
   install.packages("Require", repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
 }
-
 ```
 
 SpaDES modules are comprised of R code that has metadata and the gets
@@ -88,11 +89,29 @@ We will next put them into the correct places in the new SpaDES module.
 
 ## Create a module
 
-We use the `SpaDES.core` function `newModule()` to make a new module.
+We use the `SpaDES.core` function `newModule()` to make a new module. 
+
+Step 1 -- move the code to "an init event". This "init" even is a convention that SpaDES uses. A module
+must always have an "init" event.
 
 ```{r newModule}
-SpaDES.core::newModule(name = "My_linear_model", path = "tutos/NewModuleIntro")
+Require::Install("SpaDES.core", repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
+SpaDES.core::newModule(name = "My_linear_model", path = "tutos/NewModuleIntro", open = FALSE,
+                       events = list(
+                         init = {
+                           y <- x + rnorm(10)
+                           # fit a linear model
+                           out <- lm(y ~ x)
+                           
+                           # plot the fit
+                           plot(out)
+                         }
+                       ))
 ```
+
+So far, the linear model seems still recognizable. We now 
+
+
 
 This will create a new folder with several files in it. See
 [`?newModule`](https://rdrr.io/cran/SpaDES.core/man/newModule.html) for

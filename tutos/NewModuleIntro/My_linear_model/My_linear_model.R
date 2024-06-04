@@ -15,7 +15,7 @@ defineModule(sim, list(
   timeunit = "year",
   citation = list("citation.bib"),
   documentation = list("NEWS.md", "README.md", "My_linear_model.Rmd"),
-  reqdPkgs = list("SpaDES.core (>= 2.0.4.9007)", "ggplot2"),
+  reqdPkgs = list("SpaDES.core (>= 2.1.0.9004)", "ggplot2"),
   parameters = bindrows(
     #defineParameter("paramName", "paramClass", value, min, max, "parameter description"),
     defineParameter(".plots", "character", "screen", NA, NA,
@@ -38,104 +38,31 @@ defineModule(sim, list(
                     "Should caching of events or module be used?")
   ),
   inputObjects = bindrows(
-    expectsInput(objectName = "x", objectClass = "numeric", desc = "The inputs for the linear model", sourceURL = NA)
+    #expectsInput("objectName", "objectClass", "input object description", sourceURL, ...),
+    expectsInput(objectName = NA, objectClass = NA, desc = NA, sourceURL = NA)
   ),
   outputObjects = bindrows(
-    createsOutput(objectName = "y", objectClass = "numeric", desc = "The randomly created varible that is used as a response variable"),
-    createsOutput(objectName = "out", objectClass = "lm", desc = "A linear model object from the equation (x ~ y)")
+    #createsOutput("objectName", "objectClass", "output object description", ...),
+    createsOutput(objectName = NA, objectClass = NA, desc = NA)
   )
 ))
 
-## event types
-#   - type `init` is required for initialization
 
-doEvent.My_linear_model = function(sim, eventTime, eventType) {
-  switch(
-    eventType,
-    init = {
-      ### check for more detailed object dependencies:
-      ### (use `checkObject` or similar)
-
-      # do stuff for this event
-      sim <- Init(sim)
-
-      # schedule future event(s)
-      sim <- scheduleEvent(sim, P(sim)$.plotInitialTime, "My_linear_model", "plot")
-      sim <- scheduleEvent(sim, P(sim)$.saveInitialTime, "My_linear_model", "save")
-    },
-    plot = {
-      # ! ----- EDIT BELOW ----- ! #
-      # do stuff for this event
-
-      plotFun(sim) # example of a plotting function
-      # schedule future event(s)
-
-      # e.g.,
-      #sim <- scheduleEvent(sim, time(sim) + P(sim)$.plotInterval, "My_linear_model", "plot")
-
-      # ! ----- STOP EDITING ----- ! #
-    },
-    save = {
-      # ! ----- EDIT BELOW ----- ! #
-      # do stuff for this event
-
-      # e.g., call your custom functions/methods here
-      # you can define your own methods below this `doEvent` function
-
-      # schedule future event(s)
-
-      # e.g.,
-      # sim <- scheduleEvent(sim, time(sim) + P(sim)$.saveInterval, "My_linear_model", "save")
-
-      # ! ----- STOP EDITING ----- ! #
-    },
-    event1 = {
-      # ! ----- EDIT BELOW ----- ! #
-      # do stuff for this event
-
-      # e.g., call your custom functions/methods here
-      # you can define your own methods below this `doEvent` function
-
-      # schedule future event(s)
-
-      # e.g.,
-      # sim <- scheduleEvent(sim, time(sim) + increment, "My_linear_model", "templateEvent")
-
-      # ! ----- STOP EDITING ----- ! #
-    },
-    event2 = {
-      # ! ----- EDIT BELOW ----- ! #
-      # do stuff for this event
-
-      # e.g., call your custom functions/methods here
-      # you can define your own methods below this `doEvent` function
-
-      # schedule future event(s)
-
-      # e.g.,
-      # sim <- scheduleEvent(sim, time(sim) + increment, "My_linear_model", "templateEvent")
-
-      # ! ----- STOP EDITING ----- ! #
-    },
-    warning(paste("Undefined event type: \'", current(sim)[1, "eventType", with = FALSE],
-                  "\' in module \'", current(sim)[1, "moduleName", with = FALSE], "\'", sep = ""))
-  )
-  return(invisible(sim))
+doEvent.My_linear_model.init <- function(sim, eventTime, eventType, priority) {
+    y <- x + rnorm(10)
+    out <- lm(y ~ x)
+    plot(out)
+  return(sim)
 }
-
-## event functions
-#   - keep event functions short and clean, modularize by calling subroutines from section below.
 
 ### template initialization
 Init <- function(sim) {
   # # ! ----- EDIT BELOW ----- ! #
-  sim$y <- sim$x + rnorm(length(sim$x))
-  sim$out <- lm(sim$y ~ sim$x)
+
   # ! ----- STOP EDITING ----- ! #
 
   return(invisible(sim))
 }
-
 ### template for save events
 Save <- function(sim) {
   # ! ----- EDIT BELOW ----- ! #
@@ -148,10 +75,14 @@ Save <- function(sim) {
 
 ### template for plot events
 plotFun <- function(sim) {
-  plot(sim$out)
+  # ! ----- EDIT BELOW ----- ! #
+  # do stuff for this event
+  sampleData <- data.frame("TheSample" = sample(1:10, replace = TRUE))
+  Plots(sampleData, fn = ggplotFn) # needs ggplot2
+
+  # ! ----- STOP EDITING ----- ! #
   return(invisible(sim))
 }
-
 
 ### template for your event1
 Event1 <- function(sim) {
@@ -176,8 +107,27 @@ Event2 <- function(sim) {
 }
 
 .inputObjects <- function(sim) {
-  if (!suppliedElsewhere("x", sim))
-    sim$x <- rnorm(10, mean = 20, sd = 2)
+  # Any code written here will be run during the simInit for the purpose of creating
+  # any objects required by this module and identified in the inputObjects element of defineModule.
+  # This is useful if there is something required before simulation to produce the module
+  # object dependencies, including such things as downloading default datasets, e.g.,
+  # downloadData("LCC2005", modulePath(sim)).
+  # Nothing should be created here that does not create a named object in inputObjects.
+  # Any other initiation procedures should be put in "init" eventType of the doEvent function.
+  # Note: the module developer can check if an object is 'suppliedElsewhere' to
+  # selectively skip unnecessary steps because the user has provided those inputObjects in the
+  # simInit call, or another module will supply or has supplied it. e.g.,
+  # if (!suppliedElsewhere('defaultColor', sim)) {
+  #   sim$map <- Cache(prepInputs, extractURL('map')) # download, extract, load file from url in sourceURL
+  # }
+
+  #cacheTags <- c(currentModule(sim), "function:.inputObjects") ## uncomment this if Cache is being used
+  dPath <- asPath(getOption("reproducible.destinationPath", dataPath(sim)), 1)
+  message(currentModule(sim), ": using dataPath '", dPath, "'.")
+
+  # ! ----- EDIT BELOW ----- ! #
+
+  # ! ----- STOP EDITING ----- ! #
   return(invisible(sim))
 }
 
@@ -186,4 +136,3 @@ ggplotFn <- function(data, ...) {
     ggplot2::geom_histogram(...)
 }
 
-### add additional events as needed by copy/pasting from above
