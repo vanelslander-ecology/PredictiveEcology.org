@@ -7,7 +7,8 @@
 
 # This repo doesn't work for Eliot for some reason
 # options(repos = "http://cran.us.r-project.org")  ## set mirror first
-Require::getCRANrepos(ind = 1)
+# Require::getCRANrepos(ind = 1)
+options(repos = "https://cran.r-project.org")
 repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
 options(repos = repos)
 

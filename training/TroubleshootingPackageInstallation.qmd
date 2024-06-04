@@ -4,7 +4,7 @@ author:
 date: last-modified
 editor_options:
   chunk_output_type: console
-knitr: 
+execute:
   eval: false
 ---
 
@@ -43,58 +43,58 @@ problems, even after restarting the current R session.
 #### Potential solutions
 
 -   **Restart R** – The number one solution for many problems is to
-    restart R. If using RStudio, the keyboard shortcut is commonly
-    CTRL-SHIFT-F10.
+restart R. If using RStudio, the keyboard shortcut is commonly
+CTRL-SHIFT-F10.
 
 -   **Close other R or RStudio sessions** – If you have more than one
-    session open, each one may have packages loaded. That means you
-    can't install (update), delete or uninstall a package that has
-    already been loaded elsewhere.
+session open, each one may have packages loaded. That means you
+can't install (update), delete or uninstall a package that has
+already been loaded elsewhere.
 
 -   **Close RStudio and install in a separate R session** – By default,
-    RStudio pre-loads packages before user input. This is convenient
-    under some conditions, but is very difficult to deal with when it
-    doesn't work correctly – e.g. when these packages need to be
-    updated. You may have to close RStudio, open a separate R session
-    (without RStudio) and install the packages there.
+RStudio pre-loads packages before user input. This is convenient
+under some conditions, but is very difficult to deal with when it
+doesn't work correctly – e.g. when these packages need to be
+updated. You may have to close RStudio, open a separate R session
+(without RStudio) and install the packages there.
 
 -   **Update packages in user library –** Package versions may collide
-    between the user library and the project library. Try to update the
-    packages in the user library. To determine where this is, you can
-    try:
+between the user library and the project library. Try to update the
+packages in the user library. To determine where this is, you can
+try:
 
-    `{r} userLib <- Sys.getenv("R_LIBS_USER")`
+`userLib <- Sys.getenv("R_LIBS_USER")`
 
-    then update the packages there:
+then update the packages there:
 
-    `{r} update.packages(userLib, ask = FALSE)`
+`update.packages(userLib, ask = FALSE)`
 
 -   **Turn off R diagnostics** – Alternatively (or in complement) to the
-    solution above, you can turn off R code diagnostics (temporarily or
-    permanently), in your RStudio's *Global Options*. This can greatly
-    reduce the number of pre-loaded packages at the expense of losing
-    some RStudio functionality. Via RStudio GUI:
+solution above, you can turn off R code diagnostics (temporarily or
+permanently), in your RStudio's *Global Options*. This can greatly
+reduce the number of pre-loaded packages at the expense of losing
+some RStudio functionality. Via RStudio GUI:
 
-    1.  Go to *Tools* \> *Global Options* \> *Code*
+1.  Go to *Tools* \> *Global Options* \> *Code*
 
-    2.  Open the *Diagnostics* tab, and uncheck "Show diagnostics for R"
+2.  Open the *Diagnostics* tab, and uncheck "Show diagnostics for R"
 
-        Restart R after doing the above. Try the package installations
-        again. If they fail again, see other solutions and try them.
+Restart R after doing the above. Try the package installations
+again. If they fail again, see other solutions and try them.
 
-        ![Turning of R diagnostics with RStudio – a potential solution
-        to prevent RStudio from pre-loading several R
-        packages.](assets/img/GOptions_RDiagnostics.PNG){fig-align="center"
-        width="469"}
+![Turning of R diagnostics with RStudio – a potential solution
+to prevent RStudio from pre-loading several R
+packages.](assets/img/GOptions_RDiagnostics.PNG){fig-align="center"
+width="469"}
 
-        Alternatively, you can:
+Alternatively, you can:
 
-        ```{r}
-        install.packages("RStudio.prefs")
-        RStudio.prefs::use_RStudio_prefs(
-          show_diagnostics_r = FALSE
-        )
-        ```
+```{r}
+install.packages("RStudio.prefs")
+RStudio.prefs::use_RStudio_prefs(
+  show_diagnostics_r = FALSE
+)
+```
 
 ### 00LOCK folder issues
 
@@ -105,13 +105,13 @@ overwrite. R can't install anything until that 00LOCK folder is removed.
 #### Potential solutions
 
 -   **Delete 00LOCK folder(s)** – The error message of the package
-    installation failure will indicate if this is the issue and tell you
-    where the 00LOCK folder is located. Make sure all other R sessions
-    are closed and that the current session is restarted (and possibly
-    closed), before deleting the 00LOCK folder. Then try installing the
-    package again. If you can't delete it, ensure RStudio and R are
-    completely closed and possibly other software such as Git version
-    control software (e.g. GitKraken, Bitbucket).
+installation failure will indicate if this is the issue and tell you
+where the 00LOCK folder is located. Make sure all other R sessions
+are closed and that the current session is restarted (and possibly
+closed), before deleting the 00LOCK folder. Then try installing the
+package again. If you can't delete it, ensure RStudio and R are
+completely closed and possibly other software such as Git version
+control software (e.g. GitKraken, Bitbucket).
 
 ### Missing dependencies
 
@@ -140,34 +140,34 @@ get by default with a normal R installation) can cause problems.
 #### Possible Solutions
 
 -   **Become aware of user vs. project library –** `.libPaths()` is your
-    friend. It tells you what folder the current R session is using as a
-    package library. The default place for a personal library in R
-    depends on operating system. For windows, it is something like:
+friend. It tells you what folder the current R session is using as a
+package library. The default place for a personal library in R
+depends on operating system. For windows, it is something like:
 
-    ```{r}
-    > Sys.getenv("R_LIBS_USER") [1] "C:\\Users\\emcintir\\AppData\\Local/R/win-library/4.4"}
-    ```
+```{r}
+> Sys.getenv("R_LIBS_USER") [1] "C:\\Users\\emcintir\\AppData\\Local/R/win-library/4.4"}
+```
 
-    For Linux, it is something like:
+For Linux, it is something like:
 
-    ```{r}
-    > Sys.getenv("R_LIBS_USER") [1] "/home/emcintir/R/x86_64-pc-linux-gnu-library/4.3"}
-    ```
+```{r}
+> Sys.getenv("R_LIBS_USER") [1] "/home/emcintir/R/x86_64-pc-linux-gnu-library/4.3"}
+```
 
-    If you have a project-specific library, including if you use
-    `SpaDES.project` or `renv`, `.libPaths()` will point to somewhere
-    else. For `SpaDES.project` it will be something like:
+If you have a project-specific library, including if you use
+`SpaDES.project` or `renv`, `.libPaths()` will point to somewhere
+else. For `SpaDES.project` it will be something like:
 
-    ```{r}
-    # Windows 
-    > .libPaths() [1] "C:/Users/emcintir/AppData/Roaming/R/data/R/SpaDES.project/packages/x86_64-w64-mingw32/4.4"  
+```{r}
+# Windows 
+> .libPaths() [1] "C:/Users/emcintir/AppData/Roaming/R/data/R/SpaDES.project/packages/x86_64-w64-mingw32/4.4"  
 
-    # Linux 
-    > .libPaths() [1] "/home/emcintir/.local/share/R/SpaDES.project/packages/x86_64-pc-linux-gnu/4.3"}
-    ```
+# Linux 
+> .libPaths() [1] "/home/emcintir/.local/share/R/SpaDES.project/packages/x86_64-pc-linux-gnu/4.3"}
+```
 
-    When you install a package, look where it is getting installed and
-    compare it to where you want it to be installed.
+When you install a package, look where it is getting installed and
+compare it to where you want it to be installed.
 
 ### Package loaded in RAM collides with package on disk
 

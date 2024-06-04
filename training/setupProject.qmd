@@ -4,17 +4,30 @@ date: last-modified
 editor_options:
   chunk_output_type: console
 execute:
-  eval: false
   tidy: false
   warning: false
   message: false
   error: false
+  cache: false
 ---
 
-# Simple workflow with setupProject
+# SpaDES workflows and projects
 
-```{r setup}
+One of the advantages of `SpaDES` is that we can make simple "linear" workflows, 
+but we can also make complex workflows *emerge* from the
+combinations of modules (and of their events) being put together by a
+user. SpaDES modules provide their own needed schedules, and the metadata
+tells SpaDES how different modules fit together. Then when executed, events
+within and across modules go in the correct order. Then if the group of modules 
+changes, the workflow steps may also change.
+
+In this section, we will start with the simplest case of 2 chunks in sequence, and 
+we will advance to chain together many modules and rich project workflows with `SpaDES.project`.
+
+
+```{r setup,eval=TRUE}
 #| include: false
+
 
 ## truncate text output
 hook_output <- knitr::knit_hooks$get("output")
@@ -30,8 +43,61 @@ knitr::knit_hooks$set(output = function(y, options) {
   }
   hook_output(y, options)
 })
+libPath <- ifelse(dir.exists("packages"), "packages", "training/packages") # if run interactively vs knited
+.libPaths(libPath)
 ```
 
+## Sequence workflow with `SpaDES.core::newModule`
+
+A core need for a workflow is to use modular code, sequence them correctly, then run them. 
+
+This can be easily done with `newModule`. First, we make a simple module that fits a linear model.
+
+```{r newModule1}
+library(SpaDES.core)
+nm1 <- "modelFit"
+modulePath <- Require::tempdir2()
+newModule(nm1, path = modulePath, open = FALSE,
+          events = list(
+            init = {
+              x <- rnorm(10)
+              y <- rnorm(10) + x
+              sim$model <- lm(y ~ x)
+              return(sim)
+            }
+          )
+)
+```
+
+Then we run it:
+
+```{r}
+# Run just the first module
+out1 <- simInitAndSpades(module = nm1, paths = list(modulePath = modulePath))
+```
+
+We add a second step, visualize it.
+```{r newModule2}
+nm2 <- "visualize"
+newModule(nm2, path = modulePath, open = FALSE,
+          events = list(
+            init = {
+              plot(sim$model)
+              return(sim)
+            }
+          )
+)
+```
+
+And run both together:
+```{r,eval=FALSE}
+out2 <- simInitAndSpades(module = c(nm1, nm2), paths = list(modulePath = modulePath))
+```
+
+
+## Rich workflow with `SpaDES.project::setupProject`
+
+Once we want to run a project that is more sophisticated, we can start using `SpaDES.project`.
 [`SpaDES.project`](https://spades-project.predictiveecology.org/) is a
 package that deals with a number of challenges that crop up creating and
 using workflows. These become particularly acute when working with
@@ -61,9 +127,15 @@ Note how it downloads the listed modules directly from their GitHub
 repositories (e.g.
 [tati-micheletti/speciesAbundance](https://github.com/tati-micheletti/speciesAbundance))
 
-```{r setupProject2}
-##################### PART II: Download the modules and install the needed packages
 
+```{r,echo=FALSE,eval=TRUE}
+# cleanup / restore state
+td <- file.path(tempdir(), "integratingSpaDESmodules")
+knitr::opts_knit$set(root.dir = Require::checkPath(td, create = TRUE ))
+```
+
+```{r setupProject2,eval=TRUE}
+##################### PART II: Download the modules and install the needed packages
 Setup <- SpaDES.project::setupProject(
   
   paths = list(projectPath = "integratingSpaDESmodules"),
@@ -73,17 +145,16 @@ Setup <- SpaDES.project::setupProject(
               "tati-micheletti/speciesAbundTempLM@main"),
   
   times = list(start = 2013,
-               end = 2032)
+               end = 2014)
   
 )
 ```
 
 The output of `setupProject` is a list of argument values that can be
-passed to `simInit2` or `simInitAndSpaDES2`. The latter will not only
-initialise the workflow but also run it.
+passed to `simInitAndSpaDES2` (with the "2" it accepts a list of arguments, instead of the arguments themselves). 
+
 
 ```{r runSimInit}
-##################### PART III: Run SpaDES
 results <- SpaDES.core::simInitAndSpades2(Setup)
 ```
 

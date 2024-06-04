@@ -63,10 +63,9 @@ book:
       - simList.qmd
       - ModuleInputs.qmd
       - Caching.qmd
-    - part: SpaDESworkflows.qmd
+    - part: setupProject.qmd
       chapters:
       - multipleModules.qmd
-      - setupProject.qmd
     - part: realexamples.qmd
       chapters:
       - castorExample.qmd
