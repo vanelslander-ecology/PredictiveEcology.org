@@ -37,8 +37,6 @@ knitr::knit_hooks$set(output = function(x, options) {
   hook_output(x, options)
 })
 
-options(repos = "http://cran.us.r-project.org")
-
 if (Sys.getenv("USERNAME") == "GHA") {
   googledrive::drive_auth(path = Sys.getenv("GOOGLE_APP_CREDENTIALS"))
 }
