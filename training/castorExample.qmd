@@ -128,6 +128,7 @@ out <- setupProject(
                "cachePath" = "modules/forestryCastor",
                "projectPath" = "~/tutos/castorExample"),
   modules = names(outMod$modules),
+  options = list(repos = repos),
   functions = "bcgov/castor@main/R/functions/R_Postgres.R",
   ## install and load
   require = "dplyr",
