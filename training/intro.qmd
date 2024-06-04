@@ -15,7 +15,7 @@ bibliography: references.bib
 # Introduction {.unnumbered}
 
 This book is presents a collection of approaches and examples that aim
-to facilitate the building of nimble *workflows* that follow in the
+to facilitate the building of *nimble* *workflows* that follow in the
 principles of repeatability, reproducibility, reusability and
 transparency (**R^3^T**).
 
@@ -45,11 +45,11 @@ models it produces.
 
 ## Why SpaDES?
 
-SpaDES is a set of R packages that facilitate the process of
-implementing nimble *workflows* that follow in the principles of
-repeatability, reproducibility, reusability and transparency
-(**R^3^T**), via the creation and use of highly **modular** code that
-has **metadata** attached.
+SpaDES is a set of R packages that facilitate implementing nimble
+*workflows* that follow in the principles of repeatability,
+reproducibility, reusability and transparency (**R^3^T**), via the
+creation and use of highly **modular** code that has **metadata**
+attached.
 
 ### Modularity
 
@@ -67,61 +67,77 @@ characteristics.
 ### Metadata
 
 Metadata in a SpaDES context includes identifying what objects
-<!--Eliot, you has "data" but I wonder if people see data as something different and less general-->
+<!--Eliot, you had "data" but I wonder if people see data as something different and less general-->
 are **expected** by a chunk of code and what objects are **created** by
 a chunk of code: the **inputs** and **outputs**. This forces a user to
-understand their code and its linakges, and it allows R to know how to
+understand their code and its linkages, and it allows R to know how to
 connect this chunk of code with others. Importantly, it allows SpaDES to
-chain or weave together modules such that the workflow structure can be
-defined from the bottom-up, rather than top-down.
+chain modules such that the workflow structure can be defined from the
+bottom-up, rather than top-down.
+
+### Nimbleness
+
+Together SpaDES's modularity, standardized structure and metatada,
+improve workflow nimbleness, where we can weave together new Results
+that use *new data*, *updated data*, a *new module*, a *new study area*,
+a *new visualization*, address *new stakeholder's needs* and more.
 
 #### Aren't packages and functions sufficient?
 
 Scientists have embraced the idea of modular code by creating and using
-functions bundled into packages, e.g., R packages. This is analogous to
-the **Methods** section of a journal paper: i.e., the methods
-(functions) describe *how* you will do something. The use of packages in
-this way has massively accelerated Ecology and other data sciences.
+functions, often bundled into packages, e.g., R packages. This is
+analogous to the **Methods** section of a journal paper: i.e., the
+methods (functions) describe *how* you will do something. The use of
+packages in this way has massively accelerated Ecology and other data
+sciences.
 
 However, even if you know all the functions that a paper used, this in
 itself is not sufficient to reproduce the **Results**. *SpaDES modules
-can be thought of as the code needed to make the Results*. In other
-words, a SpaDES module enables a developer to bundle the actual code
-(the functions) needed to recreate all the steps to make the Results,
-such that the user can use it the module directly, rather than try to
+can be thought of the recipe needed to make the Results*. In other
+words, a SpaDES module enables a developer to bundle the functions in a
+specific order so that one can recreate the steps to make the Results. A
+user can then use the module directly, rather instead of trying to
 recreate the necessary sequence of functions.
 
-#### I use `targets` for my workflows. How does SpaDES differ?
+### I use `targets` for my workflows. How does SpaDES differ?
 
 There are two major differences between `targets` and the SpaDES
 approach:
 
--   **`targets` is "top-down", SpaDES is "bottom-up"** – with `targets`
+-   **`targets` is "top-down", SpaDES is "bottom-up"** – with `targets`,
     the workflow is entirely defined by the script developer (as in
     [Make](https://www.gnu.org/software/make/)). This is, they define
-    the both the connections and the *sequence* between each "target"
-    (the code sections that call functions and execute operations). In
-    SpaDES <!--Ceres TODO-->
--   Both `targets` and SpaDES have caching mechanisms that can be used
-    (in SpaDES's case, at several levels – see @sec-caching on SpaDES
-    caching mechanisms).
--   SpaDES has "embedded" metadata – or at least it makes the developer
-    think about it (SpaDES won't force metadata to be filled). Each
-    module is defined by not only declaring the inputs and outputs, but
-    also the inputs and outputs descriptions and types of object class,
-    the module's operating time scale, what packages and other modules
-    it might depend on, a description of what the module is intended
-    for, and much more. Some of the metadata is essential to chain
-    modules (the declaration of inputs and outputs), other isn't but can
-    greatly facilitate workflow setup (e.g. declaring package
-    dependencies), while other metadata are simply good to have (e.g. a
-    description of the module).
+    the connections and the *sequence* between each "target" (the code
+    sections that call functions and execute operations), when they will
+    be iterated and for "how many times". Re-arranging "targets"
+    sequences and iterations may therefore be hard, if the "target" code
+    is not well known/understood.
 
-### Nimbleness
+    SpaDES is meant to enable mixing-and-matching different modules that
+    share the same inputs/outputs easily – i.e. without having to have
+    deep knowledge of the module code. SpaDES will read each module's
+    metadata and from it deduce the sequence in which modules need to be
+    chained. SpaDES will also iterate module code when necessary,
+    following the developer's "scheduling" instructions. The workflow
+    sequence, therefore, *arises* from the set of modules that is being
+    used[^intro-1].
 
-When combined with **modularity** we can weave together new Results that
-use *new data*, *updated data*, a *new module*, a *new study area*, a
-*new visualization*, address *new stakeholder's needs* and more.
+-   **SpaDES has "embedded" metadata** – or at least it makes the
+    developer think about it[^intro-2]. Each module is defined by not
+    only listing the inputs and outputs, but also their descriptions and
+    types of object class, the module's description, it's operating time
+    scale and what packages and other modules it depends on, and much
+    more. Some of the metadata is essential to chain modules (lists of
+    inputs and outputs), other isn't, but can greatly facilitate
+    workflow setup (e.g. declaring module dependencies), while other
+    metadata are simply good to have (e.g. a description of the module).
+
+Finally, both `targets` and SpaDES have embedded caching mechanisms that
+in SpaDES's case can be used and controlled at several levels (by the
+user, in the module code, etc.) – see @sec-caching on SpaDES caching
+mechanisms.
+
+<!--Ceres is here-->
 
 ## The three big problems in applied ecology
 
@@ -187,3 +203,11 @@ nimbleness it provides, we can pivot more rapidly to the current
 management needs. When we are asked at the end of a 3 year project,
 *"can we redo everything because we have a new stakeholder who feels
 that our assumptions are wrong?"*, ***our answer should be "yes"***.
+
+[^intro-1]: Note that SpaDES still allows a user to impose module
+    sequencing if they wish to.
+
+[^intro-2]: SpaDES won't force most metadata to be filled, so it's at
+    the discretion of the module developer how much detail they want to
+    provide.
+
