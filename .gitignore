@@ -18,3 +18,9 @@ outputs
 .secrets
 
 !training/.Rprofile
+
+## files from examples can end up here if not in `training.Rproj`
+Introduction/
+integratingSpaDESmodules/
+
+
