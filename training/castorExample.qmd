@@ -102,7 +102,8 @@ creating parameter, inputs and outputs lists -- see
 
 ## install/load necessary packages
 repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
-install.packages(c("SpaDES.project", "googledrive", "reproducible"), repos = repos)
+install.packages(c("SpaDES.project", "googledrive", "reproducible"), 
+                 repos = repos, dependencies = TRUE)
 library(SpaDES.project)
 
 ## get Castor modules and functions
