@@ -11,7 +11,7 @@ if (!"Require" %in% installed.packages()) {
   install.packages("Require")
 }
 
-# Require::getCRANrepos(ind = 1)
+# Require::getCRANrepos(ind = 1)   ## this was screwing this up
 repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
 options(repos = repos)
 
