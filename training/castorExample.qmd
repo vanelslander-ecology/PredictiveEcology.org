@@ -8,7 +8,7 @@ execute:
   warning: false
   message: false
   error: false
-  cache: 2
+  cache: true
 ---
 
 # Castor workflow with `setupProject` {#sec-castorEg}
