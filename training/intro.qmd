@@ -188,7 +188,7 @@ It can be very challenging to fulfil these expectations. SpaDES aims to
 help (applied) ecologists "get there" by facilitating the application of
 the PERFICT principles for applied ecological modelling [@mcintire2022].
 
-::: {#note-PERFICT .callout-note appearance="simple" icon="false"}
+::: {#nte-PERFICT .callout-note appearance="simple" icon="false"}
 ## PERFICT
 
 -   **P**redict regularly from models thare are
@@ -243,7 +243,7 @@ The SpaDES set of R packages is full of tools like `prepInputs`
 
 This book is intended to show applied ecologists (and whoever else!) the
 approaches that we use to bring our work closer to the PERFICT
-principles (@note-PERFICT), better meet the expectations, and better
+principles (@nte-PERFICT), better meet the expectations, and better
 address the problems.
 
 ## Our challenge
