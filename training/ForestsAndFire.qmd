@@ -1,0 +1,125 @@
+---
+author: "Eliot McIntire and Ian Eddy"
+date: last-modified
+editor_options:
+  chunk_output_type: console
+execute:
+  tidy: false
+warning: false
+message: false
+error: false
+cache: true
+---
+
+# Forest Succession and Wildfire using `setupProject` {#sec-scfmEg}
+
+```{r setup}
+#| include: false
+#| cache: false
+
+## truncate text output
+hook_output <- knitr::knit_hooks$get("output")
+
+knitr::knit_hooks$set(output = function(x, options) {
+if (!is.null(n <- options$outlines)) {
+x <- xfun::split_lines(x)
+if (length(x) > n) {
+# truncate the output
+x <- c(head(x, n), "....\n")
+}
+x <- paste(x, collapse = "\n")
+}
+hook_output(x, options)
+})
+
+options(repos = list(CRAN = "http://cran.r-project.org"))
+
+if (Sys.getenv("USERNAME") == "GHA") {
+googledrive::drive_auth(path = Sys.getenv("GOOGLE_APP_CREDENTIALS"))
+}
+
+qmdPath <- normalizePath(getwd(), winslash = "/")
+
+if (!interactive()) {
+dir.create("~/tutos/castorExample", recursive = TRUE)
+knitr::opts_knit$set(root.dir = "~/tutos/castorExample")
+}
+```
+
+
+We have developed an R version of LANDIS-II's Biomass Succession Extension, comprised
+of 2 modules: `Biomass_core` and `Biomass_regeneration`. We can combine these with
+a fire model, such as `scfm` which is a collaborative effort lead by Steve Cumming at 
+Laval, University (thus the name: **S**teve **C**umming **F**ire **M**odel).
+
+As with other examples, we also include all the parameterization modules here, with 
+`Biomass_borealDataPrep` for the `Biomass_***` modules and `scfmLandcoverInit`, 
+`scfmRegime` and `scfmDriver` for the `scfm` family.
+
+This makes for a 10 module project. Using `setupProject`, we can readily run these
+from their canonical "i.e., current, up to date, open and available" versions:
+
+```{r scfm}
+repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
+options(repos = repos)
+# install.packages("SpaDES.project")   ## gets Require too
+#packageVersion("SpaDES.project") #0.1.0
+remotes::install_github("PredictiveEcology/SpaDES.project@development")
+
+out <- SpaDES.project::setupProject(
+  updateRprofile = TRUE,
+  name = "scfm_example_fresh",
+  useGit = FALSE,
+  modules = c("PredictiveEcology/Biomass_borealDataPrep@development",
+              "PredictiveEcology/Biomass_core@development",
+              "PredictiveEcology/Biomass_regeneration@development",
+              file.path("PredictiveEcology/scfm@development/modules",
+                        c("scfmLandcoverInit", "scfmRegime", "scfmDriver",
+                          "scfmIgnition", "scfmEscape", "scfmSpread",
+                          "scfmDiagnostics"))
+  ),
+  params = list(
+    .globals = list(.studyAreaName = "scfm_example",
+                    dataYear = 2011, #will get kNN 2011 data, and NTEMS 2011 landcover
+                    sppEquivCol = "LandR"),
+    scfmDriver = list(targetN = 1000, #default is 4000 - higher targetN adds time + precision
+                      ### targetN would ideally be minimum 2000 - mean fire size estimates will be bad with 1000
+                      .useParallelFireRegimePolys = TRUE) #assumes parallelization is an otpion
+
+  ),
+  options = list(spades.allowInitDuringSimInit = TRUE,
+                 spades.moduleCodeChecks = FALSE,
+                 reproducible.shapefileRead = "terra::vect",
+                 spades.recoveryMode = 1
+  ),
+  times = list(start = 2011, end = 2061),
+  sppEquiv = LandR::sppEquivalencies_CA[KNN %in% c("Popu_Tre", "Betu_Pap",
+                                                   "Pice_Gla", "Pice_Mar",
+                                                   "Pinu_Con", "Pinu_Ban")],
+  studyArea = {
+    targetCRS <- paste("+proj=lcc +lat_1=49 +lat_2=77 +lat_0=0 +lon_0=-95 +x_0=0 +y_0=0",
+                       "+datum=NAD83 +units=m +no_defs +ellps=GRS80 +towgs84=0,0,0")
+    sa <- terra::vect(cbind(-1209980, 7586865), crs = targetCRS)
+    sa <- LandR::randomStudyArea(center = sa, size = 10000 * 250 * 30000, seed = 1002)
+    sa <- sf::st_as_sf(sa)
+  },
+  studyAreaLarge = {
+    sf::st_buffer(studyArea, 20000)
+  },
+  rasterToMatchLarge = {
+    rtml<- terra::rast(terra::ext(studyAreaLarge), res = c(250, 250))
+    terra::crs(rtml) <- terra::crs(studyAreaLarge)
+    rtml[] <- 1
+    rtml <- terra::mask(rtml, studyAreaLarge)
+  },
+  rasterToMatch = {
+    rtm <- terra::crop(rasterToMatchLarge, studyArea)
+    rtm <- terra::mask(rtm, studyArea)
+  }
+)
+
+
+#this must be done outside of setupProject (temporarily)
+#alternatively
+outSim <- do.call(SpaDES.core::simInitAndSpades, out)
+```
