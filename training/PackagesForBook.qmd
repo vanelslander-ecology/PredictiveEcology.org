@@ -9,10 +9,10 @@ editor_options:
 # Pre-installing R packages for book
 
 The objective of this book is to facilitate lightweight project code and
-setting up R^3^T workflows[^1]. To do this, packages and any code that
-are used must be easy to install and use. We accomplish this by having
-each chapter installing its own packages, and avoiding having users
-"pre-installing" packages.
+setting up R^3^T workflows[^packagesforbook-1]. To do this, packages and
+any code that are used must be easy to install and use. We accomplish
+this by having each chapter installing its own packages, and avoiding
+having users "pre-installing" packages.
 
 Furthermore, packages, once installed for one project, will be cached
 locally so that the next project will be able to install quickly from
@@ -28,9 +28,9 @@ cover this use case.
 
 If you can run the following code, then you will be able to run code in
 any of the chapters in this book. This code begins by installing
-`SpaDES.project` and its dependencies, then uses
-`setupProject` to download and install a list of R packages hosted on GitHub and
-a single SpaDES module (*Biomass-core*) which has over 130 package dependencies.
+`SpaDES.project` and its dependencies, then uses `setupProject` to
+download and install a list of R packages hosted on GitHub and a single
+SpaDES module (*Biomass-core*) which has over 130 package dependencies.
 
 ```{r setupProject}
 #| cache: true
@@ -50,9 +50,10 @@ out <- setupProject(
 )
 ```
 
-Note that `setupProject` will change your working directory to `./Introduction`.
-If that is not where you want to keep working, restart R and make sure you set 
-your working directory to where you want it to be (if restarting is not sufficient).
+Note that `setupProject` will change your working directory to
+`./Introduction`. If that is not where you want to keep working, restart
+R and make sure you set your working directory to where you want it to
+be (if restarting is not sufficient).
 
 ## Code explained
 
@@ -60,15 +61,16 @@ If you care to know what the code is "doing", read on.
 
 The `setupProject` call above internally uses `Require` to download and
 install any missing packages. Although the packages themselves are
-installed in a folder associated with the project "Introduction"
-(see `.libPaths()` after running the code), `Require` *caches* the
-downloaded package installation files in a user-accessible folder (so
-independent from any project).
+installed in a folder inside `./Introduction/` (the project folder) (see
+`.libPaths()` after running the code), `Require` *caches* the downloaded
+package installation files in a user-accessible folder (so independent
+from any project).
 
 This means that, should you, e.g., switch projects and attempt to
 reinstall the same or a subset of these packages, `setupProject` (via
 `Require`) would access the package cache and reinstall them in whatever
-new project folder library.
+new project folder library. This is much faster than downloading the
+packages again.
 
 The same is true should you lose internet connection, since the
 downloads do not need to happen again.
@@ -77,5 +79,5 @@ downloads do not need to happen again.
 
 @sec-TroubleShoot on R package installation troubleshooting
 
-[^1]: See this [introduction to R^3^T
+[^packagesforbook-1]: See this [introduction to R^3^T
     workflows](https://ceresbarros.github.io/reproducible-workflowsWS/presentations/20230712_BESMacroSIG2023_ReproducibleWorkflowsWS.pdf).
