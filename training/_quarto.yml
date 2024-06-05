@@ -71,7 +71,7 @@ book:
       - workflowSimple2.qmd
       - multipleModules.qmd
       - castorExample.qmd
-      - ForestsAndFires.qmd
+      - ForestsAndFire.qmd
     - bestPractices.qmd
     - references.qmd
 

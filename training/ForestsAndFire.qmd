@@ -62,7 +62,9 @@ from their canonical "i.e., current, up to date, open and available" versions:
 ```{r scfm,eval=FALSE}
 repos <- unique(c("predictiveecology.r-universe.dev", getOption("repos")))
 options(repos = repos)
-Require::Require(c("SpaDES.project (HEAD)")) 
+
+# Require::Require(c("SpaDES.project (HEAD)"))
+Require::Require(c("PredictiveEcology/SpaDES.project@development (HEAD)")) 
 
 out <- SpaDES.project::setupProject(
   updateRprofile = TRUE,
@@ -90,6 +92,7 @@ out <- SpaDES.project::setupProject(
   #                reproducible.shapefileRead = "terra::vect",
   #                spades.recoveryMode = 1
   # ),
+  packages = c('RCurl', 'XML'), # need for some downloading
   times = list(start = 2011, end = 2061),
   sppEquiv = LandR::sppEquivalencies_CA[KNN %in% c("Popu_Tre", "Betu_Pap",
                                                    "Pice_Gla", "Pice_Mar",

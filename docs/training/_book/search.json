@@ -805,53 +805,64 @@
     ]
   },
   {
+    "objectID": "ForestsAndFire.html",
+    "href": "ForestsAndFire.html",
+    "title": "15  Forest Succession and Wildfire using setupProject",
+    "section": "",
+    "text": "We have developed an R version of LANDIS-II’s Biomass Succession Extension, comprised of 2 modules: Biomass_core and Biomass_regeneration. We can combine these with a fire model, such as scfm which is a collaborative effort lead by Steve Cumming at Laval, University (thus the name: Steve Cumming Fire Model).\nAs with other examples, we also include all the parameterization modules here, with Biomass_borealDataPrep for the Biomass_*** modules and scfmLandcoverInit, scfmRegime and scfmDriver for the scfm family.\nThis makes for a 10 module project. Using setupProject, we can readily run these from their canonical “i.e., current, up to date, open and available” versions:\n\n\nCode\nrepos &lt;- unique(c(\"predictiveecology.r-universe.dev\", getOption(\"repos\")))\noptions(repos = repos)\nRequire::Require(c(\"SpaDES.project (HEAD)\")) \n\nout &lt;- SpaDES.project::setupProject(\n  updateRprofile = TRUE,\n  name = \"scfm_example_fresh\",\n  useGit = FALSE,\n  modules = c(\"PredictiveEcology/Biomass_borealDataPrep@development\",\n              \"PredictiveEcology/Biomass_core@development\",\n              \"PredictiveEcology/Biomass_regeneration@development\",\n              file.path(\"PredictiveEcology/scfm@development/modules\",\n                        c(\"scfmLandcoverInit\", \"scfmRegime\", \"scfmDriver\",\n                          \"scfmIgnition\", \"scfmEscape\", \"scfmSpread\",\n                          \"scfmDiagnostics\"))\n  ),\n  params = list(\n    .globals = list(.studyAreaName = \"scfm_example\",\n                    dataYear = 2011, #will get kNN 2011 data, and NTEMS 2011 landcover\n                    sppEquivCol = \"LandR\"),\n    scfmDriver = list(targetN = 1000, #default is 4000 - higher targetN adds time + precision\n                      ### targetN would ideally be minimum 2000 - mean fire size estimates will be bad with 1000\n                      .useParallelFireRegimePolys = TRUE) #assumes parallelization is an otpion\n\n  ),\n  # options = list(spades.allowInitDuringSimInit = TRUE,\n  #                spades.moduleCodeChecks = FALSE,\n  #                reproducible.shapefileRead = \"terra::vect\",\n  #                spades.recoveryMode = 1\n  # ),\n  times = list(start = 2011, end = 2061),\n  sppEquiv = LandR::sppEquivalencies_CA[KNN %in% c(\"Popu_Tre\", \"Betu_Pap\",\n                                                   \"Pice_Gla\", \"Pice_Mar\",\n                                                   \"Pinu_Con\", \"Pinu_Ban\")],\n  studyArea = {\n    targetCRS &lt;- paste(\"+proj=lcc +lat_1=49 +lat_2=77 +lat_0=0 +lon_0=-95 +x_0=0 +y_0=0\",\n                       \"+datum=NAD83 +units=m +no_defs +ellps=GRS80 +towgs84=0,0,0\")\n    sa &lt;- terra::vect(cbind(-1209980, 7586865), crs = targetCRS)\n    sa &lt;- LandR::randomStudyArea(center = sa, size = 10000 * 250 * 30000, seed = 1002)\n    sa &lt;- sf::st_as_sf(sa)\n  },\n  studyAreaLarge = {\n    sf::st_buffer(studyArea, 20000)\n  },\n  rasterToMatchLarge = {\n    rtml&lt;- terra::rast(terra::ext(studyAreaLarge), res = c(250, 250))\n    terra::crs(rtml) &lt;- terra::crs(studyAreaLarge)\n    rtml[] &lt;- 1\n    rtml &lt;- terra::mask(rtml, studyAreaLarge)\n  },\n  rasterToMatch = {\n    rtm &lt;- terra::crop(rasterToMatchLarge, studyArea)\n    rtm &lt;- terra::mask(rtm, studyArea)\n  }\n)\n\n\n#this must be done outside of setupProject (temporarily)\n#alternatively\noutSim &lt;- do.call(SpaDES.core::simInitAndSpades, out)",
+    "crumbs": [
+      "SpaDES workflows and projects",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Forest Succession and Wildfire using `setupProject`</span>"
+    ]
+  },
+  {
     "objectID": "bestPractices.html",
     "href": "bestPractices.html",
-    "title": "15  Best practices for \\(R^3T\\) workflows",
+    "title": "16  Best practices for \\(R^3T\\) workflows",
     "section": "",
-    "text": "15.1 General best practices\n::: {.callout-tip collapse = “false”} Not a very useful comment (we can check ?lm):\nCode\n## lm fits a linear model\nlm(biomass ~ height)\nA more useful comment (we can check ?lm):\nCode\n## model linear relationship between biomass and height\nlm(biomass ~ height)\n:::\n!Functions and modules as key tools for \\(R^3T\\), but also for building integrated and continuous workflows; McIntire et al. (2022)",
+    "text": "16.1 General best practices\n::: {.callout-tip collapse = “false”} Not a very useful comment (we can check ?lm):\nCode\n## lm fits a linear model\nlm(biomass ~ height)\nA more useful comment (we can check ?lm):\nCode\n## model linear relationship between biomass and height\nlm(biomass ~ height)\n:::\n!Functions and modules as key tools for \\(R^3T\\), but also for building integrated and continuous workflows; McIntire et al. (2022)",
     "crumbs": [
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Best practices for $R^3T$ workflows</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Best practices for $R^3T$ workflows</span>"
     ]
   },
   {
     "objectID": "bestPractices.html#general-best-practices",
     "href": "bestPractices.html#general-best-practices",
-    "title": "15  Best practices for \\(R^3T\\) workflows",
+    "title": "16  Best practices for \\(R^3T\\) workflows",
     "section": "",
     "text": "Script, script, script – this means script everything you do, including package installation;\n“DOComment” your code – use comments that describe the intention of the code, not necessarily a code translation into human language:\n\n\n\n\n\n\n\nMinimize the number of software/languages used – the more jumps between languages/software the less robust and reproducible the workflow is. Remember: other users will need to install the same software and be able to the same jumps/operations that you did without you looking over their shoulder.\nModularise and “functionise” – avoid loooooong scripts, which are harder to read, learn and debug.\nSpaDES helps the modularisation part a great deal but it is still up to the developer to create functions and to decide what workflow components can/should be broken into separate modules or events;\nWhen using embedded module and event caching, think about what workflow steps can be cached to speed up development and re-runs and consider turning these into separate modules or events;\nConsider “packaging” your functions so they can be used across projects and SpaDES modules.\n\n\n\nCentralize workflow in a single script – this is quite intuitive when using SpaDES, as usually there is a “controller” script that sets up and runs the workflow.\nUse project-oriented and self-contained workflows – pick a structure that is self-explanatory and make sure that the project can be “moved” between users/machines without changing the code.\nDon’t use absolute paths – use relative paths (relative to project directory) – RStudio Projects and SpaDES.project do this automatically.\nYou can even install your R packages into project-level libraries, to allow for different package versions between projects in the same machine\nVersion control – great for collaboration, great for tracking changes, great to recover old versions of a project/code\nTest (!) – test your code and your workflow if you want them to endure and persist through time and users\nUse a combination of assertions, unit tests and integration tests1",
     "crumbs": [
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Best practices for $R^3T$ workflows</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Best practices for $R^3T$ workflows</span>"
     ]
   },
   {
     "objectID": "bestPractices.html#best-practices-for-spades-workflows",
     "href": "bestPractices.html#best-practices-for-spades-workflows",
-    "title": "15  Best practices for \\(R^3T\\) workflows",
-    "section": "15.2 Best practices for SpaDES workflows",
-    "text": "15.2 Best practices for SpaDES workflows\n\nlimit the number of objects in .GlobalEnv. Instead, put them in functions – such as with setupProject as arguments – or inside a module. When objects are in modules, you can add default object values (e.g. via .inputObjects), or save them into files that are loaded by setupProject or simInit. See\n\n\n\n\n\nWhy not? There are many reasons why things can get messed up with modelling in R… e.g., package dependency issues (especially version numbers that collide during development stages), internet availability, modules finding objects in the .GlobalEnv when they shouldn’t, etc… SpaDES.project::setupProject and simInit deal with these issues by loading and using namespaces/packages and objects directly into a separate environment (the simList).\nDon’t install packages “manually” and “separately” – script package installation in a reproducible way, i.e. that includes reference to package versions. Even better, let setupProject deal with package installation\nWhy not? When you have many modules, each with a list of packages it needs it will be hard to figure out what packages need to be installed or updated. setupProject was designed to deal with this issue using the Require package.\nDon’t pre-load packages – let simInit do it when the simulation is being initialized and only after it has asserted that packages are available and in the correct versions.\nWhy not? There are many reasons why things can get messed up with modelling in R… e.g., package dependency issues (especially version numbers that collide during development stages), internet availability. Pre-loading a package prevents it from being updated, which can make setupProject (and simInit) fail if they attempt to update a package to respect module requirements.",
+    "title": "16  Best practices for \\(R^3T\\) workflows",
+    "section": "16.2 Best practices for SpaDES workflows",
+    "text": "16.2 Best practices for SpaDES workflows\n\nlimit the number of objects in .GlobalEnv. Instead, put them in functions – such as with setupProject as arguments – or inside a module. When objects are in modules, you can add default object values (e.g. via .inputObjects), or save them into files that are loaded by setupProject or simInit. See\n\n\n\n\n\nWhy not? There are many reasons why things can get messed up with modelling in R… e.g., package dependency issues (especially version numbers that collide during development stages), internet availability, modules finding objects in the .GlobalEnv when they shouldn’t, etc… SpaDES.project::setupProject and simInit deal with these issues by loading and using namespaces/packages and objects directly into a separate environment (the simList).\nDon’t install packages “manually” and “separately” – script package installation in a reproducible way, i.e. that includes reference to package versions. Even better, let setupProject deal with package installation\nWhy not? When you have many modules, each with a list of packages it needs it will be hard to figure out what packages need to be installed or updated. setupProject was designed to deal with this issue using the Require package.\nDon’t pre-load packages – let simInit do it when the simulation is being initialized and only after it has asserted that packages are available and in the correct versions.\nWhy not? There are many reasons why things can get messed up with modelling in R… e.g., package dependency issues (especially version numbers that collide during development stages), internet availability. Pre-loading a package prevents it from being updated, which can make setupProject (and simInit) fail if they attempt to update a package to respect module requirements.",
     "crumbs": [
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Best practices for $R^3T$ workflows</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Best practices for $R^3T$ workflows</span>"
     ]
   },
   {
     "objectID": "bestPractices.html#see-also",
     "href": "bestPractices.html#see-also",
-    "title": "15  Best practices for \\(R^3T\\) workflows",
-    "section": "15.3 See also",
-    "text": "15.3 See also\nEFI’s reproducible forecasting workflows\nThe Practice of Reproducible Research\nAdvanced R - Style guide; by Hadley Wickham\nTypes of testing; by Codecov\nPaper by Sarma et al. Sarma et al. (2016) on code testing\n\n\n\n\nSarma, Gopal P., Travis W. Jacobs, Mark D. Watts, S. Vahid Ghayoomie, Stephen D. Larson, and Richard C. Gerkin. 2016. “Unit Testing, Model Validation, and Biological Simulation.” F1000Research 5 (August): 1946. https://doi.org/10.12688/f1000research.9315.1.",
+    "title": "16  Best practices for \\(R^3T\\) workflows",
+    "section": "16.3 See also",
+    "text": "16.3 See also\nEFI’s reproducible forecasting workflows\nThe Practice of Reproducible Research\nAdvanced R - Style guide; by Hadley Wickham\nTypes of testing; by Codecov\nPaper by Sarma et al. Sarma et al. (2016) on code testing\n\n\n\n\nSarma, Gopal P., Travis W. Jacobs, Mark D. Watts, S. Vahid Ghayoomie, Stephen D. Larson, and Richard C. Gerkin. 2016. “Unit Testing, Model Validation, and Biological Simulation.” F1000Research 5 (August): 1946. https://doi.org/10.12688/f1000research.9315.1.",
     "crumbs": [
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Best practices for $R^3T$ workflows</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Best practices for $R^3T$ workflows</span>"
     ]
   },
   {
     "objectID": "bestPractices.html#footnotes",
     "href": "bestPractices.html#footnotes",
-    "title": "15  Best practices for \\(R^3T\\) workflows",
+    "title": "16  Best practices for \\(R^3T\\) workflows",
     "section": "",
     "text": "Assertions and unit tests are smaller and generally test specific operations within a workflow (e.g. if (1 + x != 2) stop(\"there is an error\")) or things like object integrity (e.g. if (!is(x, \"data.frame\") stop(\"there is an error\")). Integration tests are larger in the sense that they test many components of a workflow and whether they work well together (they can also test an entire workflow)↩︎",
     "crumbs": [
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Best practices for $R^3T$ workflows</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Best practices for $R^3T$ workflows</span>"
     ]
   },
   {
