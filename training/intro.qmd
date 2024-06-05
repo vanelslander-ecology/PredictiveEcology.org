@@ -12,7 +12,7 @@ always_allow_html: true
 bibliography: references.bib
 ---
 
-# Introduction {.unnumbered}
+# Introduction
 
 This book is presents a collection of approaches and examples that aim
 to facilitate the building of *nimble* *workflows* that follow in the
