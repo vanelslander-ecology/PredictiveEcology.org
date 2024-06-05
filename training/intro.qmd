@@ -12,7 +12,7 @@ always_allow_html: true
 bibliography: references.bib
 ---
 
-# Introduction {.unnumbered}
+# Introduction
 
 This book is presents a collection of approaches and examples that aim
 to facilitate the building of *nimble* *workflows* that follow in the
@@ -20,9 +20,9 @@ principles of repeatability, reproducibility, reusability and
 transparency (**R^3^T**).
 
 The approaches presented here use **SpaDES** packages and associated
-packages, like `reproducible` and `Require`, that we have
-developed to face a variety of issues that we experienced during our own
-journeys as modellers and, more generally, scientists.
+packages, like `reproducible` and `Require`, that we have developed to
+face a variety of issues that we experienced during our own journeys as
+modellers and, more generally, scientists.
 
 Many of these issues we faced because most of us were ecologists by
 training (not computer scientists, not engineers, etc.), who lacked a
@@ -243,8 +243,8 @@ The SpaDES set of R packages is full of tools like `prepInputs`
 
 This book is intended to show applied ecologists (and whoever else!) the
 approaches that we use to bring our work closer to the PERFICT
-principles, better meet the expectations, and better
-address the problems.
+principles, better meet the expectations, and better address the
+problems.
 
 ## Our challenge
 
