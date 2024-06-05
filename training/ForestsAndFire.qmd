@@ -59,12 +59,10 @@ As with other examples, we also include all the parameterization modules here, w
 This makes for a 10 module project. Using `setupProject`, we can readily run these
 from their canonical "i.e., current, up to date, open and available" versions:
 
-```{r scfm}
-repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
+```{r scfm,eval=FALSE}
+repos <- unique(c("predictiveecology.r-universe.dev", getOption("repos")))
 options(repos = repos)
-# install.packages("SpaDES.project")   ## gets Require too
-#packageVersion("SpaDES.project") #0.1.0
-remotes::install_github("PredictiveEcology/SpaDES.project@development")
+Require::Require(c("SpaDES.project (HEAD)")) 
 
 out <- SpaDES.project::setupProject(
   updateRprofile = TRUE,
@@ -87,11 +85,11 @@ out <- SpaDES.project::setupProject(
                       .useParallelFireRegimePolys = TRUE) #assumes parallelization is an otpion
 
   ),
-  options = list(spades.allowInitDuringSimInit = TRUE,
-                 spades.moduleCodeChecks = FALSE,
-                 reproducible.shapefileRead = "terra::vect",
-                 spades.recoveryMode = 1
-  ),
+  # options = list(spades.allowInitDuringSimInit = TRUE,
+  #                spades.moduleCodeChecks = FALSE,
+  #                reproducible.shapefileRead = "terra::vect",
+  #                spades.recoveryMode = 1
+  # ),
   times = list(start = 2011, end = 2061),
   sppEquiv = LandR::sppEquivalencies_CA[KNN %in% c("Popu_Tre", "Betu_Pap",
                                                    "Pice_Gla", "Pice_Mar",

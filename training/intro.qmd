@@ -15,10 +15,10 @@ bibliography: references.bib
 # Introduction
 
 This book presents a collection of approaches and examples that aim to
-facilitate the building of *nimble workflows* for science-based problems that follow in the
-principles of repeatability, reproducibility, reusability and
-transparency (**R^3^T**). We present these using the **SpaDES** family of 
-packages.
+facilitate the building of *nimble workflows* for science-based problems
+that follow in the principles of repeatability, reproducibility,
+reusability and transparency (**R^3^T**). We present these using the
+**SpaDES** family of packages.
 
 ## Why SpaDES?
 
