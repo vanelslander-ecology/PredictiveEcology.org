@@ -67,7 +67,7 @@ book:
       - Caching.qmd
     - part: setupProject.qmd
       chapters:
-      - workflowSimple1.qmd
+      # - workflowSimple1.qmd
       - workflowSimple2.qmd
       - multipleModules.qmd
     - part: realexamples.qmd
