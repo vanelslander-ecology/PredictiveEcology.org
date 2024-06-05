@@ -9,7 +9,7 @@
 <meta name="author" content="Eliot McIntire">
 <meta name="dcterms.date" content="2024-06-04">
 
-<title>Robust and nimble scientific workflows, using SpaDES - 11&nbsp; Simple workflow with existing modules</title>
+<title>Robust and nimble scientific workflows, using SpaDES - 10&nbsp; Simple workflow with existing modules</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,7 +67,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./multipleModules.html" rel="next">
-<link href="./workflowSimple1.html" rel="prev">
+<link href="./setupProject.html" rel="prev">
 <link href="./assets/logo/favicon-16x16.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -231,7 +231,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./workflowSimple2.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simple workflow with existing modules</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./workflowSimple2.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Simple workflow with existing modules</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -342,37 +342,20 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./workflowSimple1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Simple workflow with 2 chunks</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./workflowSimple2.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simple workflow with existing modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Simple workflow with existing modules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./multipleModules.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Multiple Modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Multiple Modules</span></span></a>
   </div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./realexamples.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">"Real-world" examples of `SpaDES` workflows</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -380,7 +363,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bestPractices.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Best practices for <span class="math inline">\(R^3T\)</span> workflows</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Best practices for <span class="math inline">\(R^3T\)</span> workflows</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -399,18 +382,18 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#installation" id="toc-installation" class="nav-link active" data-scroll-target="#installation"><span class="header-section-number">11.1</span> Installation</a></li>
-  <li><a href="#using-setupproject" id="toc-using-setupproject" class="nav-link" data-scroll-target="#using-setupproject"><span class="header-section-number">11.2</span> Using <code>setupProject</code></a></li>
-  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples"><span class="header-section-number">11.3</span> Examples</a></li>
+  <li><a href="#installation" id="toc-installation" class="nav-link active" data-scroll-target="#installation"><span class="header-section-number">10.1</span> Installation</a></li>
+  <li><a href="#using-setupproject" id="toc-using-setupproject" class="nav-link" data-scroll-target="#using-setupproject"><span class="header-section-number">10.2</span> Using <code>setupProject</code></a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples"><span class="header-section-number">10.3</span> Examples</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./workflowSimple2.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simple workflow with existing modules</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./workflowSimple2.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Simple workflow with existing modules</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simple workflow with existing modules</span></h1>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Simple workflow with existing modules</span></h1>
 </div>
 
 
@@ -441,8 +424,8 @@ window.Quarto = {
 
 <p>Once we want to run a project that is more sophisticated, we can start using <code>SpaDES.project</code>. <a href="https://spades-project.predictiveecology.org/"><code>SpaDES.project</code></a> is a package that deals with a number of challenges that crop up creating and using workflows. These become particularly acute when working with multiple modules created by potentially many people. <a href="https://spades-project.predictiveecology.org/#project-challenges">See here to see a longer list of project challenges</a>.</p>
 <p>We will demonstrate its use with an example created by <a href="https://github.com/tati-micheletti/Micheletti_SpaDES/blob/main/demo.R">Tati Micheletti</a> where a workflow with several modules is setup and run.</p>
-<section id="installation" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="installation"><span class="header-section-number">11.1</span> Installation</h2>
+<section id="installation" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="installation"><span class="header-section-number">10.1</span> Installation</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -452,8 +435,8 @@ window.Quarto = {
 </details>
 </div>
 </section>
-<section id="using-setupproject" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="using-setupproject"><span class="header-section-number">11.2</span> Using <code>setupProject</code></h2>
+<section id="using-setupproject" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="using-setupproject"><span class="header-section-number">10.2</span> Using <code>setupProject</code></h2>
 <p><code>setupProject</code> does a series of very specific things, in a particular order, so that the chances of package conflicts and user errors are minimized.</p>
 <p>Note how it downloads the listed modules directly from their GitHub repositories (e.g. <a href="https://github.com/tati-micheletti/speciesAbundance">tati-micheletti/speciesAbundance</a>)</p>
 <div class="cell">
@@ -793,8 +776,8 @@ Downloading: 2.7 MB     </code></pre>
 </div>
 </div>
 </section>
-<section id="examples" class="level2" data-number="11.3">
-<h2 data-number="11.3" class="anchored" data-anchor-id="examples"><span class="header-section-number">11.3</span> Examples</h2>
+<section id="examples" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="examples"><span class="header-section-number">10.3</span> Examples</h2>
 <p>In the remainding chapters of this section, we will explore several examples, including learning of several arguments to the function <code>setupProject</code>. But we will start very simple first.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -1367,13 +1350,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./workflowSimple1.html" class="pagination-link" aria-label="Simple workflow with 2 chunks">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Simple workflow with 2 chunks</span></span>
+      <a href="./setupProject.html" class="pagination-link" aria-label="SpaDES workflows and projects">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">SpaDES workflows and projects</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./multipleModules.html" class="pagination-link" aria-label="Multiple Modules">
-        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Multiple Modules</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Multiple Modules</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

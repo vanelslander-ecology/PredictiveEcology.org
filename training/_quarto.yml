@@ -70,8 +70,6 @@ book:
       # - workflowSimple1.qmd
       - workflowSimple2.qmd
       - multipleModules.qmd
-    - part: realexamples.qmd
-      chapters:
       - castorExample.qmd
     - bestPractices.qmd
     - references.qmd

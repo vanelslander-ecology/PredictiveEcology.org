@@ -1,9 +1,13 @@
-# SpaDES 101
+---
+editor_options:
+  chunk_output_type: console
+---
 
-Under construction.
+# SpaDES 101 {#sec-spadesone}
 
-```{=html}
-<!-- 
-Some text that introduces this section
---->
-```
+The following chapters cover the basics of working with SpaDES.
+
+We introduce fundamental pieces of SpaDES modules, like *events* and
+*functions*, how to create simple modules and link them in simple
+workflows, the "simulation" object – the `simList` – module metadata and
+an introduction to caching mechanisms in SpaDES.

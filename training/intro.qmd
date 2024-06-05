@@ -20,7 +20,7 @@ principles of repeatability, reproducibility, reusability and
 transparency (**R^3^T**).
 
 The approaches presented here use **SpaDES** packages and associated
-packages, like `reproducible` and `Require`, that we (the authors) have
+packages, like `reproducible` and `Require`, that we have
 developed to face a variety of issues that we experienced during our own
 journeys as modellers and, more generally, scientists.
 
@@ -132,51 +132,64 @@ approach:
     workflow setup (e.g. declaring module dependencies), while other
     metadata are simply good to have (e.g. a description of the module).
 
-Finally, both `targets` and SpaDES have embedded caching mechanisms that
-in SpaDES's case can be used and controlled at several levels (by the
-user, in the module code, etc.) – see @sec-caching on SpaDES caching
-mechanisms.
+Finally, both `targets` and SpaDES have embedded caching mechanisms,
+which in SpaDES can be controlled at several levels (by the user, inside
+the module code, etc.) – see @sec-caching on SpaDES caching mechanisms.
 
-<!--Ceres is here-->
+## SpaDES & applied ecology
 
+SpaDES development was, and continues to be, strongly motivated by our
+attempts to answer important issues in applied ecology.
+
+::: {.callout-note appearance="simple" icon="false"}
 ## The three big problems in applied ecology
 
-Applied ecology -- the study of ecological systems that are affected by
-humans activities -- can be seen as addressing these problems:
+Applied ecology -- the application of ecological science to questions
+related to the effects of human activities on ecosystems -- is
+challenged and motivated by three main problems:
 
-1.  **many species are declining or uncontrollably increasing**
-2.  **many processes (like fire and food web dynamics) are changing**
-3.  **most problems require trans-disciplinary solutions**
+-   **many species are declining or uncontrollably increasing**
 
-Alongside these problems, ecologists must grapple with new expectations
-for how they do their work to inform these problems.
+-   **many ecological processes (like fire, food web dynamics,
+    productivity) are changing**
 
-## The expectations
+-   **conservation and management problems require trans-disciplinary
+    solutions**
+:::
 
-To address these problems in the 21st century, applied ecologists must
-uphold standards of:
+Alongside these problems, **ecologists must grapple with new
+expectations for how they do their work to inform these problems**.
+
+### New expectations
+
+Applied ecologists of the 21st century must uphold standards of:
 
 1.  **transparency** -- analyses must be able to be inspected,
     understood, and scrutinized by many eyes;
-2.  **reproducibilty** -- analyses must be able to be reproduced by
+
+2.  **reproducibility** -- analyses must be able to be reproduced by
     others and into the future;
+
 3.  **nimbleness** -- analyses must be able to respond **quickly** to
     new data, new insights, new drivers, and new management needs;
+
 4.  **forecasting** -- analyses must demonstrate that they are proving
-    reliable insights into the future, not just the past;
+    reliable insights into the future, not just the past or theoretical
+    expectation;
+
 5.  **validation** -- analyses must clearly demonstrate why they should
     be trusted and used;
-6.  **broad participation** -- every step of a project must include
-    knowledge and participation from outside the scientific community.
 
-It can be very challenging to address each of these.
+6.  **broad participation** -- projects must include knowledge and
+    participation from outside the scientific community and be relevant
+    to non-scientific audiences.
 
+It can be very challenging to fulfil these expectations. SpaDES aims to
+help (applied) ecologists "get there" by facilitating the application of
+the PERFICT principles for applied ecological modelling [@mcintire2022].
+
+::: {.callout-note appearance="simple" icon="false"}
 ## PERFICT
-
-This book is intended to show a way to show applied ecologists an
-approach that we have developed using the SpaDES set of R packages. This
-approach will allow ecologists to get towards a PERFICT approach
-[@mcintire2022]. Briefly, PERFICT is:
 
 -   **P**redict regularly from models thare are
 
@@ -191,14 +204,52 @@ approach will allow ecologists to get towards a PERFICT approach
 -   **C**ontinuous workflows that are
 
 -   **T**ested regularly
+:::
 
-With this approach, we can better meet the expectations, and better
+SpaDES intends to relieve ecologists from needing to know/learn advanced
+computer programming (e.g. developing caching mechanisms) to profit from
+tools that will enable them to develop PERFICT workflows.
+
+It does so by harnessing the flexibility of R, the contributions of its
+vast community and knowing what tools applied ecologists (and modellers)
+often need.
+
+::: {#tip-prepInputs .callout-tip appearance="simple" icon="false"}
+## `reproducible::prepInputs` will make your life easier
+
+Applied ecologists often need to get a raw spatial layer from
+*somewhere* (locally, a data repository), make it conform to a given
+study area and even change it to a given spatial projection or
+resolution.
+
+They also often need to do this for many layers.
+
+`reproducible::prepInputs` facilitates this process in a single function
+call by having the ability to:
+
+-   download from a data repository URL;
+
+-   spatially process the data according to a polygon or raster template
+
+It also caches these operations, so taht they don't need to be repeated
+unecessarily.
+
+This can save hours of learning to master caching and GIS algorithms (or
+avoid using flawed approaches) for many ecologists!
+:::
+
+The SpaDES set of R packages is full of tools like `prepInputs`
+(@tip-prepInputs).
+
+This book is intended to show applied ecologists (and whoever else!) the
+approaches that we use to bring our work closer to the PERFICT
+principles, better meet the expectations, and better
 address the problems.
 
 ## Our challenge
 
 With the limited training provided in this book, applied ecologists can
-work towards creating PERFICT code. Embracing the transparency and
+work towards creating PERFICT workflows. Embracing the transparency and
 nimbleness it provides, we can pivot more rapidly to the current
 management needs. When we are asked at the end of a 3 year project,
 *"can we redo everything because we have a new stakeholder who feels
