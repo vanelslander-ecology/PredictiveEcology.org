@@ -53,11 +53,11 @@ This is a template for module documentation, and should be changed to reflect yo
 ### Module inputs and parameters
 
 Describe input data required by the module and how to obtain it (e.g., directly from online sources or supplied by other modules)
-If `sourceURL` is specified, `downloadData("My_linear_model", "C:/Eliot/GitHub/PredictiveEcology.org/training/tutos/NewModuleIntro/NewModule")` may be sufficient.
+If `sourceURL` is specified, `downloadData("My_linear_model", "C:/Users/cbarros/GitHub/PredictiveEcology.org/training/tutos/NewModuleIntro/NewModule")` may be sufficient.
 Table \@ref(tab:moduleInputs-My-linear-model) shows the full list of module inputs.
 
 ```{r moduleInputs-My-linear-model, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE}
-df_inputs <- SpaDES.core::moduleInputs("My_linear_model", "C:/Eliot/GitHub/PredictiveEcology.org/training/tutos/NewModuleIntro/NewModule")
+df_inputs <- SpaDES.core::moduleInputs("My_linear_model", "C:/Users/cbarros/GitHub/PredictiveEcology.org/training/tutos/NewModuleIntro/NewModule")
 knitr::kable(df_inputs,
              caption = "List of (ref:My-linear-model) input objects and their description.") |>
   kableExtra::kable_styling(latex_options = "scale_down", full_width = TRUE)
@@ -67,7 +67,7 @@ Provide a summary of user-visible parameters (Table \@ref(tab:moduleParams-My-li
 
 
 ```{r moduleParams-My-linear-model, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE}
-df_params <- SpaDES.core::moduleParams("My_linear_model", "C:/Eliot/GitHub/PredictiveEcology.org/training/tutos/NewModuleIntro/NewModule")
+df_params <- SpaDES.core::moduleParams("My_linear_model", "C:/Users/cbarros/GitHub/PredictiveEcology.org/training/tutos/NewModuleIntro/NewModule")
 knitr::kable(df_params, caption = "List of (ref:My-linear-model) parameters and their description.") |>
   kableExtra::kable_styling(latex_options = "scale_down", full_width = TRUE)
 ```
@@ -89,7 +89,7 @@ Write what is saved.
 Description of the module outputs (Table \@ref(tab:moduleOutputs-My-linear-model)).
 
 ```{r moduleOutputs-My-linear-model, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE}
-df_outputs <- SpaDES.core::moduleOutputs("My_linear_model", "C:/Eliot/GitHub/PredictiveEcology.org/training/tutos/NewModuleIntro/NewModule")
+df_outputs <- SpaDES.core::moduleOutputs("My_linear_model", "C:/Users/cbarros/GitHub/PredictiveEcology.org/training/tutos/NewModuleIntro/NewModule")
 knitr::kable(df_outputs, caption = "List of (ref:My-linear-model) outputs and their description.") |>
   kableExtra::kable_styling(latex_options = "scale_down", full_width = TRUE)
 ```

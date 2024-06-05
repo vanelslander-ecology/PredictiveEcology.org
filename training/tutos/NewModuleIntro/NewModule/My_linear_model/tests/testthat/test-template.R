@@ -11,7 +11,7 @@
 test_that("test Event1 and Event2.", {
   module <- list("My_linear_model")
   path <- list(
-    modulePath = "C:/Eliot/GitHub/PredictiveEcology.org/training/tutos/NewModuleIntro/NewModule",
+    modulePath = "C:/Users/cbarros/GitHub/PredictiveEcology.org/training/tutos/NewModuleIntro/NewModule",
     outputPath = file.path(tempdir(), "outputs")
   )
   parameters <- list(

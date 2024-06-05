@@ -3,6 +3,6 @@ After knitting and rendering `My_linear_model.Rmd`, overwrite this file with a s
 E.g., on Linux/macOS from terminal:
 
 ```bash
-cd C:/Eliot/GitHub/PredictiveEcology.org/training/tutos/NewModuleIntro/NewModule/My_linear_model
+cd C:/Users/cbarros/GitHub/PredictiveEcology.org/training/tutos/NewModuleIntro/NewModule/My_linear_model
 rm README.md && ln -s My_linear_model.md README.md
 ```
