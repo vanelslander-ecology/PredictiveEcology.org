@@ -120,11 +120,11 @@ approach:
     chained. SpaDES will also iterate module code when necessary,
     following the developer's "scheduling" instructions. The workflow
     sequence, therefore, *arises* from the set of modules that is being
-    used[^intro-1].
+    used[^1].
 
 -   **SpaDES has "embedded" metadata** – or at least it makes the
-    developer think about it[^intro-2]. Each module is defined by not
-    only listing the inputs and outputs, but also their descriptions and
+    developer think about it[^2]. Each module is defined by not only
+    listing the inputs and outputs, but also their descriptions and
     types of object class, the module's description, it's operating time
     scale and what packages and other modules it depends on, and much
     more. Some of the metadata is essential to chain modules (lists of
@@ -204,10 +204,9 @@ management needs. When we are asked at the end of a 3 year project,
 *"can we redo everything because we have a new stakeholder who feels
 that our assumptions are wrong?"*, ***our answer should be "yes"***.
 
-[^intro-1]: Note that SpaDES still allows a user to impose module
-    sequencing if they wish to.
+[^1]: Note that SpaDES still allows a user to impose module sequencing
+    if they wish to.
 
-[^intro-2]: SpaDES won't force most metadata to be filled, so it's at
-    the discretion of the module developer how much detail they want to
+[^2]: SpaDES won't force most metadata to be filled, so it's at the
+    discretion of the module developer how much detail they want to
     provide.
-
