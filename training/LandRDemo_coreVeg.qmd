@@ -239,14 +239,18 @@ simOut <- SpaDES.core::spades(simInitOut)
 #### Turn plotting on *after* setting up the workflow
 
 We can change parameters and re-run the simulation to, e.g., activate
-live plotting in *Biomass_core*.
+live plotting in *Biomass_core*, without having to 
+
+-   change the parameter provided to `setupProject`
+
+-   repeat the `setupProject` call
 
 Note that because `simOut` is actually a copy of `simInitOut` (see the
-output of `SpaDES.core::completed(simInitOut)`), this means that
+output of `SpaDES.core::completed(simInitOut)`), this still means that
 `simInitOut` has to be re-generated for this purpose, otherwise `spades`
-will try to resume the simulation from the last year.
+would try to resume the simulation from the "last year".
 
-Thanks to `Cache()`, it will only take seconds to "reset" `simInitOut`.
+Thanks to internall caching, it will only take seconds to "redo" `simInitOut`.
 You will also notice that `init` events are retrieved from cache, this
 time around.
 
