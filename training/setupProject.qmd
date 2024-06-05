@@ -13,14 +13,23 @@ execute:
 
 # SpaDES workflows and projects
 
-One of the advantages of `SpaDES` is that we can make simple "linear" workflows, 
-but we can also make complex workflows *emerge* from the
+One of the advantages of `SpaDES` is that we can make simple "linear"
+workflows, but we can also make complex workflows *emerge* from the
 combinations of modules (and of their events) being put together by a
-user. SpaDES modules provide their own needed schedules, and the metadata
-tells SpaDES how different modules fit together. Then when executed, events
-within and across modules go in the correct order. Then if the group of modules 
-changes, the workflow steps may also change.
+user. SpaDES modules provide their own needed schedules, and the
+metadata tells SpaDES how different modules fit together. Then when
+executed, events within and across modules go in the correct order. If
+the group of modules changes later on, the workflow steps may also
+change.
 
-In this section, we will start with the simplest case of 2 chunks in sequence, and 
-we will advance to chain together many modules and rich project workflows with `SpaDES.project`.
+In this section, we will start with the simplest case of two code chunks
+in sequence, and we will advance to chain together many modules and rich
+project workflows using `SpaDES.project`. We assume that readers are
+already familiar with SpaDES, namely creating and using SpaDES modules.
+If not, we encourage going through the chapters in Section @sec-spadesone.
 
+From Chapter @sec-castorEg onwards, we show project flows with SpaDES
+modules that have been developed and used in ecological modelling and
+forescating, to answer both research or applied questions. We encourage
+readers to learn more about these models (and *modules*) from the
+documentationsources noted in the chapters.
