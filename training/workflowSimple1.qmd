@@ -4,11 +4,12 @@ date: last-modified
 editor_options:
   chunk_output_type: console
 execute:
+  eval: false
   tidy: false
-warning: false
-message: false
-error: false
-cache: false
+  warning: false
+  message: false
+  error: false
+  cache: false
 ---
 
 # Simple workflow with 2 chunks
@@ -35,81 +36,212 @@ libPath <- ifelse(dir.exists("packages"), "packages", "training/packages") # if 
 .libPaths(libPath)
 ```
 
-## Using `SpaDES.core::newModule`
-
-### Some R code to convert
+## Similar example -- a linear model
 
 We will start by thinking about metadata: *What is metadata?*
 
+Slightly modifying the example, we remove the line with `x <- rnorm(10)`.
 We can examine the following code chunk. First, we ask: what are the
 **inputs** and the **outputs**?
 
 ```{r start}
 # create some data
-x <- rnorm(10)
 y <- x + rnorm(10)
 # fit a linear model
-out <- lm(y ~ x)
+model <- lm(y ~ x)
 
 # plot the fit
-plot(out)
+plot(model)
 ```
 
-Examining this, we have 4 lines: make some data, fit a model, visualize the fit.
+The **inputs** to this chunk are just one: the object `x`. This code
+will not work (i.e., it will cause an error) if `x` is not defined. The
+**outputs** are `y` and `model`. Both of these are created within this
+chunk.
 
-Lets imagine that the first 3 lines are conceptually different -- *fit a dummy model* --
-and the last line is conceptually "unique" -- *visualize it*. Lets put these into 2 "modules", and then run them in sequence.
 
-For now, we just say, *if you want to keep an object, assign it to "sim"*.
-We will explain this in much more detail later. Here, we want to keep the `model` that we fit. But we don't care about the `x` and `y`. We only assign the `model` to `sim`. 
 
-```{r newModule1}
-library(SpaDES.core)
-nm1 <- "modelFit"
-modulePath <- Require::tempdir2()
-newModule(nm1, path = modulePath, open = FALSE,
-          events = list(
-            init = {
-              x <- rnorm(10)
-              y <- rnorm(10) + x
-              sim$model <- lm(y ~ x)
-              return(sim)
-            }
-          )
-)
+This will create a new folder with several files in it. See
+[`?newModule`](https://rdrr.io/cran/SpaDES.core/man/newModule.html) for
+details. For now, run the above and open the `My_linear_model.R` script
+that it creates.
+
+## Module metadata
+
+Next, *what are the package dependencies?*. We see that there are three
+functions: `rnorm`, `lm` and `plot`. We don't know what packages they
+are in, so we can find out by typing them at the R prompt. At the bottom
+of the function, it says that the function `rnorm` is in the `stats`
+package. Fortunately for us, this is a default ("base") package in R and
+it is always pre-loaded. So, nothing to do here.
+
+```{r second} 
+> rnorm function (n, mean = 0, sd = 1)  ... 
+<environment: namespace:stats>}
 ```
 
-Then we run it:
+So, our metadata are:
+
+-   Inputs: `x`
+-   Outputs: `y`, `out`
+-   Package dependencies: Base packages only
+
+We will next put them into the correct places in the new SpaDES module.
+
+## 
+
+Scroll down to `inputObjects` and `expectsInputs()`. We will declare `x`
+as an "input" by putting it there.
+
+```{r metadata}
+inputObjects = bindrows(
+    expectsInput(objectName = "x", objectClass = "numeric", 
+                 desc = "The inputs for the linear model", sourceURL = NA)
+  )
+```
+
+Next, scroll down to `outputObjects` and `createsOutput()`. We will
+declare `y` and `out` as "outputs" by putting them there. Don't forget
+the **comma at the end of each `createsOutput()`** as each is an
+argument to `bindrows`.
 
 ```{r}
-# Run just the first module
-out1 <- simInitAndSpades(module = nm1, paths = list(modulePath = modulePath))
-
-# Look at our model. This is "like a list"
-out1$model
+outputObjects = bindrows(
+    createsOutput(objectName = "y", objectClass = "numeric", 
+                  desc = "The randomly created varible that is used as a response variable"),
+    createsOutput(objectName = "out", objectClass = "lm", 
+                  desc = "A linear model object from the equation (x ~ y)")
+  )
 ```
 
+## Add code - the `Init` event function
 
+First, we move the first two lines of the previous code into a function.
+We will choose the `Init` function. We will discuss why bellow.
 
-
-We add a second step, visualize it. 
-```{r newModule2}
-nm2 <- "visualize"
-newModule(nm2, path = modulePath, open = FALSE,
-          events = list(
-            init = {
-              plot(sim$model)
-              return(sim)
-            }
-          )
-)
+```{r}
+Init <- function(sim) {
+  y <- x + rnorm(10)
+  out <- lm(y ~ x)
+  return(invisible(sim))
+}
 ```
 
-And run both together:
-```{r,eval=FALSE}
-out2 <- simInitAndSpades(module = c(nm1, nm2), paths = list(modulePath = modulePath))
+### Sharing inputs and outputs
+
+You may have noticed that the `Init` function template defines a
+function with a `sim` argument. This is an object we haven't learned
+about yet; we will just think of it as a list where we can put objects
+we want to share with other modules or "just keep them for later", such
+as our **inputs** and **outputs**.
+
+To share these objects, we assign them to the `sim` list using the
+normal R notation `<-`. We have to make this modification 5 times for
+every instance of our **inputs** and
+**outputs**.<!--what do you mean 5 times?-->
+
+```{r}
+Init <- function(sim) {
+  sim$y <- sim$x + rnorm(10)
+  sim$out <- lm(sim$y ~ sim$x)
+  return(invisible(sim))
+}
 ```
 
+Now we have a module that creates two objects, `y` and `out` and puts
+them inside `sim`. This all happens in the function called `Init`
+<!--maybe unnecessary?-->
+
+Next: the `plot(out)`.
+
+## Events
+
+We can look at our 3 lines of example and think, "this is 2 steps: step
+1 fit the model and step 2 plots it". Of course, you could divide this
+up in several ways (or not at all), but we will go with this for now.
+
+We can call the 2 steps **events** and imagine we could run them in
+sequence... first, lets put the plotting step in a function. We will
+choose the `plotFun` function. We will also add the `sim$` because the
+`out` will come from another step and is in the `sim` "list".
+
+```{r}
+plotFun <- function(sim) {
+  plot(sim$out)
+  return(invisible(sim))
+}
+```
+
+The template already has some default code that actually puts the events
+in an order without us needing to do anything. It also has a parameter
+that determines whether the plot will happen or not (`.plots`). We will
+just accept the defaults for now.
+
+## Default Values
+
+Recall, we don't have a value for `x`. This means that if you run the
+following, you will get an error:
+
+```{r}
+SpaDES.core::simInitAndSpades(modules = "My_linear_model", paths = list(modulePath = "tutos/NewModuleIntro"))
+```
+
+Just like functions in R, we can supply default values for our
+**inputs**. We put these in a function at the bottom called
+`.inputObjects`.
+
+Copy this to the module, replacing the contents of the template
+`.inputObjects` function.
+
+```{r}
+.inputObjects <- function(sim) {
+  if (!suppliedElsewhere("x", sim))
+    sim$x <- rnorm(10, mean = 20, sd = 2)
+  return(invisible(sim))
+}
+```
+
+`!suppliedElsewhere("x", sim)` will check if `x` is in `sim` and if not,
+will run the subsequent code lines (see
+[`?suppliedElsewhere`](https://rdrr.io/cran/SpaDES.core/man/suppliedElsewhere.html)).
+
+## Run the new module
+
+Now, we have **inputs** and **outputs** defined, our code has been
+places in 2 spots (events), and we have default value for `x`.
+
+```{r}
+SpaDES.core::simInitAndSpades(modules = "My_linear_model", paths = list(modulePath = "tutos/NewModuleIntro"))
+```
+
+We now have a SpaDES module that has metadata, generates random starting
+data (if the user doesn't supply an alternative), fits a linear model,
+outputs that model, and plots the fit.
+
+## Questions
+
+1.  What are some things we "gained" from putting our simple 3 lines of
+    code into a module?
+    -   We can turn off plotting easily. Set `.plotInitialTime = NA` in
+        the `simInitAndSpades` call.
+2.  What are some things we "lost"?
+    -   More complicated. (overkill for these 3 lines?)
+3.  What if we used an R package that wasn't in the base packages list?
+    -   See
+        [`?defineModule`](https://rdrr.io/cran/SpaDES.core/man/defineModule.html)
+        for all the metadata items. Specifically, see `reqdPkgs`.
+4.  What is the `sim`? See
+    [`?'.simList-class'`](https://rdrr.io/cran/SpaDES.core/man/simList-class.html)
+
+## See also
+
+[`?expectsInput`](https://rdrr.io/cran/SpaDES.core/man/expectsInput.html),
+
+[`?createsOutput`](https://rdrr.io/cran/SpaDES.core/man/createsOutput.html),
+
+[`?simInitAndSpades`](https://rdrr.io/cran/SpaDES.core/man/simInitAndSpades.html),
+
+[`?newModule`](https://rdrr.io/cran/SpaDES.core/man/newModule.html)
 
 ## See also
 
