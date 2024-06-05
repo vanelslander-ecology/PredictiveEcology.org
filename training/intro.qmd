@@ -20,7 +20,7 @@ principles of repeatability, reproducibility, reusability and
 transparency (**R^3^T**).
 
 The approaches presented here use **SpaDES** packages and associated
-packages, like `reproducible` and `Require`, that we (the authors) have
+packages, like `reproducible` and `Require`, that we have
 developed to face a variety of issues that we experienced during our own
 journeys as modellers and, more generally, scientists.
 
@@ -184,7 +184,7 @@ Applied ecologists of the 21st century must uphold standards of:
     participation from outside the scientific community and be relevant
     to non-scientific audiences.
 
-It can be very challenging to fulfill these expectations. SpaDES aims to
+It can be very challenging to fulfil these expectations. SpaDES aims to
 help (applied) ecologists "get there" by facilitating the application of
 the PERFICT principles for applied ecological modelling [@mcintire2022].
 
