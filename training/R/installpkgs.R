@@ -16,7 +16,7 @@ out <- setupProject(
   options = list("repos" = repos),
   paths = list(projectPath = tempDir,
                packagePath = file.path(currDir, "packages/")),
-  modules = "PredictiveEcology/Biomass_core@main"
+  packages = "PredictiveEcology/PredictiveEcology.org@training-book/training/R/pkgList.R",
   modules = "PredictiveEcology/Biomass_core@main",
 )
 
