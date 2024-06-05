@@ -12,7 +12,7 @@ execute:
   cache: false
 ---
 
-# Simple workflow with 2 chunks
+# Module Files and Metadata
 
 ```{r setup,eval=TRUE}
 #| include: false
@@ -36,37 +36,36 @@ libPath <- ifelse(dir.exists("packages"), "packages", "training/packages") # if 
 .libPaths(libPath)
 ```
 
-## Similar example -- a linear model
+## Continue example -- a linear model
 
 We will start by thinking about metadata: *What is metadata?*
 
-Slightly modifying the example, we remove the line with `x <- rnorm(10)`.
-We can examine the following code chunk. First, we ask: what are the
-**inputs** and the **outputs**?
+Slightly modifying the example, we remove the line with
+`x <- rnorm(10)`. This will make the code chunk not work because it
+needs the `x` to run the next line. We can examine the following code
+chunk. First, we ask: what are the **inputs** and the **outputs**?
 
-```{r start}
+```{r start, eval=FALSE}
 # create some data
 y <- x + rnorm(10)
 # fit a linear model
 model <- lm(y ~ x)
-
-# plot the fit
-plot(model)
 ```
 
+## Expectations, Dependencies and Creations
+
+### Inputs and Outputs
+
 The **inputs** to this chunk are just one: the object `x`. This code
-will not work (i.e., it will cause an error) if `x` is not defined. The
-**outputs** are `y` and `model`. Both of these are created within this
-chunk.
+will not work (i.e., it will cause an error) if `x` is not defined. We
+can say that this code chunk "expects" `x` as an input.
 
+The **outputs** are `y` and `model`. We can say that this code chunk
+"creates" `y` and `model` as outputs. However, we had said in the
+previous chapter @sec-moduleintro that we would only be interested in
+keeping `model`. So, we will continue with only one output, `model`.
 
-
-This will create a new folder with several files in it. See
-[`?newModule`](https://rdrr.io/cran/SpaDES.core/man/newModule.html) for
-details. For now, run the above and open the `My_linear_model.R` script
-that it creates.
-
-## Module metadata
+### Packages
 
 Next, *what are the package dependencies?*. We see that there are three
 functions: `rnorm`, `lm` and `plot`. We don't know what packages they
@@ -75,23 +74,63 @@ of the function, it says that the function `rnorm` is in the `stats`
 package. Fortunately for us, this is a default ("base") package in R and
 it is always pre-loaded. So, nothing to do here.
 
-```{r second} 
+```{r second, eval=FALSE}
 > rnorm function (n, mean = 0, sd = 1)  ... 
 <environment: namespace:stats>}
 ```
 
-So, our metadata are:
+So, our expectations, dependencies and creations are:
 
 -   Inputs: `x`
--   Outputs: `y`, `out`
+-   Outputs: `model`
 -   Package dependencies: Base packages only
 
 We will next put them into the correct places in the new SpaDES module.
 
-## 
+## Module files
 
-Scroll down to `inputObjects` and `expectsInputs()`. We will declare `x`
-as an "input" by putting it there.
+Make the module again (see @sec-moduleintro). This time we will add
+`sim$` for the `x` as we are now interested in the fact that it might be
+coming from outside this module.
+
+```{r, eval=TRUE}
+# make a module
+Require::Require(c("reproducible", "SpaDES.core"), repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
+
+# make a module
+nm1 <- "My_linear_model"
+modulePath <- "tutos/NewModuleIntro/NewModule"
+newModule(name = nm1, path = modulePath, open = FALSE,
+          events = list(
+            init = {
+              y <- sim$x + rnorm(10)      # <--------- add sim$ here
+              # fit a linear model
+              sim$model <- lm(y ~ sim$x)  # <--------- add sim$ here
+            }
+          ))
+```
+
+**Where is this module code?** In the previous chapter, we didn't look
+or care where the module code was.
+
+`newModule` actually creates a new folder, with the `name` as provided
+by the argument, in the folder specified with `path`. This folder has
+several files in it. See
+[`?newModule`](https://rdrr.io/cran/SpaDES.core/man/newModule.html) for
+details. For now, run the above and open the `My_linear_model.R` script
+that it creates.
+
+When we make a module, we get a message stating where the module code
+is. We can copy this and open the file (pick the `.R` file NOT the
+`.Rmd` file for now).
+
+We will look at a few elements in this chapter.
+
+## `inputObjects`
+
+When we scroll down to `inputObjects` and `expectsInputs()`. This is
+where we will put our `inputs` that we noticed in our code chunk. We
+will declare `x` as an "input" by putting it there, like this:
 
 ```{r metadata}
 inputObjects = bindrows(
@@ -100,59 +139,62 @@ inputObjects = bindrows(
   )
 ```
 
+## `outputObjects`
+
 Next, scroll down to `outputObjects` and `createsOutput()`. We will
-declare `y` and `out` as "outputs" by putting them there. Don't forget
-the **comma at the end of each `createsOutput()`** as each is an
-argument to `bindrows`.
+declare `model` as an "output" by putting it there. Don't forget the
+**comma at the end of each `createsOutput()`** as each is an argument to
+`bindrows` (unless it is the last one).
 
 ```{r}
 outputObjects = bindrows(
-    createsOutput(objectName = "y", objectClass = "numeric", 
-                  desc = "The randomly created varible that is used as a response variable"),
-    createsOutput(objectName = "out", objectClass = "lm", 
+    createsOutput(objectName = "model", objectClass = "lm", 
                   desc = "A linear model object from the equation (x ~ y)")
   )
 ```
 
-## Add code - the `Init` event function
-
-First, we move the first two lines of the previous code into a function.
-We will choose the `Init` function. We will discuss why bellow.
-
-```{r}
-Init <- function(sim) {
-  y <- x + rnorm(10)
-  out <- lm(y ~ x)
-  return(invisible(sim))
-}
-```
-
 ### Sharing inputs and outputs
 
-You may have noticed that the `Init` function template defines a
-function with a `sim` argument. This is an object we haven't learned
-about yet; we will just think of it as a list where we can put objects
-we want to share with other modules or "just keep them for later", such
-as our **inputs** and **outputs**.
+You may have noticed that the `init` event is now placed into a function
+called `doEvent.My_linear_model.init` and it has an argument `sim`. If
+you are familiar with making functions in `R`, this is just a named
+argument `"sim"`. This means that we can use `sim` inside the function.
+We don't know what `sim` is yet, and we don't know how to use it fully
+yet. But we do know that we have added `sim$` to the `init` event. We
+also see that there is a `return(sim)` added at the bottom of the event
+function.
 
-To share these objects, we assign them to the `sim` list using the
-normal R notation `<-`. We have to make this modification 5 times for
-every instance of our **inputs** and
-**outputs**.<!--what do you mean 5 times?-->
+::: {.callout-note appearance="simple" icon="false"}
+**An event occurs in a special function that starts with `doEvent.`**. But,
+since it is "in a function", each event has all the features of a function:
 
-```{r}
-Init <- function(sim) {
-  sim$y <- sim$x + rnorm(10)
-  sim$out <- lm(sim$y ~ sim$x)
-  return(invisible(sim))
-}
-```
+-   **arguments** -- specifically `sim` can be used
+-   **return(sim)** -- must always be present. It is by default, but don't delete it!
+-   **don't need to run this function** -- SpaDES runs it when it is time.
+:::
 
-Now we have a module that creates two objects, `y` and `out` and puts
-them inside `sim`. This all happens in the function called `Init`
+::: {.callout-note appearance="simple" icon="false"}
+**The `simList`**
+
+The
+[`simList`](https://spades-core.predictiveecology.org/reference/simList-class.html)
+is the data structure that is the foundation of `SpaDES`. It can be used
+*like a list*; accessing objects can be done with `$` or `[["model"]]`,
+for example.
+
+In any function that has an argument `sim`, we pass the `simList`, so we
+can access the `simList` with `sim$` from inside such a function.
+:::
+
+To share objects between modules, we *must* assign them to the `sim`
+**and** make sure that `return(sim)` is at the end of the function.
+
+Now we have a module that creates one object, `model` and puts them
+inside `sim`. This all happens in the event called `init`.
+
 <!--maybe unnecessary?-->
 
-Next: the `plot(out)`.
+**Next**: add the visualization module for `plot(sim$model)`.
 
 ## Events
 
@@ -163,11 +205,11 @@ up in several ways (or not at all), but we will go with this for now.
 We can call the 2 steps **events** and imagine we could run them in
 sequence... first, lets put the plotting step in a function. We will
 choose the `plotFun` function. We will also add the `sim$` because the
-`out` will come from another step and is in the `sim` "list".
+`model` will come from another step and is in the `sim` "list".
 
 ```{r}
 plotFun <- function(sim) {
-  plot(sim$out)
+  plot(sim$model)
   return(invisible(sim))
 }
 ```
