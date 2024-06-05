@@ -8,6 +8,7 @@ pkgList <- Require::pkgSnapshot2(libPaths = c("training/packages/", "training/pa
                                               SpaDES.project:::.libPathDefault("integratingSpaDESmodules")))
 pkgList <- c(pkgList, "disk.frame")
 
+pkgList <- Require::extractPkgName(pkgList)
 cat(paste0("c('",
            paste(pkgList, collapse = "', \n'"),
            "')"),
