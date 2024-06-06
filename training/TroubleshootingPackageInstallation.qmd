@@ -158,10 +158,10 @@ As people migrate to using "project" libraries, i.e., a unique R package
 library for each project, sometimes, the user library (the one that you
 get by default with a normal R installation) can cause problems.
 
-#### Possible Solutions
+#### Potential solutions
 
 -   **Become aware of user vs. project library –** `.libPaths()` is your
-friend. It tells you what folder the current R session is using as a
+    friend. It tells you what folder the current R session is using as a
 package library. The default place for a personal library in R
 depends on operating system. For windows, it is something like:
 
