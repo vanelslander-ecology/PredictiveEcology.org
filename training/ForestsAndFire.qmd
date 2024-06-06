@@ -59,6 +59,8 @@ As with other examples, we also include all the parameterization modules here, w
 This makes for a 10 module project. Using `setupProject`, we can readily run these
 from their canonical "i.e., current, up to date, open and available" versions:
 
+**Time to run this** is between 1 and 2 hours.
+
 ```{r scfm,eval=FALSE}
 repos <- unique(c("predictiveecology.r-universe.dev", getOption("repos")))
 options(repos = repos)
@@ -87,12 +89,12 @@ out <- SpaDES.project::setupProject(
                       .useParallelFireRegimePolys = TRUE) #assumes parallelization is an otpion
 
   ),
-  # options = list(spades.allowInitDuringSimInit = TRUE,
+  options = list(spades.allowInitDuringSimInit = TRUE),
   #                spades.moduleCodeChecks = FALSE,
   #                reproducible.shapefileRead = "terra::vect",
   #                spades.recoveryMode = 1
   # ),
-  packages = c('RCurl', 'XML'), # need for some downloading
+  packages = c('RCurl', 'XML', 'snow'), # need for some downloading; if omitted, a message tells user
   times = list(start = 2011, end = 2061),
   sppEquiv = LandR::sppEquivalencies_CA[KNN %in% c("Popu_Tre", "Betu_Pap",
                                                    "Pice_Gla", "Pice_Mar",
