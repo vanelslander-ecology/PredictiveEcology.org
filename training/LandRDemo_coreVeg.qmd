@@ -280,26 +280,6 @@ out$modules <- out$modules[out$modules != "Biomass_validationKNN"]
 simOut <- SpaDES.core::simInitAndSpades2(out)
 ```
 
-```{r s}
-#| eval: false
-
-## remove validation module, can only be run after simulation's done
-out$modules <- out$modules[out$modules != "Biomass_validationKNN"]  
-
-simOut <- SpaDES.core::simInitAndSpades2(out)
-```
-
-```{r runSim}
-#| results: hide
-#| cache: false 
-
-## remove validation module, can only be run after simulation's done
-out$modules <- out$modules[out$modules != "Biomass_validationKNN"]  
-
-## initialise then run simulation 
-simInitOut <- SpaDES.core::simInit2(out)
-simOut <- SpaDES.core::spades(simInitOut)
-```
 
 #### Turn plotting on *after* setting up the workflow
 
