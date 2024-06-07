@@ -143,9 +143,9 @@ outSim <- do.call(SpaDES.core::simInitAndSpades, out) |>
 ## Examining things
 
 We can do all sorts of things. We will start with a few simple 
-"accessorts", i.e., "access something from the simList".  `completed`
-shows the events that were run. `elapsedTime` shows how much time 
-each event too.
+"accessors", i.e., "access something from the simList". `completed`
+shows the events that were run. `elapsedTime` shows how much time each
+event took.
 
 ```{r}
 completed(outSim)
@@ -163,8 +163,9 @@ mm$Biomass_borealDataPrep$
 
 ## Changing things
 
-Setting `.plots = "png"` will turn on all known plotting (that uses
-the `Plots` function and save them all as `png` files in the `figures` subfolder.
+Setting `.plots = "png"` will turn on all known plotting (that uses the
+`Plots` function) and save them all as `png` files in the `figures`
+subfolder.
 
 ```{r}
 out$params$.globals$.plots <- "png"
