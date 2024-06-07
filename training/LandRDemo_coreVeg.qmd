@@ -314,6 +314,20 @@ simOut <- SpaDES.core::spades(simInitOut, debug = "init")
 
 ### Many replicates {#sec-LandRReplication}
 
+## Try on your own
+
+Try passing a different set of study areas and re-run the workflow. For instance:
+
+```{r}
+## studyArea could be
+
+## studyAreaLarge
+
+```
+
+-   Noticed any differences (speed, cache IDs, ...)?
+
+
 [^1]: See
     [`?googledrive::drive_auth`](https://rdrr.io/cran/googledrive/man/drive_auth.html)
     for more information.
