@@ -53,6 +53,8 @@ if (!interactive()) {
 *2 hours -- estimated time for 1st time executing (includes downloads)*
 
 *20Gb RAM -- estimated peak RAM for executing*
+
+*20Gb disk -- estimated hard drive allocation*
 :::
 
 [LandR](https://landr-manual.predictiveecology.org/) is a forest
