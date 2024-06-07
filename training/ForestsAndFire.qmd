@@ -6,15 +6,17 @@ editor_options:
 execute:
   tidy: false
 warning: false
-message: false
-error: false
-cache: true
+  message: false
+  error: false
+  cache: true
+  eval: false
 ---
 
 # Forest Succession and Wildfire using `setupProject` {#sec-scfmEg}
 
 ```{r setup}
 #| include: false
+#| eval: true
 #| cache: false
 
 ## truncate text output
@@ -61,7 +63,7 @@ from their canonical "i.e., current, up to date, open and available" versions:
 
 **Time to run this** is between 1 and 2 hours.
 
-```{r scfm,eval=FALSE}
+```{r scfm}
 repos <- unique(c("predictiveecology.r-universe.dev", getOption("repos")))
 options(repos = repos)
 

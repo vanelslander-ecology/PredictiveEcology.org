@@ -3,17 +3,19 @@ author: "Eliot McIntire"
 date: last-modified
 editor_options:
   chunk_output_type: console
+execute:
+  eval: false
+  tidy: false
+  warning: false
+  message: false
+  error: false
 ---
 
 # Scheduling events {#sec-schedulingEvents}
 
 ```{r setup}
 #| include: false
-knitr::opts_chunk$set(tidy = FALSE, 
-                      eval = FALSE,
-                      warning = FALSE, 
-                      message = FALSE, 
-                      error = FALSE)
+#| eval: true
 
 ## truncate text output
 hook_output <- knitr::knit_hooks$get("output")
@@ -53,7 +55,9 @@ a *predict* step from the linear model, with updated values of the `y`.
 In this simple example, we will pretend that each prediction is "one
 year into the future" and that our `y` will slowly get bigger.
 
-```{r, eval=TRUE}
+```{r}
+#| eval: true
+
 # .inputObjects  #####
 x <- rnorm(10)
 

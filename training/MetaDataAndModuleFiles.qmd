@@ -14,9 +14,9 @@ execute:
 
 # Module Files and Metadata
 
-```{r setup,eval=TRUE}
+```{r setup}
 #| include: false
-
+#| eval: true
 
 ## truncate text output
 hook_output <- knitr::knit_hooks$get("output")
@@ -45,7 +45,7 @@ Slightly modifying the example, we remove the line with
 needs the `x` to run the next line. We can examine the following code
 chunk. First, we ask: what are the **inputs** and the **outputs**?
 
-```{r start, eval=FALSE}
+```{r start}
 # create some data
 y <- x + rnorm(10)
 # fit a linear model
@@ -74,7 +74,7 @@ of the function, it says that the function `rnorm` is in the `stats`
 package. Fortunately for us, this is a default ("base") package in R and
 it is always pre-loaded. So, nothing to do here.
 
-```{r second, eval=FALSE}
+```{r second}
 > rnorm function (n, mean = 0, sd = 1)  ... 
 <environment: namespace:stats>}
 ```
@@ -93,13 +93,15 @@ Make the module again (see @sec-moduleintro). This time we will add
 `sim$` for the `x` as we are now interested in the fact that it might be
 coming from outside this module.
 
-```{r, eval=TRUE}
+```{r}
+#| eval: true
+
 # make a module
 Require::Require(c("reproducible", "SpaDES.core"), repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
 
 # make a module
 nm1 <- "My_linear_model"
-modulePath <- "tutos/NewModuleIntro/NewModule"
+modulePath <- "~/SpaDES_book/NewModuleIntro/NewModule"
 newModule(name = nm1, path = modulePath, open = FALSE,
           events = list(
             init = {
@@ -142,7 +144,7 @@ When we scroll down to `inputObjects` and `expectsInputs()`. This is
 where we will put our `inputs` that we noticed in our code chunk. We
 will declare `x` as an "input" by putting it there, like this:
 
-```{r metadata, eval=FALSE}
+```{r metadata}
 inputObjects = bindrows(
     expectsInput(objectName = "x", objectClass = "numeric", 
                  desc = "The inputs for the linear model", sourceURL = NA)
@@ -156,7 +158,7 @@ declare `model` as an "output" by putting it there. Don't forget the
 **comma at the end of each `createsOutput()`** as each is an argument to
 `bindrows` (unless it is the last one).
 
-```{r, eval=FALSE}
+```{r}
 outputObjects = bindrows(
     createsOutput(objectName = "model", objectClass = "lm", 
                   desc = "A linear model object from the equation (x ~ y)")
@@ -214,7 +216,9 @@ inside `sim`. This all happens in the event called `init`.
 We remake the second module from last chapter. But this time we will
 look at and update the metadata.
 
-```{r newModule2, eval=TRUE}
+```{r newModule2}
+#| eval: true
+
 nm2 <- "visualize"
 newModule(nm2, path = modulePath, open = FALSE,
           events = list(
@@ -232,7 +236,7 @@ Here we start to see the "shared" objects. The module we just made above
 `expectInput` of `model`. So, we can copy the same description if it is
 the same.
 
-```{r metadata2, eval=FALSE}
+```{r metadata2}
 inputObjects = bindrows(
     expectsInput(objectName = "model", objectClass = "lm", 
                  desc = "A linear model object from the equation (x ~ y)", sourceURL = NA)
@@ -245,7 +249,7 @@ Recall, we don't have a value for `x`. This means that if you run the
 following, you will get an error, unlink in the previous chapter where we
 had `x` defined in the `init` event. 
 
-```{r, eval=FALSE}
+```{r}
 simInitAndSpades(modules = c(nm1, nm2), 
                  paths = list(modulePath = modulePath))
 ```
