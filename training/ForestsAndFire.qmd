@@ -4,17 +4,20 @@ date: last-modified
 editor_options:
   chunk_output_type: console
 execute:
+  eval: false
   tidy: false
   warning: false
   message: false
   error: false
   cache: true
-  eval: false
 ---
 
 # Forest Succession and Wildfire using `setupProject` {#sec-scfmEg}
 
-```{r setup}
+**1.5 hours -- estimated time for 1st time executing**
+**6 GB RAM -- estimated RAM for executing**
+
+```{r setup, eval=TRUE}
 #| include: false
 #| eval: true
 #| cache: false
@@ -69,6 +72,7 @@ options(repos = repos)
 
 # Require::Require(c("SpaDES.project (HEAD)"))
 Require::Require(c("PredictiveEcology/SpaDES.project@development (HEAD)")) 
+# pkgload::load_all("~/GitHub/SpaDES.project")
 
 out <- SpaDES.project::setupProject(
   updateRprofile = TRUE,
@@ -86,17 +90,21 @@ out <- SpaDES.project::setupProject(
   params = list(
     .globals = list(.studyAreaName = "scfm_example",
                     dataYear = 2011, #will get kNN 2011 data, and NTEMS 2011 landcover
-                    sppEquivCol = "LandR"),
+                    sppEquivCol = "LandR",
+                    .plots = "png",
+                    .useCache = c(".inputObjects", "init")
+                 ),
     scfmDriver = list(targetN = 1000, #default is 4000 - higher targetN adds time + precision
                       ### targetN would ideally be minimum 2000 - mean fire size estimates will be bad with 1000
                       .useParallelFireRegimePolys = TRUE) #assumes parallelization is an otpion
-
+    
   ),
-  options = list(spades.allowInitDuringSimInit = TRUE),
-  #                spades.moduleCodeChecks = FALSE,
-  #                reproducible.shapefileRead = "terra::vect",
-  #                spades.recoveryMode = 1
-  # ),
+  options = list(#spades.allowInitDuringSimInit = TRUE,
+                 spades.allowSequentialCaching = TRUE,
+                 spades.moduleCodeChecks = FALSE,
+                 #                reproducible.shapefileRead = "terra::vect",
+                 spades.recoveryMode = 1
+  ),
   packages = c('RCurl', 'XML', 'snow'), # need for some downloading; if omitted, a message tells user
   times = list(start = 2011, end = 2061),
   sppEquiv = LandR::sppEquivalencies_CA[KNN %in% c("Popu_Tre", "Betu_Pap",
@@ -127,5 +135,42 @@ out <- SpaDES.project::setupProject(
 
 #this must be done outside of setupProject (temporarily)
 #alternatively
-outSim <- do.call(SpaDES.core::simInitAndSpades, out)
+outSim <- do.call(SpaDES.core::simInitAndSpades, out) |>
+  Cache()
 ```
+
+
+## Examining things
+
+We can do all sorts of things. We will start with a few simple 
+"accessorts", i.e., "access something from the simList".  `completed`
+shows the events that were run. `elapsedTime` shows how much time 
+each event too.
+
+```{r,eval=FALSE}
+completed(outSim)
+elapsedTime(outSim, units = "minute")
+```
+
+The module metadata can be accessed from the `sim` or can be read from the module source files or it is usually built into the `Rmd` file that comes with the module.
+
+```{r, eval=FALSE}
+mm <- moduleMetadata(outSim)
+
+# a list of all the module metadata
+mm$Biomass_borealDataPrep$
+```
+
+## Changing things
+
+Setting `.plots = "png"` will turn on all known plotting (that uses
+the `Plots` function and save them all as `png` files in the `figures` subfolder.
+
+```{r}
+out$params$.globals$.plots <- "png"
+outSim <- simInitAndSpades2(out)
+```
+
+Then we can look in the `outputs/figures` folder to see all the figures that the modules created.
+
+

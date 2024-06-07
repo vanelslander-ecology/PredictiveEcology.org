@@ -12,7 +12,7 @@ cache: false
 ---
 
 
-# Simple workflow with existing modules
+# Workflows with setupProject
 
 
 ```{r setup,eval=TRUE}
