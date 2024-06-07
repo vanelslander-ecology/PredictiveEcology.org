@@ -157,7 +157,7 @@ completed(out2)
 ```
 
 
-This time, there is an extra event that happened. We now have a workflow of 2 events.
+This time, there is an extra event that happened. **We now have a workflow of 2 events.**
 
 
 ## Next: Metadata

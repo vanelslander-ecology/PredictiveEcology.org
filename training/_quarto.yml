@@ -60,6 +60,7 @@ book:
     - part: SpaDESbasics.qmd
       chapters:
       - NewModuleIntro.qmd
+      - MetaDataAndModuleFiles.qmd
       - ModulesAndEvents.qmd
       - Scheduling.qmd
       - simList.qmd
@@ -67,10 +68,10 @@ book:
       - Caching.qmd
     - part: setupProject.qmd
       chapters:
-      # - workflowSimple1.qmd
       - workflowSimple2.qmd
       - multipleModules.qmd
       - castorExample.qmd
+      - ForestsAndFire.qmd
     - bestPractices.qmd
     - references.qmd
 

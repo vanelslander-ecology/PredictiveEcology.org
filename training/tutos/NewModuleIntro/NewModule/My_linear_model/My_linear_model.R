@@ -49,9 +49,8 @@ defineModule(sim, list(
 
 
 doEvent.My_linear_model.init <- function(sim, eventTime, eventType, priority) {
-    x <- rnorm(10)
-    y <- x + rnorm(10)
-    sim$model <- lm(y ~ x)
+    y <- sim$x + rnorm(10)
+    sim$model <- lm(y ~ sim$x)
   return(sim)
 }
 

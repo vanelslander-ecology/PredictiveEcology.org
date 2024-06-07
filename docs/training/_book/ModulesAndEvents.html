@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eliot McIntire">
-<meta name="dcterms.date" content="2024-06-04">
+<meta name="dcterms.date" content="2024-06-03">
 
-<title>Robust and nimble scientific workflows, using SpaDES - 5&nbsp; Modules, Events and Functions</title>
+<title>Robust and nimble scientific workflows, using SpaDES - 7&nbsp; Modules, Events and Functions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -87,7 +87,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./Scheduling.html" rel="next">
-<link href="./NewModuleIntro.html" rel="prev">
+<link href="./MetaDataAndModuleFiles.html" rel="prev">
 <link href="./assets/logo/favicon-16x16.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -251,7 +251,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./ModulesAndEvents.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./ModulesAndEvents.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -272,7 +272,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction</span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -287,19 +287,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./installRandSpatialPkgs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Installing R and Spatial Packages</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Installing R and Spatial Packages</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./PackagesForBook.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./TroubleshootingPackageInstallation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Troubleshooting R package installation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Troubleshooting R package installation</span></span></a>
   </div>
 </li>
       </ul>
@@ -316,37 +316,43 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./NewModuleIntro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction to SpaDES Modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to SpaDES Modules</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MetaDataAndModuleFiles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Module Files and Metadata</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ModulesAndEvents.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Scheduling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Scheduling events</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scheduling events</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simList.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ModuleInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module Inputs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module Inputs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Caching.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span></a>
   </div>
 </li>
       </ul>
@@ -363,19 +369,25 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflowSimple2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Simple workflow with existing modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Simple workflow with existing modules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./multipleModules.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Multiple Modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Multiple Modules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ForestsAndFire.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -383,7 +395,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bestPractices.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Best practices for <span class="math inline">\(R^3T\)</span> workflows</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Best practices for <span class="math inline">\(R^3T\)</span> workflows</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -402,30 +414,30 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#modules" id="toc-modules" class="nav-link active" data-scroll-target="#modules"><span class="header-section-number">5.1</span> Modules</a></li>
-  <li><a href="#events" id="toc-events" class="nav-link" data-scroll-target="#events"><span class="header-section-number">5.2</span> Events</a></li>
-  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">5.3</span> Functions</a>
+  <li><a href="#modules" id="toc-modules" class="nav-link active" data-scroll-target="#modules"><span class="header-section-number">7.1</span> Modules</a></li>
+  <li><a href="#events" id="toc-events" class="nav-link" data-scroll-target="#events"><span class="header-section-number">7.2</span> Events</a></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">7.3</span> Functions</a>
   <ul class="collapse">
-  <li><a href="#rerun-tolerant-functions" id="toc-rerun-tolerant-functions" class="nav-link" data-scroll-target="#rerun-tolerant-functions"><span class="header-section-number">5.3.1</span> Rerun-tolerant functions</a></li>
-  <li><a href="#cache" id="toc-cache" class="nav-link" data-scroll-target="#cache"><span class="header-section-number">5.3.2</span> <code>Cache()</code></a></li>
-  <li><a href="#prepinputs" id="toc-prepinputs" class="nav-link" data-scroll-target="#prepinputs"><span class="header-section-number">5.3.3</span> <code>prepInputs()</code></a></li>
+  <li><a href="#rerun-tolerant-functions" id="toc-rerun-tolerant-functions" class="nav-link" data-scroll-target="#rerun-tolerant-functions"><span class="header-section-number">7.3.1</span> Rerun-tolerant functions</a></li>
+  <li><a href="#cache" id="toc-cache" class="nav-link" data-scroll-target="#cache"><span class="header-section-number">7.3.2</span> <code>Cache()</code></a></li>
+  <li><a href="#prepinputs" id="toc-prepinputs" class="nav-link" data-scroll-target="#prepinputs"><span class="header-section-number">7.3.3</span> <code>prepInputs()</code></a></li>
   </ul></li>
-  <li><a href="#sec-moduletypes" id="toc-sec-moduletypes" class="nav-link" data-scroll-target="#sec-moduletypes"><span class="header-section-number">5.4</span> Module types</a>
+  <li><a href="#sec-moduletypes" id="toc-sec-moduletypes" class="nav-link" data-scroll-target="#sec-moduletypes"><span class="header-section-number">7.4</span> Module types</a>
   <ul class="collapse">
-  <li><a href="#static" id="toc-static" class="nav-link" data-scroll-target="#static"><span class="header-section-number">5.4.1</span> Static</a></li>
-  <li><a href="#dynamic" id="toc-dynamic" class="nav-link" data-scroll-target="#dynamic"><span class="header-section-number">5.4.2</span> Dynamic</a></li>
+  <li><a href="#static" id="toc-static" class="nav-link" data-scroll-target="#static"><span class="header-section-number">7.4.1</span> Static</a></li>
+  <li><a href="#dynamic" id="toc-dynamic" class="nav-link" data-scroll-target="#dynamic"><span class="header-section-number">7.4.2</span> Dynamic</a></li>
   </ul></li>
-  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">5.5</span> See also</a></li>
-  <li><a href="#more-learning-on-this-subject" id="toc-more-learning-on-this-subject" class="nav-link" data-scroll-target="#more-learning-on-this-subject"><span class="header-section-number">5.6</span> More learning on this subject</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">7.5</span> See also</a></li>
+  <li><a href="#more-learning-on-this-subject" id="toc-more-learning-on-this-subject" class="nav-link" data-scroll-target="#more-learning-on-this-subject"><span class="header-section-number">7.6</span> More learning on this subject</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./ModulesAndEvents.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./ModulesAndEvents.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-modseventsfuns" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span></h1>
+<h1 class="title"><span id="sec-modseventsfuns" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span></h1>
 </div>
 
 
@@ -442,7 +454,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 4, 2024</p>
+      <p class="date">June 3, 2024</p>
     </div>
   </div>
   
@@ -458,8 +470,8 @@ window.Quarto = {
 <p><strong>Events</strong> are ways to name chunks of code that can be run in a particular sequence or at a particular time.</p>
 <p><strong>Functions</strong> are the basic building blocks in R and other languages. We work with all three of these to make robust and re-useable workflows.</p>
 <p>Modules encapsulate events, which encapsulate functions.</p>
-<section id="modules" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="modules"><span class="header-section-number">5.1</span> Modules</h2>
+<section id="modules" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="modules"><span class="header-section-number">7.1</span> Modules</h2>
 <p>Modules include the following elements:</p>
 <ul>
 <li>a function call to <code>defineModule</code> that defines the metadata (mandatory)</li>
@@ -482,26 +494,26 @@ window.Quarto = {
       |_ LICENSE.txt            # describes module's legal usage
       |_ moduleName.R           # module code file (incl. metadata)
       |_ moduleName.Rmd         # documentation, usage info, etc.</code></pre>
-<p>To make a new module, see: <a href="NewModuleIntro.html" class="quarto-xref"><span>Chapter 4</span></a>.</p>
+<p>To make a new module, see: <a href="NewModuleIntro.html" class="quarto-xref"><span>Chapter 5</span></a>.</p>
 </section>
-<section id="events" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="events"><span class="header-section-number">5.2</span> Events</h2>
-<p>Events are named chunks of code that can be scheduled to be run once or many times. These are scheduled with <code>scheduleEvent()</code>. There are several commonly occurring module types that can be grouped based on the events that they contain (see <a href="#sec-moduletypes" class="quarto-xref"><span>Section 5.4</span></a>).</p>
-<p>To see how to schedule events, see: <a href="Scheduling.html" class="quarto-xref"><span>Chapter 6</span></a>.</p>
+<section id="events" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="events"><span class="header-section-number">7.2</span> Events</h2>
+<p>Events are named chunks of code that can be scheduled to be run once or many times. These are scheduled with <code>scheduleEvent()</code>. There are several commonly occurring module types that can be grouped based on the events that they contain (see <a href="#sec-moduletypes" class="quarto-xref"><span>Section 7.4</span></a>).</p>
+<p>To see how to schedule events, see: <a href="Scheduling.html" class="quarto-xref"><span>Chapter 8</span></a>.</p>
 </section>
-<section id="functions" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="functions"><span class="header-section-number">5.3</span> Functions</h2>
+<section id="functions" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="functions"><span class="header-section-number">7.3</span> Functions</h2>
 <p>Essentially, everything in R is or uses functions. Modules define functions (<code>doEvent.*moduleName*</code>), events call specific functions (we some times call these “event functions”), and functions can be defined within modules, R packages, or user code.</p>
-<section id="rerun-tolerant-functions" class="level3" data-number="5.3.1">
-<h3 data-number="5.3.1" class="anchored" data-anchor-id="rerun-tolerant-functions"><span class="header-section-number">5.3.1</span> Rerun-tolerant functions</h3>
-<p>In re-usable workflows, functions become particularly effective if they are <strong>rerun-tolerant</strong>, see <a href="#tip-Rerun" class="quarto-xref">Tip&nbsp;<span>5.1</span></a> (we use <em>tolerant</em> in part to reflect the fact that the <em>computer</em> tolerates it but also the <em>human</em> because they don’t have to wait).</p>
+<section id="rerun-tolerant-functions" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="rerun-tolerant-functions"><span class="header-section-number">7.3.1</span> Rerun-tolerant functions</h3>
+<p>In re-usable workflows, functions become particularly effective if they are <strong>rerun-tolerant</strong>, see <a href="#tip-Rerun" class="quarto-xref">Tip&nbsp;<span>7.1</span></a> (we use <em>tolerant</em> in part to reflect the fact that the <em>computer</em> tolerates it but also the <em>human</em> because they don’t have to wait).</p>
 <div id="tip-Rerun" class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip&nbsp;5.1
+Tip&nbsp;7.1
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -521,8 +533,8 @@ Tip&nbsp;5.1
 <p>Base R has some functions that are like this and some that are not. For example <code>library</code> is <strong>rerun-tolerant</strong> because it does something the first time, which may be slow, and subsequent times in the same session it is fast (<strong>memory</strong> efficient, but not <strong>disk</strong> efficient)</p>
 <p>Two key functions help achieve these points, <a href="https://reproducible.predictiveecology.org/reference/Cache.html"><code>?reproducible::Cache</code></a> and <a href="https://reproducible.predictiveecology.org/reference/prepInputs.html"><code>?reproducible::prepInputs</code></a></p>
 </section>
-<section id="cache" class="level3" data-number="5.3.2">
-<h3 data-number="5.3.2" class="anchored" data-anchor-id="cache"><span class="header-section-number">5.3.2</span> <code>Cache()</code></h3>
+<section id="cache" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="cache"><span class="header-section-number">7.3.2</span> <code>Cache()</code></h3>
 <p><code>Cache()</code> is a function that can be wrapped around other functions that turns that function into a rerun-tolerant function. <code>reproducible::Cache</code> has several important modifications that work for <em>some</em> objects that don’t cache well using “normal” caching, such as <code>terra</code> objects that are actually pointers to locations on disk rather than normal R objects.</p>
 <p>The following code will result in <code>d</code> being the same vector as <code>b</code>, and it will be returned quickly.</p>
 <div class="cell">
@@ -537,8 +549,8 @@ Tip&nbsp;5.1
 </div>
 <p>See <a href="https://reproducible.predictiveecology.org/reference/Cache.html"><code>?reproducible::Cache</code></a></p>
 </section>
-<section id="prepinputs" class="level3" data-number="5.3.3">
-<h3 data-number="5.3.3" class="anchored" data-anchor-id="prepinputs"><span class="header-section-number">5.3.3</span> <code>prepInputs()</code></h3>
+<section id="prepinputs" class="level3" data-number="7.3.3">
+<h3 data-number="7.3.3" class="anchored" data-anchor-id="prepinputs"><span class="header-section-number">7.3.3</span> <code>prepInputs()</code></h3>
 <p><code>prepInputs()</code> is a workhorse function that helps users point to cloud or local datasets: <a href="https://reproducible.predictiveecology.org/reference/prepInputs.html"><code>?reproducible::prepInputs</code></a>.</p>
 <p>In this example, we point to a url only and <code>prepInputs</code> downloads it, does checksumming, unzips it and loads it into R using the default <code>terra::vect</code> because it is a <code>shp</code> file after the unzipping.</p>
 <div class="cell">
@@ -551,17 +563,17 @@ Tip&nbsp;5.1
 <p>For more information <a href="https://reproducible.predictiveecology.org/reference/prepInputs.html"><code>?reproducible::prepInputs</code></a></p>
 </section>
 </section>
-<section id="sec-moduletypes" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="sec-moduletypes"><span class="header-section-number">5.4</span> Module types</h2>
+<section id="sec-moduletypes" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="sec-moduletypes"><span class="header-section-number">7.4</span> Module types</h2>
 <p>Even though all modules are built with the same structures (events &amp; functions), for convenience, we can categorize different types of modules in different ways.</p>
 <p>For example, modules can be categorized by:</p>
-<section id="static" class="level3" data-number="5.4.1">
-<h3 data-number="5.4.1" class="anchored" data-anchor-id="static"><span class="header-section-number">5.4.1</span> Static</h3>
+<section id="static" class="level3" data-number="7.4.1">
+<h3 data-number="7.4.1" class="anchored" data-anchor-id="static"><span class="header-section-number">7.4.1</span> Static</h3>
 <p><strong>Static</strong> modules can be defined as modules that “run once”. This means that they may have only one event. Or a sequence of events that occur one after the other with no rescheduling.</p>
 <p>These could include: - Data preparation modules; - one (maybe just the “init” event) or few events and their primary goal is to get and deal with data; - GIS modules that do a number of GIS operations to get data into the necessary formats; - Data Visualization modules that specialize in creating a set of visuals from a known set of inputs.</p>
 </section>
-<section id="dynamic" class="level3" data-number="5.4.2">
-<h3 data-number="5.4.2" class="anchored" data-anchor-id="dynamic"><span class="header-section-number">5.4.2</span> Dynamic</h3>
+<section id="dynamic" class="level3" data-number="7.4.2">
+<h3 data-number="7.4.2" class="anchored" data-anchor-id="dynamic"><span class="header-section-number">7.4.2</span> Dynamic</h3>
 <p><strong>Dynamic</strong> modules are modules that have <em>events that recur</em>. There are at least 2 types of such models: those that have <strong>cyclic dependencies</strong>, i.e., its outputs are also its inputs (possibly with other modules in between) and those that do not.</p>
 <ul>
 <li>landscape simulation modules (e.g., wildfire, vegetation change)</li>
@@ -578,17 +590,17 @@ Tip&nbsp;5.1
 <p>There are no strict rules to classify a SpaDES module, just as there are no strict rule classify an R script.</p>
 </section>
 </section>
-<section id="see-also" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="see-also"><span class="header-section-number">5.5</span> See also</h2>
-<p>See also: <a href="Scheduling.html" class="quarto-xref"><span>Chapter 6</span></a>,</p>
+<section id="see-also" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="see-also"><span class="header-section-number">7.5</span> See also</h2>
+<p>See also: <a href="Scheduling.html" class="quarto-xref"><span>Chapter 8</span></a>,</p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/scheduleEvent.html"><code>?scheduleEvent</code></a>,</p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/params.html"><code>?P</code></a>,</p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html"><code>?time</code></a>,</p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html"><code>?start</code></a>,</p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html"><code>?end</code></a></p>
 </section>
-<section id="more-learning-on-this-subject" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="more-learning-on-this-subject"><span class="header-section-number">5.6</span> More learning on this subject</h2>
+<section id="more-learning-on-this-subject" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="more-learning-on-this-subject"><span class="header-section-number">7.6</span> More learning on this subject</h2>
 <p><a href="https://spades-workshops.predictiveecology.org/articlesMay2018/MyFirstModule.html">My First Module</a></p>
 <p><a href="https://spades-workshops.predictiveecology.org/articles/02c-Convert_R_code_to_SpaDES_module.html">Creating a seed dispersal module</a></p>
 
@@ -1161,13 +1173,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./NewModuleIntro.html" class="pagination-link" aria-label="Introduction to SpaDES Modules">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction to SpaDES Modules</span></span>
+      <a href="./MetaDataAndModuleFiles.html" class="pagination-link" aria-label="Module Files and Metadata">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Module Files and Metadata</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./Scheduling.html" class="pagination-link" aria-label="Scheduling events">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Scheduling events</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scheduling events</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
