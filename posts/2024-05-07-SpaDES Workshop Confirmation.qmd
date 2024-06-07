@@ -1,7 +1,7 @@
 ---
 title: "SpaDES Workshop confirmation"
 author: "Eliot McIntire"
-date: last-modified
+date: "May 8 2024"
 categories:
   - Workshop
 comments: false
