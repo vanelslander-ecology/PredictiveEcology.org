@@ -52,9 +52,16 @@ y <- x + rnorm(10)
 model <- lm(y ~ x)
 ```
 
-## Expectations, Dependencies and Creations
+## Required Packages, Input Expectations and Output Creations
 
 ### Inputs and Outputs
+
+We use the terms `expectsInput` and `createsOutput` to describe the inputs
+and outputs in the metadata. This makes it clear that the metadata do *not* specify
+which they will *go get*; rather, it makes it clear that it doesn't matter *where*
+the inputs are coming from. They could come from one of three sources: 
+a user, another module, or defaults that the developer sets up. Likewise, the
+module specifies which outputs it creates, without specifying "for what other module".
 
 The **inputs** to this chunk are just one: the object `x`. This code
 will not work (i.e., it will cause an error) if `x` is not defined. We
@@ -65,9 +72,10 @@ The **outputs** are `y` and `model`. We can say that this code chunk
 previous chapter @sec-moduleintro that we would only be interested in
 keeping `model`. So, we will continue with only one output, `model`.
 
-### Packages
+### Required Packages
 
-Next, *what are the package dependencies?*. We see that there are three
+Next, *what are the package dependencies?*. We call this `reqdPkgs` in the
+SpaDES metadtaa. We see that there are three
 functions: `rnorm`, `lm` and `plot`. We don't know what packages they
 are in, so we can find out by typing them at the R prompt. At the bottom
 of the function, it says that the function `rnorm` is in the `stats`
@@ -123,17 +131,17 @@ details. For now, run the above and open the `My_linear_model.R` script
 that it creates.
 
 When we make a module, we get a message stating where the module code
-is. **FROM HERE, OPEN THE FILE**, e.g., by copy-paste the file path (pick the `.R` file NOT the
-`.Rmd` file for now)**
+is. **FROM HERE, OPEN THE FILE**, e.g., by copy-paste the file path
+(pick the `.R` file NOT the `.Rmd` file for now)\*\*
 
 ::: {.callout-note appearance="simple" icon="false"}
 **Opening a module file**
 
-From here onward, we will need to actually manually open the module code file.
-Every SpaDES module is defined by having at least 1 file that is named with 
-the `<modulePath>/<moduleName>/<moduleName>.R`. Even though we can do a lot from
-the `newModule`, we will need to get used to opening, examining and changing 
-the code in the module code file.
+From here onward, we will need to actually manually open the module code
+file. Every SpaDES module is defined by having at least 1 file that is
+named with the `<modulePath>/<moduleName>/<moduleName>.R`. Even though
+we can do a lot from the `newModule`, we will need to get used to
+opening, examining and changing the code in the module code file.
 :::
 
 We will look at a few elements in this chapter.
@@ -246,8 +254,8 @@ inputObjects = bindrows(
 ## Default Values
 
 Recall, we don't have a value for `x`. This means that if you run the
-following, you will get an error, unlink in the previous chapter where we
-had `x` defined in the `init` event. 
+following, you will get an error, unlink in the previous chapter where
+we had `x` defined in the `init` event.
 
 ```{r}
 simInitAndSpades(modules = c(nm1, nm2), 
