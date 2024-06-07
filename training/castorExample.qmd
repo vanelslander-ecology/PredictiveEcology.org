@@ -100,7 +100,7 @@ install.packages(c("SpaDES.project", "googledrive", "reproducible"),
 library(SpaDES.project)
 
 ## get Castor modules and functions
-setupFunctions(paths = list("projectPath" = "~/"),
+setupFunctions(paths = list("projectPath" = "~/SpaDES_book/castorExample/"),
                functions = c("PredictiveEcology/PredictiveEcology.org@main/tutos/castorExample/getCastorModulesAndDB.R",
                              "PredictiveEcology/PredictiveEcology.org@main/tutos/castorExample/params.R"),
                overwrite = TRUE)
@@ -157,7 +157,7 @@ out <- setupProject(
     "sp",
     "terra"
   ),
-  params = "params.R",
+  params = "tutos/castorExample/params.R",  
   times = list(start = 0, end = 20),
   outputs = {
     data.frame(objectName = c("harvestReport",
