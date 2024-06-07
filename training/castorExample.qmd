@@ -89,14 +89,7 @@ figPath <- normalizePath(file.path(qmdPath, "assets/img/gdriveauth.png"),
 knitr::include_graphics(figPath, rel_path = FALSE, dpi = NA)
 ```
 
-After the "workaround" `setupProject` does all the heavy-lifting of
-setting up the workflow, namely installing all package dependencies
-listed in the several modules and in `setupProject(..., packages)`,
-creating all the necessary folders, sourcing additional files and
-creating parameter, inputs and outputs lists -- see
-[`?setupProject`](https://spades-project.predictiveecology.org/reference/setupProject.html).
-
-```{r wfsetup}
+```{r workaround}
 #| results: hide
 #| cache: false 
 
@@ -119,6 +112,27 @@ outMod <- getCastorModulesAndDB(paths = list("modulePath" = "~/SpaDES_book/casto
                                             "blockingCastor"),
                                 dbURL = "https://drive.google.com/file/d/1-2POunzC7aFbkKK5LeBJNsFYMBBY8dNx/view?usp=sharing",
                                 dbPath = "~/SpaDES_book/castorExample/R/scenarios/comparison_stsm")
+
+```
+
+Check where the `getCastorModulesAndDB.R` and `params.R` files ended up.
+`setupFunctions()` respected the folder structure in `PredictiveEcology.org` 
+and placed these files in `tutos/castorExample/` *within* the specified
+`projectPath`. We'll need to remember this for later.
+
+After the "workaround" `setupProject` does all the heavy-lifting of
+setting up the workflow, namely installing all package dependencies
+listed in the several modules and in `setupProject(..., packages)`,
+creating all the necessary folders, sourcing additional files and
+creating parameter, inputs and outputs lists -- see
+[`?setupProject`](https://spades-project.predictiveecology.org/reference/setupProject.html).
+
+Note that all folder/file paths are *relative* to `projectPath`, even the file 
+path passed to `parameters` (remember the file path from above?).
+
+```{r wfsetup}
+#| results: hide
+#| cache: false 
 
 ## set up the workflow paths, dependencies and modules
 ## as well as simulation parameters, (some) inputs and outputs
