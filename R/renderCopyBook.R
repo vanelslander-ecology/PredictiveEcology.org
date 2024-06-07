@@ -2,7 +2,7 @@
 message("Rendering book...")
 quarto::quarto_render("training/", as_job = FALSE)
 
-## render website -- keep commented out for GHActions
+## render website
 message("Rendering website...")
 quarto::quarto_render(as_job = FALSE)
 
