@@ -44,10 +44,16 @@ if (Sys.getenv("USERNAME") == "GHA") {
 qmdPath <- normalizePath(getwd(), winslash = "/")
 
 if (!interactive()) { 
-  dir.create("~/tutos/LandRExample", recursive = TRUE)
-  knitr::opts_knit$set(root.dir = "~/tutos/LandRExample")
+  dir.create("~/tutos/LandRDemo_coreVeg", recursive = TRUE)
+  knitr::opts_knit$set(root.dir = "~/tutos/LandRDemo_coreVeg")
 }
 ```
+
+::: {.callout-note appearance="simple"}
+*1.5 hours -- estimated time for 1st time executing*
+
+*12Gb RAM -- estimated RAM for executing*
+:::
 
 [LandR](https://landr-manual.predictiveecology.org/) is a forest
 landscape model implemented as a collection of `SpaDES` modules in R. It
@@ -76,6 +82,36 @@ using `setupProject` from the
 [`SpaDES.project`](https://spades-project.predictiveecology.org/)
 package and current versions of the LandR modules.
 
+::: {#imp-gdrive .callout-important}
+## Google account needed for this example
+
+You need to have a Google account to access some of the data using the
+`googledrive` R package (part of the `tidyverse` family)[^1].
+
+During the `simInit()` (or `simInitAndSpades()`) call R will prompt you
+to either choose a previously authenticated account (if you have
+previously used `googledrive`) or to open a browser window and
+authenticate. Make sure you give `tidyverse` read/write access to your
+files:
+
+```{r fig-gdriveauth}
+#| echo: false
+#| fig-align: center
+#| fig-width: 5
+
+figPath <- normalizePath(file.path(qmdPath, "assets/img/gdriveauth.png"),
+                winslash = "/")
+
+knitr::include_graphics(figPath, rel_path = FALSE, dpi = NA)
+```
+
+We will eventually transition to *not* hosting data on Google. Until
+then, our apologies for any inconvenience.
+:::
+
+
+## All the steps of an ecological modelling project in a continuous workflow
+
 ## Workflow setup
 
 ```{r setupProject}
@@ -83,7 +119,8 @@ package and current versions of the LandR modules.
 #| cache: false 
 
 repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
-install.packages(c("SpaDES.project"), repos = repos)
+install.packages(c("SpaDES.project"), repos = repos, dependencies = TRUE)
+remotes::install_github("PredictiveEcology/SpaDES.project@development")
 library(SpaDES.project)
 
 out <- setupProject(
@@ -108,17 +145,13 @@ out <- setupProject(
     "repos" = repos
   ),
   modules = c(
-    "PredictiveEcology/Biomass_speciesData@development",
-    "PredictiveEcology/Biomass_borealDataPrep@development",
-    "PredictiveEcology/Biomass_speciesParameters@development",
+    "PredictiveEcology/Biomass_speciesData@main",
+    "PredictiveEcology/Biomass_borealDataPrep@main",
+    "PredictiveEcology/Biomass_speciesParameters@main",
     "PredictiveEcology/Biomass_core@development",
-    "PredictiveEcology/Biomass_validationKNN@development"
-    # "Biomass_speciesData",
-    # "Biomass_borealDataPrep",
-    # "Biomass_speciesParameters",
-    # "Biomass_core",
-    # "Biomass_validationKNN"
+    "PredictiveEcology/Biomass_validationKNN@main"
   ),
+  overwrite = TRUE,
   ## SIMULATION SETUP ------------------------------------
   times = list(start = 2001, end = 2031),
   params = "PredictiveEcology/PredictiveEcology.org@training-book/tutos/LandRDemo_coreVeg/params.R",
@@ -223,23 +256,55 @@ Please note that it may take over an hour to download all necessary raw
 data and fit model parameters.
 
 ```{r runSim}
+#| eval: false
+#| results: hide
+
+## remove validation module, can only be run after simulation's done
+out$modules <- out$modules[out$modules != "Biomass_validationKNN"]  
+
+## initialise then run simulation 
+options("LandR.assertions" = TRUE)
+simInitOut <- SpaDES.core::simInit2(out)
+simOut <- SpaDES.core::spades(simInitOut)
+```
+
+Or use `simInitAndSpades2()`
+
+```{r runSim2}
+#| eval: false
+#| results: hide
+
+## remove validation module, can only be run after simulation's done
+out$modules <- out$modules[out$modules != "Biomass_validationKNN"]  
+
+simOut <- SpaDES.core::simInitAndSpades2(out)
+```
+
+```{r s}
+#| eval: false
+
+## remove validation module, can only be run after simulation's done
+out$modules <- out$modules[out$modules != "Biomass_validationKNN"]  
+
+simOut <- SpaDES.core::simInitAndSpades2(out)
+```
+
+```{r runSim}
 #| results: hide
 #| cache: false 
 
 ## remove validation module, can only be run after simulation's done
 out$modules <- out$modules[out$modules != "Biomass_validationKNN"]  
 
-## initialise simulation and cache
-simInitOut <- do.call(SpaDES.core::simInit, out) |>
-  reproducible::Cache()
-
+## initialise then run simulation 
+simInitOut <- SpaDES.core::simInit2(out)
 simOut <- SpaDES.core::spades(simInitOut)
 ```
 
 #### Turn plotting on *after* setting up the workflow
 
 We can change parameters and re-run the simulation to, e.g., activate
-live plotting in *Biomass_core*, without having to 
+live plotting in *Biomass_core*, without having to
 
 -   change the parameter provided to `setupProject`
 
@@ -250,16 +315,23 @@ output of `SpaDES.core::completed(simInitOut)`), this still means that
 `simInitOut` has to be re-generated for this purpose, otherwise `spades`
 would try to resume the simulation from the "last year".
 
-Thanks to internall caching, it will only take seconds to "redo" `simInitOut`.
-You will also notice that `init` events are retrieved from cache, this
-time around.
+Thanks to internall caching, it will only take seconds to "redo"
+`simInitOut`. You will also notice that `init` events are retrieved from
+cache, this time around.
 
 ```{r runSim}
 #| eval: false
 #| cache: false 
 
-simInitOut <- do.call(SpaDES.core::simInit, out)
+simInitOut <- SpaDES.core::simInit2(out)
 simOut <- SpaDES.core::spades(simInitOut, debug = "init")
 ```
 
+
+
+
 ### Many replicates {#sec-LandRReplication}
+
+[^1]: See
+    [`?googledrive::drive_auth`](https://rdrr.io/cran/googledrive/man/drive_auth.html)
+    for more information.
