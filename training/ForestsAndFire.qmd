@@ -147,14 +147,14 @@ We can do all sorts of things. We will start with a few simple
 shows the events that were run. `elapsedTime` shows how much time 
 each event too.
 
-```{r,eval=FALSE}
+```{r}
 completed(outSim)
 elapsedTime(outSim, units = "minute")
 ```
 
 The module metadata can be accessed from the `sim` or can be read from the module source files or it is usually built into the `Rmd` file that comes with the module.
 
-```{r, eval=FALSE}
+```{r}
 mm <- moduleMetadata(outSim)
 
 # a list of all the module metadata
