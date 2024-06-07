@@ -55,7 +55,7 @@ where a workflow with several modules is setup and run.
 ```{r setupProject}
 repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
 if (!require("SpaDES.project"))
-  install.packages(c("SpaDES.project", "SpaDES.core"), repos = repos)
+  install.packages(c("SpaDES.project", "SpaDES.core"), repos = repos, dependencies = TRUE)
 ```
 
 ## Using `setupProject`
