@@ -121,7 +121,7 @@ then, our apologies for any inconvenience.
 #| cache: false 
 
 repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
-install.packages(c("SpaDES.project"), repos = repos, dependencies = TRUE)
+# install.packages(c("SpaDES.project"), repos = repos, dependencies = TRUE)
 remotes::install_github("PredictiveEcology/SpaDES.project@development")
 library(SpaDES.project)
 
