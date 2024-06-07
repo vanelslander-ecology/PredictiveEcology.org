@@ -11,7 +11,12 @@ categories:
 comments: false
 ---
 
-*Signup is still active below -- please add your email address if you are interested*
+*Registration for this workshop is now closed*.
+
+If you missed it, but would like to attend a future workshop, please
+reach out to [Eliot](../bios/community/aaaeliot.qmd) or
+[Ceres](../bios/community/aaaeliot.qmd) so that we can add you to the
+wait list.
 
 ## Date: June 11 - 13, 2024
 
@@ -21,12 +26,101 @@ The dates have been finalized!
 
 Thanks to all who filled in the survey below.
 
-## Tentative Logistics
+"WOYO", Work On Your Own + health breaks
 
-The workshop will be flexible in that you can attend/skip the sessions at your leisure and according to your own availability. Each session will be a combination of relatively short video presentations with “work-on-your-own” time, so that you can advance as fast as you want. We will maintain the virtual chat open throughout the day, including between video sessions, to allow for questions, troubleshooting, conversations etc. 
-A detailed agenda of session times and topics, and details for the virtual room, will be circulated closer to the date.
+In each session you will have time to work through the examples and take
+breaks. The last 15min of each WOYO will be with "open video and chat"
+to ask questions and discuss as a group.
 
-We expect the workshop to run every day from 8:30am to 3:00pm Pacific Time. Our goal is to create a schedule of individual learning modules that we will follow precisely like a conference, so that people can disconnect and reconnect as needed.
+All times in Pacific Daylight Time (GMT-7)
+
++-----------------------------+----------------------------------------------+
+| **DAY 1**                   | **SpaDES foundations**                       |
++-----------------------------+----------------------------------------------+
+| 8:30 - 9:20                 | Introduction                                 |
++-----------------------------+----------------------------------------------+
+|                             | Workshop logistics                           |
++-----------------------------+----------------------------------------------+
+|                             | What is SpaDES and why use it?               |
++-----------------------------+----------------------------------------------+
+| 9:30 - 10:00                | Introduction to SpaDES modules               |
++-----------------------------+----------------------------------------------+
+| 10:00 - 11:00               | WOYO                                         |
++-----------------------------+----------------------------------------------+
+| 11:00 - 11:30               | Module files and metadata                    |
++-----------------------------+----------------------------------------------+
+|                             | Module inputs                                |
++-----------------------------+----------------------------------------------+
+| 11:30 - 12:30               | WOYO                                         |
++-----------------------------+----------------------------------------------+
+| 12:30 - 1:30                | LUNCH BREAK                                  |
++-----------------------------+----------------------------------------------+
+| 1:30 - 2:00                 | The `simList`                                |
++-----------------------------+----------------------------------------------+
+| 2:00 - 3:00                 | WOYO                                         |
++-----------------------------+----------------------------------------------+
+| 3:00 - 3:30                 | Modules & events                             |
++-----------------------------+----------------------------------------------+
+|                             | Event scheduling                             |
++-----------------------------+----------------------------------------------+
+| 3:30 - free ending\         | WOYO                                         |
+| or\                         |                                              |
+| next morning for earlier    |                                              |
+| time zones                  |                                              |
++-----------------------------+----------------------------------------------+
+| **DAY 2**                   | **Continuous workflows with simple           |
+|                             | examples**                                   |
++-----------------------------+----------------------------------------------+
+| 8:30 - 9:00                 | Revisit previous WOYO and Day 1              |
++-----------------------------+----------------------------------------------+
+| 9:00 - 9:30                 | Continuous workflows                         |
+|                             |                                              |
+|                             | Caching                                      |
++-----------------------------+----------------------------------------------+
+| 9:30 - 10:30                | WOYO                                         |
++-----------------------------+----------------------------------------------+
+| 10:30 - 11:00               | `prepInputs()`                               |
++-----------------------------+----------------------------------------------+
+| 11:00 - 12:00               | WOYO                                         |
++-----------------------------+----------------------------------------------+
+| 12:00 - 1:00                | LUNCH BREAK                                  |
++-----------------------------+----------------------------------------------+
+| 1:00 - 1:30                 | SpaDES workflows and projects with           |
+|                             | `setupProject`                               |
++-----------------------------+----------------------------------------------+
+| 1:30 - 2:30                 | WOYO                                         |
++-----------------------------+----------------------------------------------+
+| 2:30 - 3:00                 | Simple workflow for an ecological example    |
++-----------------------------+----------------------------------------------+
+| 3:00 - free ending\         | WOYO                                         |
+| or\                         |                                              |
+| next morning for earlier    |                                              |
+| time zones                  |                                              |
++-----------------------------+----------------------------------------------+
+| **DAY 3**                   | **Using continuous workflows with real       |
+|                             | challenges**                                 |
++-----------------------------+----------------------------------------------+
+| 8:30 - 9:00                 | Revisit previous WOYO and Day 2              |
++-----------------------------+----------------------------------------------+
+| 9:00 - 9:30                 | Flexibility comes at a cost, But it's worth  |
+|                             | it!                                          |
++-----------------------------+----------------------------------------------+
+| 9:30 - 10:00                | Forest landscape modelling -                 |
+|                             | parameterisation                             |
++-----------------------------+----------------------------------------------+
+| 10:00 - 11:00               | WOYO                                         |
++-----------------------------+----------------------------------------------+
+| 11:00 - 11:30               | Forest landscape modelling - replication,    |
+|                             | validation, model selection                  |
++-----------------------------+----------------------------------------------+
+| 11:30 - 12:30               | WOYO                                         |
++-----------------------------+----------------------------------------------+
+| 12:30 - 1:30                | LUNCH BREAK                                  |
++-----------------------------+----------------------------------------------+
+| 1:30 - 2:00                 | Forests and wildfire                         |
++-----------------------------+----------------------------------------------+
+| 2:00 - 3:00                 | WOYO                                         |
++-----------------------------+----------------------------------------------+
 
 We are developing a book that we will use for the workshop. We are slowly building up the chapters, please visit if you are curious, but the content will be edited on an ongoing basis until the workshop.
 (https://predictiveecology.org/training/_book/)
