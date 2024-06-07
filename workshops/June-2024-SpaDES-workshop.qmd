@@ -1,6 +1,8 @@
 ---
 title: "Robust and nimble scientific workflows, using SpaDES"
-author: "Eliot McIntire"
+author: 
+  - "Eliot McIntire"
+  - "Ceres Barros"
 description: "A multi-day workshop focusing on learning robust approaches to building reuseable, reproducible workflows for ecological applications"
 date: last-modified
 image: https://besjournals.onlinelibrary.wiley.com/cms/asset/db13319c-88b4-4821-9eaa-a2e62364b399/mee314034-fig-0004-m.jpg
@@ -22,9 +24,9 @@ wait list.
 
 ## Location: Virtual with MS Teams
 
-The dates have been finalized!
+Meeting link will be e-mailed to all workshop participants.
 
-Thanks to all who filled in the survey below.
+## Agenda
 
 "WOYO", Work On Your Own + health breaks
 
@@ -123,27 +125,3 @@ All times in Pacific Daylight Time (GMT-7)
 +----------------------------------+----------------------------------+
 | 2:00 - 3:00                      | WOYO                             |
 +----------------------------------+----------------------------------+
-
-We are developing a book that we will use for the workshop. We are
-slowly building up the chapters, please visit if you are curious, but
-the content will be edited on an ongoing basis until the workshop.
-(https://predictiveecology.org/training/\_book/)
-
-We will be updating the logistics for the Workshop here:
-(https://predictiveecology.org/workshops/June-2024-SpaDES-workshop.html)
-
-We look forward to connecting with you all in June!
-
-Ceres and Eliot
-
-## Signup
-
-If you are interested in participating, please sign up here. Please also
-indicate preferences of which topics are of interest and at what level.
-We will attempt to customize the workshop accordingly.
-
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc0RlY9xjbaaIskoX_zR8qy-UBb95JZ5TVjOtyIlJLNYs9CEQ/viewform?embedded=true" width="680" height="2982" frameborder="0" marginheight="0" marginwidth="0">
-
-Loading…
-
-</iframe>
