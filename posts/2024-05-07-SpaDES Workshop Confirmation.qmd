@@ -9,9 +9,11 @@ comments: false
 
 Dates and format finalized for Workshop Jun 11 - 13, 2024!
 
-Dr. Ceres Barros and I will be leading a 3 day workshop on **Robust and nimble scientific workflows, using SpaDES**.
+Dr. Ceres Barros and I will be leading a 3 day workshop on **Robust and
+nimble scientific workflows, using SpaDES**.
 
-[Please sign up if you are interested](https://predictiveecology.org/workshops/June-2024-SpaDES-workshop.html)
+[Please sign up if you are
+interested](https://predictiveecology.org/workshops/June-2024-SpaDES-workshop.html)
 
 Thank you,
 

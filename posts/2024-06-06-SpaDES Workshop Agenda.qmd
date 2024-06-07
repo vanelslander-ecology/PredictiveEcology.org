@@ -1,0 +1,20 @@
+---
+title: "SpaDES Workshop Agenda added"
+author: "Ceres Barros"
+date: last-modified
+categories:
+  - Workshop
+comments: false
+---
+
+Registration is now closed for the SpaDES workshop in June 11 - 13,
+2024, and the outline of the
+[agenda](../workshops/June-2024-SpaDES-workshop.qmd) has been posted.
+
+Note that although the agenda content/timings are unlikely to change
+much, there might be some minor adjustments in the next few days. Stay
+tuned!
+
+Thank you,
+
+Eliot and Ceres
