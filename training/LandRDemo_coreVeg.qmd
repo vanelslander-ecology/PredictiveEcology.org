@@ -44,8 +44,8 @@ if (Sys.getenv("USERNAME") == "GHA") {
 qmdPath <- normalizePath(getwd(), winslash = "/")
 
 if (!interactive()) { 
-  dir.create("~/tutos/LandRDemo_coreVeg", recursive = TRUE)
-  knitr::opts_knit$set(root.dir = "~/tutos/LandRDemo_coreVeg")
+  dir.create("~/SpaDES_book/LandRDemo_coreVeg", recursive = TRUE)
+  knitr::opts_knit$set(root.dir = "~/SpaDES_book/LandRDemo_coreVeg")
 }
 ```
 
@@ -132,7 +132,7 @@ out <- setupProject(
   eventCaching = c(".inputObjects", "init"),
   useParallel = FALSE,
   paths = list("packagePath" = "packages/",
-               "projectPath" = "~/tutos/LandRDemo_coreVeg"),
+               "projectPath" = "~/SpaDES_book/LandRDemo_coreVeg"),
   packages = c(
     ## these are needed but don't load
     "PredictiveEcology/SpaDES.experiment@development (HEAD)",

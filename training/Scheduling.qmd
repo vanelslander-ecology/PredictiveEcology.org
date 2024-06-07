@@ -92,7 +92,7 @@ the SpaDES module below, in their respective sections. We have added 1
 new section, called "Prediction".
 
 ```{r newodule}
-SpaDES.core::newModule(name = "scheduling", path = "tutos/scheduling")
+SpaDES.core::newModule(name = "scheduling", path = "~/SpaDES_book/scheduling")
 ```
 
 Open the module file, which will be printed in the console. Scroll down
@@ -266,7 +266,7 @@ createsOutput(objectName = "predictions", objectClass = "data.frame",
 The resulting module can now be run.
 
 ```{r run}
-SpaDES.core::simInitAndSpades(modules = "scheduling", paths = list(modulePath = "tutos/scheduling"))
+SpaDES.core::simInitAndSpades(modules = "scheduling", paths = list(modulePath = "~/SpaDES_book/scheduling"))
 ```
 
 A complete version of this new module can be found at

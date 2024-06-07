@@ -74,7 +74,7 @@ Require::Require(c("reproducible", "SpaDES.core"), repos = c("https://predictive
 
 # make a module
 nm1 <- "My_linear_model"
-modulePath <- "tutos/NewModuleIntro/NewModule"
+modulePath <- "~/SpaDES_book/NewModuleIntro/NewModule"
 newModule(name = nm1, path = modulePath, open = FALSE,
           events = list(
             init = {

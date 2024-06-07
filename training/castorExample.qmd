@@ -41,8 +41,8 @@ if (Sys.getenv("USERNAME") == "GHA") {
 qmdPath <- normalizePath(getwd(), winslash = "/")
 
 if (!interactive()) { 
-  dir.create("~/tutos/castorExample", recursive = TRUE)
-  knitr::opts_knit$set(root.dir = "~/tutos/castorExample")
+  dir.create("~/SpaDES_book/castorExample", recursive = TRUE)
+  knitr::opts_knit$set(root.dir = "~/SpaDES_book/castorExample")
 }
 ```
 
@@ -111,14 +111,14 @@ setupFunctions(paths = list("projectPath" = "~/"),
                functions = c("PredictiveEcology/PredictiveEcology.org@main/tutos/castorExample/getCastorModulesAndDB.R",
                              "PredictiveEcology/PredictiveEcology.org@main/tutos/castorExample/params.R"),
                overwrite = TRUE)
-outMod <- getCastorModulesAndDB(paths = list("modulePath" = "~/tutos/castorExample/modules/",
-                                             "projectPath" = "~/tutos/castorExample"),
+outMod <- getCastorModulesAndDB(paths = list("modulePath" = "~/SpaDES_book/castorExample/modules/",
+                                             "projectPath" = "~/SpaDES_book/castorExample"),
                                 modules = c("dataCastor", 
                                             "growingStockCastor", 
                                             "forestryCastor", 
                                             "blockingCastor"),
                                 dbURL = "https://drive.google.com/file/d/1-2POunzC7aFbkKK5LeBJNsFYMBBY8dNx/view?usp=sharing",
-                                dbPath = "~/tutos/castorExample/R/scenarios/comparison_stsm")
+                                dbPath = "~/SpaDES_book/castorExample/R/scenarios/comparison_stsm")
 
 ## set up the workflow paths, dependencies and modules
 ## as well as simulation parameters, (some) inputs and outputs
@@ -127,7 +127,7 @@ out <- setupProject(
                "outputPath" = "R/scenarios/comparison_stsm/outputs",
                "modulePath" = "modules/",
                "cachePath" = "modules/forestryCastor",
-               "projectPath" = "~/tutos/castorExample"),
+               "projectPath" = "~/SpaDES_book/castorExample"),
   modules = names(outMod$modules),
   options = list(repos = repos),
   functions = "bcgov/castor@main/R/functions/R_Postgres.R",
@@ -340,7 +340,7 @@ out <- setupProject(
                "outputPath" = "/R/scenarios/comparison_stsm/outputs",
                "modulePath" = "modules/",
                "cachePath" = "modules/forestryCastor",
-               "projectPath" = "~/tutos/castorExample/"),
+               "projectPath" = "~/SpaDES_book/castorExample/"),
   modules = modules,
   functions = "bcgov/castor@main/R/functions/R_Postgres.R",
   ## install and load

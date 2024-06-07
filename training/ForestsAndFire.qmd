@@ -5,7 +5,7 @@ editor_options:
   chunk_output_type: console
 execute:
   tidy: false
-warning: false
+  warning: false
   message: false
   error: false
   cache: true
@@ -43,8 +43,8 @@ googledrive::drive_auth(path = Sys.getenv("GOOGLE_APP_CREDENTIALS"))
 qmdPath <- normalizePath(getwd(), winslash = "/")
 
 if (!interactive()) {
-dir.create("~/tutos/castorExample", recursive = TRUE)
-knitr::opts_knit$set(root.dir = "~/tutos/castorExample")
+dir.create("~/SpaDES_book/scfm_example_fresh", recursive = TRUE)
+knitr::opts_knit$set(root.dir = "~/SpaDES_book/scfm_example_fresh")
 }
 ```
 
@@ -74,6 +74,7 @@ out <- SpaDES.project::setupProject(
   updateRprofile = TRUE,
   name = "scfm_example_fresh",
   useGit = FALSE,
+  paths = list(projectPath = "~/SpaDES_book"),
   modules = c("PredictiveEcology/Biomass_borealDataPrep@development",
               "PredictiveEcology/Biomass_core@development",
               "PredictiveEcology/Biomass_regeneration@development",
