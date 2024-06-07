@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eliot McIntire">
-<meta name="dcterms.date" content="2024-05-31">
+<meta name="dcterms.date" content="2024-06-04">
 
-<title>Robust and nimble scientific workflows, using SpaDES - 9&nbsp; The simList - What is it?</title>
+<title>Robust and nimble scientific workflows, using SpaDES - 8&nbsp; The simList - What is it?</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,8 +66,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./ModuleInputs.html" rel="next">
-<link href="./Scheduling.html" rel="prev">
+<link href="./ModulesAndEvents.html" rel="next">
+<link href="./ModuleInputs.html" rel="prev">
 <link href="./assets/logo/favicon-16x16.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -231,7 +231,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./simList.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./simList.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -307,28 +307,39 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ModulesAndEvents.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Scheduling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scheduling events</span></span></a>
+  <a href="./ModuleInputs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module Inputs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simList.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ModuleInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module Inputs</span></span></a>
+  <a href="./ModulesAndEvents.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Scheduling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling events</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">ContinuousWorkflows.qmd</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Caching.html" class="sidebar-item-text sidebar-link">
@@ -341,15 +352,15 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="./setupProject.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SpaDES workflows and projects</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflowSimple2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Simple workflow with existing modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -360,14 +371,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
+  <a href="./ForestsAndFire.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ForestsAndFire.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
+  <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -394,28 +405,28 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#where-does-simlist-come-from" id="toc-where-does-simlist-come-from" class="nav-link active" data-scroll-target="#where-does-simlist-come-from"><span class="header-section-number">9.1</span> Where does <code>simList</code> come from?</a></li>
-  <li><a href="#how-can-we-specify-a-simlist" id="toc-how-can-we-specify-a-simlist" class="nav-link" data-scroll-target="#how-can-we-specify-a-simlist"><span class="header-section-number">9.2</span> How can we specify a <code>simList</code>?</a></li>
-  <li><a href="#how-spades-works-simlists" id="toc-how-spades-works-simlists" class="nav-link" data-scroll-target="#how-spades-works-simlists"><span class="header-section-number">9.3</span> How <code>SpaDES</code> works: simLists</a></li>
-  <li><a href="#accessing-the-parts-of-a-simlists" id="toc-accessing-the-parts-of-a-simlists" class="nav-link" data-scroll-target="#accessing-the-parts-of-a-simlists"><span class="header-section-number">9.4</span> Accessing the parts of a simLists</a></li>
-  <li><a href="#model-specification" id="toc-model-specification" class="nav-link" data-scroll-target="#model-specification"><span class="header-section-number">9.5</span> Model specification</a>
+  <li><a href="#where-does-simlist-come-from" id="toc-where-does-simlist-come-from" class="nav-link active" data-scroll-target="#where-does-simlist-come-from"><span class="header-section-number">8.1</span> Where does <code>simList</code> come from?</a></li>
+  <li><a href="#how-can-we-specify-a-simlist" id="toc-how-can-we-specify-a-simlist" class="nav-link" data-scroll-target="#how-can-we-specify-a-simlist"><span class="header-section-number">8.2</span> How can we specify a <code>simList</code>?</a></li>
+  <li><a href="#how-spades-works-simlists" id="toc-how-spades-works-simlists" class="nav-link" data-scroll-target="#how-spades-works-simlists"><span class="header-section-number">8.3</span> How <code>SpaDES</code> works: simLists</a></li>
+  <li><a href="#accessing-the-parts-of-a-simlists" id="toc-accessing-the-parts-of-a-simlists" class="nav-link" data-scroll-target="#accessing-the-parts-of-a-simlists"><span class="header-section-number">8.4</span> Accessing the parts of a simLists</a></li>
+  <li><a href="#model-specification" id="toc-model-specification" class="nav-link" data-scroll-target="#model-specification"><span class="header-section-number">8.5</span> Model specification</a>
   <ul class="collapse">
-  <li><a href="#initiliaze-an-empty-simlist-object" id="toc-initiliaze-an-empty-simlist-object" class="nav-link" data-scroll-target="#initiliaze-an-empty-simlist-object"><span class="header-section-number">9.5.1</span> Initiliaze an empty <code>simList</code> object</a></li>
-  <li><a href="#inspect-the-empty-simlist-object" id="toc-inspect-the-empty-simlist-object" class="nav-link" data-scroll-target="#inspect-the-empty-simlist-object"><span class="header-section-number">9.5.2</span> Inspect the empty <code>simList</code> object</a></li>
-  <li><a href="#inspect-the-new-simlist-object" id="toc-inspect-the-new-simlist-object" class="nav-link" data-scroll-target="#inspect-the-new-simlist-object"><span class="header-section-number">9.5.3</span> Inspect the new <code>simList</code> object</a></li>
-  <li><a href="#run-the-simulation" id="toc-run-the-simulation" class="nav-link" data-scroll-target="#run-the-simulation"><span class="header-section-number">9.5.4</span> Run the simulation</a></li>
-  <li><a href="#compare-the-simlist-before-and-after" id="toc-compare-the-simlist-before-and-after" class="nav-link" data-scroll-target="#compare-the-simlist-before-and-after"><span class="header-section-number">9.5.5</span> Compare the simList before and after</a></li>
+  <li><a href="#initiliaze-an-empty-simlist-object" id="toc-initiliaze-an-empty-simlist-object" class="nav-link" data-scroll-target="#initiliaze-an-empty-simlist-object"><span class="header-section-number">8.5.1</span> Initiliaze an empty <code>simList</code> object</a></li>
+  <li><a href="#inspect-the-empty-simlist-object" id="toc-inspect-the-empty-simlist-object" class="nav-link" data-scroll-target="#inspect-the-empty-simlist-object"><span class="header-section-number">8.5.2</span> Inspect the empty <code>simList</code> object</a></li>
+  <li><a href="#inspect-the-new-simlist-object" id="toc-inspect-the-new-simlist-object" class="nav-link" data-scroll-target="#inspect-the-new-simlist-object"><span class="header-section-number">8.5.3</span> Inspect the new <code>simList</code> object</a></li>
+  <li><a href="#run-the-simulation" id="toc-run-the-simulation" class="nav-link" data-scroll-target="#run-the-simulation"><span class="header-section-number">8.5.4</span> Run the simulation</a></li>
+  <li><a href="#compare-the-simlist-before-and-after" id="toc-compare-the-simlist-before-and-after" class="nav-link" data-scroll-target="#compare-the-simlist-before-and-after"><span class="header-section-number">8.5.5</span> Compare the simList before and after</a></li>
   </ul></li>
-  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">9.6</span> See also</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">8.6</span> See also</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./simList.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./simList.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-simlist" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span></h1>
+<h1 class="title"><span id="sec-simlist" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span></h1>
 </div>
 
 
@@ -432,7 +443,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 31, 2024</p>
+      <p class="date">June 4, 2024</p>
     </div>
   </div>
   
@@ -465,18 +476,18 @@ window.Quarto = {
 <div class="cell-output cell-output-stderr">
 <pre><code>Setting:
   options(
-    reproducible.cachePath = 'C:/Users/emcintir/AppData/Local/Temp/RtmpMR940R/reproducible/cache'
-    spades.inputPath = 'C:/Users/emcintir/AppData/Local/Temp/RtmpMR940R/SpaDES/inputs'
-    spades.outputPath = 'C:/Users/emcintir/AppData/Local/Temp/RtmpMR940R/SpaDES/outputs'
-    spades.modulePath = 'C:/Users/emcintir/AppData/Local/Temp/RtmpMR940R/SpaDES/modules'
-    spades.scratchPath = 'C:/Users/emcintir/AppData/Local/Temp/RtmpMR940R/SpaDES/scratch'
+    reproducible.cachePath = 'C:/Users/cbarros/AppData/Local/Temp/Rtmp4ktWut/reproducible/cache'
+    spades.inputPath = 'C:/Users/cbarros/AppData/Local/Temp/Rtmp4ktWut/SpaDES/inputs'
+    spades.outputPath = 'C:/Users/cbarros/AppData/Local/Temp/Rtmp4ktWut/SpaDES/outputs'
+    spades.modulePath = 'C:/Users/cbarros/AppData/Local/Temp/Rtmp4ktWut/SpaDES/modules'
+    spades.scratchPath = 'C:/Users/cbarros/AppData/Local/Temp/Rtmp4ktWut/SpaDES/scratch'
   )</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Jun03 09:00:54 simInit Using setDTthreads(1). To change: 'options(spades.DTthreads = X)'.</code></pre>
+<pre><code>May31 16:34:16 simInit Using setDTthreads(1). To change: 'options(spades.DTthreads = X)'.</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Elpsed time for simInit: 0.1251328 secs</code></pre>
+<pre><code>Elpsed time for simInit: 0.0741179 secs</code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -492,7 +503,7 @@ window.Quarto = {
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">envir</span>(sim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;environment: 0x000001dd8429d9a8&gt;
+<pre><code>&lt;environment: 0x0000016084530f88&gt;
 attr(,"name")
 [1] "sim"</code></pre>
 </div>
@@ -502,21 +513,21 @@ attr(,"name")
 <pre><code>[1] 3</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;environment: 0x000001dd81e0bdb8&gt;
+<pre><code>&lt;environment: 0x000001608307ae40&gt;
 attr(,"name")
 [1] "sim"</code></pre>
 </div>
 </div>
-<section id="where-does-simlist-come-from" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="where-does-simlist-come-from"><span class="header-section-number">9.1</span> Where does <code>simList</code> come from?</h2>
+<section id="where-does-simlist-come-from" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="where-does-simlist-come-from"><span class="header-section-number">8.1</span> Where does <code>simList</code> come from?</h2>
 <p>There are 2 main ways in <code>SpaDES.core</code> to create a <code>simList</code>:</p>
 <ol type="1">
 <li>using <a href="https://rdrr.io/cran/SpaDES.core/man/simInit.html"><code>simInit()</code></a> creates a <code>simList</code> object.</li>
 <li>using <a href="https://rdrr.io/cran/SpaDES.core/man/spades.html"><code>spades()</code></a> , which returns a modified <code>simList</code> object.</li>
 </ol>
 </section>
-<section id="how-can-we-specify-a-simlist" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="how-can-we-specify-a-simlist"><span class="header-section-number">9.2</span> How can we specify a <code>simList</code>?</h2>
+<section id="how-can-we-specify-a-simlist" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="how-can-we-specify-a-simlist"><span class="header-section-number">8.2</span> How can we specify a <code>simList</code>?</h2>
 <p>A <code>simList</code> object is simply a structured data type containing various elements.</p>
 <p>The main components of a <code>simList</code> are:</p>
 <ol type="1">
@@ -525,8 +536,8 @@ attr(,"name")
 <li>A description of the data (object) dependencies.</li>
 </ol>
 </section>
-<section id="how-spades-works-simlists" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="how-spades-works-simlists"><span class="header-section-number">9.3</span> How <code>SpaDES</code> works: simLists</h2>
+<section id="how-spades-works-simlists" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="how-spades-works-simlists"><span class="header-section-number">8.3</span> How <code>SpaDES</code> works: simLists</h2>
 <p>We can examine the <code>simList</code> object structure in the usual R fashion by printing (<code>show</code>ing) it, or by using <code>str()</code>:</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -539,25 +550,25 @@ attr(,"name")
 <p><strong>NOTE:</strong> <code>simList</code>s are S4 objects, so we can use <code>getSlots()</code> and <code>slotNames()</code> to examine the object.</p>
 <p>See also <a href="https://rdrr.io/cran/SpaDES.core/man/simList-class.html"><code>?'.simList-class'</code></a></p>
 </section>
-<section id="accessing-the-parts-of-a-simlists" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="accessing-the-parts-of-a-simlists"><span class="header-section-number">9.4</span> Accessing the parts of a simLists</h2>
+<section id="accessing-the-parts-of-a-simlists" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="accessing-the-parts-of-a-simlists"><span class="header-section-number">8.4</span> Accessing the parts of a simLists</h2>
 <div class="columns-2">
 <div class="cell">
 <div class="cell-output cell-output-stderr">
 <pre><code>Setting:
   options(
-    reproducible.cachePath = 'C:/Users/emcintir/AppData/Local/Temp/RtmpEF4NuS/reproducible/cache'
-    spades.inputPath = 'C:/Users/emcintir/AppData/Local/Temp/RtmpEF4NuS/SpaDES/inputs'
-    spades.outputPath = 'C:/Users/emcintir/AppData/Local/Temp/RtmpEF4NuS/SpaDES/outputs'
-    spades.modulePath = 'C:/Users/emcintir/AppData/Local/Temp/RtmpEF4NuS/SpaDES/modules'
-    spades.scratchPath = 'C:/Users/emcintir/AppData/Local/Temp/RtmpEF4NuS/SpaDES/scratch'
+    reproducible.cachePath = 'C:/Users/cbarros/AppData/Local/Temp/Rtmpq8o9hm/reproducible/cache'
+    spades.inputPath = 'C:/Users/cbarros/AppData/Local/Temp/Rtmpq8o9hm/SpaDES/inputs'
+    spades.outputPath = 'C:/Users/cbarros/AppData/Local/Temp/Rtmpq8o9hm/SpaDES/outputs'
+    spades.modulePath = 'C:/Users/cbarros/AppData/Local/Temp/Rtmpq8o9hm/SpaDES/modules'
+    spades.scratchPath = 'C:/Users/cbarros/AppData/Local/Temp/Rtmpq8o9hm/SpaDES/scratch'
   )</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>May21 10:36:05 simInit Using setDTthreads(1). To change: 'options(spades.DTthreads = X)'.</code></pre>
+<pre><code>May07 23:12:22 simInit Using setDTthreads(1). To change: 'options(spades.DTthreads = X)'.</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Elpsed time for simInit: 0.1252339 secs</code></pre>
+<pre><code>Elpsed time for simInit: 0.191052 secs</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
@@ -676,14 +687,14 @@ attr(,"name")
 </div>
 </div>
 </section>
-<section id="model-specification" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="model-specification"><span class="header-section-number">9.5</span> Model specification</h2>
+<section id="model-specification" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="model-specification"><span class="header-section-number">8.5</span> Model specification</h2>
 <p>Simple examples (using demo modules) of <code>simInit()</code> and <code>spades()</code> calls.</p>
 <ul>
 <li>examine <code>simList</code> structure before and after the <code>spades()</code> call</li>
 </ul>
-<section id="initiliaze-an-empty-simlist-object" class="level3" data-number="9.5.1">
-<h3 data-number="9.5.1" class="anchored" data-anchor-id="initiliaze-an-empty-simlist-object"><span class="header-section-number">9.5.1</span> Initiliaze an empty <code>simList</code> object</h3>
+<section id="initiliaze-an-empty-simlist-object" class="level3" data-number="8.5.1">
+<h3 data-number="8.5.1" class="anchored" data-anchor-id="initiliaze-an-empty-simlist-object"><span class="header-section-number">8.5.1</span> Initiliaze an empty <code>simList</code> object</h3>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -692,41 +703,41 @@ attr(,"name")
 <div class="cell-output cell-output-stderr">
 <pre><code>Setting:
   options(
-    reproducible.cachePath = 'C:/Users/emcintir/AppData/Local/Temp/RtmpMR940R/reproducible/cache'
-    spades.inputPath = 'C:/Users/emcintir/AppData/Local/Temp/RtmpMR940R/SpaDES/inputs'
-    spades.outputPath = 'C:/Users/emcintir/AppData/Local/Temp/RtmpMR940R/SpaDES/outputs'
-    spades.modulePath = 'C:/Users/emcintir/AppData/Local/Temp/RtmpMR940R/SpaDES/modules'
-    spades.scratchPath = 'C:/Users/emcintir/AppData/Local/Temp/RtmpMR940R/SpaDES/scratch'
+    reproducible.cachePath = 'C:/Users/cbarros/AppData/Local/Temp/Rtmp4ktWut/reproducible/cache'
+    spades.inputPath = 'C:/Users/cbarros/AppData/Local/Temp/Rtmp4ktWut/SpaDES/inputs'
+    spades.outputPath = 'C:/Users/cbarros/AppData/Local/Temp/Rtmp4ktWut/SpaDES/outputs'
+    spades.modulePath = 'C:/Users/cbarros/AppData/Local/Temp/Rtmp4ktWut/SpaDES/modules'
+    spades.scratchPath = 'C:/Users/cbarros/AppData/Local/Temp/Rtmp4ktWut/SpaDES/scratch'
   )</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Jun03 09:00:54 simInit Using setDTthreads(1). To change: 'options(spades.DTthreads = X)'.</code></pre>
+<pre><code>May31 16:34:16 simInit Using setDTthreads(1). To change: 'options(spades.DTthreads = X)'.</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Elpsed time for simInit: 0.03232813 secs</code></pre>
+<pre><code>Elpsed time for simInit: 0.06326294 secs</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
 <pre><code>Setting:
   options(
-    reproducible.cachePath = 'C:/Users/emcintir/AppData/Local/Temp/RtmpEF4NuS/reproducible/cache'
-    spades.inputPath = 'C:/Users/emcintir/AppData/Local/Temp/RtmpEF4NuS/SpaDES/inputs'
-    spades.outputPath = 'C:/Users/emcintir/AppData/Local/Temp/RtmpEF4NuS/SpaDES/outputs'
-    spades.modulePath = 'C:/Users/emcintir/AppData/Local/Temp/RtmpEF4NuS/SpaDES/modules'
-    spades.scratchPath = 'C:/Users/emcintir/AppData/Local/Temp/RtmpEF4NuS/SpaDES/scratch'
+    reproducible.cachePath = 'C:/Users/cbarros/AppData/Local/Temp/Rtmpq8o9hm/reproducible/cache'
+    spades.inputPath = 'C:/Users/cbarros/AppData/Local/Temp/Rtmpq8o9hm/SpaDES/inputs'
+    spades.outputPath = 'C:/Users/cbarros/AppData/Local/Temp/Rtmpq8o9hm/SpaDES/outputs'
+    spades.modulePath = 'C:/Users/cbarros/AppData/Local/Temp/Rtmpq8o9hm/SpaDES/modules'
+    spades.scratchPath = 'C:/Users/cbarros/AppData/Local/Temp/Rtmpq8o9hm/SpaDES/scratch'
   )</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>May21 10:36:06 simInit Using setDTthreads(1). To change: 'options(spades.DTthreads = X)'.</code></pre>
+<pre><code>May07 23:12:22 simInit Using setDTthreads(1). To change: 'options(spades.DTthreads = X)'.</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Elpsed time for simInit: 0.03642201 secs</code></pre>
+<pre><code>Elpsed time for simInit: 0.1008449 secs</code></pre>
 </div>
 </div>
 </section>
-<section id="inspect-the-empty-simlist-object" class="level3" data-number="9.5.2">
-<h3 data-number="9.5.2" class="anchored" data-anchor-id="inspect-the-empty-simlist-object"><span class="header-section-number">9.5.2</span> Inspect the empty <code>simList</code> object</h3>
+<section id="inspect-the-empty-simlist-object" class="level3" data-number="8.5.2">
+<h3 data-number="8.5.2" class="anchored" data-anchor-id="inspect-the-empty-simlist-object"><span class="header-section-number">8.5.2</span> Inspect the empty <code>simList</code> object</h3>
 <ol type="1">
 <li>What are the names of each of the slots in the simList?</li>
 <li>What do each of these slots contain? Hint: see <a href="https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/simList-class"><code>?.simList-class</code></a></li>
@@ -779,7 +790,7 @@ attr(,"name")
   .. .. ..$ eventType    : chr "init"
   .. .. ..$ eventPriority: num 0
   ..@ current  : list()
-  ..@ completed:&lt;environment: 0x000001dd84c1be28&gt; 
+  ..@ completed:&lt;environment: 0x00000160863c9708&gt; 
   ..@ depends  :Formal class '.simDeps' [package "SpaDES.core"] with 1 slot
   .. .. ..@ dependencies:List of 1
   .. .. .. ..$ : NULL
@@ -811,16 +822,16 @@ attr(,"name")
   .. ..$ arguments : list()
   .. .. ..- attr(*, "class")= chr "AsIs"
   ..@ paths    :List of 7
-  .. ..$ cachePath  : chr "C:/Users/emcintir/AppData/Local/Temp/RtmpEF4NuS/reproducible/cache"
-  .. ..$ inputPath  : chr "C:/Users/emcintir/AppData/Local/Temp/RtmpEF4NuS/SpaDES/inputs"
-  .. ..$ modulePath : chr "C:/Users/emcintir/AppData/Local/Temp/RtmpEF4NuS/SpaDES/modules"
-  .. ..$ outputPath : chr "C:/Users/emcintir/AppData/Local/Temp/RtmpEF4NuS/SpaDES/outputs"
-  .. ..$ rasterPath : chr "C:/Users/emcintir/AppData/Local/Temp/RtmpEF4NuS/SpaDES/scratch/raster"
-  .. ..$ scratchPath: chr "C:/Users/emcintir/AppData/Local/Temp/RtmpEF4NuS/SpaDES/scratch"
-  .. ..$ terraPath  : chr "C:/Users/emcintir/AppData/Local/Temp/RtmpEF4NuS/SpaDES/scratch/terra"
-  ..@ .envir   :&lt;environment: 0x000001dd84c1a570&gt; 
+  .. ..$ cachePath  : chr "C:/Users/cbarros/AppData/Local/Temp/Rtmpq8o9hm/reproducible/cache"
+  .. ..$ inputPath  : chr "C:/Users/cbarros/AppData/Local/Temp/Rtmpq8o9hm/SpaDES/inputs"
+  .. ..$ modulePath : chr "C:/Users/cbarros/AppData/Local/Temp/Rtmpq8o9hm/SpaDES/modules"
+  .. ..$ outputPath : chr "C:/Users/cbarros/AppData/Local/Temp/Rtmpq8o9hm/SpaDES/outputs"
+  .. ..$ rasterPath : chr "C:/Users/cbarros/AppData/Local/Temp/Rtmpq8o9hm/SpaDES/scratch/raster"
+  .. ..$ scratchPath: chr "C:/Users/cbarros/AppData/Local/Temp/Rtmpq8o9hm/SpaDES/scratch"
+  .. ..$ terraPath  : chr "C:/Users/cbarros/AppData/Local/Temp/Rtmpq8o9hm/SpaDES/scratch/terra"
+  ..@ .envir   :&lt;environment: 0x00000160863bbd60&gt; 
   .. ..- attr(*, "name")= chr "sim"
-  ..@ .xData   :&lt;environment: 0x000001dd84c1a570&gt; 
+  ..@ .xData   :&lt;environment: 0x00000160863bbd60&gt; 
   .. ..- attr(*, "name")= chr "sim"</code></pre>
 </div>
 <details open="" class="code-fold">
@@ -853,8 +864,8 @@ you could try '??.simList-class'</code></pre>
 </div>
 </div>
 </section>
-<section id="inspect-the-new-simlist-object" class="level3" data-number="9.5.3">
-<h3 data-number="9.5.3" class="anchored" data-anchor-id="inspect-the-new-simlist-object"><span class="header-section-number">9.5.3</span> Inspect the new <code>simList</code> object</h3>
+<section id="inspect-the-new-simlist-object" class="level3" data-number="8.5.3">
+<h3 data-number="8.5.3" class="anchored" data-anchor-id="inspect-the-new-simlist-object"><span class="header-section-number">8.5.3</span> Inspect the new <code>simList</code> object</h3>
 <p>Use the <code>simList</code> accessor functions to determine the following:</p>
 <ol type="1">
 <li>the modules included in the simulation and their package dependencies;</li>
@@ -904,8 +915,8 @@ you could try '??.simList-class'</code></pre>
 </details>
 </div>
 </section>
-<section id="run-the-simulation" class="level3" data-number="9.5.4">
-<h3 data-number="9.5.4" class="anchored" data-anchor-id="run-the-simulation"><span class="header-section-number">9.5.4</span> Run the simulation</h3>
+<section id="run-the-simulation" class="level3" data-number="8.5.4">
+<h3 data-number="8.5.4" class="anchored" data-anchor-id="run-the-simulation"><span class="header-section-number">8.5.4</span> Run the simulation</h3>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -915,8 +926,8 @@ you could try '??.simList-class'</code></pre>
 </details>
 </div>
 </section>
-<section id="compare-the-simlist-before-and-after" class="level3" data-number="9.5.5">
-<h3 data-number="9.5.5" class="anchored" data-anchor-id="compare-the-simlist-before-and-after"><span class="header-section-number">9.5.5</span> Compare the simList before and after</h3>
+<section id="compare-the-simlist-before-and-after" class="level3" data-number="8.5.5">
+<h3 data-number="8.5.5" class="anchored" data-anchor-id="compare-the-simlist-before-and-after"><span class="header-section-number">8.5.5</span> Compare the simList before and after</h3>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -929,8 +940,8 @@ you could try '??.simList-class'</code></pre>
 </div>
 </section>
 </section>
-<section id="see-also" class="level2" data-number="9.6">
-<h2 data-number="9.6" class="anchored" data-anchor-id="see-also"><span class="header-section-number">9.6</span> See also</h2>
+<section id="see-also" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="see-also"><span class="header-section-number">8.6</span> See also</h2>
 <p><a href="https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/simList-class"><code>?.simList-class</code></a></p>
 <p><a href="https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/simInit"><code>?simInit</code></a></p>
 <p><a href="https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/spades"><code>?spades</code></a></p>
@@ -1499,13 +1510,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Scheduling.html" class="pagination-link" aria-label="Scheduling events">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scheduling events</span></span>
+      <a href="./ModuleInputs.html" class="pagination-link" aria-label="Module Inputs">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module Inputs</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ModuleInputs.html" class="pagination-link" aria-label="Module Inputs">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module Inputs</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ModulesAndEvents.html" class="pagination-link" aria-label="Modules, Events and Functions">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

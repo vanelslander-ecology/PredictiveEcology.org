@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eliot McIntire">
-<meta name="dcterms.date" content="2024-06-04">
+<meta name="dcterms.date" content="2024-06-06">
 
-<title>Robust and nimble scientific workflows, using SpaDES - 12&nbsp; Simple workflow with existing modules</title>
+<title>Robust and nimble scientific workflows, using SpaDES - 12&nbsp; Workflows with setupProject</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -231,7 +231,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./workflowSimple2.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Simple workflow with existing modules</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./workflowSimple2.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -307,28 +307,39 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ModulesAndEvents.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Scheduling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scheduling events</span></span></a>
+  <a href="./ModuleInputs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module Inputs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simList.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ModuleInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module Inputs</span></span></a>
+  <a href="./ModulesAndEvents.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Scheduling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling events</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">ContinuousWorkflows.qmd</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Caching.html" class="sidebar-item-text sidebar-link">
@@ -341,15 +352,15 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="./setupProject.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SpaDES workflows and projects</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflowSimple2.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Simple workflow with existing modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -360,14 +371,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
+  <a href="./ForestsAndFire.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ForestsAndFire.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
+  <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -403,9 +414,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./workflowSimple2.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Simple workflow with existing modules</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./workflowSimple2.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Simple workflow with existing modules</span></h1>
+<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></h1>
 </div>
 
 
@@ -422,7 +433,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 4, 2024</p>
+      <p class="date">June 6, 2024</p>
     </div>
   </div>
   
@@ -443,7 +454,7 @@ window.Quarto = {
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>repos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"predictiveecology.r-universe.dev"</span>, <span class="fu">getOption</span>(<span class="st">"repos"</span>))</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"SpaDES.project"</span>))</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"SpaDES.project"</span>, <span class="st">"SpaDES.core"</span>), <span class="at">repos =</span> repos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"SpaDES.project"</span>, <span class="st">"SpaDES.core"</span>), <span class="at">repos =</span> repos, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -475,6 +486,91 @@ window.Quarto = {
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">simInitAndSpades2</span>(Setup)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Downloading: 15 B     
+Downloading: 15 B     
+Downloading: 17 kB     
+Downloading: 17 kB     
+Downloading: 24 kB     
+Downloading: 24 kB     
+Downloading: 29 kB     
+Downloading: 29 kB     
+Downloading: 63 kB     
+Downloading: 63 kB     
+Downloading: 75 kB     
+Downloading: 75 kB     
+Downloading: 85 kB     
+Downloading: 85 kB     
+Downloading: 150 kB     
+Downloading: 150 kB     
+Downloading: 330 kB     
+Downloading: 330 kB     
+Downloading: 570 kB     
+Downloading: 570 kB     
+Downloading: 570 kB     
+Downloading: 570 kB     
+Downloading: 15 B     
+Downloading: 15 B     
+Downloading: 1.5 kB     
+Downloading: 1.5 kB     
+Downloading: 9.8 kB     
+Downloading: 9.8 kB     
+Downloading: 11 kB     
+Downloading: 11 kB     
+Downloading: 39 kB     
+Downloading: 39 kB     
+Downloading: 96 kB     
+Downloading: 96 kB     
+Downloading: 210 kB     
+Downloading: 210 kB     
+Downloading: 290 kB     
+Downloading: 290 kB     
+Downloading: 440 kB     
+Downloading: 440 kB     
+Downloading: 440 kB     
+Downloading: 440 kB     
+Downloading: 680 kB     
+Downloading: 680 kB     
+Downloading: 680 kB     
+Downloading: 680 kB     
+Downloading: 710 kB     
+Downloading: 710 kB     
+Downloading: 890 kB     
+Downloading: 890 kB     
+Downloading: 940 kB     
+Downloading: 940 kB     
+Downloading: 940 kB     
+Downloading: 940 kB     
+Downloading: 940 kB     
+Downloading: 940 kB     
+Downloading: 1.2 MB     
+Downloading: 1.2 MB     
+Downloading: 1.2 MB     
+Downloading: 1.2 MB     
+Downloading: 1.2 MB     
+Downloading: 1.2 MB     
+Downloading: 1.5 MB     
+Downloading: 1.5 MB     
+Downloading: 1.8 MB     
+Downloading: 1.8 MB     
+Downloading: 1.9 MB     
+Downloading: 1.9 MB     
+Downloading: 1.9 MB     
+Downloading: 1.9 MB     
+Downloading: 1.9 MB     
+Downloading: 1.9 MB     
+Downloading: 2.1 MB     
+Downloading: 2.1 MB     
+Downloading: 2.2 MB     
+Downloading: 2.2 MB     
+Downloading: 2.5 MB     
+Downloading: 2.5 MB     
+Downloading: 2.7 MB     
+Downloading: 2.7 MB     
+Downloading: 2.7 MB     
+Downloading: 2.7 MB     </code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -493,7 +589,7 @@ window.Quarto = {
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">completed</span>(results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">completed</span>(results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>    eventTime         moduleName      eventType eventPriority
@@ -515,21 +611,21 @@ window.Quarto = {
 15:      2014 speciesAbundTempLM  tableBuilding             5
     ._prevEventTimeFinish           clockTime
                    &lt;POSc&gt;              &lt;POSc&gt;
- 1:   2024-06-03 17:43:57 2024-06-03 17:43:57
- 2:   2024-06-03 17:43:57 2024-06-03 17:43:57
- 3:   2024-06-03 17:43:57 2024-06-03 17:43:57
- 4:   2024-06-03 17:43:57 2024-06-03 17:43:57
- 5:   2024-06-03 17:43:57 2024-06-03 17:43:57
- 6:   2024-06-03 17:43:57 2024-06-03 17:43:57
- 7:   2024-06-03 17:43:57 2024-06-03 17:43:57
- 8:   2024-06-03 17:43:57 2024-06-03 17:43:57
- 9:   2024-06-03 17:43:57 2024-06-03 17:43:57
-10:   2024-06-03 17:43:57 2024-06-03 17:43:57
-11:   2024-06-03 17:43:57 2024-06-03 17:43:57
-12:   2024-06-03 17:43:57 2024-06-03 17:43:57
-13:   2024-06-03 17:43:57 2024-06-03 17:43:57
-14:   2024-06-03 17:43:57 2024-06-03 17:43:57
-15:   2024-06-03 17:43:57 2024-06-03 17:43:57</code></pre>
+ 1:   2024-06-06 23:19:13 2024-06-06 23:19:13
+ 2:   2024-06-06 23:19:13 2024-06-06 23:19:13
+ 3:   2024-06-06 23:19:13 2024-06-06 23:19:13
+ 4:   2024-06-06 23:19:13 2024-06-06 23:19:13
+ 5:   2024-06-06 23:19:13 2024-06-06 23:19:13
+ 6:   2024-06-06 23:19:13 2024-06-06 23:19:13
+ 7:   2024-06-06 23:19:13 2024-06-06 23:19:13
+ 8:   2024-06-06 23:19:13 2024-06-06 23:19:13
+ 9:   2024-06-06 23:19:13 2024-06-06 23:19:14
+10:   2024-06-06 23:19:14 2024-06-06 23:19:14
+11:   2024-06-06 23:19:14 2024-06-06 23:19:14
+12:   2024-06-06 23:19:14 2024-06-06 23:19:14
+13:   2024-06-06 23:19:14 2024-06-06 23:19:14
+14:   2024-06-06 23:19:14 2024-06-06 23:19:14
+15:   2024-06-06 23:19:14 2024-06-06 23:19:14</code></pre>
 </div>
 </div>
 </section>
@@ -539,7 +635,7 @@ window.Quarto = {
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.libPaths</span>(libPath)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.libPaths</span>(libPath)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 
