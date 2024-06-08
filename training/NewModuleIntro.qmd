@@ -55,9 +55,10 @@ model <- lm(y ~ x)
 plot(model)
 ```
 
-Looking at this code above, we can imagine that the first 3 lines are conceptually 
-different -- *fit a dummy model* -- from the last line -- *visualize it*. 
-Lets put these into 2 "modules", and then run them in sequence.
+Looking at this code above, we can imagine that the first 3 lines are
+conceptually different -- *fit a dummy model* -- from the last line --
+*visualize it*. Lets put these into 2 "modules", and then run them in
+sequence.
 
 ## Create a module
 
@@ -88,9 +89,10 @@ newModule(name = nm1, path = modulePath, open = FALSE,
 
 **Keeping objects**
 
-For now, we just say, *if you want to keep an object, assign it to "sim"*.
-We will explain this in much more detail later. Here, we want to keep the `model` 
-that we fit. But we don't care about the `x` and `y`. So we assign the `model` to `sim`. 
+For now, we just say, *if you want to keep an object, assign it to
+"sim"*. We will explain this in much more detail later. Here, we want to
+keep the `model` that we fit. But we don't care about the `x` and `y`.
+So we assign the `model` to `sim`.
 
 ```{r}
 #| eval: true
@@ -132,12 +134,12 @@ are 4 "SpaDES-created" events ... we may use them later, ignore for now)
 completed(out)
 ```
 
-We have our first "simple workflow"!  1 chunk of code :) 
+We have our first "simple workflow"! 1 chunk of code :)
 
 ### Add a second module
 
-Our next step is to divide the pieces into conceptual chunks. Let's now create a 
-new module for the `plot` ... a "visualization module".
+Our next step is to divide the pieces into conceptual chunks. Let's now
+create a new module for the `plot` ... a "visualization module".
 
 ```{r newModule2}
 nm2 <- "visualize"
@@ -150,8 +152,10 @@ newModule(nm2, path = modulePath, open = FALSE,
 )
 ```
 
-And run both together. We name them both in the `module` argument. We are using `simInitAndSpades` 
-which is a shortcut to running the two function separately.
+And run both together. We name them both in the `module` argument. We
+are using `simInitAndSpades` which is a shortcut to running the two
+function separately.
+
 ```{r}
 out2 <- simInitAndSpades(module = c(nm1, nm2), paths = list(modulePath = modulePath))
 ```
@@ -164,14 +168,12 @@ out2$model
 completed(out2)
 ```
 
-
-This time, there is an extra event that happened. **We now have a workflow of 2 events.**
-
+This time, there is an extra event that happened. **We now have a
+workflow of 2 events.**
 
 ## Next: Metadata
 
 Next, we will explore a key feature of SpaDES modules: the metadata.
-
 
 ## See also
 

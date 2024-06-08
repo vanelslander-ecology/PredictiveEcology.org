@@ -12,7 +12,7 @@ execute:
   cache: false
 ---
 
-# Module Files and Metadata
+# Module Files and Metadata {#sec-moduleFilesAndMetadata}
 
 ```{r setup}
 #| include: false
@@ -56,12 +56,13 @@ model <- lm(y ~ x)
 
 ### Inputs and Outputs
 
-We use the terms `expectsInput` and `createsOutput` to describe the inputs
-and outputs in the metadata. This makes it clear that the metadata do *not* specify
-which they will *go get*; rather, it makes it clear that it doesn't matter *where*
-the inputs are coming from. They could come from one of three sources: 
-a user, another module, or defaults that the developer sets up. Likewise, the
-module specifies which outputs it creates, without specifying "for what other module".
+We use the terms `expectsInput` and `createsOutput` to describe the
+inputs and outputs in the metadata. This makes it clear that the
+metadata do *not* specify which they will *go get*; rather, it makes it
+clear that it doesn't matter *where* the inputs are coming from. They
+could come from one of three sources: a user, another module, or
+defaults that the developer sets up. Likewise, the module specifies
+which outputs it creates, without specifying "for what other module".
 
 The **inputs** to this chunk are just one: the object `x`. This code
 will not work (i.e., it will cause an error) if `x` is not defined. We
@@ -74,13 +75,13 @@ keeping `model`. So, we will continue with only one output, `model`.
 
 ### Required Packages
 
-Next, *what are the package dependencies?*. We call this `reqdPkgs` in the
-SpaDES metadtaa. We see that there are three
-functions: `rnorm`, `lm` and `plot`. We don't know what packages they
-are in, so we can find out by typing them at the R prompt. At the bottom
-of the function, it says that the function `rnorm` is in the `stats`
-package. Fortunately for us, this is a default ("base") package in R and
-it is always pre-loaded. So, nothing to do here.
+Next, *what are the package dependencies?*. We call this `reqdPkgs` in
+the SpaDES metadtaa. We see that there are three functions: `rnorm`,
+`lm` and `plot`. We don't know what packages they are in, so we can find
+out by typing them at the R prompt. At the bottom of the function, it
+says that the function `rnorm` is in the `stats` package. Fortunately
+for us, this is a default ("base") package in R and it is always
+pre-loaded. So, nothing to do here.
 
 ```{r second}
 > rnorm function (n, mean = 0, sd = 1)  ... 
