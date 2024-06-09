@@ -11,10 +11,14 @@ execute:
   message: false
   error: false
   cache: true
+  eval: false
 ---
+
+# Forest Landscape Modelling with LandR and `setupProject` 
 
 ```{r setup}
 #| include: false
+#| eval: true
 #| cache: false
 
 knitr::opts_chunk$set(tidy = FALSE, 
@@ -98,11 +102,12 @@ files:
 
 ```{r fig-gdriveauth}
 #| echo: false
+#| eval: true
 #| fig-align: center
 #| fig-width: 5
 
 figPath <- normalizePath(file.path(qmdPath, "assets/img/gdriveauth.png"),
-                winslash = "/")
+                         winslash = "/")
 
 knitr::include_graphics(figPath, rel_path = FALSE, dpi = NA)
 ```
@@ -116,8 +121,10 @@ then, our apologies for any inconvenience.
 ## Workflow setup
 
 ```{r setupProject}
+#| eval: true
 #| results: hide
-#| cache: false 
+#| code-fold: true
+#| code-summary: "Show code"
 
 repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
 install.packages("SpaDES.project", repos = repos, dependencies = TRUE)
@@ -153,7 +160,6 @@ out <- setupProject(
     "PredictiveEcology/Biomass_core@main",
     "PredictiveEcology/Biomass_validationKNN@main"
   ),
-  # overwrite = TRUE,
   ## SIMULATION SETUP ------------------------------------
   times = list(start = 2001, end = 2031),
   params = "PredictiveEcology/PredictiveEcology.org@training-book/tutos/LandRDemo_coreVeg/params.R",
@@ -218,29 +224,29 @@ If you have a look at @sec-castorSetup in the @sec-castorEg chapter, you
 will see some differences in the way we setup the two workflows:
 
 -   `paths`. Here we left the defaults for all paths (see
-    [`?setupPaths()`](https://spades-project.predictiveecology.org/reference/setup.html)
-    for the list of path options) except for the project location
-    (`projectPath`) and the location of the package library
-    (`packagePath`, which will be placed inside `projectPath`).
+[`?setupPaths()`](https://spades-project.predictiveecology.org/reference/setup.html)
+for the list of path options) except for the project location
+(`projectPath`) and the location of the package library
+(`packagePath`, which will be placed inside `projectPath`).
 
 -   `options`. We also set a couple of "global options" that determine
-    the where data will be downloaded to
-    ("reproducible.destinationPath"). This will be the same as the
-    default directory to look for inputs ("spades.inputPath"). Notice
-    how we used `paths$` to get these directory paths from the `paths`
-    object that `setupProject` creates (based on the `paths` argument
-    above) prior to setting the options.
+the where data will be downloaded to
+("reproducible.destinationPath"). This will be the same as the
+default directory to look for inputs ("spades.inputPath"). Notice
+how we used `paths$` to get these directory paths from the `paths`
+object that `setupProject` creates (based on the `paths` argument
+above) prior to setting the options.
 
 -   other arguments (`...`). Almost all other arguments in the call
-    above were passed to `...`. These are objects that need to be
-    supplied by the user for these modules (e.g. `studyArea` and
-    `studyAreaLarge`) or whose defaults we want to override (e.g., the
-    species table, `sppEquiv`, and trait values, `speciesParams`). To
-    avoid creating them on the `.GlobalEnv` first, we take advantage of
-    `setupProject`'s ability to run the code in `{ }` and make these
-    polygons. Note that these arguments are passed prior to any 'formal
-    arguments' (see
-    [`?formalArgs()`](https://www.rdocumentation.org/packages/methods/versions/3.6.2/topics/methodUtilities))
+above were passed to `...`. These are objects that need to be
+supplied by the user for these modules (e.g. `studyArea` and
+`studyAreaLarge`) or whose defaults we want to override (e.g., the
+species table, `sppEquiv`, and trait values, `speciesParams`). To
+avoid creating them on the `.GlobalEnv` first, we take advantage of
+`setupProject`'s ability to run the code in `{ }` and make these
+polygons. Note that these arguments are passed prior to any 'formal
+arguments' (see
+[`?formalArgs()`](https://www.rdocumentation.org/packages/methods/versions/3.6.2/topics/methodUtilities))
 
 ## Run simulation
 
@@ -258,7 +264,6 @@ Please note that it may take over an hour to download all necessary raw
 data and fit model parameters.
 
 ```{r runSim}
-#| eval: false
 #| results: hide
 
 ## remove validation module, can only be run after simulation's done
@@ -272,7 +277,6 @@ simOut <- SpaDES.core::spades(simInitOut)
 Or use `simInitAndSpades2()`
 
 ```{r runSim2}
-#| eval: false
 #| results: hide
 
 ## remove validation module, can only be run after simulation's done
@@ -282,32 +286,96 @@ simOut <- SpaDES.core::simInitAndSpades2(out)
 
 #### Inspect the workflow, its inputs, outputs and parameters
 
-Now that we have a simulation we can inspect it. Let's assume you initialised 
-and ran your simulation with two separate `simInit2()` and `spades()` calls.
+Now that we have a simulation we can inspect it. Let's assume you
+initialised and ran your simulation with two separate `simInit2()` and
+`spades()` calls.
+
+Inspect module connections and between-module object flows:
 
 ```{r inspectSim}
-#| eval: false
 
 SpaDES.core::moduleDiagram(simInitOut)
 SpaDES.core::objectDiagram(simInitOut)  
-
-events(simInitOut)
 ```
 
+::: {layout-ncol=2 layout-valign="bottom"}
+![LandR vegetation module 'connections'.](assets/img/LandRDemo_modDiagram.png)
 
-```{r fig-modDiagram}
-#| echo: false
-#| fig-cap: "Diagram of LandR vegetation module 'connections'"
-#| fig-align: center
-#| fig-width: 5
+![Object flows between modules (truncated).](assets/img/LandRDemo_objDiagram.png)
+:::
 
-figPath <- normalizePath(file.path(qmdPath, "assets/img/LandRDemo_modDiagram.png"),
-                winslash = "/")
 
-knitr::include_graphics(figPath, rel_path = FALSE, dpi = NA)
+Note the scheduling of the `init` events in `simInitOut` and how
+`simOut` has *future* events scheduled too -- thanks to this, we can
+extend the simulation beyond the original `SpaDES.core::end(sim)` of
+2031 ([Extend the simulation]).
+
+```{r inspectSim2}
+
+SpaDES.core::events(simInitOut)
+SpaDES.core::events(simOut)
 ```
 
-<iframe src="assets/img/LandRDemo_objDiagram.html"></iframe>
+We can also have a look at the completed events:
+
+```{r inspectSim3}
+
+SpaDES.core::completed(simInitOut)
+SpaDES.core::completed(simOut)
+```
+
+Finally, the following accessor functions will show a list of model inputs,
+outputs and parameters:
+
+```{r inspectSim4}
+
+SpaDES.core::inputs(simOut)
+SpaDES.core::outputs(simOut)
+SpaDES.core::parameters(simOut)
+```
+
+We could even plot some of the input and output rasters to check that they are 
+as we expected -- no need to look for these objects files, they are all in the 
+`simList`.
+ 
+```{r inspectSim4}
+## spatial inputs from list above
+terra::plot(simOut$studyAreaLarge, col = "navyblue", main = "studyArea & studyAreaLarge")
+terra::plot(simOut$studyArea, col = "lightblue", add = TRUE)
+
+## spatial outputs from list above
+terra::plot(simOut$vegTypeMap, 
+            col = hcl.colors(palette = "Dynamic", n = length(unique(simOut$vegTypeMap[]))), 
+            main = "")
+terra::plot(simOut$speciesLayers)
+```
+
+::: {layout-ncol=2 layout-valign="bottom"}
+![Study areas used for parameterisation (dark blue) and simulation (light blue).](assets/img/LandRDemo_SASAL.png)
+
+![Last year's vegetation type map (leading species).](assets/img/LandRDemo_vegTypeMap.png)
+
+![Percent cover of species retained for simulation.](assets/img/LandRDemo_sppLayers.png)
+
+Inspecting inputs and outputs directly from the `simList`
+:::
+
+More importantly in our view, is the ability to inspect statistical models used to
+fit model parameters. This is possible because the developers have declared
+the fitted statistical model objects as module outputs. Often, this type of information is buried in supplementary materials of papers and incomplete (e.g. coefficients and goodness-of-fit statistics
+are presented, but the entire model object, with its fitted values, residuals, etc., are not).
+
+By exporting entire model objects, and making them available via repeatable code or
+data repositories, model transparency and potential scrutiny are massively increased.
+
+```{r inspectSim4}
+## model used to estimate species establishment probabilities
+summary(simOut$modelBiomass$mod)
+plot(simOut$modelBiomass$mod)
+
+## model used to calibrate Picea glauca's growth parameters
+summary(simOut$speciesGrowthCurves$Pice_Gla$NonLinearModel$Pice_Gla)
+```
 
 #### Turn plotting on *after* setting up the workflow
 
@@ -328,7 +396,6 @@ Thanks to internal caching, it will only take seconds to "redo"
 cache, this time around.
 
 ```{r runSimPlots}
-#| eval: false
 
 simInitOut <- SpaDES.core::simInit2(out)
 SpaDES.core::P(simInitOut, param = ".plots", module = "Biomass_core") <- "screen"
@@ -338,69 +405,171 @@ simOut <- SpaDES.core::spades(simInitOut)
 
 #### Extend the simulation
 
-We can also keep it going for a few more years. Use `SpaDES.core::end()` to extend 
-the simulation another 20 years and then call `SpaDES.core::spades()` on the 
-*changed*  `simList` (not the one output by ``SpaDES.core::simInit2()`) to *resume*
-the simulation from 2031.
+We can also keep it going for a few more years. Use `SpaDES.core::end()`
+to extend the simulation another 20 years and then call
+`SpaDES.core::spades()` on the *changed* `simList` (not the one output
+by \``SpaDES.core::simInit2()`) to *resume* the simulation from 2031.
 
 ```{r extendSim}
-#| eval: false
-
 SpaDES.core::end(simOut) <- 2061
 simOut <- SpaDES.core::spades(simOut)
 ```
 
 ### Many replicates {#sec-LandRReplication}
 
+Dynamic ecological models like LandR often simulate stochastic ecological processes,
+like dispersal, probability of germination, or fire spread (see @sec-scfmEg), which 
+requires replicating simulations. The number of replicates will largely depend on the variability generated by the model. The more variability, the more replicates needed. 
+
+The set of LandR modules used here generates little variation in tree species dynamics
+and 10 replicates are sufficient.
+
+We use [`SpaDES.experiment::experiment2()`](https://spades-experiment.predictiveecology.org/reference/experiment2.html) to do two things:
+
+-   Create a folder structure by replicate to store the simulation outputs
+
+-   Generate 10 *independent* simulations and run them in sequence (@lst-exp) or in parallel (@lst-expparall),
+using the `future` package.
+
+This time we will specify a list of output objects to be saved for model validation later.
+
+```{r expSim}
+#| lst-label: lst-exp
+#| lst-cap: Sequential replication 
+simInitOut <- SpaDES.core::simInit2(out)
+
+outputsDF <- rbind(
+  data.frame(
+    objectName = "cohortData", 
+    saveTime = seq(SpaDES.core::start(simOut), SpaDES.core::end(simOut))
+  ),
+  data.frame(
+    objectName = "pixelGroupMap", 
+    saveTime = seq(SpaDES.core::start(simOut), SpaDES.core::end(simOut))
+  )
+)
+SpaDES.core::outputs(simInitOut) <- outputsDF
+
+simOutExperiment <- SpaDES.experiment::experiment2(simInitOut, replicates = 10)
+```
+
+```{r expSimParll}
+#| lst-label: lst-expparall
+#| lst-cap: Parallel replication
+
+future::plan("multisession", workers = 5)
+simOutExperiment <- SpaDES.experiment::experiment2(simInitOut, 
+                                                   replicates = 10)
+```
 
 
-#### Debugging
+### Validation
 
-There are several ways to debug SpaDES modules (see @sec-debugging), a relatively 
-easy one for when you are suprised by an error occurring during specific event
-is to pass the event's name to `spades(..., debug = )` argument.
+Now that we have several replicates, we can use *Biomass_validationKNN* to run
+some validation statistics.
 
-Below, we debug the `plotSummaryBySpecies` event of *Biomass_core*. R interrupts the execution
-of the code in the chunk that executes this event's operations (inside `doEvent.Biomass_core()`)
+Integrating model validation as part of an ecological modelling workflow ensures that when model predictions are repeated under the same or different conditions, or new data arrives for validation, they can be readily (re-evaluated).
 
-```{r runSim}
-#| eval: false
+Note that, for convenience, we use `simOut` to access many of the necessary inputs for
+*Biomass_validationKNN*, but we could have used one of the `simLists` in `simOutExperiment`
+instead.
+
+```{r experimentSim}
+
+outputsDF2 <- data.table(
+  file = list.files(SpaDES.core::outputPath(simOut), 
+                         pattern = "cohortData", full.names = TRUE, recursive = TRUE))
+outValid <- setupProject(
+  paths = list("packagePath" = "packages/",
+               "projectPath" = "~/SpaDES_book/LandRDemo_coreVeg"),
+  options = list(
+    "LandR.assertions" = TRUE,
+    "reproducible.destinationPath" = paths$inputPath,
+    "spades.inputPath" = paths$inputPath,
+    "spades.moduleCodeChecks" = FALSE,
+    "repos" = repos
+  ),
+  modules = c(
+    "PredictiveEcology/Biomass_validationKNN@main"
+  ),
+  ## SIMULATION SETUP ------------------------------------
+  times = list(start = 1, end = 1),
+  ## INPUT OBJECTS -----------------------------------
+  studyArea = simOut$studyArea,
+  rasterToMatch = simOut$rasterToMatch,
+  rawBiomassMapStart = simOut$rawBiomassMap,
+  simulationOutputs = as.data.table(outputsDF),
+  sppEquiv = simOut$sppEquiv,
+  sppEquivCol = simOut$sppEquivCol,
+  sppColorVect = simOut$sppColorVect,
+  speciesLayersStart = simOut$speciesLayers
+)
+
+simOutValid <- SpaDES.core::simInitAndSpades2(outValid)
+## bug here with outputDF.
+```
+ 
+### Different scenarios and model selection {#sec-LandRScenarios}
+
+In @barros2023, the model was run with two different parameterisation approaches 
+one that was "data hungry" and calibrated tree species growth parameters and a 
+simpler one that used default parameter values (without *Biomass_speciesParameters*).
+
+By swapping parameterisation/calibration modules in and out
+
+
+```{r experimentSim}
+simOutExperiment <- SpaDES.experiment::experiment2(simInitOut, replicates = 10)
+```
+
+#### Debugging {#sec-LandRdebug}
+
+There are several ways to debug SpaDES modules (see @sec-debugging), a
+relatively easy one for when you are suprised by an error occurring
+during specific event is to pass the event's name to
+`spades(..., debug = )` argument.
+
+Below, we debug the `plotSummaryBySpecies` event of *Biomass_core*. R
+interrupts the execution of the code in the chunk that executes this
+event's operations (inside `doEvent.Biomass_core()`)
+
+```{r debugSim}
 
 simOut <- SpaDES.core::spades(simInitOut, debug = "plotSummaryBySpecies")
 ```
 
-R interrupts code execution during this event's operations (inside `doEvent.Biomass_core()`):
+R interrupts code execution during this event's operations (inside
+`doEvent.Biomass_core()`):
 
 ```{r}
-#| eval: false
 
 debugging in: get(moduleCall, envir = fnEnv)(sim, cur[["eventTime"]], cur[["eventType"]])
 debug at C:/Users/cbarros/Documents/SpaDES_book/LandRDemo_coreVeg/modules/Biomass_core/Biomass_core.R#314: {
 (...)
 ```
 
-From there you can press ENTER, F10 or the "Next" button to execute the code line-by-line.
-At some point you will get to this line:
+From there you can press ENTER, F10 or the "Next" button to execute the
+code line-by-line. At some point you will get to this line:
 
 ```{r}
-#| eval: false
 
 sim <- plotSummaryBySpecies(sim)
 ```
 
-which calls the function that effectively *makes* the summary plots. If you spotted
-a problem during the `plotSummaryBySpecies` event (or maybe you want to see what 
-it does and/or change the code) and it hasn't been triggered yet, then it's 
-likely it happened in this function.
+which calls the function that effectively *makes* the summary plots. If
+you spotted a problem during the `plotSummaryBySpecies` event (or maybe
+you want to see what it does and/or change the code) and it hasn't been
+triggered yet, then it's likely it happened in this function.
 
-*Before* running the line you can `debugonce(plotSummaryBySpecies)` to enable 
-debugging the function and spot the issue.
+*Before* running the line you can `debugonce(plotSummaryBySpecies)` to
+enable debugging the function and spot the issue.
 
-Another option would be to insert a `browser()` at the top of the function's
-definition inside the module code or the R scripts in the module's `R/` 
-folder (`<modulePath>/<module_name>/R/`). 
-In this case look for `plotSummaryBySpecies <- compiler::cmpfun(function(sim) {...}`
-inside the module code (`Biomass_core.R`) and try putting a `browser()` inside the `{}`
+Another option would be to insert a `browser()` at the top of the
+function's definition inside the module code or the R scripts in the
+module's `R/` folder (`<modulePath>/<module_name>/R/`). In this case
+look for `plotSummaryBySpecies <- compiler::cmpfun(function(sim) {...}`
+inside the module code (`Biomass_core.R`) and try putting a `browser()`
+inside the `{}`
 
 ## Try on your own
 
@@ -408,6 +577,7 @@ Try re-running the workflow with a different set of study areas. For
 example:
 
 ```{r}
+
 ## studyArea could be
 studyArea = {
   SpaDES.tools
@@ -419,8 +589,15 @@ studyArea = {
 
 -   Noticed any differences (speed, cache IDs, ...)?
 
--   where the species simulated the same? How about their trait values (e.g. estimated maxB, species establishment probabilities. )
+-   where the species simulated the same? How about their trait values
+(e.g. estimated maxB, species establishment probabilities. )
+
+## See also
+
+[`?future::plan`](https://future.futureverse.org/reference/plan.html)
+
+[Parallelisation Computation -- R Programming for Data Science](https://bookdown.org/rdpeng/rprogdatascience/parallel-computation.html)
 
 [^1]: See
-    [`?googledrive::drive_auth`](https://rdrr.io/cran/googledrive/man/drive_auth.html)
-    for more information.
+[`?googledrive::drive_auth`](https://rdrr.io/cran/googledrive/man/drive_auth.html)
+for more information.
