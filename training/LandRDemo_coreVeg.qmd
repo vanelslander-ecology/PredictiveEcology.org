@@ -111,7 +111,6 @@ We will eventually transition to *not* hosting data on Google. Until
 then, our apologies for any inconvenience.
 :::
 
-
 ## All the steps of an ecological modelling project in a continuous workflow
 
 ## Workflow setup
@@ -121,8 +120,7 @@ then, our apologies for any inconvenience.
 #| cache: false 
 
 repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
-# install.packages(c("SpaDES.project"), repos = repos, dependencies = TRUE)
-remotes::install_github("PredictiveEcology/SpaDES.project@development")
+install.packages("SpaDES.project", repos = repos, dependencies = TRUE)
 library(SpaDES.project)
 
 out <- setupProject(
@@ -137,10 +135,12 @@ out <- setupProject(
                "projectPath" = "~/SpaDES_book/LandRDemo_coreVeg"),
   packages = c(
     ## these are needed but don't load
+    "DiagrammeR", 
     "PredictiveEcology/SpaDES.experiment@development (HEAD)",
     "terra"  
   ),
   options = list(
+    "LandR.assertions" = TRUE,
     "reproducible.destinationPath" = paths$inputPath,
     "spades.inputPath" = paths$inputPath,
     "spades.moduleCodeChecks" = FALSE,
@@ -150,10 +150,10 @@ out <- setupProject(
     "PredictiveEcology/Biomass_speciesData@main",
     "PredictiveEcology/Biomass_borealDataPrep@main",
     "PredictiveEcology/Biomass_speciesParameters@main",
-    "PredictiveEcology/Biomass_core@development",
+    "PredictiveEcology/Biomass_core@main",
     "PredictiveEcology/Biomass_validationKNN@main"
   ),
-  overwrite = TRUE,
+  # overwrite = TRUE,
   ## SIMULATION SETUP ------------------------------------
   times = list(start = 2001, end = 2031),
   params = "PredictiveEcology/PredictiveEcology.org@training-book/tutos/LandRDemo_coreVeg/params.R",
@@ -265,7 +265,6 @@ data and fit model parameters.
 out$modules <- out$modules[out$modules != "Biomass_validationKNN"]  
 
 ## initialise then run simulation 
-options("LandR.assertions" = TRUE)
 simInitOut <- SpaDES.core::simInit2(out)
 simOut <- SpaDES.core::spades(simInitOut)
 ```
@@ -278,10 +277,37 @@ Or use `simInitAndSpades2()`
 
 ## remove validation module, can only be run after simulation's done
 out$modules <- out$modules[out$modules != "Biomass_validationKNN"]  
-
 simOut <- SpaDES.core::simInitAndSpades2(out)
 ```
 
+#### Inspect the workflow, its inputs, outputs and parameters
+
+Now that we have a simulation we can inspect it. Let's assume you initialised 
+and ran your simulation with two separate `simInit2()` and `spades()` calls.
+
+```{r inspectSim}
+#| eval: false
+
+SpaDES.core::moduleDiagram(simInitOut)
+SpaDES.core::objectDiagram(simInitOut)  
+
+events(simInitOut)
+```
+
+
+```{r fig-modDiagram}
+#| echo: false
+#| fig-cap: "Diagram of LandR vegetation module 'connections'"
+#| fig-align: center
+#| fig-width: 5
+
+figPath <- normalizePath(file.path(qmdPath, "assets/img/LandRDemo_modDiagram.png"),
+                winslash = "/")
+
+knitr::include_graphics(figPath, rel_path = FALSE, dpi = NA)
+```
+
+<iframe src="assets/img/LandRDemo_objDiagram.html"></iframe>
 
 #### Turn plotting on *after* setting up the workflow
 
@@ -297,29 +323,95 @@ output of `SpaDES.core::completed(simInitOut)`), this still means that
 `simInitOut` has to be re-generated for this purpose, otherwise `spades`
 would try to resume the simulation from the "last year".
 
-Thanks to internall caching, it will only take seconds to "redo"
+Thanks to internal caching, it will only take seconds to "redo"
 `simInitOut`. You will also notice that `init` events are retrieved from
 cache, this time around.
 
-```{r runSim}
+```{r runSimPlots}
 #| eval: false
-#| cache: false 
 
 simInitOut <- SpaDES.core::simInit2(out)
-simOut <- SpaDES.core::spades(simInitOut, debug = "init")
+SpaDES.core::P(simInitOut, param = ".plots", module = "Biomass_core") <- "screen"
+SpaDES.core::P(simInitOut, param = ".plotMaps", module = "Biomass_core") <- TRUE
+simOut <- SpaDES.core::spades(simInitOut)
 ```
 
+#### Extend the simulation
 
+We can also keep it going for a few more years. Use `SpaDES.core::end()` to extend 
+the simulation another 20 years and then call `SpaDES.core::spades()` on the 
+*changed*  `simList` (not the one output by ``SpaDES.core::simInit2()`) to *resume*
+the simulation from 2031.
 
+```{r extendSim}
+#| eval: false
+
+SpaDES.core::end(simOut) <- 2061
+simOut <- SpaDES.core::spades(simOut)
+```
 
 ### Many replicates {#sec-LandRReplication}
 
+
+
+#### Debugging
+
+There are several ways to debug SpaDES modules (see @sec-debugging), a relatively 
+easy one for when you are suprised by an error occurring during specific event
+is to pass the event's name to `spades(..., debug = )` argument.
+
+Below, we debug the `plotSummaryBySpecies` event of *Biomass_core*. R interrupts the execution
+of the code in the chunk that executes this event's operations (inside `doEvent.Biomass_core()`)
+
+```{r runSim}
+#| eval: false
+
+simOut <- SpaDES.core::spades(simInitOut, debug = "plotSummaryBySpecies")
+```
+
+R interrupts code execution during this event's operations (inside `doEvent.Biomass_core()`):
+
+```{r}
+#| eval: false
+
+debugging in: get(moduleCall, envir = fnEnv)(sim, cur[["eventTime"]], cur[["eventType"]])
+debug at C:/Users/cbarros/Documents/SpaDES_book/LandRDemo_coreVeg/modules/Biomass_core/Biomass_core.R#314: {
+(...)
+```
+
+From there you can press ENTER, F10 or the "Next" button to execute the code line-by-line.
+At some point you will get to this line:
+
+```{r}
+#| eval: false
+
+sim <- plotSummaryBySpecies(sim)
+```
+
+which calls the function that effectively *makes* the summary plots. If you spotted
+a problem during the `plotSummaryBySpecies` event (or maybe you want to see what 
+it does and/or change the code) and it hasn't been triggered yet, then it's 
+likely it happened in this function.
+
+*Before* running the line you can `debugonce(plotSummaryBySpecies)` to enable 
+debugging the function and spot the issue.
+
+Another option would be to insert a `browser()` at the top of the function's
+definition inside the module code or the R scripts in the module's `R/` 
+folder (`<modulePath>/<module_name>/R/`). 
+In this case look for `plotSummaryBySpecies <- compiler::cmpfun(function(sim) {...}`
+inside the module code (`Biomass_core.R`) and try putting a `browser()` inside the `{}`
+
 ## Try on your own
 
-Try passing a different set of study areas and re-run the workflow. For instance:
+Try re-running the workflow with a different set of study areas. For
+example:
 
 ```{r}
 ## studyArea could be
+studyArea = {
+  SpaDES.tools
+}
 
 ## studyAreaLarge
 
@@ -327,6 +419,7 @@ Try passing a different set of study areas and re-run the workflow. For instance
 
 -   Noticed any differences (speed, cache IDs, ...)?
 
+-   where the species simulated the same? How about their trait values (e.g. estimated maxB, species establishment probabilities. )
 
 [^1]: See
     [`?googledrive::drive_auth`](https://rdrr.io/cran/googledrive/man/drive_auth.html)
