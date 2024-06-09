@@ -9,7 +9,7 @@
 <meta name="author" content="Ceres Barros">
 <meta name="dcterms.date" content="2024-06-09">
 
-<title>Robust and nimble scientific workflows, using SpaDES - 15&nbsp; LandR workflow with setupProject</title>
+<title>Robust and nimble scientific workflows, using SpaDES - 16&nbsp; LandR workflow with setupProject</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -251,7 +251,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./LandRDemo_coreVeg.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">LandR workflow with <code>setupProject</code></span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./LandRDemo_coreVeg.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">LandR workflow with <code>setupProject</code></span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -368,8 +368,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./prepInputs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>prepInputs</code> for bringing data into projects</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./debugging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Debugging SpaDES modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES modules</span></span></a>
   </div>
 </li>
       </ul>
@@ -386,31 +392,31 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflowSimple2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./multipleModules.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Multiple Modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Multiple Modules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./LandRDemo_coreVeg.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">LandR workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">LandR workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ForestsAndFire.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -437,19 +443,19 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#forest-landscape-modelling-with-landr-and-setupproject" id="toc-forest-landscape-modelling-with-landr-and-setupproject" class="nav-link active" data-scroll-target="#forest-landscape-modelling-with-landr-and-setupproject"><span class="header-section-number">16</span> Forest Landscape Modelling with LandR and <code>setupProject</code></a>
+  <li><a href="#forest-landscape-modelling-with-landr-and-setupproject" id="toc-forest-landscape-modelling-with-landr-and-setupproject" class="nav-link active" data-scroll-target="#forest-landscape-modelling-with-landr-and-setupproject"><span class="header-section-number">17</span> Forest Landscape Modelling with LandR and <code>setupProject</code></a>
   <ul class="collapse">
-  <li><a href="#all-the-steps-of-an-ecological-modelling-project-in-a-continuous-workflow" id="toc-all-the-steps-of-an-ecological-modelling-project-in-a-continuous-workflow" class="nav-link" data-scroll-target="#all-the-steps-of-an-ecological-modelling-project-in-a-continuous-workflow"><span class="header-section-number">16.1</span> All the steps of an ecological modelling project in a continuous workflow</a></li>
-  <li><a href="#workflow-setup" id="toc-workflow-setup" class="nav-link" data-scroll-target="#workflow-setup"><span class="header-section-number">16.2</span> Workflow setup</a></li>
-  <li><a href="#run-simulation" id="toc-run-simulation" class="nav-link" data-scroll-target="#run-simulation"><span class="header-section-number">16.3</span> Run simulation</a>
+  <li><a href="#all-the-steps-of-an-ecological-modelling-project-in-a-continuous-workflow" id="toc-all-the-steps-of-an-ecological-modelling-project-in-a-continuous-workflow" class="nav-link" data-scroll-target="#all-the-steps-of-an-ecological-modelling-project-in-a-continuous-workflow"><span class="header-section-number">17.1</span> All the steps of an ecological modelling project in a continuous workflow</a></li>
+  <li><a href="#workflow-setup" id="toc-workflow-setup" class="nav-link" data-scroll-target="#workflow-setup"><span class="header-section-number">17.2</span> Workflow setup</a></li>
+  <li><a href="#run-simulation" id="toc-run-simulation" class="nav-link" data-scroll-target="#run-simulation"><span class="header-section-number">17.3</span> Run simulation</a>
   <ul class="collapse">
-  <li><a href="#one-replicate" id="toc-one-replicate" class="nav-link" data-scroll-target="#one-replicate"><span class="header-section-number">16.3.1</span> One replicate</a></li>
-  <li><a href="#sec-LandRReplication" id="toc-sec-LandRReplication" class="nav-link" data-scroll-target="#sec-LandRReplication"><span class="header-section-number">16.3.2</span> Many replicates</a></li>
-  <li><a href="#validation" id="toc-validation" class="nav-link" data-scroll-target="#validation"><span class="header-section-number">16.3.3</span> Validation</a></li>
-  <li><a href="#sec-LandRScenarios" id="toc-sec-LandRScenarios" class="nav-link" data-scroll-target="#sec-LandRScenarios"><span class="header-section-number">16.3.4</span> Different scenarios and model selection</a></li>
+  <li><a href="#one-replicate" id="toc-one-replicate" class="nav-link" data-scroll-target="#one-replicate"><span class="header-section-number">17.3.1</span> One replicate</a></li>
+  <li><a href="#sec-LandRReplication" id="toc-sec-LandRReplication" class="nav-link" data-scroll-target="#sec-LandRReplication"><span class="header-section-number">17.3.2</span> Many replicates</a></li>
+  <li><a href="#validation" id="toc-validation" class="nav-link" data-scroll-target="#validation"><span class="header-section-number">17.3.3</span> Validation</a></li>
+  <li><a href="#sec-LandRScenarios" id="toc-sec-LandRScenarios" class="nav-link" data-scroll-target="#sec-LandRScenarios"><span class="header-section-number">17.3.4</span> Different scenarios and model selection</a></li>
   </ul></li>
-  <li><a href="#try-on-your-own" id="toc-try-on-your-own" class="nav-link" data-scroll-target="#try-on-your-own"><span class="header-section-number">16.4</span> Try on your own</a></li>
-  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">16.5</span> See also</a></li>
+  <li><a href="#try-on-your-own" id="toc-try-on-your-own" class="nav-link" data-scroll-target="#try-on-your-own"><span class="header-section-number">17.4</span> Try on your own</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">17.5</span> See also</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -457,9 +463,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./LandRDemo_coreVeg.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">LandR workflow with <code>setupProject</code></span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./LandRDemo_coreVeg.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">LandR workflow with <code>setupProject</code></span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">LandR workflow with <code>setupProject</code></span></h1>
+<h1 class="title"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">LandR workflow with <code>setupProject</code></span></h1>
 </div>
 
 
@@ -488,8 +494,8 @@ window.Quarto = {
 </header>
 
 
-<section id="forest-landscape-modelling-with-landr-and-setupproject" class="level1" data-number="16">
-<h1 data-number="16"><span class="header-section-number">16</span> Forest Landscape Modelling with LandR and <code>setupProject</code></h1>
+<section id="forest-landscape-modelling-with-landr-and-setupproject" class="level1" data-number="17">
+<h1 data-number="17"><span class="header-section-number">17</span> Forest Landscape Modelling with LandR and <code>setupProject</code></h1>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -497,8 +503,8 @@ window.Quarto = {
 </div>
 <div class="callout-body-container">
 <p><em>2 hours – estimated time for 1st time executing (includes downloads)</em></p>
-<p><em>20Gb RAM – estimated peak RAM for executing</em></p>
-<p><em>20Gb disk – estimated hard drive allocation</em></p>
+<p><em>24Gb RAM – estimated peak RAM for executing</em></p>
+<p><em>93Gb disk – estimated hard drive allocation</em></p>
 </div>
 </div>
 </div>
@@ -512,7 +518,7 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Important&nbsp;16.1: Google account needed for this example
+Important&nbsp;17.1: Google account needed for this example
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -523,10 +529,10 @@ Important&nbsp;16.1: Google account needed for this example
 <div id="fig-gdriveauth" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-gdriveauth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="C:/Users/cbarros/GitHub/PredictiveEcology.org/training/assets/img/gdriveauth.png" id="fig-gdriveauth" class="img-fluid quarto-figure quarto-figure-center anchored figure-img">
+<img src="C:/Eliot/GitHub/PredictiveEcology.org/training/assets/img/gdriveauth.png" id="fig-gdriveauth" class="img-fluid quarto-figure quarto-figure-center anchored figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-gdriveauth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;16.1
+Figure&nbsp;17.1
 </figcaption>
 </figure>
 </div>
@@ -535,11 +541,11 @@ Figure&nbsp;16.1
 <p>We will eventually transition to <em>not</em> hosting data on Google. Until then, our apologies for any inconvenience.</p>
 </div>
 </div>
-<section id="all-the-steps-of-an-ecological-modelling-project-in-a-continuous-workflow" class="level2" data-number="16.1">
-<h2 data-number="16.1" class="anchored" data-anchor-id="all-the-steps-of-an-ecological-modelling-project-in-a-continuous-workflow"><span class="header-section-number">16.1</span> All the steps of an ecological modelling project in a continuous workflow</h2>
+<section id="all-the-steps-of-an-ecological-modelling-project-in-a-continuous-workflow" class="level2" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="all-the-steps-of-an-ecological-modelling-project-in-a-continuous-workflow"><span class="header-section-number">17.1</span> All the steps of an ecological modelling project in a continuous workflow</h2>
 </section>
-<section id="workflow-setup" class="level2" data-number="16.2">
-<h2 data-number="16.2" class="anchored" data-anchor-id="workflow-setup"><span class="header-section-number">16.2</span> Workflow setup</h2>
+<section id="workflow-setup" class="level2" data-number="17.2">
+<h2 data-number="17.2" class="anchored" data-anchor-id="workflow-setup"><span class="header-section-number">17.2</span> Workflow setup</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Show code</summary>
@@ -574,92 +580,88 @@ Figure&nbsp;16.1
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">"PredictiveEcology/Biomass_speciesData@main"</span>,</span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">"PredictiveEcology/Biomass_borealDataPrep@main"</span>,</span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">"PredictiveEcology/Biomass_speciesParameters@main"</span>,</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">"PredictiveEcology/Biomass_core@main"</span>,</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">"PredictiveEcology/Biomass_validationKNN@main"</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  <span class="do">## SIMULATION SETUP ------------------------------------</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="fu">list</span>(<span class="at">start =</span> <span class="dv">2001</span>, <span class="at">end =</span> <span class="dv">2031</span>),</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>  <span class="at">params =</span> <span class="st">"PredictiveEcology/PredictiveEcology.org@training-book/tutos/LandRDemo_coreVeg/params.R"</span>,</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  <span class="do">## (more) INPUT OBJECTS -----------------------------------</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>  <span class="do">## these come after, so that we don't need to pre-install/load LandR</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  <span class="do">## species lists/traits</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>  <span class="at">sppEquiv =</span> {</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data</span>(<span class="st">"sppEquivalencies_CA"</span>, <span class="at">package =</span> <span class="st">"LandR"</span>)</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    sppEquivalencies_CA[<span class="fu">grep</span>(<span class="st">"Pin"</span>, LandR), <span class="st">`</span><span class="at">:=</span><span class="st">`</span>(<span class="at">EN_generic_short =</span> <span class="st">"Pine"</span>,</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">EN_generic_full =</span> <span class="st">"Pine"</span>,</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">Leading =</span> <span class="st">"Pine leading"</span>)]</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    sppEquivalencies_CA[<span class="fu">grep</span>(<span class="st">"Betu_pap"</span>, LandR), <span class="st">`</span><span class="at">:=</span><span class="st">`</span>(<span class="at">EN_generic_short =</span> <span class="st">"Birch"</span>,</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>                                                      <span class="at">EN_generic_full =</span> <span class="st">"Birch"</span>,</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>                                                      <span class="at">Leading =</span> <span class="st">"Birch leading"</span>)]</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    <span class="do">## all Popu will be merged</span></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    sppEquivalencies_CA[<span class="fu">grep</span>(<span class="st">"Popu_"</span>, LandR), <span class="st">`</span><span class="at">:=</span><span class="st">`</span>(<span class="at">EN_generic_short =</span> <span class="st">"Poplar"</span>,</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>                                                   <span class="at">EN_generic_full =</span> <span class="st">"Poplar"</span>,</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>                                                   <span class="at">Leading =</span> <span class="st">"Poplar leading"</span>)]</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>    sppEquivalencies_CA[<span class="fu">grep</span>(<span class="st">"Popu_"</span>, LandR), Boreal <span class="sc">:</span><span class="er">=</span> <span class="st">"Popu_Spp"</span>]</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    <span class="do">## define spp column to use for model</span></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>    sppEquivalencies_CA <span class="ot">&lt;-</span> sppEquivalencies_CA[<span class="sc">!</span><span class="st">""</span>, on <span class="ot">=</span> sppEquivCol]</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>    sppEquivalencies_CA <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(sppEquivalencies_CA, sppEquivCol)</span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>    sppEquivalencies_CA</span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>  },</span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>  <span class="at">speciesParams =</span> {</span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list</span>(</span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>      <span class="st">"shadetolerance"</span> <span class="ot">=</span> <span class="fu">list</span>(</span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>        <span class="at">Betu_Pap =</span> <span class="dv">1</span></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>        , <span class="at">Lari_Lar =</span> <span class="dv">1</span></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>        , <span class="at">Pice_Gla =</span> <span class="dv">2</span></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>        , <span class="at">Pice_Mar =</span> <span class="dv">3</span></span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>        , <span class="at">Pinu_Ban =</span> <span class="fl">1.5</span></span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>        , <span class="at">Popu_Spp =</span> <span class="dv">1</span></span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>  },</span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>  <span class="at">studyArea =</span> {</span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>    originalcrs <span class="ot">&lt;-</span> <span class="st">"+proj=longlat +datum=NAD83 +no_defs +ellps=GRS80 +towgs84=0,0,0"</span></span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>    Biomass_corecrs <span class="ot">&lt;-</span> <span class="st">"+proj=lcc +lat_1=49 +lat_2=77 +lat_0=0 +lon_0=-95 +x_0=0 +y_0=0 +datum=NAD83 +units=m +no_defs +ellps=GRS80 +towgs84=0,0,0"</span></span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>    smallExtent <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">xmin =</span> <span class="sc">-</span><span class="fl">104.757</span>, <span class="at">xmax =</span> <span class="sc">-</span><span class="fl">104.48835</span>, <span class="at">ymin =</span> <span class="fl">55.68663</span>, <span class="at">ymax =</span> <span class="fl">55.94491</span>)</span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>    studyAreaS <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">vect</span>(terra<span class="sc">::</span><span class="fu">ext</span>(smallExtent))</span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>    studyAreaS <span class="ot">&lt;-</span>  terra<span class="sc">::</span><span class="fu">vect</span>(terra<span class="sc">::</span><span class="fu">geom</span>(studyAreaS), <span class="st">"polygons"</span>, <span class="at">crs =</span> originalcrs, <span class="at">atts =</span> <span class="fu">data.frame</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(studyAreaS)))</span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>    studyAreaS <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(studyAreaS, Biomass_corecrs)</span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>    studyAreaS</span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>  },</span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>  <span class="at">studyAreaLarge =</span> {</span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>    originalcrs <span class="ot">&lt;-</span> <span class="st">"+proj=longlat +datum=NAD83 +no_defs +ellps=GRS80 +towgs84=0,0,0"</span></span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>    Biomass_corecrs <span class="ot">&lt;-</span> <span class="st">"+proj=lcc +lat_1=49 +lat_2=77 +lat_0=0 +lon_0=-95 +x_0=0 +y_0=0 +datum=NAD83 +units=m +no_defs +ellps=GRS80 +towgs84=0,0,0"</span></span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>    largeExtent <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">xmin =</span> <span class="sc">-</span><span class="fl">104.757</span>, <span class="at">xmax =</span> <span class="sc">-</span><span class="fl">104.2197</span>, <span class="at">ymin =</span> <span class="fl">55.68663</span>, <span class="at">ymax =</span> <span class="fl">56.20319</span>)</span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>    studyAreaL <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">vect</span>(terra<span class="sc">::</span><span class="fu">ext</span>(largeExtent))</span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>    studyAreaL <span class="ot">&lt;-</span>  terra<span class="sc">::</span><span class="fu">vect</span>(terra<span class="sc">::</span><span class="fu">geom</span>(studyAreaL), <span class="st">"polygons"</span>, <span class="at">crs =</span> originalcrs, <span class="at">atts =</span> <span class="fu">data.frame</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(studyAreaL)))</span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>    studyAreaL <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(studyAreaL, Biomass_corecrs)</span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>    studyAreaL</span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">"PredictiveEcology/Biomass_core@main"</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  <span class="do">## SIMULATION SETUP ------------------------------------</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="fu">list</span>(<span class="at">start =</span> <span class="dv">2001</span>, <span class="at">end =</span> <span class="dv">2031</span>),</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>  <span class="at">params =</span> <span class="st">"PredictiveEcology/PredictiveEcology.org@training-book/tutos/LandRDemo_coreVeg/params.R"</span>,</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>  <span class="do">## (more) INPUT OBJECTS -----------------------------------</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  <span class="do">## these come after, so that we don't need to pre-install/load LandR</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>  <span class="do">## species lists/traits</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  <span class="at">sppEquiv =</span> {</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data</span>(<span class="st">"sppEquivalencies_CA"</span>, <span class="at">package =</span> <span class="st">"LandR"</span>)</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    sppEquivalencies_CA[<span class="fu">grep</span>(<span class="st">"Pin"</span>, LandR), <span class="st">`</span><span class="at">:=</span><span class="st">`</span>(<span class="at">EN_generic_short =</span> <span class="st">"Pine"</span>,</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">EN_generic_full =</span> <span class="st">"Pine"</span>,</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">Leading =</span> <span class="st">"Pine leading"</span>)]</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    sppEquivalencies_CA[<span class="fu">grep</span>(<span class="st">"Betu_pap"</span>, LandR), <span class="st">`</span><span class="at">:=</span><span class="st">`</span>(<span class="at">EN_generic_short =</span> <span class="st">"Birch"</span>,</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>                                                      <span class="at">EN_generic_full =</span> <span class="st">"Birch"</span>,</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>                                                      <span class="at">Leading =</span> <span class="st">"Birch leading"</span>)]</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>    <span class="do">## all Popu will be merged</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    sppEquivalencies_CA[<span class="fu">grep</span>(<span class="st">"Popu_"</span>, LandR), <span class="st">`</span><span class="at">:=</span><span class="st">`</span>(<span class="at">EN_generic_short =</span> <span class="st">"Poplar"</span>,</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>                                                   <span class="at">EN_generic_full =</span> <span class="st">"Poplar"</span>,</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>                                                   <span class="at">Leading =</span> <span class="st">"Poplar leading"</span>)]</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>    sppEquivalencies_CA[<span class="fu">grep</span>(<span class="st">"Popu_"</span>, LandR), Boreal <span class="sc">:</span><span class="er">=</span> <span class="st">"Popu_Spp"</span>]</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>    <span class="do">## define spp column to use for model</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    sppEquivalencies_CA <span class="ot">&lt;-</span> sppEquivalencies_CA[<span class="sc">!</span><span class="st">""</span>, on <span class="ot">=</span> sppEquivCol]</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>    sppEquivalencies_CA <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(sppEquivalencies_CA, sppEquivCol)</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>    sppEquivalencies_CA</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>  <span class="at">speciesParams =</span> {</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list</span>(</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>      <span class="st">"shadetolerance"</span> <span class="ot">=</span> <span class="fu">list</span>(</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>        <span class="at">Betu_Pap =</span> <span class="dv">1</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>        , <span class="at">Lari_Lar =</span> <span class="dv">1</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>        , <span class="at">Pice_Gla =</span> <span class="dv">2</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>        , <span class="at">Pice_Mar =</span> <span class="dv">3</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>        , <span class="at">Pinu_Ban =</span> <span class="fl">1.5</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>        , <span class="at">Popu_Spp =</span> <span class="dv">1</span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>  <span class="at">studyArea =</span> {</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>    originalcrs <span class="ot">&lt;-</span> <span class="st">"+proj=longlat +datum=NAD83 +no_defs +ellps=GRS80 +towgs84=0,0,0"</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>    Biomass_corecrs <span class="ot">&lt;-</span> <span class="st">"+proj=lcc +lat_1=49 +lat_2=77 +lat_0=0 +lon_0=-95 +x_0=0 +y_0=0 +datum=NAD83 +units=m +no_defs +ellps=GRS80 +towgs84=0,0,0"</span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>    smallExtent <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">xmin =</span> <span class="sc">-</span><span class="fl">104.757</span>, <span class="at">xmax =</span> <span class="sc">-</span><span class="fl">104.48835</span>, <span class="at">ymin =</span> <span class="fl">55.68663</span>, <span class="at">ymax =</span> <span class="fl">55.94491</span>)</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>    studyAreaS <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">vect</span>(terra<span class="sc">::</span><span class="fu">ext</span>(smallExtent))</span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>    studyAreaS <span class="ot">&lt;-</span>  terra<span class="sc">::</span><span class="fu">vect</span>(terra<span class="sc">::</span><span class="fu">geom</span>(studyAreaS), <span class="st">"polygons"</span>, <span class="at">crs =</span> originalcrs, <span class="at">atts =</span> <span class="fu">data.frame</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(studyAreaS)))</span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>    studyAreaS <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(studyAreaS, Biomass_corecrs)</span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>    studyAreaS</span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>  <span class="at">studyAreaLarge =</span> {</span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>    originalcrs <span class="ot">&lt;-</span> <span class="st">"+proj=longlat +datum=NAD83 +no_defs +ellps=GRS80 +towgs84=0,0,0"</span></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>    Biomass_corecrs <span class="ot">&lt;-</span> <span class="st">"+proj=lcc +lat_1=49 +lat_2=77 +lat_0=0 +lon_0=-95 +x_0=0 +y_0=0 +datum=NAD83 +units=m +no_defs +ellps=GRS80 +towgs84=0,0,0"</span></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>    largeExtent <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">xmin =</span> <span class="sc">-</span><span class="fl">104.757</span>, <span class="at">xmax =</span> <span class="sc">-</span><span class="fl">104.2197</span>, <span class="at">ymin =</span> <span class="fl">55.68663</span>, <span class="at">ymax =</span> <span class="fl">56.20319</span>)</span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>    studyAreaL <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">vect</span>(terra<span class="sc">::</span><span class="fu">ext</span>(largeExtent))</span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>    studyAreaL <span class="ot">&lt;-</span>  terra<span class="sc">::</span><span class="fu">vect</span>(terra<span class="sc">::</span><span class="fu">geom</span>(studyAreaL), <span class="st">"polygons"</span>, <span class="at">crs =</span> originalcrs, <span class="at">atts =</span> <span class="fu">data.frame</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(studyAreaL)))</span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>    studyAreaL <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(studyAreaL, Biomass_corecrs)</span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>    studyAreaL</span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>If you have a look at <a href="castorExample.html#sec-castorSetup" class="quarto-xref"><span>Section 17.1</span></a> in the <a href="castorExample.html" class="quarto-xref"><span>Chapter 17</span></a> chapter, you will see some differences in the way we setup the two workflows:</p>
+<p>If you have a look at <a href="castorExample.html#sec-castorSetup" class="quarto-xref"><span>Section 18.1</span></a> in the <a href="castorExample.html" class="quarto-xref"><span>Chapter 18</span></a> chapter, you will see some differences in the way we setup the two workflows:</p>
 <ul>
 <li><p><code>paths</code>. Here we left the defaults for all paths (see <a href="https://spades-project.predictiveecology.org/reference/setup.html"><code>?setupPaths()</code></a> for the list of path options) except for the project location (<code>projectPath</code>) and the location of the package library (<code>packagePath</code>, which will be placed inside <code>projectPath</code>).</p></li>
 <li><p><code>options</code>. We also set a couple of “global options” that determine the where data will be downloaded to (“reproducible.destinationPath”). This will be the same as the default directory to look for inputs (“spades.inputPath”). Notice how we used <code>paths$</code> to get these directory paths from the <code>paths</code> object that <code>setupProject</code> creates (based on the <code>paths</code> argument above) prior to setting the options.</p></li>
 <li><p>other arguments (<code>...</code>). Almost all other arguments in the call above were passed to <code>...</code>. These are objects that need to be supplied by the user for these modules (e.g.&nbsp;<code>studyArea</code> and <code>studyAreaLarge</code>) or whose defaults we want to override (e.g., the species table, <code>sppEquiv</code>, and trait values, <code>speciesParams</code>). To avoid creating them on the <code>.GlobalEnv</code> first, we take advantage of <code>setupProject</code>‘s ability to run the code in <code>{ }</code> and make these polygons. Note that these arguments are passed prior to any ’formal arguments’ (see <a href="https://www.rdocumentation.org/packages/methods/versions/3.6.2/topics/methodUtilities"><code>?formalArgs()</code></a>)</p></li>
 </ul>
 </section>
-<section id="run-simulation" class="level2" data-number="16.3">
-<h2 data-number="16.3" class="anchored" data-anchor-id="run-simulation"><span class="header-section-number">16.3</span> Run simulation</h2>
-<section id="one-replicate" class="level3" data-number="16.3.1">
-<h3 data-number="16.3.1" class="anchored" data-anchor-id="one-replicate"><span class="header-section-number">16.3.1</span> One replicate</h3>
+<section id="run-simulation" class="level2" data-number="17.3">
+<h2 data-number="17.3" class="anchored" data-anchor-id="run-simulation"><span class="header-section-number">17.3</span> Run simulation</h2>
+<section id="one-replicate" class="level3" data-number="17.3.1">
+<h3 data-number="17.3.1" class="anchored" data-anchor-id="one-replicate"><span class="header-section-number">17.3.1</span> One replicate</h3>
 <p>Before running the simulation we need to exclude the <em>Biomass_validationKNN</em> module. This module validates simulation outputs agains data and therefore can only be run <em>after</em> the simulation is complete.</p>
-<p>We will initialize the simulation with <code>SpaDES.core::simInit()</code> so that we can use the same <code>simList</code> object in <a href="#sec-LandRReplication" class="quarto-xref"><span>Section 16.3.2</span></a>.</p>
+<p>We will initialize the simulation with <code>SpaDES.core::simInit()</code> so that we can use the same <code>simList</code> object in <a href="#sec-LandRReplication" class="quarto-xref"><span>Section 17.3.2</span></a>.</p>
 <p>Please note that it may take over an hour to download all necessary raw data and fit model parameters.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">## remove validation module, can only be run after simulation's done</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>out<span class="sc">$</span>modules <span class="ot">&lt;-</span> out<span class="sc">$</span>modules[out<span class="sc">$</span>modules <span class="sc">!=</span> <span class="st">"Biomass_validationKNN"</span>]  </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="do">## initialise then run simulation </span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>simInitOut <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">simInit2</span>(out)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>simOut <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">spades</span>(simInitOut)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">## initialise then run simulation </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>simInitOut <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">simInit2</span>(out)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>simOut <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">spades</span>(simInitOut)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Or use <code>simInitAndSpades2()</code></p>
@@ -671,8 +673,8 @@ Figure&nbsp;16.1
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>simOut <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">simInitAndSpades2</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<section id="inspect-the-workflow-its-inputs-outputs-and-parameters" class="level4" data-number="16.3.1.1">
-<h4 data-number="16.3.1.1" class="anchored" data-anchor-id="inspect-the-workflow-its-inputs-outputs-and-parameters"><span class="header-section-number">16.3.1.1</span> Inspect the workflow, its inputs, outputs and parameters</h4>
+<section id="inspect-the-workflow-its-inputs-outputs-and-parameters" class="level4" data-number="17.3.1.1">
+<h4 data-number="17.3.1.1" class="anchored" data-anchor-id="inspect-the-workflow-its-inputs-outputs-and-parameters"><span class="header-section-number">17.3.1.1</span> Inspect the workflow, its inputs, outputs and parameters</h4>
 <p>Now that we have a simulation we can inspect it. Let’s assume you initialised and ran your simulation with two separate <code>simInit2()</code> and <code>spades()</code> calls.</p>
 <p>Inspect module connections and between-module object flows:</p>
 <div class="cell">
@@ -748,9 +750,9 @@ Figure&nbsp;16.1
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-panel" data-layout-ncol="3">
 <div class="quarto-layout-row quarto-layout-valign-bottom">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="assets/img/LandRDemo_SASAL.png" class="img-fluid figure-img"></p>
@@ -758,7 +760,7 @@ Figure&nbsp;16.1
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="assets/img/LandRDemo_vegTypeMap.png" class="img-fluid figure-img"></p>
@@ -766,9 +768,7 @@ Figure&nbsp;16.1
 </figure>
 </div>
 </div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-bottom">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="assets/img/LandRDemo_sppLayers.png" class="img-fluid figure-img"></p>
@@ -776,7 +776,9 @@ Figure&nbsp;16.1
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+</div>
+<div class="quarto-layout-row quarto-layout-valign-bottom">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p>Inspecting inputs and outputs directly from the <code>simList</code></p>
 </div>
 </div>
@@ -795,8 +797,8 @@ Figure&nbsp;16.1
 </details>
 </div>
 </section>
-<section id="turn-plotting-on-after-setting-up-the-workflow" class="level4" data-number="16.3.1.2">
-<h4 data-number="16.3.1.2" class="anchored" data-anchor-id="turn-plotting-on-after-setting-up-the-workflow"><span class="header-section-number">16.3.1.2</span> Turn plotting on <em>after</em> setting up the workflow</h4>
+<section id="turn-plotting-on-after-setting-up-the-workflow" class="level4" data-number="17.3.1.2">
+<h4 data-number="17.3.1.2" class="anchored" data-anchor-id="turn-plotting-on-after-setting-up-the-workflow"><span class="header-section-number">17.3.1.2</span> Turn plotting on <em>after</em> setting up the workflow</h4>
 <p>We can change parameters and re-run the simulation to, e.g., activate live plotting in <em>Biomass_core</em>, without having to</p>
 <ul>
 <li><p>change the parameter provided to <code>setupProject</code></p></li>
@@ -814,8 +816,8 @@ Figure&nbsp;16.1
 </details>
 </div>
 </section>
-<section id="extend-the-simulation" class="level4" data-number="16.3.1.3">
-<h4 data-number="16.3.1.3" class="anchored" data-anchor-id="extend-the-simulation"><span class="header-section-number">16.3.1.3</span> Extend the simulation</h4>
+<section id="extend-the-simulation" class="level4" data-number="17.3.1.3">
+<h4 data-number="17.3.1.3" class="anchored" data-anchor-id="extend-the-simulation"><span class="header-section-number">17.3.1.3</span> Extend the simulation</h4>
 <p>We can also keep it going for a few more years. Use <code>SpaDES.core::end()</code> to extend the simulation another 20 years and then call <code>SpaDES.core::spades()</code> on the <em>changed</em> <code>simList</code> (not the one output by `<code>SpaDES.core::simInit2()</code>) to <em>resume</em> the simulation from 2031.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -826,21 +828,21 @@ Figure&nbsp;16.1
 </div>
 </section>
 </section>
-<section id="sec-LandRReplication" class="level3" data-number="16.3.2">
-<h3 data-number="16.3.2" class="anchored" data-anchor-id="sec-LandRReplication"><span class="header-section-number">16.3.2</span> Many replicates</h3>
-<p>Dynamic ecological models like LandR often simulate stochastic ecological processes, like dispersal, probability of germination, or fire spread (see <a href="ForestsAndFire.html" class="quarto-xref"><span>Chapter 16</span></a>), which requires replicating simulations. The number of replicates will largely depend on the variability generated by the model. The more variability, the more replicates needed.</p>
+<section id="sec-LandRReplication" class="level3" data-number="17.3.2">
+<h3 data-number="17.3.2" class="anchored" data-anchor-id="sec-LandRReplication"><span class="header-section-number">17.3.2</span> Many replicates</h3>
+<p>Dynamic ecological models like LandR often simulate stochastic ecological processes, like dispersal, probability of germination, or fire spread (see <a href="ForestsAndFire.html" class="quarto-xref"><span>Chapter 17</span></a>), which requires replicating simulations. The number of replicates will largely depend on the variability generated by the model. The more variability, the more replicates needed.</p>
 <p>The set of LandR modules used here generates little variation in tree species dynamics and 10 replicates are sufficient.</p>
 <p>We use <a href="https://spades-experiment.predictiveecology.org/reference/experiment2.html"><code>SpaDES.experiment::experiment2()</code></a> to do two things:</p>
 <ul>
 <li><p>Create a folder structure by replicate to store the simulation outputs</p></li>
-<li><p>Generate 10 <em>independent</em> simulations and run them in sequence (<a href="#lst-exp" class="quarto-xref">Listing&nbsp;<span>16.1</span></a>) or in parallel (<a href="#lst-expparall" class="quarto-xref">Listing&nbsp;<span>16.2</span></a>), using the <code>future</code> package.</p></li>
+<li><p>Generate 10 <em>independent</em> simulations and run them in sequence (<a href="#lst-exp" class="quarto-xref">Listing&nbsp;<span>17.1</span></a>) or in parallel (<a href="#lst-expparall" class="quarto-xref">Listing&nbsp;<span>17.2</span></a>), using the <code>future</code> package.</p></li>
 </ul>
 <p>This time we will specify a list of output objects to be saved for model validation later.</p>
 <div class="cell">
 <div id="lst-exp" class="r cell-code listing quarto-float">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-exp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Listing&nbsp;16.1: Sequential replication
+Listing&nbsp;17.1: Sequential replication
 </figcaption>
 <div aria-describedby="lst-exp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="sourceCode cell-code" id="lst-exp"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="lst-exp-1"><a href="#lst-exp-1" aria-hidden="true" tabindex="-1"></a>simInitOut <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">simInit2</span>(out)</span>
@@ -848,11 +850,11 @@ Listing&nbsp;16.1: Sequential replication
 <span id="lst-exp-3"><a href="#lst-exp-3" aria-hidden="true" tabindex="-1"></a>outputsDF <span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
 <span id="lst-exp-4"><a href="#lst-exp-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
 <span id="lst-exp-5"><a href="#lst-exp-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">objectName =</span> <span class="st">"cohortData"</span>, </span>
-<span id="lst-exp-6"><a href="#lst-exp-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">saveTime =</span> <span class="fu">seq</span>(SpaDES.core<span class="sc">::</span><span class="fu">start</span>(simOut), SpaDES.core<span class="sc">::</span><span class="fu">end</span>(simOut))</span>
+<span id="lst-exp-6"><a href="#lst-exp-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">saveTime =</span> <span class="fu">seq</span>(SpaDES.core<span class="sc">::</span><span class="fu">start</span>(simInitOut), SpaDES.core<span class="sc">::</span><span class="fu">end</span>(simInitOut))</span>
 <span id="lst-exp-7"><a href="#lst-exp-7" aria-hidden="true" tabindex="-1"></a>  ),</span>
 <span id="lst-exp-8"><a href="#lst-exp-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
 <span id="lst-exp-9"><a href="#lst-exp-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">objectName =</span> <span class="st">"pixelGroupMap"</span>, </span>
-<span id="lst-exp-10"><a href="#lst-exp-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">saveTime =</span> <span class="fu">seq</span>(SpaDES.core<span class="sc">::</span><span class="fu">start</span>(simOut), SpaDES.core<span class="sc">::</span><span class="fu">end</span>(simOut))</span>
+<span id="lst-exp-10"><a href="#lst-exp-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">saveTime =</span> <span class="fu">seq</span>(SpaDES.core<span class="sc">::</span><span class="fu">start</span>(simInitOut), SpaDES.core<span class="sc">::</span><span class="fu">end</span>(simInitOut))</span>
 <span id="lst-exp-11"><a href="#lst-exp-11" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="lst-exp-12"><a href="#lst-exp-12" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="lst-exp-13"><a href="#lst-exp-13" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">outputs</span>(simInitOut) <span class="ot">&lt;-</span> outputsDF</span>
@@ -867,19 +869,18 @@ Listing&nbsp;16.1: Sequential replication
 <div id="lst-expparall" class="r cell-code listing quarto-float">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-expparall-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Listing&nbsp;16.2: Parallel replication
+Listing&nbsp;17.2: Parallel replication
 </figcaption>
 <div aria-describedby="lst-expparall-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="sourceCode cell-code" id="lst-expparall"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="lst-expparall-1"><a href="#lst-expparall-1" aria-hidden="true" tabindex="-1"></a>future<span class="sc">::</span><span class="fu">plan</span>(<span class="st">"multisession"</span>, <span class="at">workers =</span> <span class="dv">5</span>)</span>
-<span id="lst-expparall-2"><a href="#lst-expparall-2" aria-hidden="true" tabindex="-1"></a>simOutExperiment <span class="ot">&lt;-</span> SpaDES.experiment<span class="sc">::</span><span class="fu">experiment2</span>(simInitOut, </span>
-<span id="lst-expparall-3"><a href="#lst-expparall-3" aria-hidden="true" tabindex="-1"></a>                                                   <span class="at">replicates =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="lst-expparall-2"><a href="#lst-expparall-2" aria-hidden="true" tabindex="-1"></a>simOutExperiment <span class="ot">&lt;-</span> SpaDES.experiment<span class="sc">::</span><span class="fu">experiment2</span>(simInitOut, <span class="at">replicates =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </figure>
 </div>
 </div>
 </section>
-<section id="validation" class="level3" data-number="16.3.3">
-<h3 data-number="16.3.3" class="anchored" data-anchor-id="validation"><span class="header-section-number">16.3.3</span> Validation</h3>
+<section id="validation" class="level3" data-number="17.3.3">
+<h3 data-number="17.3.3" class="anchored" data-anchor-id="validation"><span class="header-section-number">17.3.3</span> Validation</h3>
 <p>Now that we have several replicates, we can use <em>Biomass_validationKNN</em> to run some validation statistics.</p>
 <p>Integrating model validation as part of an ecological modelling workflow ensures that when model predictions are repeated under the same or different conditions, or new data arrives for validation, they can be readily (re-evaluated).</p>
 <p>Note that, for convenience, we use <code>simOut</code> to access many of the necessary inputs for <em>Biomass_validationKNN</em>, but we could have used one of the <code>simLists</code> in <code>simOutExperiment</code> instead.</p>
@@ -912,13 +913,12 @@ Listing&nbsp;16.2: Parallel replication
 <span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">speciesLayersStart =</span> simOut<span class="sc">$</span>speciesLayers</span>
 <span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>simOutValid <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">simInitAndSpades2</span>(outValid)</span>
-<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="do">## bug here with outputDF.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>simOutValid <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">simInitAndSpades2</span>(outValid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
-<section id="sec-LandRScenarios" class="level3" data-number="16.3.4">
-<h3 data-number="16.3.4" class="anchored" data-anchor-id="sec-LandRScenarios"><span class="header-section-number">16.3.4</span> Different scenarios and model selection</h3>
+<section id="sec-LandRScenarios" class="level3" data-number="17.3.4">
+<h3 data-number="17.3.4" class="anchored" data-anchor-id="sec-LandRScenarios"><span class="header-section-number">17.3.4</span> Different scenarios and model selection</h3>
 <p>In <span class="citation" data-cites="barros2023">Barros et al. (<a href="references.html#ref-barros2023" role="doc-biblioref">2023</a>)</span>, the model was run with two different parameterisation approaches one that was “data hungry” and calibrated tree species growth parameters and a simpler one that used default parameter values (without <em>Biomass_speciesParameters</em>).</p>
 <p>By swapping parameterisation/calibration modules in and out <!--HERE--></p>
 <div class="cell">
@@ -927,9 +927,9 @@ Listing&nbsp;16.2: Parallel replication
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>simOutExperiment <span class="ot">&lt;-</span> SpaDES.experiment<span class="sc">::</span><span class="fu">experiment2</span>(simInitOut, <span class="at">replicates =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<section id="sec-LandRdebug" class="level4" data-number="16.3.4.1">
-<h4 data-number="16.3.4.1" class="anchored" data-anchor-id="sec-LandRdebug"><span class="header-section-number">16.3.4.1</span> Debugging</h4>
-<p>There are several ways to debug SpaDES modules (see <a href="debugging.html" class="quarto-xref"><span>Chapter 12</span></a>), a relatively easy one for when you are suprised by an error occurring during specific event is to pass the event’s name to <code>spades(..., debug = )</code> argument.</p>
+<section id="sec-LandRdebug" class="level4" data-number="17.3.4.1">
+<h4 data-number="17.3.4.1" class="anchored" data-anchor-id="sec-LandRdebug"><span class="header-section-number">17.3.4.1</span> Debugging</h4>
+<p>There are several ways to debug SpaDES modules (see <a href="debugging.html" class="quarto-xref"><span>Chapter 13</span></a>), a relatively easy one for when you are suprised by an error occurring during specific event is to pass the event’s name to <code>spades(..., debug = )</code> argument.</p>
 <p>Below, we debug the <code>plotSummaryBySpecies</code> event of <em>Biomass_core</em>. R interrupts the execution of the code in the chunk that executes this event’s operations (inside <code>doEvent.Biomass_core()</code>)</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -938,14 +938,9 @@ Listing&nbsp;16.2: Parallel replication
 </details>
 </div>
 <p>R interrupts code execution during this event’s operations (inside <code>doEvent.Biomass_core()</code>):</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>debugging <span class="cf">in</span><span class="sc">:</span> <span class="fu">get</span>(moduleCall, <span class="at">envir =</span> fnEnv)(sim, cur[[<span class="st">"eventTime"</span>]], cur[[<span class="st">"eventType"</span>]])</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>debug at C<span class="sc">:</span><span class="er">/</span>Users<span class="sc">/</span>cbarros<span class="sc">/</span>Documents<span class="sc">/</span>SpaDES_book<span class="sc">/</span>LandRDemo_coreVeg<span class="sc">/</span>modules<span class="sc">/</span>Biomass_core<span class="sc">/</span>Biomass_core.R<span class="co">#314: {</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>(...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
+<pre><code>debugging in: get(moduleCall, envir = fnEnv)(sim, cur[["eventTime"]], cur[["eventType"]])
+debug at C:/Users/cbarros/Documents/SpaDES_book/LandRDemo_coreVeg/modules/Biomass_core/Biomass_core.R#314: {
+(...)</code></pre>
 <p>From there you can press ENTER, F10 or the “Next” button to execute the code line-by-line. At some point you will get to this line:</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -959,8 +954,8 @@ Listing&nbsp;16.2: Parallel replication
 </section>
 </section>
 </section>
-<section id="try-on-your-own" class="level2" data-number="16.4">
-<h2 data-number="16.4" class="anchored" data-anchor-id="try-on-your-own"><span class="header-section-number">16.4</span> Try on your own</h2>
+<section id="try-on-your-own" class="level2" data-number="17.4">
+<h2 data-number="17.4" class="anchored" data-anchor-id="try-on-your-own"><span class="header-section-number">17.4</span> Try on your own</h2>
 <p>Try re-running the workflow with a different set of study areas. For example:</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -978,8 +973,8 @@ Listing&nbsp;16.2: Parallel replication
 <li><p>where the species simulated the same? How about their trait values (e.g.&nbsp;estimated maxB, species establishment probabilities. )</p></li>
 </ul>
 </section>
-<section id="see-also" class="level2" data-number="16.5">
-<h2 data-number="16.5" class="anchored" data-anchor-id="see-also"><span class="header-section-number">16.5</span> See also</h2>
+<section id="see-also" class="level2" data-number="17.5">
+<h2 data-number="17.5" class="anchored" data-anchor-id="see-also"><span class="header-section-number">17.5</span> See also</h2>
 <p><a href="https://future.futureverse.org/reference/plan.html"><code>?future::plan</code></a></p>
 <p><a href="https://bookdown.org/rdpeng/rprogdatascience/parallel-computation.html">Parallelisation Computation – R Programming for Data Science</a></p>
 
@@ -1563,12 +1558,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./multipleModules.html" class="pagination-link" aria-label="Multiple Modules">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Multiple Modules</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Multiple Modules</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./ForestsAndFire.html" class="pagination-link" aria-label="Forest Succession and Wildfire using `setupProject`">
-        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

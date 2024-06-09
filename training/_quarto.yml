@@ -68,7 +68,7 @@ book:
     - part: ContinuousWorkflows.qmd
       chapters:
       - Caching.qmd
-      # - prepInputs.qmd
+      - prepInputs.qmd
       - debugging.qmd
     - part: setupProject.qmd
       chapters:

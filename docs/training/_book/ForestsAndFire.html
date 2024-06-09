@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eliot McIntire and Ian Eddy">
-<meta name="dcterms.date" content="2024-06-08">
+<meta name="dcterms.date" content="2024-06-09">
 
-<title>Robust and nimble scientific workflows, using SpaDES - 16&nbsp; Forest Succession and Wildfire using setupProject</title>
+<title>Robust and nimble scientific workflows, using SpaDES - 17&nbsp; Forest Succession and Wildfire using setupProject</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -231,7 +231,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./ForestsAndFire.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./ForestsAndFire.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -348,8 +348,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./prepInputs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>prepInputs</code> for bringing data into projects</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./debugging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Debugging SpaDES modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES modules</span></span></a>
   </div>
 </li>
       </ul>
@@ -366,31 +372,31 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflowSimple2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./multipleModules.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Multiple Modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Multiple Modules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./LandRDemo_coreVeg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">LandR workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">LandR workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ForestsAndFire.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -417,17 +423,17 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#examining-things" id="toc-examining-things" class="nav-link active" data-scroll-target="#examining-things"><span class="header-section-number">16.1</span> Examining things</a></li>
-  <li><a href="#changing-things" id="toc-changing-things" class="nav-link" data-scroll-target="#changing-things"><span class="header-section-number">16.2</span> Changing things</a></li>
+  <li><a href="#examining-things" id="toc-examining-things" class="nav-link active" data-scroll-target="#examining-things"><span class="header-section-number">17.1</span> Examining things</a></li>
+  <li><a href="#changing-things" id="toc-changing-things" class="nav-link" data-scroll-target="#changing-things"><span class="header-section-number">17.2</span> Changing things</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./ForestsAndFire.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./ForestsAndFire.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-scfmEg" class="quarto-section-identifier"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></h1>
+<h1 class="title"><span id="sec-scfmEg" class="quarto-section-identifier"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></h1>
 </div>
 
 
@@ -444,7 +450,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 8, 2024</p>
+      <p class="date">June 9, 2024</p>
     </div>
   </div>
   
@@ -536,8 +542,8 @@ window.Quarto = {
 <span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Cache</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<section id="examining-things" class="level2" data-number="16.1">
-<h2 data-number="16.1" class="anchored" data-anchor-id="examining-things"><span class="header-section-number">16.1</span> Examining things</h2>
+<section id="examining-things" class="level2" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="examining-things"><span class="header-section-number">17.1</span> Examining things</h2>
 <p>We can do all sorts of things. We will start with a few simple “accessors”, i.e., “access something from the simList”. <code>completed</code> shows the events that were run. <code>elapsedTime</code> shows how much time each event took.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -557,8 +563,8 @@ window.Quarto = {
 </details>
 </div>
 </section>
-<section id="changing-things" class="level2" data-number="16.2">
-<h2 data-number="16.2" class="anchored" data-anchor-id="changing-things"><span class="header-section-number">16.2</span> Changing things</h2>
+<section id="changing-things" class="level2" data-number="17.2">
+<h2 data-number="17.2" class="anchored" data-anchor-id="changing-things"><span class="header-section-number">17.2</span> Changing things</h2>
 <p>Setting <code>.plots = "png"</code> will turn on all known plotting (that uses the <code>Plots</code> function) and save them all as <code>png</code> files in the <code>figures</code> subfolder.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -1134,12 +1140,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./LandRDemo_coreVeg.html" class="pagination-link" aria-label="LandR workflow with `setupProject`">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">LandR workflow with <code>setupProject</code></span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">LandR workflow with <code>setupProject</code></span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./castorExample.html" class="pagination-link" aria-label="Castor workflow with `setupProject`">
-        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

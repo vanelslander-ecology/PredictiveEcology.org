@@ -9,7 +9,7 @@
 <meta name="author" content="Ceres Barros">
 <meta name="dcterms.date" content="2024-06-09">
 
-<title>Robust and nimble scientific workflows, using SpaDES - 12&nbsp; Debugging SpaDES modules</title>
+<title>Robust and nimble scientific workflows, using SpaDES - 13&nbsp; Debugging SpaDES modules</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,7 +67,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./setupProject.html" rel="next">
-<link href="./Caching.html" rel="prev">
+<link href="./prepInputs.html" rel="prev">
 <link href="./assets/logo/favicon-16x16.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -231,7 +231,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Caching.html">ContinuousWorkflows.qmd</a></li><li class="breadcrumb-item"><a href="./debugging.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Debugging SpaDES modules</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Caching.html">ContinuousWorkflows.qmd</a></li><li class="breadcrumb-item"><a href="./debugging.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES modules</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -348,8 +348,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./prepInputs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>prepInputs</code> for bringing data into projects</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./debugging.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Debugging SpaDES modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES modules</span></span></a>
   </div>
 </li>
       </ul>
@@ -366,31 +372,31 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflowSimple2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./multipleModules.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Multiple Modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Multiple Modules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./LandRDemo_coreVeg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">LandR workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">LandR workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ForestsAndFire.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -417,26 +423,26 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#debugging-with-browser" id="toc-debugging-with-browser" class="nav-link active" data-scroll-target="#debugging-with-browser"><span class="header-section-number">12.1</span> Debugging with <code>browser()</code></a>
+  <li><a href="#debugging-with-browser" id="toc-debugging-with-browser" class="nav-link active" data-scroll-target="#debugging-with-browser"><span class="header-section-number">13.1</span> Debugging with <code>browser()</code></a>
   <ul class="collapse">
-  <li><a href="#browser-with-a-spades-module" id="toc-browser-with-a-spades-module" class="nav-link" data-scroll-target="#browser-with-a-spades-module"><span class="header-section-number">12.1.1</span> <code>browser()</code> with a SpaDES module</a></li>
+  <li><a href="#browser-with-a-spades-module" id="toc-browser-with-a-spades-module" class="nav-link" data-scroll-target="#browser-with-a-spades-module"><span class="header-section-number">13.1.1</span> <code>browser()</code> with a SpaDES module</a></li>
   </ul></li>
-  <li><a href="#debugging-with-debug-and-debugonce" id="toc-debugging-with-debug-and-debugonce" class="nav-link" data-scroll-target="#debugging-with-debug-and-debugonce"><span class="header-section-number">12.2</span> Debugging with <code>debug()</code> and <code>debugonce()</code></a>
+  <li><a href="#debugging-with-debug-and-debugonce" id="toc-debugging-with-debug-and-debugonce" class="nav-link" data-scroll-target="#debugging-with-debug-and-debugonce"><span class="header-section-number">13.2</span> Debugging with <code>debug()</code> and <code>debugonce()</code></a>
   <ul class="collapse">
-  <li><a href="#debugonce-and-debug-with-a-spades-module" id="toc-debugonce-and-debug-with-a-spades-module" class="nav-link" data-scroll-target="#debugonce-and-debug-with-a-spades-module"><span class="header-section-number">12.2.1</span> <code>debugonce()</code> and <code>debug()</code> with a SpaDES module</a></li>
+  <li><a href="#debugonce-and-debug-with-a-spades-module" id="toc-debugonce-and-debug-with-a-spades-module" class="nav-link" data-scroll-target="#debugonce-and-debug-with-a-spades-module"><span class="header-section-number">13.2.1</span> <code>debugonce()</code> and <code>debug()</code> with a SpaDES module</a></li>
   </ul></li>
-  <li><a href="#restartspades" id="toc-restartspades" class="nav-link" data-scroll-target="#restartspades"><span class="header-section-number">12.3</span> <code>restartSpades()</code></a></li>
-  <li><a href="#try-on-your-own" id="toc-try-on-your-own" class="nav-link" data-scroll-target="#try-on-your-own"><span class="header-section-number">12.4</span> Try on your own</a></li>
-  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">12.5</span> See also</a></li>
+  <li><a href="#restartspades" id="toc-restartspades" class="nav-link" data-scroll-target="#restartspades"><span class="header-section-number">13.3</span> <code>restartSpades()</code></a></li>
+  <li><a href="#try-on-your-own" id="toc-try-on-your-own" class="nav-link" data-scroll-target="#try-on-your-own"><span class="header-section-number">13.4</span> Try on your own</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">13.5</span> See also</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Caching.html">ContinuousWorkflows.qmd</a></li><li class="breadcrumb-item"><a href="./debugging.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Debugging SpaDES modules</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Caching.html">ContinuousWorkflows.qmd</a></li><li class="breadcrumb-item"><a href="./debugging.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES modules</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-debugging" class="quarto-section-identifier"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Debugging SpaDES modules</span></span></h1>
+<h1 class="title"><span id="sec-debugging" class="quarto-section-identifier"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES modules</span></span></h1>
 </div>
 
 
@@ -468,8 +474,8 @@ window.Quarto = {
 <p>The flexibility and collaborative model development that SpaDES promotes can come with the cost of having module code that may not fit all desired applications out-of-the-box or, like any other piece of code, that may have errors.</p>
 <p>It is a good idea to learn the basics of debugging, especially when using open-source, interpreted code languages like R (in opposition to compiled code languages like <em>C++</em>).</p>
 <p>It is also a (very) good idea to learn how to develop a good reproducible example (<em>reprex</em>; see <a href="https://www.r-bloggers.com/2020/10/how-to-make-a-reprex/">How to make a reprex</a>) when debugging attempts have failed or when we cannot fix the issue ourselves (e.g., bugs in R packages need to be fixed by package maintainers).</p>
-<section id="debugging-with-browser" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="debugging-with-browser"><span class="header-section-number">12.1</span> Debugging with <code>browser()</code></h2>
+<section id="debugging-with-browser" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="debugging-with-browser"><span class="header-section-number">13.1</span> Debugging with <code>browser()</code></h2>
 <p><code>browser()</code> calls are very useful when you have access to the source code. When inserted inside a function, they will interrupt code execution at that point and allow the user to “enter” the function’s environment in debugging mode – i.e.&nbsp;they will have access to all the objects the function has access to internally.</p>
 <p>Let’s define a simple function and then use it improperly.</p>
 <div class="cell">
@@ -505,8 +511,8 @@ window.Quarto = {
 </details>
 </div>
 <p>From the above we would quickly realise we were trying to add a numeric vector with a character vector, which obviously doesn’t work.</p>
-<section id="browser-with-a-spades-module" class="level3" data-number="12.1.1">
-<h3 data-number="12.1.1" class="anchored" data-anchor-id="browser-with-a-spades-module"><span class="header-section-number">12.1.1</span> <code>browser()</code> with a SpaDES module</h3>
+<section id="browser-with-a-spades-module" class="level3" data-number="13.1.1">
+<h3 data-number="13.1.1" class="anchored" data-anchor-id="browser-with-a-spades-module"><span class="header-section-number">13.1.1</span> <code>browser()</code> with a SpaDES module</h3>
 <p>Go back to the module <em>My_linear_model</em> created in <a href="NewModuleIntro.html" class="quarto-xref"><span>Chapter 5</span></a> and insert a <code>browser()</code> in the <code>init</code> event, save and run the module again.</p>
 <pre><code>doEvent.My_linear_model.init &lt;- function(sim, eventTime, eventType, priority) {
     browser()
@@ -530,8 +536,8 @@ Called from: get(moduleCall, envir = fnEnv)(sim, cur[["eventTime"]], cur[["event
 <p>Use <code>ls()</code> to see what objects are in the function environment, then execute code line-by-line with ENTER, F10 or the “Next” button.</p>
 </section>
 </section>
-<section id="debugging-with-debug-and-debugonce" class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="debugging-with-debug-and-debugonce"><span class="header-section-number">12.2</span> Debugging with <code>debug()</code> and <code>debugonce()</code></h2>
+<section id="debugging-with-debug-and-debugonce" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="debugging-with-debug-and-debugonce"><span class="header-section-number">13.2</span> Debugging with <code>debug()</code> and <code>debugonce()</code></h2>
 <p>If we don’t have access to the function code (or don’t want to insert a <code>browser()</code>) we can use <code>debug()</code> and <code>debugonce()</code>. The effect will be similar to having a <code>browser()</code> in the first line of a function’s definition.</p>
 <p>Here’s an example:</p>
 <div class="cell">
@@ -543,8 +549,8 @@ Called from: get(moduleCall, envir = fnEnv)(sim, cur[["eventTime"]], cur[["event
 </details>
 </div>
 <p><code>undebug(&lt;function_name&gt;)</code> will de-activate debugging for that function.</p>
-<section id="debugonce-and-debug-with-a-spades-module" class="level3" data-number="12.2.1">
-<h3 data-number="12.2.1" class="anchored" data-anchor-id="debugonce-and-debug-with-a-spades-module"><span class="header-section-number">12.2.1</span> <code>debugonce()</code> and <code>debug()</code> with a SpaDES module</h3>
+<section id="debugonce-and-debug-with-a-spades-module" class="level3" data-number="13.2.1">
+<h3 data-number="13.2.1" class="anchored" data-anchor-id="debugonce-and-debug-with-a-spades-module"><span class="header-section-number">13.2.1</span> <code>debugonce()</code> and <code>debug()</code> with a SpaDES module</h3>
 <p>The process would be similar in a module, with the difference that the <code>debug()</code>/<code>debugonce()</code> call would either happen <em>before</em> running the module with <code>spades()</code>, OR from within the module in debugging mode.</p>
 <div class="callout callout-style-simple callout-tip">
 <div class="callout-body d-flex">
@@ -598,24 +604,24 @@ Called from: get(moduleCall, envir = fnEnv)(sim, cur[["eventTime"]], cur[["event
 </div>
 </section>
 </section>
-<section id="restartspades" class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="restartspades"><span class="header-section-number">12.3</span> <code>restartSpades()</code></h2>
+<section id="restartspades" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="restartspades"><span class="header-section-number">13.3</span> <code>restartSpades()</code></h2>
 <p>Probably one of our BFFs (best-friend functions) as SpaDES developpers, it will allow resuming a workflow whose execution was interrupted by an error or the user from the top of the interrupted event, but will first re-parse module code.</p>
 <p>This means that we can insert a <code>browser()</code> somewhere in the event code, then <code>restartSpades()</code> and debug the event.</p>
 </section>
-<section id="try-on-your-own" class="level2" data-number="12.4">
-<h2 data-number="12.4" class="anchored" data-anchor-id="try-on-your-own"><span class="header-section-number">12.4</span> Try on your own</h2>
+<section id="try-on-your-own" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="try-on-your-own"><span class="header-section-number">13.4</span> Try on your own</h2>
 <ul>
 <li>Try to debug the first method of the function <code>show()</code>. Here’s a tip: start with <code>showMethods("show")</code>.</li>
 </ul>
 </section>
-<section id="see-also" class="level2" data-number="12.5">
-<h2 data-number="12.5" class="anchored" data-anchor-id="see-also"><span class="header-section-number">12.5</span> See also</h2>
+<section id="see-also" class="level2" data-number="13.5">
+<h2 data-number="13.5" class="anchored" data-anchor-id="see-also"><span class="header-section-number">13.5</span> See also</h2>
 <p><a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/browser"><code>?browser()</code></a></p>
 <p><a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/debug"><code>?debug()</code></a></p>
 <p><a href="https://spades-core.predictiveecology.org/reference/restartSpades.html"><code>?restartSpades()</code></a></p>
 <p><a href="https://www.rdocumentation.org/packages/methods/versions/3.6.2/topics/showMethods"><code>?showMethods()</code></a> – useful to find out what methods of a function you may want to activate debugging for</p>
-<p>An example of debugging a more complex SpaDES workflow in <a href="LandRDemo_coreVeg.html#sec-LandRdebug" class="quarto-xref"><span>Section 16.3.4.1</span></a></p>
+<p>An example of debugging a more complex SpaDES workflow in <a href="LandRDemo_coreVeg.html#sec-LandRdebug" class="quarto-xref"><span>Section 17.3.4.1</span></a></p>
 <p><a href="https://adv-r.hadley.nz/debugging.html">Debugging – Advanced R</a></p>
 <p><a href="https://www.r-bloggers.com/2020/10/how-to-make-a-reprex/">How to make a reprex</a></p>
 
@@ -1183,8 +1189,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Caching.html" class="pagination-link" aria-label="Introduction to Cache">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span>
+      <a href="./prepInputs.html" class="pagination-link" aria-label="`prepInputs` for bringing data into projects">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>prepInputs</code> for bringing data into projects</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

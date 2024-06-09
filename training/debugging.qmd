@@ -224,10 +224,12 @@ then `restartSpades()` and debug the event.
 
 [`?restartSpades()`](https://spades-core.predictiveecology.org/reference/restartSpades.html)
 
-[`?showMethods()`](https://www.rdocumentation.org/packages/methods/versions/3.6.2/topics/showMethods) -- useful to find out what methods of a function
-you may want to activate debugging for
+[`?showMethods()`](https://www.rdocumentation.org/packages/methods/versions/3.6.2/topics/showMethods)
+-- useful to find out what methods of a function you may want to
+activate debugging for
 
-An example of debugging a more complex SpaDES workflow in @sec-LandRdebug
+An example of debugging a more complex SpaDES workflow in
+@sec-LandRdebug
 
 [Debugging -- Advanced R](https://adv-r.hadley.nz/debugging.html)
 

@@ -1,0 +1,66 @@
+---
+author: "Eliot McIntire"
+date: last-modified
+editor_options:
+  chunk_output_type: console
+execute:
+  eval: false
+  tidy: false
+  warning: false
+  message: false
+  error: false
+  cache: false
+---
+
+# `prepInputs` for bringing data into projects
+
+```{r setup}
+#| include: false
+#| eval: true
+
+## truncate text output
+hook_output <- knitr::knit_hooks$get("output")
+
+knitr::knit_hooks$set(output = function(y, options) {
+  if (!is.null(n <- options$outlines)) {
+    y <- xfun::split_lines(y)
+    if (length(y) > n) {
+      # truncate the output
+      y <- c(head(y, n), "....\n")
+    }
+    y <- paste(y, collapse = "\n")
+  }
+  hook_output(y, options)
+})
+
+```
+
+Every project that has data will need to get the data from its original source into a form and format that works for a given project. To do this in a reproducible/reusable manner is not trivial. 
+
+Some elements that should be present when bringing the data into a project in a reproducible/reusable manner can ideally include:
+
+- **Accessible** from any computer
+- **User-access control** (i.e., can allow only some people to get the data)
+- **Versioned** i.e., can know and control the version accessed
+- **Spatially appropriate** -- if data are spatial (e.g., GIS data), they must be coerced to relevant template for a project
+- **Exact**, i.e., test to ensure the data were downloaded as desired
+- **Flexible** for many classes of data
+- **Simple**
+
+Similar, if the data are to be re-used in many projects, the approach to getting the data should be:
+
+- **Locally cached** if used in many projects, only one copy is needed
+- **Modular** approach to accessing, so they can be easily added to any project
+
+We designed a function to achieve all this: `[reproducible::prepInputs()](https://reproducible.predictiveecology.org/reference/prepInputs.html)`
+
+## `prepInputs`
+
+This function can be used to prepare R objects from remote or local data sources.
+The object of this function is to provide a reproducible version of
+a series of commonly used steps for getting, loading, and processing data.
+This function has two stages: Getting data (download, extracting from archives,
+loading into R) and post-processing (for `Spatial*` and `Raster*`
+objects, this is crop, reproject, mask/intersect).
+To trigger the first stage, provide `url` or `archive`.
+To trigger the second stage, provide `studyArea` or `rasterToMatch`.
