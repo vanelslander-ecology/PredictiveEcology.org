@@ -31,8 +31,9 @@ SpaDES users and any R programmers in general.
 -   "DOComment" your code -- use comments that describe the intention of
     the code, not necessarily a code translation into human language:
 
-::: {.callout-tip collapse = "false"} Not a very useful comment (we can
-check ?lm):
+::: {.callout-tip collapse = "false"} 
+
+Not a very useful comment (we can check `?lm` to know what it does):
 
 ```{r}
 #| eval: false
