@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://predictiveecology.org/index.html</loc>
-    <lastmod>2024-06-07T00:35:38.996Z</lastmod>
+    <lastmod>2024-06-09T00:50:44.484Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/intro.html</loc>
-    <lastmod>2024-06-07T00:35:38.997Z</lastmod>
+    <lastmod>2024-06-07T07:31:03.183Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/settingUp.html</loc>
@@ -22,7 +22,7 @@
   </url>
   <url>
     <loc>https://predictiveecology.org/TroubleshootingPackageInstallation.html</loc>
-    <lastmod>2024-06-07T00:35:38.995Z</lastmod>
+    <lastmod>2024-06-07T07:31:03.183Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/SpaDESbasics.html</loc>
@@ -30,11 +30,11 @@
   </url>
   <url>
     <loc>https://predictiveecology.org/NewModuleIntro.html</loc>
-    <lastmod>2024-06-07T05:02:37.052Z</lastmod>
+    <lastmod>2024-06-09T06:53:33.858Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/MetaDataAndModuleFiles.html</loc>
-    <lastmod>2024-06-07T05:00:59.754Z</lastmod>
+    <lastmod>2024-06-09T00:50:44.464Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/ModuleInputs.html</loc>
@@ -42,7 +42,7 @@
   </url>
   <url>
     <loc>https://predictiveecology.org/simList.html</loc>
-    <lastmod>2024-06-04T17:47:33.296Z</lastmod>
+    <lastmod>2024-06-09T00:50:44.490Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/ModulesAndEvents.html</loc>
@@ -50,11 +50,15 @@
   </url>
   <url>
     <loc>https://predictiveecology.org/Scheduling.html</loc>
-    <lastmod>2024-06-07T05:00:59.764Z</lastmod>
+    <lastmod>2024-06-09T00:50:44.477Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/Caching.html</loc>
     <lastmod>2024-06-04T18:52:49.572Z</lastmod>
+  </url>
+  <url>
+    <loc>https://predictiveecology.org/debugging.html</loc>
+    <lastmod>2024-06-09T07:49:57.893Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/setupProject.html</loc>
@@ -62,23 +66,27 @@
   </url>
   <url>
     <loc>https://predictiveecology.org/workflowSimple2.html</loc>
-    <lastmod>2024-06-07T05:17:14.545Z</lastmod>
+    <lastmod>2024-06-09T00:51:07.130Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/multipleModules.html</loc>
     <lastmod>2024-06-04T17:47:33.046Z</lastmod>
   </url>
   <url>
+    <loc>https://predictiveecology.org/LandRDemo_coreVeg.html</loc>
+    <lastmod>2024-06-09T08:23:01.996Z</lastmod>
+  </url>
+  <url>
     <loc>https://predictiveecology.org/ForestsAndFire.html</loc>
-    <lastmod>2024-06-07T05:18:15.181Z</lastmod>
+    <lastmod>2024-06-09T04:06:03.102Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/castorExample.html</loc>
-    <lastmod>2024-06-07T05:14:53.225Z</lastmod>
+    <lastmod>2024-06-09T00:51:07.130Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/bestPractices.html</loc>
-    <lastmod>2024-06-04T17:47:33.011Z</lastmod>
+    <lastmod>2024-06-09T06:12:26.256Z</lastmod>
   </url>
   <url>
     <loc>https://predictiveecology.org/references.html</loc>

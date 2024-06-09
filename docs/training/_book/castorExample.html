@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ceres Barros">
-<meta name="dcterms.date" content="2024-06-06">
+<meta name="dcterms.date" content="2024-06-08">
 
-<title>Robust and nimble scientific workflows, using SpaDES - 15&nbsp; Castor workflow with setupProject</title>
+<title>Robust and nimble scientific workflows, using SpaDES - 17&nbsp; Castor workflow with setupProject</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -231,7 +231,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./castorExample.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./castorExample.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -346,6 +346,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./debugging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Debugging SpaDES modules</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -360,25 +366,31 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflowSimple2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./multipleModules.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Multiple Modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Multiple Modules</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./LandRDemo_coreVeg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">LandR workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ForestsAndFire.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./castorExample.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -386,7 +398,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bestPractices.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Best practices for <span class="math inline">\(R^3T\)</span> workflows</span></span></a>
+ <span class="menu-text">Best practices for <span class="math inline">\(R^3T\)</span> workflows</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -405,19 +417,19 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-castorSetup" id="toc-sec-castorSetup" class="nav-link active" data-scroll-target="#sec-castorSetup"><span class="header-section-number">15.1</span> Workflow setup</a></li>
-  <li><a href="#initialise-the-model-and-inspect-simlist" id="toc-initialise-the-model-and-inspect-simlist" class="nav-link" data-scroll-target="#initialise-the-model-and-inspect-simlist"><span class="header-section-number">15.2</span> Initialise the model and inspect <code>simList</code></a></li>
-  <li><a href="#visualize-the-workflow" id="toc-visualize-the-workflow" class="nav-link" data-scroll-target="#visualize-the-workflow"><span class="header-section-number">15.3</span> Visualize the workflow</a></li>
-  <li><a href="#run-simulation" id="toc-run-simulation" class="nav-link" data-scroll-target="#run-simulation"><span class="header-section-number">15.4</span> Run simulation</a></li>
+  <li><a href="#sec-castorSetup" id="toc-sec-castorSetup" class="nav-link active" data-scroll-target="#sec-castorSetup"><span class="header-section-number">17.1</span> Workflow setup</a></li>
+  <li><a href="#initialise-the-model-and-inspect-simlist" id="toc-initialise-the-model-and-inspect-simlist" class="nav-link" data-scroll-target="#initialise-the-model-and-inspect-simlist"><span class="header-section-number">17.2</span> Initialise the model and inspect <code>simList</code></a></li>
+  <li><a href="#visualize-the-workflow" id="toc-visualize-the-workflow" class="nav-link" data-scroll-target="#visualize-the-workflow"><span class="header-section-number">17.3</span> Visualize the workflow</a></li>
+  <li><a href="#run-simulation" id="toc-run-simulation" class="nav-link" data-scroll-target="#run-simulation"><span class="header-section-number">17.4</span> Run simulation</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./castorExample.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./castorExample.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-castorEg" class="quarto-section-identifier"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></h1>
+<h1 class="title"><span id="sec-castorEg" class="quarto-section-identifier"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></h1>
 </div>
 
 
@@ -434,7 +446,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 6, 2024</p>
+      <p class="date">June 8, 2024</p>
     </div>
   </div>
   
@@ -449,8 +461,8 @@ window.Quarto = {
 <p><a href="https://github.com/bcgov/castor">Castor</a> is a forest and land-use model used to simulate forest harvest and its effects on multiple forest values, which include not only timber, but also habitat for several wildlife (e.g.&nbsp;caribou, fisher). It is a fully open-source model, implemented in <code>SpaDES</code>, developed and maintained by researchers at the Forest Analysis and Inventory Branch, BC Ministry of Forests.</p>
 <p>In this chapter, we demonstrate how to set up a Castor workflow using <code>setupProject</code> from the <a href="https://spades-project.predictiveecology.org/"><code>SpaDES.project</code></a> package. The code was adapted from <a href="https://github.com/bcgov/castor/blob/main/R/scenarios/comparison_stsm/base_case_harvest_flow_20230628.Rmd">this Castor scenario</a>, with some modifications to streamline the code and accommodate the use of <code>SpaDES.project</code> functions.</p>
 <p>A bare-bones version of this example is also available in this <a href="https://github.com/PredictiveEcology/PredictiveEcology.org/blob/training-book/tutos/castorExample/castorExample.R">.R script</a></p>
-<section id="sec-castorSetup" class="level2" data-number="15.1">
-<h2 data-number="15.1" class="anchored" data-anchor-id="sec-castorSetup"><span class="header-section-number">15.1</span> Workflow setup</h2>
+<section id="sec-castorSetup" class="level2" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="sec-castorSetup"><span class="header-section-number">17.1</span> Workflow setup</h2>
 <p><code>SpaDES.project</code> functions expect SpaDES modules to either exist locally, or at root level of separate repositories. This is not the case with Castor modules, which are in a nested folder (i.e.&nbsp;a folder in a folder tree) of a single GitHub repository.</p>
 <p><code>SpaDES.project</code> will eventually be able to deal with this<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, but for now we work around this issue by using a custom function called <code>getCastorModulesAndDB</code>. This function will also download the demo SQLite database from Google Drive<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. You’ll be prompted to authorise this operation and a browser window will open for this. Make sure you give <code>tidyverse</code> read/write access to your files:</p>
 <div class="cell" data-layout-align="center">
@@ -461,7 +473,7 @@ window.Quarto = {
 <img src="C:/Users/cbarros/GitHub/PredictiveEcology.org/training/assets/img/gdriveauth.png" id="fig-gdriveauth" class="img-fluid quarto-figure quarto-figure-center anchored figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-gdriveauth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15.1
+Figure&nbsp;17.1
 </figcaption>
 </figure>
 </div>
@@ -575,8 +587,8 @@ Figure&nbsp;15.1
 </details>
 </div>
 </section>
-<section id="initialise-the-model-and-inspect-simlist" class="level2" data-number="15.2">
-<h2 data-number="15.2" class="anchored" data-anchor-id="initialise-the-model-and-inspect-simlist"><span class="header-section-number">15.2</span> Initialise the model and inspect <code>simList</code></h2>
+<section id="initialise-the-model-and-inspect-simlist" class="level2" data-number="17.2">
+<h2 data-number="17.2" class="anchored" data-anchor-id="initialise-the-model-and-inspect-simlist"><span class="header-section-number">17.2</span> Initialise the model and inspect <code>simList</code></h2>
 <p><code>setupProject()</code> returns a names list containing values that can be passed as argument to <a href="https://rdrr.io/cran/SpaDES.core/man/simInit.html"><code>simInit()</code></a><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
 <p>We use <code>do.call()</code> to pass the whole list of arguments to <code>simInit</code>.</p>
 <div class="cell">
@@ -628,9 +640,9 @@ Figure&nbsp;15.1
 </div>
 </div>
 </section>
-<section id="visualize-the-workflow" class="level2" data-number="15.3">
-<h2 data-number="15.3" class="anchored" data-anchor-id="visualize-the-workflow"><span class="header-section-number">15.3</span> Visualize the workflow</h2>
-<p><code>moduleDiagram()</code> and <code>objectDiagram()</code> are great to visualise how each module interacts with the other. Recall that these interactions arise from object “exchanges” between modules, which are deduced by <code>simInit()</code> from module metadata (<a href="#fig-objectDiagram" class="quarto-xref">Figure&nbsp;<span>15.3</span></a>) – i.e., if a module’s inputs are another’s outputs, then the first module will follow the second.</p>
+<section id="visualize-the-workflow" class="level2" data-number="17.3">
+<h2 data-number="17.3" class="anchored" data-anchor-id="visualize-the-workflow"><span class="header-section-number">17.3</span> Visualize the workflow</h2>
+<p><code>moduleDiagram()</code> and <code>objectDiagram()</code> are great to visualise how each module interacts with the other. Recall that these interactions arise from object “exchanges” between modules, which are deduced by <code>simInit()</code> from module metadata (<a href="#fig-objectDiagram" class="quarto-xref">Figure&nbsp;<span>17.3</span></a>) – i.e., if a module’s inputs are another’s outputs, then the first module will follow the second.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -646,7 +658,7 @@ Figure&nbsp;15.1
 <img src="castorExample_files/figure-html/fig-moduleDiagram-1.png" class="img-fluid figure-img" width="576">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-moduleDiagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15.2: Diagram of module connections.
+Figure&nbsp;17.2: Diagram of module connections.
 </figcaption>
 </figure>
 </div>
@@ -660,15 +672,15 @@ Figure&nbsp;15.2: Diagram of module connections.
 <img src="C:/Users/cbarros/GitHub/PredictiveEcology.org/training/assets/img/castorExample_objDiagram.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-objectDiagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15.3: Diagram of module inter-dependencies with object names.
+Figure&nbsp;17.3: Diagram of module inter-dependencies with object names.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="run-simulation" class="level2" data-number="15.4">
-<h2 data-number="15.4" class="anchored" data-anchor-id="run-simulation"><span class="header-section-number">15.4</span> Run simulation</h2>
+<section id="run-simulation" class="level2" data-number="17.4">
+<h2 data-number="17.4" class="anchored" data-anchor-id="run-simulation"><span class="header-section-number">17.4</span> Run simulation</h2>
 <p><code>spades()</code> runs the simulation, beginning with the execution of the <code>init</code> events. Notice how the result of <code>outputs()</code> differs from previously.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -1370,12 +1382,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./ForestsAndFire.html" class="pagination-link" aria-label="Forest Succession and Wildfire using `setupProject`">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./bestPractices.html" class="pagination-link" aria-label="Best practices for $R^3T$ workflows">
-        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Best practices for <span class="math inline">\(R^3T\)</span> workflows</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text">Best practices for <span class="math inline">\(R^3T\)</span> workflows</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

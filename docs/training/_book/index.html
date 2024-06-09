@@ -8,7 +8,7 @@
 
 <meta name="author" content="Eliot McIntire">
 <meta name="author" content="Ceres Barros">
-<meta name="dcterms.date" content="2024-06-06">
+<meta name="dcterms.date" content="2024-06-09">
 
 <title>Robust and nimble scientific workflows, using SpaDES</title>
 <style>
@@ -312,6 +312,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./debugging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Debugging SpaDES modules</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -326,25 +332,31 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflowSimple2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./multipleModules.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Multiple Modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Multiple Modules</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./LandRDemo_coreVeg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">LandR workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ForestsAndFire.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -352,7 +364,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bestPractices.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Best practices for <span class="math inline">\(R^3T\)</span> workflows</span></span></a>
+ <span class="menu-text">Best practices for <span class="math inline">\(R^3T\)</span> workflows</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -399,7 +411,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 6, 2024</p>
+      <p class="date">June 9, 2024</p>
     </div>
   </div>
   
@@ -417,7 +429,8 @@ window.Quarto = {
 <p><strong><em>This book is a work in progress. Please visit this again as chapters are being added and modified.</em></strong></p>
 <p>The approaches presented here use the <strong>SpaDES</strong> family of packages and associated packages, like <code>reproducible</code> and <code>Require</code>, that we have developed to face a variety of issues that we experienced during our own journeys as modellers and, more generally, scientists.</p>
 <p>Many of these issues we faced because most of us were ecologists by training (not computer scientists, not engineers, etc.), who lacked a strong programming foundation. So, we expect many who have other backgrounds and maybe very strong programming skills to find this set of solutions foreign and perhaps unnecessary, limited, or over-complicated for many applications outside the realm of ecological sciences. We certainly don’t expect NASA scientists to overhaul their own workflows and follow ours – but feel free too and send us your feedback!</p>
-<p>Still, we hope that many ecologists and those in related sciences (e.g. forestry, wildlife management, etc.), academics or practitioners, can appreciate the value of transforming their work into R<sup>3</sup>T, nimble workflows and find these solution useful. Mostly we hope that ecological modellers can embrace these tools to work towards expanding the ecological modelling community and the reusability and testing of the models it produces.</p>
+<p>The scope, therefore, of this book is limited to the many ways that data, and an understanding of those data achieved through models, can be used for decision making, reproducibility of publications that come from the work, etc. By working towards a set of standards for our data and modeling workflows, our science can become more nimble. We can thus pivot and update as issues come up.</p>
+<p>We hope that many ecologists and those in related sciences (e.g. forestry, wildlife management, etc.), academics or practitioners, can appreciate the value of transforming their work into R<sup>3</sup>T, PERFICT, and nimble workflows and find these solution useful. Mostly we hope that those that work with ecosystems can embrace these tools to work towards expanding the abilities of the community to become robust to any scrutiny we face.</p>
 </section>
 <section id="acknowledgements" class="level1 unnumbered">
 <h1 class="unnumbered">Acknowledgements</h1>

@@ -8,9 +8,9 @@
 
 <meta name="author" content="Ceres Barros">
 <meta name="author" content="Eliot McIntire">
-<meta name="dcterms.date" content="2024-06-04">
+<meta name="dcterms.date" content="2024-06-08">
 
-<title>Robust and nimble scientific workflows, using SpaDES - 16&nbsp; Best practices for \(R^3T\) workflows</title>
+<title>Robust and nimble scientific workflows, using SpaDES - Best practices for \(R^3T\) workflows</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -252,7 +252,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bestPractices.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Best practices for <span class="math inline">\(R^3T\)</span> workflows</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bestPractices.html">Best practices for <span class="math inline">\(R^3T\)</span> workflows</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -367,6 +367,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./debugging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Debugging SpaDES modules</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -381,25 +387,31 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflowSimple2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./multipleModules.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Multiple Modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Multiple Modules</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./LandRDemo_coreVeg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">LandR workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ForestsAndFire.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -407,7 +419,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bestPractices.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Best practices for <span class="math inline">\(R^3T\)</span> workflows</span></span></a>
+ <span class="menu-text">Best practices for <span class="math inline">\(R^3T\)</span> workflows</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -426,9 +438,9 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#general-best-practices" id="toc-general-best-practices" class="nav-link active" data-scroll-target="#general-best-practices"><span class="header-section-number">16.1</span> General best practices</a></li>
-  <li><a href="#best-practices-for-spades-workflows" id="toc-best-practices-for-spades-workflows" class="nav-link" data-scroll-target="#best-practices-for-spades-workflows"><span class="header-section-number">16.2</span> Best practices for SpaDES workflows</a></li>
-  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">16.3</span> See also</a></li>
+  <li><a href="#general-best-practices" id="toc-general-best-practices" class="nav-link active" data-scroll-target="#general-best-practices">General best practices</a></li>
+  <li><a href="#best-practices-for-spades-workflows" id="toc-best-practices-for-spades-workflows" class="nav-link" data-scroll-target="#best-practices-for-spades-workflows">Best practices for SpaDES workflows</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See also</a></li>
   </ul>
 </nav>
     </div>
@@ -437,7 +449,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Best practices for <span class="math inline">\(R^3T\)</span> workflows</span></h1>
+<h1 class="title">Best practices for <span class="math inline">\(R^3T\)</span> workflows</h1>
 </div>
 
 
@@ -455,7 +467,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 4, 2024</p>
+      <p class="date">June 8, 2024</p>
     </div>
   </div>
   
@@ -469,13 +481,14 @@ window.Quarto = {
 
 <p>Developing repeatable, reproducible, reusable and transparent (<span class="math inline">\(R^3T\)</span>) workflows in R (and probably across many other languages) requires not only automating workflow steps/processes, which we can achieve with SpaDES, but also to be attentive to the way we code and setup the actual (SpaDES) workflow.</p>
 <p>Here are some general and workflow best practices that we recommend to SpaDES users and any R programmers in general.</p>
-<section id="general-best-practices" class="level2" data-number="16.1">
-<h2 data-number="16.1" class="anchored" data-anchor-id="general-best-practices"><span class="header-section-number">16.1</span> General best practices</h2>
+<section id="general-best-practices" class="level2">
+<h2 class="anchored" data-anchor-id="general-best-practices">General best practices</h2>
 <ul>
 <li><p>Script, script, script – this means script <em>everything</em> you do, including package installation;</p></li>
 <li><p>“DOComment” your code – use comments that describe the intention of the code, not necessarily a code translation into human language:</p></li>
 </ul>
-<p>::: {.callout-tip collapse = “false”} Not a very useful comment (we can check ?lm):</p>
+<p>::: {.callout-tip collapse = “false”}</p>
+<p>Not a very useful comment (we can check <code>?lm</code> to know what it does):</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -483,7 +496,7 @@ window.Quarto = {
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(biomass <span class="sc">~</span> height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>A more useful comment (we can check ?lm):</p>
+<p>A more useful comment:</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -510,8 +523,8 @@ window.Quarto = {
 <li><p>Use a combination of <em>assertions</em>, <em>unit tests</em> and <em>integration tests</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p></li>
 </ul>
 </section>
-<section id="best-practices-for-spades-workflows" class="level2" data-number="16.2">
-<h2 data-number="16.2" class="anchored" data-anchor-id="best-practices-for-spades-workflows"><span class="header-section-number">16.2</span> Best practices for SpaDES workflows</h2>
+<section id="best-practices-for-spades-workflows" class="level2">
+<h2 class="anchored" data-anchor-id="best-practices-for-spades-workflows">Best practices for SpaDES workflows</h2>
 <ul>
 <li>limit the number of objects in <code>.GlobalEnv</code>. Instead, put them in functions – such as with <code>setupProject</code> as arguments – or inside a module. When objects are in modules, you can add default object values (e.g.&nbsp;via <code>.inputObjects</code>), or save them into files that are loaded by <code>setupProject</code> or <code>simInit</code>. See</li>
 </ul>
@@ -526,13 +539,13 @@ window.Quarto = {
 <li><p>Why not? There are many reasons why things can get messed up with modelling in R… e.g., package dependency issues (especially version numbers that collide during development stages), internet availability. Pre-loading a package prevents it from being updated, which can make <code>setupProject</code> (and <code>simInit</code>) fail if they attempt to update a package to respect module requirements.</p></li>
 </ul>
 </section>
-<section id="see-also" class="level2" data-number="16.3">
-<h2 data-number="16.3" class="anchored" data-anchor-id="see-also"><span class="header-section-number">16.3</span> See also</h2>
+<section id="see-also" class="level2">
+<h2 class="anchored" data-anchor-id="see-also">See also</h2>
 <p><a href="https://ecoforecast.org/reproducible-forecasting-workflows/">EFI’s reproducible forecasting workflows</a></p>
 <p><a href="http://www.practicereproducibleresearch.org/">The Practice of Reproducible Research</a></p>
 <p><a href="http://adv-r.had.co.nz/Style.html">Advanced R - Style guide; by Hadley Wickham</a></p>
 <p><a href="https://about.codecov.io/blog/types-of-testing-unit-vs-integration/">Types of testing; by Codecov</a></p>
-<p>Paper by Sarma <em>et al.</em> <span class="citation" data-cites="sarma2016">Sarma et al. (<a href="references.html#ref-sarma2016" role="doc-biblioref">2016</a>)</span> on code testing</p>
+<p>Paper by <span class="citation" data-cites="sarma2016">Sarma et al. (<a href="references.html#ref-sarma2016" role="doc-biblioref">2016</a>)</span> on code testing</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -1110,7 +1123,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./castorExample.html" class="pagination-link" aria-label="Castor workflow with `setupProject`">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

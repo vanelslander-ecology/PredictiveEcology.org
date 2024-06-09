@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eliot McIntire">
-<meta name="dcterms.date" content="2024-06-06">
+<meta name="dcterms.date" content="2024-06-08">
 
 <title>Robust and nimble scientific workflows, using SpaDES - 6&nbsp; Module Files and Metadata</title>
 <style>
@@ -346,6 +346,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./debugging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Debugging SpaDES modules</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -360,25 +366,31 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflowSimple2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./multipleModules.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Multiple Modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Multiple Modules</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./LandRDemo_coreVeg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">LandR workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ForestsAndFire.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -386,7 +398,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bestPractices.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Best practices for <span class="math inline">\(R^3T\)</span> workflows</span></span></a>
+ <span class="menu-text">Best practices for <span class="math inline">\(R^3T\)</span> workflows</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -406,10 +418,10 @@ window.Quarto = {
    
   <ul>
   <li><a href="#continue-example-a-linear-model" id="toc-continue-example-a-linear-model" class="nav-link active" data-scroll-target="#continue-example-a-linear-model"><span class="header-section-number">6.1</span> Continue example – a linear model</a></li>
-  <li><a href="#expectations-dependencies-and-creations" id="toc-expectations-dependencies-and-creations" class="nav-link" data-scroll-target="#expectations-dependencies-and-creations"><span class="header-section-number">6.2</span> Expectations, Dependencies and Creations</a>
+  <li><a href="#required-packages-input-expectations-and-output-creations" id="toc-required-packages-input-expectations-and-output-creations" class="nav-link" data-scroll-target="#required-packages-input-expectations-and-output-creations"><span class="header-section-number">6.2</span> Required Packages, Input Expectations and Output Creations</a>
   <ul class="collapse">
   <li><a href="#inputs-and-outputs" id="toc-inputs-and-outputs" class="nav-link" data-scroll-target="#inputs-and-outputs"><span class="header-section-number">6.2.1</span> Inputs and Outputs</a></li>
-  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><span class="header-section-number">6.2.2</span> Packages</a></li>
+  <li><a href="#required-packages" id="toc-required-packages" class="nav-link" data-scroll-target="#required-packages"><span class="header-section-number">6.2.2</span> Required Packages</a></li>
   </ul></li>
   <li><a href="#module-files" id="toc-module-files" class="nav-link" data-scroll-target="#module-files"><span class="header-section-number">6.3</span> Module files</a></li>
   <li><a href="#inputobjects" id="toc-inputobjects" class="nav-link" data-scroll-target="#inputobjects"><span class="header-section-number">6.4</span> <code>inputObjects</code></a></li>
@@ -432,7 +444,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./MetaDataAndModuleFiles.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Module Files and Metadata</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Module Files and Metadata</span></h1>
+<h1 class="title"><span id="sec-moduleFilesAndMetadata" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Module Files and Metadata</span></span></h1>
 </div>
 
 
@@ -449,7 +461,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 6, 2024</p>
+      <p class="date">June 8, 2024</p>
     </div>
   </div>
   
@@ -475,16 +487,17 @@ window.Quarto = {
 </details>
 </div>
 </section>
-<section id="expectations-dependencies-and-creations" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="expectations-dependencies-and-creations"><span class="header-section-number">6.2</span> Expectations, Dependencies and Creations</h2>
+<section id="required-packages-input-expectations-and-output-creations" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="required-packages-input-expectations-and-output-creations"><span class="header-section-number">6.2</span> Required Packages, Input Expectations and Output Creations</h2>
 <section id="inputs-and-outputs" class="level3" data-number="6.2.1">
 <h3 data-number="6.2.1" class="anchored" data-anchor-id="inputs-and-outputs"><span class="header-section-number">6.2.1</span> Inputs and Outputs</h3>
+<p>We use the terms <code>expectsInput</code> and <code>createsOutput</code> to describe the inputs and outputs in the metadata. This makes it clear that the metadata do <em>not</em> specify which they will <em>go get</em>; rather, it makes it clear that it doesn’t matter <em>where</em> the inputs are coming from. They could come from one of three sources: a user, another module, or defaults that the developer sets up. Likewise, the module specifies which outputs it creates, without specifying “for what other module”.</p>
 <p>The <strong>inputs</strong> to this chunk are just one: the object <code>x</code>. This code will not work (i.e., it will cause an error) if <code>x</code> is not defined. We can say that this code chunk “expects” <code>x</code> as an input.</p>
 <p>The <strong>outputs</strong> are <code>y</code> and <code>model</code>. We can say that this code chunk “creates” <code>y</code> and <code>model</code> as outputs. However, we had said in the previous chapter <a href="NewModuleIntro.html" class="quarto-xref"><span>Chapter 5</span></a> that we would only be interested in keeping <code>model</code>. So, we will continue with only one output, <code>model</code>.</p>
 </section>
-<section id="packages" class="level3" data-number="6.2.2">
-<h3 data-number="6.2.2" class="anchored" data-anchor-id="packages"><span class="header-section-number">6.2.2</span> Packages</h3>
-<p>Next, <em>what are the package dependencies?</em>. We see that there are three functions: <code>rnorm</code>, <code>lm</code> and <code>plot</code>. We don’t know what packages they are in, so we can find out by typing them at the R prompt. At the bottom of the function, it says that the function <code>rnorm</code> is in the <code>stats</code> package. Fortunately for us, this is a default (“base”) package in R and it is always pre-loaded. So, nothing to do here.</p>
+<section id="required-packages" class="level3" data-number="6.2.2">
+<h3 data-number="6.2.2" class="anchored" data-anchor-id="required-packages"><span class="header-section-number">6.2.2</span> Required Packages</h3>
+<p>Next, <em>what are the package dependencies?</em>. We call this <code>reqdPkgs</code> in the SpaDES metadtaa. We see that there are three functions: <code>rnorm</code>, <code>lm</code> and <code>plot</code>. We don’t know what packages they are in, so we can find out by typing them at the R prompt. At the bottom of the function, it says that the function <code>rnorm</code> is in the <code>stats</code> package. Fortunately for us, this is a default (“base”) package in R and it is always pre-loaded. So, nothing to do here.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
