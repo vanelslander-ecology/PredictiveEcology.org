@@ -12,7 +12,7 @@ execute:
   cache: false
 ---
 
-# `prepInputs` for bringing data into projects
+# `prepInputs` for data
 
 ```{r setup}
 #| include: false
@@ -59,8 +59,96 @@ We designed a function to achieve all this: [`reproducible::prepInputs`](https:/
 This function can be used to prepare R objects from remote or local data sources.
 The object of this function is to provide a reproducible version of
 a series of commonly used steps for getting, loading, and processing data.
-This function has two stages: Getting data (download, extracting from archives,
-loading into R) and post-processing (for `Spatial*` and `Raster*`
-objects, this is crop, reproject, mask/intersect).
-To trigger the first stage, provide `url` or `archive`.
-To trigger the second stage, provide `studyArea` or `rasterToMatch`.
+
+## Simplest case: a `url`
+
+If we can point directly to a file on a cloud location, `prepInputs` does its thing, 
+getting local file. 
+
+```{r simplest}
+Require::Require(c("terra", "reproducible"), 
+                 repos = c(getOption("predictiveecology.r-universe.dev", getOption("repos"))))
+url <- "https://github.com/tati-micheletti/host/raw/master/data/rasterTest.tif"
+ras <- prepInputs(url = url)
+
+terra::plot(ras)
+```
+
+## Case: in an archive (like `zip`)
+
+Often, cloud-stored files are in an archive, like a `zip` or `tar.gz`. These can be handled automatically with `prepInputs`. By default, it will try to extract all files from the archive, and load one of them into R:
+
+```{r archive}
+url <- "http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/ecozone_shp.zip"
+shpEcozone <- prepInputs(url = url)
+terra::plot(shpEcozone[1])
+```
+
+## Case: local stash using `reproducible.inputPaths` 
+
+If we want to use the same file in many projects, we can obviously just download it again in each project, using the same lines of `prepInputs`. However, we can setup a local "stash" of data files. This is a **set it and forget it** option in `reproducible`. 
+
+
+```{r inputPaths}
+options(reproducible.inputPaths = "~/data")
+url <- "http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/ecozone_shp.zip"
+shpEcozone <- prepInputs(url = url)
+terra::plot(shpEcozone[1])
+```
+
+If we run this chunk in the same project, results will be like the previous chunk: a vector dataset from the Canadian federal government. BUT, if we run it in a different project, it will check the stashed diretory and won't need to download it again. Moreover, it will not actually make a copy it will make a link to the file, so it won't take extra space on your hard drive.
+
+If you are running in a *nix-like system (Mac, Linux, etc.) or you have Git Bash installed, you can see the number of links to a file with `ls`, so in R it would be. The column after the attributes (e.g., drwxr-xr-x),
+is the number of pointers to a file. Anything more than 1 means that there are several pointers.
+
+```{cmd, eval=FALSE}
+system(paste0("ls -l", getOption("inputPaths")))
+```
+
+## Stages of `prepInputs`
+
+This function has three stages, using three internal functions: 
+
+- [`reproducible::preProcess`](https://reproducible.predictiveecology.org/reference/preProcess.html) which is **getting data** (download, extracting from archives, checksumming)
+- `reproducible::process` -- load the data into R (note: user can't access this directly)
+- [`reproducible::postProcessTo`](https://reproducible.predictiveecology.org/reference/postProcessTo.html) (for `Spatial*` and `Raster*` objects, this is crop, reproject, mask/intersect).
+
+`preProcess` will be run, if a user supplies `url` or `archive`. `process` will be run if `fun` is not `NA`. It will try to guess `fun` based on file type if `fun` is left at the default of `NULL`. `postProcess` will be triggered if the user passes any of the arguments of `postProcessTo` (`to`, `maskTo`, `cropTo`) `studyArea` or `rasterToMatch`.
+
+## With GIS
+
+The data we download may cover a larger area than our study needs. For example, there may be a provincial or national dataset, but we are only using a part of that. If we create a `studyArea`, we can use this as part of `prepInputs`, passing it to `to` or one of the other [`*to`](https://reproducible.predictiveecology.org/reference/postProcessTo.html) functions. 
+
+### Vector data
+
+The following will get the national ecozone map, project, crop and mask it to the SK dataset. 
+
+```{r}
+SK <- SpaDES.project::setupStudyArea(list(level = 2, NAME_1 = "Saskatchewan"))
+shpEcozoneSK <- prepInputs(
+  url = "http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/ecozone_shp.zip",
+  to = SK
+)
+terra::plot(shpEcozoneSK[1])
+```
+
+### Raster data
+
+The following will get the national ecozone map, project, crop and mask it to the SK dataset. 
+
+```{r}
+SK <- SpaDES.project::setupStudyArea(list(level = 2, NAME_1 = "Saskatchewan", epsg = 5070))
+SKras <- terra::rast(terra::ext(SK), res = 250, val = 1)
+terra::crs(SKras) <- terra::crs(SK)
+shpEcozoneSK <- prepInputs(
+  url = "http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/ecozone_shp.zip",
+  to = SKras
+)
+SKras <- postProcessTo(SKras, shpEcozoneSK)
+terra::plot(SKras)
+terra::plot(shpEcozoneSK[1], add = TRUE)
+```
+
+## Other examples
+
+
