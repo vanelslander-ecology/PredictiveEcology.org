@@ -313,15 +313,13 @@ outputs that model, and plots the fit.
 
 ## See also
 
-[`?expectsInput`](https://rdrr.io/cran/SpaDES.core/man/expectsInput.html),
+[`?expectsInput`](https://rdrr.io/cran/SpaDES.core/man/expectsInput.html)
 
-[`?createsOutput`](https://rdrr.io/cran/SpaDES.core/man/createsOutput.html),
+[`?createsOutput`](https://rdrr.io/cran/SpaDES.core/man/createsOutput.html)
 
-[`?simInitAndSpades`](https://rdrr.io/cran/SpaDES.core/man/simInitAndSpades.html),
+[`?simInitAndSpades`](https://rdrr.io/cran/SpaDES.core/man/simInitAndSpades.html)
 
 [`?newModule`](https://rdrr.io/cran/SpaDES.core/man/newModule.html)
-
-## See also
 
 [`?SpaDES.project::setupProject`](https://spades-project.predictiveecology.org/reference/setupProject.html)
 

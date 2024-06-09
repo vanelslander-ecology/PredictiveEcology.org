@@ -354,13 +354,13 @@ i.e., keep the same folder structure.
 
 ## See also
 
-[`?scheduleEvent`](https://rdrr.io/cran/SpaDES.core/man/scheduleEvent.html),
+[`?scheduleEvent`](https://rdrr.io/cran/SpaDES.core/man/scheduleEvent.html)
 
-[`?P`](https://rdrr.io/cran/SpaDES.core/man/params.html),
+[`?P`](https://rdrr.io/cran/SpaDES.core/man/params.html)
 
-[`?time`](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html),
+[`?time`](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html)
 
-[`?start`](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html),
+[`?start`](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html)
 
 [`?end`](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html)
 
