@@ -56,9 +56,9 @@ if (!interactive()) {
 ::: {.callout-note appearance="simple"}
 *2 hours -- estimated time for 1st time executing (includes downloads)*
 
-*20Gb RAM -- estimated peak RAM for executing*
+*24Gb RAM -- estimated peak RAM for executing*
 
-*20Gb disk -- estimated hard drive allocation*
+*93Gb disk -- estimated hard drive allocation*
 :::
 
 [LandR](https://landr-manual.predictiveecology.org/) is a forest
@@ -157,8 +157,7 @@ out <- setupProject(
     "PredictiveEcology/Biomass_speciesData@main",
     "PredictiveEcology/Biomass_borealDataPrep@main",
     "PredictiveEcology/Biomass_speciesParameters@main",
-    "PredictiveEcology/Biomass_core@main",
-    "PredictiveEcology/Biomass_validationKNN@main"
+    "PredictiveEcology/Biomass_core@main"
   ),
   ## SIMULATION SETUP ------------------------------------
   times = list(start = 2001, end = 2031),
@@ -266,9 +265,6 @@ data and fit model parameters.
 ```{r runSim}
 #| results: hide
 
-## remove validation module, can only be run after simulation's done
-out$modules <- out$modules[out$modules != "Biomass_validationKNN"]  
-
 ## initialise then run simulation 
 simInitOut <- SpaDES.core::simInit2(out)
 simOut <- SpaDES.core::spades(simInitOut)
@@ -338,7 +334,7 @@ We could even plot some of the input and output rasters to check that they are
 as we expected -- no need to look for these objects files, they are all in the 
 `simList`.
  
-```{r inspectSim4}
+```{r inspectSim5}
 ## spatial inputs from list above
 terra::plot(simOut$studyAreaLarge, col = "navyblue", main = "studyArea & studyAreaLarge")
 terra::plot(simOut$studyArea, col = "lightblue", add = TRUE)
@@ -350,7 +346,7 @@ terra::plot(simOut$vegTypeMap,
 terra::plot(simOut$speciesLayers)
 ```
 
-::: {layout-ncol=2 layout-valign="bottom"}
+::: {layout-ncol=3 layout-valign="bottom"}
 ![Study areas used for parameterisation (dark blue) and simulation (light blue).](assets/img/LandRDemo_SASAL.png)
 
 ![Last year's vegetation type map (leading species).](assets/img/LandRDemo_vegTypeMap.png)
@@ -368,7 +364,7 @@ are presented, but the entire model object, with its fitted values, residuals, e
 By exporting entire model objects, and making them available via repeatable code or
 data repositories, model transparency and potential scrutiny are massively increased.
 
-```{r inspectSim4}
+```{r inspectSim6}
 ## model used to estimate species establishment probabilities
 summary(simOut$modelBiomass$mod)
 plot(simOut$modelBiomass$mod)
@@ -441,15 +437,16 @@ simInitOut <- SpaDES.core::simInit2(out)
 outputsDF <- rbind(
   data.frame(
     objectName = "cohortData", 
-    saveTime = seq(SpaDES.core::start(simOut), SpaDES.core::end(simOut))
+    saveTime = seq(SpaDES.core::start(simInitOut), SpaDES.core::end(simInitOut))
   ),
   data.frame(
     objectName = "pixelGroupMap", 
-    saveTime = seq(SpaDES.core::start(simOut), SpaDES.core::end(simOut))
+    saveTime = seq(SpaDES.core::start(simInitOut), SpaDES.core::end(simInitOut))
   )
 )
 SpaDES.core::outputs(simInitOut) <- outputsDF
 
+future::plan("sequential")
 simOutExperiment <- SpaDES.experiment::experiment2(simInitOut, replicates = 10)
 ```
 
@@ -458,8 +455,7 @@ simOutExperiment <- SpaDES.experiment::experiment2(simInitOut, replicates = 10)
 #| lst-cap: Parallel replication
 
 future::plan("multisession", workers = 5)
-simOutExperiment <- SpaDES.experiment::experiment2(simInitOut, 
-                                                   replicates = 10)
+simOutExperiment <- SpaDES.experiment::experiment2(simInitOut, replicates = 10)
 ```
 
 
@@ -475,10 +471,6 @@ Note that, for convenience, we use `simOut` to access many of the necessary inpu
 instead.
 
 ```{r experimentSim}
-
-outputsDF2 <- data.table(
-  file = list.files(SpaDES.core::outputPath(simOut), 
-                         pattern = "cohortData", full.names = TRUE, recursive = TRUE))
 outValid <- setupProject(
   paths = list("packagePath" = "packages/",
                "projectPath" = "~/SpaDES_book/LandRDemo_coreVeg"),
@@ -498,7 +490,7 @@ outValid <- setupProject(
   studyArea = simOut$studyArea,
   rasterToMatch = simOut$rasterToMatch,
   rawBiomassMapStart = simOut$rawBiomassMap,
-  simulationOutputs = as.data.table(outputsDF),
+  simulationOutputs = rbindlist(lapply(simOutExperiment, SpaDES.core::outputs)),
   sppEquiv = simOut$sppEquiv,
   sppEquivCol = simOut$sppEquivCol,
   sppColorVect = simOut$sppColorVect,
@@ -506,7 +498,6 @@ outValid <- setupProject(
 )
 
 simOutValid <- SpaDES.core::simInitAndSpades2(outValid)
-## bug here with outputDF.
 ```
  
 ### Different scenarios and model selection {#sec-LandRScenarios}
@@ -516,9 +507,9 @@ one that was "data hungry" and calibrated tree species growth parameters and a
 simpler one that used default parameter values (without *Biomass_speciesParameters*).
 
 By swapping parameterisation/calibration modules in and out
+<!--HERE-->
 
-
-```{r experimentSim}
+```{r experimentSim2}
 simOutExperiment <- SpaDES.experiment::experiment2(simInitOut, replicates = 10)
 ```
 
@@ -541,8 +532,7 @@ simOut <- SpaDES.core::spades(simInitOut, debug = "plotSummaryBySpecies")
 R interrupts code execution during this event's operations (inside
 `doEvent.Biomass_core()`):
 
-```{r}
-
+```
 debugging in: get(moduleCall, envir = fnEnv)(sim, cur[["eventTime"]], cur[["eventType"]])
 debug at C:/Users/cbarros/Documents/SpaDES_book/LandRDemo_coreVeg/modules/Biomass_core/Biomass_core.R#314: {
 (...)
