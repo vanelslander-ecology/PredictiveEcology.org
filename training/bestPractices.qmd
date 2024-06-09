@@ -12,7 +12,7 @@ bibliography: references/references.bib
 knitr::opts_chunk$set(eval = FALSE)
 ```
 
-# Best practices for $R^3T$ workflows
+# Best practices for $R^3T$ workflows {.unnumbered}
 
 Developing repeatable, reproducible, reusable and transparent ($R^3T$)
 workflows in R (and probably across many other languages) requires not
