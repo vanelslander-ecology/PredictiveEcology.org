@@ -443,7 +443,7 @@ window.Quarto = {
 <li><strong>Locally cached</strong> if used in many projects, only one copy is needed</li>
 <li><strong>Modular</strong> approach to accessing, so they can be easily added to any project</li>
 </ul>
-<p>We designed a function to achieve all this: <code>[reproducible::prepInputs()]</code></p>
+<p>We designed a function to achieve all this: <a href="https://reproducible.predictiveecology.org/reference/prepInputs.html"><code>reproducible::prepInputs</code></a></p>
 <section id="prepinputs" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="prepinputs"><span class="header-section-number">12.1</span> <code>prepInputs</code></h2>
 <p>This function can be used to prepare R objects from remote or local data sources. The object of this function is to provide a reproducible version of a series of commonly used steps for getting, loading, and processing data. This function has two stages: Getting data (download, extracting from archives, loading into R) and post-processing (for <code>Spatial*</code> and <code>Raster*</code> objects, this is crop, reproject, mask/intersect). To trigger the first stage, provide <code>url</code> or <code>archive</code>. To trigger the second stage, provide <code>studyArea</code> or <code>rasterToMatch</code>.</p>

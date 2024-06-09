@@ -52,7 +52,7 @@ Similar, if the data are to be re-used in many projects, the approach to getting
 - **Locally cached** if used in many projects, only one copy is needed
 - **Modular** approach to accessing, so they can be easily added to any project
 
-We designed a function to achieve all this: `[reproducible::prepInputs()](https://reproducible.predictiveecology.org/reference/prepInputs.html)`
+We designed a function to achieve all this: [`reproducible::prepInputs`](https://reproducible.predictiveecology.org/reference/prepInputs.html)
 
 ## `prepInputs`
 
