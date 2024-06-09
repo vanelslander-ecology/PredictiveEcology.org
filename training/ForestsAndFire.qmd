@@ -14,8 +14,8 @@ execute:
 
 # Forest Succession and Wildfire using `setupProject` {#sec-scfmEg}
 
-**1.5 hours -- estimated time for 1st time executing**
-**6 GB RAM -- estimated RAM for executing**
+**1.5 hours -- estimated time for 1st time executing** **6 GB RAM --
+estimated RAM for executing**
 
 ```{r setup, eval=TRUE}
 #| include: false
@@ -51,18 +51,20 @@ knitr::opts_knit$set(root.dir = "~/SpaDES_book/scfm_example_fresh")
 }
 ```
 
+We have developed an R version of LANDIS-II's Biomass Succession
+Extension, comprised of 2 modules: `Biomass_core` and
+`Biomass_regeneration`. We can combine these with a fire model, such as
+`scfm` which is a collaborative effort lead by Steve Cumming at Laval,
+University (thus the name: **S**teve **C**umming **F**ire **M**odel).
 
-We have developed an R version of LANDIS-II's Biomass Succession Extension, comprised
-of 2 modules: `Biomass_core` and `Biomass_regeneration`. We can combine these with
-a fire model, such as `scfm` which is a collaborative effort lead by Steve Cumming at 
-Laval, University (thus the name: **S**teve **C**umming **F**ire **M**odel).
+As with other examples, we also include all the parameterization modules
+here, with `Biomass_borealDataPrep` for the `Biomass_***` modules and
+`scfmLandcoverInit`, `scfmRegime` and `scfmDriver` for the `scfm`
+family.
 
-As with other examples, we also include all the parameterization modules here, with 
-`Biomass_borealDataPrep` for the `Biomass_***` modules and `scfmLandcoverInit`, 
-`scfmRegime` and `scfmDriver` for the `scfm` family.
-
-This makes for a 10 module project. Using `setupProject`, we can readily run these
-from their canonical "i.e., current, up to date, open and available" versions:
+This makes for a 10 module project. Using `setupProject`, we can readily
+run these from their canonical "i.e., current, up to date, open and
+available" versions:
 
 **Time to run this** is between 1 and 2 hours.
 
@@ -139,10 +141,9 @@ outSim <- do.call(SpaDES.core::simInitAndSpades, out) |>
   Cache()
 ```
 
-
 ## Examining things
 
-We can do all sorts of things. We will start with a few simple 
+We can do all sorts of things. We will start with a few simple
 "accessors", i.e., "access something from the simList". `completed`
 shows the events that were run. `elapsedTime` shows how much time each
 event took.
@@ -152,7 +153,9 @@ completed(outSim)
 elapsedTime(outSim, units = "minute")
 ```
 
-The module metadata can be accessed from the `sim` or can be read from the module source files or it is usually built into the `Rmd` file that comes with the module.
+The module metadata can be accessed from the `sim` or can be read from
+the module source files or it is usually built into the `Rmd` file that
+comes with the module.
 
 ```{r}
 mm <- moduleMetadata(outSim)
@@ -172,6 +175,5 @@ out$params$.globals$.plots <- "png"
 outSim <- simInitAndSpades2(out)
 ```
 
-Then we can look in the `outputs/figures` folder to see all the figures that the modules created.
-
-
+Then we can look in the `outputs/figures` folder to see all the figures
+that the modules created.
