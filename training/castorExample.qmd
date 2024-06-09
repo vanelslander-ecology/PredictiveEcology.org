@@ -116,9 +116,10 @@ outMod <- getCastorModulesAndDB(paths = list("modulePath" = "~/SpaDES_book/casto
 ```
 
 Check where the `getCastorModulesAndDB.R` and `params.R` files ended up.
-`setupFunctions()` respected the folder structure in `PredictiveEcology.org` 
-and placed these files in `tutos/castorExample/` *within* the specified
-`projectPath`. We'll need to remember this for later.
+`setupFunctions()` respected the folder structure in
+`PredictiveEcology.org` and placed these files in `tutos/castorExample/`
+*within* the specified `projectPath`. We'll need to remember this for
+later.
 
 After the "workaround" `setupProject` does all the heavy-lifting of
 setting up the workflow, namely installing all package dependencies
@@ -127,8 +128,9 @@ creating all the necessary folders, sourcing additional files and
 creating parameter, inputs and outputs lists -- see
 [`?setupProject`](https://spades-project.predictiveecology.org/reference/setupProject.html).
 
-Note that all folder/file paths are *relative* to `projectPath`, even the file 
-path passed to `parameters` (remember the file path from above?).
+Note that all folder/file paths are *relative* to `projectPath`, even
+the file path passed to `parameters` (remember the file path from
+above?).
 
 ```{r wfsetup}
 #| results: hide
