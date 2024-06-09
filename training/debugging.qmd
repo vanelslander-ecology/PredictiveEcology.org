@@ -1,0 +1,237 @@
+---
+author: "Ceres Barros"
+date: last-modified
+editor_options:
+  chunk_output_type: console
+execute:
+  eval: false
+  tidy: false
+  warning: false
+  message: false
+  error: false
+  cache: false
+---
+
+# Debugging SpaDES modules {#sec-debugging}
+
+```{r setup}
+#| include: false
+#| eval: true
+
+## truncate text output
+hook_output <- knitr::knit_hooks$get("output")
+
+knitr::knit_hooks$set(output = function(y, options) {
+  if (!is.null(n <- options$outlines)) {
+    y <- xfun::split_lines(y)
+    if (length(y) > n) {
+      # truncate the output
+      y <- c(head(y, n), "....\n")
+    }
+    y <- paste(y, collapse = "\n")
+  }
+  hook_output(y, options)
+})
+
+```
+
+The flexibility and collaborative model development that SpaDES promotes
+can come with the cost of having module code that may not fit all
+desired applications out-of-the-box or, like any other piece of code,
+that may have errors.
+
+It is a good idea to learn the basics of debugging, especially when
+using open-source, interpreted code languages like R (in opposition to
+compiled code languages like *C++*).
+
+It is also a (very) good idea to learn how to develop a good
+reproducible example (*reprex*; see [How to make a
+reprex](https://www.r-bloggers.com/2020/10/how-to-make-a-reprex/)) when
+debugging attempts have failed or when we cannot fix the issue ourselves
+(e.g., bugs in R packages need to be fixed by package maintainers).
+
+## Debugging with `browser()`
+
+`browser()` calls are very useful when you have access to the source
+code. When inserted inside a function, they will interrupt code
+execution at that point and allow the user to "enter" the function's
+environment in debugging mode -- i.e. they will have access to all the
+objects the function has access to internally.
+
+Let's define a simple function and then use it improperly.
+
+```{r}
+myFun <- function(x, y) {
+  out <- sum(x, y)
+  return(out)
+}
+
+myFun(runif(20), "A")
+```
+
+Because we have the source code, we can:
+
+```{r}
+myFun <- function(x, y) {
+  browser()
+  out <- sum(x, y)
+  return(out)
+}
+
+myFun(runif(20), "A")
+
+# > myFun(runif(20), "A")
+# Called from: myFun(runif(20), "A")
+# Browse[1]> x
+#  [1] 0.48059327 0.12201652 0.39367787 0.91989186 0.04872701 0.85632846 0.05945062 0.87683559 0.58599446 0.10403352 0.49429023
+#  [12] 0.69785397 0.19622413 0.05559181 0.20329131 0.14909383 0.61400844 0.73638292 0.21185129 0.72534305
+# Browse[1]> y
+#  [1] "A"
+```
+
+From the above we would quickly realise we were trying to add a numeric
+vector with a character vector, which obviously doesn't work.
+
+### `browser()` with a SpaDES module
+
+Go back to the module *My_linear_model* created in @sec-moduleintro and
+insert a `browser()` in the `init` event, save and run the module again.
+
+```         
+doEvent.My_linear_model.init <- function(sim, eventTime, eventType, priority) {
+    browser()
+    x <- rnorm(10)
+    y <- x + rnorm(10)
+    sim$model <- lm(y ~ x)  
+    return(sim)
+}
+```
+
+If you are using RStudio, it probably opened the module .R script (if
+not try right-clicking the RStudio window and selecting "Reload") and
+the R console shows:
+
+```         
+> out <- simInit(modules = nm1, paths = list(modulePath = modulePath))
+> out <- spades(out)
+No packages to install/update
+Jun09 00:03:51 simInit Resetting .Random.seed of session because sim$._randomSeed is not NULL. To get a different seed, run: sim$._randomSeed <- NULL to clear it.
+Jun09 00:03:51 simInit Using setDTthreads(1). To change: 'options(spades.DTthreads = X)'.
+Jun09 00:03:51 chckpn:init total elpsd: 21 secs | 0 checkpoint init 0
+Jun09 00:03:51 save  :init total elpsd: 21 secs | 0 save init 0
+Jun09 00:03:51 prgrss:init total elpsd: 21 secs | 0 progress init 0
+Jun09 00:03:51 load  :init total elpsd: 21 secs | 0 load init 0
+Jun09 00:03:51 My_lnr:init total elpsd: 21 secs | 0 My_linear_model init 1
+Called from: get(moduleCall, envir = fnEnv)(sim, cur[["eventTime"]], cur[["eventType"]])
+```
+
+Use `ls()` to see what objects are in the function environment, then
+execute code line-by-line with ENTER, F10 or the "Next" button.
+
+## Debugging with `debug()` and `debugonce()`
+
+If we don't have access to the function code (or don't want to insert a
+`browser()`) we can use `debug()` and `debugonce()`. The effect will be
+similar to having a `browser()` in the first line of a function's
+definition.
+
+Here's an example:
+
+```{r}
+debugonce("time")
+
+time(out) ## then press ENTER to execute each line of code one-by-one
+```
+
+`undebug(<function_name>)` will de-activate debugging for that function.
+
+### `debugonce()` and `debug()` with a SpaDES module
+
+The process would be similar in a module, with the difference that the
+`debug()`/`debugonce()` call would either happen *before* running the
+module with `spades()`, OR from within the module in debugging mode.
+
+::: {.callout-tip appearance="simple"}
+If debugging *module* functions, they might not be easily available from
+the `.GlobalEnv` since they "live" inside the `simList`.
+
+The easiest way to debug module functions is to
+
+1.  Insert a `browser()` in that function
+
+OR
+
+1.  Insert a `browser()` in the module, before the function is called
+
+2.  Call `debugonce("<function_name>")`/`debug("<function_name>")`
+
+3.  Proceed to executing the function
+:::
+
+Let's try it:
+
+1.  Exit `browser()` mode (e.g., enter `Q` in the R console)
+
+2.  Remove the `browser()` from *My_linear_model*
+
+3.  Run `debugonce("lm")`.
+
+4.  Run the `simInit()` + `spades()` lines again to re-source module
+    code and run the module **OR** run `restartSpades()` which will
+    re-parse the module code and resume the workflow from the top of the
+    event that was interrupted (the `init`).
+
+    -   What objects does `ls()` show now?
+
+5.  Exit debugging mode again
+
+6.  Re-run `restartSpades()`
+
+    -   Are you back in debugging mode?
+
+Now go through steps 1-6 again, but replace `debugonce("lm")` with
+`debug("lm")` in step 3.
+
+-   What happened in step 6. this time?
+
+::: {.callout-tip appearance="simple"}
+If debugging functions that are S4 objects, you may need to be aware of
+which method needs to be debugged before calling `debug` or `debugOnce`.
+
+Try `showMethods("show")` to see all the methods implemented.
+:::
+
+## `restartSpades()`
+
+Probably one of our BFFs (best-friend functions) as SpaDES developpers,
+it will allow resuming a workflow whose execution was interrupted by an
+error or the user from the top of the interrupted event, but will first
+re-parse module code.
+
+This means that we can insert a `browser()` somewhere in the event code,
+then `restartSpades()` and debug the event.
+
+## Try on your own
+
+-   Try to debug the first method of the function `show()`. Here's a
+    tip: start with `showMethods("show")`.
+
+## See also
+
+[`?browser()`](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/browser)
+
+[`?debug()`](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/debug)
+
+[`?restartSpades()`](https://spades-core.predictiveecology.org/reference/restartSpades.html)
+
+[`?showMethods()`](https://www.rdocumentation.org/packages/methods/versions/3.6.2/topics/showMethods)
+-- useful to find out what methods of a function you may want to
+activate debugging for
+
+An example of debugging a more complex SpaDES workflow in
+@sec-LandRdebug
+
+[Debugging -- Advanced R](https://adv-r.hadley.nz/debugging.html)
+
+[How to make a
+reprex](https://www.r-bloggers.com/2020/10/how-to-make-a-reprex/)

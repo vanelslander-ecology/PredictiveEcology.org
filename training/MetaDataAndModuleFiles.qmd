@@ -12,11 +12,11 @@ execute:
   cache: false
 ---
 
-# Module Files and Metadata
+# Module Files and Metadata {#sec-moduleFilesAndMetadata}
 
-```{r setup,eval=TRUE}
+```{r setup}
 #| include: false
-
+#| eval: true
 
 ## truncate text output
 hook_output <- knitr::knit_hooks$get("output")
@@ -45,16 +45,24 @@ Slightly modifying the example, we remove the line with
 needs the `x` to run the next line. We can examine the following code
 chunk. First, we ask: what are the **inputs** and the **outputs**?
 
-```{r start, eval=FALSE}
+```{r start}
 # create some data
 y <- x + rnorm(10)
 # fit a linear model
 model <- lm(y ~ x)
 ```
 
-## Expectations, Dependencies and Creations
+## Required Packages, Input Expectations and Output Creations
 
 ### Inputs and Outputs
+
+We use the terms `expectsInput` and `createsOutput` to describe the
+inputs and outputs in the metadata. This makes it clear that the
+metadata do *not* specify which they will *go get*; rather, it makes it
+clear that it doesn't matter *where* the inputs are coming from. They
+could come from one of three sources: a user, another module, or
+defaults that the developer sets up. Likewise, the module specifies
+which outputs it creates, without specifying "for what other module".
 
 The **inputs** to this chunk are just one: the object `x`. This code
 will not work (i.e., it will cause an error) if `x` is not defined. We
@@ -65,16 +73,17 @@ The **outputs** are `y` and `model`. We can say that this code chunk
 previous chapter @sec-moduleintro that we would only be interested in
 keeping `model`. So, we will continue with only one output, `model`.
 
-### Packages
+### Required Packages
 
-Next, *what are the package dependencies?*. We see that there are three
-functions: `rnorm`, `lm` and `plot`. We don't know what packages they
-are in, so we can find out by typing them at the R prompt. At the bottom
-of the function, it says that the function `rnorm` is in the `stats`
-package. Fortunately for us, this is a default ("base") package in R and
-it is always pre-loaded. So, nothing to do here.
+Next, *what are the package dependencies?*. We call this `reqdPkgs` in
+the SpaDES metadtaa. We see that there are three functions: `rnorm`,
+`lm` and `plot`. We don't know what packages they are in, so we can find
+out by typing them at the R prompt. At the bottom of the function, it
+says that the function `rnorm` is in the `stats` package. Fortunately
+for us, this is a default ("base") package in R and it is always
+pre-loaded. So, nothing to do here.
 
-```{r second, eval=FALSE}
+```{r second}
 > rnorm function (n, mean = 0, sd = 1)  ... 
 <environment: namespace:stats>}
 ```
@@ -93,13 +102,15 @@ Make the module again (see @sec-moduleintro). This time we will add
 `sim$` for the `x` as we are now interested in the fact that it might be
 coming from outside this module.
 
-```{r, eval=TRUE}
+```{r}
+#| eval: true
+
 # make a module
 Require::Require(c("reproducible", "SpaDES.core"), repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
 
 # make a module
 nm1 <- "My_linear_model"
-modulePath <- "tutos/NewModuleIntro/NewModule"
+modulePath <- "~/SpaDES_book/NewModuleIntro/NewModule"
 newModule(name = nm1, path = modulePath, open = FALSE,
           events = list(
             init = {
@@ -121,17 +132,17 @@ details. For now, run the above and open the `My_linear_model.R` script
 that it creates.
 
 When we make a module, we get a message stating where the module code
-is. **FROM HERE, OPEN THE FILE**, e.g., by copy-paste the file path (pick the `.R` file NOT the
-`.Rmd` file for now)**
+is. **FROM HERE, OPEN THE FILE**, e.g., by copy-paste the file path
+(pick the `.R` file NOT the `.Rmd` file for now)\*\*
 
 ::: {.callout-note appearance="simple" icon="false"}
 **Opening a module file**
 
-From here onward, we will need to actually manually open the module code file.
-Every SpaDES module is defined by having at least 1 file that is named with 
-the `<modulePath>/<moduleName>/<moduleName>.R`. Even though we can do a lot from
-the `newModule`, we will need to get used to opening, examining and changing 
-the code in the module code file.
+From here onward, we will need to actually manually open the module code
+file. Every SpaDES module is defined by having at least 1 file that is
+named with the `<modulePath>/<moduleName>/<moduleName>.R`. Even though
+we can do a lot from the `newModule`, we will need to get used to
+opening, examining and changing the code in the module code file.
 :::
 
 We will look at a few elements in this chapter.
@@ -142,7 +153,7 @@ When we scroll down to `inputObjects` and `expectsInputs()`. This is
 where we will put our `inputs` that we noticed in our code chunk. We
 will declare `x` as an "input" by putting it there, like this:
 
-```{r metadata, eval=FALSE}
+```{r metadata}
 inputObjects = bindrows(
     expectsInput(objectName = "x", objectClass = "numeric", 
                  desc = "The inputs for the linear model", sourceURL = NA)
@@ -156,7 +167,7 @@ declare `model` as an "output" by putting it there. Don't forget the
 **comma at the end of each `createsOutput()`** as each is an argument to
 `bindrows` (unless it is the last one).
 
-```{r, eval=FALSE}
+```{r}
 outputObjects = bindrows(
     createsOutput(objectName = "model", objectClass = "lm", 
                   desc = "A linear model object from the equation (x ~ y)")
@@ -214,7 +225,9 @@ inside `sim`. This all happens in the event called `init`.
 We remake the second module from last chapter. But this time we will
 look at and update the metadata.
 
-```{r newModule2, eval=TRUE}
+```{r newModule2}
+#| eval: true
+
 nm2 <- "visualize"
 newModule(nm2, path = modulePath, open = FALSE,
           events = list(
@@ -232,7 +245,7 @@ Here we start to see the "shared" objects. The module we just made above
 `expectInput` of `model`. So, we can copy the same description if it is
 the same.
 
-```{r metadata2, eval=FALSE}
+```{r metadata2}
 inputObjects = bindrows(
     expectsInput(objectName = "model", objectClass = "lm", 
                  desc = "A linear model object from the equation (x ~ y)", sourceURL = NA)
@@ -242,10 +255,10 @@ inputObjects = bindrows(
 ## Default Values
 
 Recall, we don't have a value for `x`. This means that if you run the
-following, you will get an error, unlink in the previous chapter where we
-had `x` defined in the `init` event. 
+following, you will get an error, unlink in the previous chapter where
+we had `x` defined in the `init` event.
 
-```{r, eval=FALSE}
+```{r}
 simInitAndSpades(modules = c(nm1, nm2), 
                  paths = list(modulePath = modulePath))
 ```
@@ -300,15 +313,13 @@ outputs that model, and plots the fit.
 
 ## See also
 
-[`?expectsInput`](https://rdrr.io/cran/SpaDES.core/man/expectsInput.html),
+[`?expectsInput`](https://rdrr.io/cran/SpaDES.core/man/expectsInput.html)
 
-[`?createsOutput`](https://rdrr.io/cran/SpaDES.core/man/createsOutput.html),
+[`?createsOutput`](https://rdrr.io/cran/SpaDES.core/man/createsOutput.html)
 
-[`?simInitAndSpades`](https://rdrr.io/cran/SpaDES.core/man/simInitAndSpades.html),
+[`?simInitAndSpades`](https://rdrr.io/cran/SpaDES.core/man/simInitAndSpades.html)
 
 [`?newModule`](https://rdrr.io/cran/SpaDES.core/man/newModule.html)
-
-## See also
 
 [`?SpaDES.project::setupProject`](https://spades-project.predictiveecology.org/reference/setupProject.html)
 

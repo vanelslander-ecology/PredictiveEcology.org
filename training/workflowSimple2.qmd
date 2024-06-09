@@ -11,9 +11,7 @@ error: false
 cache: false
 ---
 
-
-# Simple workflow with existing modules
-
+# Workflows with setupProject
 
 ```{r setup,eval=TRUE}
 #| include: false
@@ -37,14 +35,14 @@ libPath <- ifelse(dir.exists("packages"), "packages", "training/packages") # if 
 .libPaths(libPath)
 ```
 
-
-Once we want to run a project that is more sophisticated, we can start using `SpaDES.project`.
+Once we want to run a project that is more sophisticated, we can start
+using `SpaDES.project`.
 [`SpaDES.project`](https://spades-project.predictiveecology.org/) is a
 package that deals with a number of challenges that crop up creating and
 using workflows. These become particularly acute when working with
-multiple modules created by potentially many people.
-[See here to see a longer list of project challenges](
-https://spades-project.predictiveecology.org/#project-challenges).
+multiple modules created by potentially many people. [See here to see a
+longer list of project
+challenges](https://spades-project.predictiveecology.org/#project-challenges).
 
 We will demonstrate its use with an example created by [Tati
 Micheletti](https://github.com/tati-micheletti/Micheletti_SpaDES/blob/main/demo.R)
@@ -55,7 +53,7 @@ where a workflow with several modules is setup and run.
 ```{r setupProject}
 repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
 if (!require("SpaDES.project"))
-  install.packages(c("SpaDES.project", "SpaDES.core"), repos = repos)
+  install.packages(c("SpaDES.project", "SpaDES.core"), repos = repos, dependencies = TRUE)
 ```
 
 ## Using `setupProject`
@@ -67,7 +65,6 @@ minimized.
 Note how it downloads the listed modules directly from their GitHub
 repositories (e.g.
 [tati-micheletti/speciesAbundance](https://github.com/tati-micheletti/speciesAbundance))
-
 
 ```{r,echo=FALSE,eval=TRUE}
 # cleanup / restore state
@@ -97,8 +94,8 @@ Setup <- SpaDES.project::setupProject(
 ```
 
 The output of `setupProject` is a list of argument values that can be
-passed to `simInitAndSpaDES2` (with the "2" it accepts a list of arguments, instead of the arguments themselves).
-
+passed to `simInitAndSpaDES2` (with the "2" it accepts a list of
+arguments, instead of the arguments themselves).
 
 ```{r runSimInit}
 results <- SpaDES.core::simInitAndSpades2(Setup)
@@ -110,9 +107,10 @@ SpaDES.core::completed(results)
 
 ## Examples
 
-In the remainding chapters of this section, we will explore several examples, including learning of several arguments to the function `setupProject`. But we will start very simple first.
+In the remainding chapters of this section, we will explore several
+examples, including learning of several arguments to the function
+`setupProject`. But we will start very simple first.
 
 ```{r setdown,eval=TRUE}
 .libPaths(libPath)
 ```
-

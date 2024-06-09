@@ -15,6 +15,7 @@ editor_options:
 
 ```{r setup}
 #| include: false
+#| eval: true
 
 ## truncate text output
 hook_output <- knitr::knit_hooks$get("output")
@@ -32,7 +33,8 @@ knitr::knit_hooks$set(output = function(y, options) {
 })
 
 if (!require("Require")) {
-  install.packages("Require", repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
+  install.packages("Require", repos = c("https://predictiveecology.r-universe.dev", getOption("repos")),
+                   dependencies = TRUE)
 }
 ```
 
@@ -53,9 +55,10 @@ model <- lm(y ~ x)
 plot(model)
 ```
 
-Looking at this code above, we can imagine that the first 3 lines are conceptually 
-different -- *fit a dummy model* -- from the last line -- *visualize it*. 
-Lets put these into 2 "modules", and then run them in sequence.
+Looking at this code above, we can imagine that the first 3 lines are
+conceptually different -- *fit a dummy model* -- from the last line --
+*visualize it*. Lets put these into 2 "modules", and then run them in
+sequence.
 
 ## Create a module
 
@@ -65,12 +68,15 @@ Step 1 -- move the code to an "init" event. This "init" even is a
 convention that SpaDES uses. A module must always have an "init" event.
 This is the only code that is "definitely run" in a module.
 
-```{r newModule, eval=TRUE}
-Require::Require(c("reproducible", "SpaDES.core"), repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
+```{r newModule}
+#| eval: true
+
+Require::Require(c("reproducible", "SpaDES.core (>= 2.1.5)"), 
+                 repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
 
 # make a module
 nm1 <- "My_linear_model"
-modulePath <- "tutos/NewModuleIntro/NewModule"
+modulePath <- "~/SpaDES_book/NewModuleIntro/NewModule"
 newModule(name = nm1, path = modulePath, open = FALSE,
           events = list(
             init = {
@@ -84,11 +90,14 @@ newModule(name = nm1, path = modulePath, open = FALSE,
 
 **Keeping objects**
 
-For now, we just say, *if you want to keep an object, assign it to "sim"*.
-We will explain this in much more detail later. Here, we want to keep the `model` 
-that we fit. But we don't care about the `x` and `y`. So we assign the `model` to `sim`. 
+For now, we just say, *if you want to keep an object, assign it to
+"sim"*. We will explain this in much more detail later. Here, we want to
+keep the `model` that we fit. But we don't care about the `x` and `y`.
+So we assign the `model` to `sim`.
 
-```{r, eval=TRUE}
+```{r}
+#| eval: true
+
 # make a module
 SpaDES.core::newModule(name = nm1, path = modulePath, open = FALSE,
                        events = list(
@@ -105,7 +114,9 @@ How would we run this "init" event? We use `simInit`, which parses the
 code (like loading a library or sourcing a function) then `spades` which
 executes it.
 
-```{r, eval=TRUE}
+```{r}
+#| eval: true
+
 out <- simInit(modules = nm1, paths = list(modulePath = modulePath))
 out <- spades(out)
 ```
@@ -124,12 +135,12 @@ are 4 "SpaDES-created" events ... we may use them later, ignore for now)
 completed(out)
 ```
 
-We have our first "simple workflow"!  1 chunk of code :) 
+We have our first "simple workflow"! 1 chunk of code :)
 
 ### Add a second module
 
-Our next step is to divide the pieces into conceptual chunks. Let's now create a 
-new module for the `plot` ... a "visualization module".
+Our next step is to divide the pieces into conceptual chunks. Let's now
+create a new module for the `plot` ... a "visualization module".
 
 ```{r newModule2}
 nm2 <- "visualize"
@@ -142,9 +153,11 @@ newModule(nm2, path = modulePath, open = FALSE,
 )
 ```
 
-And run both together. We name them both in the `module` argument. We are using `simInitAndSpades` 
-which is a shortcut to running the two function separately.
-```{r,eval=FALSE}
+And run both together. We name them both in the `module` argument. We
+are using `simInitAndSpades` which is a shortcut to running the two
+function separately.
+
+```{r}
 out2 <- simInitAndSpades(module = c(nm1, nm2), paths = list(modulePath = modulePath))
 ```
 
@@ -156,14 +169,12 @@ out2$model
 completed(out2)
 ```
 
-
-This time, there is an extra event that happened. **We now have a workflow of 2 events.**
-
+This time, there is an extra event that happened. **We now have a
+workflow of 2 events.**
 
 ## Next: Metadata
 
 Next, we will explore a key feature of SpaDES modules: the metadata.
-
 
 ## See also
 

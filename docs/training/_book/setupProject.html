@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eliot McIntire">
-<meta name="dcterms.date" content="2024-06-05">
+<meta name="dcterms.date" content="2024-06-09">
 
 <title>Robust and nimble scientific workflows, using SpaDES - SpaDES workflows and projects</title>
 <style>
@@ -33,7 +33,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./workflowSimple2.html" rel="next">
-<link href="./Caching.html" rel="prev">
+<link href="./debugging.html" rel="prev">
 <link href="./assets/logo/favicon-16x16.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -273,32 +273,55 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ModulesAndEvents.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Scheduling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scheduling events</span></span></a>
+  <a href="./ModuleInputs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module Inputs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simList.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ModuleInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module Inputs</span></span></a>
+  <a href="./ModulesAndEvents.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Scheduling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling events</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">ContinuousWorkflows.qmd</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Caching.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prepInputs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>prepInputs</code> for bringing data into projects</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./debugging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES modules</span></span></a>
   </div>
 </li>
       </ul>
@@ -307,33 +330,39 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="./setupProject.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">SpaDES workflows and projects</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflowSimple2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Simple workflow with existing modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./multipleModules.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Multiple Modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Multiple Modules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
+  <a href="./LandRDemo_coreVeg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">LandR workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ForestsAndFire.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -341,7 +370,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bestPractices.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Best practices for <span class="math inline">\(R^3T\)</span> workflows</span></span></a>
+ <span class="menu-text">Best practices for <span class="math inline">\(R^3T\)</span> workflows</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -380,7 +409,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 5, 2024</p>
+      <p class="date">June 9, 2024</p>
     </div>
   </div>
   
@@ -394,7 +423,7 @@ window.Quarto = {
 
 <p>One of the advantages of <code>SpaDES</code> is that we can make simple “linear” workflows, but we can also make complex workflows <em>emerge</em> from the combinations of modules (and of their events) being put together by a user. SpaDES modules provide their own needed schedules, and the metadata tells SpaDES how different modules fit together. Then when executed, events within and across modules go in the correct order. If the group of modules changes later on, the workflow steps may also change.</p>
 <p>In this section, we will start with the simplest case of two code chunks in sequence, and we will advance to chain together many modules and rich project workflows using <code>SpaDES.project</code>. We assume that readers are already familiar with SpaDES, namely creating and using SpaDES modules. If not, we encourage going through the chapters in Section <a href="./SpaDESbasics.html">SpaDES 101</a>.</p>
-<p>From <a href="castorExample.html" class="quarto-xref"><span>14&nbsp; Castor workflow with setupProject</span></a> onwards, we show project flows with SpaDES modules that have been developed and used in ecological modelling and forecating, to answer both research or applied questions. We encourage readers to learn more about these models (and <em>modules</em>) from the documentation sources noted in the chapters.</p>
+<p>From <a href="castorExample.html" class="quarto-xref"><span>18&nbsp; Castor workflow with setupProject</span></a> onwards, we show project flows with SpaDES modules that have been developed and used in ecological modelling and forecating, to answer both research or applied questions. We encourage readers to learn more about these models (and <em>modules</em>) from the documentation sources noted in the chapters.</p>
 
 
 
@@ -959,13 +988,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Caching.html" class="pagination-link" aria-label="Introduction to Cache">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span>
+      <a href="./debugging.html" class="pagination-link" aria-label="Debugging SpaDES modules">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES modules</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./workflowSimple2.html" class="pagination-link" aria-label="Simple workflow with existing modules">
-        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Simple workflow with existing modules</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./workflowSimple2.html" class="pagination-link" aria-label="Workflows with setupProject">
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

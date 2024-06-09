@@ -1,1 +1,0 @@
-scfmLandcoverInit.md

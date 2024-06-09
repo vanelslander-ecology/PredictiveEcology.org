@@ -61,17 +61,22 @@ book:
       chapters:
       - NewModuleIntro.qmd
       - MetaDataAndModuleFiles.qmd
+      - ModuleInputs.qmd
+      - simList.qmd
       - ModulesAndEvents.qmd
       - Scheduling.qmd
-      - simList.qmd
-      - ModuleInputs.qmd
+    - part: ContinuousWorkflows.qmd
+      chapters:
       - Caching.qmd
+      - prepInputs.qmd
+      - debugging.qmd
     - part: setupProject.qmd
       chapters:
       - workflowSimple2.qmd
       - multipleModules.qmd
-      - castorExample.qmd
+      - LandRDemo_coreVeg.qmd
       - ForestsAndFire.qmd
+      - castorExample.qmd
     - bestPractices.qmd
     - references.qmd
 

@@ -41,8 +41,8 @@ if (Sys.getenv("USERNAME") == "GHA") {
 qmdPath <- normalizePath(getwd(), winslash = "/")
 
 if (!interactive()) { 
-  dir.create("~/tutos/castorExample", recursive = TRUE)
-  knitr::opts_knit$set(root.dir = "~/tutos/castorExample")
+  dir.create("~/SpaDES_book/castorExample", recursive = TRUE)
+  knitr::opts_knit$set(root.dir = "~/SpaDES_book/castorExample")
 }
 ```
 
@@ -89,14 +89,7 @@ figPath <- normalizePath(file.path(qmdPath, "assets/img/gdriveauth.png"),
 knitr::include_graphics(figPath, rel_path = FALSE, dpi = NA)
 ```
 
-After the "workaround" `setupProject` does all the heavy-lifting of
-setting up the workflow, namely installing all package dependencies
-listed in the several modules and in `setupProject(..., packages)`,
-creating all the necessary folders, sourcing additional files and
-creating parameter, inputs and outputs lists -- see
-[`?setupProject`](https://spades-project.predictiveecology.org/reference/setupProject.html).
-
-```{r wfsetup}
+```{r workaround}
 #| results: hide
 #| cache: false 
 
@@ -107,18 +100,41 @@ install.packages(c("SpaDES.project", "googledrive", "reproducible"),
 library(SpaDES.project)
 
 ## get Castor modules and functions
-setupFunctions(paths = list("projectPath" = "~/"),
+setupFunctions(paths = list("projectPath" = "~/SpaDES_book/castorExample/"),
                functions = c("PredictiveEcology/PredictiveEcology.org@main/tutos/castorExample/getCastorModulesAndDB.R",
                              "PredictiveEcology/PredictiveEcology.org@main/tutos/castorExample/params.R"),
                overwrite = TRUE)
-outMod <- getCastorModulesAndDB(paths = list("modulePath" = "~/tutos/castorExample/modules/",
-                                             "projectPath" = "~/tutos/castorExample"),
+outMod <- getCastorModulesAndDB(paths = list("modulePath" = "~/SpaDES_book/castorExample/modules/",
+                                             "projectPath" = "~/SpaDES_book/castorExample"),
                                 modules = c("dataCastor", 
                                             "growingStockCastor", 
                                             "forestryCastor", 
                                             "blockingCastor"),
                                 dbURL = "https://drive.google.com/file/d/1-2POunzC7aFbkKK5LeBJNsFYMBBY8dNx/view?usp=sharing",
-                                dbPath = "~/tutos/castorExample/R/scenarios/comparison_stsm")
+                                dbPath = "~/SpaDES_book/castorExample/R/scenarios/comparison_stsm")
+
+```
+
+Check where the `getCastorModulesAndDB.R` and `params.R` files ended up.
+`setupFunctions()` respected the folder structure in
+`PredictiveEcology.org` and placed these files in `tutos/castorExample/`
+*within* the specified `projectPath`. We'll need to remember this for
+later.
+
+After the "workaround" `setupProject` does all the heavy-lifting of
+setting up the workflow, namely installing all package dependencies
+listed in the several modules and in `setupProject(..., packages)`,
+creating all the necessary folders, sourcing additional files and
+creating parameter, inputs and outputs lists -- see
+[`?setupProject`](https://spades-project.predictiveecology.org/reference/setupProject.html).
+
+Note that all folder/file paths are *relative* to `projectPath`, even
+the file path passed to `parameters` (remember the file path from
+above?).
+
+```{r wfsetup}
+#| results: hide
+#| cache: false 
 
 ## set up the workflow paths, dependencies and modules
 ## as well as simulation parameters, (some) inputs and outputs
@@ -127,7 +143,7 @@ out <- setupProject(
                "outputPath" = "R/scenarios/comparison_stsm/outputs",
                "modulePath" = "modules/",
                "cachePath" = "modules/forestryCastor",
-               "projectPath" = "~/tutos/castorExample"),
+               "projectPath" = "~/SpaDES_book/castorExample"),
   modules = names(outMod$modules),
   options = list(repos = repos),
   functions = "bcgov/castor@main/R/functions/R_Postgres.R",
@@ -143,7 +159,7 @@ out <- setupProject(
     "sp",
     "terra"
   ),
-  params = "params.R",
+  params = "tutos/castorExample/params.R",  
   times = list(start = 0, end = 20),
   outputs = {
     data.frame(objectName = c("harvestReport",
@@ -340,7 +356,7 @@ out <- setupProject(
                "outputPath" = "/R/scenarios/comparison_stsm/outputs",
                "modulePath" = "modules/",
                "cachePath" = "modules/forestryCastor",
-               "projectPath" = "~/tutos/castorExample/"),
+               "projectPath" = "~/SpaDES_book/castorExample/"),
   modules = modules,
   functions = "bcgov/castor@main/R/functions/R_Postgres.R",
   ## install and load
