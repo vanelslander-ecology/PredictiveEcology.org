@@ -41,7 +41,7 @@ Not a very useful comment (we can check `?lm` to know what it does):
 lm(biomass ~ height)
 ```
 
-A more useful comment (we can check ?lm):
+A more useful comment:
 
 ```{r}
 #| eval: false

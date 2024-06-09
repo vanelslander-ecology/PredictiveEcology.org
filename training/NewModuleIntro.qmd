@@ -71,7 +71,8 @@ This is the only code that is "definitely run" in a module.
 ```{r newModule}
 #| eval: true
 
-Require::Require(c("reproducible", "SpaDES.core"), repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
+Require::Require(c("reproducible", "SpaDES.core (>= 2.1.5)"), 
+                 repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
 
 # make a module
 nm1 <- "My_linear_model"
