@@ -1,0 +1,50 @@
+---
+author: "Ceres Barros"
+date: last-modified
+editor_options:
+  chunk_output_type: console
+execute:
+  eval: false
+  tidy: false
+  warning: false
+  message: false
+  error: false
+  cache: false
+---
+
+# Debugging SpaDES modules {#sec-debugging}
+
+```{r setup}
+#| include: false
+#| eval: true
+
+## truncate text output
+hook_output <- knitr::knit_hooks$get("output")
+
+knitr::knit_hooks$set(output = function(y, options) {
+  if (!is.null(n <- options$outlines)) {
+    y <- xfun::split_lines(y)
+    if (length(y) > n) {
+      # truncate the output
+      y <- c(head(y, n), "....\n")
+    }
+    y <- paste(y, collapse = "\n")
+  }
+  hook_output(y, options)
+})
+
+```
+
+
+## See also
+
+[`?browser()`]
+
+[`?debug()`]
+
+[`?debugonce()`]
+
+[`?showMethods()`]  -- useful to find out what methods of a function
+you may want to activate debugging for
+
+[Debugging guide by Hadley Wickham](https://adv-r.hadley.nz/debugging.html)
