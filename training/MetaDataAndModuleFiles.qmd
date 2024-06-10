@@ -76,7 +76,7 @@ keeping `model`. So, we will continue with only one output, `model`.
 ### Required Packages
 
 Next, *what are the package dependencies?*. We call this `reqdPkgs` in
-the SpaDES metadtaa. We see that there are three functions: `rnorm`,
+the SpaDES metadata. We see that there are three functions: `rnorm`,
 `lm` and `plot`. We don't know what packages they are in, so we can find
 out by typing them at the R prompt. At the bottom of the function, it
 says that the function `rnorm` is in the `stats` package. Fortunately
@@ -132,26 +132,26 @@ details. For now, run the above and open the `My_linear_model.R` script
 that it creates.
 
 When we make a module, we get a message stating where the module code
-is. **FROM HERE, OPEN THE FILE**, e.g., by copy-pasting the file path
+is. **From here, open the file**, e.g., by copy-pasting the file path
 (pick the `.R` file NOT the `.Rmd` file for now)
 
 ::: {.callout-note appearance="simple" icon="false"}
 **Opening a module file**
 
-From here onward, we will need to manually open the module code
-file. Every SpaDES module is defined by having at least 1 file that is
-named with `<modulePath>/<moduleName>/<moduleName>.R`. Even though
-we can do a lot with `newModule()`, we will need to get used to
-opening, examining and changing the code in the module code file.
+From here onward, we will need to manually open the module code file.
+Every SpaDES module is defined by having at least 1 file that is named
+with `<modulePath>/<moduleName>/<moduleName>.R`. Even though we can do a
+lot with `newModule()`, we will need to get used to opening, examining
+and changing the code in the module code file.
 :::
 
 We will look at a few elements in this chapter.
 
 ## `inputObjects`
 
-When we scroll down to `inputObjects` and `expectsInputs()`. This is
-where we will put our `inputs` that we noticed in our code chunk. We
-will declare `x` as an "input" by putting it there, like this:
+Scroll down to `inputObjects` and `expectsInputs()`. This is where we
+will put our `inputs` that we noticed in our code chunk. We will declare
+`x` as an "input" by putting it there, like this:
 
 ```{r metadata}
 inputObjects = bindrows(
@@ -191,10 +191,10 @@ But, since it is "in a function", each event has all the features of a
 function:
 
 -   **arguments** -- specifically `sim` can be used
--   **return(sim)** -- must always be present. It is by default, but
-    don't delete it!
--   **don't need to run this function** -- SpaDES runs it when it is
-    time.
+-   **something returned** -- in this case, the simList. return(sim)
+    must always be present - it is by default, but don't delete it!
+-   **it can be run**-- but don't worry about running it; SpaDES runs it
+    when it is time.
 :::
 
 ::: {.callout-note appearance="simple" icon="false"}
@@ -241,7 +241,7 @@ newModule(nm2, path = modulePath, open = FALSE,
 ### Outputs of one module are Inputs of another
 
 Here we start to see the "shared" objects. The module we just made above
-`createsOutput` of `model`. But this new `visuzliation` module will
+`createsOutput` of `model`. But this new `visualization` module will
 `expectInput` of `model`. So, we can copy the same description if it is
 the same.
 
@@ -255,7 +255,7 @@ inputObjects = bindrows(
 ## Default Values
 
 Recall, we don't have a value for `x`. This means that if you run the
-following, you will get an error, unlink in the previous chapter where
+following, you will get an error, unlike in the previous chapter where
 we had `x` defined in the `init` event.
 
 ```{r}
