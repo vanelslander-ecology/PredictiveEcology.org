@@ -37,7 +37,7 @@ library("ggplot2")
 ```
 
 Here, we will talk about **scheduling events** in a SpaDES module using
-a function in called
+a function called
 [`SpaDES.core ::scheduleEvents()`](https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/scheduleEvent).
 Please see @sec-moduleintro for how to create a simple module before
 attempting this section.
@@ -94,10 +94,6 @@ ggplot(predictions, aes(x = year, y = prediction, colour = year)) +
   geom_point() + geom_smooth()
 ```
 
-In the above code, there are 4 sections. These will each be copied into
-the SpaDES module below, in their respective sections. We have added 1
-new section, called "Prediction".
-
 ## Convert to a module
 
 In the above code, there are 4 sections. These will each be copied into
@@ -109,7 +105,7 @@ SpaDES.core::newModule(name = "scheduling", path = "~/SpaDES_book/scheduling")
 ```
 
 Open the module file, which will be printed in the console. Scroll down
-to the `Init` function and copy the `Init`, the `.inputObjects`, the
+to the `Init` function and copy the `Init`, the `.inputObjects`, and the
 `Plot` parts in the code above into the new module, as we did in
 @sec-moduleintro.
 
@@ -141,8 +137,9 @@ plotFun <- function(sim) {
 ## New Event Function -- Prediction
 
 The new part is the `for` loop. This part takes new covariates (new
-values for `y`), emulating "predicted" covariates, derives a newly
-predicted `x`, and we then keep these *predicted* `x` values each year.
+values for `y`), emulating "predicted" covariates, and derives a newly
+predicted `x`, which we then keep as the *predicted* `x` values each
+year.
 
 We'll use `scheduleEvent()` below to do this iteration. For now, copy
 the `Prediction` part into a new function:
@@ -160,9 +157,9 @@ Prediction <- function(sim) {
 
 ## Scheduling
 
-Now we need to tell SpaDES when to do and when to iterate each of the
-steps or "events". The `Init` we do once, at the start. The `plotFn` we
-do once, but this time it is at the "end". The `.inputObjects` always
+Now we need to tell SpaDES when to execute and when to iterate each of
+the steps or "events". The `Init` we do once, at the start. The `plotFn`
+we do once, but this time it is at the "end". The `.inputObjects` always
 only happens once and "before the start" (`Init`) -- it is scheduled
 automatically so nothing to do here. The last part (i.e., the prediction
 event) must happen 10 times, and it must start after `Init` and before
@@ -227,10 +224,10 @@ switch(
 
 ### The new event
 
-We add code to make a new event, called `"predictions"` (the name must
-match what we wrote in the `scheduleEvent` above). In this event, we
-"do" the prediction, then we schedule the next prediction at "time plus
-1"
+We will add code to make a new event, called `"predictions"` (the name
+must match what we wrote in the `scheduleEvent` above). In this event,
+we "do" the prediction, then we schedule the next prediction at "time
+plus 1"
 
 See `?SpaDES.core::times()`.
 
