@@ -227,11 +227,11 @@ no strict rule classify an R script.
 
 ## See also
 
-@sec-schedulingEvents
+@sec-schedulingEvents on event scheduling
 
 [`?scheduleEvent`](https://rdrr.io/cran/SpaDES.core/man/scheduleEvent.html)
 
-[`?P`](https://rdrr.io/cran/SpaDES.core/man/params.html),
+[`?P`](https://rdrr.io/cran/SpaDES.core/man/params.html)
 
 [`?time`](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html)
 
