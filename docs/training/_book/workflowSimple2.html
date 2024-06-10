@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./multipleModules.html" rel="next">
+<link href="./LandRDemo_coreVeg.html" rel="next">
 <link href="./setupProject.html" rel="prev">
 <link href="./assets/logo/favicon-16x16.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -349,7 +349,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>prepInputs</code> for bringing data into projects</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>prepInputs</code> for data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -377,26 +377,20 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./multipleModules.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Multiple Modules</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./LandRDemo_coreVeg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">LandR workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">LandR workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ForestsAndFire.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -425,7 +419,9 @@ window.Quarto = {
   <ul>
   <li><a href="#installation" id="toc-installation" class="nav-link active" data-scroll-target="#installation"><span class="header-section-number">14.1</span> Installation</a></li>
   <li><a href="#using-setupproject" id="toc-using-setupproject" class="nav-link" data-scroll-target="#using-setupproject"><span class="header-section-number">14.2</span> Using <code>setupProject</code></a></li>
-  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples"><span class="header-section-number">14.3</span> Examples</a></li>
+  <li><a href="#emergent-workflow" id="toc-emergent-workflow" class="nav-link" data-scroll-target="#emergent-workflow"><span class="header-section-number">14.3</span> Emergent workflow</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples"><span class="header-section-number">14.4</span> Examples</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">14.5</span> See also</a></li>
   </ul>
 </nav>
     </div>
@@ -471,8 +467,16 @@ window.Quarto = {
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>repos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"predictiveecology.r-universe.dev"</span>, <span class="fu">getOption</span>(<span class="st">"repos"</span>))</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"SpaDES.project"</span>))</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"SpaDES.project"</span>, <span class="st">"SpaDES.core"</span>), <span class="at">repos =</span> repos, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># if (!require("SpaDES.project"))</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Require<span class="sc">::</span><span class="fu">Install</span>(<span class="fu">c</span>(<span class="st">"SpaDES.project"</span>, <span class="st">"SpaDES.core"</span>, <span class="st">"reproducible"</span>), <span class="at">repos =</span> repos, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>packagePath <span class="ot">=</span> SpaDES.project<span class="sc">::</span><span class="fu">.libPathDefault</span>(<span class="st">"~/SpaDES_book/integratingSpaDESmodules"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>packagePath <span class="ot">=</span> SpaDES.project<span class="sc">::</span><span class="fu">.libPathDefault</span>(<span class="st">"PredictiveEcology.org"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -483,26 +487,29 @@ window.Quarto = {
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">##################### PART II: Download the modules and install the needed packages</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>Setup <span class="ot">&lt;-</span> SpaDES.project<span class="sc">::</span><span class="fu">setupProject</span>(</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">projectPath =</span> <span class="st">"integratingSpaDESmodules"</span>),</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">modules =</span> <span class="fu">c</span>(<span class="st">"tati-micheletti/speciesAbundance@main"</span>,</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>              <span class="st">"tati-micheletti/temperature@main"</span>,</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>              <span class="st">"tati-micheletti/speciesAbundTempLM@main"</span>),</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="fu">list</span>(<span class="at">start =</span> <span class="dv">2013</span>,</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">end =</span> <span class="dv">2014</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">##################### PART II: Download the modules and install the needed packages</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>Setup <span class="ot">&lt;-</span> SpaDES.project<span class="sc">::</span><span class="fu">setupProject</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">projectPath =</span> <span class="st">"~/SpaDES_book/integratingSpaDESmodules"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">packagePath =</span> packagePath),</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">modules =</span> <span class="fu">c</span>(<span class="st">"tati-micheletti/speciesAbundance@main"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>              <span class="st">"tati-micheletti/temperature@main"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>              <span class="st">"tati-micheletti/speciesAbundTempLM@main"</span>),</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="fu">list</span>(<span class="at">start =</span> <span class="dv">2013</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>               <span class="at">end =</span> <span class="dv">2030</span>),</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">updateRprofile =</span> <span class="cn">FALSE</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>The output of <code>setupProject</code> is a list of argument values that can be passed to <code>simInitAndSpaDES2</code> (with the “2” it accepts a list of arguments, instead of the arguments themselves).</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">simInitAndSpades2</span>(Setup)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">simInitAndSpades2</span>(Setup)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -518,59 +525,274 @@ window.Quarto = {
 </figure>
 </div>
 </div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workflowSimple2_files/figure-html/runSimInit-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">completed</span>(results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>    eventTime         moduleName      eventType eventPriority
-        &lt;num&gt;             &lt;char&gt;         &lt;char&gt;         &lt;num&gt;
- 1:      2013         checkpoint           init             0
- 2:      2013               save           init             0
- 3:      2013           progress           init             0
- 4:      2013               load           init             0
- 5:      2013   speciesAbundance           init             1
- 6:      2013        temperature           init             1
- 7:      2013 speciesAbundTempLM           init             1
- 8:      2013   speciesAbundance tableToRasters             5
- 9:      2013   speciesAbundance           plot             5
-10:      2013        temperature   dataToRaster             5
-11:      2013        temperature       plotting             5
-12:      2013 speciesAbundTempLM  tableBuilding             5
-13:      2014   speciesAbundance tableToRasters             5
-14:      2014        temperature   dataToRaster             5
-15:      2014 speciesAbundTempLM  tableBuilding             5
-    ._prevEventTimeFinish           clockTime
-                   &lt;POSc&gt;              &lt;POSc&gt;
- 1:   2024-06-09 12:18:09 2024-06-09 12:18:09
- 2:   2024-06-09 12:18:09 2024-06-09 12:18:09
- 3:   2024-06-09 12:18:09 2024-06-09 12:18:09
- 4:   2024-06-09 12:18:09 2024-06-09 12:18:09
- 5:   2024-06-09 12:18:09 2024-06-09 12:18:09
- 6:   2024-06-09 12:18:09 2024-06-09 12:18:09
- 7:   2024-06-09 12:18:09 2024-06-09 12:18:09
- 8:   2024-06-09 12:18:09 2024-06-09 12:18:09
- 9:   2024-06-09 12:18:09 2024-06-09 12:18:09
-10:   2024-06-09 12:18:09 2024-06-09 12:18:09
-11:   2024-06-09 12:18:09 2024-06-09 12:18:10
-12:   2024-06-09 12:18:10 2024-06-09 12:18:10
-13:   2024-06-09 12:18:10 2024-06-09 12:18:10
-14:   2024-06-09 12:18:10 2024-06-09 12:18:10
-15:   2024-06-09 12:18:10 2024-06-09 12:18:10</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workflowSimple2_files/figure-html/runSimInit-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workflowSimple2_files/figure-html/runSimInit-5.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workflowSimple2_files/figure-html/runSimInit-6.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workflowSimple2_files/figure-html/runSimInit-7.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workflowSimple2_files/figure-html/runSimInit-8.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workflowSimple2_files/figure-html/runSimInit-9.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workflowSimple2_files/figure-html/runSimInit-10.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workflowSimple2_files/figure-html/runSimInit-11.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workflowSimple2_files/figure-html/runSimInit-12.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workflowSimple2_files/figure-html/runSimInit-13.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
-<section id="examples" class="level2" data-number="14.3">
-<h2 data-number="14.3" class="anchored" data-anchor-id="examples"><span class="header-section-number">14.3</span> Examples</h2>
-<p>In the remainding chapters of this section, we will explore several examples, including learning of several arguments to the function <code>setupProject</code>. But we will start very simple first.</p>
+<section id="emergent-workflow" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="emergent-workflow"><span class="header-section-number">14.3</span> Emergent workflow</h2>
+<p>We can evaluate the sequence of events using <code>completed</code></p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.libPaths</span>(libPath)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">completed</span>(results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-stdout">
+<pre><code>    eventTime         moduleName            eventType eventPriority
+        &lt;num&gt;             &lt;char&gt;               &lt;char&gt;         &lt;num&gt;
+ 1:      2013         checkpoint                 init             0
+ 2:      2013               save                 init             0
+ 3:      2013           progress                 init             0
+ 4:      2013               load                 init             0
+ 5:      2013   speciesAbundance                 init             1
+ 6:      2013        temperature                 init             1
+ 7:      2013 speciesAbundTempLM                 init             1
+ 8:      2013   speciesAbundance       tableToRasters             5
+ 9:      2013   speciesAbundance                 plot             5
+10:      2013        temperature         dataToRaster             5
+11:      2013        temperature             plotting             5
+12:      2013 speciesAbundTempLM        tableBuilding             5
+13:      2014   speciesAbundance       tableToRasters             5
+14:      2014        temperature         dataToRaster             5
+15:      2014 speciesAbundTempLM        tableBuilding             5
+16:      2015   speciesAbundance       tableToRasters             5
+17:      2015        temperature         dataToRaster             5
+18:      2015 speciesAbundTempLM        tableBuilding             5
+19:      2016   speciesAbundance       tableToRasters             5
+20:      2016        temperature         dataToRaster             5
+21:      2016 speciesAbundTempLM        tableBuilding             5
+22:      2017   speciesAbundance       tableToRasters             5
+23:      2017        temperature         dataToRaster             5
+24:      2017 speciesAbundTempLM        tableBuilding             5
+25:      2018   speciesAbundance                 plot             5
+26:      2018   speciesAbundance       tableToRasters             5
+27:      2018        temperature         dataToRaster             5
+28:      2018 speciesAbundTempLM        tableBuilding             5
+29:      2019   speciesAbundance       tableToRasters             5
+30:      2019        temperature         dataToRaster             5
+31:      2019 speciesAbundTempLM        tableBuilding             5
+32:      2020   speciesAbundance       tableToRasters             5
+33:      2020        temperature         dataToRaster             5
+34:      2020 speciesAbundTempLM        tableBuilding             5
+35:      2021   speciesAbundance       tableToRasters             5
+36:      2021        temperature         dataToRaster             5
+37:      2021 speciesAbundTempLM        tableBuilding             5
+38:      2022   speciesAbundance       tableToRasters             5
+39:      2022        temperature         dataToRaster             5
+40:      2022 speciesAbundTempLM        tableBuilding             5
+41:      2023        temperature             plotting             5
+42:      2023        temperature         dataToRaster             5
+43:      2023 speciesAbundTempLM        tableBuilding             5
+44:      2023 speciesAbundTempLM        modelBuilding             5
+45:      2023 speciesAbundTempLM abundanceForecasting             5
+46:      2023 speciesAbundTempLM                 plot             5
+47:      2024        temperature         dataToRaster             5
+48:      2024 speciesAbundTempLM abundanceForecasting             5
+49:      2024 speciesAbundTempLM                 plot             5
+50:      2025        temperature         dataToRaster             5
+51:      2025 speciesAbundTempLM abundanceForecasting             5
+52:      2025 speciesAbundTempLM                 plot             5
+53:      2026        temperature         dataToRaster             5
+54:      2026 speciesAbundTempLM abundanceForecasting             5
+55:      2026 speciesAbundTempLM                 plot             5
+56:      2027        temperature         dataToRaster             5
+57:      2027 speciesAbundTempLM abundanceForecasting             5
+58:      2027 speciesAbundTempLM                 plot             5
+59:      2028        temperature         dataToRaster             5
+60:      2028 speciesAbundTempLM abundanceForecasting             5
+61:      2028 speciesAbundTempLM                 plot             5
+62:      2029        temperature         dataToRaster             5
+63:      2029 speciesAbundTempLM abundanceForecasting             5
+64:      2029 speciesAbundTempLM                 plot             5
+65:      2030        temperature         dataToRaster             5
+66:      2030 speciesAbundTempLM abundanceForecasting             5
+67:      2030 speciesAbundTempLM                 plot             5
+    eventTime         moduleName            eventType eventPriority
+    ._prevEventTimeFinish           clockTime
+                   &lt;POSc&gt;              &lt;POSc&gt;
+ 1:   2024-06-09 18:12:13 2024-06-09 18:12:13
+ 2:   2024-06-09 18:12:13 2024-06-09 18:12:13
+ 3:   2024-06-09 18:12:13 2024-06-09 18:12:13
+ 4:   2024-06-09 18:12:13 2024-06-09 18:12:13
+ 5:   2024-06-09 18:12:13 2024-06-09 18:12:13
+ 6:   2024-06-09 18:12:13 2024-06-09 18:12:13
+ 7:   2024-06-09 18:12:13 2024-06-09 18:12:13
+ 8:   2024-06-09 18:12:13 2024-06-09 18:12:13
+ 9:   2024-06-09 18:12:13 2024-06-09 18:12:13
+10:   2024-06-09 18:12:13 2024-06-09 18:12:13
+11:   2024-06-09 18:12:13 2024-06-09 18:12:13
+12:   2024-06-09 18:12:13 2024-06-09 18:12:13
+13:   2024-06-09 18:12:13 2024-06-09 18:12:13
+14:   2024-06-09 18:12:13 2024-06-09 18:12:13
+15:   2024-06-09 18:12:13 2024-06-09 18:12:13
+16:   2024-06-09 18:12:13 2024-06-09 18:12:13
+17:   2024-06-09 18:12:13 2024-06-09 18:12:13
+18:   2024-06-09 18:12:13 2024-06-09 18:12:13
+19:   2024-06-09 18:12:13 2024-06-09 18:12:13
+20:   2024-06-09 18:12:13 2024-06-09 18:12:14
+21:   2024-06-09 18:12:14 2024-06-09 18:12:14
+22:   2024-06-09 18:12:14 2024-06-09 18:12:14
+23:   2024-06-09 18:12:14 2024-06-09 18:12:14
+24:   2024-06-09 18:12:14 2024-06-09 18:12:14
+25:   2024-06-09 18:12:14 2024-06-09 18:12:14
+26:   2024-06-09 18:12:14 2024-06-09 18:12:14
+27:   2024-06-09 18:12:14 2024-06-09 18:12:14
+28:   2024-06-09 18:12:14 2024-06-09 18:12:14
+29:   2024-06-09 18:12:14 2024-06-09 18:12:14
+30:   2024-06-09 18:12:14 2024-06-09 18:12:14
+31:   2024-06-09 18:12:14 2024-06-09 18:12:14
+32:   2024-06-09 18:12:14 2024-06-09 18:12:14
+33:   2024-06-09 18:12:14 2024-06-09 18:12:14
+34:   2024-06-09 18:12:14 2024-06-09 18:12:14
+35:   2024-06-09 18:12:14 2024-06-09 18:12:14
+36:   2024-06-09 18:12:14 2024-06-09 18:12:14
+37:   2024-06-09 18:12:14 2024-06-09 18:12:14
+38:   2024-06-09 18:12:14 2024-06-09 18:12:14
+39:   2024-06-09 18:12:14 2024-06-09 18:12:14
+40:   2024-06-09 18:12:14 2024-06-09 18:12:14
+41:   2024-06-09 18:12:14 2024-06-09 18:12:14
+42:   2024-06-09 18:12:14 2024-06-09 18:12:14
+43:   2024-06-09 18:12:14 2024-06-09 18:12:14
+44:   2024-06-09 18:12:14 2024-06-09 18:12:14
+45:   2024-06-09 18:12:14 2024-06-09 18:12:14
+46:   2024-06-09 18:12:14 2024-06-09 18:12:14
+47:   2024-06-09 18:12:14 2024-06-09 18:12:14
+48:   2024-06-09 18:12:14 2024-06-09 18:12:14
+49:   2024-06-09 18:12:14 2024-06-09 18:12:14
+50:   2024-06-09 18:12:14 2024-06-09 18:12:14
+51:   2024-06-09 18:12:14 2024-06-09 18:12:15
+52:   2024-06-09 18:12:15 2024-06-09 18:12:15
+53:   2024-06-09 18:12:15 2024-06-09 18:12:15
+54:   2024-06-09 18:12:15 2024-06-09 18:12:15
+55:   2024-06-09 18:12:15 2024-06-09 18:12:15
+56:   2024-06-09 18:12:15 2024-06-09 18:12:15
+57:   2024-06-09 18:12:15 2024-06-09 18:12:15
+58:   2024-06-09 18:12:15 2024-06-09 18:12:15
+59:   2024-06-09 18:12:15 2024-06-09 18:12:15
+60:   2024-06-09 18:12:15 2024-06-09 18:12:15
+61:   2024-06-09 18:12:15 2024-06-09 18:12:15
+62:   2024-06-09 18:12:15 2024-06-09 18:12:15
+63:   2024-06-09 18:12:15 2024-06-09 18:12:15
+64:   2024-06-09 18:12:15 2024-06-09 18:12:15
+65:   2024-06-09 18:12:15 2024-06-09 18:12:15
+66:   2024-06-09 18:12:15 2024-06-09 18:12:15
+67:   2024-06-09 18:12:15 2024-06-09 18:12:15
+    ._prevEventTimeFinish           clockTime</code></pre>
 </div>
+</div>
+<p>We can also see how modules and objects interact using the functions objectDiagram() and moduleDiagram().</p>
+<p>Modules’ diagram showing the interactions among modules:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">moduleDiagram</span>(results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workflowSimple2_files/figure-html/moduleDiagram-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can also access any objects and use them. For example, we can look at the forecasted abundances and the difference raster is also possible. This is done by calling the object name from the results list.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">plot</span>(<span class="fu">rast</span>(results<span class="sc">$</span>forecasts))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workflowSimple2_files/figure-html/objectDiagram-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="examples" class="level2" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="examples"><span class="header-section-number">14.4</span> Examples</h2>
+<p>In the remaining chapters of this section, we will explore several examples, including learning of several arguments to the function <code>setupProject</code>. But we will start very simple first.</p>
+</section>
+<section id="see-also" class="level2" data-number="14.5">
+<h2 data-number="14.5" class="anchored" data-anchor-id="see-also"><span class="header-section-number">14.5</span> See also</h2>
+<p><a href="https://spades-core.predictiveecology.org/reference/index.html">All Functions in SpaDES.core</a></p>
+<p><a href="https://spades-core.predictiveecology.org/reference/simList-accessors-events.html">?SpaDES.core::completed</a></p>
 
 
 </section>
@@ -1141,8 +1363,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./multipleModules.html" class="pagination-link" aria-label="Multiple Modules">
-        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Multiple Modules</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./LandRDemo_coreVeg.html" class="pagination-link" aria-label="LandR workflow with `setupProject`">
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">LandR workflow with <code>setupProject</code></span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
