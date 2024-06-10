@@ -57,14 +57,14 @@ plot(model)
 
 Looking at this code above, we can imagine that the first 3 lines are
 conceptually different -- *fit a dummy model* -- from the last line --
-*visualize it*. Lets put these into 2 "modules", and then run them in
+*visualize it*. Let's put these into 2 "modules", and then run them in
 sequence.
 
 ## Create a module
 
 We use the `SpaDES.core` function `newModule()` to make a new module.
 
-Step 1 -- move the code to an "init" event. This "init" even is a
+Step 1 -- move the code to an "init" event. This "init" event is a
 convention that SpaDES uses. A module must always have an "init" event.
 This is the only code that is "definitely run" in a module.
 
@@ -111,7 +111,7 @@ SpaDES.core::newModule(name = nm1, path = modulePath, open = FALSE,
 ```
 
 How would we run this "init" event? We use `simInit`, which parses the
-code (like loading a library or sourcing a function) then `spades` which
+code (like loading a library or sourcing a function) then `spades`, which
 executes it.
 
 ```{r}
@@ -128,7 +128,7 @@ out$model
 ```
 
 We can also look at "what ran"... or in other words, what was our
-workflow. Of course, this will just be one "user" created event (there
+workflow. Of course, this will just be one "user-created" event (there
 are 4 "SpaDES-created" events ... we may use them later, ignore for now)
 
 ```{r}
@@ -153,9 +153,9 @@ newModule(nm2, path = modulePath, open = FALSE,
 )
 ```
 
-And run both together. We name them both in the `module` argument. We
+And now we run both together. We name them both in the `module` argument. We
 are using `simInitAndSpades` which is a shortcut to running the two
-function separately.
+functions separately.
 
 ```{r}
 out2 <- simInitAndSpades(module = c(nm1, nm2), paths = list(modulePath = modulePath))
