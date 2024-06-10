@@ -671,6 +671,7 @@ studyAreaLarge = {
 
 [LandR Manual](https://landr-manual.predictiveecology.org/)
 
+
 [`?future::plan`](https://future.futureverse.org/reference/plan.html)
 
 [Parallelisation Computation -- R Programming for Data

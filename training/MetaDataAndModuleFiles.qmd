@@ -208,6 +208,8 @@ for example.
 
 In any function that has an argument `sim`, we pass the `simList`, so we
 can access the `simList` with `sim$` from inside such a function.
+
+See @sec-simlist for more details about the `simList`.
 :::
 
 To share objects between modules, we *must* assign them to the `sim`
@@ -265,7 +267,8 @@ simInitAndSpades(modules = c(nm1, nm2),
 
 Just like functions in R, we can supply default values for our
 **inputs**. We put these in a function at the bottom called
-`.inputObjects`.
+`.inputObjects`. See @sec-moduleinputs for a model detailed explanation
+of module inputs and how to deal with them.
 
 Copy this to the module, replacing the contents of the template
 `.inputObjects` function.
@@ -323,6 +326,10 @@ outputs that model, and plots the fit.
 ## See also
 
 @sec-modseventsfuns on Modules, Events and Functions
+
+@sec-moduleinputs on module inputs
+
+@sec-simlist on the `simList`
 
 [`?defineModule`](https://rdrr.io/cran/SpaDES.core/man/defineModule.html) describes all the metadata entries.
 

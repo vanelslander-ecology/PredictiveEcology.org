@@ -68,9 +68,9 @@ is(sim, "environment")
 ## `simNew <- sim` doesn't copy
 
 If you don't know what an `environment` is in `R`, it is OK. The most
-important feature of an `environment` is that is it `pass-by-reference`,
-which means it is not copied when it is "assigned" somewhere. This makes
-`SpaDES` fast enough to use for huge workflows.
+important feature of an `environment` is that it employs
+`pass-by-reference`, which means it is not copied when it is "assigned"
+somewhere. This makes `SpaDES` fast enough to use for huge workflows.
 
 ```{r,eval=FALSE}
 sim <- simInit()
@@ -162,7 +162,7 @@ calls.
 
 -   examine `simList` structure before and after the `spades()` call
 
-### Initiliaze an empty `simList` object
+### Initialize an empty `simList` object
 
 ```{r empty-simList}
 emptySim <- simInit()

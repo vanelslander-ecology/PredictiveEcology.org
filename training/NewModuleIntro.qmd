@@ -186,6 +186,8 @@ workflow of 2 events.**
 
 ## See also
 
-[`?simInitAndSpades`](https://rdrr.io/cran/SpaDES.core/man/simInitAndSpades.html),
+[`simList` accessors](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-events.html)
+
+[`?simInitAndSpades`](https://rdrr.io/cran/SpaDES.core/man/simInitAndSpades.html)
 
 [`?newModule`](https://rdrr.io/cran/SpaDES.core/man/newModule.html)

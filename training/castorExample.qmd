@@ -11,7 +11,7 @@ execute:
   cache: true
 ---
 
-# Castor workflow with `setupProject` {#sec-castorEg}
+# Castor Workflow with `setupProject` {#sec-castorEg}
 
 ```{r setup}
 #| include: false
