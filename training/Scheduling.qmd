@@ -51,8 +51,8 @@ When starting to build a module or an event, we ask 2 key questions:
 
 **2. If yes, how often and/or when?**
 
-Once we answer these, we can use the function `scheduleEvents` to set them up
-in whatever sequence we want.
+Once we answer these, we can use the function `scheduleEvents` to set
+them up in whatever sequence we want.
 :::
 
 Scheduling events allows us to control when things happen in a sequence.
@@ -236,19 +236,21 @@ See `?SpaDES.core::times()`.
 
 ::: {.callout-tip appearance="simple"}
 ## Time in `SpaDES`
-It is useful to understand `time` in SpaDES. Time has units (e.g., "year") which
-is defined by the modules metadata `timeunit`. So, if `time(sim)` is `1` or `2024`,
-that would be in `year` units, if the module is in `year`. To know what "time" it is
-in a module, the easiest function is `time(sim)`. That will give you the "time". 
 
-Time, in SpaDES, is a way of ordering events. If one event happens at time 2024,
-and another event happens at 2025, then the 2024 event will happen first.
+It is useful to understand `time` in SpaDES. Time has units (e.g.,
+"year") which is defined by the modules metadata `timeunit`. So, if
+`time(sim)` is `1` or `2024`, that would be in `year` units, if the
+module is in `year`. To know what "time" it is in a module, the easiest
+function is `time(sim)`. That will give you the "time".
 
-The other two useful functions are `start(sim)` and `end(sim)`, which will give
-you the starting time of the `spades` call and ending time respectfully. These
-would have been specified in `simInit`.
+Time, in SpaDES, is a way of ordering events. If one event happens at
+time 2024, and another event happens at 2025, then the 2024 event will
+happen first.
+
+The other two useful functions are `start(sim)` and `end(sim)`, which
+will give you the starting time of the `spades` call and ending time
+respectfully. These would have been specified in `simInit`.
 :::
-
 
 ```{r predictionEvent}
 switch(
@@ -269,17 +271,19 @@ switch(
 ## Top-down vs Bottom-up workflow sequencing
 
 In a "top-down" workflow, we could imagine something like:
+
 ```{r, eval=FALSE}
 scheduleEvent(sim, time(sim) + 1, "predictions")
 scheduleEvent(sim, time(sim) + 2, "predictions")
 scheduleEvent(sim, time(sim) + 3, "predictions")
 ```
-This would schedule 3 *predictions*, during the next three "time steps". This may be 
-very clear, but it would be difficult to do this for dozens of years (could be done
-with a for-loop).
 
-A "bottom up" approach is to schedule the *predictions* event once, then each time
-that *predictions* event occurs, reschedule it.
+This would schedule 3 *predictions*, during the next three "time steps".
+This may be very clear, but it would be difficult to do this for dozens
+of years (could be done with a for-loop).
+
+A "bottom up" approach is to schedule the *predictions* event once, then
+each time that *predictions* event occurs, reschedule it.
 
 ```{r,eval=FALSE}
 init = {
@@ -290,17 +294,19 @@ predictions = {
   scheduleEvent(sim, time(sim) + 1, "predictions")
 }
 ```
-Each time the *predictions* event happens, it will reschedule itself forever! Very simple.
-The workflow sequence emerges from the self-scheduling.
-:::
 
+Each time the *predictions* event happens, it will reschedule itself
+forever! Very simple. The workflow sequence emerges from the
+self-scheduling.
+:::
 
 ### Double check existing events
 
 If we ran the above changes, we would see an error because `plotFn` is,
 by default, scheduled to run at the time that is specified by
 `.plotInitialTime`, which by default is `start(sim)`. We have no data
-yet at that time. So, we will choose to schedule `plotFn` to run at `end(sim)`:
+yet at that time. So, we will choose to schedule `plotFn` to run at
+`end(sim)`:
 
 ```{r}
 scheduleEvent(sim, end(sim), "scheduling", "plot")
@@ -308,9 +314,10 @@ scheduleEvent(sim, end(sim), "scheduling", "plot")
 
 ### Update module metadata
 
-Like in @sec-moduleFilesAndMetadata, we have to update the module metadata... what
-the inputs, outputs, parameters *are*. `SpaDES` will not error if the
-metadata are not correct, but it will try to point out the problems.
+Like in @sec-moduleFilesAndMetadata, we have to update the module
+metadata... what the inputs, outputs, parameters *are*. `SpaDES` will
+not error if the metadata are not correct, but it will try to point out
+the problems.
 
 Here's an example:
 
