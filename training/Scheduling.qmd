@@ -11,7 +11,7 @@ execute:
   error: false
 ---
 
-# Scheduling events {#sec-schedulingEvents}
+# Scheduling Events {#sec-schedulingEvents}
 
 ```{r setup}
 #| include: false
@@ -39,7 +39,8 @@ library("ggplot2")
 Here, we will talk about **scheduling events** in a SpaDES module using
 a function called
 [`SpaDES.core ::scheduleEvents()`](https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/scheduleEvent).
-Please see @sec-moduleintro for how to create a simple module before
+Please see @sec-moduleintro for how to create a simple module and @sec-modseventsfuns 
+for an overview of what events are before
 attempting this section.
 
 ::: {.callout-tip appearance="simple"}
@@ -47,7 +48,7 @@ attempting this section.
 
 When starting to build a module or an event, we ask 2 key questions:
 
-**1. Do I need to repeat this?**
+**1. Do I need to repeat this operation?**
 
 **2. If yes, how often and/or when?**
 
@@ -357,6 +358,8 @@ i.e., keep the same folder structure.
         SpaDES](https://github.com/PredictiveEcology/SpaDES/wiki/Debugging)
 
 ## See also
+
+@sec-modseventsfuns on Modules, Events and Functions
 
 [`?scheduleEvent`](https://rdrr.io/cran/SpaDES.core/man/scheduleEvent.html)
 

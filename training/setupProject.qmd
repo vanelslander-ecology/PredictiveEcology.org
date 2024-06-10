@@ -34,3 +34,38 @@ that have been developed and used in ecological modelling and
 forecating, to answer both research or applied questions. We encourage
 readers to learn more about these models (and *modules*) from the
 documentation sources noted in the chapters.
+
+## Some of the SpaDES-verse
+
+We can see many of the known modules in the SpaDES-verse and how they interact through their shared inputs and outputs in this interactive figure:
+
+```{r,echo=TRUE,eval=TRUE,cache=TRUE}
+#| code-fold: true
+#| code-summary: "Show the code"
+Require::Install(c("igraph", "visNetwork"))
+
+modPath <- "~/SpaDES_book/listModules/"
+accountsListLong <- c("PredictiveEcology", "ianmseddy", "achubaty",
+                       "FOR-CAST", "eliotmcintire", "tati-micheletti", "CeresBarros")
+grepListLong <- c("Biomass", "WBI", "LandR", "fireSense", "CBM",
+                  "LandMine", "LandWeb", "NRV", #"scfm",
+                  "priority", "fire",
+                  "dataPrep", "DataPrep", "RoF", "Ontario", "ROF")
+modsLong <- SpaDES.project::listModules(grepListLong, accounts = accountsListLong,
+                                        excludeStale = FALSE)
+modsLong <- paste0(modsLong, "@HEAD")
+
+# downloads lots of modules
+mods <- SpaDES.project::getModule(modsLong, modulePath = modPath)
+
+DT <- SpaDES.project::moduleDependencies(modsLong, modulePath = modPath)
+graph <- SpaDES.project::moduleDependenciesToGraph(DT)
+(vn <- SpaDES.project::PlotModuleGraph(graph))
+```
+
+We also sometimes represent these as hexes, following the R-package convention:
+
+![](assets/img/Hexes.png)
+
+
+The idea with `setupProject` is that we can start weaving different groups of modules together. This is what we will do in the next sections.

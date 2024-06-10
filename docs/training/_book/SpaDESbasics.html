@@ -290,7 +290,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Scheduling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling events</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span></a>
   </div>
 </li>
       </ul>
@@ -298,7 +298,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./ContinuousWorkflows.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Continuous Workflows</span></a>
+ <span class="menu-text">Working with Continuous Workflows</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -313,13 +313,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./debugging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></a>
   </div>
 </li>
       </ul>
@@ -354,7 +354,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -402,7 +402,14 @@ window.Quarto = {
 
 
 <p>The following chapters cover the basics of working with SpaDES.</p>
-<p>We introduce fundamental pieces of SpaDES modules, like <em>events</em> and <em>functions</em>, how to create simple modules and link them in simple workflows, the “simulation” object – the <code>simList</code> – module metadata and an introduction to caching mechanisms in SpaDES.</p>
+<p>We introduce fundamental pieces of SpaDES workflows, namely <em>modules</em>, <em>events</em> and <em>functions</em>. We show how to create simple modules and link them in simple workflows, the “simulation” object – the <code>simList</code> – module metadata and an introduction to caching mechanisms in SpaDES.</p>
+<p>By the end of this chapter you should understand how SpaDES modules are comprised of events that are automatically scheduled and run by the <code>SpaDES.core::simInit</code> and <code>SpaDES.core::spades</code> functions (or <code>SpaDES.core::simInitAndSpades</code> which groups the previous two).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/img/modulesEventsScheme.png" class="img-fluid figure-img"></p>
+<figcaption>Three modules, <em>caribou</em>, <em>vegetation</em> and <em>harvest</em>, each with two events that are scheduled in a yearly or monthly sequence</figcaption>
+</figure>
+</div>
 
 
 

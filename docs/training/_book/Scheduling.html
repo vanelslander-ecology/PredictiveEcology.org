@@ -9,7 +9,7 @@
 <meta name="author" content="Eliot McIntire">
 <meta name="dcterms.date" content="2024-06-10">
 
-<title>Robust and nimble scientific workflows, using SpaDES - 10&nbsp; Scheduling events</title>
+<title>Robust and nimble scientific workflows, using SpaDES - 10&nbsp; Scheduling Events</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -231,7 +231,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./Scheduling.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling events</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./Scheduling.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling Events</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -326,7 +326,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Scheduling.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling events</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span></a>
   </div>
 </li>
       </ul>
@@ -334,7 +334,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./ContinuousWorkflows.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Continuous Workflows</span></a>
+ <span class="menu-text">Working with Continuous Workflows</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -349,13 +349,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./debugging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></a>
   </div>
 </li>
       </ul>
@@ -390,7 +390,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -436,9 +436,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./Scheduling.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling events</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./Scheduling.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling Events</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-schedulingEvents" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling events</span></span></h1>
+<h1 class="title"><span id="sec-schedulingEvents" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span></h1>
 </div>
 
 
@@ -467,7 +467,7 @@ window.Quarto = {
 </header>
 
 
-<p>Here, we will talk about <strong>scheduling events</strong> in a SpaDES module using a function in called <a href="https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/scheduleEvent"><code>SpaDES.core ::scheduleEvents()</code></a>. Please see <a href="NewModuleIntro.html" class="quarto-xref"><span>Chapter 5</span></a> for how to create a simple module before attempting this section.</p>
+<p>Here, we will talk about <strong>scheduling events</strong> in a SpaDES module using a function in called <a href="https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/scheduleEvent"><code>SpaDES.core ::scheduleEvents()</code></a>. Please see <a href="NewModuleIntro.html" class="quarto-xref"><span>Chapter 5</span></a> for how to create a simple module and <a href="ModulesAndEvents.html" class="quarto-xref"><span>Chapter 9</span></a> for an overview of what events are before attempting this section.</p>
 <div class="callout callout-style-simple callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -479,7 +479,7 @@ Repeated? When?
 </div>
 <div class="callout-body-container callout-body">
 <p>When starting to build a module or an event, we ask 2 key questions:</p>
-<p><strong>1. Do I need to repeat this?</strong></p>
+<p><strong>1. Do I need to repeat this operation?</strong></p>
 <p><strong>2. If yes, how often and/or when?</strong></p>
 <p>Once we answer these, we can use the function <code>scheduleEvents</code> to set them up in whatever sequence we want.</p>
 </div>
@@ -753,6 +753,7 @@ Top-down vs Bottom-up workflow sequencing
 </section>
 <section id="see-also" class="level2" data-number="10.6">
 <h2 data-number="10.6" class="anchored" data-anchor-id="see-also"><span class="header-section-number">10.6</span> See also</h2>
+<p><a href="ModulesAndEvents.html" class="quarto-xref"><span>Chapter 9</span></a> on Modules, Events and Functions</p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/scheduleEvent.html"><code>?scheduleEvent</code></a></p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/params.html"><code>?P</code></a></p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html"><code>?time</code></a></p>
@@ -1333,8 +1334,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ContinuousWorkflows.html" class="pagination-link" aria-label="Continuous Workflows">
-        <span class="nav-page-text">Continuous Workflows</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ContinuousWorkflows.html" class="pagination-link" aria-label="Working with Continuous Workflows">
+        <span class="nav-page-text">Working with Continuous Workflows</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

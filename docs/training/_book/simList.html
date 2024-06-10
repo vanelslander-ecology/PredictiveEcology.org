@@ -326,7 +326,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Scheduling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling events</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span></a>
   </div>
 </li>
       </ul>
@@ -334,7 +334,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./ContinuousWorkflows.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Continuous Workflows</span></a>
+ <span class="menu-text">Working with Continuous Workflows</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -349,13 +349,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./debugging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></a>
   </div>
 </li>
       </ul>
@@ -390,7 +390,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -423,7 +423,7 @@ window.Quarto = {
   <li><a href="#accessing-the-parts-of-a-simlists" id="toc-accessing-the-parts-of-a-simlists" class="nav-link" data-scroll-target="#accessing-the-parts-of-a-simlists"><span class="header-section-number">8.4</span> Accessing the parts of a simLists</a></li>
   <li><a href="#model-specification" id="toc-model-specification" class="nav-link" data-scroll-target="#model-specification"><span class="header-section-number">8.5</span> Model specification</a>
   <ul class="collapse">
-  <li><a href="#initiliaze-an-empty-simlist-object" id="toc-initiliaze-an-empty-simlist-object" class="nav-link" data-scroll-target="#initiliaze-an-empty-simlist-object"><span class="header-section-number">8.5.1</span> Initiliaze an empty <code>simList</code> object</a></li>
+  <li><a href="#initialize-an-empty-simlist-object" id="toc-initialize-an-empty-simlist-object" class="nav-link" data-scroll-target="#initialize-an-empty-simlist-object"><span class="header-section-number">8.5.1</span> Initialize an empty <code>simList</code> object</a></li>
   <li><a href="#inspect-the-empty-simlist-object" id="toc-inspect-the-empty-simlist-object" class="nav-link" data-scroll-target="#inspect-the-empty-simlist-object"><span class="header-section-number">8.5.2</span> Inspect the empty <code>simList</code> object</a></li>
   <li><a href="#inspect-the-new-simlist-object" id="toc-inspect-the-new-simlist-object" class="nav-link" data-scroll-target="#inspect-the-new-simlist-object"><span class="header-section-number">8.5.3</span> Inspect the new <code>simList</code> object</a></li>
   <li><a href="#run-the-simulation" id="toc-run-the-simulation" class="nav-link" data-scroll-target="#run-the-simulation"><span class="header-section-number">8.5.4</span> Run the simulation</a></li>
@@ -518,7 +518,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If you don’t know what an <code>environment</code> is in <code>R</code>, it is OK. The most important feature of an <code>environment</code> is that is it <code>pass-by-reference</code>, which means it is not copied when it is “assigned” somewhere. This makes <code>SpaDES</code> fast enough to use for huge workflows.</p>
+<p>If you don’t know what an <code>environment</code> is in <code>R</code>, it is OK. The most important feature of an <code>environment</code> is that it employs <code>pass-by-reference</code>, which means it is not copied when it is “assigned” somewhere. This makes <code>SpaDES</code> fast enough to use for huge workflows.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -684,6 +684,28 @@ window.Quarto = {
 </div>
 </div>
 </div>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[ 60, 40 ]">
+<div class="quarto-layout-row">
+<div id="first-column" class="quarto-layout-cell" style="flex-basis: 60.0%;justify-content: flex-start;">
+<p>The <code>simList</code> can be imagined as a file cabinet where all the simulation details and objects (i.e.&nbsp;the parameters, inputs and outputs declared by each module) are stored neatly and in an easily accessible way.</p>
+</div>
+<div id="second-column" class="quarto-layout-cell" style="flex-basis: 40.0%;justify-content: center;">
+<p><img src="assets/img/simListScheme.png" class="img-fluid" width="300"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="model-specification" class="level2" data-number="8.5">
 <h2 data-number="8.5" class="anchored" data-anchor-id="model-specification"><span class="header-section-number">8.5</span> Model specification</h2>
@@ -691,8 +713,8 @@ window.Quarto = {
 <ul>
 <li>examine <code>simList</code> structure before and after the <code>spades()</code> call</li>
 </ul>
-<section id="initiliaze-an-empty-simlist-object" class="level3" data-number="8.5.1">
-<h3 data-number="8.5.1" class="anchored" data-anchor-id="initiliaze-an-empty-simlist-object"><span class="header-section-number">8.5.1</span> Initiliaze an empty <code>simList</code> object</h3>
+<section id="initialize-an-empty-simlist-object" class="level3" data-number="8.5.1">
+<h3 data-number="8.5.1" class="anchored" data-anchor-id="initialize-an-empty-simlist-object"><span class="header-section-number">8.5.1</span> Initialize an empty <code>simList</code> object</h3>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -720,14 +742,14 @@ window.Quarto = {
 <h3 data-number="8.5.3" class="anchored" data-anchor-id="inspect-the-new-simlist-object"><span class="header-section-number">8.5.3</span> Inspect the new <code>simList</code> object</h3>
 <p>Use the <code>simList</code> accessor functions to determine the following:</p>
 <ol type="1">
-<li>the modules included in the simulation and their package dependencies;</li>
-<li>the global parameter values used;</li>
-<li>the module-specific parameter values used;</li>
-<li>the simulation start and end times;</li>
-<li>the timeunits used by the modules in the simulation;</li>
-<li>the scheduled and completed event queues;</li>
-<li>the objects (functions, data, etc.) used in the simulation;</li>
-<li>the file paths used for simulation inputs and outputs.</li>
+<li><p>the modules included in the simulation and their package dependencies;</p></li>
+<li><p>the global parameter values used;</p></li>
+<li><p>the module-specific parameter values used;</p></li>
+<li><p>the simulation start and end times;</p></li>
+<li><p>the timeunits used by the modules in the simulation;</p></li>
+<li><p>the scheduled and completed event queues;</p></li>
+<li><p>the objects (functions, data, etc.) used in the simulation;</p></li>
+<li><p>the file paths used for simulation inputs and outputs.</p></li>
 </ol>
 <div class="cell">
 <details open="" class="code-fold">
