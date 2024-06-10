@@ -38,7 +38,7 @@ if (!require("Require")) {
 }
 ```
 
-SpaDES modules are comprised of R code that has metadata and the gets
+SpaDES modules are comprised of R code that has metadata and that gets
 put into functions. With this in mind, we can start with some simple R
 code.
 
@@ -57,14 +57,14 @@ plot(model)
 
 Looking at this code above, we can imagine that the first 3 lines are
 conceptually different -- *fit a dummy model* -- from the last line --
-*visualize it*. Lets put these into 2 "modules", and then run them in
+*visualize it*. Let's put these into 2 "modules", and then run them in
 sequence.
 
 ## Create a module
 
 We use the `SpaDES.core` function `newModule()` to make a new module.
 
-Step 1 -- move the code to an "init" event. This "init" even is a
+Step 1 -- move the code to an "init" event. This "init" event is a
 convention that SpaDES uses. A module must always have an "init" event.
 This is the only code that is "definitely run" in a module.
 
@@ -77,15 +77,15 @@ Require::Require(c("reproducible", "SpaDES.core (>= 2.1.5)"),
 # make a module
 nm1 <- "My_linear_model"
 modulePath <- "~/SpaDES_book/NewModuleIntro/NewModule"
-newModule(name = nm1, path = modulePath, open = FALSE,
-          events = list(
-            init = {
-              x <- rnorm(10)
-              y <- x + rnorm(10)
-              # fit a linear model
-              model <- lm(y ~ x)
-            }
-          ))
+SpaDES.core::newModule(name = nm1, path = modulePath, open = FALSE,
+                       events = list(
+                         init = {
+                           x <- rnorm(10)
+                           y <- x + rnorm(10)
+                           # fit a linear model
+                           model <- lm(y ~ x)
+                         }
+                       ))
 ```
 
 **Keeping objects**
@@ -111,8 +111,8 @@ SpaDES.core::newModule(name = nm1, path = modulePath, open = FALSE,
 ```
 
 How would we run this "init" event? We use `simInit`, which parses the
-code (like loading a library or sourcing a function) then `spades` which
-executes it.
+code (like loading a library or sourcing a function) then `spades`,
+which executes it.
 
 ```{r}
 #| eval: true
@@ -128,7 +128,7 @@ out$model
 ```
 
 We can also look at "what ran"... or in other words, what was our
-workflow. Of course, this will just be one "user" created event (there
+workflow. Of course, this will just be one "user-created" event (there
 are 4 "SpaDES-created" events ... we may use them later, ignore for now)
 
 ```{r}
@@ -144,18 +144,18 @@ create a new module for the `plot` ... a "visualization module".
 
 ```{r newModule2}
 nm2 <- "visualize"
-newModule(nm2, path = modulePath, open = FALSE,
-          events = list(
-            init = {
-              plot(sim$model)
-            }
-          )
+SpaDES.core::newModule(nm2, path = modulePath, open = FALSE,
+                       events = list(
+                         init = {
+                           plot(sim$model)
+                         }
+                       )
 )
 ```
 
-And run both together. We name them both in the `module` argument. We
-are using `simInitAndSpades` which is a shortcut to running the two
-function separately.
+And now we run both together. We name them both in the `module`
+argument. We are using `simInitAndSpades` which is a shortcut to running
+the two functions separately.
 
 ```{r}
 out2 <- simInitAndSpades(module = c(nm1, nm2), paths = list(modulePath = modulePath))
@@ -172,12 +172,22 @@ completed(out2)
 This time, there is an extra event that happened. **We now have a
 workflow of 2 events.**
 
-## Next: Metadata
+## Challenge yourself {#sec-newModule-challengeYourself}
 
-Next, we will explore a key feature of SpaDES modules: the metadata.
+1. Make a new module. Make it really simple. Run it with `simInitAndSpades` as in the above examples. 
+
+- Use `sim$` for an object that will be outputted.
+
+2. Make a second new module that uses the `sim$` object.
+
+- Add another new object in `sim$`
+
+3. Make a third new module that uses the `sim$` object from the 2nd module.
 
 ## See also
 
-[`?simInitAndSpades`](https://rdrr.io/cran/SpaDES.core/man/simInitAndSpades.html),
+[`simList` accessors](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-events.html)
+
+[`?simInitAndSpades`](https://rdrr.io/cran/SpaDES.core/man/simInitAndSpades.html)
 
 [`?newModule`](https://rdrr.io/cran/SpaDES.core/man/newModule.html)

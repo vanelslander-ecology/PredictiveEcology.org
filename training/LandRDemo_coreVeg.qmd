@@ -91,7 +91,8 @@ package and current versions of the LandR modules.
 ## Google account needed for this example
 
 You need to have a Google account to access some of the data using the
-`googledrive` R package (part of the `tidyverse` family)[^1].
+`googledrive` R package (part of the `tidyverse`
+family)[^landrdemo_coreveg-1].
 
 During the `simInit()` (or `simInitAndSpades()`) call R will prompt you
 to either choose a previously authenticated account (if you have
@@ -394,7 +395,7 @@ would try to resume the simulation from the "last year".
 
 Thanks to internal caching, it will only take seconds to "redo"
 `simInitOut`. You will also notice that `init` events are retrieved from
-cache, this time around.
+cache, this time around[^landrdemo_coreveg-2].
 
 ```{r runSimPlots}
 
@@ -433,11 +434,11 @@ We use
 to do two things:
 
 -   Create a folder structure by replicate to store the simulation
-outputs
+    outputs
 
--   Generate 10 *independent* simulations and run them in sequence (@lst-exp) 
-or in parallel (@lst-expparall), using the `future`
-package.
+-   Generate 10 *independent* simulations and run them in sequence
+    (@lst-exp) or in parallel (@lst-expparall), using the `future`
+    package.
 
 This time, we will specify a list of output objects to be saved for
 model validation later.
@@ -542,12 +543,10 @@ outValid <- setupProject(
     simOut$studyArea
   },
   rasterToMatch = {
-    list.files(SpaDES.core::inputPath(simOut), "rasterToMatch_LandRDemo_coreVeg", full.names = TRUE) |>
-      terra::rast()
+    terra::deepcopy(simOut$rasterToMatch)
   },
   rawBiomassMapStart = {
-    list.files(SpaDES.core::inputPath(simOut), "rawBiomassMap_LandRDemo_coreVeg", full.names = TRUE) |>
-      terra::rast()
+    terra::deepcopy(simOut$rasterToMatchLarge)
   },
   simulationOutputs = {
     repDirs <- list.files(SpaDES.core::outputPath(simOut), "_rep", full.names = TRUE) 
@@ -574,17 +573,15 @@ outValid <- setupProject(
   sppEquivCol = simOut$sppEquivCol,
   sppColorVect = simOut$sppColorVect,
   speciesLayersStart = {
-    list.files(SpaDES.core::outputPath(simOut), "speciesLayers_2001_LandRDemo_coreVeg.tif", 
-               full.names = TRUE) |>
-      terra::rast()
+    terra::deepcopy(simOut$speciesLayers)
   },
   standAgeMapStart = {
-    list.files(SpaDES.core::inputPath(simOut), "standAgeMap_LandRDemo_coreVeg", full.names = TRUE) |>
-      terra::rast()
+    terra::deepcopy(simOut$standAgeMap)
   }
 )
 
 simOutValid <- SpaDES.core::simInitAndSpades2(outValid)
+
 ```
 
 ## Different scenarios and model selection {#sec-LandRScenarios}
@@ -668,22 +665,26 @@ studyAreaLarge = {
 
 -   Noticed any differences (speed, cache IDs, ...)?
 
--   where the species simulated the same? How about their trait values
-(e.g. estimated maxB, species establishment probabilities. )
+-   were the species simulated the same? How about their trait values
+    (e.g. estimated maxB, species establishment probabilities. )
 
 ## See also
 
 [LandR Manual](https://landr-manual.predictiveecology.org/)
 
+@sec-caching on caching.
+
 [`?future::plan`](https://future.futureverse.org/reference/plan.html)
 
-[Parallelisation Computation -- R Programming for Data
-Science](https://bookdown.org/rdpeng/rprogdatascience/parallel-computation.html)
+[`simList`
+accessors](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-events.html)
 
+[^landrdemo_coreveg-1]: See
+    [`?googledrive::drive_auth`](https://rdrr.io/cran/googledrive/man/drive_auth.html)
+    for more information.
 
-[^1]: See
-[`?googledrive::drive_auth`](https://rdrr.io/cran/googledrive/man/drive_auth.html)
-for more information.
+[^landrdemo_coreveg-2]: See @sec-caching about caching.
 
-[^2]: By default, *Biomass_borealDataPrep* tries to fill missing land-cover data in recently 
-burned pixels by randomly looking for the closes forest land-cover type.
+[^landrdemo_coreveg-3]: By default, *Biomass_borealDataPrep* tries to
+    fill missing land-cover data in recently burned pixels by randomly
+    looking for the closes forest land-cover type.
