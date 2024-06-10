@@ -1,5 +1,4 @@
 ---
-title: "LandR workflow with `setupProject`"
 author: "Ceres Barros"
 date: last-modified
 editor_options:
@@ -14,7 +13,7 @@ execute:
   eval: false
 ---
 
-# Forest Landscape Modelling with LandR and `setupProject` 
+# Forest Landscape Modelling with LandR and `setupProject`
 
 ```{r setup}
 #| include: false
@@ -223,29 +222,29 @@ If you have a look at @sec-castorSetup in the @sec-castorEg chapter, you
 will see some differences in the way we setup the two workflows:
 
 -   `paths`. Here we left the defaults for all paths (see
-[`?setupPaths()`](https://spades-project.predictiveecology.org/reference/setup.html)
-for the list of path options) except for the project location
-(`projectPath`) and the location of the package library
-(`packagePath`, which will be placed inside `projectPath`).
+    [`?setupPaths()`](https://spades-project.predictiveecology.org/reference/setup.html)
+    for the list of path options) except for the project location
+    (`projectPath`) and the location of the package library
+    (`packagePath`, which will be placed inside `projectPath`).
 
 -   `options`. We also set a couple of "global options" that determine
-the where data will be downloaded to
-("reproducible.destinationPath"). This will be the same as the
-default directory to look for inputs ("spades.inputPath"). Notice
-how we used `paths$` to get these directory paths from the `paths`
-object that `setupProject` creates (based on the `paths` argument
-above) prior to setting the options.
+    the where data will be downloaded to
+    ("reproducible.destinationPath"). This will be the same as the
+    default directory to look for inputs ("spades.inputPath"). Notice
+    how we used `paths$` to get these directory paths from the `paths`
+    object that `setupProject` creates (based on the `paths` argument
+    above) prior to setting the options.
 
 -   other arguments (`...`). Almost all other arguments in the call
-above were passed to `...`. These are objects that need to be
-supplied by the user for these modules (e.g. `studyArea` and
-`studyAreaLarge`) or whose defaults we want to override (e.g., the
-species table, `sppEquiv`, and trait values, `speciesParams`). To
-avoid creating them on the `.GlobalEnv` first, we take advantage of
-`setupProject`'s ability to run the code in `{ }` and make these
-polygons. Note that these arguments are passed prior to any 'formal
-arguments' (see
-[`?formalArgs()`](https://www.rdocumentation.org/packages/methods/versions/3.6.2/topics/methodUtilities))
+    above were passed to `...`. These are objects that need to be
+    supplied by the user for these modules (e.g. `studyArea` and
+    `studyAreaLarge`) or whose defaults we want to override (e.g., the
+    species table, `sppEquiv`, and trait values, `speciesParams`). To
+    avoid creating them on the `.GlobalEnv` first, we take advantage of
+    `setupProject`'s ability to run the code in `{ }` and make these
+    polygons. Note that these arguments are passed prior to any 'formal
+    arguments' (see
+    [`?formalArgs()`](https://www.rdocumentation.org/packages/methods/versions/3.6.2/topics/methodUtilities))
 
 ## Run simulation
 
@@ -294,12 +293,13 @@ SpaDES.core::moduleDiagram(simInitOut)
 SpaDES.core::objectDiagram(simInitOut)  
 ```
 
-::: {layout-ncol=2 layout-valign="bottom"}
-![LandR vegetation module 'connections'.](assets/img/LandRDemo_modDiagram.png)
+::: {layout-ncol="2" layout-valign="bottom"}
+![LandR vegetation module
+'connections'.](assets/img/LandRDemo_modDiagram.png)
 
-![Object flows between modules (truncated).](assets/img/LandRDemo_objDiagram.png)
+![Object flows between modules
+(truncated).](assets/img/LandRDemo_objDiagram.png)
 :::
-
 
 Note the scheduling of the `init` events in `simInitOut` and how
 `simOut` has *future* events scheduled too -- thanks to this, we can
@@ -320,8 +320,8 @@ SpaDES.core::completed(simInitOut)
 SpaDES.core::completed(simOut)
 ```
 
-Finally, the following accessor functions will show a list of model inputs,
-outputs and parameters:
+Finally, the following accessor functions will show a list of model
+inputs, outputs and parameters:
 
 ```{r inspectSim4}
 
@@ -330,10 +330,10 @@ SpaDES.core::outputs(simOut)
 SpaDES.core::parameters(simOut)
 ```
 
-We could even plot some of the input and output rasters to check that they are 
-as we expected -- no need to look for these objects files, they are all in the 
-`simList`.
- 
+We could even plot some of the input and output rasters to check that
+they are as we expected -- no need to look for these objects files, they
+are all in the `simList`.
+
 ```{r inspectSim5}
 ## spatial inputs from list above
 terra::plot(simOut$studyAreaLarge, col = "navyblue", main = "studyArea & studyAreaLarge")
@@ -346,23 +346,30 @@ terra::plot(simOut$vegTypeMap,
 terra::plot(simOut$speciesLayers)
 ```
 
-::: {layout-ncol=3 layout-valign="bottom"}
-![Study areas used for parameterisation (dark blue) and simulation (light blue).](assets/img/LandRDemo_SASAL.png)
+::: {layout-ncol="3" layout-valign="bottom"}
+![Study areas used for parameterisation (dark blue) and simulation
+(light blue).](assets/img/LandRDemo_SASAL.png)
 
-![Last year's vegetation type map (leading species).](assets/img/LandRDemo_vegTypeMap.png)
+![Last year's vegetation type map (leading
+species).](assets/img/LandRDemo_vegTypeMap.png)
 
-![Percent cover of species retained for simulation.](assets/img/LandRDemo_sppLayers.png)
+![Percent cover of species retained for
+simulation.](assets/img/LandRDemo_sppLayers.png)
 
 Inspecting inputs and outputs directly from the `simList`
 :::
 
-More importantly in our view, is the ability to inspect statistical models used to
-fit model parameters. This is possible because the developers have declared
-the fitted statistical model objects as module outputs. Often, this type of information is buried in supplementary materials of papers and incomplete (e.g. coefficients and goodness-of-fit statistics
-are presented, but the entire model object, with its fitted values, residuals, etc., are not).
+More importantly in our view, is the ability to inspect statistical
+models used to fit model parameters. This is possible because the
+developers have declared the fitted statistical model objects as module
+outputs. Often, this type of information is buried in supplementary
+materials of papers and incomplete (e.g. coefficients and
+goodness-of-fit statistics are presented, but the entire model object,
+with its fitted values, residuals, etc., are not).
 
-By exporting entire model objects, and making them available via repeatable code or
-data repositories, model transparency and potential scrutiny are massively increased.
+By exporting entire model objects, and making them available via
+repeatable code or data repositories, model transparency and potential
+scrutiny are massively increased.
 
 ```{r inspectSim6}
 ## model used to estimate species establishment probabilities
@@ -413,21 +420,29 @@ simOut <- SpaDES.core::spades(simOut)
 
 ### Many replicates {#sec-LandRReplication}
 
-Dynamic ecological models like LandR often simulate stochastic ecological processes,
-like dispersal, probability of germination, or fire spread (see @sec-scfmEg), which 
-requires replicating simulations. The number of replicates will largely depend on the variability generated by the model. The more variability, the more replicates needed. 
+Dynamic ecological models like LandR often simulate stochastic
+ecological processes, like dispersal, probability of germination, or
+fire spread (see @sec-scfmEg), which requires replicating simulations.
+The number of replicates will largely depend on the variability
+generated by the model. The more variability, the more replicates
+needed.
 
-The set of LandR modules used here generates little variation in tree species dynamics
-and 10 replicates are sufficient.
+The set of LandR modules used here generates little variation in tree
+species dynamics and 10 replicates are sufficient.
 
-We use [`SpaDES.experiment::experiment2()`](https://spades-experiment.predictiveecology.org/reference/experiment2.html) to do two things:
+We use
+[`SpaDES.experiment::experiment2()`](https://spades-experiment.predictiveecology.org/reference/experiment2.html)
+to do two things:
 
--   Create a folder structure by replicate to store the simulation outputs
+-   Create a folder structure by replicate to store the simulation
+    outputs
 
--   Generate 10 *independent* simulations and run them in sequence (@lst-exp) or in parallel (@lst-expparall),
-using the `future` package.
+-   Generate 10 *independent* simulations and run them in sequence
+    (@lst-exp) or in parallel (@lst-expparall), using the `future`
+    package.
 
-This time we will specify a list of output objects to be saved for model validation later.
+This time we will specify a list of output objects to be saved for model
+validation later.
 
 ```{r expSim}
 #| lst-label: lst-exp
@@ -458,17 +473,19 @@ future::plan("multisession", workers = 5)
 simOutExperiment <- SpaDES.experiment::experiment2(simInitOut, replicates = 10)
 ```
 
-
 ### Validation
 
-Now that we have several replicates, we can use *Biomass_validationKNN* to run
-some validation statistics.
+Now that we have several replicates, we can use *Biomass_validationKNN*
+to run some validation statistics.
 
-Integrating model validation as part of an ecological modelling workflow ensures that when model predictions are repeated under the same or different conditions, or new data arrives for validation, they can be readily (re-evaluated).
+Integrating model validation as part of an ecological modelling workflow
+ensures that when model predictions are repeated under the same or
+different conditions, or new data arrives for validation, they can be
+readily (re-evaluated).
 
-Note that, for convenience, we use `simOut` to access many of the necessary inputs for
-*Biomass_validationKNN*, but we could have used one of the `simLists` in `simOutExperiment`
-instead.
+Note that, for convenience, we use `simOut` to access many of the
+necessary inputs for *Biomass_validationKNN*, but we could have used one
+of the `simLists` in `simOutExperiment` instead.
 
 ```{r experimentSim}
 outValid <- setupProject(
@@ -499,15 +516,15 @@ outValid <- setupProject(
 
 simOutValid <- SpaDES.core::simInitAndSpades2(outValid)
 ```
- 
+
 ### Different scenarios and model selection {#sec-LandRScenarios}
 
-In @barros2023, the model was run with two different parameterisation approaches 
-one that was "data hungry" and calibrated tree species growth parameters and a 
-simpler one that used default parameter values (without *Biomass_speciesParameters*).
+In @barros2023, the model was run with two different parameterisation
+approaches one that was "data hungry" and calibrated tree species growth
+parameters and a simpler one that used default parameter values (without
+*Biomass_speciesParameters*).
 
-By swapping parameterisation/calibration modules in and out
-<!--HERE-->
+By swapping parameterisation/calibration modules in and out <!--HERE-->
 
 ```{r experimentSim2}
 simOutExperiment <- SpaDES.experiment::experiment2(simInitOut, replicates = 10)
@@ -532,7 +549,7 @@ simOut <- SpaDES.core::spades(simInitOut, debug = "plotSummaryBySpecies")
 R interrupts code execution during this event's operations (inside
 `doEvent.Biomass_core()`):
 
-```
+```         
 debugging in: get(moduleCall, envir = fnEnv)(sim, cur[["eventTime"]], cur[["eventType"]])
 debug at C:/Users/cbarros/Documents/SpaDES_book/LandRDemo_coreVeg/modules/Biomass_core/Biomass_core.R#314: {
 (...)
@@ -580,14 +597,15 @@ studyArea = {
 -   Noticed any differences (speed, cache IDs, ...)?
 
 -   where the species simulated the same? How about their trait values
-(e.g. estimated maxB, species establishment probabilities. )
+    (e.g. estimated maxB, species establishment probabilities. )
 
 ## See also
 
 [`?future::plan`](https://future.futureverse.org/reference/plan.html)
 
-[Parallelisation Computation -- R Programming for Data Science](https://bookdown.org/rdpeng/rprogdatascience/parallel-computation.html)
+[Parallelisation Computation -- R Programming for Data
+Science](https://bookdown.org/rdpeng/rprogdatascience/parallel-computation.html)
 
 [^1]: See
-[`?googledrive::drive_auth`](https://rdrr.io/cran/googledrive/man/drive_auth.html)
-for more information.
+    [`?googledrive::drive_auth`](https://rdrr.io/cran/googledrive/man/drive_auth.html)
+    for more information.
