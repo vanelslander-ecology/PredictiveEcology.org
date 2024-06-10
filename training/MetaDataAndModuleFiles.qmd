@@ -69,8 +69,8 @@ will not work (i.e., it will cause an error) if `x` is not defined. We
 can say that this code chunk "expects" `x` as an input.
 
 The **outputs** are `y` and `model`. We can say that this code chunk
-"creates" `y` and `model` as outputs. However, we had said in the
-previous chapter @sec-moduleintro that we would only be interested in
+"creates" `y` and `model` as outputs. However, we had said in 
+@sec-moduleintro that we would only be interested in
 keeping `model`. So, we will continue with only one output, `model`.
 
 ### Required Packages
@@ -191,7 +191,7 @@ But, since it is "in a function", each event has all the features of a
 function:
 
 -   **arguments** -- specifically `sim` can be used
--   **something returned** -- in this case, the simList. return(sim)
+-   **something returned** -- in this case, the `simList`. `return(sim)`
     must always be present - it is by default, but don't delete it!
 -   **it can be run**-- but don't worry about running it; SpaDES runs it
     when it is time.
