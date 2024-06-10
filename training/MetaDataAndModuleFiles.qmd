@@ -100,7 +100,7 @@ We will next put them into the correct places in the new SpaDES module.
 
 Make the module again (see @sec-moduleintro). This time we will add
 `sim$` for the `x` as we are now interested in the fact that it might be
-coming from outside this module.
+coming from *outside* this module.
 
 ```{r}
 #| eval: true
@@ -132,16 +132,16 @@ details. For now, run the above and open the `My_linear_model.R` script
 that it creates.
 
 When we make a module, we get a message stating where the module code
-is. **FROM HERE, OPEN THE FILE**, e.g., by copy-paste the file path
-(pick the `.R` file NOT the `.Rmd` file for now)\*\*
+is. **FROM HERE, OPEN THE FILE**, e.g., by copy-pasting the file path
+(pick the `.R` file NOT the `.Rmd` file for now)
 
 ::: {.callout-note appearance="simple" icon="false"}
 **Opening a module file**
 
-From here onward, we will need to actually manually open the module code
+From here onward, we will need to manually open the module code
 file. Every SpaDES module is defined by having at least 1 file that is
-named with the `<modulePath>/<moduleName>/<moduleName>.R`. Even though
-we can do a lot from the `newModule`, we will need to get used to
+named with `<modulePath>/<moduleName>/<moduleName>.R`. Even though
+we can do a lot with `newModule()`, we will need to get used to
 opening, examining and changing the code in the module code file.
 :::
 
@@ -312,6 +312,8 @@ outputs that model, and plots the fit.
     [`?'.simList-class'`](https://rdrr.io/cran/SpaDES.core/man/simList-class.html)
 
 ## See also
+
+@sec-modseventsfuns on Modules, Events and Functions
 
 [`?expectsInput`](https://rdrr.io/cran/SpaDES.core/man/expectsInput.html)
 

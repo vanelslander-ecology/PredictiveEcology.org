@@ -7,7 +7,17 @@ editor_options:
 
 The following chapters cover the basics of working with SpaDES.
 
-We introduce fundamental pieces of SpaDES modules, like *events* and
-*functions*, how to create simple modules and link them in simple
+We introduce fundamental pieces of SpaDES workflows, namely *modules*, *events* and
+*functions*. We show how to create simple modules and link them in simple
 workflows, the "simulation" object – the `simList` – module metadata and
 an introduction to caching mechanisms in SpaDES.
+
+By the end of this chapter you should understand how SpaDES 
+modules are comprised of events that are automatically scheduled and run
+by the `SpaDES.core::simInit` and `SpaDES.core::spades` functions 
+(or `SpaDES.core::simInitAndSpades` which groups the previous two).
+
+![Three modules, *caribou*, *vegetation* and *harvest*, each with two events 
+that are scheduled in a yearly or monthly sequence](assets/img/modulesEventsScheme.png)
+
+

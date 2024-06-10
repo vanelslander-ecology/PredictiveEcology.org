@@ -76,6 +76,8 @@ specific order so that one can recreate the steps to make the Results. A
 user can then use the module directly, rather instead of trying to
 recreate the necessary sequence of functions.
 
+[![Functions and modules as key tools to achieve workflow nimbleness. From @mcintire2022](assets/img/PERFICTfig1.jpg)](https://onlinelibrary.wiley.com/doi/10.1111/ele.13994)
+
 ### I use `targets` for my workflows. How does SpaDES differ?
 
 There are two major differences between `targets` and the SpaDES
@@ -209,7 +211,7 @@ call by having the ability to:
 -   spatially process the data according to a polygon or raster template
 
 It also caches these operations, so taht they don't need to be repeated
-unecessarily.
+unnecessarily.
 
 This can save hours of learning to master caching and GIS algorithms (or
 avoid using flawed approaches) for many ecologists!

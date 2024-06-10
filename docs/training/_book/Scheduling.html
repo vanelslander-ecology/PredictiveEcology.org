@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eliot McIntire">
-<meta name="dcterms.date" content="2024-06-09">
+<meta name="dcterms.date" content="2024-06-10">
 
 <title>Robust and nimble scientific workflows, using SpaDES - 10&nbsp; Scheduling events</title>
 <style>
@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Caching.html" rel="next">
+<link href="./ContinuousWorkflows.html" rel="next">
 <link href="./ModulesAndEvents.html" rel="prev">
 <link href="./assets/logo/favicon-16x16.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -333,8 +333,8 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">ContinuousWorkflows.qmd</span></a>
+            <a href="./ContinuousWorkflows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Continuous Workflows</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -349,7 +349,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>prepInputs</code> for data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -455,7 +455,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 9, 2024</p>
+      <p class="date">June 10, 2024</p>
     </div>
   </div>
   
@@ -468,7 +468,7 @@ window.Quarto = {
 
 
 <p>Here, we will talk about <strong>scheduling events</strong> in a SpaDES module using a function in called <a href="https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/scheduleEvent"><code>SpaDES.core ::scheduleEvents()</code></a>. Please see <a href="NewModuleIntro.html" class="quarto-xref"><span>Chapter 5</span></a> for how to create a simple module before attempting this section.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-simple callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -623,7 +623,7 @@ Repeated? When?
 <h3 data-number="10.3.2" class="anchored" data-anchor-id="the-new-event"><span class="header-section-number">10.3.2</span> The new event</h3>
 <p>We add code to make a new event, called <code>"predictions"</code> (the name must match what we wrote in the <code>scheduleEvent</code> above). In this event, we “do” the prediction, then we schedule the next prediction at “time plus 1”</p>
 <p>See <code>?SpaDES.core::times()</code>.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-simple callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -655,7 +655,7 @@ Time in <code>SpaDES</code>
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-simple callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -1333,8 +1333,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Caching.html" class="pagination-link" aria-label="Introduction to Cache">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ContinuousWorkflows.html" class="pagination-link" aria-label="Continuous Workflows">
+        <span class="nav-page-text">Continuous Workflows</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

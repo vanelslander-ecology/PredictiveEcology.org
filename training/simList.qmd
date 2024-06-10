@@ -141,6 +141,20 @@ data.frame(other_accessors = other_accessors) |>
 ```
 :::
 
+::: {.callout-note appearance="simple"}
+::: {layout="[ 60, 40 ]"}
+::: {#first-column}
+The `simList` can be imagined as a file cabinet where all the simulation
+details and objects (i.e. the parameters, inputs and outputs declared by
+each module) are stored neatly and in an easily accessible way.
+:::
+
+::: {#second-column}
+![](assets/img/simListScheme.png){width="300"}
+:::
+:::
+:::
+
 ## Model specification
 
 Simple examples (using demo modules) of `simInit()` and `spades()`
@@ -177,12 +191,19 @@ Use the `simList` accessor functions to determine the following:
 
 1.  the modules included in the simulation and their package
     dependencies;
+
 2.  the global parameter values used;
+
 3.  the module-specific parameter values used;
+
 4.  the simulation start and end times;
+
 5.  the timeunits used by the modules in the simulation;
+
 6.  the scheduled and completed event queues;
+
 7.  the objects (functions, data, etc.) used in the simulation;
+
 8.  the file paths used for simulation inputs and outputs.
 
 ```{r inspect-simList, eval=FALSE}
