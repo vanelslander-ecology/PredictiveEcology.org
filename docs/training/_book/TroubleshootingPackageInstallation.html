@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eliot McIntire">
-<meta name="dcterms.date" content="2024-06-06">
+<meta name="dcterms.date" content="2024-06-10">
 
 <title>Robust and nimble scientific workflows, using SpaDES - 4&nbsp; Troubleshooting R package installation</title>
 <style>
@@ -333,8 +333,8 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">ContinuousWorkflows.qmd</span></a>
+            <a href="./ContinuousWorkflows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Continuous Workflows</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -349,7 +349,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>prepInputs</code> for data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -456,7 +456,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 6, 2024</p>
+      <p class="date">June 10, 2024</p>
     </div>
   </div>
   
@@ -533,7 +533,7 @@ window.Quarto = {
 </section>
 <section id="missing-dependencies" class="level3" data-number="4.2.3">
 <h3 data-number="4.2.3" class="anchored" data-anchor-id="missing-dependencies"><span class="header-section-number">4.2.3</span> Missing dependencies</h3>
-<p>Although this happens less and less because functions like <code>install.packages</code> now default to installing package dependencies, it can still happen that one of the target package’s dependencies is missing or failed to install. The error message will indicate which one, but bear in mind that when installing many packages/dependencies the reason why the dependency wasn’t installed may be burried in previous messages and warnings. So read the installation output carefully.</p>
+<p>Although this happens less and less because functions like <code>install.packages</code> now default to installing package dependencies, it can still happen that one of the target package’s dependencies is missing or failed to install. The error message will indicate which one, but bear in mind that when installing many packages/dependencies, the reason why the dependency wasn’t installed may be buried in previous messages and warnings. So read the installation output carefully.</p>
 <section id="potential-solutions-2" class="level4" data-number="4.2.3.1">
 <h4 data-number="4.2.3.1" class="anchored" data-anchor-id="potential-solutions-2"><span class="header-section-number">4.2.3.1</span> Potential solutions</h4>
 <p>The solution will depend on the reason why the dependency package failed to install. See solutions in <a href="#package-has-already-been-loaded">Package has already been loaded</a> and <a href="#lock-folder-issues">00LOCK folder issues</a>.</p>
@@ -595,7 +595,7 @@ window.Quarto = {
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">.libPaths</span>() [<span class="dv">1</span>] <span class="st">"/home/emcintir/.local/share/R/SpaDES.project/packages/x86_64-pc-linux-gnu/4.3"</span><span class="er">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>When you install a package, look where it is getting installed and compare it to where you want it to be installed.</p>
+<p>When you install a package, ensure it was installed in the correct location.</p>
 </section>
 </section>
 <section id="package-loaded-in-ram-collides-with-package-on-disk" class="level3" data-number="4.3.2">

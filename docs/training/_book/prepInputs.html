@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eliot McIntire">
-<meta name="dcterms.date" content="2024-06-09">
+<meta name="dcterms.date" content="2024-06-10">
 
-<title>Robust and nimble scientific workflows, using SpaDES - 12&nbsp; prepInputs for data</title>
+<title>Robust and nimble scientific workflows, using SpaDES - 12&nbsp; reproducible::prepInputs for data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -231,7 +231,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Caching.html">ContinuousWorkflows.qmd</a></li><li class="breadcrumb-item"><a href="./prepInputs.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>prepInputs</code> for data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ContinuousWorkflows.html">Continuous Workflows</a></li><li class="breadcrumb-item"><a href="./prepInputs.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -333,8 +333,8 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">ContinuousWorkflows.qmd</span></a>
+            <a href="./ContinuousWorkflows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Continuous Workflows</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -349,7 +349,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepInputs.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>prepInputs</code> for data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -436,9 +436,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Caching.html">ContinuousWorkflows.qmd</a></li><li class="breadcrumb-item"><a href="./prepInputs.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>prepInputs</code> for data</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ContinuousWorkflows.html">Continuous Workflows</a></li><li class="breadcrumb-item"><a href="./prepInputs.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for data</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>prepInputs</code> for data</span></h1>
+<h1 class="title"><span id="sec-prepInputs" class="quarto-section-identifier"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for data</span></span></h1>
 </div>
 
 
@@ -455,7 +455,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 9, 2024</p>
+      <p class="date">June 10, 2024</p>
     </div>
   </div>
   
@@ -529,12 +529,7 @@ window.Quarto = {
 </div>
 <p>If we run this chunk in the same project, results will be like the previous chunk: a vector dataset from the Canadian federal government. BUT, if we run it in a different project, it will check the stashed diretory and won’t need to download it again. Moreover, it will not actually make a copy it will make a link to the file, so it won’t take extra space on your hard drive.</p>
 <p>If you are running in a *nix-like system (Mac, Linux, etc.) or you have Git Bash installed, you can see the number of links to a file with <code>ls</code>, so in R it would be. The column after the attributes (e.g., drwxr-xr-x), is the number of pointers to a file. Anything more than 1 means that there are several pointers.</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode cmd code-with-copy"><code class="sourceCode dosbat"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>system(paste0(<span class="st">"ls -l"</span>, getOption(<span class="st">"inputPaths"</span><span class="kw">)</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
+<pre class="eval=false"><code>system(paste0("ls -l", getOption("inputPaths")))</code></pre>
 </section>
 <section id="stages-of-prepinputs" class="level2" data-number="12.5">
 <h2 data-number="12.5" class="anchored" data-anchor-id="stages-of-prepinputs"><span class="header-section-number">12.5</span> Stages of <code>prepInputs</code></h2>
