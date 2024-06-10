@@ -3,8 +3,8 @@ message("Rendering book...")
 quarto::quarto_render("training/", as_job = FALSE)
 
 ## render website
-message("Rendering website...")
-quarto::quarto_render(as_job = FALSE)
+# message("Rendering website...")
+# quarto::quarto_render(as_job = FALSE)
 
 ## now copy book HTMLs to docs/ (always *after* rendering site)
 message("Copying book files over to website")
