@@ -77,15 +77,15 @@ Require::Require(c("reproducible", "SpaDES.core (>= 2.1.5)"),
 # make a module
 nm1 <- "My_linear_model"
 modulePath <- "~/SpaDES_book/NewModuleIntro/NewModule"
-newModule(name = nm1, path = modulePath, open = FALSE,
-          events = list(
-            init = {
-              x <- rnorm(10)
-              y <- x + rnorm(10)
-              # fit a linear model
-              model <- lm(y ~ x)
-            }
-          ))
+SpaDES.core::newModule(name = nm1, path = modulePath, open = FALSE,
+                       events = list(
+                         init = {
+                           x <- rnorm(10)
+                           y <- x + rnorm(10)
+                           # fit a linear model
+                           model <- lm(y ~ x)
+                         }
+                       ))
 ```
 
 **Keeping objects**
@@ -144,12 +144,12 @@ create a new module for the `plot` ... a "visualization module".
 
 ```{r newModule2}
 nm2 <- "visualize"
-newModule(nm2, path = modulePath, open = FALSE,
-          events = list(
-            init = {
-              plot(sim$model)
-            }
-          )
+SpaDES.core::newModule(nm2, path = modulePath, open = FALSE,
+                       events = list(
+                         init = {
+                           plot(sim$model)
+                         }
+                       )
 )
 ```
 
