@@ -119,8 +119,8 @@ Although this happens less and less because functions like
 `install.packages` now default to installing package dependencies, it
 can still happen that one of the target package's dependencies is
 missing or failed to install. The error message will indicate which one,
-but bear in mind that when installing many packages/dependencies the
-reason why the dependency wasn't installed may be burried in previous
+but bear in mind that when installing many packages/dependencies, the
+reason why the dependency wasn't installed may be buried in previous
 messages and warnings. So read the installation output carefully.
 
 #### Potential solutions
@@ -187,8 +187,8 @@ For `SpaDES.project` it will be something like:
 > .libPaths() [1] "/home/emcintir/.local/share/R/SpaDES.project/packages/x86_64-pc-linux-gnu/4.3"}
 ```
 
-When you install a package, look where it is getting installed and
-compare it to where you want it to be installed.
+When you install a package, ensure it was installed in the correct
+location.
 
 ### Package loaded in RAM collides with package on disk
 

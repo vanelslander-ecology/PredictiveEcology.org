@@ -37,8 +37,8 @@ swapped, replaced or scrapped easily. A nice example of this is
 @barros2023 where a module was included or removed to identify the value
 of "adding more complexity". One simple conclusion followed Occam's
 Razor: simpler data and models predicted simpler characteristics of the
-forest than the complex data and models. In other words, adding
-complexity to a model made the model perform worse for some
+forest more accurately than the complex data and models. In other words,
+adding complexity to a model made the model perform worse for some
 characteristics.
 
 ### Metadata
@@ -100,14 +100,14 @@ approach:
     used[^1].
 
 -   **SpaDES has "embedded" metadata** – or at least it makes the
-    developer think about it[^2]. Each module is defined by not only
-    listing the inputs and outputs, but also their descriptions and
-    types of object class, the module's description, it's operating time
-    scale and what packages and other modules it depends on, and much
-    more. Some of the metadata is essential to chain modules (lists of
-    inputs and outputs), other isn't, but can greatly facilitate
-    workflow setup (e.g. declaring module dependencies), while other
-    metadata are simply good to have (e.g. a description of the module).
+    developer think about it[^2]. Each module is defined by listing not
+    only the inputs and outputs, but also their descriptions and types
+    of object class, the module's description, its operating time scale,
+    package and module dependencies, and much more. Some of the metadata
+    is essential to chain modules (lists of inputs and outputs), some is
+    not but can greatly facilitate workflow setup (e.g. declaring module
+    dependencies), while other metadata is simply good to have (e.g. a
+    description of the module).
 
 Finally, both `targets` and SpaDES have embedded caching mechanisms,
 which in SpaDES can be controlled at several levels (by the user, inside
@@ -168,7 +168,7 @@ the PERFICT principles for applied ecological modelling [@mcintire2022].
 ::: {.callout-note appearance="simple" icon="false"}
 ## PERFICT
 
--   **P**redict regularly from models thare are
+-   **P**redict regularly from models that are
 
 -   **E**valuated,
 
@@ -228,7 +228,7 @@ problems.
 With the limited training provided in this book, applied ecologists can
 work towards creating PERFICT workflows. Embracing the transparency and
 nimbleness it provides, we can pivot more rapidly to the current
-management needs. When we are asked at the end of a 3 year project,
+management needs. When we are asked at the end of a 3-year project,
 *"can we redo everything because we have a new stakeholder who feels
 that our assumptions are wrong?"*, ***our answer should be "yes"***.
 
