@@ -52,8 +52,14 @@ where a workflow with several modules is setup and run.
 
 ```{r setupProject}
 repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
-if (!require("SpaDES.project"))
-  install.packages(c("SpaDES.project", "SpaDES.core"), repos = repos, dependencies = TRUE)
+# if (!require("SpaDES.project"))
+Require::Install(c("SpaDES.project", "SpaDES.core", "reproducible"), repos = repos, dependencies = TRUE)
+
+packagePath = SpaDES.project::.libPathDefault("~/SpaDES_book/integratingSpaDESmodules")
+```
+
+```{r}
+packagePath = SpaDES.project::.libPathDefault("PredictiveEcology.org")
 ```
 
 ## Using `setupProject`
@@ -66,29 +72,21 @@ Note how it downloads the listed modules directly from their GitHub
 repositories (e.g.
 [tati-micheletti/speciesAbundance](https://github.com/tati-micheletti/speciesAbundance))
 
-```{r,echo=FALSE,eval=TRUE}
-# cleanup / restore state
-td <- file.path(tempdir(), "integratingSpaDESmodules")
-knitr::opts_knit$set(root.dir = Require::checkPath(td, create = TRUE ))
-lp <- SpaDES.project:::.libPathDefault("integratingSpaDESmodules")
-.libPaths(lp)
-opts <- options("Require.cloneFrom" = libPath)
-Require::Install("SpaDES.core (HEAD)")
-options(opts)
-```
-
 ```{r setupProject2,eval=TRUE}
 ##################### PART II: Download the modules and install the needed packages
 Setup <- SpaDES.project::setupProject(
   
-  paths = list(projectPath = "integratingSpaDESmodules"),
+  paths = list(projectPath = "~/SpaDES_book/integratingSpaDESmodules",
+               packagePath = packagePath),
   
   modules = c("tati-micheletti/speciesAbundance@main",
               "tati-micheletti/temperature@main",
               "tati-micheletti/speciesAbundTempLM@main"),
   
   times = list(start = 2013,
-               end = 2014)
+               end = 2030),
+  
+  updateRprofile = FALSE
   
 )
 ```
@@ -101,16 +99,35 @@ arguments, instead of the arguments themselves).
 results <- SpaDES.core::simInitAndSpades2(Setup)
 ```
 
+## Emergent workflow
+
+We can evaluate the sequence of events using `completed`
+
 ```{r evaluteResults}
 SpaDES.core::completed(results)
 ```
 
+We can also see how modules and objects interact using the functions objectDiagram() and moduleDiagram().
+
+Modules’ diagram showing the interactions among modules:
+```{r moduleDiagram}
+SpaDES.core::moduleDiagram(results)
+```
+
+
+We can also access any objects and use them. For example, we can look at the forecasted abundances and the difference raster is also possible. This is done by calling the object name from the results list.
+```{r objectDiagram}
+terra::plot(rast(results$forecasts))
+```
+
 ## Examples
 
-In the remainding chapters of this section, we will explore several
+In the remaining chapters of this section, we will explore several
 examples, including learning of several arguments to the function
 `setupProject`. But we will start very simple first.
 
-```{r setdown,eval=TRUE}
-.libPaths(libPath)
-```
+## See also
+
+[All Functions in SpaDES.core](https://spades-core.predictiveecology.org/reference/index.html)
+
+[?SpaDES.core::completed](https://spades-core.predictiveecology.org/reference/simList-accessors-events.html)
