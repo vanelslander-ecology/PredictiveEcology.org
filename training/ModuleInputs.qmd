@@ -33,7 +33,7 @@ knitr::knit_hooks$set(output = function(y, options) {
 ```
 
 We have seen functions called `.inputObjects` and
-`reproducible::prepInputs` that help deal with [Inputs Tip @tip-Inputs].
+`reproducible::prepInputs` that help deal with module inputs ([Inputs Tip @tip-Inputs]).
 We will show these used within a SpaDES module.
 
 ::: {#tip-Inputs .callout-tip}
