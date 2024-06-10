@@ -11,7 +11,7 @@ execute:
   error: false
 ---
 
-# Scheduling events {#sec-schedulingEvents}
+# Scheduling Events {#sec-schedulingEvents}
 
 ```{r setup}
 #| include: false

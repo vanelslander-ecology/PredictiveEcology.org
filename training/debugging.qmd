@@ -12,7 +12,7 @@ execute:
   cache: false
 ---
 
-# Debugging SpaDES modules {#sec-debugging}
+# Debugging SpaDES Modules {#sec-debugging}
 
 ```{r setup}
 #| include: false
