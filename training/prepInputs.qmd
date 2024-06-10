@@ -134,7 +134,7 @@ terra::plot(shpEcozoneSK[1])
 
 ### Raster data
 
-The following will get the national ecozone map, project, crop and mask it to the SK dataset. 
+The following will get a national DEM layer, crop and mask it to the SK dataset. We leave it in the projection it came in at the original source.
 
 ```{r}
 urlTif1 <- "https://geodata.ucdavis.edu/geodata/elv/CAN_elv_msk.zip"
@@ -159,7 +159,7 @@ terra::plot(DEMSK)
 terra::plot(shpEcozoneSK[1], add = TRUE, col = "transparent")
 ```
 
-Of course, we may have many other things, including change the resolution of the downloaded object, change the projection etc.
+Of course, we may have many other things, including change the resolution of the downloaded object, change the projection, and resolution. `prepInputs` uses a `template` raster to know what to project, crop, and mask to
 
 ```{r}
 SK <- SpaDES.project::setupStudyArea(list(level = 2, NAME_1 = "Saskatchewan", epsg = 5070))
@@ -168,7 +168,7 @@ terra::crs(SKras) <- terra::crs(SK)
 
 DEMSK250m <- prepInputs(
   url = urlTif1,
-  to = SKras, 
+  to = SKras,                   # <-   template raster
   destinationPath = "~/SpaDES_book/data/prepInputs"
 )
 terra::plot(DEMSK250m)
