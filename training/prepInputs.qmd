@@ -101,7 +101,7 @@ If we run this chunk in the same project, results will be like the previous chun
 If you are running in a *nix-like system (Mac, Linux, etc.) or you have Git Bash installed, you can see the number of links to a file with `ls`, so in R it would be. The column after the attributes (e.g., drwxr-xr-x),
 is the number of pointers to a file. Anything more than 1 means that there are several pointers.
 
-```{cmd, eval=FALSE}
+```eval=FALSE
 system(paste0("ls -l", getOption("inputPaths")))
 ```
 
