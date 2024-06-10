@@ -9,7 +9,7 @@
 <meta name="author" content="Eliot McIntire">
 <meta name="dcterms.date" content="2024-06-10">
 
-<title>Robust and nimble scientific workflows, using SpaDES - Continuous Workflows</title>
+<title>Robust and nimble scientific workflows, using SpaDES - Working with Continuous Workflows</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -217,7 +217,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ContinuousWorkflows.html">Continuous Workflows</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ContinuousWorkflows.html">Working with Continuous Workflows</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -312,7 +312,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Scheduling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling events</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span></a>
   </div>
 </li>
       </ul>
@@ -320,7 +320,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./ContinuousWorkflows.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Continuous Workflows</span></a>
+ <span class="menu-text">Working with Continuous Workflows</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -335,13 +335,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./debugging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></a>
   </div>
 </li>
       </ul>
@@ -376,7 +376,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -413,7 +413,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Continuous Workflows</h1>
+<h1 class="title">Working with Continuous Workflows</h1>
 </div>
 
 
@@ -482,15 +482,15 @@ Tip&nbsp;1: Rerun-tolerance
 <h2 class="anchored" data-anchor-id="module-types">Module Types</h2>
 <p>SpaDES doesn’t have an explicit module types. Rather, by convention, we associate different modules with generic things they do. A fairly comprehensive list of modules types that we create are:</p>
 <ul>
-<li><strong>Data Munging</strong> – uses <code>prepInputs</code> and outputs clean, usable data for a project, mostly specifies <code>createsOutputs</code></li>
-<li><strong>Parameterization</strong> – uses data from e.g., a <strong>Data Munging</strong> module and uses statistics on data. This would be recognizable as <em>a complete ecological study for publication</em>.</li>
-<li><strong>Calibration</strong> – similar to <strong>Parameterization</strong> but uses repeated simulation to estimate parameters.</li>
-<li><strong>Study Area specifics</strong> – creates outputs that are very idiosyncratic to a study area</li>
-<li><strong>Static Forecasting</strong> – creates outputs at different times, that are not used by itself</li>
-<li><strong>Dynamic Forecasting</strong> – creates outputs at different times, that are also its own inputs</li>
-<li><strong>Validation</strong> – takes many repeated inputs, often many replicates</li>
-<li><strong>Visualization</strong> – takes inputs from one or many replicated module runs and build rich visuals</li>
-<li><strong>Post-Processing</strong> – takes inputs from one or many replicated module runs and builds data analytics. These may be similar to <strong>Validation</strong></li>
+<li><p><strong>Data Munging</strong> – uses <code>prepInputs</code> and outputs clean, usable data for a project, mostly specifies <code>createsOutputs</code></p></li>
+<li><p><strong>Parameterization</strong> – uses data from e.g., a <strong>Data Munging</strong> module and uses statistics on data. This would be recognizable as <em>a complete ecological study for publication</em>.</p></li>
+<li><p><strong>Calibration</strong> – similar to <strong>Parameterization</strong> but uses repeated simulation to estimate parameters.</p></li>
+<li><p><strong>Study Area specifics</strong> – creates outputs that are very idiosyncratic to a study area</p></li>
+<li><p><strong>Static Forecasting</strong> – creates outputs at different times, that are not used by itself</p></li>
+<li><p><strong>Dynamic Forecasting</strong> – creates outputs at different times, that are also its own inputs</p></li>
+<li><p><strong>Validation</strong> – takes many repeated inputs, often many replicates</p></li>
+<li><p><strong>Visualization</strong> – takes inputs from one or many replicated module runs and build rich visuals</p></li>
+<li><p><strong>Post-Processing</strong> – takes inputs from one or many replicated module runs and builds data analytics. These may be similar to <strong>Validation</strong></p></li>
 </ul>
 <p>Thus, the differences are about how the <code>inputObjects</code> and <code>outputObjects</code> are specified and designed.</p>
 
@@ -1066,8 +1066,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Scheduling.html" class="pagination-link" aria-label="Scheduling events">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling events</span></span>
+      <a href="./Scheduling.html" class="pagination-link" aria-label="Scheduling Events">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

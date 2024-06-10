@@ -231,7 +231,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ContinuousWorkflows.html">Continuous Workflows</a></li><li class="breadcrumb-item"><a href="./Caching.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ContinuousWorkflows.html">Working with Continuous Workflows</a></li><li class="breadcrumb-item"><a href="./Caching.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -326,7 +326,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Scheduling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling events</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span></a>
   </div>
 </li>
       </ul>
@@ -334,7 +334,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./ContinuousWorkflows.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Continuous Workflows</span></a>
+ <span class="menu-text">Working with Continuous Workflows</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -349,13 +349,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./debugging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></a>
   </div>
 </li>
       </ul>
@@ -390,7 +390,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -436,7 +436,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ContinuousWorkflows.html">Continuous Workflows</a></li><li class="breadcrumb-item"><a href="./Caching.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ContinuousWorkflows.html">Working with Continuous Workflows</a></li><li class="breadcrumb-item"><a href="./Caching.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span id="sec-caching" class="quarto-section-identifier"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span></h1>
 </div>
@@ -485,7 +485,7 @@ window.Quarto = {
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>reproducible<span class="sc">::</span><span class="fu">Cache</span>(<span class="fu">rnorm</span>(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1654223
+<pre><code>[1] 0.6106527
 attr(,".Cache")
 attr(,".Cache")$newCache
 [1] TRUE
@@ -501,7 +501,7 @@ attr(,"call")
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  reproducible<span class="sc">::</span><span class="fu">Cache</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1654223
+<pre><code>[1] 0.6106527
 attr(,".Cache")
 attr(,".Cache")$newCache
 [1] FALSE
@@ -537,7 +537,7 @@ attr(,"call")
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-   1.44    0.08    1.51 </code></pre>
+   1.60    0.09    1.73 </code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -546,7 +546,7 @@ attr(,"call")
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-   5.34    0.20    5.59 </code></pre>
+   5.96    0.41    6.58 </code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -555,7 +555,7 @@ attr(,"call")
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-   0.62    0.03    0.66 </code></pre>
+   0.68    0.16    0.86 </code></pre>
 </div>
 </div>
 </section>
@@ -570,7 +570,7 @@ attr(,"call")
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-   0.43    0.03    0.47 </code></pre>
+   0.51    0.14    0.67 </code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -578,7 +578,7 @@ attr(,"call")
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-   0.05    0.03    0.08 </code></pre>
+   0.07    0.08    0.14 </code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -599,59 +599,59 @@ attr(,"call")
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">showCache</span>(<span class="at">userTags =</span> <span class="st">"random number generator"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>             cacheId                  tagKey                  tagValue
-              &lt;char&gt;                  &lt;char&gt;                    &lt;char&gt;
- 1: ad0ea27476c50b66 random number generator   random number generator
- 2: ad0ea27476c50b66                function                     rnorm
- 3: ad0ea27476c50b66                   class                   numeric
- 4: ad0ea27476c50b66             object.size                      1008
- 5: ad0ea27476c50b66                accessed 2024-06-04 11:57:45.40033
- 6: ad0ea27476c50b66                 inCloud                     FALSE
- 7: ad0ea27476c50b66                fromDisk                     FALSE
- 8: ad0ea27476c50b66              resultHash                          
- 9: ad0ea27476c50b66       elapsedTimeDigest          0.008540154 secs
-10: ad0ea27476c50b66     elapsedTimeFirstRun         7.605553e-05 secs
-11: ad0ea27476c50b66          otherFunctions                   execute
-12: ad0ea27476c50b66          otherFunctions              process_file
-13: ad0ea27476c50b66          otherFunctions             process_group
-14: ad0ea27476c50b66          otherFunctions                call_block
-15: ad0ea27476c50b66          otherFunctions                block_exec
-16: ad0ea27476c50b66          otherFunctions                     eng_r
-17: ad0ea27476c50b66          otherFunctions              in_input_dir
-18: ad0ea27476c50b66          otherFunctions                    in_dir
-19: ad0ea27476c50b66          otherFunctions                 timing_fn
-20: ad0ea27476c50b66          otherFunctions                    handle
-21: ad0ea27476c50b66               preDigest        n:7eef4eae85fd9229
-22: ad0ea27476c50b66               preDigest     mean:c40c00762a0dac94
-23: ad0ea27476c50b66               preDigest       sd:853b1797f54b229c
-24: ad0ea27476c50b66               preDigest     .FUN:4f604aa46882b368
-             cacheId                  tagKey                  tagValue
+<pre><code>             cacheId                  tagKey                   tagValue
+              &lt;char&gt;                  &lt;char&gt;                     &lt;char&gt;
+ 1: ad0ea27476c50b66 random number generator    random number generator
+ 2: ad0ea27476c50b66                function                      rnorm
+ 3: ad0ea27476c50b66                   class                    numeric
+ 4: ad0ea27476c50b66             object.size                       1008
+ 5: ad0ea27476c50b66                accessed 2024-06-04 14:35:13.891315
+ 6: ad0ea27476c50b66                 inCloud                      FALSE
+ 7: ad0ea27476c50b66                fromDisk                      FALSE
+ 8: ad0ea27476c50b66              resultHash                           
+ 9: ad0ea27476c50b66       elapsedTimeDigest           0.005132914 secs
+10: ad0ea27476c50b66     elapsedTimeFirstRun          7.796288e-05 secs
+11: ad0ea27476c50b66          otherFunctions                    execute
+12: ad0ea27476c50b66          otherFunctions               process_file
+13: ad0ea27476c50b66          otherFunctions              process_group
+14: ad0ea27476c50b66          otherFunctions                 call_block
+15: ad0ea27476c50b66          otherFunctions                 block_exec
+16: ad0ea27476c50b66          otherFunctions                      eng_r
+17: ad0ea27476c50b66          otherFunctions               in_input_dir
+18: ad0ea27476c50b66          otherFunctions                     in_dir
+19: ad0ea27476c50b66          otherFunctions                  timing_fn
+20: ad0ea27476c50b66          otherFunctions                     handle
+21: ad0ea27476c50b66               preDigest         n:7eef4eae85fd9229
+22: ad0ea27476c50b66               preDigest      mean:c40c00762a0dac94
+23: ad0ea27476c50b66               preDigest        sd:853b1797f54b229c
+24: ad0ea27476c50b66               preDigest      .FUN:4f604aa46882b368
+             cacheId                  tagKey                   tagValue
                    createdDate
                         &lt;char&gt;
- 1: 2024-06-04 11:57:45.400854
- 2: 2024-06-04 11:57:45.400854
- 3: 2024-06-04 11:57:45.400854
- 4: 2024-06-04 11:57:45.400854
- 5: 2024-06-04 11:57:45.400854
- 6: 2024-06-04 11:57:45.400854
- 7: 2024-06-04 11:57:45.400854
- 8: 2024-06-04 11:57:45.400854
- 9: 2024-06-04 11:57:45.400854
-10: 2024-06-04 11:57:45.400854
-11: 2024-06-04 11:57:45.400854
-12: 2024-06-04 11:57:45.400854
-13: 2024-06-04 11:57:45.400854
-14: 2024-06-04 11:57:45.400854
-15: 2024-06-04 11:57:45.400854
-16: 2024-06-04 11:57:45.400854
-17: 2024-06-04 11:57:45.400854
-18: 2024-06-04 11:57:45.400854
-19: 2024-06-04 11:57:45.400854
-20: 2024-06-04 11:57:45.400854
-21: 2024-06-04 11:57:45.400854
-22: 2024-06-04 11:57:45.400854
-23: 2024-06-04 11:57:45.400854
-24: 2024-06-04 11:57:45.400854
+ 1: 2024-06-04 14:35:13.891883
+ 2: 2024-06-04 14:35:13.891883
+ 3: 2024-06-04 14:35:13.891883
+ 4: 2024-06-04 14:35:13.891883
+ 5: 2024-06-04 14:35:13.891883
+ 6: 2024-06-04 14:35:13.891883
+ 7: 2024-06-04 14:35:13.891883
+ 8: 2024-06-04 14:35:13.891883
+ 9: 2024-06-04 14:35:13.891883
+10: 2024-06-04 14:35:13.891883
+11: 2024-06-04 14:35:13.891883
+12: 2024-06-04 14:35:13.891883
+13: 2024-06-04 14:35:13.891883
+14: 2024-06-04 14:35:13.891883
+15: 2024-06-04 14:35:13.891883
+16: 2024-06-04 14:35:13.891883
+17: 2024-06-04 14:35:13.891883
+18: 2024-06-04 14:35:13.891883
+19: 2024-06-04 14:35:13.891883
+20: 2024-06-04 14:35:13.891883
+21: 2024-06-04 14:35:13.891883
+22: 2024-06-04 14:35:13.891883
+23: 2024-06-04 14:35:13.891883
+24: 2024-06-04 14:35:13.891883
                    createdDate</code></pre>
 </div>
 </div>
@@ -691,58 +691,58 @@ attr(,"call")
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">keepCache</span>(<span class="at">userTags =</span> <span class="st">"rnorm"</span>, <span class="at">ask =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>             cacheId              tagKey                  tagValue
-              &lt;char&gt;              &lt;char&gt;                    &lt;char&gt;
- 1: 422bae4ed2f770cc            function                     rnorm
- 2: 422bae4ed2f770cc               class                   numeric
- 3: 422bae4ed2f770cc         object.size                       984
- 4: 422bae4ed2f770cc            accessed 2024-06-04 11:57:45.53107
- 5: 422bae4ed2f770cc             inCloud                     FALSE
- 6: 422bae4ed2f770cc            fromDisk                     FALSE
- 7: 422bae4ed2f770cc          resultHash                          
- 8: 422bae4ed2f770cc   elapsedTimeDigest          0.002660036 secs
- 9: 422bae4ed2f770cc elapsedTimeFirstRun         6.914139e-05 secs
-10: 422bae4ed2f770cc      otherFunctions                   execute
-11: 422bae4ed2f770cc      otherFunctions              process_file
-12: 422bae4ed2f770cc      otherFunctions             process_group
-13: 422bae4ed2f770cc      otherFunctions                call_block
-14: 422bae4ed2f770cc      otherFunctions                block_exec
-15: 422bae4ed2f770cc      otherFunctions                     eng_r
-16: 422bae4ed2f770cc      otherFunctions              in_input_dir
-17: 422bae4ed2f770cc      otherFunctions                    in_dir
-18: 422bae4ed2f770cc      otherFunctions                 timing_fn
-19: 422bae4ed2f770cc      otherFunctions                    handle
-20: 422bae4ed2f770cc           preDigest        n:853b1797f54b229c
-21: 422bae4ed2f770cc           preDigest     mean:c40c00762a0dac94
-22: 422bae4ed2f770cc           preDigest       sd:853b1797f54b229c
-23: 422bae4ed2f770cc           preDigest     .FUN:4f604aa46882b368
-             cacheId              tagKey                  tagValue
-                  createdDate
-                       &lt;char&gt;
- 1: 2024-06-04 11:57:45.53157
- 2: 2024-06-04 11:57:45.53157
- 3: 2024-06-04 11:57:45.53157
- 4: 2024-06-04 11:57:45.53157
- 5: 2024-06-04 11:57:45.53157
- 6: 2024-06-04 11:57:45.53157
- 7: 2024-06-04 11:57:45.53157
- 8: 2024-06-04 11:57:45.53157
- 9: 2024-06-04 11:57:45.53157
-10: 2024-06-04 11:57:45.53157
-11: 2024-06-04 11:57:45.53157
-12: 2024-06-04 11:57:45.53157
-13: 2024-06-04 11:57:45.53157
-14: 2024-06-04 11:57:45.53157
-15: 2024-06-04 11:57:45.53157
-16: 2024-06-04 11:57:45.53157
-17: 2024-06-04 11:57:45.53157
-18: 2024-06-04 11:57:45.53157
-19: 2024-06-04 11:57:45.53157
-20: 2024-06-04 11:57:45.53157
-21: 2024-06-04 11:57:45.53157
-22: 2024-06-04 11:57:45.53157
-23: 2024-06-04 11:57:45.53157
-                  createdDate</code></pre>
+<pre><code>             cacheId              tagKey                   tagValue
+              &lt;char&gt;              &lt;char&gt;                     &lt;char&gt;
+ 1: 422bae4ed2f770cc            function                      rnorm
+ 2: 422bae4ed2f770cc               class                    numeric
+ 3: 422bae4ed2f770cc         object.size                        984
+ 4: 422bae4ed2f770cc            accessed 2024-06-04 14:35:14.071673
+ 5: 422bae4ed2f770cc             inCloud                      FALSE
+ 6: 422bae4ed2f770cc            fromDisk                      FALSE
+ 7: 422bae4ed2f770cc          resultHash                           
+ 8: 422bae4ed2f770cc   elapsedTimeDigest           0.003367901 secs
+ 9: 422bae4ed2f770cc elapsedTimeFirstRun          0.0001699924 secs
+10: 422bae4ed2f770cc      otherFunctions                    execute
+11: 422bae4ed2f770cc      otherFunctions               process_file
+12: 422bae4ed2f770cc      otherFunctions              process_group
+13: 422bae4ed2f770cc      otherFunctions                 call_block
+14: 422bae4ed2f770cc      otherFunctions                 block_exec
+15: 422bae4ed2f770cc      otherFunctions                      eng_r
+16: 422bae4ed2f770cc      otherFunctions               in_input_dir
+17: 422bae4ed2f770cc      otherFunctions                     in_dir
+18: 422bae4ed2f770cc      otherFunctions                  timing_fn
+19: 422bae4ed2f770cc      otherFunctions                     handle
+20: 422bae4ed2f770cc           preDigest         n:853b1797f54b229c
+21: 422bae4ed2f770cc           preDigest      mean:c40c00762a0dac94
+22: 422bae4ed2f770cc           preDigest        sd:853b1797f54b229c
+23: 422bae4ed2f770cc           preDigest      .FUN:4f604aa46882b368
+             cacheId              tagKey                   tagValue
+                   createdDate
+                        &lt;char&gt;
+ 1: 2024-06-04 14:35:14.072391
+ 2: 2024-06-04 14:35:14.072391
+ 3: 2024-06-04 14:35:14.072391
+ 4: 2024-06-04 14:35:14.072391
+ 5: 2024-06-04 14:35:14.072391
+ 6: 2024-06-04 14:35:14.072391
+ 7: 2024-06-04 14:35:14.072391
+ 8: 2024-06-04 14:35:14.072391
+ 9: 2024-06-04 14:35:14.072391
+10: 2024-06-04 14:35:14.072391
+11: 2024-06-04 14:35:14.072391
+12: 2024-06-04 14:35:14.072391
+13: 2024-06-04 14:35:14.072391
+14: 2024-06-04 14:35:14.072391
+15: 2024-06-04 14:35:14.072391
+16: 2024-06-04 14:35:14.072391
+17: 2024-06-04 14:35:14.072391
+18: 2024-06-04 14:35:14.072391
+19: 2024-06-04 14:35:14.072391
+20: 2024-06-04 14:35:14.072391
+21: 2024-06-04 14:35:14.072391
+22: 2024-06-04 14:35:14.072391
+23: 2024-06-04 14:35:14.072391
+                   createdDate</code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -785,7 +785,7 @@ attr(,"call")
 <span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="fu">Cache</span>(<span class="fu">outer</span>(<span class="at">n =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.1123263 -1.4925555  1.1335128
+<pre><code>[1]  0.20387979 -0.55140572  0.01996051
 attr(,".Cache")
 attr(,".Cache")$newCache
 [1] TRUE
@@ -807,7 +807,7 @@ attr(,"call")
 <span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="fu">Cache</span>(<span class="fu">outer</span>(<span class="at">n =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.1123263 -1.4925555  1.1335128
+<pre><code>[1]  0.20387979 -0.55140572  0.01996051
 attr(,".Cache")
 attr(,".Cache")$newCache
 [1] TRUE
@@ -827,7 +827,7 @@ attr(,"call")
 <span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">Cache</span>(<span class="fu">outer</span>(<span class="at">n =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.1123263 -1.4925555  1.1335128
+<pre><code>[1]  0.20387979 -0.55140572  0.01996051
 attr(,".Cache")
 attr(,".Cache")$newCache
 [1] FALSE
@@ -1417,13 +1417,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./ContinuousWorkflows.html" class="pagination-link" aria-label="Continuous Workflows">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Continuous Workflows</span>
+      <a href="./ContinuousWorkflows.html" class="pagination-link" aria-label="Working with Continuous Workflows">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Working with Continuous Workflows</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./prepInputs.html" class="pagination-link" aria-label="`reproducible::prepInputs` for data">
-        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for data</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./prepInputs.html" class="pagination-link" aria-label="`reproducible::prepInputs` for Data">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eliot McIntire">
-<meta name="dcterms.date" content="2024-06-06">
+<meta name="dcterms.date" content="2024-06-10">
 
 <title>Robust and nimble scientific workflows, using SpaDES - SpaDES workflows and projects</title>
 <style>
@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -74,6 +108,14 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<link href="site_libs/vis-9.1.0/vis-network.min.css" rel="stylesheet">
+
+<script src="site_libs/vis-9.1.0/vis-network.min.js"></script>
+
+<script src="site_libs/visNetwork-binding-2.1.2/visNetwork.js"></script>
+
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -292,7 +334,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Scheduling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling events</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span></a>
   </div>
 </li>
       </ul>
@@ -300,7 +342,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./ContinuousWorkflows.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Continuous Workflows</span></a>
+ <span class="menu-text">Working with Continuous Workflows</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -315,13 +357,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./debugging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></a>
   </div>
 </li>
       </ul>
@@ -356,7 +398,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -379,7 +421,13 @@ window.Quarto = {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#some-of-the-spades-verse" id="toc-some-of-the-spades-verse" class="nav-link active" data-scroll-target="#some-of-the-spades-verse">Some of the SpaDES-verse</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -403,7 +451,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 6, 2024</p>
+      <p class="date">June 10, 2024</p>
     </div>
   </div>
   
@@ -417,9 +465,44 @@ window.Quarto = {
 
 <p>One of the advantages of <code>SpaDES</code> is that we can make simple “linear” workflows, but we can also make complex workflows <em>emerge</em> from the combinations of modules (and of their events) being put together by a user. SpaDES modules provide their own needed schedules, and the metadata tells SpaDES how different modules fit together. Then when executed, events within and across modules go in the correct order. If the group of modules changes later on, the workflow steps may also change.</p>
 <p>In this section, we will start with the simplest case of two code chunks in sequence, and we will advance to chain together many modules and rich project workflows using <code>SpaDES.project</code>. We assume that readers are already familiar with SpaDES, namely creating and using SpaDES modules. If not, we encourage going through the chapters in Section <a href="./SpaDESbasics.html">SpaDES 101</a>.</p>
-<p>From <a href="castorExample.html" class="quarto-xref"><span>17&nbsp; Castor workflow with setupProject</span></a> onwards, we show project flows with SpaDES modules that have been developed and used in ecological modelling and forecating, to answer both research or applied questions. We encourage readers to learn more about these models (and <em>modules</em>) from the documentation sources noted in the chapters.</p>
+<p>From <a href="castorExample.html" class="quarto-xref"><span>17&nbsp; Castor Workflow with setupProject</span></a> onwards, we show project flows with SpaDES modules that have been developed and used in ecological modelling and forecating, to answer both research or applied questions. We encourage readers to learn more about these models (and <em>modules</em>) from the documentation sources noted in the chapters.</p>
+<section id="some-of-the-spades-verse" class="level2">
+<h2 class="anchored" data-anchor-id="some-of-the-spades-verse">Some of the SpaDES-verse</h2>
+<p>We can see many of the known modules in the SpaDES-verse and how they interact through their shared inputs and outputs in this interactive figure:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Require<span class="sc">::</span><span class="fu">Install</span>(<span class="fu">c</span>(<span class="st">"igraph"</span>, <span class="st">"visNetwork"</span>))</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>modPath <span class="ot">&lt;-</span> <span class="st">"~/SpaDES_book/listModules/"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>accountsListLong <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"PredictiveEcology"</span>, <span class="st">"ianmseddy"</span>, <span class="st">"achubaty"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"FOR-CAST"</span>, <span class="st">"eliotmcintire"</span>, <span class="st">"tati-micheletti"</span>, <span class="st">"CeresBarros"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>grepListLong <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Biomass"</span>, <span class="st">"WBI"</span>, <span class="st">"LandR"</span>, <span class="st">"fireSense"</span>, <span class="st">"CBM"</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"LandMine"</span>, <span class="st">"LandWeb"</span>, <span class="st">"NRV"</span>, <span class="co">#"scfm",</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"priority"</span>, <span class="st">"fire"</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"dataPrep"</span>, <span class="st">"DataPrep"</span>, <span class="st">"RoF"</span>, <span class="st">"Ontario"</span>, <span class="st">"ROF"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>modsLong <span class="ot">&lt;-</span> SpaDES.project<span class="sc">::</span><span class="fu">listModules</span>(grepListLong, <span class="at">accounts =</span> accountsListLong,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">excludeStale =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>modsLong <span class="ot">&lt;-</span> <span class="fu">paste0</span>(modsLong, <span class="st">"@HEAD"</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># downloads lots of modules</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>mods <span class="ot">&lt;-</span> SpaDES.project<span class="sc">::</span><span class="fu">getModule</span>(modsLong, <span class="at">modulePath =</span> modPath)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">&lt;-</span> SpaDES.project<span class="sc">::</span><span class="fu">moduleDependencies</span>(modsLong, <span class="at">modulePath =</span> modPath)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>graph <span class="ot">&lt;-</span> SpaDES.project<span class="sc">::</span><span class="fu">moduleDependenciesToGraph</span>(DT)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>(vn <span class="ot">&lt;-</span> SpaDES.project<span class="sc">::</span><span class="fu">PlotModuleGraph</span>(graph))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="htmlwidget-665fd2b768e71c6c300f" style="width:100%;height:480px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-665fd2b768e71c6c300f">{"x":{"nodes":{"id":["anthroDisturbance_DataPrep","Biomass_borealDataPrep","Biomass_core","Biomass_fuels","Biomass_fuelsPFG","Biomass_regeneration","Biomass_regenerationPM","Biomass_speciesData","Biomass_speciesFactorial","Biomass_speciesParameters","Biomass_summary","Biomass_validationKNN","Biomass_yieldTables","CBM_core","CBM_dataPrep_SK","CBM_defaults","CBM_vol2biomass","fireSense","fireSense_dataPrep","fireSense_dataPrepFit","fireSense_dataPrepPredict","fireSense_EscapeFit","fireSense_EscapePredict","fireSense_hindcast","fireSense_IgnitionFit","fireSense_IgnitionPredict","fireSense_NWT_DataPrep","fireSense_SpreadFit","fireSense_SpreadPredict","fireSense_summary","fitBirdBiomassModel","gmcsDataPrep","LandMine","LandR_BiomassGMCC","LandR_BiomassGMOrig","LandR_MPB_studyArea","LandR_reforestation","LandRCBM_split3pools","LandWeb_summary","LBMR2LCC_DataPrep","MDC_NWT_DataPrep","NRV_summary","Ontario_preamble","posthocLandR","potentialResourcesNT_DataPrep","priorityPlaces","priorityPlaces_DataPrep","Quebec_fires_preamble"],"title":["anthroDisturbance_DataPrep","Biomass_borealDataPrep","Biomass_core","Biomass_fuels","Biomass_fuelsPFG","Biomass_regeneration","Biomass_regenerationPM","Biomass_speciesData","Biomass_speciesFactorial","Biomass_speciesParameters","Biomass_summary","Biomass_validationKNN","Biomass_yieldTables","CBM_core","CBM_dataPrep_SK","CBM_defaults","CBM_vol2biomass","fireSense","fireSense_dataPrep","fireSense_dataPrepFit","fireSense_dataPrepPredict","fireSense_EscapeFit","fireSense_EscapePredict","fireSense_hindcast","fireSense_IgnitionFit","fireSense_IgnitionPredict","fireSense_NWT_DataPrep","fireSense_SpreadFit","fireSense_SpreadPredict","fireSense_summary","fitBirdBiomassModel","gmcsDataPrep","LandMine","LandR_BiomassGMCC","LandR_BiomassGMOrig","LandR_MPB_studyArea","LandR_reforestation","LandRCBM_split3pools","LandWeb_summary","LBMR2LCC_DataPrep","MDC_NWT_DataPrep","NRV_summary","Ontario_preamble","posthocLandR","potentialResourcesNT_DataPrep","priorityPlaces","priorityPlaces_DataPrep","Quebec_fires_preamble"],"group":["DataPrep","Biomass","Biomass","Biomass","Biomass","Biomass","Biomass","Biomass","Biomass","Biomass","Biomass","Biomass","Biomass","CBM","CBM","CBM","CBM","FireSense","FireSense","FireSense","FireSense","FireSense","FireSense","FireSense","FireSense","FireSense","FireSense","FireSense","FireSense","FireSense","Biomass","DataPrep","Other","Biomass","Biomass","Other","Other","CBM","Other","DataPrep","DataPrep","Other","Other","Other","DataPrep","Other","DataPrep","Other"],"x":[0.6559688001848032,0.3613644207794378,0.2526002478071323,0.2527602229641315,0.1516410913531758,0.02775071072471325,0.08142693551555547,0.4463184393389392,-0.09021039387701157,0.1822153018766319,0.917380623705319,0.4704259147533993,0.5056032954298344,0.09889441871289462,0.05895249668158575,-0.1277599517839999,0.2634622215191835,-0.1236694109740232,0.03533699817797831,0.2319052745217696,0.1255951423757418,-0.007941434363731958,0.04156894436149039,0.2755477515129912,-0.5056885101671709,-0.4314803732309735,0.5881896651894629,0.1169081497338935,-0.257060129357652,0.3022774659979723,0.7904815705327826,0.7115095858964797,0.2488674052292723,0.06601038629246481,-0.009617194767766568,0.4657116823340435,0.01682475546382656,0.3471439658137108,0.5783928855081659,0.7678893127322781,1,0.5401506330790449,0.4292964574952576,0.4551504384887077,0.7290156647810913,-0.9333626123781164,-1,0.3346405470352751],"y":[-0.5432648410078388,-0.2279309973079711,-0.1713911055379581,-0.08646037480129432,-0.2386394230454159,-0.1851557976090303,-0.1522121629842162,-0.09865510009804157,0.3562673859651924,-0.02682447048804659,-0.3696842665950535,-0.4368809408645133,0.4602449902343495,1,0.8786377335009292,0.9213589823297832,0.9573078075885879,-0.4817019522412297,-0.3155450204905109,-0.5670537064852594,-0.3645935087829746,-0.9127184489419503,-0.6757930435448564,-1,-0.2903985844274301,-0.4346495507980727,-0.03642113174806905,-0.5021519948533024,-0.60345930174291,-0.6544236671969057,-0.2002655814396352,-0.02893464643951149,-0.2333562457814972,-0.07235958397912434,-0.112263278028048,-0.2945133687252957,0.04918066253620257,0.05096418540650327,-0.220585825586891,-0.3363836482888968,0.217285182953737,-0.1412314354054892,-0.3308609992616969,-0.5505078380482789,-0.4613249223114725,0.3325599293957591,0.2032876336163891,-0.3194970163066422],"label":["anthroDisturbance_DataPrep","Biomass_borealDataPrep","Biomass_core","Biomass_fuels","Biomass_fuelsPFG","Biomass_regeneration","Biomass_regenerationPM","Biomass_speciesData","Biomass_speciesFactorial","Biomass_speciesParameters","Biomass_summary","Biomass_validationKNN","Biomass_yieldTables","CBM_core","CBM_dataPrep_SK","CBM_defaults","CBM_vol2biomass","fireSense","fireSense_dataPrep","fireSense_dataPrepFit","fireSense_dataPrepPredict","fireSense_EscapeFit","fireSense_EscapePredict","fireSense_hindcast","fireSense_IgnitionFit","fireSense_IgnitionPredict","fireSense_NWT_DataPrep","fireSense_SpreadFit","fireSense_SpreadPredict","fireSense_summary","fitBirdBiomassModel","gmcsDataPrep","LandMine","LandR_BiomassGMCC","LandR_BiomassGMOrig","LandR_MPB_studyArea","LandR_reforestation","LandRCBM_split3pools","LandWeb_summary","LBMR2LCC_DataPrep","MDC_NWT_DataPrep","NRV_summary","Ontario_preamble","posthocLandR","potentialResourcesNT_DataPrep","priorityPlaces","priorityPlaces_DataPrep","Quebec_fires_preamble"]},"edges":{"from":["Biomass_borealDataPrep","Biomass_borealDataPrep","Biomass_borealDataPrep","Biomass_borealDataPrep","Biomass_borealDataPrep","Biomass_borealDataPrep","Biomass_borealDataPrep","Biomass_borealDataPrep","Biomass_borealDataPrep","Biomass_borealDataPrep","Biomass_borealDataPrep","Biomass_borealDataPrep","Biomass_borealDataPrep","Biomass_borealDataPrep","Biomass_borealDataPrep","Biomass_borealDataPrep","Biomass_borealDataPrep","Biomass_borealDataPrep","Biomass_borealDataPrep","Biomass_borealDataPrep","Biomass_borealDataPrep","Biomass_borealDataPrep","Biomass_borealDataPrep","Biomass_borealDataPrep","Biomass_borealDataPrep","Biomass_borealDataPrep","Biomass_core","Biomass_core","Biomass_core","Biomass_core","Biomass_core","Biomass_core","Biomass_core","Biomass_core","Biomass_core","Biomass_core","Biomass_core","Biomass_core","Biomass_core","Biomass_core","Biomass_core","Biomass_core","Biomass_core","Biomass_core","Biomass_fuels","Biomass_regeneration","Biomass_regeneration","Biomass_regeneration","Biomass_regeneration","Biomass_regeneration","Biomass_regeneration","Biomass_regeneration","Biomass_regeneration","Biomass_regeneration","Biomass_regeneration","Biomass_regeneration","Biomass_regenerationPM","Biomass_regenerationPM","Biomass_regenerationPM","Biomass_regenerationPM","Biomass_regenerationPM","Biomass_regenerationPM","Biomass_regenerationPM","Biomass_regenerationPM","Biomass_regenerationPM","Biomass_regenerationPM","Biomass_regenerationPM","Biomass_speciesData","Biomass_speciesData","Biomass_speciesData","Biomass_speciesData","Biomass_speciesParameters","Biomass_speciesParameters","Biomass_speciesParameters","Biomass_speciesParameters","Biomass_speciesParameters","Biomass_speciesParameters","Biomass_speciesParameters","LandMine","LandMine","LandMine","LandMine","LandMine","LandMine","LandMine","LandMine","LandMine","LandMine","LandMine","LandMine","LandMine","LandR_BiomassGMCC","LandR_BiomassGMCC","LandR_BiomassGMCC","LandR_BiomassGMCC","LandR_BiomassGMCC","LandR_BiomassGMCC","LandR_BiomassGMCC","LandR_BiomassGMCC","LandR_BiomassGMCC","LandR_BiomassGMCC","LandR_BiomassGMOrig","LandR_BiomassGMOrig","LandR_BiomassGMOrig","LandR_BiomassGMOrig","LandR_BiomassGMOrig","LandR_BiomassGMOrig","LandR_BiomassGMOrig","LandR_BiomassGMOrig","LandR_BiomassGMOrig","LandR_BiomassGMOrig","LandWeb_summary","NRV_summary","Quebec_fires_preamble","Quebec_fires_preamble","Quebec_fires_preamble","Quebec_fires_preamble","Quebec_fires_preamble","Quebec_fires_preamble","Quebec_fires_preamble","Quebec_fires_preamble","Quebec_fires_preamble","Quebec_fires_preamble","Quebec_fires_preamble","Quebec_fires_preamble","Quebec_fires_preamble","anthroDisturbance_DataPrep","fireSense_SpreadFit","fireSense_dataPrep","fireSense_dataPrep","fireSense_dataPrep","fireSense_dataPrep","fireSense_dataPrep","fireSense_dataPrep","fireSense_dataPrep","fireSense_dataPrep","fireSense_dataPrepFit","fireSense_dataPrepFit","fireSense_dataPrepFit","fireSense_dataPrepPredict","posthocLandR","CBM_core","CBM_vol2biomass","CBM_dataPrep_SK","CBM_dataPrep_SK","fireSense_EscapePredict","fireSense","fireSense","fireSense","fireSense","fireSense_IgnitionPredict","fireSense_SpreadPredict","fireSense_IgnitionFit","fireSense_EscapeFit","fireSense_hindcast","priorityPlaces","priorityPlaces_DataPrep","Biomass_speciesFactorial","Biomass_yieldTables","CBM_defaults","CBM_defaults","LandR_MPB_studyArea","LandR_MPB_studyArea","LandR_MPB_studyArea","LandR_MPB_studyArea","LandR_MPB_studyArea","LandR_MPB_studyArea","LandR_MPB_studyArea","LandR_MPB_studyArea","LandR_MPB_studyArea","LandR_MPB_studyArea","LandR_MPB_studyArea","LandR_MPB_studyArea","LandR_MPB_studyArea","LandR_MPB_studyArea","LandR_MPB_studyArea","LandR_MPB_studyArea","LandR_MPB_studyArea","LandR_MPB_studyArea","LandR_MPB_studyArea","LandR_MPB_studyArea","LandR_MPB_studyArea","LandR_MPB_studyArea","LandR_MPB_studyArea","LandR_MPB_studyArea","LandR_MPB_studyArea","MDC_NWT_DataPrep","Ontario_preamble","Ontario_preamble","Ontario_preamble","Ontario_preamble","Ontario_preamble","Ontario_preamble","Ontario_preamble","Ontario_preamble","Ontario_preamble","Ontario_preamble","Ontario_preamble","Ontario_preamble","Ontario_preamble","Ontario_preamble","Ontario_preamble","Ontario_preamble","Ontario_preamble","Ontario_preamble","Ontario_preamble","Ontario_preamble","Ontario_preamble","Ontario_preamble","Ontario_preamble","Ontario_preamble","Ontario_preamble","Ontario_preamble"],"to":["Biomass_core","Biomass_fuels","Biomass_fuelsPFG","Biomass_regeneration","Biomass_regenerationPM","Biomass_speciesData","Biomass_speciesParameters","Biomass_validationKNN","LBMR2LCC_DataPrep","LandMine","LandRCBM_split3pools","LandR_BiomassGMCC","LandR_BiomassGMOrig","LandR_reforestation","LandWeb_summary","NRV_summary","Quebec_fires_preamble","anthroDisturbance_DataPrep","fireSense_NWT_DataPrep","fireSense_SpreadFit","fireSense_dataPrep","fireSense_dataPrepFit","fireSense_dataPrepPredict","fitBirdBiomassModel","gmcsDataPrep","potentialResourcesNT_DataPrep","Biomass_borealDataPrep","Biomass_fuels","Biomass_fuelsPFG","Biomass_regeneration","Biomass_regenerationPM","Biomass_speciesData","Biomass_speciesParameters","Biomass_validationKNN","LandMine","LandRCBM_split3pools","LandR_BiomassGMCC","LandR_BiomassGMOrig","LandR_reforestation","LandWeb_summary","NRV_summary","fireSense_dataPrep","fireSense_dataPrepPredict","posthocLandR","Biomass_fuelsPFG","Biomass_core","Biomass_fuels","Biomass_fuelsPFG","Biomass_regenerationPM","LandMine","LandRCBM_split3pools","LandR_BiomassGMCC","LandR_BiomassGMOrig","LandR_reforestation","fireSense_dataPrep","fireSense_dataPrepPredict","Biomass_core","Biomass_fuels","Biomass_fuelsPFG","Biomass_regeneration","LandMine","LandRCBM_split3pools","LandR_BiomassGMCC","LandR_BiomassGMOrig","LandR_reforestation","fireSense_dataPrep","fireSense_dataPrepPredict","Biomass_borealDataPrep","Biomass_core","LandWeb_summary","NRV_summary","Biomass_core","Biomass_regeneration","Biomass_regenerationPM","LandMine","LandR_BiomassGMCC","LandR_BiomassGMOrig","LandR_reforestation","Biomass_borealDataPrep","Biomass_core","Biomass_fuels","Biomass_fuelsPFG","Biomass_regeneration","Biomass_regenerationPM","Biomass_speciesData","Biomass_speciesParameters","Biomass_validationKNN","LandWeb_summary","NRV_summary","fireSense_dataPrepFit","fireSense_dataPrepPredict","Biomass_core","Biomass_fuels","Biomass_fuelsPFG","Biomass_regeneration","Biomass_regenerationPM","LandMine","LandR_BiomassGMOrig","LandR_reforestation","fireSense_dataPrep","fireSense_dataPrepPredict","Biomass_core","Biomass_fuels","Biomass_fuelsPFG","Biomass_regeneration","Biomass_regenerationPM","LandMine","LandR_BiomassGMCC","LandR_reforestation","fireSense_dataPrep","fireSense_dataPrepPredict","NRV_summary","LandWeb_summary","Biomass_borealDataPrep","Biomass_core","Biomass_fuels","Biomass_fuelsPFG","Biomass_speciesData","Biomass_speciesParameters","Biomass_validationKNN","LandMine","LandWeb_summary","NRV_summary","fireSense_dataPrepFit","fireSense_dataPrepPredict","posthocLandR","potentialResourcesNT_DataPrep","fireSense_SpreadPredict","Biomass_borealDataPrep","fireSense_NWT_DataPrep","fireSense_SpreadFit","fireSense_dataPrepFit","fireSense_dataPrepPredict","fireSense_IgnitionPredict","fireSense_SpreadPredict","fireSense_IgnitionFit","fireSense_SpreadFit","fireSense_dataPrepPredict","fireSense_EscapeFit","fireSense_EscapePredict","fireSense_summary","CBM_vol2biomass","CBM_core","CBM_core","CBM_vol2biomass","fireSense","Biomass_regeneration","Biomass_regenerationPM","fireSense_dataPrepPredict","fireSense_summary","fireSense","fireSense","fireSense_IgnitionPredict","fireSense_EscapePredict","fireSense_dataPrepFit","priorityPlaces_DataPrep","priorityPlaces","Biomass_speciesParameters","LandRCBM_split3pools","CBM_core","CBM_dataPrep_SK","Biomass_borealDataPrep","Biomass_core","Biomass_fuels","Biomass_fuelsPFG","Biomass_speciesData","Biomass_speciesParameters","Biomass_validationKNN","LBMR2LCC_DataPrep","LandMine","LandRCBM_split3pools","LandWeb_summary","NRV_summary","Quebec_fires_preamble","anthroDisturbance_DataPrep","fireSense_NWT_DataPrep","fireSense_SpreadFit","fireSense_dataPrep","fireSense_dataPrepFit","fireSense_dataPrepPredict","fitBirdBiomassModel","gmcsDataPrep","potentialResourcesNT_DataPrep","posthocLandR","Biomass_summary","fireSense_summary","fireSense_NWT_DataPrep","Biomass_borealDataPrep","Biomass_core","Biomass_fuels","Biomass_fuelsPFG","Biomass_speciesData","Biomass_speciesParameters","Biomass_validationKNN","LBMR2LCC_DataPrep","LandMine","LandRCBM_split3pools","LandWeb_summary","NRV_summary","Quebec_fires_preamble","anthroDisturbance_DataPrep","fireSense_NWT_DataPrep","fireSense_SpreadFit","fireSense_dataPrep","fireSense_dataPrepFit","fireSense_dataPrepPredict","fitBirdBiomassModel","gmcsDataPrep","potentialResourcesNT_DataPrep","posthocLandR","Biomass_summary","fireSense_summary","fireSense_EscapePredict"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"nodes":{"shape":"dot","physics":false},"manipulation":{"enabled":false},"edges":{"smooth":false},"physics":{"stabilization":false},"groups":{"Biomass":{"color":"orange","shadow":{"enabled":true}},"DataPrep":{"color":"turquoise"},"FireSense":{"color":"red"},"CBM":{"color":"green"},"useDefaultGroups":true,"RoF":{"color":"lightgreen"}},"height":"100%","width":"100%","interaction":{"navigationButtons":true,"zoomSpeed":1}},"groups":["DataPrep","Biomass","CBM","FireSense","Other"],"width":"100%","height":null,"idselection":{"enabled":true,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","igraphlayout":{"type":"full"},"highlight":{"enabled":true,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":true,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>We also sometimes represent these as hexes, following the R-package convention:</p>
+<p><img src="assets/img/Hexes.png" class="img-fluid"></p>
+<p>The idea with <code>setupProject</code> is that we can start weaving different groups of modules together. This is what we will do in the next sections.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -982,8 +1065,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./debugging.html" class="pagination-link" aria-label="Debugging SpaDES modules">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES modules</span></span>
+      <a href="./debugging.html" class="pagination-link" aria-label="Debugging SpaDES Modules">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eliot McIntire">
-<meta name="dcterms.date" content="2024-06-08">
+<meta name="dcterms.date" content="2024-06-10">
 
 <title>Robust and nimble scientific workflows, using SpaDES - 5&nbsp; Introduction to SpaDES Modules</title>
 <style>
@@ -326,7 +326,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Scheduling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling events</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span></a>
   </div>
 </li>
       </ul>
@@ -334,7 +334,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./ContinuousWorkflows.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Continuous Workflows</span></a>
+ <span class="menu-text">Working with Continuous Workflows</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -349,13 +349,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./debugging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></a>
   </div>
 </li>
       </ul>
@@ -390,7 +390,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -422,7 +422,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#add-a-second-module" id="toc-add-a-second-module" class="nav-link" data-scroll-target="#add-a-second-module"><span class="header-section-number">5.2.1</span> Add a second module</a></li>
   </ul></li>
-  <li><a href="#next-metadata" id="toc-next-metadata" class="nav-link" data-scroll-target="#next-metadata"><span class="header-section-number">5.3</span> Next: Metadata</a></li>
+  <li><a href="#sec-newModule-challengeYourself" id="toc-sec-newModule-challengeYourself" class="nav-link" data-scroll-target="#sec-newModule-challengeYourself"><span class="header-section-number">5.3</span> Challenge yourself</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">5.4</span> See also</a></li>
   </ul>
 </nav>
@@ -449,7 +449,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 8, 2024</p>
+      <p class="date">June 10, 2024</p>
     </div>
   </div>
   
@@ -461,7 +461,7 @@ window.Quarto = {
 </header>
 
 
-<p>SpaDES modules are comprised of R code that has metadata and the gets put into functions. With this in mind, we can start with some simple R code.</p>
+<p>SpaDES modules are comprised of R code that has metadata and that gets put into functions. With this in mind, we can start with some simple R code.</p>
 <section id="some-r-code-to-convert" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="some-r-code-to-convert"><span class="header-section-number">5.1</span> Some R code to convert</h2>
 <div class="cell">
@@ -477,12 +477,12 @@ window.Quarto = {
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Looking at this code above, we can imagine that the first 3 lines are conceptually different – <em>fit a dummy model</em> – from the last line – <em>visualize it</em>. Lets put these into 2 “modules”, and then run them in sequence.</p>
+<p>Looking at this code above, we can imagine that the first 3 lines are conceptually different – <em>fit a dummy model</em> – from the last line – <em>visualize it</em>. Let’s put these into 2 “modules”, and then run them in sequence.</p>
 </section>
 <section id="create-a-module" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="create-a-module"><span class="header-section-number">5.2</span> Create a module</h2>
 <p>We use the <code>SpaDES.core</code> function <code>newModule()</code> to make a new module.</p>
-<p>Step 1 – move the code to an “init” event. This “init” even is a convention that SpaDES uses. A module must always have an “init” event. This is the only code that is “definitely run” in a module.</p>
+<p>Step 1 – move the code to an “init” event. This “init” event is a convention that SpaDES uses. A module must always have an “init” event. This is the only code that is “definitely run” in a module.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -492,15 +492,15 @@ window.Quarto = {
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># make a module</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>nm1 <span class="ot">&lt;-</span> <span class="st">"My_linear_model"</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>modulePath <span class="ot">&lt;-</span> <span class="st">"~/SpaDES_book/NewModuleIntro/NewModule"</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">newModule</span>(<span class="at">name =</span> nm1, <span class="at">path =</span> modulePath, <span class="at">open =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">events =</span> <span class="fu">list</span>(</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">init =</span> {</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>              x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>              y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>              <span class="co"># fit a linear model</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>              model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>            }</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>          ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">newModule</span>(<span class="at">name =</span> nm1, <span class="at">path =</span> modulePath, <span class="at">open =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">events =</span> <span class="fu">list</span>(</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                         <span class="at">init =</span> {</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                           x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>                           y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># fit a linear model</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                           model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>                         }</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>                       ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p><strong>Keeping objects</strong></p>
@@ -520,7 +520,7 @@ window.Quarto = {
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                       ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>How would we run this “init” event? We use <code>simInit</code>, which parses the code (like loading a library or sourcing a function) then <code>spades</code> which executes it.</p>
+<p>How would we run this “init” event? We use <code>simInit</code>, which parses the code (like loading a library or sourcing a function) then <code>spades</code>, which executes it.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -535,7 +535,7 @@ window.Quarto = {
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>out<span class="sc">$</span>model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>We can also look at “what ran”… or in other words, what was our workflow. Of course, this will just be one “user” created event (there are 4 “SpaDES-created” events … we may use them later, ignore for now)</p>
+<p>We can also look at “what ran”… or in other words, what was our workflow. Of course, this will just be one “user-created” event (there are 4 “SpaDES-created” events … we may use them later, ignore for now)</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -550,16 +550,16 @@ window.Quarto = {
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>nm2 <span class="ot">&lt;-</span> <span class="st">"visualize"</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">newModule</span>(nm2, <span class="at">path =</span> modulePath, <span class="at">open =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">events =</span> <span class="fu">list</span>(</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">init =</span> {</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>              <span class="fu">plot</span>(sim<span class="sc">$</span>model)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>            }</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>          )</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">newModule</span>(nm2, <span class="at">path =</span> modulePath, <span class="at">open =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">events =</span> <span class="fu">list</span>(</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">init =</span> {</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">plot</span>(sim<span class="sc">$</span>model)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                         }</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                       )</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>And run both together. We name them both in the <code>module</code> argument. We are using <code>simInitAndSpades</code> which is a shortcut to running the two function separately.</p>
+<p>And now we run both together. We name them both in the <code>module</code> argument. We are using <code>simInitAndSpades</code> which is a shortcut to running the two functions separately.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -578,13 +578,28 @@ window.Quarto = {
 <p>This time, there is an extra event that happened. <strong>We now have a workflow of 2 events.</strong></p>
 </section>
 </section>
-<section id="next-metadata" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="next-metadata"><span class="header-section-number">5.3</span> Next: Metadata</h2>
-<p>Next, we will explore a key feature of SpaDES modules: the metadata.</p>
+<section id="sec-newModule-challengeYourself" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="sec-newModule-challengeYourself"><span class="header-section-number">5.3</span> Challenge yourself</h2>
+<ol type="1">
+<li>Make a new module. Make it really simple. Run it with <code>simInitAndSpades</code> as in the above examples.</li>
+</ol>
+<ul>
+<li>Use <code>sim$</code> for an object that will be outputted.</li>
+</ul>
+<ol start="2" type="1">
+<li>Make a second new module that uses the <code>sim$</code> object.</li>
+</ol>
+<ul>
+<li>Add another new object in <code>sim$</code></li>
+</ul>
+<ol start="3" type="1">
+<li>Make a third new module that uses the <code>sim$</code> object from the 2nd module.</li>
+</ol>
 </section>
 <section id="see-also" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="see-also"><span class="header-section-number">5.4</span> See also</h2>
-<p><a href="https://rdrr.io/cran/SpaDES.core/man/simInitAndSpades.html"><code>?simInitAndSpades</code></a>,</p>
+<p><a href="https://rdrr.io/cran/SpaDES.core/man/simList-accessors-events.html"><code>simList</code> accessors</a></p>
+<p><a href="https://rdrr.io/cran/SpaDES.core/man/simInitAndSpades.html"><code>?simInitAndSpades</code></a></p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/newModule.html"><code>?newModule</code></a></p>
 
 

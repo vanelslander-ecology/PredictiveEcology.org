@@ -346,7 +346,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Scheduling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling events</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span></a>
   </div>
 </li>
       </ul>
@@ -354,7 +354,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./ContinuousWorkflows.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Continuous Workflows</span></a>
+ <span class="menu-text">Working with Continuous Workflows</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -369,13 +369,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./debugging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></a>
   </div>
 </li>
       </ul>
@@ -410,7 +410,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -522,7 +522,7 @@ Important&nbsp;15.1: Google account needed for this example
 <div id="fig-gdriveauth" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-gdriveauth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="C:/Users/cbarros/GitHub/PredictiveEcology.org/training/assets/img/gdriveauth.png" id="fig-gdriveauth" class="img-fluid quarto-figure quarto-figure-center anchored figure-img">
+<img src="C:/Eliot/GitHub/PredictiveEcology.org/training/assets/img/gdriveauth.png" id="fig-gdriveauth" class="img-fluid quarto-figure quarto-figure-center anchored figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-gdriveauth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;15.1
@@ -797,7 +797,7 @@ Figure&nbsp;15.1
 <li><p>repeat the <code>setupProject</code> call</p></li>
 </ul>
 <p>Note that because <code>simOut</code> is actually a copy of <code>simInitOut</code> (see the output of <code>SpaDES.core::completed(simInitOut)</code>), this still means that <code>simInitOut</code> has to be re-generated for this purpose, otherwise <code>spades</code> would try to resume the simulation from the “last year”.</p>
-<p>Thanks to internal caching, it will only take seconds to “redo” <code>simInitOut</code>. You will also notice that <code>init</code> events are retrieved from cache, this time around.</p>
+<p>Thanks to internal caching, it will only take seconds to “redo” <code>simInitOut</code>. You will also notice that <code>init</code> events are retrieved from cache, this time around<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -826,7 +826,10 @@ Figure&nbsp;15.1
 <p>We use <a href="https://spades-experiment.predictiveecology.org/reference/experiment2.html"><code>SpaDES.experiment::experiment2()</code></a> to do two things:</p>
 <ul>
 <li><p>Create a folder structure by replicate to store the simulation outputs</p></li>
-<li><p>Generate 10 <em>independent</em> simulations and run them in sequence (<a href="#lst-exp" class="quarto-xref">Listing&nbsp;<span>15.1</span></a>) or in parallel (<a href="#lst-expparall" class="quarto-xref">Listing&nbsp;<span>15.2</span></a>), using the <code>future</code> package.</p></li>
+<li><p>Generate 10 <em>independent</em> simulations and run them in sequence</p>
+<ol class="example" type="1">
+<li>or in parallel (<a href="#lst-expparall" class="quarto-xref">Listing&nbsp;<span>15.2</span></a>), using the <code>future</code> package.</li>
+</ol></li>
 </ul>
 <p>This time, we will specify a list of output objects to be saved for model validation later.</p>
 <div class="cell">
@@ -879,7 +882,7 @@ Independence between replicates
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In general, there are two levels of replicate independence that can be considered in dynamic ecological models like LandR, where stocahstic processes happen during the parameterisation phase<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> and during the simulation phase:</p>
+<p>In general, there are two levels of replicate independence that can be considered in dynamic ecological models like LandR, where stocahstic processes happen during the parameterisation phase[^2] and during the simulation phase:</p>
 <ul>
 <li><p>replicates may have <em>independent parameterisation and initialisation</em> and <em>independent ecological process simulation</em></p></li>
 <li><p>replicates may <em>share the parameterisation and initialisation</em> but have independent ecological process simulation.</p></li>
@@ -929,49 +932,44 @@ Independence between replicates
 <span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>    simOut<span class="sc">$</span>studyArea</span>
 <span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>  },</span>
 <span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">rasterToMatch =</span> {</span>
-<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list.files</span>(SpaDES.core<span class="sc">::</span><span class="fu">inputPath</span>(simOut), <span class="st">"rasterToMatch_LandRDemo_coreVeg"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>      terra<span class="sc">::</span><span class="fu">rast</span>()</span>
-<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>  },</span>
-<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">rawBiomassMapStart =</span> {</span>
-<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list.files</span>(SpaDES.core<span class="sc">::</span><span class="fu">inputPath</span>(simOut), <span class="st">"rawBiomassMap_LandRDemo_coreVeg"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>      terra<span class="sc">::</span><span class="fu">rast</span>()</span>
-<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>  },</span>
-<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>  <span class="at">simulationOutputs =</span> {</span>
-<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>    repDirs <span class="ot">&lt;-</span> <span class="fu">list.files</span>(SpaDES.core<span class="sc">::</span><span class="fu">outputPath</span>(simOut), <span class="st">"_rep"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>) </span>
-<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>    cohortDataFiles <span class="ot">&lt;-</span> <span class="fu">sapply</span>(repDirs, list.files, <span class="at">pattern =</span> <span class="st">"cohortData"</span>, <span class="at">simplify =</span> <span class="cn">FALSE</span>) </span>
-<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>    cohortDataDT <span class="ot">&lt;-</span> <span class="fu">sapply</span>(cohortDataFiles, as.data.table, <span class="at">simplify =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>      <span class="fu">rbindlist</span>(<span class="at">idcol =</span> <span class="st">"dir"</span>)</span>
-<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>    cohortDataDT[, objectName <span class="sc">:</span><span class="er">=</span> <span class="st">"cohortData"</span>]</span>
-<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>    cohortDataDT[, saveTime <span class="sc">:</span><span class="er">=</span> <span class="fu">as.integer</span>(<span class="fu">sub</span>(<span class="st">".*([[:digit:]]{4}).*"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>, V1))]</span>
-<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>    cohortDataDT[, file <span class="sc">:</span><span class="er">=</span> <span class="fu">file.path</span>(dir, V1)]</span>
-<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>    cohortDataDT[, <span class="st">`</span><span class="at">:=</span><span class="st">`</span>(<span class="at">dir =</span> <span class="cn">NULL</span>, <span class="at">V1 =</span> <span class="cn">NULL</span>)]</span>
-<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>    PGMapFiles <span class="ot">&lt;-</span> <span class="fu">sapply</span>(repDirs, list.files, <span class="at">pattern =</span> <span class="st">"pixelGroupMap"</span>, <span class="at">simplify =</span> <span class="cn">FALSE</span>) </span>
-<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>    PGMapDT <span class="ot">&lt;-</span> <span class="fu">sapply</span>(PGMapFiles, as.data.table, <span class="at">simplify =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a>      <span class="fu">rbindlist</span>(<span class="at">idcol =</span> <span class="st">"dir"</span>)</span>
-<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a>    PGMapDT[, objectName <span class="sc">:</span><span class="er">=</span> <span class="st">"pixelGroupMap"</span>]</span>
-<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>    PGMapDT[, saveTime <span class="sc">:</span><span class="er">=</span> <span class="fu">as.integer</span>(<span class="fu">sub</span>(<span class="st">".*([[:digit:]]{4}).*"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>, V1))]</span>
-<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a>    PGMapDT[, file <span class="sc">:</span><span class="er">=</span> <span class="fu">file.path</span>(dir, V1)]</span>
-<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a>    PGMapDT[, <span class="st">`</span><span class="at">:=</span><span class="st">`</span>(<span class="at">dir =</span> <span class="cn">NULL</span>, <span class="at">V1 =</span> <span class="cn">NULL</span>)]</span>
-<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a>    outDT <span class="ot">&lt;-</span> <span class="fu">rbind</span>(cohortDataDT, PGMapDT)</span>
-<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a>    outDT</span>
-<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a>  },</span>
-<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a>  <span class="at">sppEquiv =</span> simOut<span class="sc">$</span>sppEquiv,</span>
-<span id="cb12-59"><a href="#cb12-59" aria-hidden="true" tabindex="-1"></a>  <span class="at">sppEquivCol =</span> simOut<span class="sc">$</span>sppEquivCol,</span>
-<span id="cb12-60"><a href="#cb12-60" aria-hidden="true" tabindex="-1"></a>  <span class="at">sppColorVect =</span> simOut<span class="sc">$</span>sppColorVect,</span>
-<span id="cb12-61"><a href="#cb12-61" aria-hidden="true" tabindex="-1"></a>  <span class="at">speciesLayersStart =</span> {</span>
-<span id="cb12-62"><a href="#cb12-62" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list.files</span>(SpaDES.core<span class="sc">::</span><span class="fu">outputPath</span>(simOut), <span class="st">"speciesLayers_2001_LandRDemo_coreVeg.tif"</span>, </span>
-<span id="cb12-63"><a href="#cb12-63" aria-hidden="true" tabindex="-1"></a>               <span class="at">full.names =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb12-64"><a href="#cb12-64" aria-hidden="true" tabindex="-1"></a>      terra<span class="sc">::</span><span class="fu">rast</span>()</span>
-<span id="cb12-65"><a href="#cb12-65" aria-hidden="true" tabindex="-1"></a>  },</span>
-<span id="cb12-66"><a href="#cb12-66" aria-hidden="true" tabindex="-1"></a>  <span class="at">standAgeMapStart =</span> {</span>
-<span id="cb12-67"><a href="#cb12-67" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list.files</span>(SpaDES.core<span class="sc">::</span><span class="fu">inputPath</span>(simOut), <span class="st">"standAgeMap_LandRDemo_coreVeg"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb12-68"><a href="#cb12-68" aria-hidden="true" tabindex="-1"></a>      terra<span class="sc">::</span><span class="fu">rast</span>()</span>
-<span id="cb12-69"><a href="#cb12-69" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb12-70"><a href="#cb12-70" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb12-71"><a href="#cb12-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-72"><a href="#cb12-72" aria-hidden="true" tabindex="-1"></a>simOutValid <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">simInitAndSpades2</span>(outValid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>    terra<span class="sc">::</span><span class="fu">deepcopy</span>(simOut<span class="sc">$</span>rasterToMatch)</span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">rawBiomassMapStart =</span> {</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>    terra<span class="sc">::</span><span class="fu">deepcopy</span>(simOut<span class="sc">$</span>rasterToMatchLarge)</span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>  <span class="at">simulationOutputs =</span> {</span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>    repDirs <span class="ot">&lt;-</span> <span class="fu">list.files</span>(SpaDES.core<span class="sc">::</span><span class="fu">outputPath</span>(simOut), <span class="st">"_rep"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>    cohortDataFiles <span class="ot">&lt;-</span> <span class="fu">sapply</span>(repDirs, list.files, <span class="at">pattern =</span> <span class="st">"cohortData"</span>, <span class="at">simplify =</span> <span class="cn">FALSE</span>) </span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>    cohortDataDT <span class="ot">&lt;-</span> <span class="fu">sapply</span>(cohortDataFiles, as.data.table, <span class="at">simplify =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>      <span class="fu">rbindlist</span>(<span class="at">idcol =</span> <span class="st">"dir"</span>)</span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>    cohortDataDT[, objectName <span class="sc">:</span><span class="er">=</span> <span class="st">"cohortData"</span>]</span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>    cohortDataDT[, saveTime <span class="sc">:</span><span class="er">=</span> <span class="fu">as.integer</span>(<span class="fu">sub</span>(<span class="st">".*([[:digit:]]{4}).*"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>, V1))]</span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>    cohortDataDT[, file <span class="sc">:</span><span class="er">=</span> <span class="fu">file.path</span>(dir, V1)]</span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>    cohortDataDT[, <span class="st">`</span><span class="at">:=</span><span class="st">`</span>(<span class="at">dir =</span> <span class="cn">NULL</span>, <span class="at">V1 =</span> <span class="cn">NULL</span>)]</span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>    PGMapFiles <span class="ot">&lt;-</span> <span class="fu">sapply</span>(repDirs, list.files, <span class="at">pattern =</span> <span class="st">"pixelGroupMap"</span>, <span class="at">simplify =</span> <span class="cn">FALSE</span>) </span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>    PGMapDT <span class="ot">&lt;-</span> <span class="fu">sapply</span>(PGMapFiles, as.data.table, <span class="at">simplify =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>      <span class="fu">rbindlist</span>(<span class="at">idcol =</span> <span class="st">"dir"</span>)</span>
+<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>    PGMapDT[, objectName <span class="sc">:</span><span class="er">=</span> <span class="st">"pixelGroupMap"</span>]</span>
+<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a>    PGMapDT[, saveTime <span class="sc">:</span><span class="er">=</span> <span class="fu">as.integer</span>(<span class="fu">sub</span>(<span class="st">".*([[:digit:]]{4}).*"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>, V1))]</span>
+<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a>    PGMapDT[, file <span class="sc">:</span><span class="er">=</span> <span class="fu">file.path</span>(dir, V1)]</span>
+<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>    PGMapDT[, <span class="st">`</span><span class="at">:=</span><span class="st">`</span>(<span class="at">dir =</span> <span class="cn">NULL</span>, <span class="at">V1 =</span> <span class="cn">NULL</span>)]</span>
+<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a>    outDT <span class="ot">&lt;-</span> <span class="fu">rbind</span>(cohortDataDT, PGMapDT)</span>
+<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a>    outDT</span>
+<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a>  <span class="at">sppEquiv =</span> simOut<span class="sc">$</span>sppEquiv,</span>
+<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a>  <span class="at">sppEquivCol =</span> simOut<span class="sc">$</span>sppEquivCol,</span>
+<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a>  <span class="at">sppColorVect =</span> simOut<span class="sc">$</span>sppColorVect,</span>
+<span id="cb12-59"><a href="#cb12-59" aria-hidden="true" tabindex="-1"></a>  <span class="at">speciesLayersStart =</span> {</span>
+<span id="cb12-60"><a href="#cb12-60" aria-hidden="true" tabindex="-1"></a>    terra<span class="sc">::</span><span class="fu">deepcopy</span>(simOut<span class="sc">$</span>speciesLayers)</span>
+<span id="cb12-61"><a href="#cb12-61" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb12-62"><a href="#cb12-62" aria-hidden="true" tabindex="-1"></a>  <span class="at">standAgeMapStart =</span> {</span>
+<span id="cb12-63"><a href="#cb12-63" aria-hidden="true" tabindex="-1"></a>    terra<span class="sc">::</span><span class="fu">deepcopy</span>(simOut<span class="sc">$</span>standAgeMap)</span>
+<span id="cb12-64"><a href="#cb12-64" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb12-65"><a href="#cb12-65" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-66"><a href="#cb12-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-67"><a href="#cb12-67" aria-hidden="true" tabindex="-1"></a>simOutValid <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">simInitAndSpades2</span>(outValid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -1031,14 +1029,15 @@ debug at C:/Users/cbarros/Documents/SpaDES_book/LandRDemo_coreVeg/modules/Biomas
 </div>
 <ul>
 <li><p>Noticed any differences (speed, cache IDs, …)?</p></li>
-<li><p>where the species simulated the same? How about their trait values (e.g.&nbsp;estimated maxB, species establishment probabilities. )</p></li>
+<li><p>were the species simulated the same? How about their trait values (e.g.&nbsp;estimated maxB, species establishment probabilities. )</p></li>
 </ul>
 </section>
 <section id="see-also" class="level2" data-number="15.8">
 <h2 data-number="15.8" class="anchored" data-anchor-id="see-also"><span class="header-section-number">15.8</span> See also</h2>
 <p><a href="https://landr-manual.predictiveecology.org/">LandR Manual</a></p>
+<p><a href="Caching.html" class="quarto-xref"><span>Chapter 11</span></a> on caching.</p>
 <p><a href="https://future.futureverse.org/reference/plan.html"><code>?future::plan</code></a></p>
-<p><a href="https://bookdown.org/rdpeng/rprogdatascience/parallel-computation.html">Parallelisation Computation – R Programming for Data Science</a></p>
+<p><a href="https://rdrr.io/cran/SpaDES.core/man/simList-accessors-events.html"><code>simList</code> accessors</a></p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -1054,7 +1053,7 @@ Scheller, Robert M., and Brian R. Miranda. 2015. <em>LANDIS-II Biomass Successio
 <hr>
 <ol>
 <li id="fn1"><p>See <a href="https://rdrr.io/cran/googledrive/man/drive_auth.html"><code>?googledrive::drive_auth</code></a> for more information.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>By default, <em>Biomass_borealDataPrep</em> tries to fill missing land-cover data in recently burned pixels by randomly looking for the closes forest land-cover type.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>See <a href="Caching.html" class="quarto-xref"><span>Chapter 11</span></a> about caching.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 

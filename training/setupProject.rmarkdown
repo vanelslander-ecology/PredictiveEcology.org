@@ -11,6 +11,7 @@ execute:
   cache: false
 ---
 
+
 # SpaDES workflows and projects
 
 One of the advantages of `SpaDES` is that we can make simple "linear"
@@ -39,6 +40,7 @@ documentation sources noted in the chapters.
 
 We can see many of the known modules in the SpaDES-verse and how they interact through their shared inputs and outputs in this interactive figure:
 
+
 ```{r,echo=TRUE,eval=TRUE,cache=TRUE}
 #| code-fold: true
 #| code-summary: "Show the code"
@@ -63,9 +65,11 @@ graph <- SpaDES.project::moduleDependenciesToGraph(DT)
 (vn <- SpaDES.project::PlotModuleGraph(graph))
 ```
 
+
 We also sometimes represent these as hexes, following the R-package convention:
 
 ![](assets/img/Hexes.png)
 
 
 The idea with `setupProject` is that we can start weaving different groups of modules together. This is what we will do in the next sections.
+

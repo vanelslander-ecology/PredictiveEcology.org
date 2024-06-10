@@ -311,7 +311,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Scheduling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling events</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span></a>
   </div>
 </li>
       </ul>
@@ -319,7 +319,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./ContinuousWorkflows.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Continuous Workflows</span></a>
+ <span class="menu-text">Working with Continuous Workflows</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -334,13 +334,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./debugging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></a>
   </div>
 </li>
       </ul>
@@ -375,7 +375,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -464,6 +464,12 @@ window.Quarto = {
 <h4 data-number="1.1.3.1" class="anchored" data-anchor-id="arent-packages-and-functions-sufficient"><span class="header-section-number">1.1.3.1</span> Aren’t packages and functions sufficient?</h4>
 <p>Scientists have embraced the idea of modular code by creating and using functions, often bundled into packages, e.g., R packages. This is analogous to the <strong>Methods</strong> section of a journal paper: i.e., the methods (functions) describe <em>how</em> you will do something. The use of packages in this way has massively accelerated Ecology and other data sciences.</p>
 <p>However, even if you know all the functions that a paper used, this in itself is not sufficient to reproduce the <strong>Results</strong>. <em>SpaDES modules can be thought of the recipe needed to make the Results</em>. In other words, a SpaDES module enables a developer to bundle the functions in a specific order so that one can recreate the steps to make the Results. A user can then use the module directly, rather instead of trying to recreate the necessary sequence of functions.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://onlinelibrary.wiley.com/doi/10.1111/ele.13994"><img src="assets/img/PERFICTfig1.jpg" class="img-fluid figure-img" alt="Functions and modules as key tools to achieve workflow nimbleness. From McIntire et al. (2022)"></a></p>
+<figcaption>Functions and modules as key tools to achieve workflow nimbleness. From <span class="citation" data-cites="mcintire2022">McIntire et al. (<a href="references.html#ref-mcintire2022" role="doc-biblioref">2022</a>)</span></figcaption>
+</figure>
+</div>
 </section>
 </section>
 <section id="i-use-targets-for-my-workflows.-how-does-spades-differ" class="level3" data-number="1.1.4">
@@ -551,7 +557,7 @@ Tip&nbsp;1.1: <code>reproducible::prepInputs</code> will make your life easier
 <li><p>download from a data repository URL;</p></li>
 <li><p>spatially process the data according to a polygon or raster template</p></li>
 </ul>
-<p>It also caches these operations, so taht they don’t need to be repeated unecessarily.</p>
+<p>It also caches these operations, so taht they don’t need to be repeated unnecessarily.</p>
 <p>This can save hours of learning to master caching and GIS algorithms (or avoid using flawed approaches) for many ecologists!</p>
 </div>
 </div>
