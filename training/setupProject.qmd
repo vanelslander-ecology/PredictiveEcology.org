@@ -34,3 +34,10 @@ that have been developed and used in ecological modelling and
 forecating, to answer both research or applied questions. We encourage
 readers to learn more about these models (and *modules*) from the
 documentation sources noted in the chapters.
+
+## Some of the SpaDES-verse
+
+We sometimes represent these as hexes, following the R-package convention:
+
+![Hexes](assets/img/Hexes.png)
+The idea with `setupProject` is that we can start weaving different groups of modules together. This is what we will do in the next sections.
