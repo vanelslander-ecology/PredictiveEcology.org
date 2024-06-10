@@ -69,7 +69,7 @@ getting local file.
 Require::Require(c("terra", "reproducible"), 
                  repos = c(getOption("predictiveecology.r-universe.dev", getOption("repos"))))
 url <- "https://github.com/tati-micheletti/host/raw/master/data/rasterTest.tif"
-ras <- prepInputs(url = url)
+ras <- prepInputs(url = url, destinationPath = "~/SpaDES_book/data/prepInputs")
 
 terra::plot(ras)
 ```
@@ -80,7 +80,7 @@ Often, cloud-stored files are in an archive, like a `zip` or `tar.gz`. These can
 
 ```{r archive}
 url <- "http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/ecozone_shp.zip"
-shpEcozone <- prepInputs(url = url)
+shpEcozone <- prepInputs(url = url, destinationPath = "~/SpaDES_book/data/prepInputs")
 terra::plot(shpEcozone[1])
 ```
 
@@ -92,7 +92,7 @@ If we want to use the same file in many projects, we can obviously just download
 ```{r inputPaths}
 options(reproducible.inputPaths = "~/data")
 url <- "http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/ecozone_shp.zip"
-shpEcozone <- prepInputs(url = url)
+shpEcozone <- prepInputs(url = url, destinationPath = "~/SpaDES_book/data/prepInputs")
 terra::plot(shpEcozone[1])
 ```
 
@@ -127,7 +127,7 @@ The following will get the national ecozone map, project, crop and mask it to th
 SK <- SpaDES.project::setupStudyArea(list(level = 2, NAME_1 = "Saskatchewan"))
 shpEcozoneSK <- prepInputs(
   url = "http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/ecozone_shp.zip",
-  to = SK
+  to = SK, destinationPath = "~/SpaDES_book/data/prepInputs"
 )
 terra::plot(shpEcozoneSK[1])
 ```
@@ -137,18 +137,105 @@ terra::plot(shpEcozoneSK[1])
 The following will get the national ecozone map, project, crop and mask it to the SK dataset. 
 
 ```{r}
+urlTif1 <- "https://geodata.ucdavis.edu/geodata/elv/CAN_elv_msk.zip"
+# Turns out the previous steps (original data or postProccessed) have an error
+try(DEMSK <- prepInputs(
+  url = urlTif1,
+  maskTo = shpEcozoneSK, 
+  cropTo = shpEcozoneSK,
+  destinationPath = "~/SpaDES_book/data/prepInputs"
+))
+
+shpEcozoneSK <- fixErrorsIn(shpEcozoneSK)
+# Rerun
+DEMSK <- prepInputs(
+  url = urlTif1,
+  cropTo = shpEcozoneSK,
+  maskTo = shpEcozoneSK, 
+  destinationPath = "~/SpaDES_book/data/prepInputs"
+)
+
+terra::plot(DEMSK)
+terra::plot(shpEcozoneSK[1], add = TRUE, col = "transparent")
+```
+
+Of course, we may have many other things, including change the resolution of the downloaded object, change the projection etc.
+
+```{r}
 SK <- SpaDES.project::setupStudyArea(list(level = 2, NAME_1 = "Saskatchewan", epsg = 5070))
 SKras <- terra::rast(terra::ext(SK), res = 250, val = 1)
 terra::crs(SKras) <- terra::crs(SK)
-shpEcozoneSK <- prepInputs(
-  url = "http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/ecozone_shp.zip",
-  to = SKras
+
+DEMSK250m <- prepInputs(
+  url = urlTif1,
+  to = SKras, 
+  destinationPath = "~/SpaDES_book/data/prepInputs"
 )
-SKras <- postProcessTo(SKras, shpEcozoneSK)
-terra::plot(SKras)
-terra::plot(shpEcozoneSK[1], add = TRUE)
+terra::plot(DEMSK250m)
 ```
 
-## Other examples
+So, we can easily put these `prepInputs` calls in our workflows, in any project, with minimal new effort each time.
 
+## Caching
 
+`prepInputs` is friendly with `Cache`. In addition to the local stashing of a file, the GIS itself may take a lont time. We can just `|> Cache()` at the end and we have a workflow that doesn't need to be broken.
+
+```{r Caching}
+DEMSK250m <- prepInputs(
+  url = urlTif1,
+  to = SKras, 
+  destinationPath = "~/SpaDES_book/data/prepInputs"
+) |> 
+  Cache()
+
+# run later... very fast
+DEMSK250m <- prepInputs(
+  url = urlTif1,
+  to = SKras, 
+  destinationPath = "~/SpaDES_book/data/prepInputs"
+) |> 
+  Cache()
+```
+
+## Extending `prepInputs` with `fun`
+
+It is impossible for `prepInputs` to be able to handle all data capturing cases. When customization is needed, a few options are possible.
+
+1. Make a custom `fun` argument. Optionally, `dlFun` can be used to specify how to dowload the data.
+2. Make a custom `prepInputs_XXX` function that calls `prepInputs` internally.
+
+The following example uses a custom `fun`. These examples are fast, so the benefits of 
+```{r custom}
+LuxembourgFull <- prepInputs(
+ dlFun =
+   geodata::gadm(name = "GADM", country = "LUX", level = 0, path = "~/SpaDES_book/prepInputs") # preProcess keeps file from this!
+) |> Cache()
+
+LuxembourgInnerBuffer <- prepInputs(
+  dlFun =
+    geodata::gadm(name = "GADM", country = "LUX", level = 0, path = "~/SpaDES_book/prepInputs") # preProcess keeps file from this!
+  ,
+  fun = {                      # Custom function
+    out <- readRDS(targetFile)
+    out <- terra::vect(out)
+    terra::buffer(out, 5000)
+  }
+) |> Cache()
+
+terra::plot(LuxembourgInnerBuffer)
+terra::plot(Luxembourg, add = TRUE)
+```
+
+By rerunning the previous code, the caching will be in effect. This means that the two- or more-stage slow processes of downloading, custom operations, and possibly GIS using `*to* functions can all be Cached in a single step, resulting in the smallest possible output being saved, i.e., intermediate large objects have only limited "saving".
+
+NOTE: Rmarkdown and Quarto both have a form of caching of chunks. This can be effective in some circumstances, but it is somewhat limited (as are all forms of Caching -- they will hit their limits somewhere). For instance, they do not deal with the pointers of `C++` objects in `terra`. 
+
+## See also
+
+There are many other elements of this function that can be effectively used.
+
+[`reproducible::prepInputs`](https://reproducible.predictiveecology.org/reference/prepInputs.html)
+
+[`reproducible::preProcess`](https://reproducible.predictiveecology.org/reference/preProcess.html)
+
+[`reproducible::postProcessTo`](https://reproducible.predictiveecology.org/reference/postProcessTo.html)
