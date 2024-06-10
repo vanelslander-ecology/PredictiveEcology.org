@@ -111,8 +111,8 @@ SpaDES.core::newModule(name = nm1, path = modulePath, open = FALSE,
 ```
 
 How would we run this "init" event? We use `simInit`, which parses the
-code (like loading a library or sourcing a function) then `spades`, which
-executes it.
+code (like loading a library or sourcing a function) then `spades`,
+which executes it.
 
 ```{r}
 #| eval: true
@@ -153,9 +153,9 @@ newModule(nm2, path = modulePath, open = FALSE,
 )
 ```
 
-And now we run both together. We name them both in the `module` argument. We
-are using `simInitAndSpades` which is a shortcut to running the two
-functions separately.
+And now we run both together. We name them both in the `module`
+argument. We are using `simInitAndSpades` which is a shortcut to running
+the two functions separately.
 
 ```{r}
 out2 <- simInitAndSpades(module = c(nm1, nm2), paths = list(modulePath = modulePath))
@@ -172,9 +172,17 @@ completed(out2)
 This time, there is an extra event that happened. **We now have a
 workflow of 2 events.**
 
-## Next: Metadata
+## Challenge yourself {#sec-newModule-challengeYourself}
 
-Next, we will explore a key feature of SpaDES modules: the metadata.
+1. Make a new module. Make it really simple. Run it with `simInitAndSpades` as in the above examples. 
+
+- Use `sim$` for an object that will be outputted.
+
+2. Make a second new module that uses the `sim$` object.
+
+- Add another new object in `sim$`
+
+3. Make a third new module that uses the `sim$` object from the 2nd module.
 
 ## See also
 

@@ -311,9 +311,20 @@ outputs that model, and plots the fit.
 4.  What is the `sim`? See
     [`?'.simList-class'`](https://rdrr.io/cran/SpaDES.core/man/simList-class.html)
 
+## Challenge yourself {#sec-moduleFilesAndMetadata-challengeYourself}
+
+1. Fill in the metadata from the Challenges you did in previous chapter.
+
+2. Look at the other elements of the metadata and cross reference them with 
+[`?defineModule`](https://rdrr.io/cran/SpaDES.core/man/defineModule.html)
+
+3. Look at the `Rmd` file of one of the modules that has been built (recall the message after you call `newModule`), where you have filled in the metadata. Try to build it and look at the automatic tables that get built from the metadata.
+
 ## See also
 
 @sec-modseventsfuns on Modules, Events and Functions
+
+[`?defineModule`](https://rdrr.io/cran/SpaDES.core/man/defineModule.html) describes all the metadata entries.
 
 [`?expectsInput`](https://rdrr.io/cran/SpaDES.core/man/expectsInput.html)
 
