@@ -39,7 +39,7 @@ documentation sources noted in the chapters.
 
 We can see many of the known modules in the SpaDES-verse and how they interact through their shared inputs and outputs in this interactive figure:
 
-```{r,echo=FALSE,eval=TRUE,cache=TRUE}
+```{r,echo=TRUE,eval=TRUE,cache=TRUE}
 Require::Install(c("igraph", "visNetwork"))
 
 modPath <- "~/SpaDES_book/listModules/"
@@ -53,7 +53,7 @@ modsLong <- SpaDES.project::listModules(grepListLong, accounts = accountsListLon
                                         excludeStale = FALSE)
 modsLong <- paste0(modsLong, "@HEAD")
 
-# pass to listModules for much larger figure
+# downloads lots of modules
 mods <- SpaDES.project::getModule(modsLong, modulePath = modPath)
 
 DT <- SpaDES.project::moduleDependencies(modsLong, modulePath = modPath)
