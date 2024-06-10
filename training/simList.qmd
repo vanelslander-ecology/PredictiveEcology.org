@@ -141,6 +141,20 @@ data.frame(other_accessors = other_accessors) |>
 ```
 :::
 
+::: {.callout-note appearance="simple"}
+::: {layout="[ 60, 40 ]"}
+::: {#first-column}
+The `simList` can be imagined as a file cabinet where all the simulation
+details and objects (i.e. the parameters, inputs and outputs declared by
+each module) are stored neatly and in an easily accessible way.
+:::
+
+::: {#second-column}
+![](assets/img/simListScheme.png){width="300"}
+:::
+:::
+:::
+
 ## Model specification
 
 Simple examples (using demo modules) of `simInit()` and `spades()`
