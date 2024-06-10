@@ -274,8 +274,6 @@ Or use `simInitAndSpades2()`
 ```{r runSim2}
 #| results: hide
 
-## remove validation module, can only be run after simulation's done
-out$modules <- out$modules[out$modules != "Biomass_validationKNN"]  
 simOut <- SpaDES.core::simInitAndSpades2(out)
 ```
 
