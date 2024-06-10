@@ -48,6 +48,13 @@ We will demonstrate its use with an example created by [Tati
 Micheletti](https://github.com/tati-micheletti/Micheletti_SpaDES/blob/main/demo.R)
 where a workflow with several modules is setup and run.
 
+## `SpaDES.project::setupProject`
+
+
+https://spades-project.predictiveecology.org/articles/i-getting-started.html
+
+
+
 ## Installation
 
 ```{r setupProject}
