@@ -13,7 +13,7 @@ cache: false
 bibliography: references.bib
 ---
 
-# Continuous Workflows
+# Working with Continuous Workflows
 
 ```{r setup}
 #| include: false
