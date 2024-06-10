@@ -130,23 +130,19 @@ these **Inputs** with defaults if the user hasn't supplied them (using
 We will look at a few examples in this module:
 [Biomass_core::.inputObjects](https://github.com/PredictiveEcology/Biomass_core/blob/d5c214b69f35e7a9f57c59ca7d08329b49328e86/Biomass_core.R#L1964).
 
-First, an object called `studyArea`. [The developer tests whether it
-exists and creates an error if it does not
-exist](https://github.com/PredictiveEcology/Biomass_core/blob/d5c214b69f35e7a9f57c59ca7d08329b49328e86/Biomass_core.R#L1972).
-
-Second, some [GIS tests that evaluate whether 2 objects are in the same
+1. some [GIS tests that evaluate whether 2 objects are in the same
 CRS](https://github.com/PredictiveEcology/Biomass_core/blob/d5c214b69f35e7a9f57c59ca7d08329b49328e86/Biomass_core.R#L2052)
 (i.e., they need to be the same projection, etc., for this module to
 work)
 
-Third, if an object is missing, [it may make sense to fill in the
+2. if an object is missing, [it may make sense to fill in the
 details with parameters from the
 Internet](https://github.com/PredictiveEcology/Biomass_core/blob/d5c214b69f35e7a9f57c59ca7d08329b49328e86/Biomass_core.R#L2066).
 
-### From another module
+3. an object called `studyArea`. [The developer tests whether it
+exists and creates an error if it does not
+exist](https://github.com/PredictiveEcology/Biomass_core/blob/d5c214b69f35e7a9f57c59ca7d08329b49328e86/Biomass_core.R#L1972).
 
-We will leave this section for the @sec-manymodules chapter, where we
-are work with multiple modules.
 
 ## Questions
 
@@ -156,6 +152,8 @@ are work with multiple modules.
 
     -   It turns out that other modules may create this object "after"
         this module is run, and this test will fail.
+
+## Challenge yourself {#sec-moduleFilesAndMetadata-challengeYourself}
 
 ## See also
 
