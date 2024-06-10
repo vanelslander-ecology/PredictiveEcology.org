@@ -71,11 +71,11 @@ If all 3 of these are used, then it will be unnecessary to manually break a work
 The key to getting our code into shape is to use approaches that are
 @tip-RerunTolerance. We will introduce 3 important tools to achieve this:
 
-- @sec-caching -- This is a general tool that many
+- [Caching](@sec-caching) -- This is a general tool that many
 people will be somewhat familiar with. 
-- @sec-prepInputs -- a "do-it-all" function for *getting data into
+- [`reproducible::prepInputs`](@sec-prepInputs) -- a "do-it-all" function for *getting data into
 shape*.
-- @sec-debugging -- for general R and specific SpaDES situations.
+- [Debugging](@sec-debugging) -- for general R and specific SpaDES situations.
 
 ## SpaDES and Continuous Workflows
 
@@ -87,7 +87,7 @@ Thinking about this situation, we can introduce the idea of "Module Types".
 
 SpaDES doesn't have an explicit module types. Rather, by convention, we associate different modules with generic things they do. A fairly comprehensive list of modules types that we create are:
 
-- **Data Munging** -- uses `prepInputs` and outputs clean, usable data for a project
+- **Data Munging** -- uses `prepInputs` and outputs clean, usable data for a project, mostly specifies `createsOutputs`
 - **Parameterization** -- uses data from e.g., a **Data Munging** module and uses statistics on data. This would be recognizable as *a complete ecological study for publication*.
 - **Calibration** -- similar to **Parameterization** but uses repeated simulation to estimate parameters.
 - **Study Area specifics** -- creates outputs that are very idiosyncratic to a study area
@@ -96,5 +96,7 @@ SpaDES doesn't have an explicit module types. Rather, by convention, we associat
 - **Validation** -- takes many repeated inputs, often many replicates 
 - **Visualization** -- takes inputs from one or many replicated module runs and build rich visuals
 - **Post-Processing** -- takes inputs from one or many replicated module runs and builds data analytics. These may be similar to **Validation**
+
+Thus, the differences are about how the `inputObjects` and `outputObjects` are specified and designed.
 
 

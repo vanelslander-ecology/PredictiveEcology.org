@@ -121,7 +121,20 @@ curl \
 r-cran-littler
 ```
 
+## Troubleshooting
+
+For Mac users, it may be helpful to use brew doctor:
+
+```
+brew doctor
+```
+
+If you are still not able with the above instructions, you may be able to follow these [more in-depth instructions](https://predictiveecology.github.io/LandWeb/getting-started.html#development-tools).
+
+
+
 ## See also
+
 
 [Hands on programming with
 R](https://RStudio-education.github.io/hopr/starting.html)
