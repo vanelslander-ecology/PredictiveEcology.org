@@ -52,7 +52,7 @@ envir(sim)
 ```
 
 
-::: {.callout-tip}
+::: {.callout-tip appearance="simple"}
 ## `simList` is an `environment`
 
 The name `simList` has the word "list" in it, but it is actually an `environment`
@@ -64,7 +64,7 @@ is(sim, "environment")
 :::
 
 
-::: {.callout-tip}
+::: {.callout-tip appearance="simple"}
 ## `simNew <- sim` doesn't copy
 If you don't know what an `environment` is in `R`, it is OK. The most important
 feature of an `environment` is that is it `pass-by-reference`, which means it is

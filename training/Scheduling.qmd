@@ -42,7 +42,7 @@ a function in called
 Please see @sec-moduleintro for how to create a simple module before
 attempting this section.
 
-::: {.callout-tip}
+::: {.callout-tip appearance="simple"}
 ## Repeated? When?
 
 When starting to build a module or an event, we ask 2 key questions:
@@ -234,7 +234,7 @@ match what we wrote in the `scheduleEvent` above). In this event, we
 
 See `?SpaDES.core::times()`.
 
-::: {.callout-tip}
+::: {.callout-tip appearance="simple"}
 ## Time in `SpaDES`
 It is useful to understand `time` in SpaDES. Time has units (e.g., "year") which
 is defined by the modules metadata `timeunit`. So, if `time(sim)` is `1` or `2024`,
@@ -265,7 +265,7 @@ switch(
 )
 ```
 
-::: {.callout-tip}
+::: {.callout-tip appearance="simple"}
 ## Top-down vs Bottom-up workflow sequencing
 
 In a "top-down" workflow, we could imagine something like:

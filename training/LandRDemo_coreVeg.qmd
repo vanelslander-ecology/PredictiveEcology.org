@@ -437,12 +437,12 @@ to do two things:
 -   Create a folder structure by replicate to store the simulation
     outputs
 
--   Generate 10 *independent* simulations and run them in sequence
-    (@lst-exp) or in parallel (@lst-expparall), using the `future`
+-   Generate 10 *independent* simulations and run them in sequence (@lst-exp) 
+    or in parallel (@lst-expparall), using the `future`
     package.
 
-This time we will specify a list of output objects to be saved for model
-validation later.
+This time, we will specify a list of output objects to be saved for
+model validation later.
 
 ```{r expSim}
 #| lst-label: lst-exp
@@ -469,11 +469,35 @@ simOutExperiment <- SpaDES.experiment::experiment2(simInitOut, replicates = 10)
 #| lst-label: lst-expparall
 #| lst-cap: Parallel replication
 
-future::plan("multisession", workers = 5)
+future::plan("multisession", workers = 2)
 simOutExperiment <- SpaDES.experiment::experiment2(simInitOut, replicates = 10)
 ```
 
-### Validation
+:::{.callout-note appearance="simple"}
+
+## Independence between replicates
+
+In general, there are two levels of replicate independence that can be considered
+in dynamic ecological models like LandR, where stocahstic processes happen during
+the parameterisation phase[^2] and during the simulation phase:
+
+-   replicates may have *independent parameterisation and initialisation* and
+    *independent ecological process simulation*
+
+-   replicates may *share the parameterisation and initialisation* but have 
+    independent ecological process simulation.
+    
+Neither is better than the other and the one to chose depends on the questions 
+and hypotheses being asked.
+
+In the example above, replicates share the same parameters/initial conditions 
+because they all access the same cached objects from the `init` events -- scroll 
+up to see printed outputs from `experiment2()`.
+
+To have fully independent replication we can use `experiment2(..., useCache = FALSE)`
+::: 
+
+## Validation
 
 Now that we have several replicates, we can use *Biomass_validationKNN*
 to run some validation statistics.
@@ -517,7 +541,7 @@ outValid <- setupProject(
 simOutValid <- SpaDES.core::simInitAndSpades2(outValid)
 ```
 
-### Different scenarios and model selection {#sec-LandRScenarios}
+## Different scenarios and model selection {#sec-LandRScenarios}
 
 In @barros2023, the model was run with two different parameterisation
 approaches one that was "data hungry" and calibrated tree species growth
@@ -530,7 +554,7 @@ By swapping parameterisation/calibration modules in and out <!--HERE-->
 simOutExperiment <- SpaDES.experiment::experiment2(simInitOut, replicates = 10)
 ```
 
-#### Debugging {#sec-LandRdebug}
+## Debugging {#sec-LandRdebug}
 
 There are several ways to debug SpaDES modules (see @sec-debugging), a
 relatively easy one for when you are suprised by an error occurring
@@ -584,14 +608,16 @@ Try re-running the workflow with a different set of study areas. For
 example:
 
 ```{r}
-
 ## studyArea could be
 studyArea = {
-  SpaDES.tools
+  set.seed(123)
+  SpaDES.tools::randomStudyArea(size = 1000000)
 }
 
 ## studyAreaLarge
-
+studyAreaLarge = {
+  terra::buffer(studyArea, width = 10000)
+}
 ```
 
 -   Noticed any differences (speed, cache IDs, ...)?
@@ -601,11 +627,17 @@ studyArea = {
 
 ## See also
 
+[LandR Manual](https://landr-manual.predictiveecology.org/)
+
 [`?future::plan`](https://future.futureverse.org/reference/plan.html)
 
 [Parallelisation Computation -- R Programming for Data
 Science](https://bookdown.org/rdpeng/rprogdatascience/parallel-computation.html)
 
+
 [^1]: See
     [`?googledrive::drive_auth`](https://rdrr.io/cran/googledrive/man/drive_auth.html)
     for more information.
+
+[^2]: By default, *Biomass_borealDataPrep* tries to fill missing land-cover data in recently 
+    burned pixels by randomly looking for the closes forest land-cover type.
