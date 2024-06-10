@@ -5,6 +5,7 @@ _freeze/
 *_files/
 *_cache/
 *.tif
+*.html
 
 packages/
 
