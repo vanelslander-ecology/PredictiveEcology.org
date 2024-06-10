@@ -5,6 +5,9 @@ _freeze/
 *_files/
 *_cache/
 *.tif
+*.html
+site_libs/*
+*.knit.md
 
 packages/
 

@@ -51,11 +51,12 @@ sim$b
 envir(sim)
 ```
 
-
-::: {.callout-tip}
+::: {.callout-tip appearance="simple"}
 ## `simList` is an `environment`
 
-The name `simList` has the word "list" in it, but it is actually an `environment`
+The name `simList` has the word "list" in it, but it is actually an
+`environment`
+
 ```{r,eval=FALSE}
 sim <- simInit()
 is(sim, "environment")
@@ -63,13 +64,13 @@ is(sim, "environment")
 ```
 :::
 
-
-::: {.callout-tip}
+::: {.callout-tip appearance="simple"}
 ## `simNew <- sim` doesn't copy
-If you don't know what an `environment` is in `R`, it is OK. The most important
-feature of an `environment` is that is it `pass-by-reference`, which means it is
-not copied when it is "assigned" somewhere. This makes `SpaDES` fast enough to use
-for huge workflows.
+
+If you don't know what an `environment` is in `R`, it is OK. The most
+important feature of an `environment` is that is it `pass-by-reference`,
+which means it is not copied when it is "assigned" somewhere. This makes
+`SpaDES` fast enough to use for huge workflows.
 
 ```{r,eval=FALSE}
 sim <- simInit()
@@ -80,13 +81,14 @@ simNew$a <- 2
 # what value will this have?
 sim$a
 ```
-
 :::
+
 ## Where does `simList` come from?
 
 There is only 1 way in `SpaDES.core` to create a `simList`:
 
-- using [`simInit()`](https://rdrr.io/cran/SpaDES.core/man/simInit.html)
+-   using
+    [`simInit()`](https://rdrr.io/cran/SpaDES.core/man/simInit.html)
     creates a `simList` object.
 
 ## How can we specify a `simList`?

@@ -105,7 +105,7 @@ are **rerun-tolerant**, see @tip-Rerun (we use *tolerant* in part to
 reflect the fact that the *computer* tolerates it but also the *human*
 because they don't have to wait).
 
-::: {#tip-Rerun .callout-tip}
+::: {#tip-Rerun .callout-tip appearance="simple"}
 Functions are **rerun-tolerant** if they
 
 1.  are **rerun-efficient**, meaning the first time they run they "do"

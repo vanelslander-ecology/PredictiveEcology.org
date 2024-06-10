@@ -8,7 +8,7 @@
 
 <meta name="author" content="Ceres Barros">
 <meta name="author" content="Eliot McIntire">
-<meta name="dcterms.date" content="2024-06-09">
+<meta name="dcterms.date" content="2024-06-10">
 
 <title>Robust and nimble scientific workflows, using SpaDES - Best practices for \(R^3T\) workflows</title>
 <style>
@@ -354,8 +354,8 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">ContinuousWorkflows.qmd</span></a>
+            <a href="./ContinuousWorkflows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Continuous Workflows</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -370,7 +370,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>prepInputs</code> for data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -467,7 +467,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 9, 2024</p>
+      <p class="date">June 10, 2024</p>
     </div>
   </div>
   
@@ -487,7 +487,7 @@ window.Quarto = {
 <li><p>Script, script, script – this means script <em>everything</em> you do, including package installation;</p></li>
 <li><p>“DOComment” your code – use comments that describe the intention of the code, not necessarily a code translation into human language:</p></li>
 </ul>
-<p>::: {.callout-tip collapse = “false”}</p>
+<p>::: {.callout-tip collapse = “false” appearance=“simple”}</p>
 <p>Not a very useful comment (we can check <code>?lm</code> to know what it does):</p>
 <div class="cell">
 <details open="" class="code-fold">

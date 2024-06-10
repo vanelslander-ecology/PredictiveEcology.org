@@ -9,10 +9,10 @@ editor_options:
 # Pre-installing R packages for book
 
 The objective of this book is to facilitate lightweight project code and
-setting up R^3^T workflows[^packagesforbook-1]. To do this, packages and
-any code that are used must be easy to install and use. We accomplish
-this by having each chapter installing its own packages, and avoiding
-having users "pre-installing" packages.
+setting up R^3^T workflows[^1]. To do this, packages and any code that
+are used must be easy to install and use. We accomplish this by having
+each chapter installing its own packages, and avoiding having users
+"pre-installing" packages.
 
 Furthermore, packages, once installed for one project, will be cached
 locally so that the next project will be able to install quickly from
@@ -79,5 +79,5 @@ downloads do not need to happen again.
 
 @sec-TroubleShoot on R package installation troubleshooting
 
-[^packagesforbook-1]: See this [introduction to R^3^T
+[^1]: See this [introduction to R^3^T
     workflows](https://ceresbarros.github.io/reproducible-workflowsWS/presentations/20230712_BESMacroSIG2023_ReproducibleWorkflowsWS.pdf).

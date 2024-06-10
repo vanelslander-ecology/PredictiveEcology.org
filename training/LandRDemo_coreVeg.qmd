@@ -222,29 +222,29 @@ If you have a look at @sec-castorSetup in the @sec-castorEg chapter, you
 will see some differences in the way we setup the two workflows:
 
 -   `paths`. Here we left the defaults for all paths (see
-    [`?setupPaths()`](https://spades-project.predictiveecology.org/reference/setup.html)
-    for the list of path options) except for the project location
-    (`projectPath`) and the location of the package library
-    (`packagePath`, which will be placed inside `projectPath`).
+[`?setupPaths()`](https://spades-project.predictiveecology.org/reference/setup.html)
+for the list of path options) except for the project location
+(`projectPath`) and the location of the package library
+(`packagePath`, which will be placed inside `projectPath`).
 
 -   `options`. We also set a couple of "global options" that determine
-    the where data will be downloaded to
-    ("reproducible.destinationPath"). This will be the same as the
-    default directory to look for inputs ("spades.inputPath"). Notice
-    how we used `paths$` to get these directory paths from the `paths`
-    object that `setupProject` creates (based on the `paths` argument
-    above) prior to setting the options.
+the where data will be downloaded to
+("reproducible.destinationPath"). This will be the same as the
+default directory to look for inputs ("spades.inputPath"). Notice
+how we used `paths$` to get these directory paths from the `paths`
+object that `setupProject` creates (based on the `paths` argument
+above) prior to setting the options.
 
 -   other arguments (`...`). Almost all other arguments in the call
-    above were passed to `...`. These are objects that need to be
-    supplied by the user for these modules (e.g. `studyArea` and
-    `studyAreaLarge`) or whose defaults we want to override (e.g., the
-    species table, `sppEquiv`, and trait values, `speciesParams`). To
-    avoid creating them on the `.GlobalEnv` first, we take advantage of
-    `setupProject`'s ability to run the code in `{ }` and make these
-    polygons. Note that these arguments are passed prior to any 'formal
-    arguments' (see
-    [`?formalArgs()`](https://www.rdocumentation.org/packages/methods/versions/3.6.2/topics/methodUtilities))
+above were passed to `...`. These are objects that need to be
+supplied by the user for these modules (e.g. `studyArea` and
+`studyAreaLarge`) or whose defaults we want to override (e.g., the
+species table, `sppEquiv`, and trait values, `speciesParams`). To
+avoid creating them on the `.GlobalEnv` first, we take advantage of
+`setupProject`'s ability to run the code in `{ }` and make these
+polygons. Note that these arguments are passed prior to any 'formal
+arguments' (see
+[`?formalArgs()`](https://www.rdocumentation.org/packages/methods/versions/3.6.2/topics/methodUtilities))
 
 ## Run simulation
 
@@ -274,12 +274,10 @@ Or use `simInitAndSpades2()`
 ```{r runSim2}
 #| results: hide
 
-## remove validation module, can only be run after simulation's done
-out$modules <- out$modules[out$modules != "Biomass_validationKNN"]  
 simOut <- SpaDES.core::simInitAndSpades2(out)
 ```
 
-#### Inspect the workflow, its inputs, outputs and parameters
+### Inspect the workflow, its inputs, outputs and parameters
 
 Now that we have a simulation we can inspect it. Let's assume you
 initialised and ran your simulation with two separate `simInit2()` and
@@ -380,7 +378,7 @@ plot(simOut$modelBiomass$mod)
 summary(simOut$speciesGrowthCurves$Pice_Gla$NonLinearModel$Pice_Gla)
 ```
 
-#### Turn plotting on *after* setting up the workflow
+### Turn plotting on *after* setting up the workflow
 
 We can change parameters and re-run the simulation to, e.g., activate
 live plotting in *Biomass_core*, without having to
@@ -406,7 +404,7 @@ SpaDES.core::P(simInitOut, param = ".plotMaps", module = "Biomass_core") <- TRUE
 simOut <- SpaDES.core::spades(simInitOut)
 ```
 
-#### Extend the simulation
+### Extend the simulation
 
 We can also keep it going for a few more years. Use `SpaDES.core::end()`
 to extend the simulation another 20 years and then call
@@ -435,14 +433,14 @@ We use
 to do two things:
 
 -   Create a folder structure by replicate to store the simulation
-    outputs
+outputs
 
--   Generate 10 *independent* simulations and run them in sequence
-    (@lst-exp) or in parallel (@lst-expparall), using the `future`
-    package.
+-   Generate 10 *independent* simulations and run them in sequence (@lst-exp) 
+or in parallel (@lst-expparall), using the `future`
+package.
 
-This time we will specify a list of output objects to be saved for model
-validation later.
+This time, we will specify a list of output objects to be saved for
+model validation later.
 
 ```{r expSim}
 #| lst-label: lst-exp
@@ -469,11 +467,35 @@ simOutExperiment <- SpaDES.experiment::experiment2(simInitOut, replicates = 10)
 #| lst-label: lst-expparall
 #| lst-cap: Parallel replication
 
-future::plan("multisession", workers = 5)
+future::plan("multisession", workers = 2)
 simOutExperiment <- SpaDES.experiment::experiment2(simInitOut, replicates = 10)
 ```
 
-### Validation
+:::{.callout-note appearance="simple"}
+
+## Independence between replicates
+
+In general, there are two levels of replicate independence that can be considered
+in dynamic ecological models like LandR, where stocahstic processes happen during
+the parameterisation phase[^2] and during the simulation phase:
+
+-   replicates may have *independent parameterisation and initialisation* and
+*independent ecological process simulation*
+
+-   replicates may *share the parameterisation and initialisation* but have 
+independent ecological process simulation.
+
+Neither is better than the other and the one to chose depends on the questions 
+and hypotheses being asked.
+
+In the example above, replicates share the same parameters/initial conditions 
+because they all access the same cached objects from the `init` events -- scroll 
+up to see printed outputs from `experiment2()`.
+
+To have fully independent replication we can use `experiment2(..., useCache = FALSE)`
+::: 
+
+## Validation
 
 Now that we have several replicates, we can use *Biomass_validationKNN*
 to run some validation statistics.
@@ -487,10 +509,14 @@ Note that, for convenience, we use `simOut` to access many of the
 necessary inputs for *Biomass_validationKNN*, but we could have used one
 of the `simLists` in `simOutExperiment` instead.
 
+We pass all raster objects from the saved files directly, to ensure they are 
+linked to these file paths explicitly.
+
 ```{r experimentSim}
 outValid <- setupProject(
   paths = list("packagePath" = "packages/",
-               "projectPath" = "~/SpaDES_book/LandRDemo_coreVeg"),
+               "projectPath" = "~/SpaDES_book/LandRDemo_coreVeg",
+               "outputPath" = "validation/"),
   options = list(
     "LandR.assertions" = TRUE,
     "reproducible.destinationPath" = paths$inputPath,
@@ -501,23 +527,67 @@ outValid <- setupProject(
   modules = c(
     "PredictiveEcology/Biomass_validationKNN@main"
   ),
-  ## SIMULATION SETUP ------------------------------------
+  ## SIMULATION SETUP --------------------------------
   times = list(start = 1, end = 1),
+  ## PARAMETERS --------------------------------------
+  params = list("Biomass_validationKNN" = list(
+    "minCoverThreshold" = SpaDES.core::params(simOut)$Biomass_borealDataPrep$minCoverThreshold,
+    "pixelGroupBiomassClass" = SpaDES.core::params(simOut)$Biomass_borealDataPrep$pixelGroupBiomassClass,
+    "deciduousCoverDiscount" = SpaDES.core::params(simOut)$Biomass_borealDataPrep$deciduousCoverDiscount,
+    "sppEquivCol" = SpaDES.core::params(simOut)$Biomass_borealDataPrep$sppEquivCol,
+    ".plots" = c("png") ## save all to .png
+  )),
   ## INPUT OBJECTS -----------------------------------
-  studyArea = simOut$studyArea,
-  rasterToMatch = simOut$rasterToMatch,
-  rawBiomassMapStart = simOut$rawBiomassMap,
-  simulationOutputs = rbindlist(lapply(simOutExperiment, SpaDES.core::outputs)),
+  studyArea = {
+    simOut$studyArea
+  },
+  rasterToMatch = {
+    list.files(SpaDES.core::inputPath(simOut), "rasterToMatch_LandRDemo_coreVeg", full.names = TRUE) |>
+      terra::rast()
+  },
+  rawBiomassMapStart = {
+    list.files(SpaDES.core::inputPath(simOut), "rawBiomassMap_LandRDemo_coreVeg", full.names = TRUE) |>
+      terra::rast()
+  },
+  simulationOutputs = {
+    repDirs <- list.files(SpaDES.core::outputPath(simOut), "_rep", full.names = TRUE) 
+    cohortDataFiles <- sapply(repDirs, list.files, pattern = "cohortData", simplify = FALSE) 
+    cohortDataDT <- sapply(cohortDataFiles, as.data.table, simplify = FALSE) |>
+      rbindlist(idcol = "dir")
+    cohortDataDT[, objectName := "cohortData"]
+    cohortDataDT[, saveTime := as.integer(sub(".*([[:digit:]]{4}).*", "\\1", V1))]
+    cohortDataDT[, file := file.path(dir, V1)]
+    cohortDataDT[, `:=`(dir = NULL, V1 = NULL)]
+    
+    PGMapFiles <- sapply(repDirs, list.files, pattern = "pixelGroupMap", simplify = FALSE) 
+    PGMapDT <- sapply(PGMapFiles, as.data.table, simplify = FALSE) |>
+      rbindlist(idcol = "dir")
+    PGMapDT[, objectName := "pixelGroupMap"]
+    PGMapDT[, saveTime := as.integer(sub(".*([[:digit:]]{4}).*", "\\1", V1))]
+    PGMapDT[, file := file.path(dir, V1)]
+    PGMapDT[, `:=`(dir = NULL, V1 = NULL)]
+    
+    outDT <- rbind(cohortDataDT, PGMapDT)
+    outDT
+  },
   sppEquiv = simOut$sppEquiv,
   sppEquivCol = simOut$sppEquivCol,
   sppColorVect = simOut$sppColorVect,
-  speciesLayersStart = simOut$speciesLayers
+  speciesLayersStart = {
+    list.files(SpaDES.core::outputPath(simOut), "speciesLayers_2001_LandRDemo_coreVeg.tif", 
+               full.names = TRUE) |>
+      terra::rast()
+  },
+  standAgeMapStart = {
+    list.files(SpaDES.core::inputPath(simOut), "standAgeMap_LandRDemo_coreVeg", full.names = TRUE) |>
+      terra::rast()
+  }
 )
 
 simOutValid <- SpaDES.core::simInitAndSpades2(outValid)
 ```
 
-### Different scenarios and model selection {#sec-LandRScenarios}
+## Different scenarios and model selection {#sec-LandRScenarios}
 
 In @barros2023, the model was run with two different parameterisation
 approaches one that was "data hungry" and calibrated tree species growth
@@ -530,7 +600,7 @@ By swapping parameterisation/calibration modules in and out <!--HERE-->
 simOutExperiment <- SpaDES.experiment::experiment2(simInitOut, replicates = 10)
 ```
 
-#### Debugging {#sec-LandRdebug}
+## Debugging {#sec-LandRdebug}
 
 There are several ways to debug SpaDES modules (see @sec-debugging), a
 relatively easy one for when you are suprised by an error occurring
@@ -584,28 +654,36 @@ Try re-running the workflow with a different set of study areas. For
 example:
 
 ```{r}
-
 ## studyArea could be
 studyArea = {
-  SpaDES.tools
+  set.seed(123)
+  SpaDES.tools::randomStudyArea(size = 1000000)
 }
 
 ## studyAreaLarge
-
+studyAreaLarge = {
+  terra::buffer(studyArea, width = 10000)
+}
 ```
 
 -   Noticed any differences (speed, cache IDs, ...)?
 
 -   where the species simulated the same? How about their trait values
-    (e.g. estimated maxB, species establishment probabilities. )
+(e.g. estimated maxB, species establishment probabilities. )
 
 ## See also
+
+[LandR Manual](https://landr-manual.predictiveecology.org/)
 
 [`?future::plan`](https://future.futureverse.org/reference/plan.html)
 
 [Parallelisation Computation -- R Programming for Data
 Science](https://bookdown.org/rdpeng/rprogdatascience/parallel-computation.html)
 
+
 [^1]: See
-    [`?googledrive::drive_auth`](https://rdrr.io/cran/googledrive/man/drive_auth.html)
-    for more information.
+[`?googledrive::drive_auth`](https://rdrr.io/cran/googledrive/man/drive_auth.html)
+for more information.
+
+[^2]: By default, *Biomass_borealDataPrep* tries to fill missing land-cover data in recently 
+burned pixels by randomly looking for the closes forest land-cover type.
