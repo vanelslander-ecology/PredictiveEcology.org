@@ -223,7 +223,7 @@ try to accomplish:
 -   "validation modules" evaluate predictions against independent data.
 
 There are no strict rules to classify a SpaDES module, just as there are
-no strict rule classify an R script.
+no strict rules to classify an R script.
 
 ## See also
 

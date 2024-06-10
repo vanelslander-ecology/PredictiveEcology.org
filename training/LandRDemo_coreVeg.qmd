@@ -92,7 +92,7 @@ package and current versions of the LandR modules.
 
 You need to have a Google account to access some of the data using the
 `googledrive` R package (part of the `tidyverse`
-family)[^landrdemo_coreveg-1].
+family)[^1].
 
 During the `simInit()` (or `simInitAndSpades()`) call R will prompt you
 to either choose a previously authenticated account (if you have
@@ -215,6 +215,25 @@ out <- setupProject(
     studyAreaL <-  terra::vect(terra::geom(studyAreaL), "polygons", crs = originalcrs, atts = data.frame(id = 1:length(studyAreaL)))
     studyAreaL <- terra::project(studyAreaL, Biomass_corecrs)
     studyAreaL
+  },
+  ## OUTPUTS TO SAVE -----------------------
+  outputs = {
+    rbind(
+      data.frame(
+        objectName = "cohortData", 
+        saveTime = seq(times$start, times$end),
+        fun = "saveRDS",
+        package = "base",
+        arguments = ""
+      ),
+      data.frame(
+        objectName = "pixelGroupMap", 
+        saveTime = seq(times$start, times$end), 
+        fun = "writeRaster",
+        package = "terra",
+        arguments = "overwrite = TRUE"
+      )
+    )
   }
 )
 ```
@@ -250,11 +269,6 @@ arguments' (see
 ## Run simulation
 
 ### One replicate
-
-Before running the simulation we need to exclude the
-*Biomass_validationKNN* module. This module validates simulation outputs
-agains data and therefore can only be run *after* the simulation is
-complete.
 
 We will initialize the simulation with `SpaDES.core::simInit()` so that
 we can use the same `simList` object in @sec-LandRReplication.
@@ -395,7 +409,7 @@ would try to resume the simulation from the "last year".
 
 Thanks to internal caching, it will only take seconds to "redo"
 `simInitOut`. You will also notice that `init` events are retrieved from
-cache, this time around[^landrdemo_coreveg-2].
+cache, this time around[^2].
 
 ```{r runSimPlots}
 
@@ -436,31 +450,14 @@ to do two things:
 -   Create a folder structure by replicate to store the simulation
     outputs
 
--   Generate 10 *independent* simulations and run them in sequence
-    (@lst-exp) or in parallel (@lst-expparall), using the `future`
-    package.
-
-This time, we will specify a list of output objects to be saved for
-model validation later.
+-   Generate 10 *independent* simulations and run them in sequence (@lst-exp) 
+    or in parallel (@lst-expparall), using the `future` package.
 
 ```{r expSim}
 #| lst-label: lst-exp
 #| lst-cap: Sequential replication 
 simInitOut <- SpaDES.core::simInit2(out)
 
-outputsDF <- rbind(
-  data.frame(
-    objectName = "cohortData", 
-    saveTime = seq(SpaDES.core::start(simInitOut), SpaDES.core::end(simInitOut))
-  ),
-  data.frame(
-    objectName = "pixelGroupMap", 
-    saveTime = seq(SpaDES.core::start(simInitOut), SpaDES.core::end(simInitOut))
-  )
-)
-SpaDES.core::outputs(simInitOut) <- outputsDF
-
-future::plan("sequential")
 simOutExperiment <- SpaDES.experiment::experiment2(simInitOut, replicates = 10)
 ```
 
@@ -470,32 +467,35 @@ simOutExperiment <- SpaDES.experiment::experiment2(simInitOut, replicates = 10)
 
 future::plan("multisession", workers = 2)
 simOutExperiment <- SpaDES.experiment::experiment2(simInitOut, replicates = 10)
+future:::ClusterRegistry("stop")  
 ```
 
-:::{.callout-note appearance="simple"}
-
+::: {.callout-note appearance="simple"}
 ## Independence between replicates
 
-In general, there are two levels of replicate independence that can be considered
-in dynamic ecological models like LandR, where stocahstic processes happen during
-the parameterisation phase[^2] and during the simulation phase:
+In general, there are two levels of replicate independence that can be
+considered in dynamic ecological models like LandR, where stocahstic
+processes happen during the parameterisation phase[^3]
+and during the simulation phase:
 
--   replicates may have *independent parameterisation and initialisation* and
-*independent ecological process simulation*
+-   replicates may have *independent parameterisation and
+initialisation* and *independent ecological process simulation*
 
--   replicates may *share the parameterisation and initialisation* but have 
-independent ecological process simulation.
+-   replicates may *share the parameterisation and initialisation* but
+have independent ecological process simulation.
 
-Neither is better than the other and the one to chose depends on the questions 
-and hypotheses being asked.
+Neither is better than the other and the one to chose depends on the
+questions and hypotheses being asked.
 
-In the example above, replicates share the same parameters/initial conditions 
-because they all access the same cached objects from the `init` events -- scroll 
-up to see printed outputs from `experiment2()`.
+In the example above, replicates share the same parameters/initial
+conditions because they all access the same cached objects from the
+`init` events -- scroll up to see printed outputs from `experiment2()`.
 
-To have fully independent replication we can use `experiment2(..., useCache = FALSE)`
-::: 
+To have fully independent replication we can use
+`experiment2(..., useCache = FALSE)`
+:::
 
+<!--
 ## Validation
 
 Now that we have several replicates, we can use *Biomass_validationKNN*
@@ -510,90 +510,82 @@ Note that, for convenience, we use `simOut` to access many of the
 necessary inputs for *Biomass_validationKNN*, but we could have used one
 of the `simLists` in `simOutExperiment` instead.
 
-We pass all raster objects from the saved files directly, to ensure they are 
-linked to these file paths explicitly.
+We pass all raster objects from the saved files directly, to ensure they
+are linked to these file paths explicitly.
 
 ```{r experimentSim}
 outValid <- setupProject(
-  paths = list("packagePath" = "packages/",
-               "projectPath" = "~/SpaDES_book/LandRDemo_coreVeg",
-               "outputPath" = "validation/"),
-  options = list(
-    "LandR.assertions" = TRUE,
-    "reproducible.destinationPath" = paths$inputPath,
-    "spades.inputPath" = paths$inputPath,
-    "spades.moduleCodeChecks" = FALSE,
-    "repos" = repos
-  ),
-  modules = c(
-    "PredictiveEcology/Biomass_validationKNN@main"
-  ),
-  ## SIMULATION SETUP --------------------------------
-  times = list(start = 1, end = 1),
-  ## PARAMETERS --------------------------------------
-  params = list("Biomass_validationKNN" = list(
-    "minCoverThreshold" = SpaDES.core::params(simOut)$Biomass_borealDataPrep$minCoverThreshold,
-    "pixelGroupBiomassClass" = SpaDES.core::params(simOut)$Biomass_borealDataPrep$pixelGroupBiomassClass,
-    "deciduousCoverDiscount" = SpaDES.core::params(simOut)$Biomass_borealDataPrep$deciduousCoverDiscount,
-    "sppEquivCol" = SpaDES.core::params(simOut)$Biomass_borealDataPrep$sppEquivCol,
-    ".plots" = c("png") ## save all to .png
-  )),
-  ## INPUT OBJECTS -----------------------------------
-  studyArea = {
-    simOut$studyArea
-  },
-  rasterToMatch = {
-    terra::deepcopy(simOut$rasterToMatch)
-  },
-  rawBiomassMapStart = {
-    terra::deepcopy(simOut$rasterToMatchLarge)
-  },
-  simulationOutputs = {
-    repDirs <- list.files(SpaDES.core::outputPath(simOut), "_rep", full.names = TRUE) 
-    cohortDataFiles <- sapply(repDirs, list.files, pattern = "cohortData", simplify = FALSE) 
-    cohortDataDT <- sapply(cohortDataFiles, as.data.table, simplify = FALSE) |>
-      rbindlist(idcol = "dir")
-    cohortDataDT[, objectName := "cohortData"]
-    cohortDataDT[, saveTime := as.integer(sub(".*([[:digit:]]{4}).*", "\\1", V1))]
-    cohortDataDT[, file := file.path(dir, V1)]
-    cohortDataDT[, `:=`(dir = NULL, V1 = NULL)]
-    
-    PGMapFiles <- sapply(repDirs, list.files, pattern = "pixelGroupMap", simplify = FALSE) 
-    PGMapDT <- sapply(PGMapFiles, as.data.table, simplify = FALSE) |>
-      rbindlist(idcol = "dir")
-    PGMapDT[, objectName := "pixelGroupMap"]
-    PGMapDT[, saveTime := as.integer(sub(".*([[:digit:]]{4}).*", "\\1", V1))]
-    PGMapDT[, file := file.path(dir, V1)]
-    PGMapDT[, `:=`(dir = NULL, V1 = NULL)]
-    
-    outDT <- rbind(cohortDataDT, PGMapDT)
-    outDT
-  },
-  sppEquiv = simOut$sppEquiv,
-  sppEquivCol = simOut$sppEquivCol,
-  sppColorVect = simOut$sppColorVect,
-  speciesLayersStart = {
-    terra::deepcopy(simOut$speciesLayers)
-  },
-  standAgeMapStart = {
-    terra::deepcopy(simOut$standAgeMap)
-  }
+paths = list("packagePath" = "packages/",
+"projectPath" = "~/SpaDES_book/LandRDemo_coreVeg",
+"outputPath" = "validation/"),
+options = list(
+"LandR.assertions" = TRUE,
+"reproducible.destinationPath" = paths$inputPath,
+"spades.inputPath" = paths$inputPath,
+"spades.moduleCodeChecks" = FALSE,
+"repos" = repos
+),
+modules = c(
+"PredictiveEcology/Biomass_validationKNN@main"
+),
+## SIMULATION SETUP --------------------------------
+times = list(start = 1, end = 1),
+## PARAMETERS --------------------------------------
+params = list("Biomass_validationKNN" = list(
+"minCoverThreshold" = SpaDES.core::params(simOut)$Biomass_borealDataPrep$minCoverThreshold,
+"pixelGroupBiomassClass" = SpaDES.core::params(simOut)$Biomass_borealDataPrep$pixelGroupBiomassClass,
+"deciduousCoverDiscount" = SpaDES.core::params(simOut)$Biomass_borealDataPrep$deciduousCoverDiscount,
+"sppEquivCol" = SpaDES.core::params(simOut)$Biomass_borealDataPrep$sppEquivCol,
+".plots" = c("png") ## save all to .png
+)),
+## INPUT OBJECTS -----------------------------------
+studyArea = {
+simOut$studyArea
+},
+rasterToMatch = {
+terra::deepcopy(simOut$rasterToMatch)
+},
+rawBiomassMapStart = {
+terra::deepcopy(simOut$rasterToMatchLarge)
+},
+simulationOutputs = {
+lapply(simOutExperiment, SpaDES.core::outputs) |> 
+rbindlist()
+},
+sppEquiv = simOut$sppEquiv,
+sppEquivCol = simOut$sppEquivCol,
+sppColorVect = simOut$sppColorVect,
+speciesLayersStart = {
+terra::deepcopy(simOut$speciesLayers)
+},
+standAgeMapStart = {
+terra::deepcopy(simOut$standAgeMap)
+}
 )
 
 simOutValid <- SpaDES.core::simInitAndSpades2(outValid)
 
 ```
 
+-->
+
 ## Different scenarios and model selection {#sec-LandRScenarios}
 
 In @barros2023, the model was run with two different parameterisation
 approaches one that was "data hungry" and calibrated tree species growth
-parameters and a simpler one that used default parameter values (without
-*Biomass_speciesParameters*).
+parameters (using *Biomass_speciesParameters* as we have done above)
+and a simpler one that used default parameter values (without *Biomass_speciesParameters*).
 
-By swapping parameterisation/calibration modules in and out <!--HERE-->
+SpaDES and LandR allow us to swap parameterisation/calibration approaches easily and
+re-evaluate each and compare the models (see @barros2023).
 
-```{r experimentSim2}
+Do to this, we simply exclude *Biomass_speciesParameters* from `out` and run
+a second simulation.
+
+```{r scenarios}
+out2 <- out
+out2$modules <- out2$modules[out2$modules != "Biomass_speciesParameters"]
+
 simOutExperiment <- SpaDES.experiment::experiment2(simInitOut, replicates = 10)
 ```
 
@@ -653,38 +645,38 @@ example:
 ```{r}
 ## studyArea could be
 studyArea = {
-  set.seed(123)
-  SpaDES.tools::randomStudyArea(size = 1000000)
+set.seed(123)
+SpaDES.tools::randomStudyArea(size = 1000000)
 }
 
 ## studyAreaLarge
 studyAreaLarge = {
-  terra::buffer(studyArea, width = 10000)
+terra::buffer(studyArea, width = 10000)
 }
 ```
 
 -   Noticed any differences (speed, cache IDs, ...)?
 
 -   were the species simulated the same? How about their trait values
-    (e.g. estimated maxB, species establishment probabilities. )
+(e.g. estimated maxB, species establishment probabilities. )
 
 ## See also
 
-[LandR Manual](https://landr-manual.predictiveecology.org/)
-
 @sec-caching on caching.
+
+[LandR Manual](https://landr-manual.predictiveecology.org/)
 
 [`?future::plan`](https://future.futureverse.org/reference/plan.html)
 
-[`simList`
-accessors](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-events.html)
+[`simList` accessors](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-events.html)
 
-[^landrdemo_coreveg-1]: See
-    [`?googledrive::drive_auth`](https://rdrr.io/cran/googledrive/man/drive_auth.html)
-    for more information.
+[^1]: See
+[`?googledrive::drive_auth`](https://rdrr.io/cran/googledrive/man/drive_auth.html)
+for more information.
 
-[^landrdemo_coreveg-2]: See @sec-caching about caching.
+[^2]: See @sec-caching about caching.
 
-[^landrdemo_coreveg-3]: By default, *Biomass_borealDataPrep* tries to
-    fill missing land-cover data in recently burned pixels by randomly
-    looking for the closes forest land-cover type.
+[^3]: By default, *Biomass_borealDataPrep* tries to
+fill missing land-cover data in recently burned pixels by randomly
+looking for the closes forest land-cover type.
+
