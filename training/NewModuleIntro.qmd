@@ -38,7 +38,7 @@ if (!require("Require")) {
 }
 ```
 
-SpaDES modules are comprised of R code that has metadata and the gets
+SpaDES modules are comprised of R code that has metadata and that gets
 put into functions. With this in mind, we can start with some simple R
 code.
 
