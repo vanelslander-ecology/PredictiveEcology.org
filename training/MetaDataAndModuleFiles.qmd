@@ -313,6 +313,8 @@ outputs that model, and plots the fit.
 
 ## See also
 
+@sec-modseventsfuns on Modules, Events and Functions
+
 [`?expectsInput`](https://rdrr.io/cran/SpaDES.core/man/expectsInput.html)
 
 [`?createsOutput`](https://rdrr.io/cran/SpaDES.core/man/createsOutput.html)
