@@ -209,7 +209,7 @@ call by having the ability to:
 -   spatially process the data according to a polygon or raster template
 
 It also caches these operations, so taht they don't need to be repeated
-unecessarily.
+unnecessarily.
 
 This can save hours of learning to master caching and GIS algorithms (or
 avoid using flawed approaches) for many ecologists!
