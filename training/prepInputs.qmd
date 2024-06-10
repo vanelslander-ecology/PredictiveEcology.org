@@ -12,7 +12,7 @@ execute:
   cache: false
 ---
 
-# `prepInputs` for data
+# `reproducible::prepInputs` for data {#sec-prepInputs}
 
 ```{r setup}
 #| include: false
