@@ -525,19 +525,10 @@ Important&nbsp;15.1: Google account needed for this example
 <div class="callout-body-container callout-body">
 <p>You need to have a Google account to access some of the data using the <code>googledrive</code> R package (part of the <code>tidyverse</code> family)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
 <p>During the <code>simInit()</code> (or <code>simInitAndSpades()</code>) call R will prompt you to either choose a previously authenticated account (if you have previously used <code>googledrive</code>) or to open a browser window and authenticate. Make sure you give <code>tidyverse</code> read/write access to your files:</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div id="fig-gdriveauth" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-gdriveauth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="C:/Users/cbarros/GitHub/PredictiveEcology.org/training/assets/img/gdriveauth.png" id="fig-gdriveauth" class="img-fluid quarto-figure quarto-figure-center anchored figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-gdriveauth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15.1
-</figcaption>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/img/gdriveauth.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="467"></p>
 </figure>
-</div>
-</div>
 </div>
 <p>We will eventually transition to <em>not</em> hosting data on Google. Until then, our apologies for any inconvenience.</p>
 </div>
@@ -860,7 +851,6 @@ to do two things:
 -   Generate 10 *independent* simulations and run them in sequence (@lst-exp) 
     or in parallel (@lst-expparall), using the `future` package.
 
-
 ::: {.cell}
 
 ```{#lst-exp .r .cell-code  lst-cap="Sequential replication"}
@@ -879,7 +869,6 @@ simOutExperiment <- SpaDES.experiment::experiment2(simInitOut, replicates = 10)
 future:::ClusterRegistry("stop")  
 ```
 :::
-
 
 ::: {.callout-note appearance="simple"}
 ## Independence between replicates
@@ -923,7 +912,6 @@ of the `simLists` in `simOutExperiment` instead.
 
 We pass all raster objects from the saved files directly, to ensure they
 are linked to these file paths explicitly.
-
 
 ::: {.cell}
 
@@ -980,7 +968,6 @@ terra::deepcopy(simOut$standAgeMap)
 simOutValid <- SpaDES.core::simInitAndSpades2(outValid)
 ```
 :::
-
 
 -->
 </section>

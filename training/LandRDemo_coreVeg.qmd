@@ -92,7 +92,7 @@ package and current versions of the LandR modules.
 
 You need to have a Google account to access some of the data using the
 `googledrive` R package (part of the `tidyverse`
-family)[^1].
+family)[^landrdemo_coreveg-1].
 
 During the `simInit()` (or `simInitAndSpades()`) call R will prompt you
 to either choose a previously authenticated account (if you have
@@ -100,17 +100,7 @@ previously used `googledrive`) or to open a browser window and
 authenticate. Make sure you give `tidyverse` read/write access to your
 files:
 
-```{r fig-gdriveauth}
-#| echo: false
-#| eval: true
-#| fig-align: center
-#| fig-width: 5
-
-figPath <- normalizePath(file.path(qmdPath, "assets/img/gdriveauth.png"),
-                         winslash = "/")
-
-knitr::include_graphics(figPath, rel_path = FALSE, dpi = NA)
-```
+![](assets/img/gdriveauth.png){fig-align="center" width="467"}
 
 We will eventually transition to *not* hosting data on Google. Until
 then, our apologies for any inconvenience.
@@ -236,36 +226,37 @@ If you have a look at @sec-castorSetup in the @sec-castorEg chapter, you
 will see some differences in the way we setup the two workflows:
 
 -   `paths`. Here we left the defaults for all paths (see
-[`?setupPaths()`](https://spades-project.predictiveecology.org/reference/setup.html)
-for the list of path options) except for the project location
-(`projectPath`) and the location of the package library
-(`packagePath`, which will be placed inside `projectPath`).
+    [`?setupPaths()`](https://spades-project.predictiveecology.org/reference/setup.html)
+    for the list of path options) except for the project location
+    (`projectPath`) and the location of the package library
+    (`packagePath`, which will be placed inside `projectPath`).
 
 -   `options`. We also set a couple of "global options" that determine
-the where data will be downloaded to
-("reproducible.destinationPath"). This will be the same as the
-default directory to look for inputs ("spades.inputPath"). Notice
-how we used `paths$` to get these directory paths from the `paths`
-object that `setupProject` creates (based on the `paths` argument
-above) prior to setting the options.
+    the where data will be downloaded to
+    ("reproducible.destinationPath"). This will be the same as the
+    default directory to look for inputs ("spades.inputPath"). Notice
+    how we used `paths$` to get these directory paths from the `paths`
+    object that `setupProject` creates (based on the `paths` argument
+    above) prior to setting the options.
 
 -   other arguments (`...`). Almost all other arguments in the call
-above were passed to `...`. These are objects that need to be
-supplied by the user for these modules (e.g. `studyArea` and
-`studyAreaLarge`) or whose defaults we want to override (e.g., the
-species table, `sppEquiv`, and trait values, `speciesParams`). To
-avoid creating them on the `.GlobalEnv` first, we take advantage of
-`setupProject`'s ability to run the code in `{ }` and make these
-polygons. Note that these arguments are passed prior to any 'formal
-arguments' (see
-[`?formalArgs()`](https://www.rdocumentation.org/packages/methods/versions/3.6.2/topics/methodUtilities))
+    above were passed to `...`. These are objects that need to be
+    supplied by the user for these modules (e.g. `studyArea` and
+    `studyAreaLarge`) or whose defaults we want to override (e.g., the
+    species table, `sppEquiv`, and trait values, `speciesParams`). To
+    avoid creating them on the `.GlobalEnv` first, we take advantage of
+    `setupProject`'s ability to run the code in `{ }` and make these
+    polygons. Note that these arguments are passed prior to any 'formal
+    arguments' (see
+    [`?formalArgs()`](https://www.rdocumentation.org/packages/methods/versions/3.6.2/topics/methodUtilities))
 
 ## Run simulation
 
+```{=html}
 <!--
 ### One replicate
 -->
-
+```
 You can initialise the and run the workflow in two separate steps...
 
 ```{r runSim}
@@ -401,7 +392,7 @@ would try to resume the simulation from the "last year".
 
 Thanks to internal caching, it will only take seconds to "redo"
 `simInitOut`. You will also notice that `init` events are retrieved from
-cache, this time around[^2].
+cache, this time around[^landrdemo_coreveg-2].
 
 ```{r runSimPlots}
 
@@ -422,6 +413,8 @@ by \``SpaDES.core::simInit2()`) to *resume* the simulation from 2031.
 SpaDES.core::end(simOut) <- 2061
 simOut <- SpaDES.core::spades(simOut)
 ```
+
+````{=html}
 <!--
 ### Many replicates {#sec-LandRReplication}
 
@@ -489,7 +482,9 @@ To have fully independent replication we can use
 `experiment2(..., useCache = FALSE)`
 :::
 -->
+````
 
+````{=html}
 <!--
 ## Validation
 
@@ -563,20 +558,23 @@ simOutValid <- SpaDES.core::simInitAndSpades2(outValid)
 ```
 
 -->
+````
 
 ## Different scenarios and model selection {#sec-LandRScenarios}
 
 In @barros2023, the model was run with two different parameterisation
 approaches one that was "data hungry" and calibrated tree species growth
-parameters (using *Biomass_speciesParameters* as we have done above)
-and a simpler one that used default parameter values (without *Biomass_speciesParameters*).
+parameters (using *Biomass_speciesParameters* as we have done above) and
+a simpler one that used default parameter values (without
+*Biomass_speciesParameters*).
 
-SpaDES and LandR allow us to swap parameterisation/calibration approaches easily and
-re-evaluate each and compare the models (see @barros2023).
+SpaDES and LandR allow us to swap parameterisation/calibration
+approaches easily and re-evaluate each and compare the models (see
+@barros2023).
 
-Do to this, we simply exclude *Biomass_speciesParameters* from `out` and run
-a second simulation. We also need to save the outputs in a different folder,
-or the previous ones will be overriden.
+Do to this, we simply exclude *Biomass_speciesParameters* from `out` and
+run a second simulation. We also need to save the outputs in a different
+folder, or the previous ones will be overriden.
 
 ```{r scenarios}
 out2 <- out
@@ -655,7 +653,7 @@ terra::buffer(studyArea, width = 10000)
 -   Noticed any differences (speed, cache IDs, ...)?
 
 -   were the species simulated the same? How about their trait values
-(e.g. estimated maxB, species establishment probabilities. )
+    (e.g. estimated maxB, species establishment probabilities. )
 
 ## See also
 
@@ -665,17 +663,19 @@ terra::buffer(studyArea, width = 10000)
 
 [`?future::plan`](https://future.futureverse.org/reference/plan.html)
 
-[`simList` accessors](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-events.html)
+[`simList`
+accessors](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-events.html)
 
-[^1]: See
-[`?googledrive::drive_auth`](https://rdrr.io/cran/googledrive/man/drive_auth.html)
-for more information.
-
-[^2]: See @sec-caching about caching.
-
+```{=html}
 <!--
 [^3]: By default, *Biomass_borealDataPrep* tries to
 fill missing land-cover data in recently burned pixels by randomly
 looking for the closes forest land-cover type.
 -->
+```
 
+[^landrdemo_coreveg-1]: See
+    [`?googledrive::drive_auth`](https://rdrr.io/cran/googledrive/man/drive_auth.html)
+    for more information.
+
+[^landrdemo_coreveg-2]: See @sec-caching about caching.
