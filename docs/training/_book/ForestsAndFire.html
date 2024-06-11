@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Eliot McIntire">
-<meta name="dcterms.date" content="2024-06-11">
+<meta name="author" content="Eliot McIntire and Ian Eddy">
+<meta name="dcterms.date" content="2024-06-08">
 
-<title>Robust and nimble scientific workflows, using SpaDES - 3&nbsp; Pre-installing R packages for book</title>
+<title>Robust and nimble scientific workflows, using SpaDES - 16&nbsp; Forest Succession and Wildfire using setupProject</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,8 +66,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./TroubleshootingPackageInstallation.html" rel="next">
-<link href="./installRandSpatialPkgs.html" rel="prev">
+<link href="./castorExample.html" rel="next">
+<link href="./LandRDemo_coreVeg.html" rel="prev">
 <link href="./assets/logo/favicon-16x16.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -242,7 +242,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./settingUp.html">Setting up your computer and system</a></li><li class="breadcrumb-item"><a href="./PackagesForBook.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./ForestsAndFire.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -283,7 +283,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./PackagesForBook.html" class="sidebar-item-text sidebar-link active">
+  <a href="./PackagesForBook.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></span></a>
   </div>
 </li>
@@ -394,7 +394,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ForestsAndFire.html" class="sidebar-item-text sidebar-link">
+  <a href="./ForestsAndFire.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
   </div>
 </li>
@@ -428,18 +428,17 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#installation-code" id="toc-installation-code" class="nav-link active" data-scroll-target="#installation-code"><span class="header-section-number">3.1</span> Installation code</a></li>
-  <li><a href="#code-explained" id="toc-code-explained" class="nav-link" data-scroll-target="#code-explained"><span class="header-section-number">3.2</span> Code explained</a></li>
-  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">3.3</span> See also</a></li>
+  <li><a href="#examining-things" id="toc-examining-things" class="nav-link active" data-scroll-target="#examining-things"><span class="header-section-number">16.1</span> Examining things</a></li>
+  <li><a href="#changing-things" id="toc-changing-things" class="nav-link" data-scroll-target="#changing-things"><span class="header-section-number">16.2</span> Changing things</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./settingUp.html">Setting up your computer and system</a></li><li class="breadcrumb-item"><a href="./PackagesForBook.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./ForestsAndFire.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></h1>
+<h1 class="title"><span id="sec-scfmEg" class="quarto-section-identifier"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></h1>
 </div>
 
 
@@ -449,14 +448,14 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Eliot McIntire </p>
+             <p>Eliot McIntire and Ian Eddy </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 11, 2024</p>
+      <p class="date">June 8, 2024</p>
     </div>
   </div>
   
@@ -468,48 +467,120 @@ window.Quarto = {
 </header>
 
 
-<p>The objective of this book is to facilitate lightweight project code and setting up R<sup>3</sup>T workflows<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. To do this, packages and any code that are used must be easy to install and use. We accomplish this by having each chapter installing its own packages, and avoiding having users “pre-installing” packages.</p>
-<p>Furthermore, packages, once installed for one project, will be cached locally so that the next project will be able to install quickly from the local package cache. We have also attempted to allow all sections to be run without administrator privileges.</p>
-<p>Nonetheless, there might be situations where users of this book will need to pre-install packages in one go – e.g., they will run chapter code without internet access. The following instructions are meant to cover this use case.</p>
-<section id="installation-code" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="installation-code"><span class="header-section-number">3.1</span> Installation code</h2>
-<p>If you can run the following code, then you will be able to run code in any of the chapters in this book. This code begins by installing <code>SpaDES.project</code> and its dependencies, then uses <code>setupProject</code> to download and install a list of R packages hosted on GitHub and a single SpaDES module (<em>Biomass-core</em>) which has over 130 package dependencies.</p>
+<p><strong>1.5 hours – estimated time for 1st time executing</strong> <strong>6 GB RAM – estimated RAM for executing</strong></p>
+<p>We have developed an R version of LANDIS-II’s Biomass Succession Extension, comprised of 2 modules: <code>Biomass_core</code> and <code>Biomass_regeneration</code>. We can combine these with a fire model, such as <code>scfm</code> which is a collaborative effort lead by Steve Cumming at Laval, University (thus the name: <strong>S</strong>teve <strong>C</strong>umming <strong>F</strong>ire <strong>M</strong>odel).</p>
+<p>As with other examples, we also include all the parameterization modules here, with <code>Biomass_borealDataPrep</code> for the <code>Biomass_***</code> modules and <code>scfmLandcoverInit</code>, <code>scfmRegime</code> and <code>scfmDriver</code> for the <code>scfm</code> family.</p>
+<p>This makes for a 10 module project. Using <code>setupProject</code>, we can readily run these from their canonical “i.e., current, up to date, open and available” versions:</p>
+<p><strong>Time to run this</strong> is between 1 and 2 hours.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>repos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"predictiveecology.r-universe.dev"</span>, <span class="fu">getOption</span>(<span class="st">"repos"</span>))</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"Require"</span>, <span class="st">"SpaDES.project"</span>), <span class="at">repos =</span> repos)</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>repos <span class="ot">&lt;-</span> <span class="fu">unique</span>(<span class="fu">c</span>(<span class="st">"predictiveecology.r-universe.dev"</span>, <span class="fu">getOption</span>(<span class="st">"repos"</span>)))</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repos =</span> repos)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SpaDES.project)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">setupProject</span>(</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">packages =</span> <span class="st">"PredictiveEcology/PredictiveEcology.org@training-book/training/R/pkgList.R"</span>,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">options =</span> <span class="fu">list</span>(<span class="at">repos =</span> repos),</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="st">"Introduction"</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">modules =</span> <span class="st">"PredictiveEcology/Biomass_core@main"</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Require::Require(c("SpaDES.project (HEAD)"))</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>Require<span class="sc">::</span><span class="fu">Require</span>(<span class="fu">c</span>(<span class="st">"PredictiveEcology/SpaDES.project@development (HEAD)"</span>)) </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># pkgload::load_all("~/GitHub/SpaDES.project")</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> SpaDES.project<span class="sc">::</span><span class="fu">setupProject</span>(</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">updateRprofile =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="st">"scfm_example_fresh"</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">useGit =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">projectPath =</span> <span class="st">"~/SpaDES_book"</span>),</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">modules =</span> <span class="fu">c</span>(<span class="st">"PredictiveEcology/Biomass_borealDataPrep@development"</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>              <span class="st">"PredictiveEcology/Biomass_core@development"</span>,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>              <span class="st">"PredictiveEcology/Biomass_regeneration@development"</span>,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>              <span class="fu">file.path</span>(<span class="st">"PredictiveEcology/scfm@development/modules"</span>,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">c</span>(<span class="st">"scfmLandcoverInit"</span>, <span class="st">"scfmRegime"</span>, <span class="st">"scfmDriver"</span>,</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>                          <span class="st">"scfmIgnition"</span>, <span class="st">"scfmEscape"</span>, <span class="st">"scfmSpread"</span>,</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>                          <span class="st">"scfmDiagnostics"</span>))</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">params =</span> <span class="fu">list</span>(</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">.globals =</span> <span class="fu">list</span>(<span class="at">.studyAreaName =</span> <span class="st">"scfm_example"</span>,</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>                    <span class="at">dataYear =</span> <span class="dv">2011</span>, <span class="co">#will get kNN 2011 data, and NTEMS 2011 landcover</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>                    <span class="at">sppEquivCol =</span> <span class="st">"LandR"</span>,</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>                    <span class="at">.plots =</span> <span class="st">"png"</span>,</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>                    <span class="at">.useCache =</span> <span class="fu">c</span>(<span class="st">".inputObjects"</span>, <span class="st">"init"</span>)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>                 ),</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">scfmDriver =</span> <span class="fu">list</span>(<span class="at">targetN =</span> <span class="dv">1000</span>, <span class="co">#default is 4000 - higher targetN adds time + precision</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>                      <span class="do">### targetN would ideally be minimum 2000 - mean fire size estimates will be bad with 1000</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>                      <span class="at">.useParallelFireRegimePolys =</span> <span class="cn">TRUE</span>) <span class="co">#assumes parallelization is an otpion</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">options =</span> <span class="fu">list</span>(<span class="co">#spades.allowInitDuringSimInit = TRUE,</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>                 <span class="at">spades.allowSequentialCaching =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>                 <span class="at">spades.moduleCodeChecks =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>                 <span class="co">#                reproducible.shapefileRead = "terra::vect",</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>                 <span class="at">spades.recoveryMode =</span> <span class="dv">1</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>  <span class="at">packages =</span> <span class="fu">c</span>(<span class="st">'RCurl'</span>, <span class="st">'XML'</span>, <span class="st">'snow'</span>), <span class="co"># need for some downloading; if omitted, a message tells user</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="fu">list</span>(<span class="at">start =</span> <span class="dv">2011</span>, <span class="at">end =</span> <span class="dv">2061</span>),</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>  <span class="at">sppEquiv =</span> LandR<span class="sc">::</span>sppEquivalencies_CA[KNN <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Popu_Tre"</span>, <span class="st">"Betu_Pap"</span>,</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>                                                   <span class="st">"Pice_Gla"</span>, <span class="st">"Pice_Mar"</span>,</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>                                                   <span class="st">"Pinu_Con"</span>, <span class="st">"Pinu_Ban"</span>)],</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>  <span class="at">studyArea =</span> {</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    targetCRS <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"+proj=lcc +lat_1=49 +lat_2=77 +lat_0=0 +lon_0=-95 +x_0=0 +y_0=0"</span>,</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"+datum=NAD83 +units=m +no_defs +ellps=GRS80 +towgs84=0,0,0"</span>)</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    sa <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">vect</span>(<span class="fu">cbind</span>(<span class="sc">-</span><span class="dv">1209980</span>, <span class="dv">7586865</span>), <span class="at">crs =</span> targetCRS)</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>    sa <span class="ot">&lt;-</span> LandR<span class="sc">::</span><span class="fu">randomStudyArea</span>(<span class="at">center =</span> sa, <span class="at">size =</span> <span class="dv">10000</span> <span class="sc">*</span> <span class="dv">250</span> <span class="sc">*</span> <span class="dv">30000</span>, <span class="at">seed =</span> <span class="dv">1002</span>)</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    sa <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_as_sf</span>(sa)</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>  <span class="at">studyAreaLarge =</span> {</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>    sf<span class="sc">::</span><span class="fu">st_buffer</span>(studyArea, <span class="dv">20000</span>)</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>  <span class="at">rasterToMatchLarge =</span> {</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    rtml<span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">rast</span>(terra<span class="sc">::</span><span class="fu">ext</span>(studyAreaLarge), <span class="at">res =</span> <span class="fu">c</span>(<span class="dv">250</span>, <span class="dv">250</span>))</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>    terra<span class="sc">::</span><span class="fu">crs</span>(rtml) <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">crs</span>(studyAreaLarge)</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>    rtml[] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>    rtml <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">mask</span>(rtml, studyAreaLarge)</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>  <span class="at">rasterToMatch =</span> {</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>    rtm <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">crop</span>(rasterToMatchLarge, studyArea)</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>    rtm <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">mask</span>(rtm, studyArea)</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="co">#this must be done outside of setupProject (temporarily)</span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="co">#alternatively</span></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>outSim <span class="ot">&lt;-</span> <span class="fu">do.call</span>(SpaDES.core<span class="sc">::</span>simInitAndSpades, out) <span class="sc">|&gt;</span></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Cache</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Note that <code>setupProject</code> will change your working directory to <code>./Introduction</code>. If that is not where you want to keep working, restart R and make sure you set your working directory to where you want it to be (if restarting is not sufficient).</p>
+<section id="examining-things" class="level2" data-number="16.1">
+<h2 data-number="16.1" class="anchored" data-anchor-id="examining-things"><span class="header-section-number">16.1</span> Examining things</h2>
+<p>We can do all sorts of things. We will start with a few simple “accessors”, i.e., “access something from the simList”. <code>completed</code> shows the events that were run. <code>elapsedTime</code> shows how much time each event took.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">completed</span>(outSim)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">elapsedTime</span>(outSim, <span class="at">units =</span> <span class="st">"minute"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>The module metadata can be accessed from the <code>sim</code> or can be read from the module source files or it is usually built into the <code>Rmd</code> file that comes with the module.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mm <span class="ot">&lt;-</span> <span class="fu">moduleMetadata</span>(outSim)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># a list of all the module metadata</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>mm<span class="sc">$</span>Biomass_borealDataPrep<span class="sc">$</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
-<section id="code-explained" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="code-explained"><span class="header-section-number">3.2</span> Code explained</h2>
-<p>If you care to know what the code is “doing”, read on.</p>
-<p>The <code>setupProject</code> call above internally uses <code>Require</code> to download and install any missing packages. Although the packages themselves are installed in a folder inside <code>./Introduction/</code> (the project folder) (see <code>.libPaths()</code> after running the code), <code>Require</code> <em>caches</em> the downloaded package installation files in a user-accessible folder (so independent from any project).</p>
-<p>This means that, should you, e.g., switch projects and attempt to reinstall the same or a subset of these packages, <code>setupProject</code> (via <code>Require</code>) would access the package cache and reinstall them in whatever new project folder library. This is much faster than downloading the packages again.</p>
-<p>The same is true should you lose internet connection, since the downloads do not need to happen again.</p>
-</section>
-<section id="see-also" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="see-also"><span class="header-section-number">3.3</span> See also</h2>
-<p><a href="TroubleshootingPackageInstallation.html" class="quarto-xref"><span>Chapter 4</span></a> on R package installation troubleshooting</p>
+<section id="changing-things" class="level2" data-number="16.2">
+<h2 data-number="16.2" class="anchored" data-anchor-id="changing-things"><span class="header-section-number">16.2</span> Changing things</h2>
+<p>Setting <code>.plots = "png"</code> will turn on all known plotting (that uses the <code>Plots</code> function) and save them all as <code>png</code> files in the <code>figures</code> subfolder.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>out<span class="sc">$</span>params<span class="sc">$</span>.globals<span class="sc">$</span>.plots <span class="ot">&lt;-</span> <span class="st">"png"</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>outSim <span class="ot">&lt;-</span> <span class="fu">simInitAndSpades2</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Then we can look in the <code>outputs/figures</code> folder to see all the figures that the modules created.</p>
 
 
-</section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>See this <a href="https://ceresbarros.github.io/reproducible-workflowsWS/presentations/20230712_BESMacroSIG2023_ReproducibleWorkflowsWS.pdf">introduction to R<sup>3</sup>T workflows</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
 </section>
 
 </main> <!-- /main -->
@@ -1073,13 +1144,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./installRandSpatialPkgs.html" class="pagination-link" aria-label="Installing R and Spatial Packages">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Installing R and Spatial Packages</span></span>
+      <a href="./LandRDemo_coreVeg.html" class="pagination-link" aria-label="Forest Landscape Modelling with LandR and `setupProject`">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Forest Landscape Modelling with LandR and <code>setupProject</code></span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./TroubleshootingPackageInstallation.html" class="pagination-link" aria-label="Troubleshooting R package installation">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Troubleshooting R package installation</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./castorExample.html" class="pagination-link" aria-label="Castor Workflow with `setupProject`">
+        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

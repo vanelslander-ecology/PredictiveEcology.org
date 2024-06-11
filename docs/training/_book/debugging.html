@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Eliot McIntire">
-<meta name="dcterms.date" content="2024-06-11">
+<meta name="author" content="Ceres Barros">
+<meta name="dcterms.date" content="2024-06-10">
 
-<title>Robust and nimble scientific workflows, using SpaDES - 3&nbsp; Pre-installing R packages for book</title>
+<title>Robust and nimble scientific workflows, using SpaDES - 13&nbsp; Debugging SpaDES Modules</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,8 +66,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./TroubleshootingPackageInstallation.html" rel="next">
-<link href="./installRandSpatialPkgs.html" rel="prev">
+<link href="./setupProject.html" rel="next">
+<link href="./prepInputs.html" rel="prev">
 <link href="./assets/logo/favicon-16x16.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -242,7 +242,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./settingUp.html">Setting up your computer and system</a></li><li class="breadcrumb-item"><a href="./PackagesForBook.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ContinuousWorkflows.html">Working with Continuous Workflows</a></li><li class="breadcrumb-item"><a href="./debugging.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -283,7 +283,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./PackagesForBook.html" class="sidebar-item-text sidebar-link active">
+  <a href="./PackagesForBook.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></span></a>
   </div>
 </li>
@@ -365,7 +365,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./debugging.html" class="sidebar-item-text sidebar-link">
+  <a href="./debugging.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></a>
   </div>
 </li>
@@ -428,18 +428,26 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#installation-code" id="toc-installation-code" class="nav-link active" data-scroll-target="#installation-code"><span class="header-section-number">3.1</span> Installation code</a></li>
-  <li><a href="#code-explained" id="toc-code-explained" class="nav-link" data-scroll-target="#code-explained"><span class="header-section-number">3.2</span> Code explained</a></li>
-  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">3.3</span> See also</a></li>
+  <li><a href="#debugging-with-browser" id="toc-debugging-with-browser" class="nav-link active" data-scroll-target="#debugging-with-browser"><span class="header-section-number">13.1</span> Debugging with <code>browser()</code></a>
+  <ul class="collapse">
+  <li><a href="#browser-with-a-spades-module" id="toc-browser-with-a-spades-module" class="nav-link" data-scroll-target="#browser-with-a-spades-module"><span class="header-section-number">13.1.1</span> <code>browser()</code> with a SpaDES module</a></li>
+  </ul></li>
+  <li><a href="#debugging-with-debug-and-debugonce" id="toc-debugging-with-debug-and-debugonce" class="nav-link" data-scroll-target="#debugging-with-debug-and-debugonce"><span class="header-section-number">13.2</span> Debugging with <code>debug()</code> and <code>debugonce()</code></a>
+  <ul class="collapse">
+  <li><a href="#debugonce-and-debug-with-a-spades-module" id="toc-debugonce-and-debug-with-a-spades-module" class="nav-link" data-scroll-target="#debugonce-and-debug-with-a-spades-module"><span class="header-section-number">13.2.1</span> <code>debugonce()</code> and <code>debug()</code> with a SpaDES module</a></li>
+  </ul></li>
+  <li><a href="#restartspades" id="toc-restartspades" class="nav-link" data-scroll-target="#restartspades"><span class="header-section-number">13.3</span> <code>restartSpades()</code></a></li>
+  <li><a href="#try-on-your-own" id="toc-try-on-your-own" class="nav-link" data-scroll-target="#try-on-your-own"><span class="header-section-number">13.4</span> Try on your own</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">13.5</span> See also</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./settingUp.html">Setting up your computer and system</a></li><li class="breadcrumb-item"><a href="./PackagesForBook.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ContinuousWorkflows.html">Working with Continuous Workflows</a></li><li class="breadcrumb-item"><a href="./debugging.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></h1>
+<h1 class="title"><span id="sec-debugging" class="quarto-section-identifier"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></h1>
 </div>
 
 
@@ -449,14 +457,14 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Eliot McIntire </p>
+             <p>Ceres Barros </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 11, 2024</p>
+      <p class="date">June 10, 2024</p>
     </div>
   </div>
   
@@ -468,48 +476,161 @@ window.Quarto = {
 </header>
 
 
-<p>The objective of this book is to facilitate lightweight project code and setting up R<sup>3</sup>T workflows<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. To do this, packages and any code that are used must be easy to install and use. We accomplish this by having each chapter installing its own packages, and avoiding having users “pre-installing” packages.</p>
-<p>Furthermore, packages, once installed for one project, will be cached locally so that the next project will be able to install quickly from the local package cache. We have also attempted to allow all sections to be run without administrator privileges.</p>
-<p>Nonetheless, there might be situations where users of this book will need to pre-install packages in one go – e.g., they will run chapter code without internet access. The following instructions are meant to cover this use case.</p>
-<section id="installation-code" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="installation-code"><span class="header-section-number">3.1</span> Installation code</h2>
-<p>If you can run the following code, then you will be able to run code in any of the chapters in this book. This code begins by installing <code>SpaDES.project</code> and its dependencies, then uses <code>setupProject</code> to download and install a list of R packages hosted on GitHub and a single SpaDES module (<em>Biomass-core</em>) which has over 130 package dependencies.</p>
+<p>The flexibility and collaborative model development that SpaDES promotes can come with the cost of having module code that may not fit all desired applications out-of-the-box or, like any other piece of code, that may have errors.</p>
+<p>It is a good idea to learn the basics of debugging, especially when using open-source, interpreted code languages like R (in opposition to compiled code languages like <em>C++</em>).</p>
+<p>It is also a (very) good idea to learn how to develop a good reproducible example (<em>reprex</em>; see <a href="https://www.r-bloggers.com/2020/10/how-to-make-a-reprex/">How to make a reprex</a>) when debugging attempts have failed or when we cannot fix the issue ourselves (e.g., bugs in R packages need to be fixed by package maintainers).</p>
+<section id="debugging-with-browser" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="debugging-with-browser"><span class="header-section-number">13.1</span> Debugging with <code>browser()</code></h2>
+<p><code>browser()</code> calls are very useful when you have access to the source code. When inserted inside a function, they will interrupt code execution at that point and allow the user to “enter” the function’s environment in debugging mode – i.e.&nbsp;they will have access to all the objects the function has access to internally.</p>
+<p>Let’s define a simple function and then use it improperly.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>repos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"predictiveecology.r-universe.dev"</span>, <span class="fu">getOption</span>(<span class="st">"repos"</span>))</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"Require"</span>, <span class="st">"SpaDES.project"</span>), <span class="at">repos =</span> repos)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SpaDES.project)</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>myFun <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">sum</span>(x, y)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">setupProject</span>(</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">packages =</span> <span class="st">"PredictiveEcology/PredictiveEcology.org@training-book/training/R/pkgList.R"</span>,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">options =</span> <span class="fu">list</span>(<span class="at">repos =</span> repos),</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="st">"Introduction"</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">modules =</span> <span class="st">"PredictiveEcology/Biomass_core@main"</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">myFun</span>(<span class="fu">runif</span>(<span class="dv">20</span>), <span class="st">"A"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Note that <code>setupProject</code> will change your working directory to <code>./Introduction</code>. If that is not where you want to keep working, restart R and make sure you set your working directory to where you want it to be (if restarting is not sufficient).</p>
+<p>Because we have the source code, we can:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>myFun <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">browser</span>()</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">sum</span>(x, y)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">myFun</span>(<span class="fu">runif</span>(<span class="dv">20</span>), <span class="st">"A"</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># &gt; myFun(runif(20), "A")</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Called from: myFun(runif(20), "A")</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Browse[1]&gt; x</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#  [1] 0.48059327 0.12201652 0.39367787 0.91989186 0.04872701 0.85632846 0.05945062 0.87683559 0.58599446 0.10403352 0.49429023</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">#  [12] 0.69785397 0.19622413 0.05559181 0.20329131 0.14909383 0.61400844 0.73638292 0.21185129 0.72534305</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Browse[1]&gt; y</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">#  [1] "A"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>From the above we would quickly realise we were trying to add a numeric vector with a character vector, which obviously doesn’t work.</p>
+<section id="browser-with-a-spades-module" class="level3" data-number="13.1.1">
+<h3 data-number="13.1.1" class="anchored" data-anchor-id="browser-with-a-spades-module"><span class="header-section-number">13.1.1</span> <code>browser()</code> with a SpaDES module</h3>
+<p>Go back to the module <em>My_linear_model</em> created in <a href="NewModuleIntro.html" class="quarto-xref"><span>Chapter 5</span></a> and insert a <code>browser()</code> in the <code>init</code> event, save and run the module again.</p>
+<pre><code>doEvent.My_linear_model.init &lt;- function(sim, eventTime, eventType, priority) {
+    browser()
+    x &lt;- rnorm(10)
+    y &lt;- x + rnorm(10)
+    sim$model &lt;- lm(y ~ x)  
+    return(sim)
+}</code></pre>
+<p>If you are using RStudio, it probably opened the module .R script (if not try right-clicking the RStudio window and selecting “Reload”) and the R console shows:</p>
+<pre><code>&gt; out &lt;- simInit(modules = nm1, paths = list(modulePath = modulePath))
+&gt; out &lt;- spades(out)
+No packages to install/update
+Jun09 00:03:51 simInit Resetting .Random.seed of session because sim$._randomSeed is not NULL. To get a different seed, run: sim$._randomSeed &lt;- NULL to clear it.
+Jun09 00:03:51 simInit Using setDTthreads(1). To change: 'options(spades.DTthreads = X)'.
+Jun09 00:03:51 chckpn:init total elpsd: 21 secs | 0 checkpoint init 0
+Jun09 00:03:51 save  :init total elpsd: 21 secs | 0 save init 0
+Jun09 00:03:51 prgrss:init total elpsd: 21 secs | 0 progress init 0
+Jun09 00:03:51 load  :init total elpsd: 21 secs | 0 load init 0
+Jun09 00:03:51 My_lnr:init total elpsd: 21 secs | 0 My_linear_model init 1
+Called from: get(moduleCall, envir = fnEnv)(sim, cur[["eventTime"]], cur[["eventType"]])</code></pre>
+<p>Use <code>ls()</code> to see what objects are in the function environment, then execute code line-by-line with ENTER, F10 or the “Next” button.</p>
 </section>
-<section id="code-explained" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="code-explained"><span class="header-section-number">3.2</span> Code explained</h2>
-<p>If you care to know what the code is “doing”, read on.</p>
-<p>The <code>setupProject</code> call above internally uses <code>Require</code> to download and install any missing packages. Although the packages themselves are installed in a folder inside <code>./Introduction/</code> (the project folder) (see <code>.libPaths()</code> after running the code), <code>Require</code> <em>caches</em> the downloaded package installation files in a user-accessible folder (so independent from any project).</p>
-<p>This means that, should you, e.g., switch projects and attempt to reinstall the same or a subset of these packages, <code>setupProject</code> (via <code>Require</code>) would access the package cache and reinstall them in whatever new project folder library. This is much faster than downloading the packages again.</p>
-<p>The same is true should you lose internet connection, since the downloads do not need to happen again.</p>
 </section>
-<section id="see-also" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="see-also"><span class="header-section-number">3.3</span> See also</h2>
-<p><a href="TroubleshootingPackageInstallation.html" class="quarto-xref"><span>Chapter 4</span></a> on R package installation troubleshooting</p>
-
-
-</section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>See this <a href="https://ceresbarros.github.io/reproducible-workflowsWS/presentations/20230712_BESMacroSIG2023_ReproducibleWorkflowsWS.pdf">introduction to R<sup>3</sup>T workflows</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<section id="debugging-with-debug-and-debugonce" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="debugging-with-debug-and-debugonce"><span class="header-section-number">13.2</span> Debugging with <code>debug()</code> and <code>debugonce()</code></h2>
+<p>If we don’t have access to the function code (or don’t want to insert a <code>browser()</code>) we can use <code>debug()</code> and <code>debugonce()</code>. The effect will be similar to having a <code>browser()</code> in the first line of a function’s definition.</p>
+<p>Here’s an example:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">debugonce</span>(<span class="st">"time"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">time</span>(out) <span class="do">## then press ENTER to execute each line of code one-by-one</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><code>undebug(&lt;function_name&gt;)</code> will de-activate debugging for that function.</p>
+<section id="debugonce-and-debug-with-a-spades-module" class="level3" data-number="13.2.1">
+<h3 data-number="13.2.1" class="anchored" data-anchor-id="debugonce-and-debug-with-a-spades-module"><span class="header-section-number">13.2.1</span> <code>debugonce()</code> and <code>debug()</code> with a SpaDES module</h3>
+<p>The process would be similar in a module, with the difference that the <code>debug()</code>/<code>debugonce()</code> call would either happen <em>before</em> running the module with <code>spades()</code>, OR from within the module in debugging mode.</p>
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>If debugging <em>module</em> functions, they might not be easily available from the <code>.GlobalEnv</code> since they “live” inside the <code>simList</code>.</p>
+<p>The easiest way to debug module functions is to</p>
+<ol type="1">
+<li>Insert a <code>browser()</code> in that function</li>
 </ol>
+<p>OR</p>
+<ol type="1">
+<li><p>Insert a <code>browser()</code> in the module, before the function is called</p></li>
+<li><p>Call <code>debugonce("&lt;function_name&gt;")</code>/<code>debug("&lt;function_name&gt;")</code></p></li>
+<li><p>Proceed to executing the function</p></li>
+</ol>
+</div>
+</div>
+</div>
+<p>Let’s try it:</p>
+<ol type="1">
+<li><p>Exit <code>browser()</code> mode (e.g., enter <code>Q</code> in the R console)</p></li>
+<li><p>Remove the <code>browser()</code> from <em>My_linear_model</em></p></li>
+<li><p>Run <code>debugonce("lm")</code>.</p></li>
+<li><p>Run the <code>simInit()</code> + <code>spades()</code> lines again to re-source module code and run the module <strong>OR</strong> run <code>restartSpades()</code> which will re-parse the module code and resume the workflow from the top of the event that was interrupted (the <code>init</code>).</p>
+<ul>
+<li>What objects does <code>ls()</code> show now?</li>
+</ul></li>
+<li><p>Exit debugging mode again</p></li>
+<li><p>Re-run <code>restartSpades()</code></p>
+<ul>
+<li>Are you back in debugging mode?</li>
+</ul></li>
+</ol>
+<p>Now go through steps 1-6 again, but replace <code>debugonce("lm")</code> with <code>debug("lm")</code> in step 3.</p>
+<ul>
+<li>What happened in step 6. this time?</li>
+</ul>
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>If debugging functions that are S4 objects, you may need to be aware of which method needs to be debugged before calling <code>debug</code> or <code>debugOnce</code>.</p>
+<p>Try <code>showMethods("show")</code> to see all the methods implemented.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="restartspades" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="restartspades"><span class="header-section-number">13.3</span> <code>restartSpades()</code></h2>
+<p>Probably one of our BFFs (best-friend functions) as SpaDES developpers, it will allow resuming a workflow whose execution was interrupted by an error or the user from the top of the interrupted event, but will first re-parse module code.</p>
+<p>This means that we can insert a <code>browser()</code> somewhere in the event code, then <code>restartSpades()</code> and debug the event.</p>
+</section>
+<section id="try-on-your-own" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="try-on-your-own"><span class="header-section-number">13.4</span> Try on your own</h2>
+<ul>
+<li>Try to debug the first method of the function <code>show()</code>. Here’s a tip: start with <code>showMethods("show")</code>.</li>
+</ul>
+</section>
+<section id="see-also" class="level2" data-number="13.5">
+<h2 data-number="13.5" class="anchored" data-anchor-id="see-also"><span class="header-section-number">13.5</span> See also</h2>
+<p><a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/browser"><code>?browser()</code></a></p>
+<p><a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/debug"><code>?debug()</code></a></p>
+<p><a href="https://spades-core.predictiveecology.org/reference/restartSpades.html"><code>?restartSpades()</code></a></p>
+<p><a href="https://www.rdocumentation.org/packages/methods/versions/3.6.2/topics/showMethods"><code>?showMethods()</code></a> – useful to find out what methods of a function you may want to activate debugging for</p>
+<p>An example of debugging a more complex SpaDES workflow in <a href="LandRDemo_coreVeg.html#sec-LandRdebug" class="quarto-xref"><span>Section 15.5</span></a></p>
+<p><a href="https://adv-r.hadley.nz/debugging.html">Debugging – Advanced R</a></p>
+<p><a href="https://www.r-bloggers.com/2020/10/how-to-make-a-reprex/">How to make a reprex</a></p>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -1073,13 +1194,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./installRandSpatialPkgs.html" class="pagination-link" aria-label="Installing R and Spatial Packages">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Installing R and Spatial Packages</span></span>
+      <a href="./prepInputs.html" class="pagination-link" aria-label="`reproducible::prepInputs` for Data">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./TroubleshootingPackageInstallation.html" class="pagination-link" aria-label="Troubleshooting R package installation">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Troubleshooting R package installation</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./setupProject.html" class="pagination-link" aria-label="SpaDES workflows and projects">
+        <span class="nav-page-text">SpaDES workflows and projects</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

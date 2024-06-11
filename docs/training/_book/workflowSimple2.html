@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eliot McIntire">
-<meta name="dcterms.date" content="2024-06-11">
+<meta name="dcterms.date" content="2024-06-10">
 
-<title>Robust and nimble scientific workflows, using SpaDES - 3&nbsp; Pre-installing R packages for book</title>
+<title>Robust and nimble scientific workflows, using SpaDES - 14&nbsp; Workflows with setupProject</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,8 +66,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./TroubleshootingPackageInstallation.html" rel="next">
-<link href="./installRandSpatialPkgs.html" rel="prev">
+<link href="./LandRDemo_coreVeg.html" rel="next">
+<link href="./setupProject.html" rel="prev">
 <link href="./assets/logo/favicon-16x16.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -242,7 +242,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./settingUp.html">Setting up your computer and system</a></li><li class="breadcrumb-item"><a href="./PackagesForBook.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./workflowSimple2.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -283,7 +283,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./PackagesForBook.html" class="sidebar-item-text sidebar-link active">
+  <a href="./PackagesForBook.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></span></a>
   </div>
 </li>
@@ -382,7 +382,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./workflowSimple2.html" class="sidebar-item-text sidebar-link">
+  <a href="./workflowSimple2.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></span></a>
   </div>
 </li>
@@ -428,18 +428,21 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#installation-code" id="toc-installation-code" class="nav-link active" data-scroll-target="#installation-code"><span class="header-section-number">3.1</span> Installation code</a></li>
-  <li><a href="#code-explained" id="toc-code-explained" class="nav-link" data-scroll-target="#code-explained"><span class="header-section-number">3.2</span> Code explained</a></li>
-  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">3.3</span> See also</a></li>
+  <li><a href="#spades.projectsetupproject" id="toc-spades.projectsetupproject" class="nav-link active" data-scroll-target="#spades.projectsetupproject"><span class="header-section-number">14.1</span> <code>SpaDES.project::setupProject</code></a></li>
+  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation"><span class="header-section-number">14.2</span> Installation</a></li>
+  <li><a href="#using-setupproject" id="toc-using-setupproject" class="nav-link" data-scroll-target="#using-setupproject"><span class="header-section-number">14.3</span> Using <code>setupProject</code></a></li>
+  <li><a href="#emergent-workflow" id="toc-emergent-workflow" class="nav-link" data-scroll-target="#emergent-workflow"><span class="header-section-number">14.4</span> Emergent workflow</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples"><span class="header-section-number">14.5</span> Examples</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">14.6</span> See also</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./settingUp.html">Setting up your computer and system</a></li><li class="breadcrumb-item"><a href="./PackagesForBook.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./workflowSimple2.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></h1>
+<h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></h1>
 </div>
 
 
@@ -456,7 +459,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 11, 2024</p>
+      <p class="date">June 10, 2024</p>
     </div>
   </div>
   
@@ -468,48 +471,609 @@ window.Quarto = {
 </header>
 
 
-<p>The objective of this book is to facilitate lightweight project code and setting up R<sup>3</sup>T workflows<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. To do this, packages and any code that are used must be easy to install and use. We accomplish this by having each chapter installing its own packages, and avoiding having users “pre-installing” packages.</p>
-<p>Furthermore, packages, once installed for one project, will be cached locally so that the next project will be able to install quickly from the local package cache. We have also attempted to allow all sections to be run without administrator privileges.</p>
-<p>Nonetheless, there might be situations where users of this book will need to pre-install packages in one go – e.g., they will run chapter code without internet access. The following instructions are meant to cover this use case.</p>
-<section id="installation-code" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="installation-code"><span class="header-section-number">3.1</span> Installation code</h2>
-<p>If you can run the following code, then you will be able to run code in any of the chapters in this book. This code begins by installing <code>SpaDES.project</code> and its dependencies, then uses <code>setupProject</code> to download and install a list of R packages hosted on GitHub and a single SpaDES module (<em>Biomass-core</em>) which has over 130 package dependencies.</p>
+<p>Once we want to run a project that is more sophisticated, we can start using <code>SpaDES.project</code>. <a href="https://spades-project.predictiveecology.org/"><code>SpaDES.project</code></a> is a package that deals with a number of challenges that crop up creating and using workflows. These become particularly acute when working with multiple modules created by potentially many people. <a href="https://spades-project.predictiveecology.org/#project-challenges">See here to see a longer list of project challenges</a>.</p>
+<p>We will demonstrate its use with an example created by <a href="https://github.com/tati-micheletti/Micheletti_SpaDES/blob/main/demo.R">Tati Micheletti</a> where a workflow with several modules is setup and run.</p>
+<section id="spades.projectsetupproject" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="spades.projectsetupproject"><span class="header-section-number">14.1</span> <code>SpaDES.project::setupProject</code></h2>
+<p>https://spades-project.predictiveecology.org/articles/i-getting-started.html</p>
+</section>
+<section id="installation" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="installation"><span class="header-section-number">14.2</span> Installation</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>repos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"predictiveecology.r-universe.dev"</span>, <span class="fu">getOption</span>(<span class="st">"repos"</span>))</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"Require"</span>, <span class="st">"SpaDES.project"</span>), <span class="at">repos =</span> repos)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SpaDES.project)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">setupProject</span>(</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">packages =</span> <span class="st">"PredictiveEcology/PredictiveEcology.org@training-book/training/R/pkgList.R"</span>,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">options =</span> <span class="fu">list</span>(<span class="at">repos =</span> repos),</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="st">"Introduction"</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">modules =</span> <span class="st">"PredictiveEcology/Biomass_core@main"</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># if (!require("SpaDES.project"))</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Require<span class="sc">::</span><span class="fu">Install</span>(<span class="fu">c</span>(<span class="st">"SpaDES.project"</span>, <span class="st">"SpaDES.core"</span>, <span class="st">"reproducible"</span>), <span class="at">repos =</span> repos, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>packagePath <span class="ot">=</span> SpaDES.project<span class="sc">::</span><span class="fu">.libPathDefault</span>(<span class="st">"~/SpaDES_book/integratingSpaDESmodules"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Note that <code>setupProject</code> will change your working directory to <code>./Introduction</code>. If that is not where you want to keep working, restart R and make sure you set your working directory to where you want it to be (if restarting is not sufficient).</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>packagePath <span class="ot">=</span> SpaDES.project<span class="sc">::</span><span class="fu">.libPathDefault</span>(<span class="st">"PredictiveEcology.org"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
-<section id="code-explained" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="code-explained"><span class="header-section-number">3.2</span> Code explained</h2>
-<p>If you care to know what the code is “doing”, read on.</p>
-<p>The <code>setupProject</code> call above internally uses <code>Require</code> to download and install any missing packages. Although the packages themselves are installed in a folder inside <code>./Introduction/</code> (the project folder) (see <code>.libPaths()</code> after running the code), <code>Require</code> <em>caches</em> the downloaded package installation files in a user-accessible folder (so independent from any project).</p>
-<p>This means that, should you, e.g., switch projects and attempt to reinstall the same or a subset of these packages, <code>setupProject</code> (via <code>Require</code>) would access the package cache and reinstall them in whatever new project folder library. This is much faster than downloading the packages again.</p>
-<p>The same is true should you lose internet connection, since the downloads do not need to happen again.</p>
+<section id="using-setupproject" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="using-setupproject"><span class="header-section-number">14.3</span> Using <code>setupProject</code></h2>
+<p><code>setupProject</code> does a series of very specific things, in a particular order, so that the chances of package conflicts and user errors are minimized.</p>
+<p>Note how it downloads the listed modules directly from their GitHub repositories (e.g. <a href="https://github.com/tati-micheletti/speciesAbundance">tati-micheletti/speciesAbundance</a>)</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">##################### PART II: Download the modules and install the needed packages</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>Setup <span class="ot">&lt;-</span> SpaDES.project<span class="sc">::</span><span class="fu">setupProject</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">projectPath =</span> <span class="st">"~/SpaDES_book/integratingSpaDESmodules"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">packagePath =</span> packagePath),</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">modules =</span> <span class="fu">c</span>(<span class="st">"tati-micheletti/speciesAbundance@main"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>              <span class="st">"tati-micheletti/temperature@main"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>              <span class="st">"tati-micheletti/speciesAbundTempLM@main"</span>),</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="fu">list</span>(<span class="at">start =</span> <span class="dv">2013</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>               <span class="at">end =</span> <span class="dv">2030</span>),</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">updateRprofile =</span> <span class="cn">FALSE</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>The output of <code>setupProject</code> is a list of argument values that can be passed to <code>simInitAndSpaDES2</code> (with the “2” it accepts a list of arguments, instead of the arguments themselves).</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">simInitAndSpades2</span>(Setup)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Downloading: 15 B     
+Downloading: 15 B     
+Downloading: 3.9 kB     
+Downloading: 3.9 kB     
+Downloading: 3.9 kB     
+Downloading: 3.9 kB     
+Downloading: 28 kB     
+Downloading: 28 kB     
+Downloading: 40 kB     
+Downloading: 40 kB     
+Downloading: 45 kB     
+Downloading: 45 kB     
+Downloading: 55 kB     
+Downloading: 55 kB     
+Downloading: 62 kB     
+Downloading: 62 kB     
+Downloading: 67 kB     
+Downloading: 67 kB     
+Downloading: 75 kB     
+Downloading: 75 kB     
+Downloading: 89 kB     
+Downloading: 89 kB     
+Downloading: 100 kB     
+Downloading: 100 kB     
+Downloading: 110 kB     
+Downloading: 110 kB     
+Downloading: 120 kB     
+Downloading: 120 kB     
+Downloading: 140 kB     
+Downloading: 140 kB     
+Downloading: 150 kB     
+Downloading: 150 kB     
+Downloading: 160 kB     
+Downloading: 160 kB     
+Downloading: 180 kB     
+Downloading: 180 kB     
+Downloading: 190 kB     
+Downloading: 190 kB     
+Downloading: 200 kB     
+Downloading: 200 kB     
+Downloading: 200 kB     
+Downloading: 200 kB     
+Downloading: 220 kB     
+Downloading: 220 kB     
+Downloading: 230 kB     
+Downloading: 230 kB     
+Downloading: 250 kB     
+Downloading: 250 kB     
+Downloading: 250 kB     
+Downloading: 250 kB     
+Downloading: 270 kB     
+Downloading: 270 kB     
+Downloading: 280 kB     
+Downloading: 280 kB     
+Downloading: 300 kB     
+Downloading: 300 kB     
+Downloading: 320 kB     
+Downloading: 320 kB     
+Downloading: 350 kB     
+Downloading: 350 kB     
+Downloading: 370 kB     
+Downloading: 370 kB     
+Downloading: 380 kB     
+Downloading: 380 kB     
+Downloading: 410 kB     
+Downloading: 410 kB     
+Downloading: 430 kB     
+Downloading: 430 kB     
+Downloading: 450 kB     
+Downloading: 450 kB     
+Downloading: 500 kB     
+Downloading: 500 kB     
+Downloading: 510 kB     
+Downloading: 510 kB     
+Downloading: 550 kB     
+Downloading: 550 kB     
+Downloading: 570 kB     
+Downloading: 570 kB     
+Downloading: 570 kB     
+Downloading: 570 kB     
+Downloading: 15 B     
+Downloading: 15 B     
+Downloading: 8.4 kB     
+Downloading: 8.4 kB     
+Downloading: 11 kB     
+Downloading: 11 kB     
+Downloading: 13 kB     
+Downloading: 13 kB     
+Downloading: 29 kB     
+Downloading: 29 kB     
+Downloading: 36 kB     
+Downloading: 36 kB     
+Downloading: 43 kB     
+Downloading: 43 kB     
+Downloading: 66 kB     
+Downloading: 66 kB     
+Downloading: 81 kB     
+Downloading: 81 kB     
+Downloading: 94 kB     
+Downloading: 94 kB     
+Downloading: 110 kB     
+Downloading: 110 kB     
+Downloading: 210 kB     
+Downloading: 210 kB     
+Downloading: 220 kB     
+Downloading: 220 kB     
+Downloading: 230 kB     
+Downloading: 230 kB     
+Downloading: 240 kB     
+Downloading: 240 kB     
+Downloading: 260 kB     
+Downloading: 260 kB     
+Downloading: 270 kB     
+Downloading: 270 kB     
+Downloading: 290 kB     
+Downloading: 290 kB     
+Downloading: 300 kB     
+Downloading: 300 kB     
+Downloading: 320 kB     
+Downloading: 320 kB     
+Downloading: 330 kB     
+Downloading: 330 kB     
+Downloading: 410 kB     
+Downloading: 410 kB     
+Downloading: 420 kB     
+Downloading: 420 kB     
+Downloading: 440 kB     
+Downloading: 440 kB     
+Downloading: 450 kB     
+Downloading: 450 kB     
+Downloading: 560 kB     
+Downloading: 560 kB     
+Downloading: 580 kB     
+Downloading: 580 kB     
+Downloading: 590 kB     
+Downloading: 590 kB     
+Downloading: 610 kB     
+Downloading: 610 kB     
+Downloading: 670 kB     
+Downloading: 670 kB     
+Downloading: 850 kB     
+Downloading: 850 kB     
+Downloading: 1 MB     
+Downloading: 1 MB     
+Downloading: 1 MB     
+Downloading: 1 MB     
+Downloading: 1.2 MB     
+Downloading: 1.2 MB     
+Downloading: 1.2 MB     
+Downloading: 1.2 MB     
+Downloading: 1.2 MB     
+Downloading: 1.2 MB     
+Downloading: 1.2 MB     
+Downloading: 1.2 MB     
+Downloading: 1.3 MB     
+Downloading: 1.3 MB     
+Downloading: 1.3 MB     
+Downloading: 1.3 MB     
+Downloading: 1.4 MB     
+Downloading: 1.4 MB     
+Downloading: 1.4 MB     
+Downloading: 1.4 MB     
+Downloading: 1.5 MB     
+Downloading: 1.5 MB     
+Downloading: 1.5 MB     
+Downloading: 1.5 MB     
+Downloading: 1.6 MB     
+Downloading: 1.6 MB     
+Downloading: 1.6 MB     
+Downloading: 1.6 MB     
+Downloading: 1.7 MB     
+Downloading: 1.7 MB     
+Downloading: 1.7 MB     
+Downloading: 1.7 MB     
+Downloading: 1.8 MB     
+Downloading: 1.8 MB     
+Downloading: 1.8 MB     
+Downloading: 1.8 MB     
+Downloading: 1.8 MB     
+Downloading: 1.8 MB     
+Downloading: 1.9 MB     
+Downloading: 1.9 MB     
+Downloading: 1.9 MB     
+Downloading: 1.9 MB     
+Downloading: 1.9 MB     
+Downloading: 1.9 MB     
+Downloading: 1.9 MB     
+Downloading: 1.9 MB     
+Downloading: 1.9 MB     
+Downloading: 1.9 MB     
+Downloading: 1.9 MB     
+Downloading: 1.9 MB     
+Downloading: 1.9 MB     
+Downloading: 1.9 MB     
+Downloading: 1.9 MB     
+Downloading: 1.9 MB     
+Downloading: 1.9 MB     
+Downloading: 1.9 MB     
+Downloading: 2 MB     
+Downloading: 2 MB     
+Downloading: 2 MB     
+Downloading: 2 MB     
+Downloading: 2 MB     
+Downloading: 2 MB     
+Downloading: 2 MB     
+Downloading: 2 MB     
+Downloading: 2 MB     
+Downloading: 2 MB     
+Downloading: 2 MB     
+Downloading: 2 MB     
+Downloading: 2 MB     
+Downloading: 2 MB     
+Downloading: 2.1 MB     
+Downloading: 2.1 MB     
+Downloading: 2.1 MB     
+Downloading: 2.1 MB     
+Downloading: 2.1 MB     
+Downloading: 2.1 MB     
+Downloading: 2.1 MB     
+Downloading: 2.1 MB     
+Downloading: 2.1 MB     
+Downloading: 2.1 MB     
+Downloading: 2.1 MB     
+Downloading: 2.1 MB     
+Downloading: 2.1 MB     
+Downloading: 2.1 MB     
+Downloading: 2.2 MB     
+Downloading: 2.2 MB     
+Downloading: 2.2 MB     
+Downloading: 2.2 MB     
+Downloading: 2.2 MB     
+Downloading: 2.2 MB     
+Downloading: 2.2 MB     
+Downloading: 2.2 MB     
+Downloading: 2.2 MB     
+Downloading: 2.2 MB     
+Downloading: 2.2 MB     
+Downloading: 2.2 MB     
+Downloading: 2.3 MB     
+Downloading: 2.3 MB     
+Downloading: 2.3 MB     
+Downloading: 2.3 MB     
+Downloading: 2.4 MB     
+Downloading: 2.4 MB     
+Downloading: 2.4 MB     
+Downloading: 2.4 MB     
+Downloading: 2.4 MB     
+Downloading: 2.4 MB     
+Downloading: 2.5 MB     
+Downloading: 2.5 MB     
+Downloading: 2.5 MB     
+Downloading: 2.5 MB     
+Downloading: 2.6 MB     
+Downloading: 2.6 MB     
+Downloading: 2.6 MB     
+Downloading: 2.6 MB     
+Downloading: 2.7 MB     
+Downloading: 2.7 MB     
+Downloading: 2.7 MB     
+Downloading: 2.7 MB     </code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workflowSimple2_files/figure-html/runSimInit-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workflowSimple2_files/figure-html/runSimInit-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workflowSimple2_files/figure-html/runSimInit-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workflowSimple2_files/figure-html/runSimInit-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workflowSimple2_files/figure-html/runSimInit-5.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workflowSimple2_files/figure-html/runSimInit-6.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workflowSimple2_files/figure-html/runSimInit-7.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workflowSimple2_files/figure-html/runSimInit-8.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workflowSimple2_files/figure-html/runSimInit-9.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workflowSimple2_files/figure-html/runSimInit-10.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workflowSimple2_files/figure-html/runSimInit-11.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workflowSimple2_files/figure-html/runSimInit-12.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workflowSimple2_files/figure-html/runSimInit-13.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
-<section id="see-also" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="see-also"><span class="header-section-number">3.3</span> See also</h2>
-<p><a href="TroubleshootingPackageInstallation.html" class="quarto-xref"><span>Chapter 4</span></a> on R package installation troubleshooting</p>
+<section id="emergent-workflow" class="level2" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="emergent-workflow"><span class="header-section-number">14.4</span> Emergent workflow</h2>
+<p>We can evaluate the sequence of events using <code>completed</code></p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">completed</span>(results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>    eventTime         moduleName            eventType eventPriority
+        &lt;num&gt;             &lt;char&gt;               &lt;char&gt;         &lt;num&gt;
+ 1:      2013         checkpoint                 init             0
+ 2:      2013               save                 init             0
+ 3:      2013           progress                 init             0
+ 4:      2013               load                 init             0
+ 5:      2013   speciesAbundance                 init             1
+ 6:      2013        temperature                 init             1
+ 7:      2013 speciesAbundTempLM                 init             1
+ 8:      2013   speciesAbundance       tableToRasters             5
+ 9:      2013   speciesAbundance                 plot             5
+10:      2013        temperature         dataToRaster             5
+11:      2013        temperature             plotting             5
+12:      2013 speciesAbundTempLM        tableBuilding             5
+13:      2014   speciesAbundance       tableToRasters             5
+14:      2014        temperature         dataToRaster             5
+15:      2014 speciesAbundTempLM        tableBuilding             5
+16:      2015   speciesAbundance       tableToRasters             5
+17:      2015        temperature         dataToRaster             5
+18:      2015 speciesAbundTempLM        tableBuilding             5
+19:      2016   speciesAbundance       tableToRasters             5
+20:      2016        temperature         dataToRaster             5
+21:      2016 speciesAbundTempLM        tableBuilding             5
+22:      2017   speciesAbundance       tableToRasters             5
+23:      2017        temperature         dataToRaster             5
+24:      2017 speciesAbundTempLM        tableBuilding             5
+25:      2018   speciesAbundance                 plot             5
+26:      2018   speciesAbundance       tableToRasters             5
+27:      2018        temperature         dataToRaster             5
+28:      2018 speciesAbundTempLM        tableBuilding             5
+29:      2019   speciesAbundance       tableToRasters             5
+30:      2019        temperature         dataToRaster             5
+31:      2019 speciesAbundTempLM        tableBuilding             5
+32:      2020   speciesAbundance       tableToRasters             5
+33:      2020        temperature         dataToRaster             5
+34:      2020 speciesAbundTempLM        tableBuilding             5
+35:      2021   speciesAbundance       tableToRasters             5
+36:      2021        temperature         dataToRaster             5
+37:      2021 speciesAbundTempLM        tableBuilding             5
+38:      2022   speciesAbundance       tableToRasters             5
+39:      2022        temperature         dataToRaster             5
+40:      2022 speciesAbundTempLM        tableBuilding             5
+41:      2023        temperature             plotting             5
+42:      2023        temperature         dataToRaster             5
+43:      2023 speciesAbundTempLM        tableBuilding             5
+44:      2023 speciesAbundTempLM        modelBuilding             5
+45:      2023 speciesAbundTempLM abundanceForecasting             5
+46:      2023 speciesAbundTempLM                 plot             5
+47:      2024        temperature         dataToRaster             5
+48:      2024 speciesAbundTempLM abundanceForecasting             5
+49:      2024 speciesAbundTempLM                 plot             5
+50:      2025        temperature         dataToRaster             5
+51:      2025 speciesAbundTempLM abundanceForecasting             5
+52:      2025 speciesAbundTempLM                 plot             5
+53:      2026        temperature         dataToRaster             5
+54:      2026 speciesAbundTempLM abundanceForecasting             5
+55:      2026 speciesAbundTempLM                 plot             5
+56:      2027        temperature         dataToRaster             5
+57:      2027 speciesAbundTempLM abundanceForecasting             5
+58:      2027 speciesAbundTempLM                 plot             5
+59:      2028        temperature         dataToRaster             5
+60:      2028 speciesAbundTempLM abundanceForecasting             5
+61:      2028 speciesAbundTempLM                 plot             5
+62:      2029        temperature         dataToRaster             5
+63:      2029 speciesAbundTempLM abundanceForecasting             5
+64:      2029 speciesAbundTempLM                 plot             5
+65:      2030        temperature         dataToRaster             5
+66:      2030 speciesAbundTempLM abundanceForecasting             5
+67:      2030 speciesAbundTempLM                 plot             5
+    eventTime         moduleName            eventType eventPriority
+    ._prevEventTimeFinish           clockTime
+                   &lt;POSc&gt;              &lt;POSc&gt;
+ 1:   2024-06-10 12:49:34 2024-06-10 12:49:34
+ 2:   2024-06-10 12:49:34 2024-06-10 12:49:34
+ 3:   2024-06-10 12:49:34 2024-06-10 12:49:34
+ 4:   2024-06-10 12:49:34 2024-06-10 12:49:34
+ 5:   2024-06-10 12:49:34 2024-06-10 12:49:34
+ 6:   2024-06-10 12:49:34 2024-06-10 12:49:34
+ 7:   2024-06-10 12:49:34 2024-06-10 12:49:34
+ 8:   2024-06-10 12:49:34 2024-06-10 12:49:34
+ 9:   2024-06-10 12:49:34 2024-06-10 12:49:34
+10:   2024-06-10 12:49:34 2024-06-10 12:49:34
+11:   2024-06-10 12:49:34 2024-06-10 12:49:34
+12:   2024-06-10 12:49:34 2024-06-10 12:49:34
+13:   2024-06-10 12:49:34 2024-06-10 12:49:34
+14:   2024-06-10 12:49:34 2024-06-10 12:49:35
+15:   2024-06-10 12:49:35 2024-06-10 12:49:35
+16:   2024-06-10 12:49:35 2024-06-10 12:49:35
+17:   2024-06-10 12:49:35 2024-06-10 12:49:35
+18:   2024-06-10 12:49:35 2024-06-10 12:49:35
+19:   2024-06-10 12:49:35 2024-06-10 12:49:35
+20:   2024-06-10 12:49:35 2024-06-10 12:49:35
+21:   2024-06-10 12:49:35 2024-06-10 12:49:35
+22:   2024-06-10 12:49:35 2024-06-10 12:49:35
+23:   2024-06-10 12:49:35 2024-06-10 12:49:35
+24:   2024-06-10 12:49:35 2024-06-10 12:49:35
+25:   2024-06-10 12:49:35 2024-06-10 12:49:35
+26:   2024-06-10 12:49:35 2024-06-10 12:49:35
+27:   2024-06-10 12:49:35 2024-06-10 12:49:35
+28:   2024-06-10 12:49:35 2024-06-10 12:49:35
+29:   2024-06-10 12:49:35 2024-06-10 12:49:35
+30:   2024-06-10 12:49:35 2024-06-10 12:49:35
+31:   2024-06-10 12:49:35 2024-06-10 12:49:35
+32:   2024-06-10 12:49:35 2024-06-10 12:49:35
+33:   2024-06-10 12:49:35 2024-06-10 12:49:35
+34:   2024-06-10 12:49:35 2024-06-10 12:49:35
+35:   2024-06-10 12:49:35 2024-06-10 12:49:35
+36:   2024-06-10 12:49:35 2024-06-10 12:49:35
+37:   2024-06-10 12:49:35 2024-06-10 12:49:35
+38:   2024-06-10 12:49:35 2024-06-10 12:49:35
+39:   2024-06-10 12:49:35 2024-06-10 12:49:35
+40:   2024-06-10 12:49:35 2024-06-10 12:49:35
+41:   2024-06-10 12:49:35 2024-06-10 12:49:35
+42:   2024-06-10 12:49:35 2024-06-10 12:49:35
+43:   2024-06-10 12:49:35 2024-06-10 12:49:35
+44:   2024-06-10 12:49:35 2024-06-10 12:49:36
+45:   2024-06-10 12:49:36 2024-06-10 12:49:36
+46:   2024-06-10 12:49:36 2024-06-10 12:49:36
+47:   2024-06-10 12:49:36 2024-06-10 12:49:36
+48:   2024-06-10 12:49:36 2024-06-10 12:49:36
+49:   2024-06-10 12:49:36 2024-06-10 12:49:36
+50:   2024-06-10 12:49:36 2024-06-10 12:49:36
+51:   2024-06-10 12:49:36 2024-06-10 12:49:36
+52:   2024-06-10 12:49:36 2024-06-10 12:49:36
+53:   2024-06-10 12:49:36 2024-06-10 12:49:36
+54:   2024-06-10 12:49:36 2024-06-10 12:49:36
+55:   2024-06-10 12:49:36 2024-06-10 12:49:36
+56:   2024-06-10 12:49:36 2024-06-10 12:49:36
+57:   2024-06-10 12:49:36 2024-06-10 12:49:36
+58:   2024-06-10 12:49:36 2024-06-10 12:49:36
+59:   2024-06-10 12:49:36 2024-06-10 12:49:36
+60:   2024-06-10 12:49:36 2024-06-10 12:49:36
+61:   2024-06-10 12:49:36 2024-06-10 12:49:36
+62:   2024-06-10 12:49:36 2024-06-10 12:49:36
+63:   2024-06-10 12:49:36 2024-06-10 12:49:36
+64:   2024-06-10 12:49:36 2024-06-10 12:49:36
+65:   2024-06-10 12:49:36 2024-06-10 12:49:36
+66:   2024-06-10 12:49:36 2024-06-10 12:49:36
+67:   2024-06-10 12:49:36 2024-06-10 12:49:37
+    ._prevEventTimeFinish           clockTime</code></pre>
+</div>
+</div>
+<p>We can also see how modules and objects interact using the functions objectDiagram() and moduleDiagram().</p>
+<p>Modules’ diagram showing the interactions among modules:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">moduleDiagram</span>(results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workflowSimple2_files/figure-html/moduleDiagram-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can also access any objects and use them. For example, we can look at the forecasted abundances and the difference raster is also possible. This is done by calling the object name from the results list.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">plot</span>(<span class="fu">rast</span>(results<span class="sc">$</span>forecasts))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="workflowSimple2_files/figure-html/objectDiagram-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="examples" class="level2" data-number="14.5">
+<h2 data-number="14.5" class="anchored" data-anchor-id="examples"><span class="header-section-number">14.5</span> Examples</h2>
+<p>In the remaining chapters of this section, we will explore several examples, including learning of several arguments to the function <code>setupProject</code>. But we will start very simple first.</p>
+</section>
+<section id="see-also" class="level2" data-number="14.6">
+<h2 data-number="14.6" class="anchored" data-anchor-id="see-also"><span class="header-section-number">14.6</span> See also</h2>
+<p><a href="https://spades-core.predictiveecology.org/reference/index.html">All Functions in SpaDES.core</a></p>
+<p><a href="https://spades-core.predictiveecology.org/reference/simList-accessors-events.html">?SpaDES.core::completed</a></p>
 
 
-</section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>See this <a href="https://ceresbarros.github.io/reproducible-workflowsWS/presentations/20230712_BESMacroSIG2023_ReproducibleWorkflowsWS.pdf">introduction to R<sup>3</sup>T workflows</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
 </section>
 
 </main> <!-- /main -->
@@ -1073,13 +1637,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./installRandSpatialPkgs.html" class="pagination-link" aria-label="Installing R and Spatial Packages">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Installing R and Spatial Packages</span></span>
+      <a href="./setupProject.html" class="pagination-link" aria-label="SpaDES workflows and projects">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">SpaDES workflows and projects</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./TroubleshootingPackageInstallation.html" class="pagination-link" aria-label="Troubleshooting R package installation">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Troubleshooting R package installation</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./LandRDemo_coreVeg.html" class="pagination-link" aria-label="Forest Landscape Modelling with LandR and `setupProject`">
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Forest Landscape Modelling with LandR and <code>setupProject</code></span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

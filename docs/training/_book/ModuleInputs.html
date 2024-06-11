@@ -9,7 +9,7 @@
 <meta name="author" content="Eliot McIntire">
 <meta name="dcterms.date" content="2024-06-11">
 
-<title>Robust and nimble scientific workflows, using SpaDES - 3&nbsp; Pre-installing R packages for book</title>
+<title>Robust and nimble scientific workflows, using SpaDES - 7&nbsp; Module Inputs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,8 +66,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./TroubleshootingPackageInstallation.html" rel="next">
-<link href="./installRandSpatialPkgs.html" rel="prev">
+<link href="./simList.html" rel="next">
+<link href="./MetaDataAndModuleFiles.html" rel="prev">
 <link href="./assets/logo/favicon-16x16.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -242,7 +242,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./settingUp.html">Setting up your computer and system</a></li><li class="breadcrumb-item"><a href="./PackagesForBook.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./ModuleInputs.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module Inputs</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -283,7 +283,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./PackagesForBook.html" class="sidebar-item-text sidebar-link active">
+  <a href="./PackagesForBook.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></span></a>
   </div>
 </li>
@@ -318,7 +318,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ModuleInputs.html" class="sidebar-item-text sidebar-link">
+  <a href="./ModuleInputs.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module Inputs</span></span></a>
   </div>
 </li>
@@ -428,18 +428,23 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#installation-code" id="toc-installation-code" class="nav-link active" data-scroll-target="#installation-code"><span class="header-section-number">3.1</span> Installation code</a></li>
-  <li><a href="#code-explained" id="toc-code-explained" class="nav-link" data-scroll-target="#code-explained"><span class="header-section-number">3.2</span> Code explained</a></li>
-  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">3.3</span> See also</a></li>
+  <li><a href="#how-to-supply-inputs" id="toc-how-to-supply-inputs" class="nav-link active" data-scroll-target="#how-to-supply-inputs"><span class="header-section-number">7.1</span> How to supply <strong>Inputs</strong></a>
+  <ul class="collapse">
+  <li><a href="#during-siminit" id="toc-during-siminit" class="nav-link" data-scroll-target="#during-siminit"><span class="header-section-number">7.1.1</span> During <code>simInit</code></a></li>
+  <li><a href="#inputobjects" id="toc-inputobjects" class="nav-link" data-scroll-target="#inputobjects"><span class="header-section-number">7.1.2</span> <code>.inputObjects</code></a></li>
+  </ul></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">7.2</span> Questions</a></li>
+  <li><a href="#try-on-your-own" id="toc-try-on-your-own" class="nav-link" data-scroll-target="#try-on-your-own"><span class="header-section-number">7.3</span> Try on your own</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">7.4</span> See also</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./settingUp.html">Setting up your computer and system</a></li><li class="breadcrumb-item"><a href="./PackagesForBook.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./ModuleInputs.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module Inputs</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></h1>
+<h1 class="title"><span id="sec-moduleinputs" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module Inputs</span></span></h1>
 </div>
 
 
@@ -468,48 +473,251 @@ window.Quarto = {
 </header>
 
 
-<p>The objective of this book is to facilitate lightweight project code and setting up R<sup>3</sup>T workflows<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. To do this, packages and any code that are used must be easy to install and use. We accomplish this by having each chapter installing its own packages, and avoiding having users “pre-installing” packages.</p>
-<p>Furthermore, packages, once installed for one project, will be cached locally so that the next project will be able to install quickly from the local package cache. We have also attempted to allow all sections to be run without administrator privileges.</p>
-<p>Nonetheless, there might be situations where users of this book will need to pre-install packages in one go – e.g., they will run chapter code without internet access. The following instructions are meant to cover this use case.</p>
-<section id="installation-code" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="installation-code"><span class="header-section-number">3.1</span> Installation code</h2>
-<p>If you can run the following code, then you will be able to run code in any of the chapters in this book. This code begins by installing <code>SpaDES.project</code> and its dependencies, then uses <code>setupProject</code> to download and install a list of R packages hosted on GitHub and a single SpaDES module (<em>Biomass-core</em>) which has over 130 package dependencies.</p>
+<p>We have seen functions called <code>.inputObjects</code> and <code>reproducible::prepInputs</code> that help deal with module inputs (<a href="#tip-Inputs" class="quarto-xref">Inputs Tip&nbsp;<span>7.1</span></a>). We will show these used within a SpaDES module.</p>
+<div id="tip-Inputs" class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip&nbsp;7.1
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <strong>inputs</strong> of a SpaDES module can be any R object, and should be specified in the <code>inputObjects</code> section of the metadata if it is needed for the module to run. All inputs should be used in the <code>sim</code> using e.g., <code>sim$</code> somewhere in the module.</p>
+</div>
+</div>
+<section id="how-to-supply-inputs" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="how-to-supply-inputs"><span class="header-section-number">7.1</span> How to supply <strong>Inputs</strong></h2>
+<p>There are several ways to get objects into the <code>simList</code>:</p>
+<ul>
+<li><p>User passes during <code>simInit</code>:</p>
+<ul>
+<li><p>using the <code>objects</code> argument (if it is an object);</p></li>
+<li><p>using the <code>inputs</code> argument (if it is from disk);</p></li>
+<li><p>using the <code>params</code> argument;</p></li>
+</ul></li>
+<li><p>Developer creates defaults and specifies them in <code>defineParameter()</code> and <code>.inputObjects</code>;</p></li>
+<li><p>A different module creates them prior to the running of this module.</p></li>
+</ul>
+<p>Ultimately, it is the last of these that is the power of SpaDES. i.e., modularity.</p>
+<section id="during-siminit" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="during-siminit"><span class="header-section-number">7.1.1</span> During <code>simInit</code></h3>
+<p>A user can directly pass <strong>objects</strong> into the <code>simInit</code> and these will be put into the <code>simList</code></p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>repos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"predictiveecology.r-universe.dev"</span>, <span class="fu">getOption</span>(<span class="st">"repos"</span>))</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"Require"</span>, <span class="st">"SpaDES.project"</span>), <span class="at">repos =</span> repos)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SpaDES.project)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">setupProject</span>(</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">packages =</span> <span class="st">"PredictiveEcology/PredictiveEcology.org@training-book/training/R/pkgList.R"</span>,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">options =</span> <span class="fu">list</span>(<span class="at">repos =</span> repos),</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="st">"Introduction"</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">modules =</span> <span class="st">"PredictiveEcology/Biomass_core@main"</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">simInit</span>(<span class="at">objects =</span> <span class="fu">list</span>(<span class="at">a =</span> a))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Setting:
+  options(
+    reproducible.cachePath = 'C:/Users/cbarros/AppData/Local/Temp/RtmpIN4bQ0/reproducible/cache'
+    spades.inputPath = 'C:/Users/cbarros/AppData/Local/Temp/RtmpIN4bQ0/SpaDES/inputs'
+    spades.outputPath = 'C:/Users/cbarros/AppData/Local/Temp/RtmpIN4bQ0/SpaDES/outputs'
+    spades.modulePath = 'C:/Users/cbarros/AppData/Local/Temp/RtmpIN4bQ0/SpaDES/modules'
+    spades.scratchPath = 'C:/Users/cbarros/AppData/Local/Temp/RtmpIN4bQ0/SpaDES/scratch'
+  )</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Jun11 00:23:29 simInit Using setDTthreads(1). To change: 'options(spades.DTthreads = X)'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Elapsed time for simInit: 0.1303799 secs</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sim<span class="sc">$</span>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
+<p>or do pass them via an <code>.rds</code> file</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>tf <span class="ot">&lt;-</span> <span class="fu">tempfile</span>(<span class="at">fileext =</span> <span class="st">".rds"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(b, <span class="at">file =</span> tf)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">simInit</span>(<span class="at">inputs =</span> <span class="fu">data.frame</span>(<span class="at">object =</span> <span class="st">"b"</span>, <span class="at">file =</span> tf))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Setting:
+  options(
+    reproducible.cachePath = 'C:/Users/cbarros/AppData/Local/Temp/RtmpIN4bQ0/reproducible/cache'
+    spades.inputPath = 'C:/Users/cbarros/AppData/Local/Temp/RtmpIN4bQ0/SpaDES/inputs'
+    spades.outputPath = 'C:/Users/cbarros/AppData/Local/Temp/RtmpIN4bQ0/SpaDES/outputs'
+    spades.modulePath = 'C:/Users/cbarros/AppData/Local/Temp/RtmpIN4bQ0/SpaDES/modules'
+    spades.scratchPath = 'C:/Users/cbarros/AppData/Local/Temp/RtmpIN4bQ0/SpaDES/scratch'
+  )</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Jun11 00:23:30 simInit Using setDTthreads(1). To change: 'options(spades.DTthreads = X)'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Jun11 00:23:30 simInit b read from C:\Users\cbarros\AppData\Local\Temp\RtmpIN4bQ0\file5e8cd505d5.rds using readRDS</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Elapsed time for simInit: 0.07267809 secs</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sim<span class="sc">$</span>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
+<p>Because parameters are usually module-specific, and need to be passed to with reference to a module. “Global” parameters are the exception to this rule:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">simInit</span>(<span class="at">params =</span> <span class="fu">list</span>(<span class="at">.globals =</span> <span class="fu">list</span>(<span class="at">c =</span> c)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Setting:
+  options(
+    reproducible.cachePath = 'C:/Users/cbarros/AppData/Local/Temp/RtmpIN4bQ0/reproducible/cache'
+    spades.inputPath = 'C:/Users/cbarros/AppData/Local/Temp/RtmpIN4bQ0/SpaDES/inputs'
+    spades.outputPath = 'C:/Users/cbarros/AppData/Local/Temp/RtmpIN4bQ0/SpaDES/outputs'
+    spades.modulePath = 'C:/Users/cbarros/AppData/Local/Temp/RtmpIN4bQ0/SpaDES/modules'
+    spades.scratchPath = 'C:/Users/cbarros/AppData/Local/Temp/RtmpIN4bQ0/SpaDES/scratch'
+  )</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Jun11 00:23:30 simInit Using setDTthreads(1). To change: 'options(spades.DTthreads = X)'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Elapsed time for simInit: 0.1178951 secs</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">params</span>(sim)<span class="sc">$</span>.globals<span class="sc">$</span>c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
+<p>To pass parameters to a module, we go back to ouT simple module and make a minor change:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>nm1 <span class="ot">&lt;-</span> <span class="st">"My_linear_model"</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>modulePath <span class="ot">&lt;-</span> <span class="st">"~/SpaDES_book/NewModuleIntro/NewModule"</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">newModule</span>(<span class="at">name =</span> nm1, <span class="at">path =</span> modulePath, <span class="at">open =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">events =</span> <span class="fu">list</span>(</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">init =</span> {</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>                           x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="fu">P</span>(sim)<span class="sc">$</span>length)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>                           y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="fu">P</span>(sim)<span class="sc">$</span>length)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># fit a linear model</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>                           model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>                         }</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>                       ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>New module My_linear_model created at C:/Users/cbarros/Documents/SpaDES_book/NewModuleIntro/NewModule</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>* edit module code in My_linear_model.R</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>* write tests for your module code in tests/</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>* describe and document your module in My_linear_model.Rmd</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>* tell others how to cite your module by editing citation.bib</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>* choose a license for your module; see LICENSE.md</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Main module file is: C:\Users\cbarros\Documents\SpaDES_book\NewModuleIntro\NewModule\My_linear_model\My_linear_model.R</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Main documentation file is: C:\Users\cbarros\Documents\SpaDES_book\NewModuleIntro\NewModule\My_linear_model\My_linear_model.Rmd</code></pre>
+</div>
+</div>
+<p>We then include the following in the module metadata section</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">defineParameter</span>(<span class="st">"length"</span>, <span class="st">"integer"</span>, <span class="dv">10</span>L, <span class="dv">5</span>L, <span class="dv">100</span>L,</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Number of values to generate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Note that <code>setupProject</code> will change your working directory to <code>./Introduction</code>. If that is not where you want to keep working, restart R and make sure you set your working directory to where you want it to be (if restarting is not sufficient).</p>
+<p>See <a href="https://rdrr.io/cran/SpaDES.core/man/suppliedElsewhere.html"><code>?SpaDES.core::simInit</code></a>.</p>
 </section>
-<section id="code-explained" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="code-explained"><span class="header-section-number">3.2</span> Code explained</h2>
-<p>If you care to know what the code is “doing”, read on.</p>
-<p>The <code>setupProject</code> call above internally uses <code>Require</code> to download and install any missing packages. Although the packages themselves are installed in a folder inside <code>./Introduction/</code> (the project folder) (see <code>.libPaths()</code> after running the code), <code>Require</code> <em>caches</em> the downloaded package installation files in a user-accessible folder (so independent from any project).</p>
-<p>This means that, should you, e.g., switch projects and attempt to reinstall the same or a subset of these packages, <code>setupProject</code> (via <code>Require</code>) would access the package cache and reinstall them in whatever new project folder library. This is much faster than downloading the packages again.</p>
-<p>The same is true should you lose internet connection, since the downloads do not need to happen again.</p>
-</section>
-<section id="see-also" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="see-also"><span class="header-section-number">3.3</span> See also</h2>
-<p><a href="TroubleshootingPackageInstallation.html" class="quarto-xref"><span>Chapter 4</span></a> on R package installation troubleshooting</p>
-
-
-</section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>See this <a href="https://ceresbarros.github.io/reproducible-workflowsWS/presentations/20230712_BESMacroSIG2023_ReproducibleWorkflowsWS.pdf">introduction to R<sup>3</sup>T workflows</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<section id="inputobjects" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="inputobjects"><span class="header-section-number">7.1.2</span> <code>.inputObjects</code></h3>
+<p>For every <strong>Input</strong> that is specified in the metadata, the module developer has the option of specifying a default. In R, functions can be given defaults when they are defined like this:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>rnormMean5 <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">1</span>) { <span class="co"># the n = 1 is the default value</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rnorm</span>(<span class="at">n =</span> n, <span class="at">mean =</span> <span class="dv">5</span>)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rnormMean5</span>() <span class="co"># can be run without any arguments</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.191349</code></pre>
+</div>
+</div>
+<p>This works for only the simplest cases. In the case of a module, objects can be arbitrarily complicated and so this approach will not be suitable.</p>
+<p>Instead, there is a function that is called every time a module is initialized (i.e.&nbsp;by <code>simInit()</code>) where a developer can put anything they want to specify as defaults. It is generally most useful to use <code>if (!SpaDES.core::suppliedElsewhere("obj", sim))</code> i.e., if the object isn’t in <code>sim</code>, then give it a value.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>.inputObjects <span class="ot">&lt;-</span> <span class="cf">function</span>(sim) {</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">suppliedElsewhere</span>(<span class="st">"y"</span>, sim)) {</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    sim<span class="sc">$</span>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(sim)</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="advanced-.inputobjects-example" class="level4" data-number="7.1.2.1">
+<h4 data-number="7.1.2.1" class="anchored" data-anchor-id="advanced-.inputobjects-example"><span class="header-section-number">7.1.2.1</span> Advanced <code>.inputObjects</code> example</h4>
+<p>In the Biomass_core module (this is an implementation of the LANDIS-II Biomass Succession Extension v3.2), there are many <strong>Inputs</strong> as defined in the <em>metadata</em>. The module needs each one of these to work.</p>
+<p>The developers have created a <code>.inputObjects</code> function that will fill in these <strong>Inputs</strong> with defaults if the user hasn’t supplied them (using <code>!SpaDES.core::suppliedElsewhere()</code>).</p>
+<p>We will look at a few examples in this module: <a href="https://github.com/PredictiveEcology/Biomass_core/blob/d5c214b69f35e7a9f57c59ca7d08329b49328e86/Biomass_core.R#L1964">Biomass_core::.inputObjects</a>.</p>
+<ol type="1">
+<li><p>some <a href="https://github.com/PredictiveEcology/Biomass_core/blob/d5c214b69f35e7a9f57c59ca7d08329b49328e86/Biomass_core.R#L2052">GIS tests that evaluate whether 2 objects are in the same CRS</a> (i.e., they need to be the same projection, etc., for this module to work)</p></li>
+<li><p>if an object is missing, <a href="https://github.com/PredictiveEcology/Biomass_core/blob/d5c214b69f35e7a9f57c59ca7d08329b49328e86/Biomass_core.R#L2066">it may make sense to fill in the details with parameters from the Internet</a>.</p></li>
+<li><p>an object called <code>studyArea</code>. <a href="https://github.com/PredictiveEcology/Biomass_core/blob/d5c214b69f35e7a9f57c59ca7d08329b49328e86/Biomass_core.R#L1972">The developer tests whether it exists and creates an error if it does not exist</a>.</p></li>
 </ol>
+</section>
+</section>
+</section>
+<section id="questions" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="questions"><span class="header-section-number">7.2</span> Questions</h2>
+<ol type="1">
+<li><p>In <code>.inputObjects</code>, why don’t we just write <code>if (!is.null(sim$y))</code>? See <a href="https://rdrr.io/cran/SpaDES.core/man/suppliedElsewhere.html"><code>?SpaDES.core::suppliedElsewhere</code></a></p>
+<ul>
+<li>It turns out that other modules may create this object “after” this module is run, and this test will fail.</li>
+</ul></li>
+</ol>
+</section>
+<section id="try-on-your-own" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="try-on-your-own"><span class="header-section-number">7.3</span> Try on your own</h2>
+<ul>
+<li>Using the <em>My_linear_model</em> shown above, try running simulations where you pass different values to the <code>length</code> parameter</li>
+</ul>
+</section>
+<section id="see-also" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="see-also"><span class="header-section-number">7.4</span> See also</h2>
+<p><a href="https://rdrr.io/cran/SpaDES.core/man/expectsInputs.html"><code>?SpaDES.core::expectsInputs</code></a></p>
+<p><a href="https://rdrr.io/cran/SpaDES.core/man/suppliedElsewhere.html"><code>?SpaDES.core::suppliedElsewhere</code></a></p>
+<p><a href="https://rdrr.io/cran/SpaDES.core/man/defineParameter.html"><code>?SpaDES.core::defineParameter</code></a></p>
+<p><a href="https://rdrr.io/cran/SpaDES.core/man/simInit.html"><code>?SpaDES.core::simInit</code></a></p>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -1073,13 +1281,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./installRandSpatialPkgs.html" class="pagination-link" aria-label="Installing R and Spatial Packages">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Installing R and Spatial Packages</span></span>
+      <a href="./MetaDataAndModuleFiles.html" class="pagination-link" aria-label="Module Files and Metadata">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Module Files and Metadata</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./TroubleshootingPackageInstallation.html" class="pagination-link" aria-label="Troubleshooting R package installation">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Troubleshooting R package installation</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./simList.html" class="pagination-link" aria-label="The `simList` - What is it?">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

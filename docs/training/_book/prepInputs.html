@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eliot McIntire">
-<meta name="dcterms.date" content="2024-06-11">
+<meta name="dcterms.date" content="2024-06-10">
 
-<title>Robust and nimble scientific workflows, using SpaDES - 3&nbsp; Pre-installing R packages for book</title>
+<title>Robust and nimble scientific workflows, using SpaDES - 12&nbsp; reproducible::prepInputs for Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,8 +66,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./TroubleshootingPackageInstallation.html" rel="next">
-<link href="./installRandSpatialPkgs.html" rel="prev">
+<link href="./debugging.html" rel="next">
+<link href="./Caching.html" rel="prev">
 <link href="./assets/logo/favicon-16x16.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -242,7 +242,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./settingUp.html">Setting up your computer and system</a></li><li class="breadcrumb-item"><a href="./PackagesForBook.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ContinuousWorkflows.html">Working with Continuous Workflows</a></li><li class="breadcrumb-item"><a href="./prepInputs.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -283,7 +283,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./PackagesForBook.html" class="sidebar-item-text sidebar-link active">
+  <a href="./PackagesForBook.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></span></a>
   </div>
 </li>
@@ -359,7 +359,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./prepInputs.html" class="sidebar-item-text sidebar-link">
+  <a href="./prepInputs.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></a>
   </div>
 </li>
@@ -428,18 +428,28 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#installation-code" id="toc-installation-code" class="nav-link active" data-scroll-target="#installation-code"><span class="header-section-number">3.1</span> Installation code</a></li>
-  <li><a href="#code-explained" id="toc-code-explained" class="nav-link" data-scroll-target="#code-explained"><span class="header-section-number">3.2</span> Code explained</a></li>
-  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">3.3</span> See also</a></li>
+  <li><a href="#prepinputs" id="toc-prepinputs" class="nav-link active" data-scroll-target="#prepinputs"><span class="header-section-number">12.1</span> <code>prepInputs</code></a></li>
+  <li><a href="#simplest-case-a-url" id="toc-simplest-case-a-url" class="nav-link" data-scroll-target="#simplest-case-a-url"><span class="header-section-number">12.2</span> Simplest case: a <code>url</code></a></li>
+  <li><a href="#case-in-an-archive-like-zip" id="toc-case-in-an-archive-like-zip" class="nav-link" data-scroll-target="#case-in-an-archive-like-zip"><span class="header-section-number">12.3</span> Case: in an archive (like <code>zip</code>)</a></li>
+  <li><a href="#case-local-stash-using-reproducible.inputpaths" id="toc-case-local-stash-using-reproducible.inputpaths" class="nav-link" data-scroll-target="#case-local-stash-using-reproducible.inputpaths"><span class="header-section-number">12.4</span> Case: local stash using <code>reproducible.inputPaths</code></a></li>
+  <li><a href="#stages-of-prepinputs" id="toc-stages-of-prepinputs" class="nav-link" data-scroll-target="#stages-of-prepinputs"><span class="header-section-number">12.5</span> Stages of <code>prepInputs</code></a></li>
+  <li><a href="#with-gis" id="toc-with-gis" class="nav-link" data-scroll-target="#with-gis"><span class="header-section-number">12.6</span> With GIS</a>
+  <ul class="collapse">
+  <li><a href="#vector-data" id="toc-vector-data" class="nav-link" data-scroll-target="#vector-data"><span class="header-section-number">12.6.1</span> Vector data</a></li>
+  <li><a href="#raster-data" id="toc-raster-data" class="nav-link" data-scroll-target="#raster-data"><span class="header-section-number">12.6.2</span> Raster data</a></li>
+  </ul></li>
+  <li><a href="#caching" id="toc-caching" class="nav-link" data-scroll-target="#caching"><span class="header-section-number">12.7</span> Caching</a></li>
+  <li><a href="#extending-prepinputs-with-fun" id="toc-extending-prepinputs-with-fun" class="nav-link" data-scroll-target="#extending-prepinputs-with-fun"><span class="header-section-number">12.8</span> Extending <code>prepInputs</code> with <code>fun</code></a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">12.9</span> See also</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./settingUp.html">Setting up your computer and system</a></li><li class="breadcrumb-item"><a href="./PackagesForBook.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ContinuousWorkflows.html">Working with Continuous Workflows</a></li><li class="breadcrumb-item"><a href="./prepInputs.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></h1>
+<h1 class="title"><span id="sec-prepInputs" class="quarto-section-identifier"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></h1>
 </div>
 
 
@@ -456,7 +466,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 11, 2024</p>
+      <p class="date">June 10, 2024</p>
     </div>
   </div>
   
@@ -468,48 +478,210 @@ window.Quarto = {
 </header>
 
 
-<p>The objective of this book is to facilitate lightweight project code and setting up R<sup>3</sup>T workflows<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. To do this, packages and any code that are used must be easy to install and use. We accomplish this by having each chapter installing its own packages, and avoiding having users “pre-installing” packages.</p>
-<p>Furthermore, packages, once installed for one project, will be cached locally so that the next project will be able to install quickly from the local package cache. We have also attempted to allow all sections to be run without administrator privileges.</p>
-<p>Nonetheless, there might be situations where users of this book will need to pre-install packages in one go – e.g., they will run chapter code without internet access. The following instructions are meant to cover this use case.</p>
-<section id="installation-code" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="installation-code"><span class="header-section-number">3.1</span> Installation code</h2>
-<p>If you can run the following code, then you will be able to run code in any of the chapters in this book. This code begins by installing <code>SpaDES.project</code> and its dependencies, then uses <code>setupProject</code> to download and install a list of R packages hosted on GitHub and a single SpaDES module (<em>Biomass-core</em>) which has over 130 package dependencies.</p>
+<p>Every project that has data will need to get the data from its original source into a form and format that works for a given project. To do this in a reproducible/reusable manner is not trivial.</p>
+<p>Some elements that should be present when bringing the data into a project in a reproducible/reusable manner can ideally include:</p>
+<ul>
+<li><strong>Accessible</strong> from any computer</li>
+<li><strong>User-access control</strong> (i.e., can allow only some people to get the data)</li>
+<li><strong>Versioned</strong> i.e., can know and control the version accessed</li>
+<li><strong>Spatially appropriate</strong> – if data are spatial (e.g., GIS data), they must be coerced to the relevant template for a project</li>
+<li><strong>Exact</strong>, i.e., test to ensure the data were downloaded as desired</li>
+<li><strong>Flexible</strong> for many classes of data</li>
+<li><strong>Simple</strong></li>
+</ul>
+<p>Similar, if the data are to be re-used in many projects, the approach to getting the data should be:</p>
+<ul>
+<li><strong>Locally cached</strong> if used in many projects, only one copy is needed</li>
+<li><strong>Modular</strong> approach to accessing, so they can be easily added to any project</li>
+</ul>
+<p>We designed a function to achieve all this: <a href="https://reproducible.predictiveecology.org/reference/prepInputs.html"><code>reproducible::prepInputs</code></a></p>
+<section id="prepinputs" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="prepinputs"><span class="header-section-number">12.1</span> <code>prepInputs</code></h2>
+<p>This function can be used to prepare R objects from remote or local data sources. The object of this function is to provide a reproducible version of a series of commonly used steps for getting, loading, and processing data.</p>
+</section>
+<section id="simplest-case-a-url" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="simplest-case-a-url"><span class="header-section-number">12.2</span> Simplest case: a <code>url</code></h2>
+<p>If we can point directly to a file on a cloud location, <code>prepInputs</code> does its thing, getting the local file.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>repos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"predictiveecology.r-universe.dev"</span>, <span class="fu">getOption</span>(<span class="st">"repos"</span>))</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"Require"</span>, <span class="st">"SpaDES.project"</span>), <span class="at">repos =</span> repos)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SpaDES.project)</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Require<span class="sc">::</span><span class="fu">Require</span>(<span class="fu">c</span>(<span class="st">"terra"</span>, <span class="st">"reproducible"</span>), </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">repos =</span> <span class="fu">c</span>(<span class="fu">getOption</span>(<span class="st">"predictiveecology.r-universe.dev"</span>, <span class="fu">getOption</span>(<span class="st">"repos"</span>))))</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://github.com/tati-micheletti/host/raw/master/data/rasterTest.tif"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>ras <span class="ot">&lt;-</span> <span class="fu">prepInputs</span>(<span class="at">url =</span> url, <span class="at">destinationPath =</span> <span class="st">"~/SpaDES_book/data/prepInputs"</span>)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">setupProject</span>(</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">packages =</span> <span class="st">"PredictiveEcology/PredictiveEcology.org@training-book/training/R/pkgList.R"</span>,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">options =</span> <span class="fu">list</span>(<span class="at">repos =</span> repos),</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="st">"Introduction"</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">modules =</span> <span class="st">"PredictiveEcology/Biomass_core@main"</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">plot</span>(ras)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Note that <code>setupProject</code> will change your working directory to <code>./Introduction</code>. If that is not where you want to keep working, restart R and make sure you set your working directory to where you want it to be (if restarting is not sufficient).</p>
 </section>
-<section id="code-explained" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="code-explained"><span class="header-section-number">3.2</span> Code explained</h2>
-<p>If you care to know what the code is “doing”, read on.</p>
-<p>The <code>setupProject</code> call above internally uses <code>Require</code> to download and install any missing packages. Although the packages themselves are installed in a folder inside <code>./Introduction/</code> (the project folder) (see <code>.libPaths()</code> after running the code), <code>Require</code> <em>caches</em> the downloaded package installation files in a user-accessible folder (so independent from any project).</p>
-<p>This means that, should you, e.g., switch projects and attempt to reinstall the same or a subset of these packages, <code>setupProject</code> (via <code>Require</code>) would access the package cache and reinstall them in whatever new project folder library. This is much faster than downloading the packages again.</p>
-<p>The same is true should you lose internet connection, since the downloads do not need to happen again.</p>
+<section id="case-in-an-archive-like-zip" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="case-in-an-archive-like-zip"><span class="header-section-number">12.3</span> Case: in an archive (like <code>zip</code>)</h2>
+<p>Often, cloud-stored files are in an archive, like a <code>zip</code> or <code>tar.gz</code>. These can be handled automatically with <code>prepInputs</code>. By default, it will try to extract all files from the archive, and load one of them into R:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/ecozone_shp.zip"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>shpEcozone <span class="ot">&lt;-</span> <span class="fu">prepInputs</span>(<span class="at">url =</span> url, <span class="at">destinationPath =</span> <span class="st">"~/SpaDES_book/data/prepInputs"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">plot</span>(shpEcozone[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
-<section id="see-also" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="see-also"><span class="header-section-number">3.3</span> See also</h2>
-<p><a href="TroubleshootingPackageInstallation.html" class="quarto-xref"><span>Chapter 4</span></a> on R package installation troubleshooting</p>
-
-
+<section id="case-local-stash-using-reproducible.inputpaths" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="case-local-stash-using-reproducible.inputpaths"><span class="header-section-number">12.4</span> Case: local stash using <code>reproducible.inputPaths</code></h2>
+<p>If we want to use the same file in many projects, we can obviously just download it again in each project, using the same lines of <code>prepInputs</code>. However, we can setup a local “stash” of data files. This is a <strong>set it and forget it</strong> option in <code>reproducible</code>.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">reproducible.inputPaths =</span> <span class="st">"~/data"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/ecozone_shp.zip"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>shpEcozone <span class="ot">&lt;-</span> <span class="fu">prepInputs</span>(<span class="at">url =</span> url, <span class="at">destinationPath =</span> <span class="st">"~/SpaDES_book/data/prepInputs"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">plot</span>(shpEcozone[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>If we run this chunk in the same project, results will be like the previous chunk: a vector dataset from the Canadian federal government. BUT, if we run it in a different project, it will check the stashed diretory and won’t need to download it again. Moreover, it will not actually make a copy but a link to the file, so it won’t take extra space on your hard drive.</p>
+<p>If you are running in a *nix-like system (Mac, Linux, etc.) or you have Git Bash installed, you can see the number of links to a file with <code>ls</code>. The column after the attributes (e.g., drwxr-xr-x), is the number of pointers to a file. Anything more than 1 means that there are several pointers.</p>
+<pre class="eval=false"><code>system(paste0("ls -l", getOption("inputPaths")))</code></pre>
 </section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>See this <a href="https://ceresbarros.github.io/reproducible-workflowsWS/presentations/20230712_BESMacroSIG2023_ReproducibleWorkflowsWS.pdf">introduction to R<sup>3</sup>T workflows</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<section id="stages-of-prepinputs" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="stages-of-prepinputs"><span class="header-section-number">12.5</span> Stages of <code>prepInputs</code></h2>
+<p>This function has three stages, using three internal functions:</p>
+<ul>
+<li><a href="https://reproducible.predictiveecology.org/reference/preProcess.html"><code>reproducible::preProcess</code></a> which is <strong>getting data</strong> (download, extracting from archives, checksumming)</li>
+<li><code>reproducible::process</code> – load the data into R (note: user can’t access this directly)</li>
+<li><a href="https://reproducible.predictiveecology.org/reference/postProcessTo.html"><code>reproducible::postProcessTo</code></a> (for <code>Spatial*</code> and <code>Raster*</code> objects, this is crop, reproject, mask/intersect).</li>
+</ul>
+<p><code>preProcess</code> will be run, if a user supplies <code>url</code> or <code>archive</code>. <code>process</code> will be run if <code>fun</code> is not <code>NA</code>. It will try to guess <code>fun</code> based on file type if <code>fun</code> is left at the default of <code>NULL</code>. <code>postProcess</code> will be triggered if the user passes any of the arguments of <code>postProcessTo</code> (<code>to</code>, <code>maskTo</code>, <code>cropTo</code>) <code>studyArea</code> or <code>rasterToMatch</code>.</p>
+</section>
+<section id="with-gis" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="with-gis"><span class="header-section-number">12.6</span> With GIS</h2>
+<p>The data we download may cover a larger area than our study needs. For example, there may be a provincial or national dataset, but we are only using a part of that. If we create a <code>studyArea</code>, we can use this as part of <code>prepInputs</code>, passing it to <code>to</code> or one of the other <a href="https://reproducible.predictiveecology.org/reference/postProcessTo.html"><code>*to</code></a> functions.</p>
+<section id="vector-data" class="level3" data-number="12.6.1">
+<h3 data-number="12.6.1" class="anchored" data-anchor-id="vector-data"><span class="header-section-number">12.6.1</span> Vector data</h3>
+<p>The following will get the national ecozone map, project, crop and mask it to the SK dataset.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>SK <span class="ot">&lt;-</span> SpaDES.project<span class="sc">::</span><span class="fu">setupStudyArea</span>(<span class="fu">list</span>(<span class="at">level =</span> <span class="dv">2</span>, <span class="at">NAME_1 =</span> <span class="st">"Saskatchewan"</span>))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>shpEcozoneSK <span class="ot">&lt;-</span> <span class="fu">prepInputs</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> <span class="st">"http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/ecozone_shp.zip"</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">to =</span> SK, <span class="at">destinationPath =</span> <span class="st">"~/SpaDES_book/data/prepInputs"</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">plot</span>(shpEcozoneSK[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="raster-data" class="level3" data-number="12.6.2">
+<h3 data-number="12.6.2" class="anchored" data-anchor-id="raster-data"><span class="header-section-number">12.6.2</span> Raster data</h3>
+<p>The following will get a national DEM layer, crop and mask it to the SK dataset. We leave it in the projection it came in at the original source.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>urlTif1 <span class="ot">&lt;-</span> <span class="st">"https://geodata.ucdavis.edu/geodata/elv/CAN_elv_msk.zip"</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Turns out the previous steps (original data or postProccessed) have an error</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">try</span>(DEMSK <span class="ot">&lt;-</span> <span class="fu">prepInputs</span>(</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> urlTif1,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">maskTo =</span> shpEcozoneSK, </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">cropTo =</span> shpEcozoneSK,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">destinationPath =</span> <span class="st">"~/SpaDES_book/data/prepInputs"</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>shpEcozoneSK <span class="ot">&lt;-</span> <span class="fu">fixErrorsIn</span>(shpEcozoneSK)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Rerun</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>DEMSK <span class="ot">&lt;-</span> <span class="fu">prepInputs</span>(</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> urlTif1,</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">cropTo =</span> shpEcozoneSK,</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">maskTo =</span> shpEcozoneSK, </span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">destinationPath =</span> <span class="st">"~/SpaDES_book/data/prepInputs"</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">plot</span>(DEMSK)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">plot</span>(shpEcozoneSK[<span class="dv">1</span>], <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"transparent"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Of course, we may do many other things, including change the resolution of the downloaded object, change the projection, and resolution. <code>prepInputs</code> uses a <code>template</code> raster to know what to project, crop, and mask to</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>SK <span class="ot">&lt;-</span> SpaDES.project<span class="sc">::</span><span class="fu">setupStudyArea</span>(<span class="fu">list</span>(<span class="at">level =</span> <span class="dv">2</span>, <span class="at">NAME_1 =</span> <span class="st">"Saskatchewan"</span>, <span class="at">epsg =</span> <span class="dv">5070</span>))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>SKras <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">rast</span>(terra<span class="sc">::</span><span class="fu">ext</span>(SK), <span class="at">res =</span> <span class="dv">250</span>, <span class="at">val =</span> <span class="dv">1</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">crs</span>(SKras) <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">crs</span>(SK)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>DEMSK250m <span class="ot">&lt;-</span> <span class="fu">prepInputs</span>(</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> urlTif1,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">to =</span> SKras,                   <span class="co"># &lt;-   template raster</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">destinationPath =</span> <span class="st">"~/SpaDES_book/data/prepInputs"</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">plot</span>(DEMSK250m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>So, we can easily put these <code>prepInputs</code> calls in our workflows, in any project, with minimal new effort each time.</p>
+</section>
+</section>
+<section id="caching" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="caching"><span class="header-section-number">12.7</span> Caching</h2>
+<p><code>prepInputs</code> is friendly with <code>Cache</code>. In addition to the local stashing of a file, the GIS itself may take a long time. We can just <code>|&gt; Cache()</code> at the end and we have a workflow that doesn’t need to be broken.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>DEMSK250m <span class="ot">&lt;-</span> <span class="fu">prepInputs</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> urlTif1,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">to =</span> SKras, </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">destinationPath =</span> <span class="st">"~/SpaDES_book/data/prepInputs"</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Cache</span>()</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co"># run later... very fast</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>DEMSK250m <span class="ot">&lt;-</span> <span class="fu">prepInputs</span>(</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> urlTif1,</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">to =</span> SKras, </span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">destinationPath =</span> <span class="st">"~/SpaDES_book/data/prepInputs"</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Cache</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="extending-prepinputs-with-fun" class="level2" data-number="12.8">
+<h2 data-number="12.8" class="anchored" data-anchor-id="extending-prepinputs-with-fun"><span class="header-section-number">12.8</span> Extending <code>prepInputs</code> with <code>fun</code></h2>
+<p>It is impossible for <code>prepInputs</code> to be able to handle all data capturing cases. When customization is needed, a few options are possible.</p>
+<ol type="1">
+<li>Make a custom <code>fun</code> argument. Optionally, <code>dlFun</code> can be used to specify how to download the data.</li>
+<li>Make a custom <code>prepInputs_XXX</code> function that calls <code>prepInputs</code> internally.</li>
 </ol>
+<p>The following example uses a custom <code>fun</code>. These examples are fast, so the benefits of caching won’t be as apparent as for when more complex GIS operations are needed, e.g.&nbsp;reprojecting large raster datasets.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>LuxembourgFull <span class="ot">&lt;-</span> <span class="fu">prepInputs</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a> <span class="at">dlFun =</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>   geodata<span class="sc">::</span><span class="fu">gadm</span>(<span class="at">name =</span> <span class="st">"GADM"</span>, <span class="at">country =</span> <span class="st">"LUX"</span>, <span class="at">level =</span> <span class="dv">0</span>, <span class="at">path =</span> <span class="st">"~/SpaDES_book/prepInputs"</span>) <span class="co"># preProcess keeps file from this!</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>LuxembourgInnerBuffer <span class="ot">&lt;-</span> <span class="fu">prepInputs</span>(</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">dlFun =</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    geodata<span class="sc">::</span><span class="fu">gadm</span>(<span class="at">name =</span> <span class="st">"GADM"</span>, <span class="at">country =</span> <span class="st">"LUX"</span>, <span class="at">level =</span> <span class="dv">0</span>, <span class="at">path =</span> <span class="st">"~/SpaDES_book/prepInputs"</span>) <span class="co"># preProcess keeps file from this!</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  ,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">fun =</span> {                      <span class="co"># Custom function</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    out <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(targetFile)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    out <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">vect</span>(out)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    terra<span class="sc">::</span><span class="fu">buffer</span>(out, <span class="dv">5000</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">plot</span>(LuxembourgInnerBuffer)</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">plot</span>(Luxembourg, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>By rerunning the previous code, the caching will be in effect. This means that the slow, two-or-more-stage processes of downloading, custom operations, and possibly GIS using `<em>to</em> functions can all be Cached in a single step, resulting in the smallest possible output being saved, i.e., intermediate large objects have only limited “saving”.</p>
+<p>NOTE: Rmarkdown and Quarto both have a form of caching of chunks. This can be effective in some circumstances, but it is somewhat limited (as are all forms of Caching – they will hit their limits somewhere). For instance, they do not deal with the pointers of <code>C++</code> objects in <code>terra</code>.</p>
+</section>
+<section id="see-also" class="level2" data-number="12.9">
+<h2 data-number="12.9" class="anchored" data-anchor-id="see-also"><span class="header-section-number">12.9</span> See also</h2>
+<p>There are many other elements of this function that can be effectively used.</p>
+<p><a href="https://reproducible.predictiveecology.org/reference/prepInputs.html"><code>reproducible::prepInputs</code></a></p>
+<p><a href="https://reproducible.predictiveecology.org/reference/preProcess.html"><code>reproducible::preProcess</code></a></p>
+<p><a href="https://reproducible.predictiveecology.org/reference/postProcessTo.html"><code>reproducible::postProcessTo</code></a></p>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -1073,13 +1245,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./installRandSpatialPkgs.html" class="pagination-link" aria-label="Installing R and Spatial Packages">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Installing R and Spatial Packages</span></span>
+      <a href="./Caching.html" class="pagination-link" aria-label="Introduction to Cache">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./TroubleshootingPackageInstallation.html" class="pagination-link" aria-label="Troubleshooting R package installation">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Troubleshooting R package installation</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./debugging.html" class="pagination-link" aria-label="Debugging SpaDES Modules">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

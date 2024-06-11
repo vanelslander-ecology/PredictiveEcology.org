@@ -6,10 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Ceres Barros">
 <meta name="author" content="Eliot McIntire">
-<meta name="dcterms.date" content="2024-06-11">
+<meta name="dcterms.date" content="2024-06-10">
 
-<title>Robust and nimble scientific workflows, using SpaDES - 3&nbsp; Pre-installing R packages for book</title>
+<title>Robust and nimble scientific workflows, using SpaDES - Best practices for \(R^3T\) workflows</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -56,7 +57,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -66,8 +87,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./TroubleshootingPackageInstallation.html" rel="next">
-<link href="./installRandSpatialPkgs.html" rel="prev">
+<link href="./references.html" rel="next">
+<link href="./castorExample.html" rel="prev">
 <link href="./assets/logo/favicon-16x16.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -242,7 +263,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./settingUp.html">Setting up your computer and system</a></li><li class="breadcrumb-item"><a href="./PackagesForBook.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bestPractices.html">Best practices for <span class="math inline">\(R^3T\)</span> workflows</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -283,7 +304,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./PackagesForBook.html" class="sidebar-item-text sidebar-link active">
+  <a href="./PackagesForBook.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></span></a>
   </div>
 </li>
@@ -408,7 +429,7 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bestPractices.html" class="sidebar-item-text sidebar-link">
+  <a href="./bestPractices.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Best practices for <span class="math inline">\(R^3T\)</span> workflows</span></a>
   </div>
 </li>
@@ -428,18 +449,18 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#installation-code" id="toc-installation-code" class="nav-link active" data-scroll-target="#installation-code"><span class="header-section-number">3.1</span> Installation code</a></li>
-  <li><a href="#code-explained" id="toc-code-explained" class="nav-link" data-scroll-target="#code-explained"><span class="header-section-number">3.2</span> Code explained</a></li>
-  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">3.3</span> See also</a></li>
+  <li><a href="#general-best-practices" id="toc-general-best-practices" class="nav-link active" data-scroll-target="#general-best-practices">General best practices</a></li>
+  <li><a href="#best-practices-for-spades-workflows" id="toc-best-practices-for-spades-workflows" class="nav-link" data-scroll-target="#best-practices-for-spades-workflows">Best practices for SpaDES workflows</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See also</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./settingUp.html">Setting up your computer and system</a></li><li class="breadcrumb-item"><a href="./PackagesForBook.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></h1>
+<h1 class="title">Best practices for <span class="math inline">\(R^3T\)</span> workflows</h1>
 </div>
 
 
@@ -447,8 +468,9 @@ window.Quarto = {
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Authors</div>
     <div class="quarto-title-meta-contents">
+             <p>Ceres Barros </p>
              <p>Eliot McIntire </p>
           </div>
   </div>
@@ -456,7 +478,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 11, 2024</p>
+      <p class="date">June 10, 2024</p>
     </div>
   </div>
   
@@ -468,47 +490,85 @@ window.Quarto = {
 </header>
 
 
-<p>The objective of this book is to facilitate lightweight project code and setting up R<sup>3</sup>T workflows<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. To do this, packages and any code that are used must be easy to install and use. We accomplish this by having each chapter installing its own packages, and avoiding having users “pre-installing” packages.</p>
-<p>Furthermore, packages, once installed for one project, will be cached locally so that the next project will be able to install quickly from the local package cache. We have also attempted to allow all sections to be run without administrator privileges.</p>
-<p>Nonetheless, there might be situations where users of this book will need to pre-install packages in one go – e.g., they will run chapter code without internet access. The following instructions are meant to cover this use case.</p>
-<section id="installation-code" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="installation-code"><span class="header-section-number">3.1</span> Installation code</h2>
-<p>If you can run the following code, then you will be able to run code in any of the chapters in this book. This code begins by installing <code>SpaDES.project</code> and its dependencies, then uses <code>setupProject</code> to download and install a list of R packages hosted on GitHub and a single SpaDES module (<em>Biomass-core</em>) which has over 130 package dependencies.</p>
+<p>Developing repeatable, reproducible, reusable and transparent (<span class="math inline">\(R^3T\)</span>) workflows in R (and probably across many other languages) requires not only automating workflow steps/processes, which we can achieve with SpaDES, but also to be attentive to the way we code and setup the actual (SpaDES) workflow.</p>
+<p>Here are some general and workflow best practices that we recommend to SpaDES users and any R programmers in general.</p>
+<section id="general-best-practices" class="level2">
+<h2 class="anchored" data-anchor-id="general-best-practices">General best practices</h2>
+<ul>
+<li><p>Script, script, script – this means script <em>everything</em> you do, including package installation;</p></li>
+<li><p>“DOComment” your code – use comments that describe the intention of the code, not necessarily a code translation into human language:</p></li>
+</ul>
+<p>::: {.callout-tip collapse = “false” appearance=“simple”}</p>
+<p>Not a very useful comment (we can check <code>?lm</code> to know what it does):</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>repos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"predictiveecology.r-universe.dev"</span>, <span class="fu">getOption</span>(<span class="st">"repos"</span>))</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"Require"</span>, <span class="st">"SpaDES.project"</span>), <span class="at">repos =</span> repos)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SpaDES.project)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">setupProject</span>(</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">packages =</span> <span class="st">"PredictiveEcology/PredictiveEcology.org@training-book/training/R/pkgList.R"</span>,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">options =</span> <span class="fu">list</span>(<span class="at">repos =</span> repos),</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="st">"Introduction"</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">modules =</span> <span class="st">"PredictiveEcology/Biomass_core@main"</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## lm fits a linear model</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(biomass <span class="sc">~</span> height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Note that <code>setupProject</code> will change your working directory to <code>./Introduction</code>. If that is not where you want to keep working, restart R and make sure you set your working directory to where you want it to be (if restarting is not sufficient).</p>
+<p>A more useful comment:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">## model linear relationship between biomass and height</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(biomass <span class="sc">~</span> height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>:::</p>
+<ul>
+<li><p>Minimize the number of software/languages used – the more jumps between languages/software the less robust and reproducible the workflow is. Remember: other users will need to install the same software and be able to the same jumps/operations that you did without you looking over their shoulder.</p></li>
+<li><p>Modularise and “functionise” – avoid loooooong scripts, which are harder to read, learn and debug.</p></li>
+<li><p>SpaDES helps the modularisation part a great deal but it is still up to the developer to create functions and to decide what workflow components can/should be broken into separate modules or events;</p></li>
+<li><p>When using embedded module and event caching, think about what workflow steps can be cached to speed up development and re-runs and consider turning these into separate modules or events;</p></li>
+<li><p>Consider “packaging” your functions so they can be used across projects and SpaDES modules.</p></li>
+</ul>
+<p><a href="https://onlinelibrary.wiley.com/cms/asset/680b22bc-1a97-4ab6-8f90-6fd1557e9e27/ele13994%20-fig-0001-m.jpg">!Functions and modules as key tools for <span class="math inline">\(R^3T\)</span>, but also for building integrated and continuous workflows; McIntire et al. (2022)</a></p>
+<ul>
+<li><p>Centralize workflow in a single script – this is quite intuitive when using SpaDES, as usually there is a “controller” script that sets up and runs the workflow.</p></li>
+<li><p>Use project-oriented and self-contained workflows – pick a structure that is self-explanatory and make sure that the project can be “moved” between users/machines without changing the code.</p></li>
+<li><p>Don’t use absolute paths – use relative paths (relative to project directory) – RStudio Projects and SpaDES.project do this automatically.</p></li>
+<li><p>You can even install your R packages into project-level libraries, to allow for different package versions between projects in the same machine</p></li>
+<li><p>Version control – great for collaboration, great for tracking changes, great to recover old versions of a project/code</p></li>
+<li><p>Test (!) – test your code and your workflow if you want them to endure and persist through time and users</p></li>
+<li><p>Use a combination of <em>assertions</em>, <em>unit tests</em> and <em>integration tests</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p></li>
+</ul>
 </section>
-<section id="code-explained" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="code-explained"><span class="header-section-number">3.2</span> Code explained</h2>
-<p>If you care to know what the code is “doing”, read on.</p>
-<p>The <code>setupProject</code> call above internally uses <code>Require</code> to download and install any missing packages. Although the packages themselves are installed in a folder inside <code>./Introduction/</code> (the project folder) (see <code>.libPaths()</code> after running the code), <code>Require</code> <em>caches</em> the downloaded package installation files in a user-accessible folder (so independent from any project).</p>
-<p>This means that, should you, e.g., switch projects and attempt to reinstall the same or a subset of these packages, <code>setupProject</code> (via <code>Require</code>) would access the package cache and reinstall them in whatever new project folder library. This is much faster than downloading the packages again.</p>
-<p>The same is true should you lose internet connection, since the downloads do not need to happen again.</p>
+<section id="best-practices-for-spades-workflows" class="level2">
+<h2 class="anchored" data-anchor-id="best-practices-for-spades-workflows">Best practices for SpaDES workflows</h2>
+<ul>
+<li>limit the number of objects in <code>.GlobalEnv</code>. Instead, put them in functions – such as with <code>setupProject</code> as arguments – or inside a module. When objects are in modules, you can add default object values (e.g.&nbsp;via <code>.inputObjects</code>), or save them into files that are loaded by <code>setupProject</code> or <code>simInit</code>. See</li>
+</ul>
+<ol type="1">
+<li></li>
+</ol>
+<ul>
+<li><p>Why not? There are many reasons why things can get messed up with modelling in R… e.g., package dependency issues (especially version numbers that collide during development stages), internet availability, modules finding objects in the <code>.GlobalEnv</code> when they shouldn’t, etc… <code>SpaDES.project::setupProject</code> and <code>simInit</code> deal with these issues by loading and using namespaces/packages and objects directly into a separate environment (the <code>simList</code>).</p></li>
+<li><p>Don’t install packages “manually” and “separately” – script package installation in a reproducible way, i.e.&nbsp;that includes reference to package versions. Even better, let <code>setupProject</code> deal with package installation</p></li>
+<li><p>Why not? When you have many modules, each with a list of packages it needs it will be hard to figure out what packages need to be installed or updated. <code>setupProject</code> was designed to deal with this issue using the <code>Require</code> package.</p></li>
+<li><p>Don’t pre-load packages – let <code>simInit</code> do it when the simulation is being initialized and only <em>after</em> it has asserted that packages are available and in the correct versions.</p></li>
+<li><p>Why not? There are many reasons why things can get messed up with modelling in R… e.g., package dependency issues (especially version numbers that collide during development stages), internet availability. Pre-loading a package prevents it from being updated, which can make <code>setupProject</code> (and <code>simInit</code>) fail if they attempt to update a package to respect module requirements.</p></li>
+</ul>
 </section>
-<section id="see-also" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="see-also"><span class="header-section-number">3.3</span> See also</h2>
-<p><a href="TroubleshootingPackageInstallation.html" class="quarto-xref"><span>Chapter 4</span></a> on R package installation troubleshooting</p>
+<section id="see-also" class="level2">
+<h2 class="anchored" data-anchor-id="see-also">See also</h2>
+<p><a href="https://ecoforecast.org/reproducible-forecasting-workflows/">EFI’s reproducible forecasting workflows</a></p>
+<p><a href="http://www.practicereproducibleresearch.org/">The Practice of Reproducible Research</a></p>
+<p><a href="http://adv-r.had.co.nz/Style.html">Advanced R - Style guide; by Hadley Wickham</a></p>
+<p><a href="https://about.codecov.io/blog/types-of-testing-unit-vs-integration/">Types of testing; by Codecov</a></p>
+<p>Paper by <span class="citation" data-cites="sarma2016">Sarma et al. (<a href="references.html#ref-sarma2016" role="doc-biblioref">2016</a>)</span> on code testing</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-sarma2016" class="csl-entry" role="listitem">
+Sarma, Gopal P., Travis W. Jacobs, Mark D. Watts, S. Vahid Ghayoomie, Stephen D. Larson, and Richard C. Gerkin. 2016. <span>“Unit Testing, Model Validation, and Biological Simulation.”</span> <em>F1000Research</em> 5 (August): 1946. <a href="https://doi.org/10.12688/f1000research.9315.1">https://doi.org/10.12688/f1000research.9315.1</a>.
+</div>
+</div>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>See this <a href="https://ceresbarros.github.io/reproducible-workflowsWS/presentations/20230712_BESMacroSIG2023_ReproducibleWorkflowsWS.pdf">introduction to R<sup>3</sup>T workflows</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p><em>Assertions</em> and <em>unit tests</em> are smaller and generally test specific operations within a workflow (e.g. <code>if (1 + x != 2) stop("there is an error")</code>) or things like object integrity (e.g. <code>if (!is(x, "data.frame") stop("there is an error")</code>). <em>Integration tests</em> are larger in the sense that they test many components of a workflow and whether they work well together (they can also test an entire workflow)<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -1073,13 +1133,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./installRandSpatialPkgs.html" class="pagination-link" aria-label="Installing R and Spatial Packages">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Installing R and Spatial Packages</span></span>
+      <a href="./castorExample.html" class="pagination-link" aria-label="Castor Workflow with `setupProject`">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./TroubleshootingPackageInstallation.html" class="pagination-link" aria-label="Troubleshooting R package installation">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Troubleshooting R package installation</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

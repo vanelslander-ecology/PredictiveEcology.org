@@ -504,7 +504,7 @@ window.Quarto = {
 <h3 data-number="6.2.1" class="anchored" data-anchor-id="inputs-and-outputs"><span class="header-section-number">6.2.1</span> Inputs and Outputs</h3>
 <p>We use the terms <code>expectsInput</code> and <code>createsOutput</code> to describe the inputs and outputs in the metadata. This makes it clear that the metadata do <em>not</em> specify which they will <em>go get</em>; rather, it makes it clear that it doesn’t matter <em>where</em> the inputs are coming from. They could come from one of three sources: a user, another module, or defaults that the developer sets up. Likewise, the module specifies which outputs it creates, without specifying “for what other module”.</p>
 <p>The <strong>inputs</strong> to this chunk are just one: the object <code>x</code>. This code will not work (i.e., it will cause an error) if <code>x</code> is not defined. We can say that this code chunk “expects” <code>x</code> as an input.</p>
-<p>The <strong>outputs</strong> are <code>y</code> and <code>model</code>. We can say that this code chunk “creates” <code>y</code> and <code>model</code> as outputs. However, we had said in <a href="#sec-moduleintro" class="quarto-xref"><span class="quarto-unresolved-ref">sec-moduleintro</span></a> that we would only be interested in keeping <code>model</code>. So, we will continue with only one output, <code>model</code>.</p>
+<p>The <strong>outputs</strong> are <code>y</code> and <code>model</code>. We can say that this code chunk “creates” <code>y</code> and <code>model</code> as outputs. However, we had said in <a href="NewModuleIntro.html" class="quarto-xref"><span>Chapter 5</span></a> that we would only be interested in keeping <code>model</code>. So, we will continue with only one output, <code>model</code>.</p>
 </section>
 <section id="required-packages" class="level3" data-number="6.2.2">
 <h3 data-number="6.2.2" class="anchored" data-anchor-id="required-packages"><span class="header-section-number">6.2.2</span> Required Packages</h3>
@@ -527,7 +527,7 @@ window.Quarto = {
 </section>
 <section id="module-files" class="level2" data-number="6.3">
 <h2 data-number="6.3" class="anchored" data-anchor-id="module-files"><span class="header-section-number">6.3</span> Module files</h2>
-<p>Make the module again (see <a href="#sec-moduleintro" class="quarto-xref"><span class="quarto-unresolved-ref">sec-moduleintro</span></a>). This time we will add <code>sim$</code> for the <code>x</code> as we are now interested in the fact that it might be coming from <em>outside</em> this module.</p>
+<p>Make the module again (see <a href="NewModuleIntro.html" class="quarto-xref"><span>Chapter 5</span></a>). This time we will add <code>sim$</code> for the <code>x</code> as we are now interested in the fact that it might be coming from <em>outside</em> this module.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -616,7 +616,7 @@ window.Quarto = {
 <p><strong>The <code>simList</code></strong></p>
 <p>The <a href="https://spades-core.predictiveecology.org/reference/simList-class.html"><code>simList</code></a> is the data structure that is the foundation of <code>SpaDES</code>. It can be used <em>like a list</em>; accessing objects can be done with <code>$</code> or <code>[["model"]]</code>, for example.</p>
 <p>In any function that has an argument <code>sim</code>, we pass the <code>simList</code>, so we can access the <code>simList</code> with <code>sim$</code> from inside such a function.</p>
-<p>See <a href="#sec-simlist" class="quarto-xref"><span class="quarto-unresolved-ref">sec-simlist</span></a> for more details about the <code>simList</code>.</p>
+<p>See <a href="simList.html" class="quarto-xref"><span>Chapter 8</span></a> for more details about the <code>simList</code>.</p>
 </div>
 </div>
 </div>
@@ -665,7 +665,7 @@ window.Quarto = {
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Just like functions in R, we can supply default values for our <strong>inputs</strong>. We put these in a function at the bottom called <code>.inputObjects</code>. See <a href="#sec-moduleinputs" class="quarto-xref"><span class="quarto-unresolved-ref">sec-moduleinputs</span></a> for a model detailed explanation of module inputs and how to deal with them.</p>
+<p>Just like functions in R, we can supply default values for our <strong>inputs</strong>. We put these in a function at the bottom called <code>.inputObjects</code>. See <a href="ModuleInputs.html" class="quarto-xref"><span>Chapter 7</span></a> for a model detailed explanation of module inputs and how to deal with them.</p>
 <p>Copy this to the module, replacing the contents of the template <code>.inputObjects</code> function.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -725,9 +725,9 @@ window.Quarto = {
 </section>
 <section id="see-also" class="level2" data-number="6.12">
 <h2 data-number="6.12" class="anchored" data-anchor-id="see-also"><span class="header-section-number">6.12</span> See also</h2>
-<p><a href="#sec-modseventsfuns" class="quarto-xref"><span class="quarto-unresolved-ref">sec-modseventsfuns</span></a> on Modules, Events and Functions</p>
-<p><a href="#sec-moduleinputs" class="quarto-xref"><span class="quarto-unresolved-ref">sec-moduleinputs</span></a> on module inputs</p>
-<p><a href="#sec-simlist" class="quarto-xref"><span class="quarto-unresolved-ref">sec-simlist</span></a> on the <code>simList</code></p>
+<p><a href="ModulesAndEvents.html" class="quarto-xref"><span>Chapter 9</span></a> on Modules, Events and Functions</p>
+<p><a href="ModuleInputs.html" class="quarto-xref"><span>Chapter 7</span></a> on module inputs</p>
+<p><a href="simList.html" class="quarto-xref"><span>Chapter 8</span></a> on the <code>simList</code></p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/defineModule.html"><code>?defineModule</code></a> describes all the metadata entries.</p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/expectsInput.html"><code>?expectsInput</code></a></p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/createsOutput.html"><code>?createsOutput</code></a></p>
