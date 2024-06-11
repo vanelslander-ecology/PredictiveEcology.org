@@ -8,7 +8,7 @@ execute:
   eval: false
 ---
 
-# Troubleshooting R package installation {#sec-TroubleShoot}
+# Troubleshooting R package installation {#sec-troubleshoot}
 
 It is common for errors to occur when installing packages in R. The
 following are issues that we commonly face and their solutions.

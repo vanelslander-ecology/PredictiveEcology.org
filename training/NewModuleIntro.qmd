@@ -174,15 +174,15 @@ workflow of 2 events.**
 
 ## Challenge yourself {#sec-newModule-challengeYourself}
 
-1. Make a new module. Make it really simple. Run it with `simInitAndSpades` as in the above examples. 
+1.    Make a new module. Make it really simple. Run it with `simInitAndSpades` as in the above examples. 
 
-- Use `sim$` for an object that will be outputted.
+    -   Use `sim$` for an object that will be outputted.
 
-2. Make a second new module that uses the `sim$` object.
+2.    Make a second new module that uses the `sim$` object.
 
-- Add another new object in `sim$`
+    -   Add another new object in `sim$`
 
-3. Make a third new module that uses the `sim$` object from the 2nd module.
+3.    Make a third new module that uses the `sim$` object from the 2nd module.
 
 ## See also
 

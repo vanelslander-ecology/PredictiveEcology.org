@@ -87,7 +87,7 @@ sim$b
 Because parameters are usually module-specific, and need to be passed to with reference
 to a module. "Global" parameters are the exception to this rule:
 
-```{r duringSimInit2}
+```{r duringSimInit3}
 c <- 1
 sim <- SpaDES.core::simInit(params = list(.globals = list(c = c)))
 SpaDES.core::params(sim)$.globals$c
@@ -112,6 +112,7 @@ SpaDES.core::newModule(name = nm1, path = modulePath, open = FALSE,
 We then include the following in the module metadata section
 
 ```{r}
+#| eval: false
 defineParameter("length", "integer", 10L, 5L, 100L,
                 "Number of values to generate")
 ```

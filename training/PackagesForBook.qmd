@@ -77,7 +77,7 @@ downloads do not need to happen again.
 
 ## See also
 
-@sec-TroubleShoot on R package installation troubleshooting
+@sec-troubleshoot on R package installation troubleshooting
 
 [^1]: See this [introduction to R^3^T
     workflows](https://ceresbarros.github.io/reproducible-workflowsWS/presentations/20230712_BESMacroSIG2023_ReproducibleWorkflowsWS.pdf).
