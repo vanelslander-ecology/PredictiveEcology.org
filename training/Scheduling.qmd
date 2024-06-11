@@ -357,6 +357,19 @@ i.e., keep the same folder structure.
     -   [Learn how to debug in R and
         SpaDES](https://github.com/PredictiveEcology/SpaDES/wiki/Debugging)
 
+
+## Try on your own
+
+-   Try creating a new parameter that controls the frequency of predictions.
+    
+    Here's a clue:
+    ```
+    predictions = {
+      scheduleEvent(sim, time(sim) + P(sim)$predFreq, "predictions")
+    }    
+    ```
+
+
 ## See also
 
 @sec-modseventsfuns on Modules, Events and Functions
