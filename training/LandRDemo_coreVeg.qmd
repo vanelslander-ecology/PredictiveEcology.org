@@ -643,7 +643,7 @@ example:
 ## studyArea could be
 studyArea = {
 set.seed(123)
-SpaDES.tools::randomStudyArea(size = 1000000)
+SpaDES.tools::randomStudyArea(size = 200000000)
 }
 
 ## studyAreaLarge
