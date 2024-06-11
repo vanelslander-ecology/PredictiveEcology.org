@@ -266,6 +266,8 @@ objects(mySimOut)
 
 ## See also
 
+[Environments - Advanced R](http://adv-r.had.co.nz/Environments.html)
+
 [`?.simList-class`](https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/simList-class)
 
 [`?simInit`](https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/simInit)
