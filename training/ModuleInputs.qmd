@@ -48,7 +48,7 @@ e.g., `sim$` somewhere in the module.
 There are several ways to get objects into the `simList`:
 
 -   User passes during `simInit`:
-
+    
     -   using the `objects` argument (if it is an object);
 
     -   using the `inputs` argument (if it is from disk);
@@ -71,6 +71,7 @@ be put into the `simList`
 ```{r duringSimInit1}
 a <- 1
 sim <- SpaDES.core::simInit(objects = list(a = a))
+sim$a
 ```
 
 or do pass them via an `.rds` file
@@ -80,7 +81,7 @@ b <- 1
 tf <- tempfile(fileext = ".rds")
 saveRDS(b, file = tf)
 sim <- SpaDES.core::simInit(inputs = data.frame(object = "b", file = tf))
-# now it is "sim$b"
+sim$b
 ```
 
 Because parameters are usually module-specific, and need to be passed to with reference
