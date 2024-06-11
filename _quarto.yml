@@ -23,7 +23,11 @@ website:
       - text: "Projects"
         href: Projects.qmd
       - SpaDES.qmd
-      - Workshops.qmd
+      - text: Workshops
+        menu:
+          - Workshops.qmd
+          - text: "June 2024 Workshop Agenda"
+            href: workshops/June-2024-SpaDES-workshop.qmd
       - text: "Training"
         menu:
           - text: "Training Book"

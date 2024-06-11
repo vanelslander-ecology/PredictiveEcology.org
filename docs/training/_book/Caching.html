@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eliot J. B. McIntire">
-<meta name="dcterms.date" content="2024-06-04">
+<meta name="dcterms.date" content="2024-06-10">
 
 <title>Robust and nimble scientific workflows, using SpaDES - 11&nbsp; Introduction to Cache</title>
 <style>
@@ -163,25 +163,36 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./../index.qmd"> 
+    <a class="nav-link" href="./../../index.html"> 
 <span class="menu-text">News</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./../about.qmd"> 
+    <a class="nav-link" href="./../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./../Projects.qmd"> 
+    <a class="nav-link" href="./../../Projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./../SpaDES.qmd"> 
+    <a class="nav-link" href="./../../SpaDES.html"> 
 <span class="menu-text">SpaDES</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./../Workshops.qmd"> 
-<span class="menu-text">Workshops</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-workshops" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Workshops</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-workshops">    
+        <li>
+    <a class="dropdown-item" href="./../../Workshops.html">
+ <span class="dropdown-text">Workshops</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./../../workshops/June-2024-SpaDES-workshop.html">
+ <span class="dropdown-text">June 2024 Workshop Agenda</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-training" role="button" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Training</span>
@@ -192,21 +203,21 @@ window.Quarto = {
  <span class="dropdown-text">Training Book</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./../otherTraining.qmd">
+    <a class="dropdown-item" href="./../otherTraining.html">
  <span class="dropdown-text">Other training resources</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./../Manuals.qmd"> 
+    <a class="nav-link" href="./../../Manuals.html"> 
 <span class="menu-text">Manuals</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./../publications.qmd"> 
+    <a class="nav-link" href="./../../publications.html"> 
 <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./../presentations.qmd"> 
+    <a class="nav-link" href="./../../presentations.html"> 
 <span class="menu-text">Presentations</span></a>
   </li>  
   <li class="nav-item compact">
@@ -455,7 +466,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 4, 2024</p>
+      <p class="date">June 10, 2024</p>
     </div>
   </div>
   
@@ -467,7 +478,7 @@ window.Quarto = {
 </header>
 
 
-<p>The objective of a reproducible workflow is is likely that an entire work flow from raw data to publication, decision support, report writing, presentation building etc., could be built and be reproducible anywhere, on any computer, operating system, with any starting conditions, on demand.</p>
+<p>The objective of a reproducible workflow is likely that an entire work flow from raw data to publication, decision support, report writing, presentation building etc., could be built and be reproducible anywhere, on any computer and operating system, with any starting conditions, on demand.</p>
 <p>As part of a reproducible workflow, caching of function calls, code chunks, and other elements of a project can be very valuable. Caching allows a code writer to run all code regularly without “secretly” skipping certain lines because they take too long to run. This has 2 benefits.</p>
 <ol type="1">
 <li>Each line gets run regularly so when failures crop up, they are detected quickly and can be fixed when they are introduced.</li>
@@ -485,7 +496,7 @@ window.Quarto = {
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>reproducible<span class="sc">::</span><span class="fu">Cache</span>(<span class="fu">rnorm</span>(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6106527
+<pre><code>[1] 1.155428
 attr(,".Cache")
 attr(,".Cache")$newCache
 [1] TRUE
@@ -501,7 +512,7 @@ attr(,"call")
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  reproducible<span class="sc">::</span><span class="fu">Cache</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6106527
+<pre><code>[1] 1.155428
 attr(,".Cache")
 attr(,".Cache")$newCache
 [1] FALSE
@@ -537,7 +548,7 @@ attr(,"call")
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-   1.60    0.09    1.73 </code></pre>
+   1.57    0.17    1.86 </code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -546,7 +557,7 @@ attr(,"call")
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-   5.96    0.41    6.58 </code></pre>
+   6.11    0.27    6.48 </code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -555,7 +566,7 @@ attr(,"call")
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-   0.68    0.16    0.86 </code></pre>
+   0.66    0.08    0.77 </code></pre>
 </div>
 </div>
 </section>
@@ -570,7 +581,7 @@ attr(,"call")
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-   0.51    0.14    0.67 </code></pre>
+   0.48    0.09    0.58 </code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -578,7 +589,7 @@ attr(,"call")
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-   0.07    0.08    0.14 </code></pre>
+   0.01    0.06    0.08 </code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -605,12 +616,12 @@ attr(,"call")
  2: ad0ea27476c50b66                function                      rnorm
  3: ad0ea27476c50b66                   class                    numeric
  4: ad0ea27476c50b66             object.size                       1008
- 5: ad0ea27476c50b66                accessed 2024-06-04 14:35:13.891315
+ 5: ad0ea27476c50b66                accessed 2024-06-10 18:36:23.431795
  6: ad0ea27476c50b66                 inCloud                      FALSE
  7: ad0ea27476c50b66                fromDisk                      FALSE
  8: ad0ea27476c50b66              resultHash                           
- 9: ad0ea27476c50b66       elapsedTimeDigest           0.005132914 secs
-10: ad0ea27476c50b66     elapsedTimeFirstRun          7.796288e-05 secs
+ 9: ad0ea27476c50b66       elapsedTimeDigest           0.003035784 secs
+10: ad0ea27476c50b66     elapsedTimeFirstRun          6.818771e-05 secs
 11: ad0ea27476c50b66          otherFunctions                    execute
 12: ad0ea27476c50b66          otherFunctions               process_file
 13: ad0ea27476c50b66          otherFunctions              process_group
@@ -628,30 +639,30 @@ attr(,"call")
              cacheId                  tagKey                   tagValue
                    createdDate
                         &lt;char&gt;
- 1: 2024-06-04 14:35:13.891883
- 2: 2024-06-04 14:35:13.891883
- 3: 2024-06-04 14:35:13.891883
- 4: 2024-06-04 14:35:13.891883
- 5: 2024-06-04 14:35:13.891883
- 6: 2024-06-04 14:35:13.891883
- 7: 2024-06-04 14:35:13.891883
- 8: 2024-06-04 14:35:13.891883
- 9: 2024-06-04 14:35:13.891883
-10: 2024-06-04 14:35:13.891883
-11: 2024-06-04 14:35:13.891883
-12: 2024-06-04 14:35:13.891883
-13: 2024-06-04 14:35:13.891883
-14: 2024-06-04 14:35:13.891883
-15: 2024-06-04 14:35:13.891883
-16: 2024-06-04 14:35:13.891883
-17: 2024-06-04 14:35:13.891883
-18: 2024-06-04 14:35:13.891883
-19: 2024-06-04 14:35:13.891883
-20: 2024-06-04 14:35:13.891883
-21: 2024-06-04 14:35:13.891883
-22: 2024-06-04 14:35:13.891883
-23: 2024-06-04 14:35:13.891883
-24: 2024-06-04 14:35:13.891883
+ 1: 2024-06-10 18:36:23.432321
+ 2: 2024-06-10 18:36:23.432321
+ 3: 2024-06-10 18:36:23.432321
+ 4: 2024-06-10 18:36:23.432321
+ 5: 2024-06-10 18:36:23.432321
+ 6: 2024-06-10 18:36:23.432321
+ 7: 2024-06-10 18:36:23.432321
+ 8: 2024-06-10 18:36:23.432321
+ 9: 2024-06-10 18:36:23.432321
+10: 2024-06-10 18:36:23.432321
+11: 2024-06-10 18:36:23.432321
+12: 2024-06-10 18:36:23.432321
+13: 2024-06-10 18:36:23.432321
+14: 2024-06-10 18:36:23.432321
+15: 2024-06-10 18:36:23.432321
+16: 2024-06-10 18:36:23.432321
+17: 2024-06-10 18:36:23.432321
+18: 2024-06-10 18:36:23.432321
+19: 2024-06-10 18:36:23.432321
+20: 2024-06-10 18:36:23.432321
+21: 2024-06-10 18:36:23.432321
+22: 2024-06-10 18:36:23.432321
+23: 2024-06-10 18:36:23.432321
+24: 2024-06-10 18:36:23.432321
                    createdDate</code></pre>
 </div>
 </div>
@@ -696,12 +707,12 @@ attr(,"call")
  1: 422bae4ed2f770cc            function                      rnorm
  2: 422bae4ed2f770cc               class                    numeric
  3: 422bae4ed2f770cc         object.size                        984
- 4: 422bae4ed2f770cc            accessed 2024-06-04 14:35:14.071673
+ 4: 422bae4ed2f770cc            accessed 2024-06-10 18:36:23.583666
  5: 422bae4ed2f770cc             inCloud                      FALSE
  6: 422bae4ed2f770cc            fromDisk                      FALSE
  7: 422bae4ed2f770cc          resultHash                           
- 8: 422bae4ed2f770cc   elapsedTimeDigest           0.003367901 secs
- 9: 422bae4ed2f770cc elapsedTimeFirstRun          0.0001699924 secs
+ 8: 422bae4ed2f770cc   elapsedTimeDigest           0.003875017 secs
+ 9: 422bae4ed2f770cc elapsedTimeFirstRun          7.987022e-05 secs
 10: 422bae4ed2f770cc      otherFunctions                    execute
 11: 422bae4ed2f770cc      otherFunctions               process_file
 12: 422bae4ed2f770cc      otherFunctions              process_group
@@ -719,29 +730,29 @@ attr(,"call")
              cacheId              tagKey                   tagValue
                    createdDate
                         &lt;char&gt;
- 1: 2024-06-04 14:35:14.072391
- 2: 2024-06-04 14:35:14.072391
- 3: 2024-06-04 14:35:14.072391
- 4: 2024-06-04 14:35:14.072391
- 5: 2024-06-04 14:35:14.072391
- 6: 2024-06-04 14:35:14.072391
- 7: 2024-06-04 14:35:14.072391
- 8: 2024-06-04 14:35:14.072391
- 9: 2024-06-04 14:35:14.072391
-10: 2024-06-04 14:35:14.072391
-11: 2024-06-04 14:35:14.072391
-12: 2024-06-04 14:35:14.072391
-13: 2024-06-04 14:35:14.072391
-14: 2024-06-04 14:35:14.072391
-15: 2024-06-04 14:35:14.072391
-16: 2024-06-04 14:35:14.072391
-17: 2024-06-04 14:35:14.072391
-18: 2024-06-04 14:35:14.072391
-19: 2024-06-04 14:35:14.072391
-20: 2024-06-04 14:35:14.072391
-21: 2024-06-04 14:35:14.072391
-22: 2024-06-04 14:35:14.072391
-23: 2024-06-04 14:35:14.072391
+ 1: 2024-06-10 18:36:23.584266
+ 2: 2024-06-10 18:36:23.584266
+ 3: 2024-06-10 18:36:23.584266
+ 4: 2024-06-10 18:36:23.584266
+ 5: 2024-06-10 18:36:23.584266
+ 6: 2024-06-10 18:36:23.584266
+ 7: 2024-06-10 18:36:23.584266
+ 8: 2024-06-10 18:36:23.584266
+ 9: 2024-06-10 18:36:23.584266
+10: 2024-06-10 18:36:23.584266
+11: 2024-06-10 18:36:23.584266
+12: 2024-06-10 18:36:23.584266
+13: 2024-06-10 18:36:23.584266
+14: 2024-06-10 18:36:23.584266
+15: 2024-06-10 18:36:23.584266
+16: 2024-06-10 18:36:23.584266
+17: 2024-06-10 18:36:23.584266
+18: 2024-06-10 18:36:23.584266
+19: 2024-06-10 18:36:23.584266
+20: 2024-06-10 18:36:23.584266
+21: 2024-06-10 18:36:23.584266
+22: 2024-06-10 18:36:23.584266
+23: 2024-06-10 18:36:23.584266
                    createdDate</code></pre>
 </div>
 <details open="" class="code-fold">
@@ -766,7 +777,7 @@ attr(,"call")
 </section>
 <section id="nested-caching" class="level2" data-number="13.3">
 <h2 data-number="13.3" class="anchored" data-anchor-id="nested-caching"><span class="header-section-number">13.3</span> Nested Caching</h2>
-<p>Nested caching, which is when Caching of a function occurs inside an outer function, which is itself cached. This is a critical element to working within a reproducible work flow. Ideally, at all points in a development cycle, it should be possible to get to any line of code starting from the very initial steps, running through everything up to that point, in less than a few seconds. If the workflow can be kept very fast like this, it will be very likely to work at any point it is tested.</p>
+<p>Nested caching is when Caching of a function occurs inside an outer function, which is itself cached. This is a critical element to working within a reproducible work flow. Ideally, at all points in a development cycle, it should be possible to get to any line of code starting from the very initial steps, running through everything up to that point, in less than a few seconds. If the workflow can be kept very fast like this, it will be very likely to work at any point it is tested.</p>
 <p>In the example here, we run an <code>outer</code> function that calls an <code>inner</code> function. If we decide to change the <code>outer</code> function along the way, and the <code>inner</code> function is unaffected, then we can still recover the cached version of the <code>inner</code> call.</p>
 <p><em>Warning</em> this will not necessarily work the other way, i.e., if <code>inner</code> is changed, we won’t notice until we <code>clearCache</code> and rerun.</p>
 <div class="cell">
@@ -785,7 +796,7 @@ attr(,"call")
 <span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="fu">Cache</span>(<span class="fu">outer</span>(<span class="at">n =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  0.20387979 -0.55140572  0.01996051
+<pre><code>[1] 0.6426823 0.3229989 0.4803155
 attr(,".Cache")
 attr(,".Cache")$newCache
 [1] TRUE
@@ -807,7 +818,7 @@ attr(,"call")
 <span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="fu">Cache</span>(<span class="fu">outer</span>(<span class="at">n =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  0.20387979 -0.55140572  0.01996051
+<pre><code>[1] 0.6426823 0.3229989 0.4803155
 attr(,".Cache")
 attr(,".Cache")$newCache
 [1] TRUE
@@ -827,7 +838,7 @@ attr(,"call")
 <span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">Cache</span>(<span class="fu">outer</span>(<span class="at">n =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  0.20387979 -0.55140572  0.01996051
+<pre><code>[1] 0.6426823 0.3229989 0.4803155
 attr(,".Cache")
 attr(,".Cache")$newCache
 [1] FALSE
