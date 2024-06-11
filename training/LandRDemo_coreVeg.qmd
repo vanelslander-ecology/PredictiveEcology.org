@@ -221,17 +221,11 @@ out <- setupProject(
     rbind(
       data.frame(
         objectName = "cohortData", 
-        saveTime = seq(times$start, times$end),
-        fun = "saveRDS",
-        package = "base",
-        arguments = ""
+        saveTime = seq(times$start, times$end)
       ),
       data.frame(
         objectName = "pixelGroupMap", 
-        saveTime = seq(times$start, times$end), 
-        fun = "writeRaster",
-        package = "terra",
-        arguments = "overwrite = TRUE"
+        saveTime = seq(times$start, times$end)
       )
     )
   }
@@ -268,13 +262,11 @@ arguments' (see
 
 ## Run simulation
 
+<!--
 ### One replicate
+-->
 
-We will initialize the simulation with `SpaDES.core::simInit()` so that
-we can use the same `simList` object in @sec-LandRReplication.
-
-Please note that it may take over an hour to download all necessary raw
-data and fit model parameters.
+You can initialise the and run the workflow in two separate steps...
 
 ```{r runSim}
 #| results: hide
@@ -284,7 +276,7 @@ simInitOut <- SpaDES.core::simInit2(out)
 simOut <- SpaDES.core::spades(simInitOut)
 ```
 
-Or use `simInitAndSpades2()`
+... or together, using `simInitAndSpades2()`
 
 ```{r runSim2}
 #| results: hide
@@ -430,7 +422,7 @@ by \``SpaDES.core::simInit2()`) to *resume* the simulation from 2031.
 SpaDES.core::end(simOut) <- 2061
 simOut <- SpaDES.core::spades(simOut)
 ```
-
+<!--
 ### Many replicates {#sec-LandRReplication}
 
 Dynamic ecological models like LandR often simulate stochastic
@@ -456,8 +448,10 @@ to do two things:
 ```{r expSim}
 #| lst-label: lst-exp
 #| lst-cap: Sequential replication 
+
 simInitOut <- SpaDES.core::simInit2(out)
 
+future::plan("sequential")
 simOutExperiment <- SpaDES.experiment::experiment2(simInitOut, replicates = 10)
 ```
 
@@ -494,6 +488,7 @@ conditions because they all access the same cached objects from the
 To have fully independent replication we can use
 `experiment2(..., useCache = FALSE)`
 :::
+-->
 
 <!--
 ## Validation
@@ -580,13 +575,15 @@ SpaDES and LandR allow us to swap parameterisation/calibration approaches easily
 re-evaluate each and compare the models (see @barros2023).
 
 Do to this, we simply exclude *Biomass_speciesParameters* from `out` and run
-a second simulation.
+a second simulation. We also need to save the outputs in a different folder,
+or the previous ones will be overriden.
 
 ```{r scenarios}
 out2 <- out
 out2$modules <- out2$modules[out2$modules != "Biomass_speciesParameters"]
+out2$paths$outputPath <- normPath(file.path("~/SpaDES_book/LandRDemo_coreVeg", "outputsSim2"))
 
-simOutExperiment <- SpaDES.experiment::experiment2(simInitOut, replicates = 10)
+simOut2 <- SpaDES.core::simInitAndSpades2(out2)
 ```
 
 ## Debugging {#sec-LandRdebug}
