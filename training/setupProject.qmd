@@ -8,7 +8,6 @@ execute:
   warning: false
   message: false
   error: false
-  cache: false
 ---
 
 # SpaDES workflows and projects
@@ -39,9 +38,12 @@ documentation sources noted in the chapters.
 
 We can see many of the known modules in the SpaDES-verse and how they interact through their shared inputs and outputs in this interactive figure:
 
-```{r,echo=TRUE,eval=TRUE,cache=TRUE}
+```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
+#| echo: true
+#| eval: true
+#| cache: true
 Require::Install(c("igraph", "visNetwork"))
 
 modPath <- "~/SpaDES_book/listModules/"

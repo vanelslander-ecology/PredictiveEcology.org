@@ -673,7 +673,9 @@ for more information.
 
 [^2]: See @sec-caching about caching.
 
+<!--
 [^3]: By default, *Biomass_borealDataPrep* tries to
 fill missing land-cover data in recently burned pixels by randomly
 looking for the closes forest land-cover type.
+-->
 
