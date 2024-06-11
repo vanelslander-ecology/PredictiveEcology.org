@@ -25,11 +25,11 @@ knitr::opts_chunk$set(eval = hasSuggests && useSuggests)
 
 # Introduction to Cache {#sec-caching}
 
-The objective of a reproducible workflow is is likely that an entire
-work flow from raw data to publication, decision support, report
-writing, presentation building etc., could be built and be reproducible
-anywhere, on any computer, operating system, with any starting
-conditions, on demand.
+The objective of a reproducible workflow is likely that an entire work
+flow from raw data to publication, decision support, report writing,
+presentation building etc., could be built and be reproducible anywhere,
+on any computer and operating system, with any starting conditions, on
+demand.
 
 As part of a reproducible workflow, caching of function calls, code
 chunks, and other elements of a project can be very valuable. Caching
@@ -159,14 +159,13 @@ b2 == b3 # FALSE
 
 ## Nested Caching
 
-Nested caching, which is when Caching of a function occurs inside an
-outer function, which is itself cached. This is a critical element to
-working within a reproducible work flow. Ideally, at all points in a
-development cycle, it should be possible to get to any line of code
-starting from the very initial steps, running through everything up to
-that point, in less than a few seconds. If the workflow can be kept very
-fast like this, it will be very likely to work at any point it is
-tested.
+Nested caching is when Caching of a function occurs inside an outer
+function, which is itself cached. This is a critical element to working
+within a reproducible work flow. Ideally, at all points in a development
+cycle, it should be possible to get to any line of code starting from
+the very initial steps, running through everything up to that point, in
+less than a few seconds. If the workflow can be kept very fast like
+this, it will be very likely to work at any point it is tested.
 
 In the example here, we run an `outer` function that calls an `inner`
 function. If we decide to change the `outer` function along the way, and

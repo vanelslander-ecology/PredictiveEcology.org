@@ -35,35 +35,44 @@ knitr::knit_hooks$set(output = function(y, options) {
 
 ```
 
-Every project that has data will need to get the data from its original source into a form and format that works for a given project. To do this in a reproducible/reusable manner is not trivial. 
+Every project that has data will need to get the data from its original
+source into a form and format that works for a given project. To do this
+in a reproducible/reusable manner is not trivial.
 
-Some elements that should be present when bringing the data into a project in a reproducible/reusable manner can ideally include:
+Some elements that should be present when bringing the data into a
+project in a reproducible/reusable manner can ideally include:
 
-- **Accessible** from any computer
-- **User-access control** (i.e., can allow only some people to get the data)
-- **Versioned** i.e., can know and control the version accessed
-- **Spatially appropriate** -- if data are spatial (e.g., GIS data), they must be coerced to relevant template for a project
-- **Exact**, i.e., test to ensure the data were downloaded as desired
-- **Flexible** for many classes of data
-- **Simple**
+-   **Accessible** from any computer
+-   **User-access control** (i.e., can allow only some people to get the
+    data)
+-   **Versioned** i.e., can know and control the version accessed
+-   **Spatially appropriate** -- if data are spatial (e.g., GIS data),
+    they must be coerced to the relevant template for a project
+-   **Exact**, i.e., test to ensure the data were downloaded as desired
+-   **Flexible** for many classes of data
+-   **Simple**
 
-Similar, if the data are to be re-used in many projects, the approach to getting the data should be:
+Similar, if the data are to be re-used in many projects, the approach to
+getting the data should be:
 
-- **Locally cached** if used in many projects, only one copy is needed
-- **Modular** approach to accessing, so they can be easily added to any project
+-   **Locally cached** if used in many projects, only one copy is needed
+-   **Modular** approach to accessing, so they can be easily added to
+    any project
 
-We designed a function to achieve all this: [`reproducible::prepInputs`](https://reproducible.predictiveecology.org/reference/prepInputs.html)
+We designed a function to achieve all this:
+[`reproducible::prepInputs`](https://reproducible.predictiveecology.org/reference/prepInputs.html)
 
 ## `prepInputs`
 
-This function can be used to prepare R objects from remote or local data sources.
-The object of this function is to provide a reproducible version of
-a series of commonly used steps for getting, loading, and processing data.
+This function can be used to prepare R objects from remote or local data
+sources. The object of this function is to provide a reproducible
+version of a series of commonly used steps for getting, loading, and
+processing data.
 
 ## Simplest case: a `url`
 
-If we can point directly to a file on a cloud location, `prepInputs` does its thing, 
-getting local file. 
+If we can point directly to a file on a cloud location, `prepInputs`
+does its thing, getting the local file.
 
 ```{r simplest}
 Require::Require(c("terra", "reproducible"), 
@@ -76,7 +85,10 @@ terra::plot(ras)
 
 ## Case: in an archive (like `zip`)
 
-Often, cloud-stored files are in an archive, like a `zip` or `tar.gz`. These can be handled automatically with `prepInputs`. By default, it will try to extract all files from the archive, and load one of them into R:
+Often, cloud-stored files are in an archive, like a `zip` or `tar.gz`.
+These can be handled automatically with `prepInputs`. By default, it
+will try to extract all files from the archive, and load one of them
+into R:
 
 ```{r archive}
 url <- "http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/ecozone_shp.zip"
@@ -84,10 +96,12 @@ shpEcozone <- prepInputs(url = url, destinationPath = "~/SpaDES_book/data/prepIn
 terra::plot(shpEcozone[1])
 ```
 
-## Case: local stash using `reproducible.inputPaths` 
+## Case: local stash using `reproducible.inputPaths`
 
-If we want to use the same file in many projects, we can obviously just download it again in each project, using the same lines of `prepInputs`. However, we can setup a local "stash" of data files. This is a **set it and forget it** option in `reproducible`. 
-
+If we want to use the same file in many projects, we can obviously just
+download it again in each project, using the same lines of `prepInputs`.
+However, we can setup a local "stash" of data files. This is a **set it
+and forget it** option in `reproducible`.
 
 ```{r inputPaths}
 options(reproducible.inputPaths = "~/data")
@@ -96,32 +110,56 @@ shpEcozone <- prepInputs(url = url, destinationPath = "~/SpaDES_book/data/prepIn
 terra::plot(shpEcozone[1])
 ```
 
-If we run this chunk in the same project, results will be like the previous chunk: a vector dataset from the Canadian federal government. BUT, if we run it in a different project, it will check the stashed diretory and won't need to download it again. Moreover, it will not actually make a copy it will make a link to the file, so it won't take extra space on your hard drive.
+If we run this chunk in the same project, results will be like the
+previous chunk: a vector dataset from the Canadian federal government.
+BUT, if we run it in a different project, it will check the stashed
+diretory and won't need to download it again. Moreover, it will not
+actually make a copy but a link to the file, so it won't take extra
+space on your hard drive.
 
-If you are running in a *nix-like system (Mac, Linux, etc.) or you have Git Bash installed, you can see the number of links to a file with `ls`, so in R it would be. The column after the attributes (e.g., drwxr-xr-x),
-is the number of pointers to a file. Anything more than 1 means that there are several pointers.
+If you are running in a \*nix-like system (Mac, Linux, etc.) or you have
+Git Bash installed, you can see the number of links to a file with `ls`.
+The column after the attributes (e.g., drwxr-xr-x), is the number of
+pointers to a file. Anything more than 1 means that there are several
+pointers.
 
-```eval=FALSE
+``` eval=false
 system(paste0("ls -l", getOption("inputPaths")))
 ```
 
 ## Stages of `prepInputs`
 
-This function has three stages, using three internal functions: 
+This function has three stages, using three internal functions:
 
-- [`reproducible::preProcess`](https://reproducible.predictiveecology.org/reference/preProcess.html) which is **getting data** (download, extracting from archives, checksumming)
-- `reproducible::process` -- load the data into R (note: user can't access this directly)
-- [`reproducible::postProcessTo`](https://reproducible.predictiveecology.org/reference/postProcessTo.html) (for `Spatial*` and `Raster*` objects, this is crop, reproject, mask/intersect).
+-   [`reproducible::preProcess`](https://reproducible.predictiveecology.org/reference/preProcess.html)
+    which is **getting data** (download, extracting from archives,
+    checksumming)
+-   `reproducible::process` -- load the data into R (note: user can't
+    access this directly)
+-   [`reproducible::postProcessTo`](https://reproducible.predictiveecology.org/reference/postProcessTo.html)
+    (for `Spatial*` and `Raster*` objects, this is crop, reproject,
+    mask/intersect).
 
-`preProcess` will be run, if a user supplies `url` or `archive`. `process` will be run if `fun` is not `NA`. It will try to guess `fun` based on file type if `fun` is left at the default of `NULL`. `postProcess` will be triggered if the user passes any of the arguments of `postProcessTo` (`to`, `maskTo`, `cropTo`) `studyArea` or `rasterToMatch`.
+`preProcess` will be run, if a user supplies `url` or `archive`.
+`process` will be run if `fun` is not `NA`. It will try to guess `fun`
+based on file type if `fun` is left at the default of `NULL`.
+`postProcess` will be triggered if the user passes any of the arguments
+of `postProcessTo` (`to`, `maskTo`, `cropTo`) `studyArea` or
+`rasterToMatch`.
 
 ## With GIS
 
-The data we download may cover a larger area than our study needs. For example, there may be a provincial or national dataset, but we are only using a part of that. If we create a `studyArea`, we can use this as part of `prepInputs`, passing it to `to` or one of the other [`*to`](https://reproducible.predictiveecology.org/reference/postProcessTo.html) functions. 
+The data we download may cover a larger area than our study needs. For
+example, there may be a provincial or national dataset, but we are only
+using a part of that. If we create a `studyArea`, we can use this as
+part of `prepInputs`, passing it to `to` or one of the other
+[`*to`](https://reproducible.predictiveecology.org/reference/postProcessTo.html)
+functions.
 
 ### Vector data
 
-The following will get the national ecozone map, project, crop and mask it to the SK dataset. 
+The following will get the national ecozone map, project, crop and mask
+it to the SK dataset.
 
 ```{r}
 SK <- SpaDES.project::setupStudyArea(list(level = 2, NAME_1 = "Saskatchewan"))
@@ -134,7 +172,9 @@ terra::plot(shpEcozoneSK[1])
 
 ### Raster data
 
-The following will get a national DEM layer, crop and mask it to the SK dataset. We leave it in the projection it came in at the original source.
+The following will get a national DEM layer, crop and mask it to the SK
+dataset. We leave it in the projection it came in at the original
+source.
 
 ```{r}
 urlTif1 <- "https://geodata.ucdavis.edu/geodata/elv/CAN_elv_msk.zip"
@@ -159,7 +199,10 @@ terra::plot(DEMSK)
 terra::plot(shpEcozoneSK[1], add = TRUE, col = "transparent")
 ```
 
-Of course, we may have many other things, including change the resolution of the downloaded object, change the projection, and resolution. `prepInputs` uses a `template` raster to know what to project, crop, and mask to
+Of course, we may do many other things, including change the resolution
+of the downloaded object, change the projection, and resolution.
+`prepInputs` uses a `template` raster to know what to project, crop, and
+mask to
 
 ```{r}
 SK <- SpaDES.project::setupStudyArea(list(level = 2, NAME_1 = "Saskatchewan", epsg = 5070))
@@ -174,11 +217,14 @@ DEMSK250m <- prepInputs(
 terra::plot(DEMSK250m)
 ```
 
-So, we can easily put these `prepInputs` calls in our workflows, in any project, with minimal new effort each time.
+So, we can easily put these `prepInputs` calls in our workflows, in any
+project, with minimal new effort each time.
 
 ## Caching
 
-`prepInputs` is friendly with `Cache`. In addition to the local stashing of a file, the GIS itself may take a lont time. We can just `|> Cache()` at the end and we have a workflow that doesn't need to be broken.
+`prepInputs` is friendly with `Cache`. In addition to the local stashing
+of a file, the GIS itself may take a long time. We can just `|> Cache()`
+at the end and we have a workflow that doesn't need to be broken.
 
 ```{r Caching}
 DEMSK250m <- prepInputs(
@@ -199,12 +245,19 @@ DEMSK250m <- prepInputs(
 
 ## Extending `prepInputs` with `fun`
 
-It is impossible for `prepInputs` to be able to handle all data capturing cases. When customization is needed, a few options are possible.
+It is impossible for `prepInputs` to be able to handle all data
+capturing cases. When customization is needed, a few options are
+possible.
 
-1. Make a custom `fun` argument. Optionally, `dlFun` can be used to specify how to dowload the data.
-2. Make a custom `prepInputs_XXX` function that calls `prepInputs` internally.
+1.  Make a custom `fun` argument. Optionally, `dlFun` can be used to
+    specify how to download the data.
+2.  Make a custom `prepInputs_XXX` function that calls `prepInputs`
+    internally.
 
-The following example uses a custom `fun`. These examples are fast, so the benefits of 
+The following example uses a custom `fun`. These examples are fast, so
+the benefits of caching won't be as apparent as for when more complex
+GIS operations are needed, e.g. reprojecting large raster datasets.
+
 ```{r custom}
 LuxembourgFull <- prepInputs(
  dlFun =
@@ -226,13 +279,22 @@ terra::plot(LuxembourgInnerBuffer)
 terra::plot(Luxembourg, add = TRUE)
 ```
 
-By rerunning the previous code, the caching will be in effect. This means that the two- or more-stage slow processes of downloading, custom operations, and possibly GIS using `*to* functions can all be Cached in a single step, resulting in the smallest possible output being saved, i.e., intermediate large objects have only limited "saving".
+By rerunning the previous code, the caching will be in effect. This
+means that the slow, two-or-more-stage processes of downloading, custom
+operations, and possibly GIS using \`*to* functions can all be Cached in
+a single step, resulting in the smallest possible output being saved,
+i.e., intermediate large objects have only limited "saving".
 
-NOTE: Rmarkdown and Quarto both have a form of caching of chunks. This can be effective in some circumstances, but it is somewhat limited (as are all forms of Caching -- they will hit their limits somewhere). For instance, they do not deal with the pointers of `C++` objects in `terra`. 
+NOTE: Rmarkdown and Quarto both have a form of caching of chunks. This
+can be effective in some circumstances, but it is somewhat limited (as
+are all forms of Caching -- they will hit their limits somewhere). For
+instance, they do not deal with the pointers of `C++` objects in
+`terra`.
 
 ## See also
 
-There are many other elements of this function that can be effectively used.
+There are many other elements of this function that can be effectively
+used.
 
 [`reproducible::prepInputs`](https://reproducible.predictiveecology.org/reference/prepInputs.html)
 

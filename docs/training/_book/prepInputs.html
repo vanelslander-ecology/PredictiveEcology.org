@@ -163,25 +163,36 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./../index.qmd"> 
+    <a class="nav-link" href="./../../index.html"> 
 <span class="menu-text">News</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./../about.qmd"> 
+    <a class="nav-link" href="./../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./../Projects.qmd"> 
+    <a class="nav-link" href="./../../Projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./../SpaDES.qmd"> 
+    <a class="nav-link" href="./../../SpaDES.html"> 
 <span class="menu-text">SpaDES</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./../Workshops.qmd"> 
-<span class="menu-text">Workshops</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-workshops" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Workshops</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-workshops">    
+        <li>
+    <a class="dropdown-item" href="./../../Workshops.html">
+ <span class="dropdown-text">Workshops</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./../../workshops/June-2024-SpaDES-workshop.html">
+ <span class="dropdown-text">June 2024 Workshop Agenda</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-training" role="button" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Training</span>
@@ -192,21 +203,21 @@ window.Quarto = {
  <span class="dropdown-text">Training Book</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./../otherTraining.qmd">
+    <a class="dropdown-item" href="./../otherTraining.html">
  <span class="dropdown-text">Other training resources</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./../Manuals.qmd"> 
+    <a class="nav-link" href="./../../Manuals.html"> 
 <span class="menu-text">Manuals</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./../publications.qmd"> 
+    <a class="nav-link" href="./../../publications.html"> 
 <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./../presentations.qmd"> 
+    <a class="nav-link" href="./../../presentations.html"> 
 <span class="menu-text">Presentations</span></a>
   </li>  
   <li class="nav-item compact">
@@ -473,7 +484,7 @@ window.Quarto = {
 <li><strong>Accessible</strong> from any computer</li>
 <li><strong>User-access control</strong> (i.e., can allow only some people to get the data)</li>
 <li><strong>Versioned</strong> i.e., can know and control the version accessed</li>
-<li><strong>Spatially appropriate</strong> – if data are spatial (e.g., GIS data), they must be coerced to relevant template for a project</li>
+<li><strong>Spatially appropriate</strong> – if data are spatial (e.g., GIS data), they must be coerced to the relevant template for a project</li>
 <li><strong>Exact</strong>, i.e., test to ensure the data were downloaded as desired</li>
 <li><strong>Flexible</strong> for many classes of data</li>
 <li><strong>Simple</strong></li>
@@ -490,7 +501,7 @@ window.Quarto = {
 </section>
 <section id="simplest-case-a-url" class="level2" data-number="12.2">
 <h2 data-number="12.2" class="anchored" data-anchor-id="simplest-case-a-url"><span class="header-section-number">12.2</span> Simplest case: a <code>url</code></h2>
-<p>If we can point directly to a file on a cloud location, <code>prepInputs</code> does its thing, getting local file.</p>
+<p>If we can point directly to a file on a cloud location, <code>prepInputs</code> does its thing, getting the local file.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -527,8 +538,8 @@ window.Quarto = {
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">plot</span>(shpEcozone[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>If we run this chunk in the same project, results will be like the previous chunk: a vector dataset from the Canadian federal government. BUT, if we run it in a different project, it will check the stashed diretory and won’t need to download it again. Moreover, it will not actually make a copy it will make a link to the file, so it won’t take extra space on your hard drive.</p>
-<p>If you are running in a *nix-like system (Mac, Linux, etc.) or you have Git Bash installed, you can see the number of links to a file with <code>ls</code>, so in R it would be. The column after the attributes (e.g., drwxr-xr-x), is the number of pointers to a file. Anything more than 1 means that there are several pointers.</p>
+<p>If we run this chunk in the same project, results will be like the previous chunk: a vector dataset from the Canadian federal government. BUT, if we run it in a different project, it will check the stashed diretory and won’t need to download it again. Moreover, it will not actually make a copy but a link to the file, so it won’t take extra space on your hard drive.</p>
+<p>If you are running in a *nix-like system (Mac, Linux, etc.) or you have Git Bash installed, you can see the number of links to a file with <code>ls</code>. The column after the attributes (e.g., drwxr-xr-x), is the number of pointers to a file. Anything more than 1 means that there are several pointers.</p>
 <pre class="eval=false"><code>system(paste0("ls -l", getOption("inputPaths")))</code></pre>
 </section>
 <section id="stages-of-prepinputs" class="level2" data-number="12.5">
@@ -587,7 +598,7 @@ window.Quarto = {
 <span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">plot</span>(shpEcozoneSK[<span class="dv">1</span>], <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"transparent"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Of course, we may have many other things, including change the resolution of the downloaded object, change the projection, and resolution. <code>prepInputs</code> uses a <code>template</code> raster to know what to project, crop, and mask to</p>
+<p>Of course, we may do many other things, including change the resolution of the downloaded object, change the projection, and resolution. <code>prepInputs</code> uses a <code>template</code> raster to know what to project, crop, and mask to</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -608,7 +619,7 @@ window.Quarto = {
 </section>
 <section id="caching" class="level2" data-number="12.7">
 <h2 data-number="12.7" class="anchored" data-anchor-id="caching"><span class="header-section-number">12.7</span> Caching</h2>
-<p><code>prepInputs</code> is friendly with <code>Cache</code>. In addition to the local stashing of a file, the GIS itself may take a lont time. We can just <code>|&gt; Cache()</code> at the end and we have a workflow that doesn’t need to be broken.</p>
+<p><code>prepInputs</code> is friendly with <code>Cache</code>. In addition to the local stashing of a file, the GIS itself may take a long time. We can just <code>|&gt; Cache()</code> at the end and we have a workflow that doesn’t need to be broken.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -633,10 +644,10 @@ window.Quarto = {
 <h2 data-number="12.8" class="anchored" data-anchor-id="extending-prepinputs-with-fun"><span class="header-section-number">12.8</span> Extending <code>prepInputs</code> with <code>fun</code></h2>
 <p>It is impossible for <code>prepInputs</code> to be able to handle all data capturing cases. When customization is needed, a few options are possible.</p>
 <ol type="1">
-<li>Make a custom <code>fun</code> argument. Optionally, <code>dlFun</code> can be used to specify how to dowload the data.</li>
+<li>Make a custom <code>fun</code> argument. Optionally, <code>dlFun</code> can be used to specify how to download the data.</li>
 <li>Make a custom <code>prepInputs_XXX</code> function that calls <code>prepInputs</code> internally.</li>
 </ol>
-<p>The following example uses a custom <code>fun</code>. These examples are fast, so the benefits of</p>
+<p>The following example uses a custom <code>fun</code>. These examples are fast, so the benefits of caching won’t be as apparent as for when more complex GIS operations are needed, e.g.&nbsp;reprojecting large raster datasets.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -660,7 +671,7 @@ window.Quarto = {
 <span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">plot</span>(Luxembourg, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>By rerunning the previous code, the caching will be in effect. This means that the two- or more-stage slow processes of downloading, custom operations, and possibly GIS using `<em>to</em> functions can all be Cached in a single step, resulting in the smallest possible output being saved, i.e., intermediate large objects have only limited “saving”.</p>
+<p>By rerunning the previous code, the caching will be in effect. This means that the slow, two-or-more-stage processes of downloading, custom operations, and possibly GIS using `<em>to</em> functions can all be Cached in a single step, resulting in the smallest possible output being saved, i.e., intermediate large objects have only limited “saving”.</p>
 <p>NOTE: Rmarkdown and Quarto both have a form of caching of chunks. This can be effective in some circumstances, but it is somewhat limited (as are all forms of Caching – they will hit their limits somewhere). For instance, they do not deal with the pointers of <code>C++</code> objects in <code>terra</code>.</p>
 </section>
 <section id="see-also" class="level2" data-number="12.9">

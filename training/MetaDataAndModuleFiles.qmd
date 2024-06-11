@@ -135,7 +135,7 @@ When we make a module, we get a message stating where the module code
 is. **From here, open the file**, e.g., by copy-pasting the file path
 (pick the `.R` file NOT the `.Rmd` file for now)
 
-::: {.callout-note appearance="simple" icon="false"}
+::: {.callout-important appearance="simple" icon="false"}
 **Opening a module file**
 
 From here onward, we will need to manually open the module code file.

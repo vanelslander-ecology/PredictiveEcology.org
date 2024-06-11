@@ -163,25 +163,36 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./../index.qmd"> 
+    <a class="nav-link" href="./../../index.html"> 
 <span class="menu-text">News</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./../about.qmd"> 
+    <a class="nav-link" href="./../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./../Projects.qmd"> 
+    <a class="nav-link" href="./../../Projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./../SpaDES.qmd"> 
+    <a class="nav-link" href="./../../SpaDES.html"> 
 <span class="menu-text">SpaDES</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./../Workshops.qmd"> 
-<span class="menu-text">Workshops</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-workshops" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Workshops</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-workshops">    
+        <li>
+    <a class="dropdown-item" href="./../../Workshops.html">
+ <span class="dropdown-text">Workshops</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./../../workshops/June-2024-SpaDES-workshop.html">
+ <span class="dropdown-text">June 2024 Workshop Agenda</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-training" role="button" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Training</span>
@@ -192,21 +203,21 @@ window.Quarto = {
  <span class="dropdown-text">Training Book</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./../otherTraining.qmd">
+    <a class="dropdown-item" href="./../otherTraining.html">
  <span class="dropdown-text">Other training resources</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./../Manuals.qmd"> 
+    <a class="nav-link" href="./../../Manuals.html"> 
 <span class="menu-text">Manuals</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./../publications.qmd"> 
+    <a class="nav-link" href="./../../publications.html"> 
 <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./../presentations.qmd"> 
+    <a class="nav-link" href="./../../presentations.html"> 
 <span class="menu-text">Presentations</span></a>
   </li>  
   <li class="nav-item compact">
@@ -539,7 +550,7 @@ window.Quarto = {
 <p><strong>Where is this module code?</strong> In the previous chapter, we didn’t look or care where the module code was.</p>
 <p><code>newModule</code> actually creates a new folder, with the <code>name</code> as provided by the argument, in the folder specified with <code>path</code>. This folder has several files in it. See <a href="https://rdrr.io/cran/SpaDES.core/man/newModule.html"><code>?newModule</code></a> for details. For now, run the above and open the <code>My_linear_model.R</code> script that it creates.</p>
 <p>When we make a module, we get a message stating where the module code is. <strong>From here, open the file</strong>, e.g., by copy-pasting the file path (pick the <code>.R</code> file NOT the <code>.Rmd</code> file for now)</p>
-<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout callout-style-simple callout-important no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>

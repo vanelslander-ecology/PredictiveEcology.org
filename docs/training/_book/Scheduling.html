@@ -163,25 +163,36 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./../index.qmd"> 
+    <a class="nav-link" href="./../../index.html"> 
 <span class="menu-text">News</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./../about.qmd"> 
+    <a class="nav-link" href="./../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./../Projects.qmd"> 
+    <a class="nav-link" href="./../../Projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./../SpaDES.qmd"> 
+    <a class="nav-link" href="./../../SpaDES.html"> 
 <span class="menu-text">SpaDES</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./../Workshops.qmd"> 
-<span class="menu-text">Workshops</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-workshops" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Workshops</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-workshops">    
+        <li>
+    <a class="dropdown-item" href="./../../Workshops.html">
+ <span class="dropdown-text">Workshops</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./../../workshops/June-2024-SpaDES-workshop.html">
+ <span class="dropdown-text">June 2024 Workshop Agenda</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-training" role="button" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Training</span>
@@ -192,21 +203,21 @@ window.Quarto = {
  <span class="dropdown-text">Training Book</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./../otherTraining.qmd">
+    <a class="dropdown-item" href="./../otherTraining.html">
  <span class="dropdown-text">Other training resources</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./../Manuals.qmd"> 
+    <a class="nav-link" href="./../../Manuals.html"> 
 <span class="menu-text">Manuals</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./../publications.qmd"> 
+    <a class="nav-link" href="./../../publications.html"> 
 <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./../presentations.qmd"> 
+    <a class="nav-link" href="./../../presentations.html"> 
 <span class="menu-text">Presentations</span></a>
   </li>  
   <li class="nav-item compact">
@@ -467,7 +478,7 @@ window.Quarto = {
 </header>
 
 
-<p>Here, we will talk about <strong>scheduling events</strong> in a SpaDES module using a function in called <a href="https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/scheduleEvent"><code>SpaDES.core ::scheduleEvents()</code></a>. Please see <a href="NewModuleIntro.html" class="quarto-xref"><span>Chapter 5</span></a> for how to create a simple module and <a href="ModulesAndEvents.html" class="quarto-xref"><span>Chapter 9</span></a> for an overview of what events are before attempting this section.</p>
+<p>Here, we will talk about <strong>scheduling events</strong> in a SpaDES module using a function called <a href="https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/scheduleEvent"><code>SpaDES.core ::scheduleEvents()</code></a>. Please see <a href="NewModuleIntro.html" class="quarto-xref"><span>Chapter 5</span></a> for how to create a simple module and <a href="ModulesAndEvents.html" class="quarto-xref"><span>Chapter 9</span></a> for an overview of what events are before attempting this section.</p>
 <div class="callout callout-style-simple callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -520,7 +531,6 @@ Repeated? When?
 </div>
 </div>
 </div>
-<p>In the above code, there are 4 sections. These will each be copied into the SpaDES module below, in their respective sections. We have added 1 new section, called “Prediction”.</p>
 <section id="convert-to-a-module" class="level2" data-number="10.1">
 <h2 data-number="10.1" class="anchored" data-anchor-id="convert-to-a-module"><span class="header-section-number">10.1</span> Convert to a module</h2>
 <p>In the above code, there are 4 sections. These will each be copied into the SpaDES module below, in their respective sections. We have added 1 new section, called “Prediction”.</p>
@@ -530,7 +540,7 @@ Repeated? When?
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">newModule</span>(<span class="at">name =</span> <span class="st">"scheduling"</span>, <span class="at">path =</span> <span class="st">"~/SpaDES_book/scheduling"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Open the module file, which will be printed in the console. Scroll down to the <code>Init</code> function and copy the <code>Init</code>, the <code>.inputObjects</code>, the <code>Plot</code> parts in the code above into the new module, as we did in <a href="NewModuleIntro.html" class="quarto-xref"><span>Chapter 5</span></a>.</p>
+<p>Open the module file, which will be printed in the console. Scroll down to the <code>Init</code> function and copy the <code>Init</code>, the <code>.inputObjects</code>, and the <code>Plot</code> parts in the code above into the new module, as we did in <a href="NewModuleIntro.html" class="quarto-xref"><span>Chapter 5</span></a>.</p>
 <p>We must make the same decisions about “local objects” (objects that are OK not to be kept for later) and about “global objects” (those that we want to keep). These <em>global</em> objects get put into <code>sim</code>. Your new module should have these 3 new sections/functions:</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -557,7 +567,7 @@ Repeated? When?
 </section>
 <section id="new-event-function-prediction" class="level2" data-number="10.2">
 <h2 data-number="10.2" class="anchored" data-anchor-id="new-event-function-prediction"><span class="header-section-number">10.2</span> New Event Function – Prediction</h2>
-<p>The new part is the <code>for</code> loop. This part takes new covariates (new values for <code>y</code>), emulating “predicted” covariates, derives a newly predicted <code>x</code>, and we then keep these <em>predicted</em> <code>x</code> values each year.</p>
+<p>The new part is the <code>for</code> loop. This part takes new covariates (new values for <code>y</code>), emulating “predicted” covariates, and derives a newly predicted <code>x</code>, which we then keep as the <em>predicted</em> <code>x</code> values each year.</p>
 <p>We’ll use <code>scheduleEvent()</code> below to do this iteration. For now, copy the <code>Prediction</code> part into a new function:</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -575,7 +585,7 @@ Repeated? When?
 </section>
 <section id="scheduling" class="level2" data-number="10.3">
 <h2 data-number="10.3" class="anchored" data-anchor-id="scheduling"><span class="header-section-number">10.3</span> Scheduling</h2>
-<p>Now we need to tell SpaDES when to do and when to iterate each of the steps or “events”. The <code>Init</code> we do once, at the start. The <code>plotFn</code> we do once, but this time it is at the “end”. The <code>.inputObjects</code> always only happens once and “before the start” (<code>Init</code>) – it is scheduled automatically so nothing to do here. The last part (i.e., the prediction event) must happen 10 times, and it must start after <code>Init</code> and before the <code>plotFn</code>.</p>
+<p>Now we need to tell SpaDES when to execute and when to iterate each of the steps or “events”. The <code>Init</code> we do once, at the start. The <code>plotFn</code> we do once, but this time it is at the “end”. The <code>.inputObjects</code> always only happens once and “before the start” (<code>Init</code>) – it is scheduled automatically so nothing to do here. The last part (i.e., the prediction event) must happen 10 times, and it must start after <code>Init</code> and before the <code>plotFn</code>.</p>
 <section id="doevent" class="level3" data-number="10.3.1">
 <h3 data-number="10.3.1" class="anchored" data-anchor-id="doevent"><span class="header-section-number">10.3.1</span> doEvent</h3>
 <p>There is a special function in a <code>SpaDES</code> module called <code>doEvent()</code>. SpaDES calls this function once, passing the argument <code>event = "init"</code>. That means that R will enter into this function only once and run only the <code>init</code> part, unless we specifically tell it to do more, using the <code>scheduleEvent</code> function.</p>
@@ -621,7 +631,7 @@ Repeated? When?
 </section>
 <section id="the-new-event" class="level3" data-number="10.3.2">
 <h3 data-number="10.3.2" class="anchored" data-anchor-id="the-new-event"><span class="header-section-number">10.3.2</span> The new event</h3>
-<p>We add code to make a new event, called <code>"predictions"</code> (the name must match what we wrote in the <code>scheduleEvent</code> above). In this event, we “do” the prediction, then we schedule the next prediction at “time plus 1”</p>
+<p>We will add code to make a new event, called <code>"predictions"</code> (the name must match what we wrote in the <code>scheduleEvent</code> above). In this event, we “do” the prediction, then we schedule the next prediction at “time plus 1”</p>
 <p>See <code>?SpaDES.core::times()</code>.</p>
 <div class="callout callout-style-simple callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">

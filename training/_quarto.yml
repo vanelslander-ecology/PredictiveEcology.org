@@ -23,27 +23,31 @@ book:
     search: true
     right:
       - text: "News"
-        href: ../index.qmd
+        href: ../../index.html
       - text: "About"
-        href: ../about.qmd
+        href: ../../about.html
       - text: "Projects"
-        href: ../Projects.qmd
+        href: ../../Projects.html
       - text: "SpaDES"
-        href: ../SpaDES.qmd
-      - text: "Workshops"
-        href: ../Workshops.qmd
+        href: ../../SpaDES.html
+      - text: Workshops
+        menu:
+          - text: "Workshops"
+            href: ../../Workshops.html
+          - text: "June 2024 Workshop Agenda"
+            href: ../../workshops/June-2024-SpaDES-workshop.html
       - text: "Training"
         menu:
           - text: "Training Book"
             href: index.html
           - text: "Other training resources"
-            href: ../otherTraining.qmd
+            href: ../otherTraining.html
       - text: "Manuals"
-        href: ../Manuals.qmd
+        href: ../../Manuals.html
       - text: "Publications"
-        href: ../publications.qmd
+        href: ../../publications.html
       - text: "Presentations"
-        href: ../presentations.qmd
+        href: ../../presentations.html
       - icon: github
         href: https://github.com/PredictiveEcology
       - icon: twitter
