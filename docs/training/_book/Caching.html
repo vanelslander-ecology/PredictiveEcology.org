@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eliot J. B. McIntire">
-<meta name="dcterms.date" content="2024-06-10">
+<meta name="dcterms.date" content="2024-06-11">
 
 <title>Robust and nimble scientific workflows, using SpaDES - 11&nbsp; Introduction to Cache</title>
 <style>
@@ -466,7 +466,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 10, 2024</p>
+      <p class="date">June 11, 2024</p>
     </div>
   </div>
   
@@ -496,7 +496,7 @@ window.Quarto = {
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>reproducible<span class="sc">::</span><span class="fu">Cache</span>(<span class="fu">rnorm</span>(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.155428
+<pre><code>[1] 0.673538
 attr(,".Cache")
 attr(,".Cache")$newCache
 [1] TRUE
@@ -512,7 +512,7 @@ attr(,"call")
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  reproducible<span class="sc">::</span><span class="fu">Cache</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.155428
+<pre><code>[1] 0.673538
 attr(,".Cache")
 attr(,".Cache")$newCache
 [1] FALSE
@@ -548,7 +548,7 @@ attr(,"call")
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-   1.57    0.17    1.86 </code></pre>
+   1.57    0.06    1.64 </code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -557,7 +557,7 @@ attr(,"call")
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-   6.11    0.27    6.48 </code></pre>
+   5.67    0.27    5.98 </code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -566,7 +566,7 @@ attr(,"call")
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-   0.66    0.08    0.77 </code></pre>
+   0.66    0.03    0.72 </code></pre>
 </div>
 </div>
 </section>
@@ -581,7 +581,7 @@ attr(,"call")
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-   0.48    0.09    0.58 </code></pre>
+   0.48    0.03    0.51 </code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -589,7 +589,7 @@ attr(,"call")
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-   0.01    0.06    0.08 </code></pre>
+   0.04    0.04    0.09 </code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -616,12 +616,12 @@ attr(,"call")
  2: ad0ea27476c50b66                function                      rnorm
  3: ad0ea27476c50b66                   class                    numeric
  4: ad0ea27476c50b66             object.size                       1008
- 5: ad0ea27476c50b66                accessed 2024-06-10 18:36:23.431795
+ 5: ad0ea27476c50b66                accessed 2024-06-11 00:25:16.799978
  6: ad0ea27476c50b66                 inCloud                      FALSE
  7: ad0ea27476c50b66                fromDisk                      FALSE
  8: ad0ea27476c50b66              resultHash                           
- 9: ad0ea27476c50b66       elapsedTimeDigest           0.003035784 secs
-10: ad0ea27476c50b66     elapsedTimeFirstRun          6.818771e-05 secs
+ 9: ad0ea27476c50b66       elapsedTimeDigest           0.004945993 secs
+10: ad0ea27476c50b66     elapsedTimeFirstRun          7.605553e-05 secs
 11: ad0ea27476c50b66          otherFunctions                    execute
 12: ad0ea27476c50b66          otherFunctions               process_file
 13: ad0ea27476c50b66          otherFunctions              process_group
@@ -639,30 +639,30 @@ attr(,"call")
              cacheId                  tagKey                   tagValue
                    createdDate
                         &lt;char&gt;
- 1: 2024-06-10 18:36:23.432321
- 2: 2024-06-10 18:36:23.432321
- 3: 2024-06-10 18:36:23.432321
- 4: 2024-06-10 18:36:23.432321
- 5: 2024-06-10 18:36:23.432321
- 6: 2024-06-10 18:36:23.432321
- 7: 2024-06-10 18:36:23.432321
- 8: 2024-06-10 18:36:23.432321
- 9: 2024-06-10 18:36:23.432321
-10: 2024-06-10 18:36:23.432321
-11: 2024-06-10 18:36:23.432321
-12: 2024-06-10 18:36:23.432321
-13: 2024-06-10 18:36:23.432321
-14: 2024-06-10 18:36:23.432321
-15: 2024-06-10 18:36:23.432321
-16: 2024-06-10 18:36:23.432321
-17: 2024-06-10 18:36:23.432321
-18: 2024-06-10 18:36:23.432321
-19: 2024-06-10 18:36:23.432321
-20: 2024-06-10 18:36:23.432321
-21: 2024-06-10 18:36:23.432321
-22: 2024-06-10 18:36:23.432321
-23: 2024-06-10 18:36:23.432321
-24: 2024-06-10 18:36:23.432321
+ 1: 2024-06-11 00:25:16.800655
+ 2: 2024-06-11 00:25:16.800655
+ 3: 2024-06-11 00:25:16.800655
+ 4: 2024-06-11 00:25:16.800655
+ 5: 2024-06-11 00:25:16.800655
+ 6: 2024-06-11 00:25:16.800655
+ 7: 2024-06-11 00:25:16.800655
+ 8: 2024-06-11 00:25:16.800655
+ 9: 2024-06-11 00:25:16.800655
+10: 2024-06-11 00:25:16.800655
+11: 2024-06-11 00:25:16.800655
+12: 2024-06-11 00:25:16.800655
+13: 2024-06-11 00:25:16.800655
+14: 2024-06-11 00:25:16.800655
+15: 2024-06-11 00:25:16.800655
+16: 2024-06-11 00:25:16.800655
+17: 2024-06-11 00:25:16.800655
+18: 2024-06-11 00:25:16.800655
+19: 2024-06-11 00:25:16.800655
+20: 2024-06-11 00:25:16.800655
+21: 2024-06-11 00:25:16.800655
+22: 2024-06-11 00:25:16.800655
+23: 2024-06-11 00:25:16.800655
+24: 2024-06-11 00:25:16.800655
                    createdDate</code></pre>
 </div>
 </div>
@@ -707,12 +707,12 @@ attr(,"call")
  1: 422bae4ed2f770cc            function                      rnorm
  2: 422bae4ed2f770cc               class                    numeric
  3: 422bae4ed2f770cc         object.size                        984
- 4: 422bae4ed2f770cc            accessed 2024-06-10 18:36:23.583666
+ 4: 422bae4ed2f770cc            accessed 2024-06-11 00:25:16.929191
  5: 422bae4ed2f770cc             inCloud                      FALSE
  6: 422bae4ed2f770cc            fromDisk                      FALSE
  7: 422bae4ed2f770cc          resultHash                           
- 8: 422bae4ed2f770cc   elapsedTimeDigest           0.003875017 secs
- 9: 422bae4ed2f770cc elapsedTimeFirstRun          7.987022e-05 secs
+ 8: 422bae4ed2f770cc   elapsedTimeDigest           0.003192902 secs
+ 9: 422bae4ed2f770cc elapsedTimeFirstRun          6.198883e-05 secs
 10: 422bae4ed2f770cc      otherFunctions                    execute
 11: 422bae4ed2f770cc      otherFunctions               process_file
 12: 422bae4ed2f770cc      otherFunctions              process_group
@@ -730,29 +730,29 @@ attr(,"call")
              cacheId              tagKey                   tagValue
                    createdDate
                         &lt;char&gt;
- 1: 2024-06-10 18:36:23.584266
- 2: 2024-06-10 18:36:23.584266
- 3: 2024-06-10 18:36:23.584266
- 4: 2024-06-10 18:36:23.584266
- 5: 2024-06-10 18:36:23.584266
- 6: 2024-06-10 18:36:23.584266
- 7: 2024-06-10 18:36:23.584266
- 8: 2024-06-10 18:36:23.584266
- 9: 2024-06-10 18:36:23.584266
-10: 2024-06-10 18:36:23.584266
-11: 2024-06-10 18:36:23.584266
-12: 2024-06-10 18:36:23.584266
-13: 2024-06-10 18:36:23.584266
-14: 2024-06-10 18:36:23.584266
-15: 2024-06-10 18:36:23.584266
-16: 2024-06-10 18:36:23.584266
-17: 2024-06-10 18:36:23.584266
-18: 2024-06-10 18:36:23.584266
-19: 2024-06-10 18:36:23.584266
-20: 2024-06-10 18:36:23.584266
-21: 2024-06-10 18:36:23.584266
-22: 2024-06-10 18:36:23.584266
-23: 2024-06-10 18:36:23.584266
+ 1: 2024-06-11 00:25:16.929657
+ 2: 2024-06-11 00:25:16.929657
+ 3: 2024-06-11 00:25:16.929657
+ 4: 2024-06-11 00:25:16.929657
+ 5: 2024-06-11 00:25:16.929657
+ 6: 2024-06-11 00:25:16.929657
+ 7: 2024-06-11 00:25:16.929657
+ 8: 2024-06-11 00:25:16.929657
+ 9: 2024-06-11 00:25:16.929657
+10: 2024-06-11 00:25:16.929657
+11: 2024-06-11 00:25:16.929657
+12: 2024-06-11 00:25:16.929657
+13: 2024-06-11 00:25:16.929657
+14: 2024-06-11 00:25:16.929657
+15: 2024-06-11 00:25:16.929657
+16: 2024-06-11 00:25:16.929657
+17: 2024-06-11 00:25:16.929657
+18: 2024-06-11 00:25:16.929657
+19: 2024-06-11 00:25:16.929657
+20: 2024-06-11 00:25:16.929657
+21: 2024-06-11 00:25:16.929657
+22: 2024-06-11 00:25:16.929657
+23: 2024-06-11 00:25:16.929657
                    createdDate</code></pre>
 </div>
 <details open="" class="code-fold">
@@ -796,7 +796,7 @@ attr(,"call")
 <span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="fu">Cache</span>(<span class="fu">outer</span>(<span class="at">n =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6426823 0.3229989 0.4803155
+<pre><code>[1] -0.3162167 -0.7141361 -1.3265119
 attr(,".Cache")
 attr(,".Cache")$newCache
 [1] TRUE
@@ -818,7 +818,7 @@ attr(,"call")
 <span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="fu">Cache</span>(<span class="fu">outer</span>(<span class="at">n =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6426823 0.3229989 0.4803155
+<pre><code>[1] -0.3162167 -0.7141361 -1.3265119
 attr(,".Cache")
 attr(,".Cache")$newCache
 [1] TRUE
@@ -838,7 +838,7 @@ attr(,"call")
 <span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">Cache</span>(<span class="fu">outer</span>(<span class="at">n =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6426823 0.3229989 0.4803155
+<pre><code>[1] -0.3162167 -0.7141361 -1.3265119
 attr(,".Cache")
 attr(,".Cache")$newCache
 [1] FALSE
