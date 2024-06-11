@@ -76,7 +76,9 @@ specific order so that one can recreate the steps to make the Results. A
 user can then use the module directly, rather instead of trying to
 recreate the necessary sequence of functions.
 
-[![Functions and modules as key tools to achieve workflow nimbleness. From @mcintire2022](assets/img/PERFICTfig1.jpg)](https://onlinelibrary.wiley.com/doi/10.1111/ele.13994)
+[![Functions and modules as key tools to achieve workflow nimbleness.
+From
+@mcintire2022.](assets/img/PERFICTfig1.jpg)](https://onlinelibrary.wiley.com/doi/10.1111/ele.13994)
 
 ### I use `targets` for my workflows. How does SpaDES differ?
 
@@ -99,17 +101,17 @@ approach:
     chained. SpaDES will also iterate module code when necessary,
     following the developer's "scheduling" instructions. The workflow
     sequence, therefore, *arises* from the set of modules that is being
-    used[^1].
+    used[^intro-1].
 
 -   **SpaDES has "embedded" metadata** – or at least it makes the
-    developer think about it[^2]. Each module is defined by listing not
-    only the inputs and outputs, but also their descriptions and types
-    of object class, the module's description, its operating time scale,
-    package and module dependencies, and much more. Some of the metadata
-    is essential to chain modules (lists of inputs and outputs), some is
-    not but can greatly facilitate workflow setup (e.g. declaring module
-    dependencies), while other metadata is simply good to have (e.g. a
-    description of the module).
+    developer think about it[^intro-2]. Each module is defined by
+    listing not only the inputs and outputs, but also their descriptions
+    and types of object class, the module's description, its operating
+    time scale, package and module dependencies, and much more. Some of
+    the metadata is essential to chain modules (lists of inputs and
+    outputs), some is not but can greatly facilitate workflow setup
+    (e.g. declaring module dependencies), while other metadata is simply
+    good to have (e.g. a description of the module).
 
 Finally, both `targets` and SpaDES have embedded caching mechanisms,
 which in SpaDES can be controlled at several levels (by the user, inside
@@ -141,30 +143,50 @@ expectations for how they do their work to inform these problems**.
 
 ### New expectations
 
-Applied ecologists of the 21st century must uphold standards of:
+Applied ecologists of the 21st century are expected more and more to
+uphold standards of **nimbleness**, **broad participation** and
+**scrutiny**.
 
-1.  **transparency** -- analyses must be able to be inspected,
+Analyses must be able to respond **quickly** to new data, new insights,
+new drivers, and new management needs; projects must include knowledge
+and participation from outside the scientific community and be relevant
+to non-scientific audiences; and they must accept and embrace scientific
+and non-scientific scrutiny.
+
+These expectations are not independent of each other. Greater nimbleness
+allows for easier participation by others and scrutiny benefits from the
+participation of a broad range of specialists and non-specialists.
+
+Meeting these expectations requires the R^3^T:
+
+1.  **repeatability** – analyses must be able to produce the same
+    results, when using the exact same context (e.g. same user, same
+    machine setup);
+
+2.  **reproducibility** – analyses must be able to produce the same
+    results by others and into the future;
+
+3.  **reusability** – the methodology must be easy to transfer and
+    expand in a different context;
+
+4.  **transparency** – analyses must be able to be inspected,
     understood, and scrutinized by many eyes;
 
-2.  **reproducibility** -- analyses must be able to be reproduced by
-    others and into the future;
+but also
 
-3.  **nimbleness** -- analyses must be able to respond **quickly** to
-    new data, new insights, new drivers, and new management needs;
-
-4.  **forecasting** -- analyses must demonstrate that they are proving
+7.  **forecasting** – analyses must demonstrate that they are proving
     reliable insights into the future, not just the past or theoretical
     expectation;
 
-5.  **validation** -- analyses must clearly demonstrate why they should
+8.  **validation** – analyses must clearly demonstrate why they should
     be trusted and used;
 
-6.  **broad participation** -- projects must include knowledge and
-    participation from outside the scientific community and be relevant
-    to non-scientific audiences.
+9.  **open-data**/**open-models** – raw data, parameters, model
+    algorithms have to be (freely) accessible as much as possible;
 
-It can be very challenging to fulfil these expectations. SpaDES aims to
-help (applied) ecologists "get there" by facilitating the application of
+10. **testing** – models and predictions should be continuously tested.
+
+Together these 10 requirements (and a little more) are encompassed by
 the PERFICT principles for applied ecological modelling [@mcintire2022].
 
 ::: {.callout-note appearance="simple" icon="false"}
@@ -185,16 +207,22 @@ the PERFICT principles for applied ecological modelling [@mcintire2022].
 -   **T**ested regularly
 :::
 
-SpaDES intends to relieve ecologists from needing to know/learn advanced
-computer programming (e.g. developing caching mechanisms) to profit from
-tools that will enable them to develop PERFICT workflows.
+It can be very challenging to fulfill these expectations, especially for
+non-programmers.
+
+SpaDES aims to help (applied) ecologists "get there" by relieving
+ecologists from needing to know/learn advanced computer programming
+(e.g. developing caching mechanisms) and offering tools that will enable
+them to develop PERFICT workflows.
+
+![](assets/img/NewExpPERFICTSPADES.png){fig-align="center" width="427"}
 
 It does so by harnessing the flexibility of R, the contributions of its
 vast community and knowing what tools applied ecologists (and modellers)
 often need.
 
 ::: {#tip-prepInputs .callout-tip appearance="simple" icon="false"}
-## `reproducible::prepInputs` will make your life easier
+## `reproducible::prepInputs` a tool that will make your life easier
 
 Applied ecologists often need to get a raw spatial layer from
 *somewhere* (locally, a data repository), make it conform to a given
@@ -234,9 +262,9 @@ management needs. When we are asked at the end of a 3-year project,
 *"can we redo everything because we have a new stakeholder who feels
 that our assumptions are wrong?"*, ***our answer should be "yes"***.
 
-[^1]: Note that SpaDES still allows a user to impose module sequencing
-    if they wish to.
+[^intro-1]: Note that SpaDES still allows a user to impose module
+    sequencing if they wish to.
 
-[^2]: SpaDES won't force most metadata to be filled, so it's at the
-    discretion of the module developer how much detail they want to
+[^intro-2]: SpaDES won't force most metadata to be filled, so it's at
+    the discretion of the module developer how much detail they want to
     provide.
