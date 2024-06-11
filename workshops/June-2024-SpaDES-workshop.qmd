@@ -52,7 +52,9 @@ All times in Pacific Daylight Time (GMT-7)
 +-------------------------------+-------------------------------+
 | 10:00 - 11:00                 | WOYO                          |
 +-------------------------------+-------------------------------+
-| 11:00 - 11:30                 | [Module files and metadata](https://predictiveecology.org/training/_book/MetaDataAndModuleFiles.html) [Module inputs](https://predictiveecology.org/training/_book/ModuleInputs.html) |
+| 11:00 - 11:30                 | [Module files and metadata](https://predictiveecology.org/training/_book/MetaDataAndModuleFiles.html)  
+|                               |                               |
+|                               | [Module inputs](https://predictiveecology.org/training/_book/ModuleInputs.html) |
 +-------------------------------+-------------------------------+
 | 11:30 - 12:30                 | WOYO                          |
 +-------------------------------+-------------------------------+
@@ -62,7 +64,9 @@ All times in Pacific Daylight Time (GMT-7)
 +-------------------------------+-------------------------------+
 | 2:00 - 3:00                   | WOYO                          |
 +-------------------------------+-------------------------------+
-| 3:00 - 3:30                   | [Modules & events](https://predictiveecology.org/training/_book/ModulesAndEvents.html)  [Event scheduling](https://predictiveecology.org/training/_book/Scheduling.html) |
+| 3:00 - 3:30                   | [Modules & events](https://predictiveecology.org/training/_book/ModulesAndEvents.html) 
+|                               |                               |
+|                               | [Event scheduling](https://predictiveecology.org/training/_book/Scheduling.html) |
 +-------------------------------+-------------------------------+
 | 3:30 - free ending\           | WOYO                          |
 | or\                           |                               |
