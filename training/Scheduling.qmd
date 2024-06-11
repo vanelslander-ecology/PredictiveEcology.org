@@ -340,22 +340,40 @@ i.e., keep the same folder structure.
 ## Questions
 
 1.  how are some ways that `scheduleEvent` is different from a "loop"?
+
     -   We can change the "step" length between events.
+    
     -   We can interweave events, e.g., a fire event then a tree growth
         event
 
 <!-- -->
 
 2.  When is a loop better than scheduling?
+
     -   Loops are much faster than scheduling.
+    
     -   But really, avoid loops in R if you can help it
 
 <!-- -->
 
 3.  Chances are that the first versions of this module didn't work. How
     do you fix it?
+    
     -   [Learn how to debug in R and
         SpaDES](https://github.com/PredictiveEcology/SpaDES/wiki/Debugging)
+
+
+## Try on your own
+
+-   Try creating a new parameter that controls the frequency of predictions.
+    
+    Here's a clue:
+    ```
+    predictions = {
+      scheduleEvent(sim, time(sim) + P(sim)$predFreq, "predictions")
+    }    
+    ```
+
 
 ## See also
 

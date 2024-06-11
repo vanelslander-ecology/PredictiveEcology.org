@@ -77,7 +77,6 @@ book:
     - part: setupProject.qmd
       chapters:
       - workflowSimple2.qmd
-      # - multipleModules.qmd
       - LandRDemo_coreVeg.qmd
       - ForestsAndFire.qmd
       - castorExample.qmd
