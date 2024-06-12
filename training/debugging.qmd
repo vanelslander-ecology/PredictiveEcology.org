@@ -86,7 +86,9 @@ myFun <- function(x, y) {
 myFun(runif(20), "A")
 ```
 
-```
+```{r}
+#| purl: false
+
 # > myFun(runif(20), "A")
 # Called from: myFun(runif(20), "A")
 # Browse[1]> x
@@ -121,10 +123,12 @@ not try right-clicking the RStudio window and selecting "Reload"),
 showing a highlighted `browser()` line. The R console shows:
 
 ```{r}
-#| purl: false
-        
 out <- simInit(modules = nm1, paths = list(modulePath = modulePath))
 out <- spades(out)
+```
+
+```{r}
+#| purl: false
 
 # No packages to install/update
 # Jun09 00:03:51 simInit Resetting .Random.seed of session because sim$._randomSeed is not NULL. To get a different seed, run: sim$._randomSeed <- NULL to clear it.
@@ -136,6 +140,7 @@ out <- spades(out)
 # Jun09 00:03:51 My_lnr:init total elpsd: 21 secs | 0 My_linear_model init 1
 # Called from: get(moduleCall, envir = fnEnv)(sim, cur[["eventTime"]], cur[["eventType"]])
 ```
+
 
 Use `ls()` to see what objects are in the function environment, then
 execute code line-by-line with ENTER, F10 or the "Next" button.
