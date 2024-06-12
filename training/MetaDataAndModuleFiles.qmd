@@ -17,6 +17,7 @@ execute:
 ```{r setup}
 #| include: false
 #| eval: true
+#| purl: false
 
 ## truncate text output
 hook_output <- knitr::knit_hooks$get("output")
@@ -84,6 +85,8 @@ for us, this is a default ("base") package in R and it is always
 pre-loaded. So, nothing to do here.
 
 ```{r second}
+#| purl: false
+
 > rnorm function (n, mean = 0, sd = 1)  ... 
 <environment: namespace:stats>}
 ```
@@ -154,6 +157,8 @@ will put our `inputs` that we noticed in our code chunk. We will declare
 `x` as an "input" by putting it there, like this:
 
 ```{r metadata}
+#| purl: false
+
 inputObjects = bindrows(
   expectsInput(objectName = "x", objectClass = "numeric", 
                desc = "The inputs for the linear model", sourceURL = NA)
@@ -168,6 +173,8 @@ declare `model` as an "output" by putting it there. Don't forget the
 `bindrows` (unless it is the last one).
 
 ```{r}
+#| purl: false
+
 outputObjects = bindrows(
   createsOutput(objectName = "model", objectClass = "lm", 
                 desc = "A linear model object from the equation (x ~ y)")
@@ -248,6 +255,8 @@ Here we start to see the "shared" objects. The module we just made above
 the same.
 
 ```{r metadata2}
+#| purl: false
+
 inputObjects = bindrows(
   expectsInput(objectName = "model", objectClass = "lm", 
                desc = "A linear model object from the equation (x ~ y)", sourceURL = NA)
@@ -274,6 +283,8 @@ Copy this to the module, replacing the contents of the template
 `.inputObjects` function.
 
 ```{r}
+#| purl: false
+
 .inputObjects <- function(sim) {
   if (!suppliedElsewhere("x", sim))
     sim$x <- rnorm(10, mean = 20, sd = 2)

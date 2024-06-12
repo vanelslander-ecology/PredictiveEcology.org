@@ -19,6 +19,7 @@ execute:
 #| include: false
 #| eval: true
 #| cache: false
+#| purl: false
 
 knitr::opts_chunk$set(tidy = FALSE, 
                       warning = FALSE, 

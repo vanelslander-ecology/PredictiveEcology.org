@@ -10,6 +10,8 @@ bibliography: references/references.bib
 
 ```{r setup}
 #| include: false
+#| purl: false
+
 knitr::opts_chunk$set(tidy = FALSE, 
                       eval = FALSE,
                       warning = FALSE, 

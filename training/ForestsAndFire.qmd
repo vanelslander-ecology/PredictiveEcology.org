@@ -21,6 +21,7 @@ estimated RAM for executing**
 #| include: false
 #| eval: true
 #| cache: false
+#| purl: false
 
 ## truncate text output
 hook_output <- knitr::knit_hooks$get("output")

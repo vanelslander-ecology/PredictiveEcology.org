@@ -132,7 +132,10 @@ data.frame(slot = slots, accessor = accessors) |>
   knitr::kable(format = "html", padding = 0)
 ```
 
-```{r simList-accessors2, echo=FALSE, eval=TRUE}
+```{r simList-accessors2}
+#| include: false
+#| purl: false
+
 other_accessors <- c("packages", "globals", "start", "end", "timeunit", "timeunits",
                      "paths", "cachePath", "inputPath", "outputPath", "modulePath") |>
   paste0("()")

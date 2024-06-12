@@ -16,6 +16,7 @@ execute:
 ```{r setup}
 #| include: false
 #| cache: false
+#| purl: false
 
 ## truncate text output
 hook_output <- knitr::knit_hooks$get("output")
@@ -262,6 +263,7 @@ SpaDES.core::events(castorInit)
 
 ```{r events}
 #| echo: false
+#| purl: false
 
 SpaDES.core::events(castorInit) 
 ```
@@ -287,6 +289,7 @@ SpaDES.core::objectDiagram(castorInit)
 #| fig-height: 6
 #| fig-width: 6
 #| fig-cap: "Diagram of module connections."
+#| purl: false
 
 SpaDES.core::moduleDiagram(castorInit)
 ```
@@ -296,6 +299,7 @@ SpaDES.core::moduleDiagram(castorInit)
 #| fig-align: center
 #| fig-cap: "Diagram of module inter-dependencies with object names."
 #| fig-width: 10
+#| purl: false
 
 figPath <- normalizePath(file.path(qmdPath, "assets/img/castorExample_objDiagram.png"),
                 winslash = "/")
@@ -320,12 +324,14 @@ SpaDES.core::outputs(castorSim)
 
 ```{r runsim2}
 #| include: false
+#| purl: false
 
 castorSim <- SpaDES.core::spades(castorInit)
 ```
 
 ```{r outputs}
 #| echo: false
+#| purl: false
 
 SpaDES.core::outputs(castorSim)
 ```

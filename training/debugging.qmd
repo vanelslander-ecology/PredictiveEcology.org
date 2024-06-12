@@ -17,6 +17,7 @@ execute:
 ```{r setup}
 #| include: false
 #| eval: true
+#| purl: false
 
 ## truncate text output
 hook_output <- knitr::knit_hooks$get("output")
@@ -97,7 +98,8 @@ vector with a character vector, which obviously doesn't work.
 Go back to the module *My_linear_model* created in @sec-moduleintro and
 insert a `browser()` in the `init` event, save and run the module again.
 
-```         
+```{r}
+#| purl: false
 doEvent.My_linear_model.init <- function(sim, eventTime, eventType, priority) {
     browser()
     x <- rnorm(10)
@@ -111,8 +113,8 @@ If you are using RStudio, it probably opened the module .R script (if
 not try right-clicking the RStudio window and selecting "Reload") and
 the R console shows:
 
-```         
-> out <- simInit(modules = nm1, paths = list(modulePath = modulePath))
+```{r}
+#| purl: false
 > out <- spades(out)
 No packages to install/update
 Jun09 00:03:51 simInit Resetting .Random.seed of session because sim$._randomSeed is not NULL. To get a different seed, run: sim$._randomSeed <- NULL to clear it.

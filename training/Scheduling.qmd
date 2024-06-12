@@ -16,6 +16,7 @@ execute:
 ```{r setup}
 #| include: false
 #| eval: true
+#| purl: false
 
 ## truncate text output
 hook_output <- knitr::knit_hooks$get("output")

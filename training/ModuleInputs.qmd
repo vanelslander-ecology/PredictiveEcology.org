@@ -9,6 +9,8 @@ editor_options:
 
 ```{r setup}
 #| include: false
+#| purl: false
+
 knitr::opts_chunk$set(tidy = FALSE, 
                       eval = FALSE,
                       warning = FALSE, 
@@ -113,6 +115,8 @@ We then include the following in the module metadata section
 
 ```{r}
 #| eval: false
+#| purl: false
+
 defineParameter("length", "integer", 10L, 5L, 100L,
                 "Number of values to generate")
 ```
@@ -144,8 +148,11 @@ they want to specify as defaults. It is generally most useful to use
 isn't in `sim`, then give it a value.
 
 ```{r example}
-.inputObjects <- function(sim) {
+#| eval: false
+#| purl: false
 
+.inputObjects <- function(sim) {
+  
   if (!suppliedElsewhere("y", sim)) {
     sim$y <- rnorm(100)
   }

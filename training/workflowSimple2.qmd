@@ -15,7 +15,7 @@ cache: false
 
 ```{r setup,eval=TRUE}
 #| include: false
-
+#| purl: false
 
 ## truncate text output
 hook_output <- knitr::knit_hooks$get("output")
