@@ -79,7 +79,7 @@ folder tree) of a single GitHub repository.
 `SpaDES.project` will eventually be able to deal with this[^1], but for
 now we work around this issue by using a custom function called
 `getCastorModulesAndDB`. This function will also download the demo
-SQLite database from Google Drive[^2]. You'll be prompted to authorise
+SQLite database from Google Drive[^2]. You'll be prompted to authorize
 this operation and a browser window will open for this. Make sure you
 give `tidyverse` read/write access to your files:
 
