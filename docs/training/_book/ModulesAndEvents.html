@@ -452,9 +452,7 @@ window.Quarto = {
   <li><a href="#events" id="toc-events" class="nav-link" data-scroll-target="#events"><span class="header-section-number">9.2</span> Events</a></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">9.3</span> Functions</a>
   <ul class="collapse">
-  <li><a href="#rerun-tolerant-functions" id="toc-rerun-tolerant-functions" class="nav-link" data-scroll-target="#rerun-tolerant-functions"><span class="header-section-number">9.3.1</span> Rerun-tolerant functions</a></li>
-  <li><a href="#cache" id="toc-cache" class="nav-link" data-scroll-target="#cache"><span class="header-section-number">9.3.2</span> <code>Cache()</code></a></li>
-  <li><a href="#prepinputs" id="toc-prepinputs" class="nav-link" data-scroll-target="#prepinputs"><span class="header-section-number">9.3.3</span> <code>prepInputs()</code></a></li>
+  <li><a href="#adding-functions" id="toc-adding-functions" class="nav-link" data-scroll-target="#adding-functions"><span class="header-section-number">9.3.1</span> Adding functions</a></li>
   </ul></li>
   <li><a href="#sec-moduletypes" id="toc-sec-moduletypes" class="nav-link" data-scroll-target="#sec-moduletypes"><span class="header-section-number">9.4</span> Module types</a>
   <ul class="collapse">
@@ -549,69 +547,54 @@ window.Quarto = {
 <section id="functions" class="level2" data-number="9.3">
 <h2 data-number="9.3" class="anchored" data-anchor-id="functions"><span class="header-section-number">9.3</span> Functions</h2>
 <p>Essentially, everything in R is or uses functions. Modules define functions (<code>doEvent.*moduleName*</code>), events call specific functions (we some times call these “event functions”), and functions can be defined within modules, R packages, or user code.</p>
-<section id="rerun-tolerant-functions" class="level3" data-number="9.3.1">
-<h3 data-number="9.3.1" class="anchored" data-anchor-id="rerun-tolerant-functions"><span class="header-section-number">9.3.1</span> Rerun-tolerant functions</h3>
-<p>In re-usable workflows, functions become particularly effective if they are <strong>rerun-tolerant</strong>, see <a href="#tip-Rerun" class="quarto-xref">Tip&nbsp;<span>9.1</span></a> (we use <em>tolerant</em> in part to reflect the fact that the <em>computer</em> tolerates it but also the <em>human</em> because they don’t have to wait).</p>
-<div id="tip-Rerun" class="callout callout-style-simple callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip&nbsp;9.1
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Functions are <strong>rerun-tolerant</strong> if they</p>
-<ol type="1">
-<li>are <strong>rerun-efficient</strong>, meaning the first time they run they “do” something, but the second and subsequent times, they give the same output as the first time, but they skip the “doing” part</li>
-</ol>
-<ul>
-<li>optionally the efficiency can be by <strong>memory</strong> caching (“memoising”) and/or more persistent <strong>disk</strong> caching.</li>
-</ul>
-<ol start="2" type="1">
-<li>and are <strong>rerun-robust</strong>, meaning they can be run error-free and with sensible or identical outputs (if inputs are the same) using any person’s computer.</li>
-</ol>
-</div>
-</div>
-<p>To achieve these qualities, functions must use some sort of caching (i.e., evaluate the call and skip the content of the function if the call is deemed identical to a previous version of the call), and they must address any computer or operating system issues (such as paths, package dependencies etc.).</p>
-<p>Base R has some functions that are like this and some that are not. For example <code>library</code> is <strong>rerun-tolerant</strong> because it does something the first time, which may be slow, and subsequent times in the same session it is fast (<strong>memory</strong> efficient, but not <strong>disk</strong> efficient)</p>
-<p>Two key functions help achieve these points, <a href="https://reproducible.predictiveecology.org/reference/Cache.html"><code>?reproducible::Cache</code></a> and <a href="https://reproducible.predictiveecology.org/reference/prepInputs.html"><code>?reproducible::prepInputs</code></a></p>
-</section>
-<section id="cache" class="level3" data-number="9.3.2">
-<h3 data-number="9.3.2" class="anchored" data-anchor-id="cache"><span class="header-section-number">9.3.2</span> <code>Cache()</code></h3>
-<p><code>Cache()</code> is a function that can be wrapped around other functions that turns that function into a rerun-tolerant function. <code>reproducible::Cache</code> has several important modifications that work for <em>some</em> objects that don’t cache well using “normal” caching, such as <code>terra</code> objects that are actually pointers to locations on disk rather than normal R objects.</p>
-<p>The following code will result in <code>d</code> being the same vector as <code>b</code>, and it will be returned quickly.</p>
+<section id="adding-functions" class="level3" data-number="9.3.1">
+<h3 data-number="9.3.1" class="anchored" data-anchor-id="adding-functions"><span class="header-section-number">9.3.1</span> Adding functions</h3>
+<p>Any function can be written and defined in any <code>.R</code> file in the <code>R</code> folder, just like an R package. They can also be placed in the main module script (the one named <code>&lt;moduleName&gt;.R</code>). The default template includes several functions.</p>
+<p>In this example, instead of writing the code that does what we want inside the <code>doEvent</code> function itself, lets use the <code>Init</code> function. We move the code from the “init” event into a function, then call that function.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reproducible)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="fl">1e7</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="fl">1e7</span>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="fl">1e7</span>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>doEvent.My_linear_model.init <span class="ot">&lt;-</span> <span class="cf">function</span>(sim, eventTime, eventType, priority) {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  sim <span class="ot">&lt;-</span> <span class="fu">Init</span>(sim)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(sim)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>Init <span class="ot">&lt;-</span> <span class="cf">function</span>(sim) {</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> sim<span class="sc">$</span>x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  sim<span class="sc">$</span>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> sim<span class="sc">$</span>x)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">invisible</span>(sim))</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>See <a href="https://reproducible.predictiveecology.org/reference/Cache.html"><code>?reproducible::Cache</code></a></p>
-</section>
-<section id="prepinputs" class="level3" data-number="9.3.3">
-<h3 data-number="9.3.3" class="anchored" data-anchor-id="prepinputs"><span class="header-section-number">9.3.3</span> <code>prepInputs()</code></h3>
-<p><code>prepInputs()</code> is a workhorse function that helps users point to cloud or local datasets: <a href="https://reproducible.predictiveecology.org/reference/prepInputs.html"><code>?reproducible::prepInputs</code></a>.</p>
-<p>In this example, we point to a url only and <code>prepInputs</code> downloads it, does checksumming, unzips it and loads it into R using the default <code>terra::vect</code> because it is a <code>shp</code> file after the unzipping.</p>
+<p>We can extend this to any number of functions. Notice, that functions can have any arguments. They don’t have to have <code>sim</code>. The critical point to retain is that the <code>doEvent</code> function must return <code>sim</code>. We can also write documentation using <code>roxygen2</code> tags (though converting this to normal R documentation is still experimental within a SpaDES module).</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ecozoneOfCanada <span class="ot">&lt;-</span> reproducible<span class="sc">::</span><span class="fu">prepInputs</span>(</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> <span class="st">"http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/ecozone_shp.zip"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>doEvent.My_linear_model.init <span class="ot">&lt;-</span> <span class="cf">function</span>(sim, eventTime, eventType, priority) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  sim <span class="ot">&lt;-</span> <span class="fu">Init</span>(sim)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(sim)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Use this inside the `doEvent.My_linear_model.init` function</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>Init <span class="ot">&lt;-</span> <span class="cf">function</span>(sim) {</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">generateY</span>(sim<span class="sc">$</span>x)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  sim<span class="sc">$</span>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> sim<span class="sc">$</span>x)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(sim)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">#' A function that generates random error around an `x`</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">#' </span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param x Any numeric vector of length 10 </span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>generateY <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>For more information <a href="https://reproducible.predictiveecology.org/reference/prepInputs.html"><code>?reproducible::prepInputs</code></a></p>
 </section>
 </section>
 <section id="sec-moduletypes" class="level2" data-number="9.4">
 <h2 data-number="9.4" class="anchored" data-anchor-id="sec-moduletypes"><span class="header-section-number">9.4</span> Module types</h2>
-<p>Even though all modules are built with the same structures (events &amp; functions), for convenience, we can categorize different types of modules in different ways.</p>
-<p>For example, modules can be categorized by:</p>
+<p>SpaDES doesn’t have explicit module types. Rather, by convention, we associate different modules with generic things they do. A fairly comprehensive list of modules types that we create are below. We will revisit this later in <span class="quarto-unresolved-ref">?sec-continuousWorkflows</span>.</p>
 <section id="static" class="level3" data-number="9.4.1">
 <h3 data-number="9.4.1" class="anchored" data-anchor-id="static"><span class="header-section-number">9.4.1</span> Static</h3>
 <p><strong>Static</strong> modules can be defined as modules that “run once”. This means that they may have only one event. Or a sequence of events that occur one after the other with no rescheduling.</p>
@@ -659,14 +642,35 @@ Tip&nbsp;9.1
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reproducible)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="fl">1e7</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="fl">1e7</span>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="fl">1e7</span>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>ecozoneOfCanada <span class="ot">&lt;-</span> reproducible<span class="sc">::</span><span class="fu">prepInputs</span>(</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> <span class="st">"http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/ecozone_shp.zip"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>doEvent.My_linear_model.init <span class="ot">&lt;-</span> <span class="cf">function</span>(sim, eventTime, eventType, priority) {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  sim <span class="ot">&lt;-</span> <span class="fu">Init</span>(sim)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(sim)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>Init <span class="ot">&lt;-</span> <span class="cf">function</span>(sim) {</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> sim<span class="sc">$</span>x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  sim<span class="sc">$</span>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> sim<span class="sc">$</span>x)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">invisible</span>(sim))</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>doEvent.My_linear_model.init <span class="ot">&lt;-</span> <span class="cf">function</span>(sim, eventTime, eventType, priority) {</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  sim <span class="ot">&lt;-</span> <span class="fu">Init</span>(sim)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(sim)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Use this inside the `doEvent.My_linear_model.init` function</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>Init <span class="ot">&lt;-</span> <span class="cf">function</span>(sim) {</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">generateY</span>(sim<span class="sc">$</span>x)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  sim<span class="sc">$</span>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> sim<span class="sc">$</span>x)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(sim)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="co">#' A function that generates random error around an `x`</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param x Any numeric vector of length 10</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>generateY <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 
