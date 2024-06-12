@@ -4,9 +4,10 @@ project:
     port: 4200
     browser: false
   pre-render:
-    - R/installpkgs.R
+  - R/installpkgs.R
+  - R/makeChapterRscripts.R
   post-render:
-    - R/makePkgList.R
+  - R/makePkgList.R
 
 book:
   title: "Robust and nimble scientific workflows, using SpaDES"
