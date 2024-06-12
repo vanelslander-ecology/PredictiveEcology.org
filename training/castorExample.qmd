@@ -83,16 +83,7 @@ SQLite database from Google Drive[^2]. You'll be prompted to authorise
 this operation and a browser window will open for this. Make sure you
 give `tidyverse` read/write access to your files:
 
-```{r fig-gdriveauth}
-#| echo: false
-#| fig-align: center
-#| fig-width: 5
-
-figPath <- normalizePath(file.path(qmdPath, "assets/img/gdriveauth.png"),
-                winslash = "/")
-
-knitr::include_graphics(figPath, rel_path = FALSE, dpi = NA)
-```
+![](assets/img/gdriveauth.png){fig-align="center" width="467"}
 
 ```{r workaround}
 #| results: hide
