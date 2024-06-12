@@ -1,6 +1,13 @@
 ---
-author      : "Eliot McIntire"
-date        : last-modified
+author: "Eliot McIntire"
+date: last-modified
+execute:
+  echo: true
+  cache: false
+  tidy: false
+  warning: false
+  message: false
+  error: false
 editor_options:
   chunk_output_type: console
 bibliography: references/references.bib
@@ -22,7 +29,7 @@ knitr::opts_chunk$set(tidy = FALSE,
                       message = FALSE, 
                       error = FALSE)
 
-## truncate text output
+# truncate text output
 hook_output <- knitr::knit_hooks$get("output")
 
 knitr::knit_hooks$set(output = function(x, options) {
@@ -154,7 +161,9 @@ than normal R objects.
 The following code will result in `d` being the same vector as `b`, and
 it will be returned quickly.
 
-```{r Cache, eval=FALSE}
+```{r Cache}
+#| eval: false
+
 library(reproducible)
 
 a <- rnorm(1e7)
@@ -175,7 +184,9 @@ In this example, we point to a url only and `prepInputs` downloads it,
 does checksumming, unzips it and loads it into R using the default
 `terra::vect` because it is a `shp` file after the unzipping.
 
-```{r prepInputs,eval=FALSE}
+```{r prepInputs}
+#| eval: false
+
 ecozoneOfCanada <- reproducible::prepInputs(
   url = "http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/ecozone_shp.zip")
 ```

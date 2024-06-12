@@ -25,7 +25,15 @@ chapterQMDs <- file.path(currwd, chapterQMDs)
 ## as per `?knitr::purl` setwd to Rscript output dir
 setwd("R/Chapter_scripts")
 
-sapply(chapterQMDs, knitr::purl, documentation = 0)
+chapterRs <- sapply(chapterQMDs, knitr::purl, documentation = 0)
+
+lapply(chapterRs, function(x) {
+  rLines <- readLines(x)
+  commentedCode <- which(grepl("^## ", rLines))
+
+  rLines[commentedCode] <- sub("^## ", "", rLines[commentedCode])
+  writeLines(rLines, x)
+})
 
 ## reset
 setwd(currwd)

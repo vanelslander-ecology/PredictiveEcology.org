@@ -30,7 +30,7 @@ knitr::opts_chunk$set(tidy = FALSE,
                       message = FALSE, 
                       error = FALSE)
 
-## truncate text output
+# truncate text output
 hook_output <- knitr::knit_hooks$get("output")
 
 knitr::knit_hooks$set(output = function(x, options) {
@@ -125,8 +125,8 @@ install.packages("SpaDES.project", repos = repos, dependencies = TRUE)
 library(SpaDES.project)
 
 out <- setupProject(
-  ## INPUT OBJECTS -----------------------------------
-  ## these need to come *before* any formal arguments, as they are needed for params.R
+  # INPUT OBJECTS -----------------------------------
+  # these need to come *before* any formal arguments, as they are needed for params.R
   sppEquivCol = "Boreal",
   vegLeadingProportion = 0,
   successionTimestep = 10L,
@@ -135,7 +135,7 @@ out <- setupProject(
   paths = list("packagePath" = "packages/",
                "projectPath" = "~/SpaDES_book/LandRDemo_coreVeg"),
   packages = c(
-    ## these are needed but don't load
+    # these are needed but don't load
     "DiagrammeR", 
     "PredictiveEcology/SpaDES.experiment@development (HEAD)",
     "terra"  
@@ -153,12 +153,12 @@ out <- setupProject(
     "PredictiveEcology/Biomass_speciesParameters@main",
     "PredictiveEcology/Biomass_core@main"
   ),
-  ## SIMULATION SETUP ------------------------------------
+  # SIMULATION SETUP ------------------------------------
   times = list(start = 2001, end = 2031),
   params = "PredictiveEcology/PredictiveEcology.org@training-book/tutos/LandRDemo_coreVeg/params.R",
-  ## (more) INPUT OBJECTS -----------------------------------
-  ## these come after, so that we don't need to pre-install/load LandR
-  ## species lists/traits
+  # (more) INPUT OBJECTS -----------------------------------
+  # these come after, so that we don't need to pre-install/load LandR
+  # species lists/traits
   sppEquiv = {
     data("sppEquivalencies_CA", package = "LandR")
     sppEquivalencies_CA[grep("Pin", LandR), `:=`(EN_generic_short = "Pine",
@@ -167,13 +167,13 @@ out <- setupProject(
     sppEquivalencies_CA[grep("Betu_pap", LandR), `:=`(EN_generic_short = "Birch",
                                                       EN_generic_full = "Birch",
                                                       Leading = "Birch leading")]
-    ## all Popu will be merged
+    # all Popu will be merged
     sppEquivalencies_CA[grep("Popu_", LandR), `:=`(EN_generic_short = "Poplar",
                                                    EN_generic_full = "Poplar",
                                                    Leading = "Poplar leading")]
     sppEquivalencies_CA[grep("Popu_", LandR), Boreal := "Popu_Spp"]
     
-    ## define spp column to use for model
+    # define spp column to use for model
     sppEquivalencies_CA <- sppEquivalencies_CA[!"", on = sppEquivCol]
     sppEquivalencies_CA <- na.omit(sppEquivalencies_CA, sppEquivCol)
     sppEquivalencies_CA
@@ -210,7 +210,7 @@ out <- setupProject(
     studyAreaL <- terra::project(studyAreaL, Biomass_corecrs)
     studyAreaL
   },
-  ## OUTPUTS TO SAVE -----------------------
+  # OUTPUTS TO SAVE -----------------------
   outputs = {
     rbind(
       data.frame(
@@ -266,7 +266,7 @@ You can initialise the and run the workflow in two separate steps...
 ```{r runSim}
 #| results: hide
 
-## initialise then run simulation 
+# initialise then run simulation 
 simInitOut <- SpaDES.core::simInit2(out)
 simOut <- SpaDES.core::spades(simInitOut)
 ```
@@ -335,11 +335,11 @@ they are as we expected -- no need to look for these objects files, they
 are all in the `simList`.
 
 ```{r inspectSim5}
-## spatial inputs from list above
+# spatial inputs from list above
 terra::plot(simOut$studyAreaLarge, col = "navyblue", main = "studyArea & studyAreaLarge")
 terra::plot(simOut$studyArea, col = "lightblue", add = TRUE)
 
-## spatial outputs from list above
+# spatial outputs from list above
 terra::plot(simOut$vegTypeMap, 
             col = hcl.colors(palette = "Dynamic", n = length(unique(simOut$vegTypeMap[]))), 
             main = "")
@@ -372,11 +372,11 @@ repeatable code or data repositories, model transparency and potential
 scrutiny are massively increased.
 
 ```{r inspectSim6}
-## model used to estimate species establishment probabilities
+# model used to estimate species establishment probabilities
 summary(simOut$modelBiomass$mod)
 plot(simOut$modelBiomass$mod)
 
-## model used to calibrate Picea glauca's growth parameters
+# model used to calibrate Picea glauca's growth parameters
 summary(simOut$speciesGrowthCurves$Pice_Gla$NonLinearModel$Pice_Gla)
 ```
 
@@ -522,17 +522,17 @@ options = list(
 modules = c(
 "PredictiveEcology/Biomass_validationKNN@main"
 ),
-## SIMULATION SETUP --------------------------------
+# SIMULATION SETUP --------------------------------
 times = list(start = 1, end = 1),
-## PARAMETERS --------------------------------------
+# PARAMETERS --------------------------------------
 params = list("Biomass_validationKNN" = list(
 "minCoverThreshold" = SpaDES.core::params(simOut)$Biomass_borealDataPrep$minCoverThreshold,
 "pixelGroupBiomassClass" = SpaDES.core::params(simOut)$Biomass_borealDataPrep$pixelGroupBiomassClass,
 "deciduousCoverDiscount" = SpaDES.core::params(simOut)$Biomass_borealDataPrep$deciduousCoverDiscount,
 "sppEquivCol" = SpaDES.core::params(simOut)$Biomass_borealDataPrep$sppEquivCol,
-".plots" = c("png") ## save all to .png
+".plots" = c("png") # save all to .png
 )),
-## INPUT OBJECTS -----------------------------------
+# INPUT OBJECTS -----------------------------------
 studyArea = {
 simOut$studyArea
 },
@@ -642,13 +642,13 @@ Try re-running the workflow with a different set of study areas. For
 example:
 
 ```{r}
-## studyArea could be
+# studyArea could be
 studyArea = {
 set.seed(123)
 SpaDES.tools::randomStudyArea(size = 200000000)
 }
 
-## studyAreaLarge
+# studyAreaLarge
 studyAreaLarge = {
 terra::buffer(studyArea, width = 10000)
 }

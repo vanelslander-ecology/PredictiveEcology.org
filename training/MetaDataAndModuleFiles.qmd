@@ -23,7 +23,7 @@ See [Barebones R script] for the code shown in this chapter
 #| eval: true
 #| purl: false
 
-## truncate text output
+# truncate text output
 hook_output <- knitr::knit_hooks$get("output")
 
 knitr::knit_hooks$set(output = function(y, options) {
@@ -190,7 +190,7 @@ After saving the module R script, we can run the module ad inspect the output
 out <- simInit(modules = nm1, paths = list(modulePath = modulePath))
 out <- spades(out)
 
-## or 
+# or 
 out <- simInitAndSpades(modules = nm1, paths = list(modulePath = modulePath))
 
 out$model

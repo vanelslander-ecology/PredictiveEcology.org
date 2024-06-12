@@ -203,11 +203,11 @@ mySim <- simInit(params = list("My_linear_model" = list(length = 20)),
                  paths = list(modulePath = modulePath))
 events(mySim)
 
-## b is in the .xData slot
+# b is in the .xData slot
 mySim$x
 mySim@.xData$x
 
-## all functions below come from SpaDES.core::
+# all functions below come from SpaDES.core::
 # list modules used in the simulation
 modules(mySim)
 
@@ -217,7 +217,7 @@ packages(mySim)
 
 # list global and module-specific param values
 params(mySim)
-P(mySim)       ## bonus: how do params() and P() differ?
+P(mySim)       # bonus: how do params() and P() differ?
 
 # list start and end times
 times(mySim)
@@ -244,7 +244,7 @@ outputPath(mySim)
 Now run the simulation
 
 ```{r run-sim}
-mySimOut <- reproducible::Copy(mySim) ## make a deep copy of the simList
+mySimOut <- reproducible::Copy(mySim) # make a deep copy of the simList
 mySimOut <- spades(mySimOut)
 ```
 

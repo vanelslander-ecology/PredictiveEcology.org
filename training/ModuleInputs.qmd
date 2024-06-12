@@ -29,7 +29,7 @@ knitr::opts_chunk$set(tidy = FALSE,
                       message = FALSE, 
                       error = FALSE)
 
-## truncate text output
+# truncate text output
 hook_output <- knitr::knit_hooks$get("output")
 
 knitr::knit_hooks$set(output = function(y, options) {
@@ -145,7 +145,7 @@ the file** after you're done.
 defineModule(
   <...>
     parameters = bindrows(
-      ## here
+      # here
       <...>
     )
   <...>
@@ -160,7 +160,7 @@ Now run the the module:
 
 out2 <- SpaDES.core::simInitAndSpades(modules = nm1,
                          paths = list(modulePath = modulePath))
-params(out2)   ## can you find the length parameter?
+params(out2)   # can you find the length parameter?
 ```
 
 Notice how `params = list("My_linear_model" = list(length = 20))` has

@@ -22,7 +22,7 @@ See [Barebones R script] for the code shown in this chapter
 #| eval: true
 #| purl: false
 
-## truncate text output
+# truncate text output
 hook_output <- knitr::knit_hooks$get("output")
 
 knitr::knit_hooks$set(output = function(x, options) {

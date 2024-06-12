@@ -39,7 +39,7 @@ Not a very useful comment (we can check `?lm` to know what it does):
 
 ```{r}
 #| eval: false
-## lm fits a linear model
+# lm fits a linear model
 lm(biomass ~ height)
 ```
 
@@ -47,7 +47,7 @@ A more useful comment:
 
 ```{r}
 #| eval: false
-## model linear relationship between biomass and height
+# model linear relationship between biomass and height
 lm(biomass ~ height)
 ```
 

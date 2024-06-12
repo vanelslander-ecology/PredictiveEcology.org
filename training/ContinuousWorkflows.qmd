@@ -19,7 +19,7 @@ bibliography: references.bib
 #| include: false
 #| eval: true
 
-## truncate text output
+# truncate text output
 hook_output <- knitr::knit_hooks$get("output")
 
 knitr::knit_hooks$set(output = function(y, options) {

@@ -22,7 +22,7 @@ See [Barebones R script] for the code shown in this chapter
 #| cache: false
 #| purl: false
 
-## truncate text output
+# truncate text output
 hook_output <- knitr::knit_hooks$get("output")
 
 knitr::knit_hooks$set(output = function(x, options) {
@@ -89,13 +89,13 @@ give `tidyverse` read/write access to your files:
 #| results: hide
 #| cache: false 
 
-## install/load necessary packages
+# install/load necessary packages
 repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
 install.packages(c("SpaDES.project", "googledrive", "reproducible"), 
                  repos = repos, dependencies = TRUE)
 library(SpaDES.project)
 
-## get Castor modules and functions
+# get Castor modules and functions
 setupFunctions(paths = list("projectPath" = "~/SpaDES_book/castorExample/"),
                functions = c("PredictiveEcology/PredictiveEcology.org@main/tutos/castorExample/getCastorModulesAndDB.R",
                              "PredictiveEcology/PredictiveEcology.org@main/tutos/castorExample/params.R"),
@@ -132,8 +132,8 @@ above?).
 #| results: hide
 #| cache: false 
 
-## set up the workflow paths, dependencies and modules
-## as well as simulation parameters, (some) inputs and outputs
+# set up the workflow paths, dependencies and modules
+# as well as simulation parameters, (some) inputs and outputs
 out <- setupProject(
   paths = list("inputPath" = "modules/forestryCastor/inputs",
                "outputPath" = "R/scenarios/comparison_stsm/outputs",
@@ -143,9 +143,9 @@ out <- setupProject(
   modules = names(outMod$modules),
   options = list(repos = repos),
   functions = "bcgov/castor@main/R/functions/R_Postgres.R",
-  ## install and load
+  # install and load
   require = "dplyr",
-  ## install but don't load these:
+  # install but don't load these:
   packages = c(
     "DBI", 
     "DiagrammeR",
@@ -220,7 +220,7 @@ We use `do.call()` to pass the whole list of arguments to `simInit`.
 ```{r simInit}
 #| results: hide
 
-## initialize simulation
+# initialize simulation
 castorInit <- do.call(SpaDES.core::simInit, out)
 ```
 
@@ -246,13 +246,13 @@ output below.
 ```{r inspectSimList}
 #| eval: false
 
-## inspect the `simList`
+# inspect the `simList`
 SpaDES.core::params(castorInit) 
 SpaDES.core::inputs(castorInit)
 SpaDES.core::outputs(castorInit)
 SpaDES.core::times(castorInit) 
 
-## scheduled events
+# scheduled events
 SpaDES.core::events(castorInit) 
 ```
 
@@ -313,7 +313,7 @@ previously.
 
 castorSim <- SpaDES.core::spades(castorInit)
 
-## we now have outputs
+# we now have outputs
 SpaDES.core::outputs(castorSim)
 ```
 
@@ -360,9 +360,9 @@ out <- setupProject(
                "projectPath" = "~/SpaDES_book/castorExample/"),
   modules = modules,
   functions = "bcgov/castor@main/R/functions/R_Postgres.R",
-  ## install and load
+  # install and load
   require = "dplyr",
-  ## install but don't load these:
+  # install but don't load these:
   packages = c(
     "DBI", 
     "keyring",
@@ -424,7 +424,7 @@ out <- setupProject(
   Restart = TRUE
 )
 
-## initialize and run simulation in one go
+# initialize and run simulation in one go
 castorSim2 <- do.call(SpaDES.core::simInitAndSpades, out)
 ```
 

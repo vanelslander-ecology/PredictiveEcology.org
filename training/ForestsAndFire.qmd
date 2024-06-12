@@ -105,7 +105,7 @@ out <- SpaDES.project::setupProject(
                     .useCache = c(".inputObjects", "init")
                  ),
     scfmDriver = list(targetN = 1000, #default is 4000 - higher targetN adds time + precision
-                      ### targetN would ideally be minimum 2000 - mean fire size estimates will be bad with 1000
+                      # targetN would ideally be minimum 2000 - mean fire size estimates will be bad with 1000
                       .useParallelFireRegimePolys = TRUE) #assumes parallelization is an otpion
     
   ),
