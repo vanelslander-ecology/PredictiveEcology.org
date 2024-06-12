@@ -445,6 +445,7 @@ to do two things:
 ```{r expSim}
 #| lst-label: lst-exp
 #| lst-cap: Sequential replication 
+#| purl: false
 
 simInitOut <- SpaDES.core::simInit2(out)
 
@@ -455,6 +456,7 @@ simOutExperiment <- SpaDES.experiment::experiment2(simInitOut, replicates = 10)
 ```{r expSimParll}
 #| lst-label: lst-expparall
 #| lst-cap: Parallel replication
+#| purl: false
 
 future::plan("multisession", workers = 2)
 simOutExperiment <- SpaDES.experiment::experiment2(simInitOut, replicates = 10)
@@ -508,6 +510,8 @@ We pass all raster objects from the saved files directly, to ensure they
 are linked to these file paths explicitly.
 
 ```{r experimentSim}
+#| purl: false
+
 outValid <- setupProject(
 paths = list("packagePath" = "packages/",
 "projectPath" = "~/SpaDES_book/LandRDemo_coreVeg",
