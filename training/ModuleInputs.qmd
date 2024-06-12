@@ -259,7 +259,6 @@ We will look at a few examples in this module:
 
 [`?SpaDES.core::simInitAndSpades`](https://rdrr.io/cran/SpaDES.core/man/simInitAndSpades.html)
 
-
 ## Barebones R script
 
 ```{r}

@@ -132,6 +132,8 @@ Init <- function(sim) {
 
 We can extend this to any number of functions. Notice, that functions can have any arguments. They don't have to have `sim`. The critical point to retain is that the `doEvent` function must return `sim`. We can also write documentation using `roxygen2` tags (though converting this to normal R documentation is still experimental within a SpaDES module).
 
+Copy these three functions to your module, **replacing the existing functions with these ones** (for `doEvent.My_linear_model.init` and `Init`). `generateY` is completely new, so it won't replace anything.
+
 ```{r useAFunction2,eval=FALSE}
 doEvent.My_linear_model.init <- function(sim, eventTime, eventType, priority) {
   sim <- Init(sim)
