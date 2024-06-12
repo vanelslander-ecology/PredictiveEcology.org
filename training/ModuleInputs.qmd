@@ -62,14 +62,14 @@ e.g., `sim$` somewhere in the module.
 There are several ways to get objects into the `simList`:
 
 -   User passes during `simInit`:
-    
-    -   using the `objects` argument (if it is an object);
 
-    -   using the `inputs` argument (if it is from disk);
+-   using the `objects` argument (if it is an object);
 
-    -   using the `params` argument;
+-   using the `inputs` argument (if it is from disk);
 
--   Developer creates defaults and specifies them in `defineParameter()` 
+-   using the `params` argument;
+
+-   Developer creates defaults and specifies them in `defineParameter()`
     and `.inputObjects`;
 
 -   A different module creates them prior to the running of this module.
@@ -125,7 +125,7 @@ SpaDES.core::newModule(name = nm1, path = modulePath, open = FALSE,
                        ))
 ```
 
-We then include the following in the module metadata section
+Now we open `My_linear_model.R` and add the following
 
 ```{r}
 #| eval: false
@@ -135,8 +135,37 @@ defineParameter("length", "integer", 10L, 5L, 100L,
                 "Number of values to generate")
 ```
 
-See
-[`?SpaDES.core::simInit`](https://rdrr.io/cran/SpaDES.core/man/suppliedElsewhere.html).
+... to the module metadata section for parameters. Remember to **save
+the file** after you're done.
+
+```{r}
+#| eval: false
+#| purl: false
+ 
+defineModule(
+  <...>
+    parameters = bindrows(
+      ## here
+      <...>
+    )
+  <...>
+)
+
+```
+
+Now run the the module:
+
+```{r}
+#| eval: false
+
+out2 <- SpaDES.core::simInitAndSpades(modules = nm1,
+                         paths = list(modulePath = modulePath))
+params(out2)   ## can you find the length parameter?
+```
+
+Notice how `params = list("My_linear_model" = list(length = 20))` has
+`"My_linear_model"`, not `nm1`. this is because `list()` does not accept
+objects as "names".
 
 ### `.inputObjects`
 
@@ -170,7 +199,7 @@ isn't in `sim`, then give it a value.
   if (!suppliedElsewhere("y", sim)) {
     sim$y <- rnorm(100)
   }
-
+  
   return(sim)
 }
 ```
@@ -212,8 +241,11 @@ We will look at a few examples in this module:
 
 ## Try on your own
 
--   Using the *My_linear_model* shown above, try running simulations 
-    where you pass different values to the  `length` parameter
+-   Using the *My_linear_model* shown above, try running simulations
+    where you pass different values to the `length` parameter
+
+    -   Tip: have a look at the `params` argument of
+        `SpaDES.core::simInitAndSpades()`
 
 ## See also
 
@@ -224,6 +256,9 @@ We will look at a few examples in this module:
 [`?SpaDES.core::defineParameter`](https://rdrr.io/cran/SpaDES.core/man/defineParameter.html)
 
 [`?SpaDES.core::simInit`](https://rdrr.io/cran/SpaDES.core/man/simInit.html)
+
+[`?SpaDES.core::simInitAndSpades`](https://rdrr.io/cran/SpaDES.core/man/simInitAndSpades.html)
+
 
 ## Barebones R script
 

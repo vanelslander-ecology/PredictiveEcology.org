@@ -184,6 +184,19 @@ outputObjects = bindrows(
 )
 ```
 
+After saving the module R script, we can run the module ad inspect the output
+
+```{r}
+out <- simInit(modules = nm1, paths = list(modulePath = modulePath))
+out <- spades(out)
+
+## or 
+out <- simInitAndSpades(modules = nm1, paths = list(modulePath = modulePath))
+
+out$model
+```
+
+
 ## Sharing inputs and outputs
 
 You may have noticed that the `init` event is now placed into a function
