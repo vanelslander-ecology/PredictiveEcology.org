@@ -11,6 +11,8 @@ site_libs/*
 
 packages/
 
+R/Chapter_scripts
+
 ## files from chapters
 integratingSpaDESmodules/
 Introduction/
