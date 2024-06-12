@@ -13,6 +13,10 @@ execute:
 
 # Castor Workflow with `setupProject` {#sec-castorEg}
 
+::: {.callout-tip appearance="simple"}
+See [Barebones R script] for the code shown in this chapter
+:::
+
 ```{r setup}
 #| include: false
 #| cache: false
@@ -432,6 +436,24 @@ out <- setupProject(
 ## initialize and run simulation in one go
 castorSim2 <- do.call(SpaDES.core::simInitAndSpades, out)
 ```
+
+## Barebones R script
+
+```{r}
+#| eval: true
+#| echo: false
+#| purl: false
+
+fileName <- file.path(qmdPath, "R/Chapter_scripts", sub("rmarkdown", "R", knitr::current_input()))
+```
+
+```{r file = fileName}
+#| eval: false
+#| echo: true
+#| purl: false
+
+```
+
 
 [^1]: `SpaDES.project` is currently being adapted to deal with modules
     nested in folders of GitHub repositories (instead of living in their

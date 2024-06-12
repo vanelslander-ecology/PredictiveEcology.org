@@ -18,6 +18,10 @@ Require::Require(c("SpaDES.core"))
 
 # The `simList` - What is it? {#sec-simlist}
 
+::: {.callout-tip appearance="simple"}
+See [Barebones R script] for the code shown in this chapter
+:::
+
 In `R`, there is a default environment, called the `.GlobalEnv`. When
 you start typing in R and you create an object, it is "put" in the
 `.GlobalEnv`
@@ -276,3 +280,20 @@ objects(mySimOut)
 [`?simInit`](https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/simInit)
 
 [`?spades`](https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/spades)
+
+## Barebones R script
+
+```{r}
+#| eval: true
+#| echo: false
+#| purl: false
+
+fileName <- file.path("R/Chapter_scripts", sub("rmarkdown", "R", knitr::current_input()))
+```
+
+```{r file = fileName}
+#| eval: false
+#| echo: true
+#| purl: false
+
+```

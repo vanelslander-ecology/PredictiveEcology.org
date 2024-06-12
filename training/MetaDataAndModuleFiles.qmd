@@ -14,6 +14,10 @@ execute:
 
 # Module Files and Metadata {#sec-moduleFilesAndMetadata}
 
+::: {.callout-tip appearance="simple"}
+See [Barebones R script] for the code shown in this chapter
+:::
+
 ```{r setup}
 #| include: false
 #| eval: true
@@ -357,3 +361,21 @@ for all the metadata items. Specifically, see `reqdPkgs`.
 [`?SpaDES.core::simInit`](https://rdrr.io/cran/SpaDES.core/man/simInit.html)
 
 [`?SpaDES.core::simInitAndSpaDES`](https://rdrr.io/cran/SpaDES.core/man/simInitAndSpaDES.html)
+
+
+## Barebones R script
+
+```{r}
+#| eval: true
+#| echo: false
+#| purl: false
+
+fileName <- file.path("R/Chapter_scripts", sub("rmarkdown", "R", knitr::current_input()))
+```
+
+```{r file = fileName}
+#| eval: false
+#| echo: true
+#| purl: false
+
+```

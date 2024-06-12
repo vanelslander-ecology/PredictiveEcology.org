@@ -15,6 +15,10 @@ execute:
 
 # Forest Landscape Modelling with LandR and `setupProject`
 
+::: {.callout-tip appearance="simple"}
+See [Barebones R script] for the code shown in this chapter
+:::
+
 ```{r setup}
 #| include: false
 #| eval: true
@@ -92,8 +96,7 @@ package and current versions of the LandR modules.
 ## Google account needed for this example
 
 You need to have a Google account to access some of the data using the
-`googledrive` R package (part of the `tidyverse`
-family)[^landrdemo_coreveg-1].
+`googledrive` R package (part of the `tidyverse` family)[^1].
 
 During the `simInit()` (or `simInitAndSpades()`) call R will prompt you
 to either choose a previously authenticated account (if you have
@@ -393,7 +396,7 @@ would try to resume the simulation from the "last year".
 
 Thanks to internal caching, it will only take seconds to "redo"
 `simInitOut`. You will also notice that `init` events are retrieved from
-cache, this time around[^landrdemo_coreveg-2].
+cache, this time around[^2].
 
 ```{r runSimPlots}
 
@@ -675,8 +678,25 @@ looking for the closes forest land-cover type.
 -->
 ```
 
-[^landrdemo_coreveg-1]: See
+## Barebones R script
+
+```{r}
+#| eval: true
+#| echo: false
+#| purl: false
+
+fileName <- file.path(qmdPath, "R/Chapter_scripts", sub("rmarkdown", "R", knitr::current_input()))
+```
+
+```{r file = fileName}
+#| eval: false
+#| echo: true
+#| purl: false
+
+```
+
+[^1]: See
     [`?googledrive::drive_auth`](https://rdrr.io/cran/googledrive/man/drive_auth.html)
     for more information.
 
-[^landrdemo_coreveg-2]: See @sec-caching about caching.
+[^2]: See @sec-caching about caching.

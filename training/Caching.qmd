@@ -26,6 +26,10 @@ knitr::opts_chunk$set(eval = hasSuggests && useSuggests)
 
 # Introduction to Cache {#sec-caching}
 
+::: {.callout-tip appearance="simple"}
+See [Barebones R script] for the code shown in this chapter
+:::
+
 The objective of a reproducible workflow is likely that an entire work
 flow from raw data to publication, decision support, report writing,
 presentation building etc., could be built and be reproducible anywhere,
@@ -221,3 +225,19 @@ Some of our team regularly add:
     non-stochastic
 
 <!-- NEVER CACHE SIMINIT()-->
+## Barebones R script
+
+```{r}
+#| eval: true
+#| echo: false
+#| purl: false
+
+fileName <- file.path("R/Chapter_scripts", sub("rmarkdown", "R", knitr::current_input()))
+```
+
+```{r file = fileName}
+#| eval: false
+#| echo: true
+#| purl: false
+
+```

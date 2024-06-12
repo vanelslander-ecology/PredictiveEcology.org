@@ -14,6 +14,10 @@ execute:
 
 # `reproducible::prepInputs` for Data {#sec-prepInputs}
 
+::: {.callout-tip appearance="simple"}
+See [Barebones R script] for the code shown in this chapter
+:::
+
 ```{r setup}
 #| include: false
 #| eval: true
@@ -302,3 +306,21 @@ used.
 [`reproducible::preProcess`](https://reproducible.predictiveecology.org/reference/preProcess.html)
 
 [`reproducible::postProcessTo`](https://reproducible.predictiveecology.org/reference/postProcessTo.html)
+
+
+## Barebones R script
+
+```{r}
+#| eval: true
+#| echo: false
+#| purl: false
+
+fileName <- file.path("R/Chapter_scripts", sub("rmarkdown", "R", knitr::current_input()))
+```
+
+```{r file = fileName}
+#| eval: false
+#| echo: true
+#| purl: false
+
+```

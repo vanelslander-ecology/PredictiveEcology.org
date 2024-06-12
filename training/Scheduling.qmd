@@ -13,6 +13,10 @@ execute:
 
 # Scheduling Events {#sec-schedulingEvents}
 
+::: {.callout-tip appearance="simple"}
+See [Barebones R script] for the code shown in this chapter
+:::
+
 ```{r setup}
 #| include: false
 #| eval: true
@@ -397,3 +401,21 @@ Module](https://spades-workshops.predictiveecology.org/articlesMay2018/MyFirstMo
 
 [Creating a seed dispersal
 module](https://spades-workshops.predictiveecology.org/articles/02c-Convert_R_code_to_SpaDES_module.html)
+
+
+## Barebones R script
+
+```{r}
+#| eval: true
+#| echo: false
+#| purl: false
+
+fileName <- file.path("R/Chapter_scripts", sub("rmarkdown", "R", knitr::current_input()))
+```
+
+```{r file = fileName}
+#| eval: false
+#| echo: true
+#| purl: false
+
+```

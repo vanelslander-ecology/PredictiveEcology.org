@@ -13,6 +13,10 @@ cache: false
 
 # Workflows with setupProject
 
+::: {.callout-tip appearance="simple"}
+See [Barebones R script] for the code shown in this chapter
+:::
+
 ```{r setup,eval=TRUE}
 #| include: false
 #| purl: false
@@ -138,3 +142,20 @@ examples, including learning of several arguments to the function
 [All Functions in SpaDES.core](https://spades-core.predictiveecology.org/reference/index.html)
 
 [?SpaDES.core::completed](https://spades-core.predictiveecology.org/reference/simList-accessors-events.html)
+
+## Barebones R script
+
+```{r}
+#| eval: true
+#| echo: false
+#| purl: false
+
+fileName <- file.path("R/Chapter_scripts", sub("rmarkdown", "R", knitr::current_input()))
+```
+
+```{r file = fileName}
+#| eval: false
+#| echo: true
+#| purl: false
+
+```

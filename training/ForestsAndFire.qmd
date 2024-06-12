@@ -14,10 +14,17 @@ execute:
 
 # Forest Succession and Wildfire using `setupProject` {#sec-scfmEg}
 
-**1.5 hours -- estimated time for 1st time executing** **6 GB RAM --
-estimated RAM for executing**
+::: {.callout-tip appearance="simple"}
+See [Barebones R script] for the code shown in this chapter
+:::
 
-```{r setup, eval=TRUE}
+::: {.callout-note appearance="simple"}
+*1.5 hours -- estimated time for 1st time executing* 
+
+*6 GB RAM -- estimated peak RAM for executing*
+:::
+
+```{r setup}
 #| include: false
 #| eval: true
 #| cache: false
@@ -178,3 +185,21 @@ outSim <- simInitAndSpades2(out)
 
 Then we can look in the `outputs/figures` folder to see all the figures
 that the modules created.
+
+
+## Barebones R script
+
+```{r}
+#| eval: true
+#| echo: false
+#| purl: false
+
+fileName <- file.path(qmdPath, "R/Chapter_scripts", sub("rmarkdown", "R", knitr::current_input()))
+```
+
+```{r file = fileName}
+#| eval: false
+#| echo: true
+#| purl: false
+
+```

@@ -7,6 +7,10 @@ editor_options:
 
 # Module Inputs {#sec-moduleinputs}
 
+::: {.callout-tip appearance="simple"}
+See [Barebones R script] for the code shown in this chapter
+:::
+
 ```{r setup}
 #| include: false
 #| purl: false
@@ -211,3 +215,20 @@ exist](https://github.com/PredictiveEcology/Biomass_core/blob/d5c214b69f35e7a9f5
 [`?SpaDES.core::defineParameter`](https://rdrr.io/cran/SpaDES.core/man/defineParameter.html)
 
 [`?SpaDES.core::simInit`](https://rdrr.io/cran/SpaDES.core/man/simInit.html)
+
+## Barebones R script
+
+```{r}
+#| eval: true
+#| echo: false
+#| purl: false
+
+fileName <- file.path("R/Chapter_scripts", sub("rmarkdown", "R", knitr::current_input()))
+```
+
+```{r file = fileName}
+#| eval: false
+#| echo: true
+#| purl: false
+
+```

@@ -13,6 +13,10 @@ editor_options:
 
 # Introduction to SpaDES Modules {#sec-moduleintro}
 
+::: {.callout-tip appearance="simple"}
+See [Barebones R script] for the code shown in this chapter
+:::
+
 ```{r setup}
 #| include: false
 #| eval: true
@@ -192,3 +196,20 @@ workflow of 2 events.**
 [`?simInitAndSpades`](https://rdrr.io/cran/SpaDES.core/man/simInitAndSpades.html)
 
 [`?newModule`](https://rdrr.io/cran/SpaDES.core/man/newModule.html)
+
+## Barebones R script
+
+```{r}
+#| eval: true
+#| echo: false
+#| purl: false
+
+fileName <- file.path("R/Chapter_scripts", sub("rmarkdown", "R", knitr::current_input()))
+```
+
+```{r file = fileName}
+#| eval: false
+#| echo: true
+#| purl: false
+
+```
