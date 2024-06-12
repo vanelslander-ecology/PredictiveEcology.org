@@ -25,10 +25,13 @@ you start typing in R and you create an object, it is "put" in the
 ```{r}
 # this is in the .GlobalEnv
 a <- 1
-environment()
+environment()  ## the current environment is .GlobalEnv
+globalenv()  ## the same
+
+ls(envir = environment())
 ```
 
-This `.GlobalEnv` is convenient to begin in R, but it quickly becomes
+The `.GlobalEnv` is convenient to begin in R, but it quickly becomes
 limiting. We need more places to put objects, and we need a way to be
 more in control of the things that we want to keep, share, modify etc.
 In `SpaDES`, this place is called the `simList`. It is a rich data
@@ -38,20 +41,17 @@ into it and use them later.
 ```{r simListCreate}
 #| eval: true
 #| results: false
+
+Require::Require(c("reproducible", "SpaDES.core  (>= 2.1.5)"),
+                 repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
+
 sim <- simInit()
 sim$a <- 1
 sim$b <- sim$a + 2
 sim$b
-envir(sim)
+SpaDES.core::envir(sim)
 ```
 
-```{r simListCreate2, message = FALSE, echo = FALSE}
-sim <- SpaDES.core::simInit()
-sim$a <- 1
-sim$b <- sim$a + 2
-sim$b
-envir(sim)
-```
 
 ::: {.callout-tip appearance="simple"}
 ## `simList` is an `environment`
@@ -66,32 +66,13 @@ is(sim, "environment")
 ```
 :::
 
-::: {.callout-tip appearance="simple"}
-## `simNew <- sim` doesn't copy
-
-If you don't know what an `environment` is in `R`, it is OK. The most
-important feature of an `environment` is that it employs
-`pass-by-reference`, which means it is not copied when it is "assigned"
-somewhere. This makes `SpaDES` fast enough to use for huge workflows.
-
-```{r,eval=FALSE}
-sim <- simInit()
-sim$a <- 1
-simNew <- sim
-simNew$a <- 2
-
-# what value will this have?
-sim$a
-```
-:::
-
 ## Where does `simList` come from?
 
-There is only 1 way in `SpaDES.core` to create a `simList`:
+There is only one way in `SpaDES.core` to create a `simList`:
 
 -   using
-    [`simInit()`](https://rdrr.io/cran/SpaDES.core/man/simInit.html)
-    creates a `simList` object.
+[`simInit()`](https://rdrr.io/cran/SpaDES.core/man/simInit.html)
+creates a `simList` object.[^1]
 
 ## How can we specify a `simList`?
 
@@ -101,16 +82,16 @@ elements.
 The main components of a `simList` are:
 
 1.  A list of modules used;
-2.  The event queue;
-3.  A description of the data (object) dependencies.
 
-## How `SpaDES` works: simLists
+2.  The event queue;
+
+3.  A description of the data (object) dependencies.
 
 We can examine the `simList` object structure in the usual R fashion by
 printing (`show`ing) it, or by using `str()`:
 
 ```{r simlist-structure}
-emptySim <- simInit()
+emptySim <- SpaDES::simInit()
 emptySim  # same as show(emptySim)
 str(emptySim)
 ```
@@ -119,9 +100,9 @@ str(emptySim)
 `slotNames()` to examine the object.
 
 See also
-[`?'.simList-class'`](https://rdrr.io/cran/SpaDES.core/man/simList-class.html)
+[`?'simList-class'`](https://rdrr.io/cran/SpaDES.core/man/simList-class.html)
 
-## Accessing the parts of a simLists
+## Accessing the parts of a `simList`
 
 ::: columns-2
 ```{r simList-accessors}
@@ -163,14 +144,7 @@ each module) are stored neatly and in an easily accessible way.
 :::
 :::
 
-## Model specification
-
-Simple examples (using demo modules) of `simInit()` and `spades()`
-calls.
-
--   examine `simList` structure before and after the `spades()` call
-
-### Initialize an empty `simList` object
+### Initialize and inspect an empty `simList` object
 
 ```{r empty-simList}
 #| eval: true
@@ -178,29 +152,27 @@ calls.
 emptySim <- simInit()
 ```
 
-```{r empty-simList2, eval = TRUE, echo = FALSE}
-emptySim <- SpaDES.core::simInit()
-```
-
-### Inspect the empty `simList` object
-
 1.  What are the names of each of the slots in the simList?
-2.  What do each of these slots contain? Hint: see
-    [`?.simList-class`](https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/simList-class)
+
+2.  What do each of these slots contain? 
+
+Hint: see
+[`?'simList-class'`](https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/simList-class)
 
 ```{r inspect-emptySim}
 str(emptySim)
 slotNames(emptySim)
 getSlots('simList')
-?'.simList-class'
+?`simList-class`
 ```
 
-### Inspect the new `simList` object
+
+### Inspect a non-empty `simList` object
 
 Use the `simList` accessor functions to determine the following:
 
 1.  the modules included in the simulation and their package
-    dependencies;
+dependencies;
 
 2.  the global parameter values used;
 
@@ -216,13 +188,26 @@ Use the `simList` accessor functions to determine the following:
 
 8.  the file paths used for simulation inputs and outputs.
 
-```{r inspect-simList, eval=FALSE}
-# Get the sample modules that come with SpaDES.core
-library(SpaDES.core)
-modulePath <- SpaDES.core::getSampleModules(tempdir())
-# options(spades.loadReqdPkgs = FALSE) # we don't need to check for packages in this example
-mySim <- simInit(modules = dir(modulePath[1:3]), paths = list(modulePath = modulePath))
+We will try this with the simple linear module first, for which we've already 
+defined default values for the input object `x` (see @sec-moduleFilesAndMetadata).
 
+```{r inspect-simList}
+# Get the sample modules that come with SpaDES.core
+
+modulePath <- getSampleModules(tempdir())
+# options(spades.loadReqdPkgs = FALSE) # we don't need to check for packages in this example
+nm1 <- "My_linear_model"
+modulePath <- "~/SpaDES_book/NewModuleIntro/NewModule"
+mySim <- simInit(params = list("My_linear_model" = list(length = 20)),
+                 modules = nm1,
+                 paths = list(modulePath = modulePath))
+events(mySim)
+
+## b is in the .xData slot
+mySim$x
+mySim@.xData$x
+
+## all functions below come from SpaDES.core::
 # list modules used in the simulation
 modules(mySim)
 
@@ -256,15 +241,34 @@ inputPath(mySim)
 outputPath(mySim)
 ```
 
-### Run the simulation
+Now run the simulation
 
-```{r run-sim,eval=FALSE}
-dev()
-mySimOut <- Copy(mySim) ## make a deep copy of the simList
+```{r run-sim}
+mySimOut <- reproducible::Copy(mySim) ## make a deep copy of the simList
 mySimOut <- spades(mySimOut)
 ```
 
-### Compare the simList before and after
+::: {.callout-tip appearance="simple"}
+## `simNew <- sim` doesn't copy
+
+If you don't know what an `environment` is in `R`, it is OK. The most
+important feature of an `environment` is that it employs
+`pass-by-reference`, which means it is **not copied** when it is
+"assigned" somewhere. This makes `SpaDES` fast enough to use for huge
+workflows.
+
+```{r}
+sim <- simInit()
+sim$a <- 1
+simNew <- sim
+simNew$a <- 2
+
+# what value will this have?
+sim$a
+```
+:::
+
+### Compare the `simList` before and after `spades()`
 
 ```{r compare-sims}
 times(mySim)
@@ -274,15 +278,32 @@ objects(mySim)
 objects(mySimOut)
 ```
 
+## Try on your own
+
+-   Repeat the above with more complex modules. Use the accessor functions
+    to look at what inside the `simList` and try passing different parameter values
+    or inputs.
+
+    ```{r}
+    modulePath <- getSampleModules(tempdir())
+    # options(spades.loadReqdPkgs = FALSE) # we don't need to check for packages in this example
+    mySim <- simInit(modules = dir(modulePath[1:3]),
+    paths = list(modulePath = modulePath),
+    objects = list(b = 1))
+    simOut <- spades(mySim)
+    ```
+
 ## See also
 
 [Environments - Advanced R](http://adv-r.had.co.nz/Environments.html)
 
-[`?.simList-class`](https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/simList-class)
+[`?'simList-class'`](https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/simList-class)
 
-[`?simInit`](https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/simInit)
+[`?SpaDES.core::envir`](https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/envir)
 
-[`?spades`](https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/spades)
+[`?SpaDES.core::simInit`](https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/simInit)
+
+[`?SpaDES.core::spades`](https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/spades)
 
 ## Barebones R script
 
@@ -300,3 +321,5 @@ fileName <- file.path("R/Chapter_scripts", sub("rmarkdown", "R", knitr::current_
 #| purl: false
 
 ```
+
+[^1]: Note that `simInitAndSpades` calls `simInit` internally
