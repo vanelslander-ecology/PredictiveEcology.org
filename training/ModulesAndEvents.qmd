@@ -111,11 +111,13 @@ functions (`doEvent.*moduleName*`), events call specific functions (we
 some times call these "event functions"), and functions can be defined
 within modules, R packages, or user code.
 
-## Adding functions
+### Adding functions
 
-Any function can be written and defined in any `.R` file in the `R` folder. They can also be placed in the main module script (the one named `<moduleName>.R`). The default template includes several functions. Lets use the `Init` function. We move the code from the "init" event into a function, then call that function.
+Any function can be written and defined in any `.R` file in the `R` folder, just like an R package. They can also be placed in the main module script (the one named `<moduleName>.R`). The default template includes several functions. 
 
-```{r useAFunction}
+In this example, instead of writing the code that does what we want inside the `doEvent` function itself, lets use the `Init` function. We move the code from the "init" event into a function, then call that function.
+
+```{r useAFunction,eval=FALSE}
 doEvent.My_linear_model.init <- function(sim, eventTime, eventType, priority) {
   sim <- Init(sim)
   return(sim)
@@ -128,21 +130,24 @@ Init <- function(sim) {
 }
 ```
 
-And of course, we can extend this to any number of functions. Notice, that functions can have any arguments. They don't have to have `sim`. Just the ones in the `doEvent` *have* to have `sim`.
+We can extend this to any number of functions. Notice, that functions can have any arguments. They don't have to have `sim`. The critical point to retain is that the `doEvent` function must return `sim`. We can also write documentation using `roxygen2` tags (though converting this to normal R documentation is still experimental within a SpaDES module).
 
-
-```{r useAFunction}
+```{r useAFunction2,eval=FALSE}
 doEvent.My_linear_model.init <- function(sim, eventTime, eventType, priority) {
   sim <- Init(sim)
   return(sim)
 }
 
+# Use this inside the `doEvent.My_linear_model.init` function
 Init <- function(sim) {
   y <- generateY(sim$x)
   sim$model <- lm(y ~ sim$x)
-  return(invisible(sim))
+  return(sim)
 }
 
+#' A function that generates random error around an `x`
+#' 
+#' @param x Any numeric vector of length 10 
 generateY <- function(x) {
   x + rnorm(10)
 }
@@ -152,49 +157,11 @@ generateY <- function(x) {
 
 ## Module types {#sec-moduletypes}
 
-SpaDES doesn't have an explicit module types. Rather, by convention, we
+SpaDES doesn't have explicit module types. Rather, by convention, we
 associate different modules with generic things they do. A fairly
-comprehensive list of modules types that we create are:
+comprehensive list of modules types that we create are below. We will revisit this later in @sec-continuousWorkflows. 
 
--   **Data Preparation** -- gets data from various sources for a project.
-
--   **Data Munging** -- uses `prepInputs` and outputs clean, usable data
-    for a project, mostly specifies `createsOutputs`.
-
--   **Parameterization** -- uses data from e.g., a **Data Munging**
-    module and uses statistics on data. This would be recognizable as *a
-    complete ecological study for publication*.
-
--   **Calibration** -- similar to **Parameterization** but uses repeated
-    simulation to estimate parameters.
-
--   **Study Area specifics** -- creates outputs that are very
-    idiosyncratic to a study area.
-
--   **Static Forecasting** -- creates outputs at different times, that
-    are not used by itself.
-
--   **Dynamic Forecasting** -- creates outputs at different times, that
-    are also its own inputs.
-
--   **Validation** -- takes many repeated inputs, often many replicates.
-
--   **Visualization** -- takes inputs from one or many replicated module
-    runs and build rich visuals.
-
--   **Post-Processing** -- takes inputs from one or many replicated
-    module runs and builds data analytics. These may be similar to
-    **Validation**.
-
-Even though all modules are built with the same structures (events &
-functions), the differences are about how the `inputObjects` and
-`outputObjects` are specified and designed. 
-
-### Module Type Examples
-
-We can rearrange the model types above and think about them from the perspective of whether they recur or not: *Static* and *Dynamic* modules.
-
-#### Static
+### Static
 
 **Static** modules can be defined as modules that "run once". This means
 that they may have only one event. Or a sequence of events that occur
