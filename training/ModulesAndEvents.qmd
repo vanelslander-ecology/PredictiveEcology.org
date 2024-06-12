@@ -111,98 +111,90 @@ functions (`doEvent.*moduleName*`), events call specific functions (we
 some times call these "event functions"), and functions can be defined
 within modules, R packages, or user code.
 
-### Rerun-tolerant functions
+## Adding functions
 
-In re-usable workflows, functions become particularly effective if they
-are **rerun-tolerant**, see @tip-Rerun (we use *tolerant* in part to
-reflect the fact that the *computer* tolerates it but also the *human*
-because they don't have to wait).
+Any function can be written and defined in any `.R` file in the `R` folder. They can also be placed in the main module script (the one named `<moduleName>.R`). The default template includes several functions. Lets use the `Init` function. We move the code from the "init" event into a function, then call that function.
 
-::: {#tip-Rerun .callout-tip appearance="simple"}
-Functions are **rerun-tolerant** if they
+```{r useAFunction}
+doEvent.My_linear_model.init <- function(sim, eventTime, eventType, priority) {
+  sim <- Init(sim)
+  return(sim)
+}
 
-1.  are **rerun-efficient**, meaning the first time they run they "do"
-    something, but the second and subsequent times, they give the same
-    output as the first time, but they skip the "doing" part
-
--   optionally the efficiency can be by **memory** caching ("memoising")
-    and/or more persistent **disk** caching.
-
-2.  and are **rerun-robust**, meaning they can be run error-free and
-    with sensible or identical outputs (if inputs are the same) using
-    any person's computer.
-:::
-
-To achieve these qualities, functions must use some sort of caching
-(i.e., evaluate the call and skip the content of the function if the
-call is deemed identical to a previous version of the call), and they
-must address any computer or operating system issues (such as paths,
-package dependencies etc.).
-
-Base R has some functions that are like this and some that are not. For
-example `library` is **rerun-tolerant** because it does something the
-first time, which may be slow, and subsequent times in the same session
-it is fast (**memory** efficient, but not **disk** efficient)
-
-Two key functions help achieve these points,
-[`?reproducible::Cache`](https://reproducible.predictiveecology.org/reference/Cache.html)
-and
-[`?reproducible::prepInputs`](https://reproducible.predictiveecology.org/reference/prepInputs.html)
-
-### `Cache()`
-
-`Cache()` is a function that can be wrapped around other functions that
-turns that function into a rerun-tolerant function.
-`reproducible::Cache` has several important modifications that work for
-*some* objects that don't cache well using "normal" caching, such as
-`terra` objects that are actually pointers to locations on disk rather
-than normal R objects.
-
-The following code will result in `d` being the same vector as `b`, and
-it will be returned quickly.
-
-```{r Cache}
-#| eval: false
-
-library(reproducible)
-
-a <- rnorm(1e7)
-b <- rnorm(1e7) |> Cache()
-d <- rnorm(1e7) |> Cache()
+Init <- function(sim) {
+  y <- sim$x + rnorm(10)
+  sim$model <- lm(y ~ sim$x)
+  return(invisible(sim))
+}
 ```
 
-See
-[`?reproducible::Cache`](https://reproducible.predictiveecology.org/reference/Cache.html)
+And of course, we can extend this to any number of functions. Notice, that functions can have any arguments. They don't have to have `sim`. Just the ones in the `doEvent` *have* to have `sim`.
 
-### `prepInputs()`
 
-`prepInputs()` is a workhorse function that helps users point to cloud
-or local datasets:
-[`?reproducible::prepInputs`](https://reproducible.predictiveecology.org/reference/prepInputs.html).
+```{r useAFunction}
+doEvent.My_linear_model.init <- function(sim, eventTime, eventType, priority) {
+  sim <- Init(sim)
+  return(sim)
+}
 
-In this example, we point to a url only and `prepInputs` downloads it,
-does checksumming, unzips it and loads it into R using the default
-`terra::vect` because it is a `shp` file after the unzipping.
+Init <- function(sim) {
+  y <- generateY(sim$x)
+  sim$model <- lm(y ~ sim$x)
+  return(invisible(sim))
+}
 
-```{r prepInputs}
-#| eval: false
+generateY <- function(x) {
+  x + rnorm(10)
+}
 
-ecozoneOfCanada <- reproducible::prepInputs(
-  url = "http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/ecozone_shp.zip")
 ```
 
-For more information
-[`?reproducible::prepInputs`](https://reproducible.predictiveecology.org/reference/prepInputs.html)
 
 ## Module types {#sec-moduletypes}
 
+SpaDES doesn't have an explicit module types. Rather, by convention, we
+associate different modules with generic things they do. A fairly
+comprehensive list of modules types that we create are:
+
+-   **Data Preparation** -- gets data from various sources for a project.
+
+-   **Data Munging** -- uses `prepInputs` and outputs clean, usable data
+    for a project, mostly specifies `createsOutputs`.
+
+-   **Parameterization** -- uses data from e.g., a **Data Munging**
+    module and uses statistics on data. This would be recognizable as *a
+    complete ecological study for publication*.
+
+-   **Calibration** -- similar to **Parameterization** but uses repeated
+    simulation to estimate parameters.
+
+-   **Study Area specifics** -- creates outputs that are very
+    idiosyncratic to a study area.
+
+-   **Static Forecasting** -- creates outputs at different times, that
+    are not used by itself.
+
+-   **Dynamic Forecasting** -- creates outputs at different times, that
+    are also its own inputs.
+
+-   **Validation** -- takes many repeated inputs, often many replicates.
+
+-   **Visualization** -- takes inputs from one or many replicated module
+    runs and build rich visuals.
+
+-   **Post-Processing** -- takes inputs from one or many replicated
+    module runs and builds data analytics. These may be similar to
+    **Validation**.
+
 Even though all modules are built with the same structures (events &
-functions), for convenience, we can categorize different types of
-modules in different ways.
+functions), the differences are about how the `inputObjects` and
+`outputObjects` are specified and designed. 
 
-For example, modules can be categorized by:
+### Module Type Examples
 
-### Static
+We can rearrange the model types above and think about them from the perspective of whether they recur or not: *Static* and *Dynamic* modules.
+
+#### Static
 
 **Static** modules can be defined as modules that "run once". This means
 that they may have only one event. Or a sequence of events that occur
