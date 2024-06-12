@@ -9,12 +9,8 @@ execute:
   warning: false
   message: false
   error: false
+  cache: true
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(cache = TRUE, echo = TRUE, eval = FALSE)
-Require::Require(c("SpaDES.core"))
-```
 
 # The `simList` - What is it? {#sec-simlist}
 
@@ -40,6 +36,8 @@ object that acts like a list or an environment, i.e., we can put objects
 into it and use them later.
 
 ```{r simListCreate}
+#| eval: true
+#| results: false
 sim <- simInit()
 sim$a <- 1
 sim$b <- sim$a + 2
@@ -61,7 +59,7 @@ envir(sim)
 The name `simList` has the word "list" in it, but it is actually an
 `environment`
 
-```{r,eval=FALSE}
+```{r}
 sim <- simInit()
 is(sim, "environment")
 # [1] TRUE
@@ -111,7 +109,7 @@ The main components of a `simList` are:
 We can examine the `simList` object structure in the usual R fashion by
 printing (`show`ing) it, or by using `str()`:
 
-```{r simlist-structure, echo=TRUE, eval=FALSE}
+```{r simlist-structure}
 emptySim <- simInit()
 emptySim  # same as show(emptySim)
 str(emptySim)
@@ -126,8 +124,11 @@ See also
 ## Accessing the parts of a simLists
 
 ::: columns-2
-```{r simList-accessors, echo=FALSE, eval=TRUE}
-emptySim <- SpaDES.core::simInit()
+```{r simList-accessors}
+#| include: false
+#| purl: false
+
+emptySim <- simInit()
 slots <- paste0(slotNames(emptySim))
 accessors <- c("modules", "params", "events", "current", "completed", "depends",
                "times", "inputs", "outputs", "paths", "envir", "objects") |>
@@ -172,6 +173,8 @@ calls.
 ### Initialize an empty `simList` object
 
 ```{r empty-simList}
+#| eval: true
+
 emptySim <- simInit()
 ```
 
@@ -263,7 +266,7 @@ mySimOut <- spades(mySimOut)
 
 ### Compare the simList before and after
 
-```{r compare-sims,eval=FALSE}
+```{r compare-sims}
 times(mySim)
 times(mySimOut)
 

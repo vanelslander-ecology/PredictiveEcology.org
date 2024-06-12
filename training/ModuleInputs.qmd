@@ -3,6 +3,14 @@ author      : "Eliot McIntire"
 date        : last-modified
 editor_options:
   chunk_output_type: console
+execute:
+  tidy: false
+  warning: false
+  message: false
+  error: false
+  cache: true
+  eval: true
+  results: hide
 ---
 
 # Module Inputs {#sec-moduleinputs}

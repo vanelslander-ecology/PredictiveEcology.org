@@ -17,7 +17,7 @@ cache: false
 See [Barebones R script] for the code shown in this chapter
 :::
 
-```{r setup,eval=TRUE}
+```{r setup}
 #| include: false
 #| purl: false
 
@@ -83,7 +83,7 @@ Note how it downloads the listed modules directly from their GitHub
 repositories (e.g.
 [tati-micheletti/speciesAbundance](https://github.com/tati-micheletti/speciesAbundance))
 
-```{r setupProject2,eval=TRUE}
+```{r setupProject2}
 ##################### PART II: Download the modules and install the needed packages
 Setup <- SpaDES.project::setupProject(
   
