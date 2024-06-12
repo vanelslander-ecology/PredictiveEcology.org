@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eliot McIntire">
-<meta name="dcterms.date" content="2024-06-10">
+<meta name="dcterms.date" content="2024-06-12">
 
 <title>Robust and nimble scientific workflows, using SpaDES - 12&nbsp; reproducible::prepInputs for Data</title>
 <style>
@@ -383,7 +383,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflowSimple2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -441,6 +441,7 @@ window.Quarto = {
   <li><a href="#caching" id="toc-caching" class="nav-link" data-scroll-target="#caching"><span class="header-section-number">12.7</span> Caching</a></li>
   <li><a href="#extending-prepinputs-with-fun" id="toc-extending-prepinputs-with-fun" class="nav-link" data-scroll-target="#extending-prepinputs-with-fun"><span class="header-section-number">12.8</span> Extending <code>prepInputs</code> with <code>fun</code></a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">12.9</span> See also</a></li>
+  <li><a href="#barebones-r-script" id="toc-barebones-r-script" class="nav-link" data-scroll-target="#barebones-r-script"><span class="header-section-number">12.10</span> Barebones R script</a></li>
   </ul>
 </nav>
     </div>
@@ -466,7 +467,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 10, 2024</p>
+      <p class="date">June 12, 2024</p>
     </div>
   </div>
   
@@ -478,6 +479,16 @@ window.Quarto = {
 </header>
 
 
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>See <a href="#barebones-r-script">Barebones R script</a> for the code shown in this chapter</p>
+</div>
+</div>
+</div>
 <p>Every project that has data will need to get the data from its original source into a form and format that works for a given project. To do this in a reproducible/reusable manner is not trivial.</p>
 <p>Some elements that should be present when bringing the data into a project in a reproducible/reusable manner can ideally include:</p>
 <ul>
@@ -680,6 +691,102 @@ window.Quarto = {
 <p><a href="https://reproducible.predictiveecology.org/reference/prepInputs.html"><code>reproducible::prepInputs</code></a></p>
 <p><a href="https://reproducible.predictiveecology.org/reference/preProcess.html"><code>reproducible::preProcess</code></a></p>
 <p><a href="https://reproducible.predictiveecology.org/reference/postProcessTo.html"><code>reproducible::postProcessTo</code></a></p>
+</section>
+<section id="barebones-r-script" class="level2" data-number="12.10">
+<h2 data-number="12.10" class="anchored" data-anchor-id="barebones-r-script"><span class="header-section-number">12.10</span> Barebones R script</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Require<span class="sc">::</span><span class="fu">Require</span>(<span class="fu">c</span>(<span class="st">"terra"</span>, <span class="st">"reproducible"</span>), </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">repos =</span> <span class="fu">c</span>(<span class="fu">getOption</span>(<span class="st">"predictiveecology.r-universe.dev"</span>, <span class="fu">getOption</span>(<span class="st">"repos"</span>))))</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://github.com/tati-micheletti/host/raw/master/data/rasterTest.tif"</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>ras <span class="ot">&lt;-</span> <span class="fu">prepInputs</span>(<span class="at">url =</span> url, <span class="at">destinationPath =</span> <span class="st">"~/SpaDES_book/data/prepInputs"</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">plot</span>(ras)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/ecozone_shp.zip"</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>shpEcozone <span class="ot">&lt;-</span> <span class="fu">prepInputs</span>(<span class="at">url =</span> url, <span class="at">destinationPath =</span> <span class="st">"~/SpaDES_book/data/prepInputs"</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">plot</span>(shpEcozone[<span class="dv">1</span>])</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">reproducible.inputPaths =</span> <span class="st">"~/data"</span>)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/ecozone_shp.zip"</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>shpEcozone <span class="ot">&lt;-</span> <span class="fu">prepInputs</span>(<span class="at">url =</span> url, <span class="at">destinationPath =</span> <span class="st">"~/SpaDES_book/data/prepInputs"</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">plot</span>(shpEcozone[<span class="dv">1</span>])</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>SK <span class="ot">&lt;-</span> SpaDES.project<span class="sc">::</span><span class="fu">setupStudyArea</span>(<span class="fu">list</span>(<span class="at">level =</span> <span class="dv">2</span>, <span class="at">NAME_1 =</span> <span class="st">"Saskatchewan"</span>))</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>shpEcozoneSK <span class="ot">&lt;-</span> <span class="fu">prepInputs</span>(</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> <span class="st">"http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/ecozone_shp.zip"</span>,</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">to =</span> SK, <span class="at">destinationPath =</span> <span class="st">"~/SpaDES_book/data/prepInputs"</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">plot</span>(shpEcozoneSK[<span class="dv">1</span>])</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>urlTif1 <span class="ot">&lt;-</span> <span class="st">"https://geodata.ucdavis.edu/geodata/elv/CAN_elv_msk.zip"</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Turns out the previous steps (original data or postProccessed) have an error</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="fu">try</span>(DEMSK <span class="ot">&lt;-</span> <span class="fu">prepInputs</span>(</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> urlTif1,</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">maskTo =</span> shpEcozoneSK, </span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">cropTo =</span> shpEcozoneSK,</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">destinationPath =</span> <span class="st">"~/SpaDES_book/data/prepInputs"</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>shpEcozoneSK <span class="ot">&lt;-</span> <span class="fu">fixErrorsIn</span>(shpEcozoneSK)</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Rerun</span></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>DEMSK <span class="ot">&lt;-</span> <span class="fu">prepInputs</span>(</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> urlTif1,</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>  <span class="at">cropTo =</span> shpEcozoneSK,</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>  <span class="at">maskTo =</span> shpEcozoneSK, </span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>  <span class="at">destinationPath =</span> <span class="st">"~/SpaDES_book/data/prepInputs"</span></span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">plot</span>(DEMSK)</span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">plot</span>(shpEcozoneSK[<span class="dv">1</span>], <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"transparent"</span>)</span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>SK <span class="ot">&lt;-</span> SpaDES.project<span class="sc">::</span><span class="fu">setupStudyArea</span>(<span class="fu">list</span>(<span class="at">level =</span> <span class="dv">2</span>, <span class="at">NAME_1 =</span> <span class="st">"Saskatchewan"</span>, <span class="at">epsg =</span> <span class="dv">5070</span>))</span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>SKras <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">rast</span>(terra<span class="sc">::</span><span class="fu">ext</span>(SK), <span class="at">res =</span> <span class="dv">250</span>, <span class="at">val =</span> <span class="dv">1</span>)</span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">crs</span>(SKras) <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">crs</span>(SK)</span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>DEMSK250m <span class="ot">&lt;-</span> <span class="fu">prepInputs</span>(</span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> urlTif1,</span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a>  <span class="at">to =</span> SKras,                   <span class="co"># &lt;-   template raster</span></span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a>  <span class="at">destinationPath =</span> <span class="st">"~/SpaDES_book/data/prepInputs"</span></span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">plot</span>(DEMSK250m)</span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>DEMSK250m <span class="ot">&lt;-</span> <span class="fu">prepInputs</span>(</span>
+<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> urlTif1,</span>
+<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a>  <span class="at">to =</span> SKras, </span>
+<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a>  <span class="at">destinationPath =</span> <span class="st">"~/SpaDES_book/data/prepInputs"</span></span>
+<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Cache</span>()</span>
+<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a><span class="co"># run later... very fast</span></span>
+<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a>DEMSK250m <span class="ot">&lt;-</span> <span class="fu">prepInputs</span>(</span>
+<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> urlTif1,</span>
+<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a>  <span class="at">to =</span> SKras, </span>
+<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a>  <span class="at">destinationPath =</span> <span class="st">"~/SpaDES_book/data/prepInputs"</span></span>
+<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Cache</span>()</span>
+<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a>LuxembourgFull <span class="ot">&lt;-</span> <span class="fu">prepInputs</span>(</span>
+<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a> <span class="at">dlFun =</span></span>
+<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a>   geodata<span class="sc">::</span><span class="fu">gadm</span>(<span class="at">name =</span> <span class="st">"GADM"</span>, <span class="at">country =</span> <span class="st">"LUX"</span>, <span class="at">level =</span> <span class="dv">0</span>, <span class="at">path =</span> <span class="st">"~/SpaDES_book/prepInputs"</span>) <span class="co"># preProcess keeps file from this!</span></span>
+<span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
+<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a>LuxembourgInnerBuffer <span class="ot">&lt;-</span> <span class="fu">prepInputs</span>(</span>
+<span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a>  <span class="at">dlFun =</span></span>
+<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a>    geodata<span class="sc">::</span><span class="fu">gadm</span>(<span class="at">name =</span> <span class="st">"GADM"</span>, <span class="at">country =</span> <span class="st">"LUX"</span>, <span class="at">level =</span> <span class="dv">0</span>, <span class="at">path =</span> <span class="st">"~/SpaDES_book/prepInputs"</span>) <span class="co"># preProcess keeps file from this!</span></span>
+<span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a>  ,</span>
+<span id="cb10-80"><a href="#cb10-80" aria-hidden="true" tabindex="-1"></a>  <span class="at">fun =</span> {                      <span class="co"># Custom function</span></span>
+<span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a>    out <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(targetFile)</span>
+<span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a>    out <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">vect</span>(out)</span>
+<span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a>    terra<span class="sc">::</span><span class="fu">buffer</span>(out, <span class="dv">5000</span>)</span>
+<span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
+<span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">plot</span>(LuxembourgInnerBuffer)</span>
+<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">plot</span>(Luxembourg, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 
 
 </section>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eliot McIntire">
-<meta name="dcterms.date" content="2024-06-10">
+<meta name="dcterms.date" content="2024-06-12">
 
 <title>Robust and nimble scientific workflows, using SpaDES - 6&nbsp; Module Files and Metadata</title>
 <style>
@@ -383,7 +383,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflowSimple2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -447,6 +447,7 @@ window.Quarto = {
   <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">6.10</span> Questions</a></li>
   <li><a href="#sec-moduleFilesAndMetadata-challengeYourself" id="toc-sec-moduleFilesAndMetadata-challengeYourself" class="nav-link" data-scroll-target="#sec-moduleFilesAndMetadata-challengeYourself"><span class="header-section-number">6.11</span> Challenge yourself</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">6.12</span> See also</a></li>
+  <li><a href="#barebones-r-script" id="toc-barebones-r-script" class="nav-link" data-scroll-target="#barebones-r-script"><span class="header-section-number">6.13</span> Barebones R script</a></li>
   </ul>
 </nav>
     </div>
@@ -472,7 +473,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 10, 2024</p>
+      <p class="date">June 12, 2024</p>
     </div>
   </div>
   
@@ -484,6 +485,16 @@ window.Quarto = {
 </header>
 
 
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>See <a href="#barebones-r-script">Barebones R script</a> for the code shown in this chapter</p>
+</div>
+</div>
+</div>
 <section id="continue-example-a-linear-model" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="continue-example-a-linear-model"><span class="header-section-number">6.1</span> Continue example – a linear model</h2>
 <p>We will start by thinking about metadata: <em>What is metadata?</em></p>
@@ -531,20 +542,19 @@ window.Quarto = {
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make a module</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>Require<span class="sc">::</span><span class="fu">Require</span>(<span class="fu">c</span>(<span class="st">"reproducible"</span>, <span class="st">"SpaDES.core"</span>), <span class="at">repos =</span> <span class="fu">c</span>(<span class="st">"https://predictiveecology.r-universe.dev"</span>, <span class="fu">getOption</span>(<span class="st">"repos"</span>)))</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># make a module</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>nm1 <span class="ot">&lt;-</span> <span class="st">"My_linear_model"</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>modulePath <span class="ot">&lt;-</span> <span class="st">"~/SpaDES_book/NewModuleIntro/NewModule"</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">newModule</span>(<span class="at">name =</span> nm1, <span class="at">path =</span> modulePath, <span class="at">open =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">events =</span> <span class="fu">list</span>(</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>                         <span class="at">init =</span> {</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                           y <span class="ot">&lt;-</span> sim<span class="sc">$</span>x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)      <span class="co"># &lt;--------- add sim$ here</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># fit a linear model</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                           sim<span class="sc">$</span>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> sim<span class="sc">$</span>x)  <span class="co"># &lt;--------- add sim$ here</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                         }</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>                       ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Require<span class="sc">::</span><span class="fu">Require</span>(<span class="fu">c</span>(<span class="st">"reproducible"</span>, <span class="st">"SpaDES.core"</span>), <span class="at">repos =</span> <span class="fu">c</span>(<span class="st">"https://predictiveecology.r-universe.dev"</span>, <span class="fu">getOption</span>(<span class="st">"repos"</span>)))</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># make a module</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>nm1 <span class="ot">&lt;-</span> <span class="st">"My_linear_model"</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>modulePath <span class="ot">&lt;-</span> <span class="st">"~/SpaDES_book/NewModuleIntro/NewModule"</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">newModule</span>(<span class="at">name =</span> nm1, <span class="at">path =</span> modulePath, <span class="at">open =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">events =</span> <span class="fu">list</span>(</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">init =</span> {</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>                           y <span class="ot">&lt;-</span> sim<span class="sc">$</span>x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)      <span class="co"># &lt;--------- add sim$ here</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># fit a linear model</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                           sim<span class="sc">$</span>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> sim<span class="sc">$</span>x)  <span class="co"># &lt;--------- add sim$ here</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                         }</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                       ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p><strong>Where is this module code?</strong> In the previous chapter, we didn’t look or care where the module code was.</p>
@@ -588,6 +598,19 @@ window.Quarto = {
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+<p>After saving the module R script, we can run the module ad inspect the output</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">simInit</span>(<span class="at">modules =</span> nm1, <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">spades</span>(out)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># or </span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">simInitAndSpades</span>(<span class="at">modules =</span> nm1, <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>out<span class="sc">$</span>model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
 <section id="sharing-inputs-and-outputs" class="level2" data-number="6.6">
 <h2 data-number="6.6" class="anchored" data-anchor-id="sharing-inputs-and-outputs"><span class="header-section-number">6.6</span> Sharing inputs and outputs</h2>
@@ -600,9 +623,9 @@ window.Quarto = {
 <div class="callout-body-container">
 <p><strong>An event occurs in a special function that starts with <code>doEvent.</code></strong>. But, since it is “in a function”, each event has all the features of a function:</p>
 <ul>
-<li><strong>arguments</strong> – specifically <code>sim</code> can be used</li>
-<li><strong>something returned</strong> – in this case, the <code>simList</code>. <code>return(sim)</code> must always be present - it is by default, but don’t delete it!</li>
-<li><strong>it can be run</strong>– but don’t worry about running it; SpaDES runs it when it is time.</li>
+<li><p><strong>arguments</strong> – specifically <code>sim</code> can be used</p></li>
+<li><p><strong>something returned</strong> – in this case, the <code>simList</code>. <code>return(sim)</code> must always be present - it is by default, but don’t delete it!</p></li>
+<li><p><strong>it can be run</strong>– but don’t worry about running it; SpaDES runs it when it is time.</p></li>
 </ul>
 </div>
 </div>
@@ -622,7 +645,6 @@ window.Quarto = {
 </div>
 <p>To share objects between modules, we <em>must</em> assign them to the <code>sim</code> <strong>and</strong> make sure that <code>return(sim)</code> is at the end of the function.</p>
 <p>Now we have a module that creates one object, <code>model</code> and puts them inside <code>sim</code>. This all happens in the event called <code>init</code>.</p>
-<!--maybe unnecessary?-->
 <p><strong>Next</strong>: add the visualization module with metadata</p>
 </section>
 <section id="visualization-module" class="level2" data-number="6.7">
@@ -631,14 +653,14 @@ window.Quarto = {
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>nm2 <span class="ot">&lt;-</span> <span class="st">"visualize"</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">newModule</span>(nm2, <span class="at">path =</span> modulePath, <span class="at">open =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">events =</span> <span class="fu">list</span>(</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">init =</span> {</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>              <span class="fu">plot</span>(sim<span class="sc">$</span>model)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>            }</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>          )</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>nm2 <span class="ot">&lt;-</span> <span class="st">"visualize"</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">newModule</span>(nm2, <span class="at">path =</span> modulePath, <span class="at">open =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">events =</span> <span class="fu">list</span>(</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">init =</span> {</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>              <span class="fu">plot</span>(sim<span class="sc">$</span>model)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>          )</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <section id="outputs-of-one-module-are-inputs-of-another" class="level3" data-number="6.7.1">
@@ -647,10 +669,10 @@ window.Quarto = {
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>inputObjects <span class="ot">=</span> <span class="fu">bindrows</span>(</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expectsInput</span>(<span class="at">objectName =</span> <span class="st">"model"</span>, <span class="at">objectClass =</span> <span class="st">"lm"</span>, </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">desc =</span> <span class="st">"A linear model object from the equation (x ~ y)"</span>, <span class="at">sourceURL =</span> <span class="cn">NA</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>inputObjects <span class="ot">=</span> <span class="fu">bindrows</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expectsInput</span>(<span class="at">objectName =</span> <span class="st">"model"</span>, <span class="at">objectClass =</span> <span class="st">"lm"</span>, </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">desc =</span> <span class="st">"A linear model object from the equation (x ~ y)"</span>, <span class="at">sourceURL =</span> <span class="cn">NA</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -661,8 +683,8 @@ window.Quarto = {
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">simInitAndSpades</span>(<span class="at">modules =</span> <span class="fu">c</span>(nm1, nm2), </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">simInitAndSpades</span>(<span class="at">modules =</span> <span class="fu">c</span>(nm1, nm2), </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Just like functions in R, we can supply default values for our <strong>inputs</strong>. We put these in a function at the bottom called <code>.inputObjects</code>. See <a href="ModuleInputs.html" class="quarto-xref"><span>Chapter 7</span></a> for a model detailed explanation of module inputs and how to deal with them.</p>
@@ -670,11 +692,11 @@ window.Quarto = {
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>.inputObjects <span class="ot">&lt;-</span> <span class="cf">function</span>(sim) {</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">suppliedElsewhere</span>(<span class="st">"x"</span>, sim))</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    sim<span class="sc">$</span>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">20</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">invisible</span>(sim))</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>.inputObjects <span class="ot">&lt;-</span> <span class="cf">function</span>(sim) {</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">suppliedElsewhere</span>(<span class="st">"x"</span>, sim))</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    sim<span class="sc">$</span>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">20</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">invisible</span>(sim))</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p><code>!suppliedElsewhere("x", sim)</code> will check if <code>x</code> is in <code>sim</code> and if not, will run the subsequent code lines (see <a href="https://rdrr.io/cran/SpaDES.core/man/suppliedElsewhere.html"><code>?suppliedElsewhere</code></a>).</p>
@@ -685,8 +707,8 @@ window.Quarto = {
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">simInitAndSpades</span>(<span class="at">modules =</span> <span class="fu">c</span>(nm1, nm2), </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">simInitAndSpades</span>(<span class="at">modules =</span> <span class="fu">c</span>(nm1, nm2), </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>We now have a SpaDES module that has metadata, generates random starting data (if the user doesn’t supply an alternative), fits a linear model, outputs that model, and plots the fit.</p>
@@ -694,25 +716,19 @@ window.Quarto = {
 <section id="questions" class="level2" data-number="6.10">
 <h2 data-number="6.10" class="anchored" data-anchor-id="questions"><span class="header-section-number">6.10</span> Questions</h2>
 <ol type="1">
-<li>What are some things we “gained” from putting our simple 3 lines of code into a module?</li>
-</ol>
+<li><p>What are some things we “gained” from putting our simple 3 lines of code into a module?</p>
 <ul>
 <li>We can turn off plotting easily. Set <code>.plotInitialTime = NA</code> in the <code>simInitAndSpades</code> call.</li>
-</ul>
-<ol start="2" type="1">
-<li>What are some things we “lost”?</li>
-</ol>
+</ul></li>
+<li><p>What are some things we “lost”?</p>
 <ul>
 <li>More complicated. (overkill for these 3 lines?)</li>
-</ul>
-<ol start="3" type="1">
-<li>What if we used an R package that wasn’t in the base packages list?</li>
-</ol>
+</ul></li>
+<li><p>What if we used an R package that wasn’t in the base packages list?</p>
 <ul>
 <li>See <a href="https://rdrr.io/cran/SpaDES.core/man/defineModule.html"><code>?defineModule</code></a> for all the metadata items. Specifically, see <code>reqdPkgs</code>.</li>
-</ul>
-<ol start="4" type="1">
-<li>What is the <code>sim</code>? See <a href="https://rdrr.io/cran/SpaDES.core/man/simList-class.html"><code>?'.simList-class'</code></a></li>
+</ul></li>
+<li><p>What is the <code>sim</code>? See <a href="https://rdrr.io/cran/SpaDES.core/man/simList-class.html"><code>?'.simList-class'</code></a></p></li>
 </ol>
 </section>
 <section id="sec-moduleFilesAndMetadata-challengeYourself" class="level2" data-number="6.11">
@@ -736,6 +752,65 @@ window.Quarto = {
 <p><a href="https://spades-project.predictiveecology.org/reference/setupProject.html"><code>?SpaDES.project::setupProject</code></a></p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/simInit.html"><code>?SpaDES.core::simInit</code></a></p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/simInitAndSpaDES.html"><code>?SpaDES.core::simInitAndSpaDES</code></a></p>
+</section>
+<section id="barebones-r-script" class="level2" data-number="6.13">
+<h2 data-number="6.13" class="anchored" data-anchor-id="barebones-r-script"><span class="header-section-number">6.13</span> Barebones R script</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create some data</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># fit a linear model</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>Require<span class="sc">::</span><span class="fu">Require</span>(<span class="fu">c</span>(<span class="st">"reproducible"</span>, <span class="st">"SpaDES.core"</span>), <span class="at">repos =</span> <span class="fu">c</span>(<span class="st">"https://predictiveecology.r-universe.dev"</span>, <span class="fu">getOption</span>(<span class="st">"repos"</span>)))</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># make a module</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>nm1 <span class="ot">&lt;-</span> <span class="st">"My_linear_model"</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>modulePath <span class="ot">&lt;-</span> <span class="st">"~/SpaDES_book/NewModuleIntro/NewModule"</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">newModule</span>(<span class="at">name =</span> nm1, <span class="at">path =</span> modulePath, <span class="at">open =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>                       <span class="at">events =</span> <span class="fu">list</span>(</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>                         <span class="at">init =</span> {</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>                           y <span class="ot">&lt;-</span> sim<span class="sc">$</span>x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)      <span class="co"># &lt;--------- add sim$ here</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># fit a linear model</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>                           sim<span class="sc">$</span>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> sim<span class="sc">$</span>x)  <span class="co"># &lt;--------- add sim$ here</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>                         }</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>                       ))</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">simInit</span>(<span class="at">modules =</span> nm1, <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">spades</span>(out)</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="co"># or </span></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">simInitAndSpades</span>(<span class="at">modules =</span> nm1, <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>out<span class="sc">$</span>model</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>nm2 <span class="ot">&lt;-</span> <span class="st">"visualize"</span></span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a><span class="fu">newModule</span>(nm2, <span class="at">path =</span> modulePath, <span class="at">open =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>          <span class="at">events =</span> <span class="fu">list</span>(</span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>            <span class="at">init =</span> {</span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>              <span class="fu">plot</span>(sim<span class="sc">$</span>model)</span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>          )</span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a><span class="fu">simInitAndSpades</span>(<span class="at">modules =</span> <span class="fu">c</span>(nm1, nm2), </span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>                 <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a><span class="fu">simInitAndSpades</span>(<span class="at">modules =</span> <span class="fu">c</span>(nm1, nm2), </span>
+<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>                 <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 
 
 </section>

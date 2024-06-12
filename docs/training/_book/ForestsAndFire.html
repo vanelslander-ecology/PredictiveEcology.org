@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eliot McIntire and Ian Eddy">
-<meta name="dcterms.date" content="2024-06-08">
+<meta name="dcterms.date" content="2024-06-12">
 
 <title>Robust and nimble scientific workflows, using SpaDES - 16&nbsp; Forest Succession and Wildfire using setupProject</title>
 <style>
@@ -383,7 +383,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflowSimple2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -430,6 +430,7 @@ window.Quarto = {
   <ul>
   <li><a href="#examining-things" id="toc-examining-things" class="nav-link active" data-scroll-target="#examining-things"><span class="header-section-number">16.1</span> Examining things</a></li>
   <li><a href="#changing-things" id="toc-changing-things" class="nav-link" data-scroll-target="#changing-things"><span class="header-section-number">16.2</span> Changing things</a></li>
+  <li><a href="#barebones-r-script" id="toc-barebones-r-script" class="nav-link" data-scroll-target="#barebones-r-script"><span class="header-section-number">16.3</span> Barebones R script</a></li>
   </ul>
 </nav>
     </div>
@@ -455,7 +456,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 8, 2024</p>
+      <p class="date">June 12, 2024</p>
     </div>
   </div>
   
@@ -467,7 +468,27 @@ window.Quarto = {
 </header>
 
 
-<p><strong>1.5 hours – estimated time for 1st time executing</strong> <strong>6 GB RAM – estimated RAM for executing</strong></p>
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>See <a href="#barebones-r-script">Barebones R script</a> for the code shown in this chapter</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><em>1.5 hours – estimated time for 1st time executing</em></p>
+<p><em>6 GB RAM – estimated peak RAM for executing</em></p>
+</div>
+</div>
+</div>
 <p>We have developed an R version of LANDIS-II’s Biomass Succession Extension, comprised of 2 modules: <code>Biomass_core</code> and <code>Biomass_regeneration</code>. We can combine these with a fire model, such as <code>scfm</code> which is a collaborative effort lead by Steve Cumming at Laval, University (thus the name: <strong>S</strong>teve <strong>C</strong>umming <strong>F</strong>ire <strong>M</strong>odel).</p>
 <p>As with other examples, we also include all the parameterization modules here, with <code>Biomass_borealDataPrep</code> for the <code>Biomass_***</code> modules and <code>scfmLandcoverInit</code>, <code>scfmRegime</code> and <code>scfmDriver</code> for the <code>scfm</code> family.</p>
 <p>This makes for a 10 module project. Using <code>setupProject</code>, we can readily run these from their canonical “i.e., current, up to date, open and available” versions:</p>
@@ -503,7 +524,7 @@ window.Quarto = {
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>                    <span class="at">.useCache =</span> <span class="fu">c</span>(<span class="st">".inputObjects"</span>, <span class="st">"init"</span>)</span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>                 ),</span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">scfmDriver =</span> <span class="fu">list</span>(<span class="at">targetN =</span> <span class="dv">1000</span>, <span class="co">#default is 4000 - higher targetN adds time + precision</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>                      <span class="do">### targetN would ideally be minimum 2000 - mean fire size estimates will be bad with 1000</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># targetN would ideally be minimum 2000 - mean fire size estimates will be bad with 1000</span></span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>                      <span class="at">.useParallelFireRegimePolys =</span> <span class="cn">TRUE</span>) <span class="co">#assumes parallelization is an otpion</span></span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  ),</span>
@@ -579,6 +600,95 @@ window.Quarto = {
 </details>
 </div>
 <p>Then we can look in the <code>outputs/figures</code> folder to see all the figures that the modules created.</p>
+</section>
+<section id="barebones-r-script" class="level2" data-number="16.3">
+<h2 data-number="16.3" class="anchored" data-anchor-id="barebones-r-script"><span class="header-section-number">16.3</span> Barebones R script</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>repos <span class="ot">&lt;-</span> <span class="fu">unique</span>(<span class="fu">c</span>(<span class="st">"predictiveecology.r-universe.dev"</span>, <span class="fu">getOption</span>(<span class="st">"repos"</span>)))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repos =</span> repos)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Require::Require(c("SpaDES.project (HEAD)"))</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>Require<span class="sc">::</span><span class="fu">Require</span>(<span class="fu">c</span>(<span class="st">"PredictiveEcology/SpaDES.project@development (HEAD)"</span>)) </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># pkgload::load_all("~/GitHub/SpaDES.project")</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> SpaDES.project<span class="sc">::</span><span class="fu">setupProject</span>(</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">updateRprofile =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="st">"scfm_example_fresh"</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">useGit =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">projectPath =</span> <span class="st">"~/SpaDES_book"</span>),</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">modules =</span> <span class="fu">c</span>(<span class="st">"PredictiveEcology/Biomass_borealDataPrep@development"</span>,</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>              <span class="st">"PredictiveEcology/Biomass_core@development"</span>,</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>              <span class="st">"PredictiveEcology/Biomass_regeneration@development"</span>,</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>              <span class="fu">file.path</span>(<span class="st">"PredictiveEcology/scfm@development/modules"</span>,</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">c</span>(<span class="st">"scfmLandcoverInit"</span>, <span class="st">"scfmRegime"</span>, <span class="st">"scfmDriver"</span>,</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>                          <span class="st">"scfmIgnition"</span>, <span class="st">"scfmEscape"</span>, <span class="st">"scfmSpread"</span>,</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>                          <span class="st">"scfmDiagnostics"</span>))</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">params =</span> <span class="fu">list</span>(</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">.globals =</span> <span class="fu">list</span>(<span class="at">.studyAreaName =</span> <span class="st">"scfm_example"</span>,</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>                    <span class="at">dataYear =</span> <span class="dv">2011</span>, <span class="co">#will get kNN 2011 data, and NTEMS 2011 landcover</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>                    <span class="at">sppEquivCol =</span> <span class="st">"LandR"</span>,</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>                    <span class="at">.plots =</span> <span class="st">"png"</span>,</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>                    <span class="at">.useCache =</span> <span class="fu">c</span>(<span class="st">".inputObjects"</span>, <span class="st">"init"</span>)</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>                 ),</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">scfmDriver =</span> <span class="fu">list</span>(<span class="at">targetN =</span> <span class="dv">1000</span>, <span class="co">#default is 4000 - higher targetN adds time + precision</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># targetN would ideally be minimum 2000 - mean fire size estimates will be bad with 1000</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>                      <span class="at">.useParallelFireRegimePolys =</span> <span class="cn">TRUE</span>) <span class="co">#assumes parallelization is an otpion</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">options =</span> <span class="fu">list</span>(<span class="co">#spades.allowInitDuringSimInit = TRUE,</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>                 <span class="at">spades.allowSequentialCaching =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>                 <span class="at">spades.moduleCodeChecks =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>                 <span class="co">#                reproducible.shapefileRead = "terra::vect",</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>                 <span class="at">spades.recoveryMode =</span> <span class="dv">1</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>  <span class="at">packages =</span> <span class="fu">c</span>(<span class="st">'RCurl'</span>, <span class="st">'XML'</span>, <span class="st">'snow'</span>), <span class="co"># need for some downloading; if omitted, a message tells user</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="fu">list</span>(<span class="at">start =</span> <span class="dv">2011</span>, <span class="at">end =</span> <span class="dv">2061</span>),</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>  <span class="at">sppEquiv =</span> LandR<span class="sc">::</span>sppEquivalencies_CA[KNN <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Popu_Tre"</span>, <span class="st">"Betu_Pap"</span>,</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>                                                   <span class="st">"Pice_Gla"</span>, <span class="st">"Pice_Mar"</span>,</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>                                                   <span class="st">"Pinu_Con"</span>, <span class="st">"Pinu_Ban"</span>)],</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>  <span class="at">studyArea =</span> {</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>    targetCRS <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"+proj=lcc +lat_1=49 +lat_2=77 +lat_0=0 +lon_0=-95 +x_0=0 +y_0=0"</span>,</span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"+datum=NAD83 +units=m +no_defs +ellps=GRS80 +towgs84=0,0,0"</span>)</span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>    sa <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">vect</span>(<span class="fu">cbind</span>(<span class="sc">-</span><span class="dv">1209980</span>, <span class="dv">7586865</span>), <span class="at">crs =</span> targetCRS)</span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>    sa <span class="ot">&lt;-</span> LandR<span class="sc">::</span><span class="fu">randomStudyArea</span>(<span class="at">center =</span> sa, <span class="at">size =</span> <span class="dv">10000</span> <span class="sc">*</span> <span class="dv">250</span> <span class="sc">*</span> <span class="dv">30000</span>, <span class="at">seed =</span> <span class="dv">1002</span>)</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>    sa <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_as_sf</span>(sa)</span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>  <span class="at">studyAreaLarge =</span> {</span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>    sf<span class="sc">::</span><span class="fu">st_buffer</span>(studyArea, <span class="dv">20000</span>)</span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>  <span class="at">rasterToMatchLarge =</span> {</span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>    rtml<span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">rast</span>(terra<span class="sc">::</span><span class="fu">ext</span>(studyAreaLarge), <span class="at">res =</span> <span class="fu">c</span>(<span class="dv">250</span>, <span class="dv">250</span>))</span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>    terra<span class="sc">::</span><span class="fu">crs</span>(rtml) <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">crs</span>(studyAreaLarge)</span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>    rtml[] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>    rtml <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">mask</span>(rtml, studyAreaLarge)</span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>  <span class="at">rasterToMatch =</span> {</span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>    rtm <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">crop</span>(rasterToMatchLarge, studyArea)</span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a>    rtm <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">mask</span>(rtm, studyArea)</span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a><span class="co">#this must be done outside of setupProject (temporarily)</span></span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a><span class="co">#alternatively</span></span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>outSim <span class="ot">&lt;-</span> <span class="fu">do.call</span>(SpaDES.core<span class="sc">::</span>simInitAndSpades, out) <span class="sc">|&gt;</span></span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Cache</span>()</span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a><span class="fu">completed</span>(outSim)</span>
+<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a><span class="fu">elapsedTime</span>(outSim, <span class="at">units =</span> <span class="st">"minute"</span>)</span>
+<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a>mm <span class="ot">&lt;-</span> <span class="fu">moduleMetadata</span>(outSim)</span>
+<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a><span class="co"># a list of all the module metadata</span></span>
+<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a>mm<span class="sc">$</span>Biomass_borealDataPrep<span class="sc">$</span></span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a>out<span class="sc">$</span>params<span class="sc">$</span>.globals<span class="sc">$</span>.plots <span class="ot">&lt;-</span> <span class="st">"png"</span></span>
+<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>outSim <span class="ot">&lt;-</span> <span class="fu">simInitAndSpades2</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 
 
 </section>

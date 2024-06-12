@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ceres Barros">
-<meta name="dcterms.date" content="2024-06-10">
+<meta name="dcterms.date" content="2024-06-12">
 
 <title>Robust and nimble scientific workflows, using SpaDES - 13&nbsp; Debugging SpaDES Modules</title>
 <style>
@@ -383,7 +383,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflowSimple2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -439,6 +439,7 @@ window.Quarto = {
   <li><a href="#restartspades" id="toc-restartspades" class="nav-link" data-scroll-target="#restartspades"><span class="header-section-number">13.3</span> <code>restartSpades()</code></a></li>
   <li><a href="#try-on-your-own" id="toc-try-on-your-own" class="nav-link" data-scroll-target="#try-on-your-own"><span class="header-section-number">13.4</span> Try on your own</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">13.5</span> See also</a></li>
+  <li><a href="#barebones-r-script" id="toc-barebones-r-script" class="nav-link" data-scroll-target="#barebones-r-script"><span class="header-section-number">13.6</span> Barebones R script</a></li>
   </ul>
 </nav>
     </div>
@@ -464,7 +465,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 10, 2024</p>
+      <p class="date">June 12, 2024</p>
     </div>
   </div>
   
@@ -476,6 +477,16 @@ window.Quarto = {
 </header>
 
 
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>See <a href="#barebones-r-script">Barebones R script</a> for the code shown in this chapter</p>
+</div>
+</div>
+</div>
 <p>The flexibility and collaborative model development that SpaDES promotes can come with the cost of having module code that may not fit all desired applications out-of-the-box or, like any other piece of code, that may have errors.</p>
 <p>It is a good idea to learn the basics of debugging, especially when using open-source, interpreted code languages like R (in opposition to compiled code languages like <em>C++</em>).</p>
 <p>It is also a (very) good idea to learn how to develop a good reproducible example (<em>reprex</em>; see <a href="https://www.r-bloggers.com/2020/10/how-to-make-a-reprex/">How to make a reprex</a>) when debugging attempts have failed or when we cannot fix the issue ourselves (e.g., bugs in R packages need to be fixed by package maintainers).</p>
@@ -504,40 +515,59 @@ window.Quarto = {
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">myFun</span>(<span class="fu">runif</span>(<span class="dv">20</span>), <span class="st">"A"</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># &gt; myFun(runif(20), "A")</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Called from: myFun(runif(20), "A")</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Browse[1]&gt; x</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#  [1] 0.48059327 0.12201652 0.39367787 0.91989186 0.04872701 0.85632846 0.05945062 0.87683559 0.58599446 0.10403352 0.49429023</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">#  [12] 0.69785397 0.19622413 0.05559181 0.20329131 0.14909383 0.61400844 0.73638292 0.21185129 0.72534305</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Browse[1]&gt; y</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">#  [1] "A"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">myFun</span>(<span class="fu">runif</span>(<span class="dv">20</span>), <span class="st">"A"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># &gt; myFun(runif(20), "A")</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Called from: myFun(runif(20), "A")</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Browse[1]&gt; x</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#  [1] 0.48059327 0.12201652 0.39367787 0.91989186 0.04872701 0.85632846 0.05945062 0.87683559 0.58599446 0.10403352 0.49429023</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#  [12] 0.69785397 0.19622413 0.05559181 0.20329131 0.14909383 0.61400844 0.73638292 0.21185129 0.72534305</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Browse[1]&gt; y</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#  [1] "A"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>From the above we would quickly realise we were trying to add a numeric vector with a character vector, which obviously doesn’t work.</p>
 <section id="browser-with-a-spades-module" class="level3" data-number="13.1.1">
 <h3 data-number="13.1.1" class="anchored" data-anchor-id="browser-with-a-spades-module"><span class="header-section-number">13.1.1</span> <code>browser()</code> with a SpaDES module</h3>
-<p>Go back to the module <em>My_linear_model</em> created in <a href="NewModuleIntro.html" class="quarto-xref"><span>Chapter 5</span></a> and insert a <code>browser()</code> in the <code>init</code> event, save and run the module again.</p>
-<pre><code>doEvent.My_linear_model.init &lt;- function(sim, eventTime, eventType, priority) {
-    browser()
-    x &lt;- rnorm(10)
-    y &lt;- x + rnorm(10)
-    sim$model &lt;- lm(y ~ x)  
-    return(sim)
-}</code></pre>
-<p>If you are using RStudio, it probably opened the module .R script (if not try right-clicking the RStudio window and selecting “Reload”) and the R console shows:</p>
-<pre><code>&gt; out &lt;- simInit(modules = nm1, paths = list(modulePath = modulePath))
-&gt; out &lt;- spades(out)
-No packages to install/update
-Jun09 00:03:51 simInit Resetting .Random.seed of session because sim$._randomSeed is not NULL. To get a different seed, run: sim$._randomSeed &lt;- NULL to clear it.
-Jun09 00:03:51 simInit Using setDTthreads(1). To change: 'options(spades.DTthreads = X)'.
-Jun09 00:03:51 chckpn:init total elpsd: 21 secs | 0 checkpoint init 0
-Jun09 00:03:51 save  :init total elpsd: 21 secs | 0 save init 0
-Jun09 00:03:51 prgrss:init total elpsd: 21 secs | 0 progress init 0
-Jun09 00:03:51 load  :init total elpsd: 21 secs | 0 load init 0
-Jun09 00:03:51 My_lnr:init total elpsd: 21 secs | 0 My_linear_model init 1
-Called from: get(moduleCall, envir = fnEnv)(sim, cur[["eventTime"]], cur[["eventType"]])</code></pre>
+<p>Go back to the module <em>My_linear_model</em> created in <a href="NewModuleIntro.html" class="quarto-xref"><span>Chapter 5</span></a> and insert a <code>browser()</code> in the <code>init</code> event, save the module and run again.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>doEvent.My_linear_model.init <span class="ot">&lt;-</span> <span class="cf">function</span>(sim, eventTime, eventType, priority) {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">browser</span>()</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    sim<span class="sc">$</span>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)  </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(sim)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>If you are using RStudio, it probably opened the module .R script (if not try right-clicking the RStudio window and selecting “Reload”), showing a highlighted <code>browser()</code> line. The R console shows:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">simInit</span>(<span class="at">modules =</span> nm1, <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">spades</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># No packages to install/update</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Jun09 00:03:51 simInit Resetting .Random.seed of session because sim$._randomSeed is not NULL. To get a different seed, run: sim$._randomSeed &lt;- NULL to clear it.</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Jun09 00:03:51 simInit Using setDTthreads(1). To change: 'options(spades.DTthreads = X)'.</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Jun09 00:03:51 chckpn:init total elpsd: 21 secs | 0 checkpoint init 0</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Jun09 00:03:51 save  :init total elpsd: 21 secs | 0 save init 0</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Jun09 00:03:51 prgrss:init total elpsd: 21 secs | 0 progress init 0</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Jun09 00:03:51 load  :init total elpsd: 21 secs | 0 load init 0</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Jun09 00:03:51 My_lnr:init total elpsd: 21 secs | 0 My_linear_model init 1</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Called from: get(moduleCall, envir = fnEnv)(sim, cur[["eventTime"]], cur[["eventType"]])</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 <p>Use <code>ls()</code> to see what objects are in the function environment, then execute code line-by-line with ENTER, F10 or the “Next” button.</p>
 </section>
 </section>
@@ -548,9 +578,9 @@ Called from: get(moduleCall, envir = fnEnv)(sim, cur[["eventTime"]], cur[["event
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">debugonce</span>(<span class="st">"time"</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">time</span>(out) <span class="do">## then press ENTER to execute each line of code one-by-one</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">debugonce</span>(<span class="st">"time"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">time</span>(out) <span class="do">## then press ENTER to execute each line of code one-by-one</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p><code>undebug(&lt;function_name&gt;)</code> will de-activate debugging for that function.</p>
@@ -592,10 +622,7 @@ Called from: get(moduleCall, envir = fnEnv)(sim, cur[["eventTime"]], cur[["event
 <li>Are you back in debugging mode?</li>
 </ul></li>
 </ol>
-<p>Now go through steps 1-6 again, but replace <code>debugonce("lm")</code> with <code>debug("lm")</code> in step 3.</p>
-<ul>
-<li>What happened in step 6. this time?</li>
-</ul>
+<p>Now go through steps 1-6 again, but replace <code>debugonce("lm")</code> with <code>debug("lm")</code> in step 3. What happened in step 6. this time?</p>
 <div class="callout callout-style-simple callout-tip">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -629,6 +656,41 @@ Called from: get(moduleCall, envir = fnEnv)(sim, cur[["eventTime"]], cur[["event
 <p>An example of debugging a more complex SpaDES workflow in <a href="LandRDemo_coreVeg.html#sec-LandRdebug" class="quarto-xref"><span>Section 15.5</span></a></p>
 <p><a href="https://adv-r.hadley.nz/debugging.html">Debugging – Advanced R</a></p>
 <p><a href="https://www.r-bloggers.com/2020/10/how-to-make-a-reprex/">How to make a reprex</a></p>
+</section>
+<section id="barebones-r-script" class="level2" data-number="13.6">
+<h2 data-number="13.6" class="anchored" data-anchor-id="barebones-r-script"><span class="header-section-number">13.6</span> Barebones R script</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>myFun <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">sum</span>(x, y)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">myFun</span>(<span class="fu">runif</span>(<span class="dv">20</span>), <span class="st">"A"</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>myFun <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">browser</span>()</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">sum</span>(x, y)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="fu">myFun</span>(<span class="fu">runif</span>(<span class="dv">20</span>), <span class="st">"A"</span>)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">simInit</span>(<span class="at">modules =</span> nm1, <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">spades</span>(out)</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="fu">debugonce</span>(<span class="st">"time"</span>)</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="fu">time</span>(out) <span class="do">## then press ENTER to execute each line of code one-by-one</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 
 
 </section>

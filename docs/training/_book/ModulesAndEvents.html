@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eliot McIntire">
-<meta name="dcterms.date" content="2024-06-10">
+<meta name="dcterms.date" content="2024-06-12">
 
 <title>Robust and nimble scientific workflows, using SpaDES - 9&nbsp; Modules, Events and Functions</title>
 <style>
@@ -403,7 +403,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflowSimple2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -463,6 +463,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">9.5</span> See also</a></li>
   <li><a href="#more-learning-on-this-subject" id="toc-more-learning-on-this-subject" class="nav-link" data-scroll-target="#more-learning-on-this-subject"><span class="header-section-number">9.6</span> More learning on this subject</a></li>
+  <li><a href="#barebones-r-script" id="toc-barebones-r-script" class="nav-link" data-scroll-target="#barebones-r-script"><span class="header-section-number">9.7</span> Barebones R script</a></li>
   </ul>
 </nav>
     </div>
@@ -488,7 +489,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 10, 2024</p>
+      <p class="date">June 12, 2024</p>
     </div>
   </div>
   
@@ -500,6 +501,16 @@ window.Quarto = {
 </header>
 
 
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>See <a href="#barebones-r-script">Barebones R script</a> for the code shown in this chapter</p>
+</div>
+</div>
+</div>
 <p>A <strong>module</strong> is a collection of R scripts structured in a particular way. A module is very similar in structure to an R package, in the sense that it defines a collection of functions to be used, so will be familiar if you know what packages look like.</p>
 <p><strong>Events</strong> are ways to name chunks of code that can be run in a particular sequence or at a particular time.</p>
 <p><strong>Functions</strong> are the basic building blocks in R and other languages. We work with all three of these to make robust and re-useable workflows.</p>
@@ -604,16 +615,21 @@ Tip&nbsp;9.1
 <section id="static" class="level3" data-number="9.4.1">
 <h3 data-number="9.4.1" class="anchored" data-anchor-id="static"><span class="header-section-number">9.4.1</span> Static</h3>
 <p><strong>Static</strong> modules can be defined as modules that “run once”. This means that they may have only one event. Or a sequence of events that occur one after the other with no rescheduling.</p>
-<p>These could include: - Data preparation modules; - one (maybe just the “init” event) or few events and their primary goal is to get and deal with data; - GIS modules that do a number of GIS operations to get data into the necessary formats; - Data Visualization modules that specialize in creating a set of visuals from a known set of inputs.</p>
+<p>These could include:</p>
+<ul>
+<li><p>Data preparation modules - one (maybe just the “init” event) or few events and their primary goal is to get and deal with data;</p></li>
+<li><p>GIS modules that do a number of GIS operations to get data into the necessary formats;</p></li>
+<li><p>Data Visualization modules that specialize in creating a set of visuals from a known set of inputs.</p></li>
+</ul>
 </section>
 <section id="dynamic" class="level3" data-number="9.4.2">
 <h3 data-number="9.4.2" class="anchored" data-anchor-id="dynamic"><span class="header-section-number">9.4.2</span> Dynamic</h3>
 <p><strong>Dynamic</strong> modules are modules that have <em>events that recur</em>. There are at least 2 types of such models: those that have <strong>cyclic dependencies</strong>, i.e., its outputs are also its inputs (possibly with other modules in between) and those that do not.</p>
 <ul>
-<li>landscape simulation modules (e.g., wildfire, vegetation change)</li>
-<li>wildlife population modules with Markov dependency (e.g., population matrix models)</li>
-<li>wildlife population modules without Markov-dependency (e.g., population models that only depend on habitat covariates)</li>
-<li>Data Visualization modules that get used e.g., annually after other modules.</li>
+<li><p>Landscape simulation modules (e.g., wildfire, vegetation change)</p></li>
+<li><p>Wildlife population modules with Markov dependency (e.g., population matrix models)</p></li>
+<li><p>Wildlife population modules without Markov-dependency (e.g., population models that only depend on habitat covariates)</p></li>
+<li><p>Data visualization modules that get used e.g., annually after other modules.</p></li>
 </ul>
 <p>In <span class="citation" data-cites="barros2023">Barros et al. (<a href="references.html#ref-barros2023" role="doc-biblioref">2023</a>)</span> we classified modules with respect to <em>what</em> the modules try to accomplish:</p>
 <ul>
@@ -637,6 +653,22 @@ Tip&nbsp;9.1
 <h2 data-number="9.6" class="anchored" data-anchor-id="more-learning-on-this-subject"><span class="header-section-number">9.6</span> More learning on this subject</h2>
 <p><a href="https://spades-workshops.predictiveecology.org/articlesMay2018/MyFirstModule.html">My First Module</a></p>
 <p><a href="https://spades-workshops.predictiveecology.org/articles/02c-Convert_R_code_to_SpaDES_module.html">Creating a seed dispersal module</a></p>
+</section>
+<section id="barebones-r-script" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="barebones-r-script"><span class="header-section-number">9.7</span> Barebones R script</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reproducible)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="fl">1e7</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="fl">1e7</span>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="fl">1e7</span>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>ecozoneOfCanada <span class="ot">&lt;-</span> reproducible<span class="sc">::</span><span class="fu">prepInputs</span>(</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> <span class="st">"http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/ecozone_shp.zip"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eliot McIntire">
-<meta name="dcterms.date" content="2024-06-11">
+<meta name="dcterms.date" content="2024-06-12">
 
 <title>Robust and nimble scientific workflows, using SpaDES - 7&nbsp; Module Inputs</title>
 <style>
@@ -383,7 +383,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflowSimple2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -436,6 +436,7 @@ window.Quarto = {
   <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">7.2</span> Questions</a></li>
   <li><a href="#try-on-your-own" id="toc-try-on-your-own" class="nav-link" data-scroll-target="#try-on-your-own"><span class="header-section-number">7.3</span> Try on your own</a></li>
   <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">7.4</span> See also</a></li>
+  <li><a href="#barebones-r-script" id="toc-barebones-r-script" class="nav-link" data-scroll-target="#barebones-r-script"><span class="header-section-number">7.5</span> Barebones R script</a></li>
   </ul>
 </nav>
     </div>
@@ -461,7 +462,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 11, 2024</p>
+      <p class="date">June 12, 2024</p>
     </div>
   </div>
   
@@ -473,6 +474,16 @@ window.Quarto = {
 </header>
 
 
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>See <a href="#barebones-r-script">Barebones R script</a> for the code shown in this chapter</p>
+</div>
+</div>
+</div>
 <p>We have seen functions called <code>.inputObjects</code> and <code>reproducible::prepInputs</code> that help deal with module inputs (<a href="#tip-Inputs" class="quarto-xref">Inputs Tip&nbsp;<span>7.1</span></a>). We will show these used within a SpaDES module.</p>
 <div id="tip-Inputs" class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -491,12 +502,10 @@ Tip&nbsp;7.1
 <h2 data-number="7.1" class="anchored" data-anchor-id="how-to-supply-inputs"><span class="header-section-number">7.1</span> How to supply <strong>Inputs</strong></h2>
 <p>There are several ways to get objects into the <code>simList</code>:</p>
 <ul>
-<li><p>User passes during <code>simInit</code>:</p>
-<ul>
+<li><p>User passes during <code>simInit</code>:</p></li>
 <li><p>using the <code>objects</code> argument (if it is an object);</p></li>
 <li><p>using the <code>inputs</code> argument (if it is from disk);</p></li>
 <li><p>using the <code>params</code> argument;</p></li>
-</ul></li>
 <li><p>Developer creates defaults and specifies them in <code>defineParameter()</code> and <code>.inputObjects</code>;</p></li>
 <li><p>A different module creates them prior to the running of this module.</p></li>
 </ul>
@@ -508,149 +517,79 @@ Tip&nbsp;7.1
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">simInit</span>(<span class="at">objects =</span> <span class="fu">list</span>(<span class="at">a =</span> a))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">simInit</span>(<span class="at">objects =</span> <span class="fu">list</span>(<span class="at">a =</span> a))</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>sim<span class="sc">$</span>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Setting:
-  options(
-    reproducible.cachePath = 'C:/Users/cbarros/AppData/Local/Temp/RtmpIN4bQ0/reproducible/cache'
-    spades.inputPath = 'C:/Users/cbarros/AppData/Local/Temp/RtmpIN4bQ0/SpaDES/inputs'
-    spades.outputPath = 'C:/Users/cbarros/AppData/Local/Temp/RtmpIN4bQ0/SpaDES/outputs'
-    spades.modulePath = 'C:/Users/cbarros/AppData/Local/Temp/RtmpIN4bQ0/SpaDES/modules'
-    spades.scratchPath = 'C:/Users/cbarros/AppData/Local/Temp/RtmpIN4bQ0/SpaDES/scratch'
-  )</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Jun11 00:23:29 simInit Using setDTthreads(1). To change: 'options(spades.DTthreads = X)'.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Elapsed time for simInit: 0.1303799 secs</code></pre>
-</div>
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sim<span class="sc">$</span>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
-</div>
 </div>
 <p>or do pass them via an <code>.rds</code> file</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>tf <span class="ot">&lt;-</span> <span class="fu">tempfile</span>(<span class="at">fileext =</span> <span class="st">".rds"</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(b, <span class="at">file =</span> tf)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">simInit</span>(<span class="at">inputs =</span> <span class="fu">data.frame</span>(<span class="at">object =</span> <span class="st">"b"</span>, <span class="at">file =</span> tf))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>tf <span class="ot">&lt;-</span> <span class="fu">tempfile</span>(<span class="at">fileext =</span> <span class="st">".rds"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(b, <span class="at">file =</span> tf)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">simInit</span>(<span class="at">inputs =</span> <span class="fu">data.frame</span>(<span class="at">object =</span> <span class="st">"b"</span>, <span class="at">file =</span> tf))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>sim<span class="sc">$</span>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Setting:
-  options(
-    reproducible.cachePath = 'C:/Users/cbarros/AppData/Local/Temp/RtmpIN4bQ0/reproducible/cache'
-    spades.inputPath = 'C:/Users/cbarros/AppData/Local/Temp/RtmpIN4bQ0/SpaDES/inputs'
-    spades.outputPath = 'C:/Users/cbarros/AppData/Local/Temp/RtmpIN4bQ0/SpaDES/outputs'
-    spades.modulePath = 'C:/Users/cbarros/AppData/Local/Temp/RtmpIN4bQ0/SpaDES/modules'
-    spades.scratchPath = 'C:/Users/cbarros/AppData/Local/Temp/RtmpIN4bQ0/SpaDES/scratch'
-  )</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Jun11 00:23:30 simInit Using setDTthreads(1). To change: 'options(spades.DTthreads = X)'.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Jun11 00:23:30 simInit b read from C:\Users\cbarros\AppData\Local\Temp\RtmpIN4bQ0\file5e8cd505d5.rds using readRDS</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Elapsed time for simInit: 0.07267809 secs</code></pre>
-</div>
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sim<span class="sc">$</span>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
-</div>
 </div>
 <p>Because parameters are usually module-specific, and need to be passed to with reference to a module. “Global” parameters are the exception to this rule:</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">simInit</span>(<span class="at">params =</span> <span class="fu">list</span>(<span class="at">.globals =</span> <span class="fu">list</span>(<span class="at">c =</span> c)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">simInit</span>(<span class="at">params =</span> <span class="fu">list</span>(<span class="at">.globals =</span> <span class="fu">list</span>(<span class="at">c =</span> c)))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">params</span>(sim)<span class="sc">$</span>.globals<span class="sc">$</span>c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Setting:
-  options(
-    reproducible.cachePath = 'C:/Users/cbarros/AppData/Local/Temp/RtmpIN4bQ0/reproducible/cache'
-    spades.inputPath = 'C:/Users/cbarros/AppData/Local/Temp/RtmpIN4bQ0/SpaDES/inputs'
-    spades.outputPath = 'C:/Users/cbarros/AppData/Local/Temp/RtmpIN4bQ0/SpaDES/outputs'
-    spades.modulePath = 'C:/Users/cbarros/AppData/Local/Temp/RtmpIN4bQ0/SpaDES/modules'
-    spades.scratchPath = 'C:/Users/cbarros/AppData/Local/Temp/RtmpIN4bQ0/SpaDES/scratch'
-  )</code></pre>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Jun11 00:23:30 simInit Using setDTthreads(1). To change: 'options(spades.DTthreads = X)'.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Elapsed time for simInit: 0.1178951 secs</code></pre>
-</div>
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">params</span>(sim)<span class="sc">$</span>.globals<span class="sc">$</span>c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
-</div>
-</div>
-<p>To pass parameters to a module, we go back to ouT simple module and make a minor change:</p>
+<p>To pass parameters to a module, we go back to out simple module and make a minor change:</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>nm1 <span class="ot">&lt;-</span> <span class="st">"My_linear_model"</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>modulePath <span class="ot">&lt;-</span> <span class="st">"~/SpaDES_book/NewModuleIntro/NewModule"</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">newModule</span>(<span class="at">name =</span> nm1, <span class="at">path =</span> modulePath, <span class="at">open =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">events =</span> <span class="fu">list</span>(</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">init =</span> {</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>                           x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="fu">P</span>(sim)<span class="sc">$</span>length)</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>                           y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="fu">P</span>(sim)<span class="sc">$</span>length)</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># fit a linear model</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>                           model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>                         }</span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>                       ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>nm1 <span class="ot">&lt;-</span> <span class="st">"My_linear_model"</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>modulePath <span class="ot">&lt;-</span> <span class="st">"~/SpaDES_book/NewModuleIntro/NewModule"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">newModule</span>(<span class="at">name =</span> nm1, <span class="at">path =</span> modulePath, <span class="at">open =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">events =</span> <span class="fu">list</span>(</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">init =</span> {</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                           x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="fu">P</span>(sim)<span class="sc">$</span>length)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                           y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="fu">P</span>(sim)<span class="sc">$</span>length)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># fit a linear model</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                           model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                         }</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>                       ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stderr">
-<pre><code>New module My_linear_model created at C:/Users/cbarros/Documents/SpaDES_book/NewModuleIntro/NewModule</code></pre>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>* edit module code in My_linear_model.R</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>* write tests for your module code in tests/</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>* describe and document your module in My_linear_model.Rmd</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>* tell others how to cite your module by editing citation.bib</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>* choose a license for your module; see LICENSE.md</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Main module file is: C:\Users\cbarros\Documents\SpaDES_book\NewModuleIntro\NewModule\My_linear_model\My_linear_model.R</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Main documentation file is: C:\Users\cbarros\Documents\SpaDES_book\NewModuleIntro\NewModule\My_linear_model\My_linear_model.Rmd</code></pre>
-</div>
-</div>
-<p>We then include the following in the module metadata section</p>
+<p>Now we open <code>My_linear_model.R</code> and add the following</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">defineParameter</span>(<span class="st">"length"</span>, <span class="st">"integer"</span>, <span class="dv">10</span>L, <span class="dv">5</span>L, <span class="dv">100</span>L,</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Number of values to generate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">defineParameter</span>(<span class="st">"length"</span>, <span class="st">"integer"</span>, <span class="dv">10</span>L, <span class="dv">5</span>L, <span class="dv">100</span>L,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Number of values to generate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>See <a href="https://rdrr.io/cran/SpaDES.core/man/suppliedElsewhere.html"><code>?SpaDES.core::simInit</code></a>.</p>
+<p>… to the module metadata section for parameters. Remember to <strong>save the file</strong> after you’re done.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">defineModule</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">&lt;</span>...<span class="sc">&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">parameters =</span> <span class="fu">bindrows</span>(</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>      <span class="co"># here</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>      <span class="sc">&lt;</span>...<span class="sc">&gt;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="sc">&lt;</span>...<span class="sc">&gt;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Now run the the module:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>out2 <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">simInitAndSpades</span>(<span class="at">modules =</span> nm1,</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span>(out2)   <span class="co"># can you find the length parameter?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Notice how <code>params = list("My_linear_model" = list(length = 20))</code> has <code>"My_linear_model"</code>, not <code>nm1</code>. this is because <code>list()</code> does not accept objects as “names”.</p>
 </section>
 <section id="inputobjects" class="level3" data-number="7.1.2">
 <h3 data-number="7.1.2" class="anchored" data-anchor-id="inputobjects"><span class="header-section-number">7.1.2</span> <code>.inputObjects</code></h3>
@@ -658,28 +597,25 @@ Tip&nbsp;7.1
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>rnormMean5 <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">1</span>) { <span class="co"># the n = 1 is the default value</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rnorm</span>(<span class="at">n =</span> n, <span class="at">mean =</span> <span class="dv">5</span>)</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rnormMean5</span>() <span class="co"># can be run without any arguments</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>rnormMean5 <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">1</span>) { <span class="co"># the n = 1 is the default value</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rnorm</span>(<span class="at">n =</span> n, <span class="at">mean =</span> <span class="dv">5</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rnormMean5</span>() <span class="co"># can be run without any arguments</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 6.191349</code></pre>
-</div>
 </div>
 <p>This works for only the simplest cases. In the case of a module, objects can be arbitrarily complicated and so this approach will not be suitable.</p>
 <p>Instead, there is a function that is called every time a module is initialized (i.e.&nbsp;by <code>simInit()</code>) where a developer can put anything they want to specify as defaults. It is generally most useful to use <code>if (!SpaDES.core::suppliedElsewhere("obj", sim))</code> i.e., if the object isn’t in <code>sim</code>, then give it a value.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>.inputObjects <span class="ot">&lt;-</span> <span class="cf">function</span>(sim) {</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">suppliedElsewhere</span>(<span class="st">"y"</span>, sim)) {</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    sim<span class="sc">$</span>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(sim)</span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>.inputObjects <span class="ot">&lt;-</span> <span class="cf">function</span>(sim) {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">suppliedElsewhere</span>(<span class="st">"y"</span>, sim)) {</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    sim<span class="sc">$</span>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(sim)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <section id="advanced-.inputobjects-example" class="level4" data-number="7.1.2.1">
@@ -707,7 +643,10 @@ Tip&nbsp;7.1
 <section id="try-on-your-own" class="level2" data-number="7.3">
 <h2 data-number="7.3" class="anchored" data-anchor-id="try-on-your-own"><span class="header-section-number">7.3</span> Try on your own</h2>
 <ul>
-<li>Using the <em>My_linear_model</em> shown above, try running simulations where you pass different values to the <code>length</code> parameter</li>
+<li><p>Using the <em>My_linear_model</em> shown above, try running simulations where you pass different values to the <code>length</code> parameter</p>
+<ul>
+<li>Tip: have a look at the <code>params</code> argument of <code>SpaDES.core::simInitAndSpades()</code></li>
+</ul></li>
 </ul>
 </section>
 <section id="see-also" class="level2" data-number="7.4">
@@ -716,6 +655,53 @@ Tip&nbsp;7.1
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/suppliedElsewhere.html"><code>?SpaDES.core::suppliedElsewhere</code></a></p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/defineParameter.html"><code>?SpaDES.core::defineParameter</code></a></p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/simInit.html"><code>?SpaDES.core::simInit</code></a></p>
+<p><a href="https://rdrr.io/cran/SpaDES.core/man/simInitAndSpades.html"><code>?SpaDES.core::simInitAndSpades</code></a></p>
+</section>
+<section id="barebones-r-script" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="barebones-r-script"><span class="header-section-number">7.5</span> Barebones R script</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">simInit</span>(<span class="at">objects =</span> <span class="fu">list</span>(<span class="at">a =</span> a))</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>sim<span class="sc">$</span>a</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>tf <span class="ot">&lt;-</span> <span class="fu">tempfile</span>(<span class="at">fileext =</span> <span class="st">".rds"</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(b, <span class="at">file =</span> tf)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">simInit</span>(<span class="at">inputs =</span> <span class="fu">data.frame</span>(<span class="at">object =</span> <span class="st">"b"</span>, <span class="at">file =</span> tf))</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>sim<span class="sc">$</span>b</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">simInit</span>(<span class="at">params =</span> <span class="fu">list</span>(<span class="at">.globals =</span> <span class="fu">list</span>(<span class="at">c =</span> c)))</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">params</span>(sim)<span class="sc">$</span>.globals<span class="sc">$</span>c</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>nm1 <span class="ot">&lt;-</span> <span class="st">"My_linear_model"</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>modulePath <span class="ot">&lt;-</span> <span class="st">"~/SpaDES_book/NewModuleIntro/NewModule"</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">newModule</span>(<span class="at">name =</span> nm1, <span class="at">path =</span> modulePath, <span class="at">open =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>                       <span class="at">events =</span> <span class="fu">list</span>(</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>                         <span class="at">init =</span> {</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>                           x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="fu">P</span>(sim)<span class="sc">$</span>length)</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>                           y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="fu">P</span>(sim)<span class="sc">$</span>length)</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># fit a linear model</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>                           model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>                         }</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>                       ))</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>out2 <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">simInitAndSpades</span>(<span class="at">modules =</span> nm1,</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>                         <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span>(out2)   <span class="co"># can you find the length parameter?</span></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>rnormMean5 <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">1</span>) { <span class="co"># the n = 1 is the default value</span></span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rnorm</span>(<span class="at">n =</span> n, <span class="at">mean =</span> <span class="dv">5</span>)</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a><span class="fu">rnormMean5</span>() <span class="co"># can be run without any arguments</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 
 
 </section>

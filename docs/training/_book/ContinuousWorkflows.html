@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eliot McIntire">
-<meta name="dcterms.date" content="2024-06-10">
+<meta name="dcterms.date" content="2024-06-12">
 
 <title>Robust and nimble scientific workflows, using SpaDES - Working with Continuous Workflows</title>
 <style>
@@ -369,7 +369,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflowSimple2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with setupProject</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -415,7 +415,7 @@ window.Quarto = {
    
   <ul>
   <li><a href="#spades-and-continuous-workflows" id="toc-spades-and-continuous-workflows" class="nav-link active" data-scroll-target="#spades-and-continuous-workflows">SpaDES and Continuous Workflows</a></li>
-  <li><a href="#module-types" id="toc-module-types" class="nav-link" data-scroll-target="#module-types">Module Types</a></li>
+  <li><a href="#module-types-revisited" id="toc-module-types-revisited" class="nav-link" data-scroll-target="#module-types-revisited">Module Types (Revisited)</a></li>
   </ul>
 </nav>
     </div>
@@ -441,7 +441,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 10, 2024</p>
+      <p class="date">June 12, 2024</p>
     </div>
   </div>
   
@@ -487,10 +487,10 @@ Tip&nbsp;1: Rerun-tolerance
 <section id="spades-and-continuous-workflows" class="level2">
 <h2 class="anchored" data-anchor-id="spades-and-continuous-workflows">SpaDES and Continuous Workflows</h2>
 <p>SpaDES allows us to implement feature 3 (hierarchical caching) of <a href="#tip-RerunTolerance" class="quarto-xref">Tip&nbsp;<span>1</span></a> because we can Cache at many levels: functions, events, modules, meta-modules, or entire projects. As we are developing inside a project, we can be working on a step inside a module that relies on previous “upstream” modules, but those modules can run very fast, so we can be quickly where we need to be, without breaking the workflow.</p>
-<p>Thinking about this situation, we can introduce the idea of “Module Types”.</p>
+<p>Thinking about this situation, we can now re-visit the idea of “Module Types” (introduced in <a href="ModulesAndEvents.html#sec-moduletypes" class="quarto-xref"><span>9.4 Module types</span></a>) in terms of how they might depend on each other and certain types of inputs, and the types of outputs they produce.</p>
 </section>
-<section id="module-types" class="level2">
-<h2 class="anchored" data-anchor-id="module-types">Module Types</h2>
+<section id="module-types-revisited" class="level2">
+<h2 class="anchored" data-anchor-id="module-types-revisited">Module Types (Revisited)</h2>
 <p>SpaDES doesn’t have an explicit module types. Rather, by convention, we associate different modules with generic things they do. A fairly comprehensive list of modules types that we create are:</p>
 <ul>
 <li><p><strong>Data Munging</strong> – uses <code>prepInputs</code> and outputs clean, usable data for a project, mostly specifies <code>createsOutputs</code></p></li>
