@@ -60,7 +60,7 @@ functions, including *some* that are used for their side effects or that
 use pointers (e.g., a `terra` `SpatRaster`) instead of regular R
 objects.
 
-# How to use `Cache`
+## How to use `Cache`
 
 The `Cache` function can be used with any function. A user can wrap it
 around another function call or use the base pipe operator `|>`. The
@@ -78,7 +78,7 @@ rnorm(1) |>
 
 See `?reproducible::Cache` for many more examples.
 
-# When to use `Cache`
+## When to use `Cache`
 
 The most obvious case to use `Cache` is when the calculation is
 expensive. For example, GIS operations are commonly time consuming. In
@@ -213,12 +213,13 @@ inner <- function(mean) {
 Cache(outer(n = 2))
 ```
 
-# Best practices
+## Best practices
 
 In general, we have found that use of `Cache` to be beneficial when used
 as following:
 
 1.  Slow functions get cached. "Slow" can be "slower than using `Cache`"
+
 2.  Regularly `clearCache(ask = FALSE)`, e.g., at the end of a day or
     week of work, then let it run.
 
