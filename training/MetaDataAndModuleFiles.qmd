@@ -74,9 +74,9 @@ will not work (i.e., it will cause an error) if `x` is not defined. We
 can say that this code chunk "expects" `x` as an input.
 
 The **outputs** are `y` and `model`. We can say that this code chunk
-"creates" `y` and `model` as outputs. However, we had said in 
-@sec-moduleintro that we would only be interested in
-keeping `model`. So, we will continue with only one output, `model`.
+"creates" `y` and `model` as outputs. However, we had said in
+@sec-moduleintro that we would only be interested in keeping `model`.
+So, we will continue with only one output, `model`.
 
 ### Required Packages
 
@@ -112,7 +112,6 @@ coming from *outside* this module.
 ```{r}
 #| eval: true
 
-# make a module
 Require::Require(c("reproducible", "SpaDES.core"), repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
 
 # make a module
@@ -202,8 +201,10 @@ But, since it is "in a function", each event has all the features of a
 function:
 
 -   **arguments** -- specifically `sim` can be used
+
 -   **something returned** -- in this case, the `simList`. `return(sim)`
     must always be present - it is by default, but don't delete it!
+    
 -   **it can be run**-- but don't worry about running it; SpaDES runs it
     when it is time.
 :::
@@ -228,8 +229,6 @@ To share objects between modules, we *must* assign them to the `sim`
 
 Now we have a module that creates one object, `model` and puts them
 inside `sim`. This all happens in the event called `init`.
-
-<!--maybe unnecessary?-->
 
 **Next**: add the visualization module with metadata
 
@@ -317,26 +316,37 @@ outputs that model, and plots the fit.
 ## Questions
 
 1.  What are some things we "gained" from putting our simple 3 lines of
-code into a module?
--   We can turn off plotting easily. Set `.plotInitialTime = NA` in
-the `simInitAndSpades` call.
+    code into a module?
+
+    -   We can turn off plotting easily. Set `.plotInitialTime = NA` in the
+        `simInitAndSpades` call.
+
 2.  What are some things we "lost"?
--   More complicated. (overkill for these 3 lines?)
+
+    -   More complicated. (overkill for these 3 lines?)
+
 3.  What if we used an R package that wasn't in the base packages list?
--   See
-[`?defineModule`](https://rdrr.io/cran/SpaDES.core/man/defineModule.html)
-for all the metadata items. Specifically, see `reqdPkgs`.
+
+    -   See
+        [`?defineModule`](https://rdrr.io/cran/SpaDES.core/man/defineModule.html)
+        for all the metadata items. Specifically, see `reqdPkgs`.
+
 4.  What is the `sim`? See
-[`?'.simList-class'`](https://rdrr.io/cran/SpaDES.core/man/simList-class.html)
+    [`?'.simList-class'`](https://rdrr.io/cran/SpaDES.core/man/simList-class.html)
 
 ## Challenge yourself {#sec-moduleFilesAndMetadata-challengeYourself}
 
-1. Fill in the metadata from the Challenges you did in previous chapter.
+1.  Fill in the metadata from the Challenges you did in previous
+    chapter.
 
-2. Look at the other elements of the metadata and cross reference them with 
-[`?defineModule`](https://rdrr.io/cran/SpaDES.core/man/defineModule.html)
+2.  Look at the other elements of the metadata and cross reference them
+    with
+    [`?defineModule`](https://rdrr.io/cran/SpaDES.core/man/defineModule.html)
 
-3. Look at the `Rmd` file of one of the modules that has been built (recall the message after you call `newModule`), where you have filled in the metadata. Try to build it and look at the automatic tables that get built from the metadata.
+3.  Look at the `Rmd` file of one of the modules that has been built
+    (recall the message after you call `newModule`), where you have
+    filled in the metadata. Try to build it and look at the automatic
+    tables that get built from the metadata.
 
 ## See also
 
@@ -346,7 +356,8 @@ for all the metadata items. Specifically, see `reqdPkgs`.
 
 @sec-simlist on the `simList`
 
-[`?defineModule`](https://rdrr.io/cran/SpaDES.core/man/defineModule.html) describes all the metadata entries.
+[`?defineModule`](https://rdrr.io/cran/SpaDES.core/man/defineModule.html)
+describes all the metadata entries.
 
 [`?expectsInput`](https://rdrr.io/cran/SpaDES.core/man/expectsInput.html)
 

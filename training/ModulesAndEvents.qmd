@@ -197,11 +197,17 @@ For example, modules can be categorized by:
 that they may have only one event. Or a sequence of events that occur
 one after the other with no rescheduling.
 
-These could include: - Data preparation modules; - one (maybe just the
-"init" event) or few events and their primary goal is to get and deal
-with data; - GIS modules that do a number of GIS operations to get data
-into the necessary formats; - Data Visualization modules that specialize
-in creating a set of visuals from a known set of inputs.
+These could include: 
+
+-   Data preparation modules - one (maybe just the
+    "init" event) or few events and their primary goal is to get and deal
+    with data; 
+
+-   GIS modules that do a number of GIS operations to get data
+    into the necessary formats;
+
+-   Data Visualization modules that specialize
+    in creating a set of visuals from a known set of inputs.
 
 ### Dynamic
 
@@ -210,12 +216,15 @@ at least 2 types of such models: those that have **cyclic
 dependencies**, i.e., its outputs are also its inputs (possibly with
 other modules in between) and those that do not.
 
--   landscape simulation modules (e.g., wildfire, vegetation change)
--   wildlife population modules with Markov dependency (e.g., population
+-   Landscape simulation modules (e.g., wildfire, vegetation change)
+
+-   Wildlife population modules with Markov dependency (e.g., population
     matrix models)
--   wildlife population modules without Markov-dependency (e.g.,
+    
+-   Wildlife population modules without Markov-dependency (e.g.,
     population models that only depend on habitat covariates)
--   Data Visualization modules that get used e.g., annually after other
+    
+-   Data visualization modules that get used e.g., annually after other
     modules.
 
 In @barros2023 we classified modules with respect to *what* the modules

@@ -91,10 +91,12 @@ relies on previous "upstream" modules, but those modules can run very
 fast, so we can be quickly where we need to be, without breaking the
 workflow.
 
-Thinking about this situation, we can introduce the idea of "Module
-Types".
+Thinking about this situation, we can now re-visit the idea of "Module
+Types" (introduced in @sec-moduletypes) in terms of how they might depend on each other and
+certain types of inputs, and the types of outputs they produce.
 
-## Module Types
+
+## Module Types (Revisited)
 
 SpaDES doesn't have an explicit module types. Rather, by convention, we
 associate different modules with generic things they do. A fairly

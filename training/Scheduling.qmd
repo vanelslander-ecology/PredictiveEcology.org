@@ -44,9 +44,9 @@ library("ggplot2")
 Here, we will talk about **scheduling events** in a SpaDES module using
 a function called
 [`SpaDES.core ::scheduleEvents()`](https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/scheduleEvent).
-Please see @sec-moduleintro for how to create a simple module and @sec-modseventsfuns 
-for an overview of what events are before
-attempting this section.
+Please see @sec-moduleintro for how to create a simple module and
+@sec-modseventsfuns for an overview of what events are before attempting
+this section.
 
 ::: {.callout-tip appearance="simple"}
 ## Repeated? When?
@@ -347,7 +347,7 @@ i.e., keep the same folder structure.
 1.  how are some ways that `scheduleEvent` is different from a "loop"?
 
     -   We can change the "step" length between events.
-    
+
     -   We can interweave events, e.g., a fire event then a tree growth
         event
 
@@ -356,29 +356,29 @@ i.e., keep the same folder structure.
 2.  When is a loop better than scheduling?
 
     -   Loops are much faster than scheduling.
-    
+
     -   But really, avoid loops in R if you can help it
 
 <!-- -->
 
 3.  Chances are that the first versions of this module didn't work. How
     do you fix it?
-    
+
     -   [Learn how to debug in R and
         SpaDES](https://github.com/PredictiveEcology/SpaDES/wiki/Debugging)
 
-
 ## Try on your own
 
--   Try creating a new parameter that controls the frequency of predictions.
-    
+-   Try creating a new parameter that controls the frequency of
+    predictions.
+
     Here's a clue:
-    ```
+
+    ```         
     predictions = {
       scheduleEvent(sim, time(sim) + P(sim)$predFreq, "predictions")
     }    
     ```
-
 
 ## See also
 

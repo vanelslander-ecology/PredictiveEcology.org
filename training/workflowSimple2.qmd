@@ -5,13 +5,13 @@ editor_options:
   chunk_output_type: console
 execute:
   tidy: false
-warning: false
-message: false
-error: false
-cache: false
+  warning: false
+  message: false
+  error: false
+  cache: false
 ---
 
-# Workflows with setupProject
+# Workflows with `setupProject`
 
 ::: {.callout-tip appearance="simple"}
 See [Barebones R script] for the code shown in this chapter
@@ -54,10 +54,7 @@ where a workflow with several modules is setup and run.
 
 ## `SpaDES.project::setupProject`
 
-
 https://spades-project.predictiveecology.org/articles/i-getting-started.html
-
-
 
 ## Installation
 
@@ -118,15 +115,19 @@ We can evaluate the sequence of events using `completed`
 SpaDES.core::completed(results)
 ```
 
-We can also see how modules and objects interact using the functions objectDiagram() and moduleDiagram().
+We can also see how modules and objects interact using the functions
+objectDiagram() and moduleDiagram().
 
 Modules’ diagram showing the interactions among modules:
+
 ```{r moduleDiagram}
 SpaDES.core::moduleDiagram(results)
 ```
 
+We can also access any objects and use them. For example, we can look at
+the forecasted abundances and the difference raster is also possible.
+This is done by calling the object name from the results list.
 
-We can also access any objects and use them. For example, we can look at the forecasted abundances and the difference raster is also possible. This is done by calling the object name from the results list.
 ```{r objectDiagram}
 terra::plot(rast(results$forecasts))
 ```
@@ -139,7 +140,8 @@ examples, including learning of several arguments to the function
 
 ## See also
 
-[All Functions in SpaDES.core](https://spades-core.predictiveecology.org/reference/index.html)
+[All Functions in
+SpaDES.core](https://spades-core.predictiveecology.org/reference/index.html)
 
 [?SpaDES.core::completed](https://spades-core.predictiveecology.org/reference/simList-accessors-events.html)
 

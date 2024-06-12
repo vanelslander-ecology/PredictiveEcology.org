@@ -47,8 +47,8 @@ knitr::knit_hooks$set(output = function(y, options) {
 ```
 
 We have seen functions called `.inputObjects` and
-`reproducible::prepInputs` that help deal with module inputs ([Inputs Tip @tip-Inputs]).
-We will show these used within a SpaDES module.
+`reproducible::prepInputs` that help deal with module inputs ([Inputs
+Tip @tip-Inputs]). We will show these used within a SpaDES module.
 
 ::: {#tip-Inputs .callout-tip}
 The **inputs** of a SpaDES module can be any R object, and should be
@@ -98,8 +98,9 @@ sim <- SpaDES.core::simInit(inputs = data.frame(object = "b", file = tf))
 sim$b
 ```
 
-Because parameters are usually module-specific, and need to be passed to with reference
-to a module. "Global" parameters are the exception to this rule:
+Because parameters are usually module-specific, and need to be passed to
+with reference to a module. "Global" parameters are the exception to
+this rule:
 
 ```{r duringSimInit3}
 c <- 1
@@ -107,7 +108,8 @@ sim <- SpaDES.core::simInit(params = list(.globals = list(c = c)))
 SpaDES.core::params(sim)$.globals$c
 ```
 
-To pass parameters to a module, we go back to ouT simple module and make a minor change:
+To pass parameters to a module, we go back to out simple module and make
+a minor change:
 
 ```{r}
 nm1 <- "My_linear_model"
@@ -186,19 +188,18 @@ these **Inputs** with defaults if the user hasn't supplied them (using
 We will look at a few examples in this module:
 [Biomass_core::.inputObjects](https://github.com/PredictiveEcology/Biomass_core/blob/d5c214b69f35e7a9f57c59ca7d08329b49328e86/Biomass_core.R#L1964).
 
-1. some [GIS tests that evaluate whether 2 objects are in the same
-CRS](https://github.com/PredictiveEcology/Biomass_core/blob/d5c214b69f35e7a9f57c59ca7d08329b49328e86/Biomass_core.R#L2052)
-(i.e., they need to be the same projection, etc., for this module to
-work)
+1.  some [GIS tests that evaluate whether 2 objects are in the same
+    CRS](https://github.com/PredictiveEcology/Biomass_core/blob/d5c214b69f35e7a9f57c59ca7d08329b49328e86/Biomass_core.R#L2052)
+    (i.e., they need to be the same projection, etc., for this module to
+    work)
 
-2. if an object is missing, [it may make sense to fill in the
-details with parameters from the
-Internet](https://github.com/PredictiveEcology/Biomass_core/blob/d5c214b69f35e7a9f57c59ca7d08329b49328e86/Biomass_core.R#L2066).
+2.  if an object is missing, [it may make sense to fill in the details
+    with parameters from the
+    Internet](https://github.com/PredictiveEcology/Biomass_core/blob/d5c214b69f35e7a9f57c59ca7d08329b49328e86/Biomass_core.R#L2066).
 
-3. an object called `studyArea`. [The developer tests whether it
-exists and creates an error if it does not
-exist](https://github.com/PredictiveEcology/Biomass_core/blob/d5c214b69f35e7a9f57c59ca7d08329b49328e86/Biomass_core.R#L1972).
-
+3.  an object called `studyArea`. [The developer tests whether it exists
+    and creates an error if it does not
+    exist](https://github.com/PredictiveEcology/Biomass_core/blob/d5c214b69f35e7a9f57c59ca7d08329b49328e86/Biomass_core.R#L1972).
 
 ## Questions
 

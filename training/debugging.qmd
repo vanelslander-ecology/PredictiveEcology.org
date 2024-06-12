@@ -100,7 +100,7 @@ vector with a character vector, which obviously doesn't work.
 ### `browser()` with a SpaDES module
 
 Go back to the module *My_linear_model* created in @sec-moduleintro and
-insert a `browser()` in the `init` event, save and run the module again.
+insert a `browser()` in the `init` event, save the module and run again.
 
 ```{r}
 #| purl: false
@@ -114,21 +114,24 @@ doEvent.My_linear_model.init <- function(sim, eventTime, eventType, priority) {
 ```
 
 If you are using RStudio, it probably opened the module .R script (if
-not try right-clicking the RStudio window and selecting "Reload") and
-the R console shows:
+not try right-clicking the RStudio window and selecting "Reload"),
+showing a highlighted `browser()` line. The R console shows:
 
 ```{r}
 #| purl: false
-> out <- spades(out)
-No packages to install/update
-Jun09 00:03:51 simInit Resetting .Random.seed of session because sim$._randomSeed is not NULL. To get a different seed, run: sim$._randomSeed <- NULL to clear it.
-Jun09 00:03:51 simInit Using setDTthreads(1). To change: 'options(spades.DTthreads = X)'.
-Jun09 00:03:51 chckpn:init total elpsd: 21 secs | 0 checkpoint init 0
-Jun09 00:03:51 save  :init total elpsd: 21 secs | 0 save init 0
-Jun09 00:03:51 prgrss:init total elpsd: 21 secs | 0 progress init 0
-Jun09 00:03:51 load  :init total elpsd: 21 secs | 0 load init 0
-Jun09 00:03:51 My_lnr:init total elpsd: 21 secs | 0 My_linear_model init 1
-Called from: get(moduleCall, envir = fnEnv)(sim, cur[["eventTime"]], cur[["eventType"]])
+        
+out <- simInit(modules = nm1, paths = list(modulePath = modulePath))
+out <- spades(out)
+
+# No packages to install/update
+# Jun09 00:03:51 simInit Resetting .Random.seed of session because sim$._randomSeed is not NULL. To get a different seed, run: sim$._randomSeed <- NULL to clear it.
+# Jun09 00:03:51 simInit Using setDTthreads(1). To change: 'options(spades.DTthreads = X)'.
+# Jun09 00:03:51 chckpn:init total elpsd: 21 secs | 0 checkpoint init 0
+# Jun09 00:03:51 save  :init total elpsd: 21 secs | 0 save init 0
+# Jun09 00:03:51 prgrss:init total elpsd: 21 secs | 0 progress init 0
+# Jun09 00:03:51 load  :init total elpsd: 21 secs | 0 load init 0
+# Jun09 00:03:51 My_lnr:init total elpsd: 21 secs | 0 My_linear_model init 1
+# Called from: get(moduleCall, envir = fnEnv)(sim, cur[["eventTime"]], cur[["eventType"]])
 ```
 
 Use `ls()` to see what objects are in the function environment, then
@@ -196,9 +199,7 @@ Let's try it:
     -   Are you back in debugging mode?
 
 Now go through steps 1-6 again, but replace `debugonce("lm")` with
-`debug("lm")` in step 3.
-
--   What happened in step 6. this time?
+`debug("lm")` in step 3. What happened in step 6. this time?
 
 ::: {.callout-tip appearance="simple"}
 If debugging functions that are S4 objects, you may need to be aware of
