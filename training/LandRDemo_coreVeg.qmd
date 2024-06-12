@@ -3,6 +3,8 @@ author: "Ceres Barros"
 date: last-modified
 editor_options:
   chunk_output_type: console
+editor:
+  mode: source
 bibliography: references/references.bib
 execute:
   tidy: false
@@ -418,7 +420,6 @@ SpaDES.core::end(simOut) <- 2061
 simOut <- SpaDES.core::spades(simOut)
 ```
 
-````{=html}
 <!--
 ### Many replicates {#sec-LandRReplication}
 
@@ -488,9 +489,7 @@ To have fully independent replication we can use
 `experiment2(..., useCache = FALSE)`
 :::
 -->
-````
 
-````{=html}
 <!--
 ## Validation
 
@@ -564,9 +563,8 @@ terra::deepcopy(simOut$standAgeMap)
 simOutValid <- SpaDES.core::simInitAndSpades2(outValid)
 
 ```
-
 -->
-````
+
 
 ## Different scenarios and model selection {#sec-LandRScenarios}
 
