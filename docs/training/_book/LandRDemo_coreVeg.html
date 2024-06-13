@@ -520,10 +520,10 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p><a href="https://landr-manual.predictiveecology.org/">LandR</a> is a forest landscape model implemented as a collection of <code>SpaDES</code> modules in R. It is a reimplementation of LANDIS-II Biomass Succession Extension v.3.2.1, which at its core is very similar to v7. See the <a href="https://landr-manual.predictiveecology.org/">LandR Manual</a>, <span class="citation" data-cites="barros2023">Barros et al. (<a href="#ref-barros2023" role="doc-biblioref">2023</a>)</span> and <span class="citation" data-cites="scheller2015">Scheller and Miranda (<a href="#ref-scheller2015" role="doc-biblioref">2015</a>)</span> for full details about forest dynamics simulated in LandR.</p>
+<p><a href="https://landr-manual.predictiveecology.org/">LandR</a> is a forest landscape model implemented as a collection of <code>SpaDES</code> modules in R. It is a reimplementation of LANDIS-II Biomass Succession Extension v.3.2.1, which at its core is very similar to v7. See the <a href="https://landr-manual.predictiveecology.org/">LandR Manual</a>, <span class="citation" data-cites="barros2023">Barros et al. (<a href="references.html#ref-barros2023" role="doc-biblioref">2023</a>)</span> and <span class="citation" data-cites="scheller2015">Scheller and Miranda (<a href="references.html#ref-scheller2015" role="doc-biblioref">2015</a>)</span> for full details about forest dynamics simulated in LandR.</p>
 <p>LandR fully open-source and users are expected to use, modify it and expand it (e.g.&nbsp;by creating new modules) as they see fit, as long has modifications are adequately reported. We hope that new modules are shared with others in the LandR community of users so that all can benefit.</p>
 <p>Each LandR module is hosted in its own GitHub repository. When using and developing LandR modules, note that modules should be semi-independent. This is, they should be able to run error-free on their own, even they don’t produce useful outputs in this way. A good example are the “data preparation” and “data calibration” modules <em>Biomass_speciesData</em> and <em>Biomass_borealDataPrep</em> which can run on their own but will not produce any forest landscape simulations, only the input objects and parameters that <em>Biomass_core</em> (the “simulation module”) needs.</p>
-<p>In this example, we will setup the workflow published in <span class="citation" data-cites="barros2023">Barros et al. (<a href="#ref-barros2023" role="doc-biblioref">2023</a>)</span> using <code>setupProject</code> from the <a href="https://spades-project.predictiveecology.org/"><code>SpaDES.project</code></a> package and current versions of the LandR modules.</p>
+<p>In this example, we will setup the workflow published in <span class="citation" data-cites="barros2023">Barros et al. (<a href="references.html#ref-barros2023" role="doc-biblioref">2023</a>)</span> using <code>setupProject</code> from the <a href="https://spades-project.predictiveecology.org/"><code>SpaDES.project</code></a> package and current versions of the LandR modules.</p>
 <div id="imp-gdrive" class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -538,14 +538,11 @@ Important&nbsp;15.1: Google account needed for this example
 <p>During the <code>simInit()</code> (or <code>simInitAndSpades()</code>) call R will prompt you to either choose a previously authenticated account (if you have previously used <code>googledrive</code>) or to open a browser window and authenticate.</p>
 <p>But in many cases, it seems, the above won’t work for some people. This next chunk has worked for many:</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Show code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"googledrive"</span>, <span class="st">"httpuv"</span>), <span class="at">repos =</span> repos)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>googledriveAuthPath <span class="ot">&lt;-</span> <span class="st">"~/SpaDES_book/googledrive_auth_cache"</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(googledriveAuthPath, <span class="at">showWarnings =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>googledrive<span class="sc">::</span><span class="fu">drive_auth</span>(<span class="at">cache =</span> <span class="st">"~/SpaDES_book/googledrive_auth_cache"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p>Make sure you give <code>tidyverse</code> read/write access to your files:</p>
 <div class="quarto-figure quarto-figure-center">
@@ -681,7 +678,7 @@ Important&nbsp;15.1: Google account needed for this example
 <span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>If you have a look at <a href="#sec-castorSetup" class="quarto-xref"><span class="quarto-unresolved-ref">sec-castorSetup</span></a> in the <a href="#sec-castorEg" class="quarto-xref"><span class="quarto-unresolved-ref">sec-castorEg</span></a> chapter, you will see some differences in the way we setup the two workflows:</p>
+<p>If you have a look at <a href="castorExample.html#sec-castorSetup" class="quarto-xref"><span>Section 17.1</span></a> in the <a href="castorExample.html" class="quarto-xref"><span>Chapter 17</span></a> chapter, you will see some differences in the way we setup the two workflows:</p>
 <ul>
 <li><p><code>paths</code>. Here we left the defaults for all paths (see <a href="https://spades-project.predictiveecology.org/reference/setup.html"><code>?setupPaths()</code></a> for the list of path options) except for the project location (<code>projectPath</code>) and the location of the package library (<code>packagePath</code>, which will be placed inside <code>projectPath</code>).</p></li>
 <li><p><code>options</code>. We also set a couple of “global options” that determine the where data will be downloaded to (“reproducible.destinationPath”). This will be the same as the default directory to look for inputs (“spades.inputPath”). Notice how we used <code>paths$</code> to get these directory paths from the <code>paths</code> object that <code>setupProject</code> creates (based on the <code>paths</code> argument above) prior to setting the options.</p></li>
@@ -1012,8 +1009,8 @@ simOutValid <- SpaDES.core::simInitAndSpades2(outValid)
 </section>
 <section id="sec-LandRScenarios" class="level2" data-number="15.4">
 <h2 data-number="15.4" class="anchored" data-anchor-id="sec-LandRScenarios"><span class="header-section-number">15.4</span> Different scenarios and model selection</h2>
-<p>In <span class="citation" data-cites="barros2023">Barros et al. (<a href="#ref-barros2023" role="doc-biblioref">2023</a>)</span>, the model was run with two different parameterisation approaches one that was “data hungry” and calibrated tree species growth parameters (using <em>Biomass_speciesParameters</em> as we have done above) and a simpler one that used default parameter values (without <em>Biomass_speciesParameters</em>).</p>
-<p>SpaDES and LandR allow us to swap parameterisation/calibration approaches easily and re-evaluate each and compare the models (see <span class="citation" data-cites="barros2023">Barros et al. (<a href="#ref-barros2023" role="doc-biblioref">2023</a>)</span>).</p>
+<p>In <span class="citation" data-cites="barros2023">Barros et al. (<a href="references.html#ref-barros2023" role="doc-biblioref">2023</a>)</span>, the model was run with two different parameterisation approaches one that was “data hungry” and calibrated tree species growth parameters (using <em>Biomass_speciesParameters</em> as we have done above) and a simpler one that used default parameter values (without <em>Biomass_speciesParameters</em>).</p>
+<p>SpaDES and LandR allow us to swap parameterisation/calibration approaches easily and re-evaluate each and compare the models (see <span class="citation" data-cites="barros2023">Barros et al. (<a href="references.html#ref-barros2023" role="doc-biblioref">2023</a>)</span>).</p>
 <p>Do to this, we simply exclude <em>Biomass_speciesParameters</em> from <code>out</code> and run a second simulation. We also need to save the outputs in a different folder, or the previous ones will be overriden.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -1028,7 +1025,7 @@ simOutValid <- SpaDES.core::simInitAndSpades2(outValid)
 </section>
 <section id="sec-LandRdebug" class="level2" data-number="15.5">
 <h2 data-number="15.5" class="anchored" data-anchor-id="sec-LandRdebug"><span class="header-section-number">15.5</span> Debugging</h2>
-<p>There are several ways to debug SpaDES modules (see <a href="#sec-debugging" class="quarto-xref"><span class="quarto-unresolved-ref">sec-debugging</span></a>), a relatively easy one for when you are suprised by an error occurring during specific event is to pass the event’s name to <code>spades(..., debug = )</code> argument.</p>
+<p>There are several ways to debug SpaDES modules (see <a href="debugging.html" class="quarto-xref"><span>Chapter 13</span></a>), a relatively easy one for when you are suprised by an error occurring during specific event is to pass the event’s name to <code>spades(..., debug = )</code> argument.</p>
 <p>Below, we debug the <code>plotSummaryBySpecies</code> event of <em>Biomass_core</em>. R interrupts the execution of the code in the chunk that executes this event’s operations (inside <code>doEvent.Biomass_core()</code>)</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -1076,7 +1073,7 @@ debug at C:/Users/cbarros/Documents/SpaDES_book/LandRDemo_coreVeg/modules/Biomas
 </section>
 <section id="see-also" class="level2" data-number="15.7">
 <h2 data-number="15.7" class="anchored" data-anchor-id="see-also"><span class="header-section-number">15.7</span> See also</h2>
-<p><a href="#sec-caching" class="quarto-xref"><span class="quarto-unresolved-ref">sec-caching</span></a> on caching.</p>
+<p><a href="Caching.html" class="quarto-xref"><span>Chapter 11</span></a> on caching.</p>
 <p><a href="https://landr-manual.predictiveecology.org/">LandR Manual</a></p>
 <p><a href="https://future.futureverse.org/reference/plan.html"><code>?future::plan</code></a></p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/simList-accessors-events.html"><code>simList</code> accessors</a></p>
@@ -1296,7 +1293,7 @@ looking for the closes forest land-cover type.
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-barros2023" class="csl-entry" role="listitem">
 Barros, Ceres, Yong Luo, Alex M. Chubaty, Ian M. S. Eddy, Tatiane Micheletti, Céline Boisvenue, David W. Andison, Steven G. Cumming, and Eliot J. B. McIntire. 2023. <span>“Empowering Ecological Modellers with a PERFICT Workflow: Seamlessly Linking Data, Parameterisation, Prediction, Validation and Visualisation.”</span> <em>Methods in Ecology and Evolution</em> 14 (1): 173–88. <a href="https://doi.org/10.1111/2041-210X.14034">https://doi.org/10.1111/2041-210X.14034</a>.
 </div>
@@ -1309,7 +1306,7 @@ Scheller, Robert M., and Brian R. Miranda. 2015. <em>LANDIS-II Biomass Successio
 <hr>
 <ol>
 <li id="fn1"><p>See <a href="https://rdrr.io/cran/googledrive/man/drive_auth.html"><code>?googledrive::drive_auth</code></a> for more information.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>See <a href="#sec-caching" class="quarto-xref"><span class="quarto-unresolved-ref">sec-caching</span></a> about caching.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>See <a href="Caching.html" class="quarto-xref"><span>Chapter 11</span></a> about caching.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 

@@ -110,7 +110,7 @@ But in many cases, it seems, the above won't work for some people. This next chu
 ```{r setupGoogle}
 #| eval: false
 #| results: hide
-#| code-fold: true
+#| code-fold: false
 #| code-summary: "Show code"
 install.packages(c("googledrive", "httpuv"), repos = repos)
 
