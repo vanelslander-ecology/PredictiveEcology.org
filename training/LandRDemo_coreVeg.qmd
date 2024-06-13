@@ -116,15 +116,28 @@ then, our apologies for any inconvenience.
 
 ## Workflow setup
 
+There are several objects stored on Google Drive. You *must* be authenticated to access these. There are several ways to get authenticated. Some work for some people, others don't. This seems to work for many.
+
+```{r setupGoogle}
+install.packages(c("googledrive", "httpuv"), repos = repos)
+
+googledriveAuthPath <- "~/SpaDES_book/googledrive_auth_cache"
+dir.create(googledriveAuthPath, showWarnings = FALSE)
+googledrive::drive_auth(cache = "~/SpaDES_book/googledrive_auth_cache")
+
+```
+
 ```{r setupProject}
 #| eval: true
 #| results: hide
 #| code-fold: true
 #| code-summary: "Show code"
-
 repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
-install.packages("SpaDES.project", repos = repos, dependencies = TRUE)
+install.packages(c("SpaDES.project", "Require"), repos = repos)
+
+
 library(SpaDES.project)
+
 
 out <- setupProject(
   # INPUT OBJECTS -----------------------------------
@@ -134,13 +147,21 @@ out <- setupProject(
   successionTimestep = 10L,
   eventCaching = c(".inputObjects", "init"),
   useParallel = FALSE,
+  overwrite = TRUE, # Just run this once. Then remove it.
   paths = list("packagePath" = "packages/",
                "projectPath" = "~/SpaDES_book/LandRDemo_coreVeg"),
   packages = c(
     # these are needed but don't load
-    "DiagrammeR", 
+    "DiagrammeR",
+    "lattice (>= 0.22.5)",
+    "SpaDES.project (>= 0.1.0.9003)",
+    "LandR (>=1.1.5.9000)",
+    "quickPlot (>= 1.0.2.9003)",
+    "reproducible (>= 2.1.1.9002)",
+    "eliotmcintire/PSPclean@Eliot (>= 0.1.4.9006)",
     "PredictiveEcology/SpaDES.experiment@development (HEAD)",
-    "terra"  
+    "SpaDES.core (>= 2.1.5)",
+    "terra"
   ),
   options = list(
     "LandR.assertions" = TRUE,
@@ -174,7 +195,7 @@ out <- setupProject(
                                                    EN_generic_full = "Poplar",
                                                    Leading = "Poplar leading")]
     sppEquivalencies_CA[grep("Popu_", LandR), Boreal := "Popu_Spp"]
-    
+
     # define spp column to use for model
     sppEquivalencies_CA <- sppEquivalencies_CA[!"", on = sppEquivCol]
     sppEquivalencies_CA <- na.omit(sppEquivalencies_CA, sppEquivCol)
@@ -195,7 +216,7 @@ out <- setupProject(
   studyArea = {
     originalcrs <- "+proj=longlat +datum=NAD83 +no_defs +ellps=GRS80 +towgs84=0,0,0"
     Biomass_corecrs <- "+proj=lcc +lat_1=49 +lat_2=77 +lat_0=0 +lon_0=-95 +x_0=0 +y_0=0 +datum=NAD83 +units=m +no_defs +ellps=GRS80 +towgs84=0,0,0"
-    
+
     smallExtent <- c(xmin = -104.757, xmax = -104.48835, ymin = 55.68663, ymax = 55.94491)
     studyAreaS <- terra::vect(terra::ext(smallExtent))
     studyAreaS <-  terra::vect(terra::geom(studyAreaS), "polygons", crs = originalcrs, atts = data.frame(id = 1:length(studyAreaS)))
@@ -206,7 +227,7 @@ out <- setupProject(
     originalcrs <- "+proj=longlat +datum=NAD83 +no_defs +ellps=GRS80 +towgs84=0,0,0"
     Biomass_corecrs <- "+proj=lcc +lat_1=49 +lat_2=77 +lat_0=0 +lon_0=-95 +x_0=0 +y_0=0 +datum=NAD83 +units=m +no_defs +ellps=GRS80 +towgs84=0,0,0"
     largeExtent <- c(xmin = -104.757, xmax = -104.2197, ymin = 55.68663, ymax = 56.20319)
-    
+
     studyAreaL <- terra::vect(terra::ext(largeExtent))
     studyAreaL <-  terra::vect(terra::geom(studyAreaL), "polygons", crs = originalcrs, atts = data.frame(id = 1:length(studyAreaL)))
     studyAreaL <- terra::project(studyAreaL, Biomass_corecrs)
@@ -216,11 +237,11 @@ out <- setupProject(
   outputs = {
     rbind(
       data.frame(
-        objectName = "cohortData", 
+        objectName = "cohortData",
         saveTime = seq(times$start, times$end)
       ),
       data.frame(
-        objectName = "pixelGroupMap", 
+        objectName = "pixelGroupMap",
         saveTime = seq(times$start, times$end)
       )
     )
@@ -269,7 +290,8 @@ You can initialise the and run the workflow in two separate steps...
 #| results: hide
 
 # initialise then run simulation 
-simInitOut <- SpaDES.core::simInit2(out)
+# simInitOut <- SpaDES.core::simInit2(out)
+simInitOut <- do.call(SpaDES.core::simInit, out)
 simOut <- SpaDES.core::spades(simInitOut)
 ```
 
