@@ -103,7 +103,24 @@ You need to have a Google account to access some of the data using the
 During the `simInit()` (or `simInitAndSpades()`) call R will prompt you
 to either choose a previously authenticated account (if you have
 previously used `googledrive`) or to open a browser window and
-authenticate. Make sure you give `tidyverse` read/write access to your
+authenticate. 
+
+But in many cases, it seems, the above won't work for some people. This next chunk has worked for many:
+
+```{r setupGoogle}
+#| eval: false
+#| results: hide
+#| code-fold: true
+#| code-summary: "Show code"
+install.packages(c("googledrive", "httpuv"), repos = repos)
+
+googledriveAuthPath <- "~/SpaDES_book/googledrive_auth_cache"
+dir.create(googledriveAuthPath, showWarnings = FALSE)
+googledrive::drive_auth(cache = "~/SpaDES_book/googledrive_auth_cache")
+
+```
+
+Make sure you give `tidyverse` read/write access to your
 files:
 
 ![](assets/img/gdriveauth.png){fig-align="center" width="467"}
@@ -116,17 +133,6 @@ then, our apologies for any inconvenience.
 
 ## Workflow setup
 
-There are several objects stored on Google Drive. You *must* be authenticated to access these. There are several ways to get authenticated. Some work for some people, others don't. This seems to work for many.
-
-```{r setupGoogle}
-install.packages(c("googledrive", "httpuv"), repos = repos)
-
-googledriveAuthPath <- "~/SpaDES_book/googledrive_auth_cache"
-dir.create(googledriveAuthPath, showWarnings = FALSE)
-googledrive::drive_auth(cache = "~/SpaDES_book/googledrive_auth_cache")
-
-```
-
 ```{r setupProject}
 #| eval: true
 #| results: hide
@@ -138,7 +144,6 @@ install.packages(c("SpaDES.project", "Require"), repos = repos)
 
 library(SpaDES.project)
 
-
 out <- setupProject(
   # INPUT OBJECTS -----------------------------------
   # these need to come *before* any formal arguments, as they are needed for params.R
@@ -147,6 +152,7 @@ out <- setupProject(
   successionTimestep = 10L,
   eventCaching = c(".inputObjects", "init"),
   useParallel = FALSE,
+
   overwrite = TRUE, # Just run this once. Then remove it.
   paths = list("packagePath" = "packages/",
                "projectPath" = "~/SpaDES_book/LandRDemo_coreVeg"),
