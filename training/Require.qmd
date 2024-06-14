@@ -1,0 +1,40 @@
+---
+author:
+  - "Eliot McIntire"
+  - "Ceres Barros"
+date: last-modified
+editor_options:
+  chunk_output_type: console
+---
+
+# `Require` for R package management {#sec-Require}
+
+-   what it's attempting to do
+
+## How `Require` deals with different package versions
+
+    -   In a SpaDES workflow context, different modules may ask for different versions
+    of the same package (including a mix of CRAN and GitHub hosted packages). 
+    `Require` will install the highest of these versions and  prioritize CRAN if it
+    meets requirements. Note that if different *specific* versions (not minimum versions)
+    of a package are asked `Require` will not be able to resolve the conflict.
+
+## Using `Require` to save/restore/recreate a library state
+
+    - `pkgSnapshot()` can be used to save a list of installed packages and package
+    versions in a `.txt` file. The file can then be passed to `Require` to restore
+    or recreate the same library in another context (e.g. another machine, project, etc.)
+
+## Not foolproof, but it helps
+
+-   a little something about: it is not foolproof but helps in many cases
+
+-   link to post June Workshop post.
+
+## See also
+
+[`?Require::Require`](https://require.predictiveecology.org/reference/Require.html)
+
+[`?Require::pkgSnapshot`](https://require.predictiveecology.org/reference/pkgSnapshot.html)
+
+
