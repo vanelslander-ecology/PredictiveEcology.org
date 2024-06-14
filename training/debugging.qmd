@@ -226,6 +226,52 @@ re-parse module code.
 This means that we can insert a `browser()` somewhere in the event code,
 then `restartSpades()` and debug the event.
 
+
+## A note on testing SpaDES modules
+
+Module testing can happen at several levels:
+
+-   Assertions -- tests/checks embedded in module code.
+
+-   Unit tests of module functions - individual functions are tested *independently*
+    of the module.
+
+-   Solo-module testing - the module is tested alone with default and non-default
+    input/parameter values.
+
+-   Integration tests - the module is tested in a workflow with other modules, using
+    alone with default and non-default input/parameter values.
+
+At a minimum, a developer should put in place assertions. These are small checks
+and tests inserted in the module code that issue meaningful warnings/error messages
+to users when they fail. Here's an example of an assertion:
+
+```{r assertion}
+#| eval: false
+myFunction <- function(x, ...) {
+  if (!inherits(x, c("numeric", "integer"))) {
+    stop("x should be a numeric/integer vector")
+  }
+  mean(x, ...)
+}
+
+myFunction(LETTERS[1:10])
+# Error in myFunction(LETTERS[1:10]) : x should be a numeric/integer vector
+```
+
+Unit tests require "pulling out" the functions in the module and, potentially,
+testing them in separate testing workflows.
+
+Integration tests are implicitly done when modules are put together for particular
+projects, but this will only cover a specific set of input/parameter values and 
+conditions. Therefore, it is ideal to also do solo-module testing and integration 
+tests that capture a range of module setup conditions.
+
+This is time-consuming work, but does pay off in the long-run especially if
+tests are repeated on a regular basis. For this reason, `SpaDES.core::newModule()`
+creates a `tests/` folder in the module folder as a reminder to the developer that
+they should eventually develop tests for their modules.
+
 ## Try on your own
 
 -   Try to debug the first method of the function `show()`. Here's a
