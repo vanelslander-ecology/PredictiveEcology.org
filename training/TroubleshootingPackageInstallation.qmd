@@ -63,11 +63,11 @@ problems, even after restarting the current R session.
     packages in the user library. To determine where this is, you can
     try:
 
-`userLib <- Sys.getenv("R_LIBS_USER")`
+    `userLib <- Sys.getenv("R_LIBS_USER")`
 
-then update the packages there:
+    then update the packages there:
 
-`update.packages(userLib, ask = FALSE)`
+    `update.packages(userLib, ask = FALSE)`
 
 -   **Turn off R diagnostics** – Alternatively (or in complement) to the
     solution above, you can turn off R code diagnostics (temporarily or
@@ -77,22 +77,22 @@ then update the packages there:
 
 1.  Go to *Tools* \> *Global Options* \> *Code*
 
-2.  Open the *Diagnostics* tab, and uncheck "Show diagnostics for R"
+    2.  Open the *Diagnostics* tab, and uncheck "Show diagnostics for R"
 
-Restart R after doing the above. Try the package installations again. If
-they fail again, see other solutions and try them.
+    Restart R after doing the above. Try the package installations
+    again. If they fail again, see other solutions and try them.
 
-![Turning of R diagnostics with RStudio – a potential solution to
-prevent RStudio from pre-loading several R
-packages.](assets/img/GOptions_RDiagnostics.PNG){fig-align="center"
-width="469"}
+    ![Turning of R diagnostics with RStudio – a potential solution to
+    prevent RStudio from pre-loading several R
+    packages.](assets/img/GOptions_RDiagnostics.PNG){fig-align="center"
+    width="469"}
 
-Alternatively, you can:
+    Alternatively, you can:
 
-```{r}
-install.packages("RStudio.prefs")
-RStudio.prefs::use_RStudio_prefs(
-  show_diagnostics_r = FALSE
+    ```{r}
+    install.packages("RStudio.prefs")
+    RStudio.prefs::use_RStudio_prefs(
+    show_diagnostics_r = FALSE
     )
     ```
 
