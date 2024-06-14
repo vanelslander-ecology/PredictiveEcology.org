@@ -117,7 +117,10 @@ Any function can be written and defined in any `.R` file in the `R` folder, just
 
 In this example, instead of writing the code that does what we want inside the `doEvent` function itself, lets use the `Init` function. We move the code from the "init" event into a function, then call that function.
 
-```{r useAFunction,eval=FALSE}
+```{r useAFunction}
+#| eval: false
+#| purl: false
+
 doEvent.My_linear_model.init <- function(sim, eventTime, eventType, priority) {
   sim <- Init(sim)
   return(sim)
@@ -134,7 +137,10 @@ We can extend this to any number of functions. Notice, that functions can have a
 
 Copy these three functions to your module, **replacing the existing functions with these ones** (for `doEvent.My_linear_model.init` and `Init`). `generateY` is completely new, so it won't replace anything.
 
-```{r useAFunction2,eval=FALSE}
+```{r useAFunction2}
+#| eval: false
+#| purl: false
+
 doEvent.My_linear_model.init <- function(sim, eventTime, eventType, priority) {
   sim <- Init(sim)
   return(sim)
