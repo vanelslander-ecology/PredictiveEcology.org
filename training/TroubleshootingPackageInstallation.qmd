@@ -93,8 +93,22 @@ Alternatively, you can:
 install.packages("RStudio.prefs")
 RStudio.prefs::use_RStudio_prefs(
   show_diagnostics_r = FALSE
-)
-```
+    )
+    ```
+
+-   **Turn off previous R session reloading** – If R is reloading a
+    previously saved session (loading an `.Rdata` file) this may also be
+    loading the packages attached to this previous session. You can turn
+    off this feature off (temporarily or permanently), in your RStudio's
+    *Global Options*. Via the RStudio GUI:
+
+    1.  Go to *Tools* \> *Global Options* \> *General* and uncheck
+        "Restore .RData into workspace at startup:\`
+
+    ![Turning of restoring previous R session with RStudio – a potential
+    solution to prevent R from loading R packages used in a previous
+    session.](assets/img/GOptions_RData.PNG){fig-align="center"
+    width="469"}
 
 ### 00LOCK folder issues
 
