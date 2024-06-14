@@ -347,7 +347,7 @@ outputs that model, and plots the fit.
 4.  What is the `sim`? See
     [`?'.simList-class'`](https://rdrr.io/cran/SpaDES.core/man/simList-class.html)
 
-## Challenge yourself {#sec-moduleFilesAndMetadata-challengeYourself}
+## Try on your own
 
 1.  Fill in the metadata from the Challenges you did in previous
     chapter.

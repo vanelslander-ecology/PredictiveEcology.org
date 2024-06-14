@@ -177,7 +177,7 @@ completed(out2)
 This time, there is an extra event that happened. **We now have a
 workflow of 2 events.**
 
-## Challenge yourself {#sec-newModule-challengeYourself}
+## Try on your own
 
 1.  Make a new module. Make it really simple. Run it with
     `simInitAndSpades` as in the above examples.
