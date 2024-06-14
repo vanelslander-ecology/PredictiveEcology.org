@@ -152,8 +152,9 @@ out <- setupProject(
   successionTimestep = 10L,
   eventCaching = c(".inputObjects", "init"),
   useParallel = FALSE,
-
   overwrite = TRUE, # Just run this once. Then remove it.
+  Restart = TRUE,
+  standAlone = TRUE,
   paths = list("packagePath" = "packages/",
                "projectPath" = "~/SpaDES_book/LandRDemo_coreVeg"),
   packages = c(
