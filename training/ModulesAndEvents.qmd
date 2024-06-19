@@ -95,6 +95,31 @@ optional files:
 
 To make a new module, see: @sec-moduleintro.
 
+::: {.callout-note appearance="simple"}
+## How to decide whether to make a module, or expand an existing one?
+
+There's no fixed rule about when it is best to create a module vs. expand another
+existing module. This decision will depend on various factors, but at least two questions 
+should be considered when making a decision:
+
+-   Is the additional code a very small operation, or something that will *never*
+    be disassociated from a current module?
+    If the answer is "yes", then perhaps expanding the existing module is the way 
+    to go.
+    
+-   Can we foresee that swapping between algorithms/approaches will be desired 
+    in the future? E.g., knowing that an ordinary least square regression
+    could, in the future, be swapped by a mixed effects model to compare model 
+    performance -- i.e. both approaches are valid and we want eventually to have both.
+    If the answer is "yes", then creating a new module will allow greater flexibility
+    in the future.
+    
+We usually see "data preparation" and "model calibration" steps as semi-independent 
+from "prediction/simulation steps" and have typically created 
+"data preparation"/"calibration" modules to keep these steps separate, 
+and to allow swapping between different approaches to preparing inputs for a model.
+:::
+
 ## Events
 
 Events are named chunks of code that can be scheduled to be run once or
@@ -107,9 +132,14 @@ To see how to schedule events, see: @sec-schedulingEvents.
 ## Functions
 
 Essentially, everything in R is or uses functions. Modules define
-functions (`doEvent.*moduleName*`), events call specific functions (we
-some times call these "event functions"), and functions can be defined
-within modules, R packages, or user code.
+events (`doEvent.*moduleName*`), events call specific functions (we
+some times call the main function an event calls an "event function", 
+but there can be other nested functions within these), and functions can be defined
+within modules, R packages, or user code contained in `.R` scripts inside the module's
+`R/` folder.
+
+**We would not define functions in the `.GlobalEnv`.**
+
 
 ### Adding functions
 

@@ -93,6 +93,9 @@ SpaDES.core::newModule(name = nm1, path = modulePath, open = FALSE,
                        ))
 ```
 
+You may get a warning related with the `testthat` R package not being
+available. This is fine.[^1]
+
 **Keeping objects**
 
 For now, we just say, *if you want to keep an object, assign it to
@@ -181,7 +184,7 @@ workflow of 2 events.**
 
 1.  Make a new module. Make it really simple. Run it with
     `simInitAndSpades` as in the above examples.
-    
+
     -   Use `sim$` for an object that will be outputted.
 
 2.  Make a second new module that uses the `sim$` object.
@@ -216,3 +219,8 @@ fileName <- file.path("R/Chapter_scripts", sub("rmarkdown", "R", knitr::current_
 #| purl: false
 
 ```
+
+[^1]: We use the `testthat` package to automate module and code testing.
+    By default, `newModule()` creates a `tests` folder inside the module
+    folder that is designed to be used with `testthat` , hence the
+    warning if this package has not been installed.
