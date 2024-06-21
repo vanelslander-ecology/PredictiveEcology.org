@@ -73,9 +73,9 @@ A more useful comment:
 -   Consider "packaging" your functions so they can be used across
     projects and SpaDES modules.
 
-[!Functions and modules as key tools for $R^3T$, but also for building
-integrated and continuous workflows; McIntire et al.
-(2022)](https://onlinelibrary.wiley.com/cms/asset/680b22bc-1a97-4ab6-8f90-6fd1557e9e27/ele13994%20-fig-0001-m.jpg)
+    [![Functions and modules as key tools for $R^3T$, but also for building
+    integrated and continuous workflows; McIntire et al.
+    (2022)](assets/img/PERFICTfig1.jpg)](https://onlinelibrary.wiley.com/cms/asset/680b22bc-1a97-4ab6-8f90-6fd1557e9e27/ele13994%20-fig-0001-m.jpg)
 
 -   Centralize workflow in a single script -- this is quite intuitive
     when using SpaDES, as usually there is a "controller" script that
