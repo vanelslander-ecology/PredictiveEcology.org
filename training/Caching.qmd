@@ -64,17 +64,22 @@ objects.
 ## How to use `Cache`
 
 The `Cache` function can be used with any function. A user can wrap it
-around another function call or use the base pipe operator `|>`. The
-following two calls are the same, and thus the 2nd one will result in
+around another function call, use the base pipe operator `|>` or specify
+the function and function arguments as arguments to `Cache`. The
+following calls are the same, and thus the 2nd and 3rd will result in
 the identical output to the first:
 
 ```{r simpleFunctions}
 #| cache: true
+
 library(reproducible)
 reproducible::Cache(rnorm(1))
 
 rnorm(1) |>
   reproducible::Cache()
+
+reproducible::Cache(rnorm,
+                    n = 1)
 ```
 
 See `?reproducible::Cache` for many more examples.
