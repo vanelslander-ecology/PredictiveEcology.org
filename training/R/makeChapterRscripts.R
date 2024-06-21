@@ -23,7 +23,9 @@ chapterQMDs <- list.files(pattern = ".qmd") |>
 chapterQMDs <- file.path(currwd, chapterQMDs)
 
 ## as per `?knitr::purl` setwd to Rscript output dir
-setwd("R/Chapter_scripts")
+chScriptsPath <- "R/Chapter_scripts"
+dir.create(chScriptsPath, showWarnings = FALSE)
+setwd(chScriptsPath)
 
 chapterRs <- sapply(chapterQMDs, knitr::purl, documentation = 0)
 
