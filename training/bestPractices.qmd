@@ -107,7 +107,7 @@ SpaDES users and R programmers in general.
     endure and persist through time and users
 
     -   Use a combination of *assertions*, *unit tests* and *integration
-    tests*[^1]
+        tests*[^1]
 
 ## Best practices for SpaDES workflows
 
@@ -147,6 +147,18 @@ SpaDES users and R programmers in general.
         it from being updated, which can make `setupProject` (and
         `simInit`) fail if they attempt to update a package to respect
         module requirements.
+
+-   **Avoid installing packages into a cloud-synced/managed folder** –
+    files in and folders managed by cloud-storage software like
+    OneDrive, Google Drive and Dropbox, are constantly being screened by
+    these software which can lead to conflicts during package
+    installation (e.g., the software holds on to certain files and R is
+    unable to delete and re-install them). If package installation is
+    scripted, there is no need to sync it with a server – you can
+    recover it at any time.
+
+-   **Avoid pointing the cache to a cloud-synced/managed folder** – for
+    the same reasons as in the previous point.
 
 ## See also
 

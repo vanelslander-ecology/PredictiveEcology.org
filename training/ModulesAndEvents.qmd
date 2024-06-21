@@ -250,6 +250,19 @@ try to accomplish:
 There are no strict rules to classify a SpaDES module, just as there are
 no strict rules to classify an R script.
 
+## Where modules "live"
+
+Modules can live only locally (e.g. in a computer), but in the spirit of the PERFICT principles
+(see @sec-newexpect in @sec-intro) we like our modules to be shareable. 
+
+The best way to share modules is to host them on GitHub repositories, as SpaDES 
+tools have been developed to download modules from GitHub.
+
+Most SpaDES modules known to us are hosted in their own GitHub repositories 
+(preferred), or bundled in GitHub repositories with several modules (e.g. 
+[Castor modules](https://github.com/bcgov/castor/tree/main/R/SpaDES-modules) and
+[SCFM modules](https://github.com/PredictiveEcology/scfm/tree/master/modules)).
+
 ## See also
 
 @sec-schedulingEvents on event scheduling

@@ -12,7 +12,7 @@ always_allow_html: true
 bibliography: references.bib
 ---
 
-# Introduction
+# Introduction {#sec-intro}
 
 This book presents a collection of approaches and examples that aim to
 facilitate the building of *nimble workflows* for science-based problems
@@ -145,7 +145,7 @@ challenged and motivated by three main problems:
 Alongside these problems, **ecologists must grapple with new
 expectations for how they do their work to inform these problems**.
 
-### New expectations
+### New expectations {#sec-newexpect}
 
 Applied ecologists of the 21st century are expected more and more to
 uphold standards of **nimbleness**, **broad participation** and

@@ -261,6 +261,9 @@ DEMSK250m <- prepInputs(
   Cache()
 ```
 
+Note that changing the default `cachePath` is advisable to have persistent
+caches between R sessions. See @sec-cachewhere in @sec-caching.
+
 ## Extending `prepInputs` with `fun`
 
 It is impossible for `prepInputs` to be able to handle all data

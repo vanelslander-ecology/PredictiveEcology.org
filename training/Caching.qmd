@@ -110,6 +110,11 @@ system.time(map2 <- terra::project(ras, newCRS) |> Cache())
 system.time(map3 <- terra::project(ras, newCRS) |> Cache())
 ```
 
+In this example, the object `map3` gets cached, along with the *evaluation* of the 
+function `terra::project` and its arguments (`ras` and `newCRS`). If
+either the function or supplied arguments change, `Cache` repeats the 
+operation and re-caches the output in a new cache entry.
+
 ### From disk and memory
 
 We can set an option so that objects will also be saved to disk as
@@ -122,6 +127,39 @@ system.time(map4 <- terra::project(ras, newCRS) |> Cache())
 system.time(map5 <- terra::project(ras, newCRS) |> Cache())
 options(optOrig)
 ```
+
+## Where does the cache live? {#sec-cachewhere}
+
+By default, on a temporary folder which *does not* persist between R
+sessions. To see where this folder is run:
+
+```{r cachePath}
+options("reproducible.cachePath")
+```
+
+For a persisting cache, we should change to a permanent folder path.
+This can be done by in two ways:
+
+```{r cachePath}
+#| eval: false
+#| purl: false
+Cache(rnorm(1), 
+      cachePath = "~/SpaDES_book/cache")
+options("reproducible.cachePath")   ## still the temporary directory
+
+
+options("reproducible.cachePath" = "~/SpaDES_book/cache")
+Cache(rnorm(1))
+```
+
+The second, using `options` sets the `cachePath` for *any* subsequent
+`Cache` call.
+
+::: {.callout-note appearance="simple"}
+In a SpaDES workflow context, the cached directory can be set by passing
+the `list(..., cachePath = <a_path>)`[^1] to the `paths` argument in
+`setupProject`, `simInit` or `simInitAndSpaDES`.
+:::
 
 ## Caching examples
 
@@ -255,3 +293,5 @@ fileName <- file.path("R/Chapter_scripts", sub("rmarkdown", "R", knitr::current_
 #| purl: false
 
 ```
+
+[^1]: where `...` are other paths, like `modulePath` .
