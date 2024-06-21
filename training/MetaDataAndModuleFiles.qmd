@@ -115,9 +115,8 @@ coming from *outside* this module.
 Require::Require(c("reproducible", "SpaDES.core"), repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
 
 # make a module
-nm1 <- "My_linear_model"
 modulePath <- "~/SpaDES_book/NewModuleIntro/NewModule"
-SpaDES.core::newModule(name = nm1, path = modulePath, open = FALSE,
+SpaDES.core::newModule(name = "My_linear_model", path = modulePath, open = FALSE,
                        events = list(
                          init = {
                            y <- sim$x + rnorm(10)      # <--------- add sim$ here
@@ -202,11 +201,11 @@ outputObjects = bindrows(
 After saving the module R script, we can run the module ad inspect the output
 
 ```{r}
-out <- simInit(modules = nm1, paths = list(modulePath = modulePath))
+out <- simInit(modules = "My_linear_model", paths = list(modulePath = modulePath))
 out <- spades(out)
 
 # or 
-out <- simInitAndSpades(modules = nm1, paths = list(modulePath = modulePath))
+out <- simInitAndSpades(modules = "My_linear_model", paths = list(modulePath = modulePath))
 
 out$model
 ```
@@ -270,8 +269,7 @@ look at and update the metadata.
 ```{r newModule2}
 #| eval: true
 
-nm2 <- "visualize"
-newModule(nm2, path = modulePath, open = FALSE,
+newModule("visualize", path = modulePath, open = FALSE,
           events = list(
             init = {
               plot(sim$model)
@@ -335,7 +333,7 @@ Now, we have **inputs** and **outputs** defined, our code has been
 places in 2 spots (events), and we have default value for `x`.
 
 ```{r}
-simInitAndSpades(modules = c(nm1, nm2), 
+simInitAndSpades(modules = c("My_linear_model", "visualize"), 
                  paths = list(modulePath = modulePath))
 ```
 

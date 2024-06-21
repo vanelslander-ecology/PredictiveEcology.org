@@ -207,10 +207,9 @@ defined default values for the input object `x` (see @sec-moduleFilesAndMetadata
 
 modulePath <- getSampleModules(tempdir())
 # options(spades.loadReqdPkgs = FALSE) # we don't need to check for packages in this example
-nm1 <- "My_linear_model"
 modulePath <- "~/SpaDES_book/NewModuleIntro/NewModule"
 mySim <- simInit(params = list("My_linear_model" = list(length = 20)),
-                 modules = nm1,
+                 modules = "My_linear_model",
                  paths = list(modulePath = modulePath))
 events(mySim)
 

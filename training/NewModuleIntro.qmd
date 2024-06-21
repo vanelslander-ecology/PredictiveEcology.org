@@ -80,9 +80,10 @@ Require::Require(c("reproducible", "SpaDES.core (>= 2.1.5)"),
                  repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
 
 # make a module
-nm1 <- "My_linear_model"
 modulePath <- "~/SpaDES_book/NewModuleIntro/NewModule"
-SpaDES.core::newModule(name = nm1, path = modulePath, open = FALSE,
+SpaDES.core::newModule(name = "My_linear_model", 
+                       path = modulePath, 
+                       open = FALSE,
                        events = list(
                          init = {
                            x <- rnorm(10)
@@ -107,7 +108,8 @@ So we assign the `model` to `sim`.
 #| eval: true
 
 # make a module
-SpaDES.core::newModule(name = nm1, path = modulePath, open = FALSE,
+SpaDES.core::newModule(name = "My_linear_model", 
+                       path = modulePath, open = FALSE,
                        events = list(
                          init = {
                            x <- rnorm(10)
@@ -125,7 +127,8 @@ which executes it.
 ```{r}
 #| eval: true
 
-out <- simInit(modules = nm1, paths = list(modulePath = modulePath))
+out <- simInit(modules = "My_linear_model", 
+               paths = list(modulePath = modulePath))
 out <- spades(out)
 ```
 
@@ -151,8 +154,7 @@ Our next step is to divide the pieces into conceptual chunks. Let's now
 create a new module for the `plot` ... a "visualization module".
 
 ```{r newModule2}
-nm2 <- "visualize"
-SpaDES.core::newModule(nm2, path = modulePath, open = FALSE,
+SpaDES.core::newModule("visualize", path = modulePath, open = FALSE,
                        events = list(
                          init = {
                            plot(sim$model)
@@ -166,7 +168,8 @@ argument. We are using `simInitAndSpades` which is a shortcut to running
 the two functions separately.
 
 ```{r}
-out2 <- simInitAndSpades(module = c(nm1, nm2), paths = list(modulePath = modulePath))
+out2 <- simInitAndSpades(module = c("My_linear_model", "visualize"), 
+                         paths = list(modulePath = modulePath))
 ```
 
 We can look at the output again:

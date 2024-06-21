@@ -112,9 +112,8 @@ To pass parameters to a module, we go back to out simple module and make
 a minor change:
 
 ```{r}
-nm1 <- "My_linear_model"
 modulePath <- "~/SpaDES_book/NewModuleIntro/NewModule"
-SpaDES.core::newModule(name = nm1, path = modulePath, open = FALSE,
+SpaDES.core::newModule(name = "My_linear_model", path = modulePath, open = FALSE,
                        events = list(
                          init = {
                            x <- rnorm(P(sim)$length)
@@ -158,14 +157,10 @@ Now run the the module:
 ```{r}
 #| eval: false
 
-out2 <- SpaDES.core::simInitAndSpades(modules = nm1,
-                         paths = list(modulePath = modulePath))
+out2 <- SpaDES.core::simInitAndSpades(modules = "My_linear_model",
+                                      paths = list(modulePath = modulePath))
 params(out2)   # can you find the length parameter?
 ```
-
-Notice how `params = list("My_linear_model" = list(length = 20))` has
-`"My_linear_model"`, not `nm1`. this is because `list()` does not accept
-objects as "names".
 
 ### `.inputObjects`
 

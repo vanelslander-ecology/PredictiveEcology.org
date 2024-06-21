@@ -123,7 +123,7 @@ not try right-clicking the RStudio window and selecting "Reload"),
 showing a highlighted `browser()` line. The R console shows:
 
 ```{r}
-out <- simInit(modules = nm1, paths = list(modulePath = modulePath))
+out <- simInit(modules = "My_linear_model", paths = list(modulePath = modulePath))
 out <- spades(out)
 ```
 
