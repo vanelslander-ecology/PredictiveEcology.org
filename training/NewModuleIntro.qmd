@@ -148,6 +148,17 @@ completed(out)
 
 We have our first "simple workflow"! 1 chunk of code :)
 
+:::{.callout-warning appearance="simple"}
+## `simInit()` before `spades()`
+
+`SpaDES.core::simInit()` *always* has to be called before `SpaDES.core::spades()`.
+
+`simInit()` will initialise the workflow `simList` object that `spades()` uses
+to execute the workflow.
+
+See @sec-simlist for more detail about the `simList`
+:::
+
 ### Add a second module
 
 Our next step is to divide the pieces into conceptual chunks. Let's now

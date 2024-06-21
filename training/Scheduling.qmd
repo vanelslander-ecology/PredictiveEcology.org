@@ -111,8 +111,8 @@ SpaDES.core::newModule(name = "scheduling", path = "~/SpaDES_book/scheduling")
 ```
 
 Open the module file, which will be printed in the console. Scroll down
-to the `Init` function and copy the `Init`, the `.inputObjects()`, and the
-`Plot` parts in the code above into the new module, as we did in
+to the `Init` function and copy the `Init`, the `.inputObjects()`, and
+the `Plot` parts in the code above into the new module, as we did in
 @sec-moduleintro.
 
 We must make the same decisions about "local objects" (objects that are
@@ -149,7 +149,6 @@ plotFun <- function(sim) {
 }
 ```
 
-
 ### Update module metadata
 
 Like in @sec-moduleFilesAndMetadata, we also have to update the module
@@ -167,8 +166,8 @@ createsOutput(objectName = "predictions", objectClass = "data.frame",
               desc = "Table of predictions and years")
 ```
 
-Make sure the inputs (`x`) and all outputs (`predictions`, `gg`, `pred` and `out`)
-are all declared.
+Make sure the inputs (`x`) and all outputs (`predictions`, `gg`, `pred`
+and `out`) are all declared.
 
 ## New Event Function -- Prediction
 
@@ -199,34 +198,46 @@ Note the new output `years`, which should also be added to the metadata.
 ## Scheduling
 
 Now we need to tell SpaDES when to execute and when to iterate each of
-the steps or "events". The `init` we do once, at the start. The `.inputObjects` always
-only happens once and "before the start" (`init`) -- it is scheduled
-automatically so nothing to do here. The last part (i.e., the prediction
-event) must happen 10 times, and it must start after `init` and before
-the `plot`. The `plot` we do once.
+the steps or "events". The `init` we do once, at the start. The
+`.inputObjects` always only happens once and "before the start" (`init`)
+-- it is scheduled automatically so nothing to do here. The last part
+(i.e., the prediction event) must happen 10 times, and it must start
+after `init` and before the `plot`. The `plot` we do once.
 
-### doEvent
+### `doEvent.*()` and `scheduleEvent()`
 
-There is a special function in a `SpaDES` module called `doEvent.<module_name>()`.
-SpaDES calls this function once, passing the argument `event = "init"`.
-That means that R will enter into this function only once and run only
-the `init` part, unless we specifically tell it to do more, using the
-`scheduleEvent` function.
+There is a special function defined in a `SpaDES` module called
+`doEvent.*()` (it usually is appended with the module name:
+`doEvent.<module_name>()`). SpaDES calls this function several times and
+executes it's code depending on the values of the `eventTime` and
+`eventType` arguments.
 
-We place this function anywhere we want inside `doEvent`, in general. In
-this example, we will place it in a few places.
+By default the only mandatory event executed by `spades` is the
+`init`[^1], unless we specifically tell it to do more, using the
+`SpaDES.core::scheduleEvent()` function and declaring more values for
+the `event` argument (i.e. more events).
 
 ::: {.callout-note appearance="simple"}
-## Order of events
+## Order of event *code* (not to confuse with event *execution*)
 
-Events do not have to be defined in any particular order in the `doEvent.<module_name>()`
-function, as their order of execution is solely determined by scheduling (`scheduleEvent()`)
-or imposed by `simInit()` and `spades()` (`.inputObjects()` and `init` are always first.)
+Events do not have to be defined in any particular order in the
+`doEvent.<module_name>()` function, as their order of execution is
+solely determined by scheduling (`scheduleEvent()`) or, for some events,
+imposed by `simInit()` and `spades()` (e.g., `.inputObjects()` and
+`init` are always executed first).
 
-Similarly, the order in which functions used by events appear in the module R script
-is arbitrary.
+Similarly, the order in which functions used by events appear in the
+module R script is arbitrary.
 :::
 
+`scheduleEvent()` is the "scheduler" function. Using the arguments
+`eventTime` and `eventType`, we define *when* and *what event* to
+schedule, respectively. `eventPriority` can be specified to determine
+which event should occur first, when two are scheduled for the same
+time[^2]. Finally, `moduleName` and `sim` always have to be passed.
+
+We place `scheduleEvent()` anywhere we want inside each event's code in
+`doEvent.*()`. In this example, we will place it in a few places:
 
 #### In the `init` event
 
@@ -241,7 +252,7 @@ here. But we will replace it with "schedule prediction".
 
 See
 [`?start`](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html),
-[`?scheduleEvent`]()https://rdrr.io/cran/SpaDES.core/man/scheduleEvent.html,
+[`?scheduleEvent`](https://rdrr.io/cran/SpaDES.core/man/scheduleEvent.html),
 [`?P`](https://rdrr.io/cran/SpaDES.core/man/params.html)
 
 ```{r defaultInit}
@@ -279,11 +290,40 @@ switch(
 )
 ```
 
+::: {.callout-warning appearance="simple"}
+## Match `scheduleEvent()` arguments to event names
+
+The name of an event is defined as argument values for
+`doEvent.<module_name>(..., eventType)`:
+
+```{r}
+#| eval: false
+#| purl: false
+
+doEvent.scheduling = function(sim, eventTime, eventType) {
+  switch(
+    eventType,
+    init = {    # <----- "init" is the eventType/name
+     <...>
+    },
+    predictions = {  # <----- "predictions" is another eventType/name
+      <...>
+    },
+    warning(noEventWarning(sim))
+  )
+  return(invisible(sim))
+}
+```
+
+It *must* match what is provided to `scheduleEvent(..., eventType)`.
+:::
+
 ### The new events
 
-We will add code to make two new events, called `"predictions"` and `"plot"`
-(the name must match what we wrote in the `scheduleEvent()` above). In these events,
-we "do" the prediction, schedule the next prediction at "time plus 1", and plot.
+We will add code to make two new events, called `"predictions"` and
+`"plot"` (the name must match what we wrote in the `scheduleEvent()`
+above). In these events, we "do" the prediction, schedule the next
+prediction at "time plus 1", and plot.
 
 See `?SpaDES.core::times()`.
 
@@ -345,8 +385,9 @@ This would schedule 3 *predictions*, during the next three "time steps".
 This may be very clear, but it would be difficult to do this for dozens
 of years (could be done with a for-loop).
 
-A "bottom up" approach is to schedule the *predictions* event once during `init`, then
-each time that *predictions* event occurs, reschedule it:
+A "bottom up" approach is to schedule the *predictions* event once
+during `init`, then each time that *predictions* event occurs,
+reschedule it:
 
 ```{r}
 #| eval: false
@@ -369,11 +410,10 @@ self-scheduling.
 
 ### Double check existing events
 
-If we ran the above changes, we would see an error because `plotFun` was 
-scheduled to run at the time that is specified by
-`.plotInitialTime`, which by default is `start(sim)`. We have no data
-yet at that time. So, we will choose to schedule `plotFun` to run at
-`end(sim)`:
+If we ran the above changes, we would see an error because `plotFun` was
+scheduled to run at the time that is specified by `.plotInitialTime`,
+which by default is `start(sim)`. We have no data yet at that time. So,
+we will choose to schedule `plotFun` to run at `end(sim)`:
 
 ```{r}
 #| purl: false
@@ -381,6 +421,20 @@ yet at that time. So, we will choose to schedule `plotFun` to run at
 
 scheduleEvent(sim, end(sim), "scheduling", "plot")
 ```
+
+::: {.callout-note appearance="simple"}
+## Events and event functions -- not to be confused
+
+The name of an event and of the function that an event calls (the "event
+function") need not (and should not, to avoid confusion) be the same.
+
+In the examples above the `predictions` *event* called the
+`Prediction()` *event function* and the `plot` event called the
+`plotFun()` function.
+
+Conventionally, event names have been all lowercase; but this highly
+depends on developer coding style and the module.
+:::
 
 ## Run
 
@@ -428,13 +482,31 @@ i.e., keep the same folder structure.
       scheduleEvent(sim, time(sim) + P(sim)$predFreq, "predictions")
     }    
     ```
-    
+
 ## Common mistakes
 
--   **Undefined event type**. This is a *warning*, rather than an *error*, that is
-    issued when an event is being scheduled with `scheduleEvent()`, but has not been
-    defined in `doEvent.<module_name>()`. Check spelling and make sure all scheduled
-    events appear in `doEvent.<module_name>()`.
+-   **Undefined event type**. This is a *warning*, rather than an
+    *error*, that is issued when an event is being scheduled with
+    `scheduleEvent()`, but has not been defined in
+    `doEvent.<module_name>()`. Check spelling and make sure all
+    scheduled events appear in `doEvent.<module_name>()`.
+
+-   **Event not being scheduled/executed**. If an event doesn't appear
+    printed in `spades()` messages during workflow execution or in the
+    event queues shown by `events()` or `completed()`, double check:
+
+    -   whether the first occurrence of the event is being scheduled by
+        the `init` event;
+
+    -   if the chosen time for the first occurrence is correct;
+
+    -   whether the event is rescheduling itself appropriately;
+
+    -   whether the name of the event and module are spelled correctly
+        in `scheduleEvent()`;
+
+    -   whether the event has been *defined* in
+        `doEvent.<module_name>()`.
 
 ## See also
 
@@ -450,6 +522,8 @@ i.e., keep the same folder structure.
 
 [`?end`](https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html)
 
+[`?switch`](https://rdrr.io/r/base/switch.html)
+
 ## More learning on this subject
 
 [My First
@@ -457,7 +531,6 @@ Module](https://spades-workshops.predictiveecology.org/articlesMay2018/MyFirstMo
 
 [Creating a seed dispersal
 module](https://spades-workshops.predictiveecology.org/articles/02c-Convert_R_code_to_SpaDES_module.html)
-
 
 ## Barebones R script
 
@@ -475,3 +548,9 @@ fileName <- file.path("R/Chapter_scripts", sub("rmarkdown", "R", knitr::current_
 #| purl: false
 
 ```
+
+[^1]: although others appear in the template `.R` generated by
+    `newModule()` .
+
+[^2]: by default, all events get equal *relative* priority, and the one
+    scheduled first will happen first.
