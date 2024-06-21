@@ -189,9 +189,9 @@ dependencies;
 
 3.  the module-specific parameter values used;
 
-4.  the simulation start and end times;
+4.  the simulation start, end and current times;
 
-5.  the timeunits used by the modules in the simulation;
+5.  the time units used by the modules in the simulation;
 
 6.  the scheduled and completed event queues;
 
@@ -233,6 +233,8 @@ P(mySim)       # bonus: how do params() and P() differ?
 times(mySim)
 start(mySim)
 end(mySim)
+## and the 'current' time
+time(mySim)
 
 # get the simulation and module timeunits
 timeunit(mySim)
