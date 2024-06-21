@@ -13,7 +13,7 @@ execute:
   results: hide
 ---
 
-# Module Inputs {#sec-moduleinputs}
+# Providing Module Inputs {#sec-moduleinputs}
 
 ::: {.callout-tip appearance="simple"}
 See [Barebones R script] for the code shown in this chapter

@@ -61,8 +61,8 @@ plot(model)
 ```
 
 Looking at this code above, we can imagine that the first 3 lines are
-conceptually different -- *fit a dummy model* -- from the last line --
-*visualize it*. Let's put these into 2 "modules", and then run them in
+conceptually different -- fit a dummy model -- from the last line --
+visualize it. Let's put these into 2 "modules", and then run them in
 sequence.
 
 ## Create a module

@@ -96,11 +96,13 @@ emptySim  # same as show(emptySim)
 str(emptySim)
 ```
 
-**NOTE:** `simList`s are S4 objects, so we can use `getSlots()` and
+:::{.callout-note appearance="simple"}
+`simList`s are S4 objects, so we can use `getSlots()` and
 `slotNames()` to examine the object.
 
 See also
 [`?'simList-class'`](https://rdrr.io/cran/SpaDES.core/man/simList-class.html)
+:::
 
 ## Accessing the parts of a `simList`
 
@@ -144,7 +146,7 @@ each module) are stored neatly and in an easily accessible way.
 :::
 :::
 
-### Initialize and inspect an empty `simList` object
+### Initialize/create and inspect an empty `simList` object
 
 ```{r empty-simList}
 #| eval: true
@@ -155,9 +157,8 @@ emptySim <- simInit()
 1.  What are the names of each of the slots in the simList?
 
 2.  What do each of these slots contain? 
-
-Hint: see
-[`?'simList-class'`](https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/simList-class)
+    
+    Hint: see [`?'simList-class'`](https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/simList-class)
 
 ```{r inspect-emptySim}
 str(emptySim)
@@ -167,9 +168,9 @@ getSlots('simList')
 ```
 
 
-### Inspect a non-empty `simList` object
+#### `simList` accessor functions
 
-Use the `simList` accessor functions to determine the following:
+`simList` accessor functions are used to determine the following:
 
 1.  the modules included in the simulation and their package
 dependencies;

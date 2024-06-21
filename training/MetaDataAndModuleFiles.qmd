@@ -57,7 +57,7 @@ y <- x + rnorm(10)
 model <- lm(y ~ x)
 ```
 
-## Required Packages, Input Expectations and Output Creations
+## Input Expectations, Output Creations and Required Packages
 
 ### Inputs and Outputs
 
@@ -95,7 +95,7 @@ pre-loaded. So, nothing to do here.
 <environment: namespace:stats>}
 ```
 
-So, our expectations, dependencies and creations are:
+So, our expectations, creations and dependencies are:
 
 -   Inputs: `x`
 -   Outputs: `model`
@@ -145,13 +145,14 @@ is. **From here, open the file**, e.g., by copy-pasting the file path
 **Opening a module file**
 
 From here onward, we will need to manually open the module code file.
+
 Every SpaDES module is defined by having at least 1 file that is named
 with `<modulePath>/<moduleName>/<moduleName>.R`. Even though we can do a
 lot with `newModule()`, we will need to get used to opening, examining
 and changing the code in the module code file.
 :::
 
-We will look at a few elements in this chapter.
+We will look at a few elements on the module R script in this chapter.
 
 ## `inputObjects`
 
@@ -232,7 +233,7 @@ is the data structure that is the foundation of `SpaDES`. It can be used
 for example.
 
 In any function that has an argument `sim`, we pass the `simList`, so we
-can access the `simList` with `sim$` from inside such a function.
+can access it with `sim$` from inside such a function.
 
 See @sec-simlist for more details about the `simList`.
 :::
@@ -245,7 +246,7 @@ inside `sim`. This all happens in the event called `init`.
 
 **Next**: add the visualization module with metadata
 
-## Visualization module
+## Adding a new module: visualization module
 
 We remake the second module from last chapter. But this time we will
 look at and update the metadata.
@@ -365,7 +366,7 @@ outputs that model, and plots the fit.
 
 @sec-modseventsfuns on Modules, Events and Functions
 
-@sec-moduleinputs on module inputs
+@sec-moduleinputs on how to provide Module Inputs
 
 @sec-simlist on the `simList`
 

@@ -23,15 +23,15 @@ SpaDES, but also to be attentive to the way we code and setup the actual
 (SpaDES) workflow.
 
 Here are some general and workflow best practices that we recommend to
-SpaDES users and any R programmers in general.
+SpaDES users and R programmers in general.
 
 ## General best practices
 
 -   Script, script, script -- this means script *everything* you do,
-    including package installation;
+    including package installation.
 
 -   "DOComment" your code -- use comments that describe the intention of
-    the code, not necessarily a code translation into human language:
+    the code, not necessarily a code translation into human language.
 
 ::: {.callout-tip collapse = "false" appearance="simple"}
 
@@ -60,15 +60,16 @@ lm(biomass ~ height)
     without you looking over their shoulder.
 
 -   Modularise and "functionise" -- avoid loooooong scripts, which are
-    harder to read, learn and debug.
+    harder to read, learn and debug. Instead bundle your code into
+    modules and functions.
 
 -   SpaDES helps the modularisation part a great deal but it is still up
     to the developer to create functions and to decide what workflow
-    components can/should be broken into separate modules or events;
+    components can/should be broken into separate modules or events.
 
 -   When using embedded module and event caching, think about what
     workflow steps can be cached to speed up development and re-runs and
-    consider turning these into separate modules or events;
+    consider turning these into separate modules or events.
 
 -   Consider "packaging" your functions so they can be used across
     projects and SpaDES modules.

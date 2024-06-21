@@ -30,7 +30,7 @@ If not, we encourage going through the chapters in Section [SpaDES
 
 From @sec-castorEg onwards, we show project flows with SpaDES modules
 that have been developed and used in ecological modelling and
-forecating, to answer both research or applied questions. We encourage
+forecasting, to answer both research or applied questions. We encourage
 readers to learn more about these models (and *modules*) from the
 documentation sources noted in the chapters.
 

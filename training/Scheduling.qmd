@@ -111,7 +111,7 @@ SpaDES.core::newModule(name = "scheduling", path = "~/SpaDES_book/scheduling")
 ```
 
 Open the module file, which will be printed in the console. Scroll down
-to the `Init` function and copy the `Init`, the `.inputObjects`, and the
+to the `Init` function and copy the `Init`, the `.inputObjects()`, and the
 `Plot` parts in the code above into the new module, as we did in
 @sec-moduleintro.
 
@@ -351,15 +351,11 @@ i.e., keep the same folder structure.
     -   We can interweave events, e.g., a fire event then a tree growth
         event
 
-<!-- -->
-
 2.  When is a loop better than scheduling?
 
     -   Loops are much faster than scheduling.
 
     -   But really, avoid loops in R if you can help it
-
-<!-- -->
 
 3.  Chances are that the first versions of this module didn't work. How
     do you fix it?
