@@ -344,7 +344,7 @@ SpaDES.core::simInitAndSpades(modules = "scheduling", paths = list(modulePath = 
 ```
 
 A complete version of this new module can be found at
-[scheduling.R](https://github.com/PredictiveEcology/PredictiveEcology.org/blob/training-book/tutos/scheduling/scheduling/scheduling.R).
+[scheduling.R](https://github.com/PredictiveEcology/PredictiveEcology.org/blob/tutos/scheduling/scheduling.R).
 You can copy this over top of the new module that you created here,
 i.e., keep the same folder structure.
 
