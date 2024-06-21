@@ -99,10 +99,10 @@ available. This is fine.[^1]
 
 **Keeping objects**
 
-For now, we just say, *if you want to keep an object, assign it to
-"sim"*. We will explain this in much more detail later. Here, we want to
-keep the `model` that we fit. But we don't care about the `x` and `y`.
-So we assign the `model` to `sim`.
+For now, we just say, if you want to keep an object, assign it to "sim".
+We will explain this in much more detail later. Here, we want to keep
+the `model` that we fit. But we don't care about the `x` and `y`. So we
+assign the `model` to `sim`.
 
 ```{r}
 #| eval: true
