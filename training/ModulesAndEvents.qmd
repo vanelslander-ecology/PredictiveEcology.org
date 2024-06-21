@@ -66,6 +66,7 @@ Modules include the following elements:
 
 -   a function call to `defineModule` that defines the metadata
     (mandatory)
+    
 -   a function definition for `doEvent.`*moduleName* (mandatory)
 
 There are many optional pieces too. The default template produces many
@@ -75,6 +76,7 @@ can ignore most of it for now.
 Optional pieces include:
 
 -   other functions in the R folder or the main *moduleName*`.R` file
+
 -   a documentation file (*moduleName*.rmd)
 
 These are all contained within a file structure like this, with other

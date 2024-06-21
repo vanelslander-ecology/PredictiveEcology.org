@@ -48,19 +48,26 @@ Some elements that should be present when bringing the data into a
 project in a reproducible/reusable manner can ideally include:
 
 -   **Accessible** from any computer
+
 -   **User-access control** (i.e., can allow only some people to get the
     data)
+    
 -   **Versioned** i.e., can know and control the version accessed
+
 -   **Spatially appropriate** -- if data are spatial (e.g., GIS data),
     they must be coerced to the relevant template for a project
+    
 -   **Exact**, i.e., test to ensure the data were downloaded as desired
+
 -   **Flexible** for many classes of data
+
 -   **Simple**
 
 Similar, if the data are to be re-used in many projects, the approach to
 getting the data should be:
 
 -   **Locally cached** if used in many projects, only one copy is needed
+
 -   **Modular** approach to accessing, so they can be easily added to
     any project
 
@@ -128,7 +135,7 @@ The column after the attributes (e.g., drwxr-xr-x), is the number of
 pointers to a file. Anything more than 1 means that there are several
 pointers.
 
-``` eval=false
+```
 system(paste0("ls -l", getOption("inputPaths")))
 ```
 
@@ -139,18 +146,23 @@ This function has three stages, using three internal functions:
 -   [`reproducible::preProcess`](https://reproducible.predictiveecology.org/reference/preProcess.html)
     which is **getting data** (download, extracting from archives,
     checksumming)
--   `reproducible::process` -- load the data into R (note: user can't
+    
+-   `reproducible::process` loads the data into R (note: user can't
     access this directly)
+    
 -   [`reproducible::postProcessTo`](https://reproducible.predictiveecology.org/reference/postProcessTo.html)
-    (for `Spatial*` and `Raster*` objects, this is crop, reproject,
-    mask/intersect).
+    is used with `Spatial*` and `Raster*` objects, and crops, reprojects, mask/intersects.
 
 `preProcess` will be run, if a user supplies `url` or `archive`.
+
 `process` will be run if `fun` is not `NA`. It will try to guess `fun`
 based on file type if `fun` is left at the default of `NULL`.
-`postProcess` will be triggered if the user passes any of the arguments
-of `postProcessTo` (`to`, `maskTo`, `cropTo`) `studyArea` or
-`rasterToMatch`.
+
+`postProcessTo` will be triggered if the user passes any its aruments
+(`to`, `maskTo`, `cropTo`) `studyArea` or
+`rasterToMatch` are supplied. Other arguments like `method` can also be to inner 
+functions (e.g. `terra::project`) to control spatial operations. See `...` in 
+`?postProcessTo`.
 
 ## With GIS
 
@@ -227,9 +239,10 @@ project, with minimal new effort each time.
 
 ## Caching
 
-`prepInputs` is friendly with `Cache`. In addition to the local stashing
-of a file, the GIS itself may take a long time. We can just `|> Cache()`
-at the end and we have a workflow that doesn't need to be broken.
+`prepInputs` is friendly with `Cache` and, in addition to the local stashing
+of a file, caches some internal operations (e.g. `prepProcess`). 
+GIS operations, however, are not internally cached. Instead the user should
+use `|> Cache()` to enable having a workflow that doesn't need to be broken.
 
 ```{r Caching}
 DEMSK250m <- prepInputs(

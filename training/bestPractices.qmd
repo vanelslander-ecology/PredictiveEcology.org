@@ -14,7 +14,7 @@ bibliography: references/references.bib
 knitr::opts_chunk$set(eval = FALSE)
 ```
 
-# Best practices for $R^3T$ workflows {.unnumbered}
+# Best practices {.unnumbered}
 
 Developing repeatable, reproducible, reusable and transparent ($R^3T$)
 workflows in R (and probably across many other languages) requires not
@@ -25,16 +25,16 @@ SpaDES, but also to be attentive to the way we code and setup the actual
 Here are some general and workflow best practices that we recommend to
 SpaDES users and R programmers in general.
 
-## General best practices
+## General best practices for $R^3T$ workflows
 
--   Script, script, script -- this means script *everything* you do,
+-   **Script, script, script** -- this means script *everything* you do,
     including package installation.
 
--   "DOComment" your code -- use comments that describe the intention of
-    the code, not necessarily a code translation into human language.
-    
-    ::: {.callout-tip collapse="false" appearance="simple"}
+-   **"DOComment" your code** -- use comments that describe the
+    intention of the code, not necessarily a code translation into human
+    language.
 
+    ::: {.callout-tip collapse="false" appearance="simple"}
     Not a very useful comment (we can check `?lm` to know what it does):
 
     ```{r}
@@ -52,95 +52,101 @@ SpaDES users and R programmers in general.
     ```
     :::
 
--   Minimize the number of software/languages used -- the more jumps
+-   **Minimize the number of software/languages used** -- the more jumps
     between languages/software the less robust and reproducible the
     workflow is. Remember: other users will need to install the same
     software and be able to the same jumps/operations that you did
     without you looking over their shoulder.
 
--   Modularise and "functionise" -- avoid loooooong scripts, which are
-    harder to read, learn and debug. Instead bundle your code into
+-   **Modularise and "functionise"** -- avoid loooooong scripts, which
+    are harder to read, learn and debug. Instead bundle your code into
     modules and functions.
 
--   SpaDES helps the modularisation part a great deal but it is still up
-    to the developer to create functions and to decide what workflow
-    components can/should be broken into separate modules or events.
+    -   SpaDES helps the modularisation part a great deal but it is
+        still up to the developer to create functions and to decide what
+        workflow components can/should be broken into separate modules
+        or events.
 
--   When using embedded module and event caching, think about what
-    workflow steps can be cached to speed up development and re-runs and
-    consider turning these into separate modules or events.
+    -   When using embedded module and event caching, think about what
+        workflow steps can be cached to speed up development and re-runs
+        and consider turning these into separate modules or events.
 
--   Consider "packaging" your functions so they can be used across
-    projects and SpaDES modules.
+    -   Consider "packaging" your functions so they can be used across
+        projects and SpaDES modules.
 
-    [![Functions and modules as key tools for $R^3T$, but also for building
-    integrated and continuous workflows; McIntire et al.
-    (2022)](assets/img/PERFICTfig1.jpg)](https://onlinelibrary.wiley.com/cms/asset/680b22bc-1a97-4ab6-8f90-6fd1557e9e27/ele13994%20-fig-0001-m.jpg)
+        [![Functions and modules as key tools for \$R\^3T\$, but also
+        for building integrated and continuous workflows; McIntire et
+        al.
+        (2022)](assets/img/PERFICTfig1.jpg)](https://onlinelibrary.wiley.com/cms/asset/680b22bc-1a97-4ab6-8f90-6fd1557e9e27/ele13994%20-fig-0001-m.jpg)
 
--   Centralize workflow in a single script -- this is quite intuitive
-    when using SpaDES, as usually there is a "controller" script that
-    sets up and runs the workflow.
+-   **Centralize workflow in a single script** -- this is quite
+    intuitive when using SpaDES, as usually there is a "controller"
+    script that sets up and runs the workflow.
 
--   Use project-oriented and self-contained workflows -- pick a
+-   **Use project-oriented and self-contained workflows** -- pick a
     structure that is self-explanatory and make sure that the project
     can be "moved" between users/machines without changing the code.
 
--   Don't use absolute paths -- use relative paths (relative to project
-    directory) -- RStudio Projects and SpaDES.project do this
+-   **Don't use absolute paths** -- use *relative* paths (relative to
+    project directory) -- RStudio Projects and SpaDES.project do this
     automatically.
 
--   You can even install your R packages into project-level libraries,
-    to allow for different package versions between projects in the same
-    machine
+    -   You can even install your R packages into project-level
+        libraries, to allow for different package versions between
+        projects in the same machine
 
--   Version control -- great for collaboration, great for tracking
+-   **Version control** -- great for collaboration, great for tracking
     changes, great to recover old versions of a project/code
 
--   Test (!) -- test your code and your workflow if you want them to
+    -   When using version control software, it might be best not to use
+        cloud-based storage and syncing (e.g. OneDrive, Google Drive,
+        Dropbox) on the same files/folders, as it can conflict with and
+        slow down the version control software.
+
+-   **Test (!)** -- test your code and your workflow if you want them to
     endure and persist through time and users
 
--   Use a combination of *assertions*, *unit tests* and *integration
+    -   Use a combination of *assertions*, *unit tests* and *integration
     tests*[^1]
 
 ## Best practices for SpaDES workflows
 
--   limit the number of objects in `.GlobalEnv`. Instead, put them in
-    functions or inside a module. When objects are in modules, you can 
-    add default object values (e.g. via `.inputObjects()`), or save them 
-    into files that are loaded by `setupProject` or `simInit`. 
-    Alternatively, you can pass objects or code to make them directly to 
-    `setupProject()` as `...` arguments, or to the `simInit` `objects` 
-    arguments. See @sec-moduleinputs and, for an example
-    with `setupProject`, @sec-LandRExample.
+-   **Limit the number of objects in `.GlobalEnv`** – instead, put them
+    in functions or inside a module. When objects are in modules, you
+    can add default object values (e.g. via `.inputObjects()`), or save
+    them into files that are loaded by `setupProject` or `simInit`.
+    Alternatively, you can pass objects or code to make them directly to
+    `setupProject()` as `...` arguments, or to the `simInit` `objects`
+    arguments. See @sec-moduleinputs and, for an example with
+    `setupProject`, @sec-LandRExample.
 
--   Why not? There are many reasons why things can get messed up with
-    modelling in R... e.g., package dependency issues (especially
-    version numbers that collide during development stages), internet
-    availability, modules finding objects in the `.GlobalEnv` when they
-    shouldn't, etc... `SpaDES.project::setupProject` and `simInit` deal
-    with these issues by loading and using namespaces/packages and
-    objects directly into a separate environment (the `simList`).
+    -   Why? Because modules might then find/use objects in/from the
+        `.GlobalEnv` when they shouldn't (they should use them from the
+        `simList`). `SpaDES.project::setupProject` and `simInit` deal
+        with these issues by loading and objects directly into a
+        separate environment (the `simList`).
 
--   Don't install packages "manually" and "separately" -- script package
-    installation in a reproducible way, i.e. that includes reference to
-    package versions. Even better, let `setupProject` deal with package
-    installation
+-   **Don't install packages "manually" and "separately"** – script
+    package installation in a reproducible way, i.e. that includes
+    reference to package versions. Even better, let `setupProject` deal
+    with package installation.
 
--   Why not? When you have many modules, each with a list of packages it
-    needs it will be hard to figure out what packages need to be
-    installed or updated. `setupProject` was designed to deal with this
-    issue using the `Require` package.
+    -   Why not? When you have many modules, each with a list of
+        packages it needs it will be hard to figure out what packages
+        need to be installed or updated. `setupProject` was designed to
+        deal with this issue using the `Require` package.
 
--   Don't pre-load packages -- let `simInit` do it when the simulation
-    is being initialized and only *after* it has asserted that packages
-    are available and in the correct versions.
+-   **Don't pre-load packages** – let `simInit` do it when the
+    simulation is being initialized and only *after* it has asserted
+    that packages are available and in the correct versions.
 
--   Why not? There are many reasons why things can get messed up with
-    modelling in R... e.g., package dependency issues (especially
-    version numbers that collide during development stages), internet
-    availability. Pre-loading a package prevents it from being updated,
-    which can make `setupProject` (and `simInit`) fail if they attempt
-    to update a package to respect module requirements.
+    -   Why not? There are many reasons why things can get messed up
+        with modelling in R... e.g., package dependency issues
+        (especially version numbers that collide during development
+        stages), internet availability. Pre-loading a package prevents
+        it from being updated, which can make `setupProject` (and
+        `simInit`) fail if they attempt to update a package to respect
+        module requirements.
 
 ## See also
 
