@@ -121,6 +121,9 @@ want to keep). These *global* objects get put into `sim`. Your new
 module should have these 3 new sections/functions:
 
 ```{r}
+#| purl: false
+#| eval: false
+
 Init <- function(sim) {
   y <- sim$x + rnorm(10)
   # fit a linear model
@@ -157,6 +160,9 @@ the problems.
 Here's an example:
 
 ```{r}
+#| purl: false
+#| eval: false
+
 createsOutput(objectName = "predictions", objectClass = "data.frame", 
               desc = "Table of predictions and years")
 ```
@@ -175,6 +181,9 @@ We'll use `scheduleEvent()` below to do this iteration. For now, copy
 the `Prediction` part into a new function:
 
 ```{r}
+#| purl: false
+#| eval: false
+
 Prediction <- function(sim) {
   startYear <- 2023
   sim$years <- startYear:(startYear + 10) + 1
@@ -224,6 +233,9 @@ See
 [`?P`](https://rdrr.io/cran/SpaDES.core/man/params.html)
 
 ```{r defaultInit}
+#| purl: false
+#| eval: false
+
 sim <- Init(sim)
 
 # schedule future event(s)
@@ -237,6 +249,9 @@ Copy the above code chunk to the `init` section so that it looks like
 this:
 
 ```{r newInit}
+#| purl: false
+#| eval: false
+
 switch(
   eventType,
   init = {
@@ -279,6 +294,9 @@ respectfully. These would have been specified in `simInit`.
 :::
 
 ```{r predictionEvent}
+#| purl: false
+#| eval: false
+
 switch(
   eventType,
   init = {...},
@@ -302,7 +320,10 @@ switch(
 
 In a "top-down" workflow, we could imagine something like:
 
-```{r, eval=FALSE}
+```{r}
+#| purl: false
+#| eval: false
+
 scheduleEvent(sim, time(sim) + 1, "predictions")
 scheduleEvent(sim, time(sim) + 2, "predictions")
 scheduleEvent(sim, time(sim) + 3, "predictions")
@@ -315,7 +336,10 @@ of years (could be done with a for-loop).
 A "bottom up" approach is to schedule the *predictions* event once during `init`, then
 each time that *predictions* event occurs, reschedule it:
 
-```{r,eval=FALSE}
+```{r}
+#| eval: false
+#| purl: false
+
 init = {
   ...
   scheduleEvent(sim, start(sim), "predictions")   # schedule first occurrence of "predictions"
@@ -340,6 +364,9 @@ yet at that time. So, we will choose to schedule `plotFun` to run at
 `end(sim)`:
 
 ```{r}
+#| purl: false
+#| eval: false
+
 scheduleEvent(sim, end(sim), "scheduling", "plot")
 ```
 
