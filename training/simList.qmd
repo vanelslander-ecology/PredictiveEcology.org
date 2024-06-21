@@ -101,7 +101,7 @@ We can examine the `simList` object structure in the usual R fashion by
 printing (`show`ing) it, or by using `str()`:
 
 ```{r simlist-structure}
-emptySim <- SpaDES::simInit()
+emptySim <- SpaDES.core::simInit()
 emptySim  # same as show(emptySim)
 str(emptySim)
 ```

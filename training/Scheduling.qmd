@@ -126,6 +126,8 @@ Init <- function(sim) {
   # fit a linear model
   sim$out <- lm(y ~ sim$x)
   sim$pred <- list()
+  
+  return(invisible(sim))
 }
 
 plotFun <- function(sim) {
@@ -133,10 +135,14 @@ plotFun <- function(sim) {
   # plot the predictions
   sim$gg <- ggplot(sim$predictions, aes(x = year, y = prediction, colour = year)) + geom_point() + geom_smooth()
   print(sim$gg)
+  
+  return(invisible(sim))
 }
 
 .inputObjects <- function(sim) {
   sim$x <- rnorm(10)
+  
+  return(invisible(sim))
 }
 ```
 

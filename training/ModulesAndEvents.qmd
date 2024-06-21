@@ -153,7 +153,7 @@ In this example, instead of writing the code that does what we want inside the `
 
 doEvent.My_linear_model.init <- function(sim, eventTime, eventType, priority) {
   sim <- Init(sim)
-  return(sim)
+  return(invisible(sim))
 }
 
 Init <- function(sim) {
@@ -173,14 +173,14 @@ Copy these three functions to your module, **replacing the existing functions wi
 
 doEvent.My_linear_model.init <- function(sim, eventTime, eventType, priority) {
   sim <- Init(sim)
-  return(sim)
+  return(invisible(sim))
 }
 
 # Use this inside the `doEvent.My_linear_model.init` function
 Init <- function(sim) {
   y <- generateY(sim$x)
   sim$model <- lm(y ~ sim$x)
-  return(sim)
+  return(invisible(sim))
 }
 
 #' A function that generates random error around an `x`
