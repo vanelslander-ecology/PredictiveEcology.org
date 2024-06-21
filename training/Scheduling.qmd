@@ -428,6 +428,13 @@ i.e., keep the same folder structure.
       scheduleEvent(sim, time(sim) + P(sim)$predFreq, "predictions")
     }    
     ```
+    
+## Common mistakes
+
+-   **Undefined event type**. This is a *warning*, rather than an *error*, that is
+    issued when an event is being scheduled with `scheduleEvent()`, but has not been
+    defined in `doEvent.<module_name>()`. Check spelling and make sure all scheduled
+    events appear in `doEvent.<module_name>()`.
 
 ## See also
 
