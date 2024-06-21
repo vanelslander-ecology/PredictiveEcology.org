@@ -198,13 +198,51 @@ outputObjects = bindrows(
 )
 ```
 
-After saving the module R script, we can run the module ad inspect the output
+**Note that each input and output object gets a `expectsInput` or `createsOutput` 
+entry, respectively.**
+
+
+## Default Values
+
+Recall, we don't have a value for `x`, unlike in the previous chapter where
+we had `x` defined in the `init` event. This means that if you run the
+following, you will get an error.
 
 ```{r}
 out <- simInit(modules = "My_linear_model", paths = list(modulePath = modulePath))
 out <- spades(out)
 
 # or 
+out <- simInitAndSpades(modules = "My_linear_model", paths = list(modulePath = modulePath))
+
+out$model
+```
+
+Just like functions in R, we can supply default values for our module
+**inputs**. We put these in a function at the bottom called
+`.inputObjects()`. See @sec-moduleinputs for a model detailed explanation
+of module inputs and how to deal with them.
+
+Copy this to the module, **replacing** the template `.inputObjects()` function.
+
+```{r}
+#| purl: false
+
+.inputObjects <- function(sim) {
+  if (!suppliedElsewhere("x", sim))
+    sim$x <- rnorm(10, mean = 20, sd = 2)
+  return(invisible(sim))
+}
+```
+
+`!suppliedElsewhere("x", sim)` will check if `x` is in `sim` and if not,
+will run the subsequent code lines (see
+[`?suppliedElsewhere`](https://rdrr.io/cran/SpaDES.core/man/suppliedElsewhere.html)).
+
+
+After saving the module R script, we can run the module and inspect the output
+
+```{r}
 out <- simInitAndSpades(modules = "My_linear_model", paths = list(modulePath = modulePath))
 
 out$model
@@ -293,39 +331,6 @@ inputObjects = bindrows(
                desc = "A linear model object from the equation (x ~ y)", sourceURL = NA)
 )
 ```
-
-## Default Values
-
-Recall, we don't have a value for `x`. This means that if you run the
-following, you will get an error, unlike in the previous chapter where
-we had `x` defined in the `init` event.
-
-```{r}
-simInitAndSpades(modules = c(nm1, nm2), 
-                 paths = list(modulePath = modulePath))
-```
-
-Just like functions in R, we can supply default values for our
-**inputs**. We put these in a function at the bottom called
-`.inputObjects`. See @sec-moduleinputs for a model detailed explanation
-of module inputs and how to deal with them.
-
-Copy this to the module, replacing the contents of the template
-`.inputObjects` function.
-
-```{r}
-#| purl: false
-
-.inputObjects <- function(sim) {
-  if (!suppliedElsewhere("x", sim))
-    sim$x <- rnorm(10, mean = 20, sd = 2)
-  return(invisible(sim))
-}
-```
-
-`!suppliedElsewhere("x", sim)` will check if `x` is in `sim` and if not,
-will run the subsequent code lines (see
-[`?suppliedElsewhere`](https://rdrr.io/cran/SpaDES.core/man/suppliedElsewhere.html)).
 
 ## Run the new module
 
