@@ -216,6 +216,18 @@ the `init` part, unless we specifically tell it to do more, using the
 We place this function anywhere we want inside `doEvent`, in general. In
 this example, we will place it in a few places.
 
+::: {.callout-note appearance="simple"}
+## Order of events
+
+Events do not have to be defined in any particular order in the `doEvent.<module_name>()`
+function, as their order of execution is solely determined by scheduling (`scheduleEvent()`)
+or imposed by `simInit()` and `spades()` (`.inputObjects()` and `init` are always first.)
+
+Similarly, the order in which functions used by events appear in the module R script
+is arbitrary.
+:::
+
+
 #### In the `init` event
 
 We look at the `init` event (code inside `event = "init"`) and we see 2
