@@ -57,13 +57,23 @@ SpaDES.core::envir(sim)
 ## `simList` is an `environment`
 
 The name `simList` has the word "list" in it, but it is actually an
-`environment`
+`environment`. The "sim" part of the name is historically inherited from "simulation" 
+modelling, although you may want to do nothing of the sort with your SpaDES modules.
 
 ```{r}
 sim <- simInit()
 is(sim, "environment")
 # [1] TRUE
 ```
+
+Accessing objects in the `simList` can be done with `$` or `[["object_name"]]` and
+objects are manipulated as they would normally -- e.g. if
+`DF` is a `data.frame` one would use `sim$DF[1, 3]` to extract the value on the
+first row and third column.
+
+There is no limit to the number of objects you can add to a `simList` -- the limit
+is, of course, your machine's RAM.
+
 :::
 
 ## Where does `simList` come from?

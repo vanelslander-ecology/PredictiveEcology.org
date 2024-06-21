@@ -127,6 +127,17 @@ SpaDES.core::newModule(name = nm1, path = modulePath, open = FALSE,
                        ))
 ```
 
+:::{.callout-warning appearance="simple"}
+## `newModule()` is not part of the "workflow"
+
+Be aware that every time `newModule()` is run with the same `name` and 
+`path` arguments, it will **overwrite** your module folder/files.
+
+As such, it is not meant to be part of a workflow. It is meant to
+provide the user with a tool to create module templates (once), which will then be
+changed as the module code develops.
+:::
+
 **Where is this module code?** In the previous chapter, we didn't look
 or care where the module code was.
 
@@ -139,7 +150,10 @@ that it creates.
 
 When we make a module, we get a message stating where the module code
 is. **From here, open the file**, e.g., by copy-pasting the file path
-(pick the `.R` file NOT the `.Rmd` file for now)
+(pick the `.R` file NOT the `.Rmd` file for now).
+
+You can also set `newModule(..., open = TRUE)` to have RStudio open the .R 
+and .Rmd files automatically.
 
 ::: {.callout-important appearance="simple" icon="false"}
 **Opening a module file**
@@ -229,8 +243,10 @@ function:
 The
 [`simList`](https://spades-core.predictiveecology.org/reference/simList-class.html)
 is the data structure that is the foundation of `SpaDES`. It can be used
-*like a list*; accessing objects can be done with `$` or `[["model"]]`,
-for example.
+*like a list*; accessing objects can be done with `$` or `[["object_name"]]`,
+for example, and objects are manipulated as they would normally -- e.g. if
+`DF` is a `data.frame` one would use `sim$DF[1, 3]` to extract the value on the
+first row and third column.
 
 In any function that has an argument `sim`, we pass the `simList`, so we
 can access it with `sim$` from inside such a function.
@@ -361,6 +377,47 @@ outputs that model, and plots the fit.
     (recall the message after you call `newModule`), where you have
     filled in the metadata. Try to build it and look at the automatic
     tables that get built from the metadata.
+
+## Common mistakes
+
+Some common mistakes/bugs that module developers encounter:
+
+-   **Object doesn't exist/is NULL.** Errors like the ones below are usually the result of 
+    not providing default values for an input in the `simList` (via `.inputObjects()`),
+    the user/another module not providing values for that object, or forgetting to
+    assign an object to the `simList` (i.e. `sim$y <- <...>`)
+    See @sec-moduleinputs.
+    
+    ```
+    Error in model.frame.default(formula = y ~ sim$x, drop.unused.levels = TRUE) : 
+    invalid type (NULL) for variable 'sim$x'
+    
+    Error in eval(predvars, data, env) : object 'y' not found
+    ```
+
+-   **Parsing errors.** These happen when `simInit` has issues reading the module
+    R script (or other associated scripts) and are usually easy to debug by reading
+    the error message. For instance, the one below indicates that lines 43, 44, have
+    a problem, which is a missing comma after the ")".
+    ```
+    Error in parse(filename) : 
+    C:<modulePath>/My_linear_model/My_linear_model.R:44:3: unexpected symbol
+    43:   )
+    44:   outputObjects
+      ^
+    ```
+
+-   **Environment- and `simList`-related error.** If the `simList` (`sim`) is not
+    returned at the end of a function that takes it as an argument -- e.g. an event
+    function, the `.inputObjects()` function... -- it will either be lost or 
+    changed into something unexpected. Below are two examples of errors that may 
+    announce this problem.
+    ```
+    Error in <...>
+    sim must be a simList
+    
+    Error in as.environment(pos) : invalid 'pos' argument
+    ```
 
 ## See also
 
