@@ -32,10 +32,10 @@ SpaDES users and R programmers in general.
 
 -   "DOComment" your code -- use comments that describe the intention of
     the code, not necessarily a code translation into human language.
+    
+    ::: {.callout-tip collapse="false" appearance="simple"}
 
-::: {.callout-tip collapse = "false" appearance="simple"}
-
-Not a very useful comment (we can check `?lm` to know what it does):
+    Not a very useful comment (we can check `?lm` to know what it does):
 
 ```{r}
 #| eval: false
@@ -47,11 +47,10 @@ A more useful comment:
 
 ```{r}
 #| eval: false
-# model linear relationship between biomass and height
-lm(biomass ~ height)
-```
-
-:::
+    # model linear relationship between biomass and height
+    lm(biomass ~ height)
+    ```
+    :::
 
 -   Minimize the number of software/languages used -- the more jumps
     between languages/software the less robust and reproducible the
