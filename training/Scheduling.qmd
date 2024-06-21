@@ -146,6 +146,24 @@ plotFun <- function(sim) {
 }
 ```
 
+
+### Update module metadata
+
+Like in @sec-moduleFilesAndMetadata, we also have to update the module
+metadata... what the inputs, outputs, parameters *are*. `SpaDES` will
+not error if the metadata are not correct, but it will try to point out
+the problems.
+
+Here's an example:
+
+```{r}
+createsOutput(objectName = "predictions", objectClass = "data.frame", 
+              desc = "Table of predictions and years")
+```
+
+Make sure the inputs (`x`) and all outputs (`predictions`, `gg`, `pred` and `out`)
+are all declared.
+
 ## New Event Function -- Prediction
 
 The new part is the `for` loop. This part takes new covariates (new
@@ -167,19 +185,20 @@ Prediction <- function(sim) {
 }
 ```
 
+Note the new output `years`, which should also be added to the metadata.
+
 ## Scheduling
 
 Now we need to tell SpaDES when to execute and when to iterate each of
-the steps or "events". The `Init` we do once, at the start. The `plotFn`
-we do once, but this time it is at the "end". The `.inputObjects` always
-only happens once and "before the start" (`Init`) -- it is scheduled
+the steps or "events". The `init` we do once, at the start. The `.inputObjects` always
+only happens once and "before the start" (`init`) -- it is scheduled
 automatically so nothing to do here. The last part (i.e., the prediction
-event) must happen 10 times, and it must start after `Init` and before
-the `plotFn`.
+event) must happen 10 times, and it must start after `init` and before
+the `plot`. The `plot` we do once.
 
 ### doEvent
 
-There is a special function in a `SpaDES` module called `doEvent()`.
+There is a special function in a `SpaDES` module called `doEvent.<module_name>()`.
 SpaDES calls this function once, passing the argument `event = "init"`.
 That means that R will enter into this function only once and run only
 the `init` part, unless we specifically tell it to do more, using the
@@ -209,7 +228,6 @@ sim <- Init(sim)
 
 # schedule future event(s)
 sim <- scheduleEvent(sim, P(sim)$.plotInitialTime, "scheduling", "plot")
-# sim <- scheduleEvent(sim, P(sim)$.saveInitialTime, "scheduling", "save")
 
 # here we create a new event type == "predictions" and we schedule it for `start(sim)`
 sim <- scheduleEvent(sim, start(sim), "scheduling", "predictions") 
@@ -234,12 +252,11 @@ switch(
 )
 ```
 
-### The new event
+### The new events
 
-We will add code to make a new event, called `"predictions"` (the name
-must match what we wrote in the `scheduleEvent` above). In this event,
-we "do" the prediction, then we schedule the next prediction at "time
-plus 1"
+We will add code to make two new events, called `"predictions"` and `"plot"`
+(the name must match what we wrote in the `scheduleEvent()` above). In these events,
+we "do" the prediction, schedule the next prediction at "time plus 1", and plot.
 
 See `?SpaDES.core::times()`.
 
@@ -272,6 +289,10 @@ switch(
     # schedule the next Prediction
     sim <- scheduleEvent(sim, time(sim) + 1, "scheduling", "predictions") 
   },
+  plot = {
+    # do the plot
+    sim <- plotFun(sim)
+  },
   ...
 )
 ```
@@ -291,16 +312,17 @@ This would schedule 3 *predictions*, during the next three "time steps".
 This may be very clear, but it would be difficult to do this for dozens
 of years (could be done with a for-loop).
 
-A "bottom up" approach is to schedule the *predictions* event once, then
-each time that *predictions* event occurs, reschedule it.
+A "bottom up" approach is to schedule the *predictions* event once during `init`, then
+each time that *predictions* event occurs, reschedule it:
 
 ```{r,eval=FALSE}
 init = {
-  scheduleEvent(sim, time(sim), "predictions")
-}
-
+  ...
+  scheduleEvent(sim, start(sim), "predictions")   # schedule first occurrence of "predictions"
+},
 predictions = {
-  scheduleEvent(sim, time(sim) + 1, "predictions")
+  ...
+  scheduleEvent(sim, time(sim) + 1, "predictions")  # re-schedule "predictions"
 }
 ```
 
@@ -311,28 +333,14 @@ self-scheduling.
 
 ### Double check existing events
 
-If we ran the above changes, we would see an error because `plotFn` is,
-by default, scheduled to run at the time that is specified by
+If we ran the above changes, we would see an error because `plotFun` was 
+scheduled to run at the time that is specified by
 `.plotInitialTime`, which by default is `start(sim)`. We have no data
-yet at that time. So, we will choose to schedule `plotFn` to run at
+yet at that time. So, we will choose to schedule `plotFun` to run at
 `end(sim)`:
 
 ```{r}
 scheduleEvent(sim, end(sim), "scheduling", "plot")
-```
-
-### Update module metadata
-
-Like in @sec-moduleFilesAndMetadata, we have to update the module
-metadata... what the inputs, outputs, parameters *are*. `SpaDES` will
-not error if the metadata are not correct, but it will try to point out
-the problems.
-
-Here's an example:
-
-```{r}
-createsOutput(objectName = "predictions", objectClass = "data.frame", 
-              desc = "Table of predictions and years")
 ```
 
 ## Run
