@@ -37,16 +37,16 @@ SpaDES users and R programmers in general.
 
     Not a very useful comment (we can check `?lm` to know what it does):
 
-```{r}
-#| eval: false
-# lm fits a linear model
-lm(biomass ~ height)
-```
+    ```{r}
+    #| eval: false
+    # lm fits a linear model
+    lm(biomass ~ height)
+    ```
 
-A more useful comment:
+    A more useful comment:
 
-```{r}
-#| eval: false
+    ```{r}
+    #| eval: false
     # model linear relationship between biomass and height
     lm(biomass ~ height)
     ```
@@ -105,12 +105,13 @@ A more useful comment:
 ## Best practices for SpaDES workflows
 
 -   limit the number of objects in `.GlobalEnv`. Instead, put them in
-    functions -- such as with `setupProject` as arguments -- or inside a
-    module. When objects are in modules, you can add default object
-    values (e.g. via `.inputObjects`), or save them into files that are
-    loaded by `setupProject` or `simInit`. See
-
-1.  
+    functions or inside a module. When objects are in modules, you can 
+    add default object values (e.g. via `.inputObjects()`), or save them 
+    into files that are loaded by `setupProject` or `simInit`. 
+    Alternatively, you can pass objects or code to make them directly to 
+    `setupProject()` as `...` arguments, or to the `simInit` `objects` 
+    arguments. See @sec-moduleinputs and, for an example
+    with `setupProject`, @sec-LandRExample.
 
 -   Why not? There are many reasons why things can get messed up with
     modelling in R... e.g., package dependency issues (especially

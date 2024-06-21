@@ -15,7 +15,7 @@ execute:
   eval: false
 ---
 
-# Forest Landscape Modelling with LandR and `setupProject`
+# Forest Landscape Modelling with LandR and `setupProject` {#sec-LandRExample}
 
 ::: {.callout-tip appearance="simple"}
 See [Barebones R script] for the code shown in this chapter
