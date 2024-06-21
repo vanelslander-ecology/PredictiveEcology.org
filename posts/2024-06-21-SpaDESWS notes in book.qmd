@@ -1,0 +1,24 @@
+---
+title: "SpaDES Workshop Book Improvements"
+author: "Ceres Barros"
+date: last-modified
+categories:
+  - Workshop
+comments: false
+---
+
+As promised, we have now incorporated many notes from our June workshop into
+the "training book" [Robust and nimble scientific workflows, using SpaDES](training/_book/index.html),
+and fixed a few examples that needed attention.
+
+Please have a look again at the troubleshooting section of the book where many of the 
+package installation issues reported during the workshop are addressed.
+
+Our work on the book contents is by no means done and the book will continue to 
+be improved.
+
+If you spot any issues, please let us know
+via [GitHub Issues](https://github.com/PredictiveEcology/PredictiveEcology.org/issues).
+
+
+Ceres and Eliot
