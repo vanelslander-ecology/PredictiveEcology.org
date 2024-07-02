@@ -138,14 +138,14 @@ options(optOrig)
 By default, on a temporary folder which *does not* persist between R
 sessions. To see where this folder is run:
 
-```{r cachePath}
+```{r cachePathOpts}
 options("reproducible.cachePath")
 ```
 
 For a persisting cache, we should change to a permanent folder path.
 This can be done by in two ways:
 
-```{r cachePath}
+```{r cachePathWays}
 #| eval: false
 #| purl: false
 Cache(rnorm(1), 
