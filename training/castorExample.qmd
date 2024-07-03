@@ -39,10 +39,6 @@ knitr::knit_hooks$set(output = function(x, options) {
 
 options(repos = list(CRAN = "http://cran.r-project.org"))
 
-if (Sys.getenv("USERNAME") == "GHA") {
-  googledrive::drive_auth(path = Sys.getenv("GOOGLE_APP_CREDENTIALS"))
-}
-
 qmdPath <- normalizePath(getwd(), winslash = "/")
 
 if (!interactive()) { 
@@ -91,42 +87,43 @@ give `tidyverse` read/write access to your files:
 
 # install/load necessary packages
 repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
-install.packages(c("SpaDES.project", "googledrive", "reproducible"), 
-                 repos = repos, dependencies = TRUE)
+install.packages(c("SpaDES.project", "Require"), repos = repos, dependencies = TRUE)
+
 library(SpaDES.project)
-
-# get Castor modules and functions
-setupFunctions(paths = list("projectPath" = "~/SpaDES_book/castorExample/"),
-               functions = c("PredictiveEcology/PredictiveEcology.org@main/tutos/castorExample/getCastorModulesAndDB.R",
-                             "PredictiveEcology/PredictiveEcology.org@main/tutos/castorExample/params.R"),
-               overwrite = TRUE)
-outMod <- getCastorModulesAndDB(paths = list("modulePath" = "~/SpaDES_book/castorExample/modules/",
-                                             "projectPath" = "~/SpaDES_book/castorExample"),
-                                modules = c("dataCastor", 
-                                            "growingStockCastor", 
-                                            "forestryCastor", 
-                                            "blockingCastor"),
-                                dbURL = "https://drive.google.com/file/d/1-2POunzC7aFbkKK5LeBJNsFYMBBY8dNx/view?usp=sharing",
-                                dbPath = "~/SpaDES_book/castorExample/R/scenarios/comparison_stsm")
-
 ```
 
-Check where the `getCastorModulesAndDB.R` and `params.R` files ended up.
-`setupFunctions()` respected the folder structure in
-`PredictiveEcology.org` and placed these files in `tutos/castorExample/`
-*within* the specified `projectPath`. We'll need to remember this for
-later.
-
-After the "workaround" `setupProject` does all the heavy-lifting of
-setting up the workflow, namely installing all package dependencies
-listed in the several modules and in `setupProject(..., packages)`,
-creating all the necessary folders, sourcing additional files and
-creating parameter, inputs and outputs lists -- see
+`setupProject` does all the heavy-lifting of setting up the workflow,
+creating all the necessary folders, namely installing all package
+dependencies listed in the several modules and in
+`setupProject(..., packages)`, sourcing additional files and creating
+parameter, inputs and outputs lists -- see
 [`?setupProject`](https://spades-project.predictiveecology.org/reference/setupProject.html).
 
-Note that all folder/file paths are *relative* to `projectPath`, even
-the file path passed to `parameters` (remember the file path from
-above?).
+Note that all folder/file paths are relative to `projectPath`. Note also
+how `setupProject` is getting extra functions and the parameters list
+from online .R scripts that it downloads to the project folder and
+sources[^2].
+
+::: {.callout-warning appearance="simple"}
+## Using `setupProject(..., Restart = TRUE)`
+
+When creating a project for the first time, `setupProject()` will not
+only create the project folder structure, but also create an RStudio
+project file (`.Rproj`) and copy the current script (if it has been
+saved) into the project root directory.
+
+Setting `Restart = TRUE` will open a new RStudio window from "inside"
+the project being defined (i.e., the RStudio Project will be opened and
+all paths will be relative to the project root directory) and open the
+active script.
+
+This means that all code before the `setupProject()` call and the
+`setupProject()` call will need to be re-run again on the new RStudio/R
+sessions.
+
+None of this happens if the RStudio project file is already active
+(open).
+:::
 
 ```{r wfsetup}
 #| results: hide
@@ -140,7 +137,12 @@ out <- setupProject(
                "modulePath" = "modules/",
                "cachePath" = "modules/forestryCastor",
                "projectPath" = "~/SpaDES_book/castorExample"),
-  modules = names(outMod$modules),
+  modules = file.path("bcgov/castor@main/R/SpaDES-modules",
+                      c("dataCastor",
+                      "growingStockCastor",
+                      "blockingCastor",
+                      "forestryCastor",
+                      "roadCastor")),
   options = list(repos = repos),
   functions = "bcgov/castor@main/R/functions/R_Postgres.R",
   # install and load
@@ -155,7 +157,7 @@ out <- setupProject(
     "sp",
     "terra"
   ),
-  params = "tutos/castorExample/params.R",  
+  params = "PredictiveEcology/PredictiveEcology.org@main/tutos/castorExample/params.R",  
   times = list(start = 0, end = 20),
   outputs = {
     data.frame(objectName = c("harvestReport",
@@ -445,14 +447,14 @@ fileName <- file.path(qmdPath, "R/Chapter_scripts", sub("rmarkdown", "R", knitr:
 
 ```
 
-
 [^1]: `SpaDES.project` is currently being adapted to deal with modules
     nested in folders of GitHub repositories (instead of living in their
     own GitHub repositories). Hence, the code in this example is subject
     to changes in the near future.
 
-[^2]: Using the `googledrive` R package. See
-    [`?googledrive::drive_auth`](https://rdrr.io/cran/googledrive/man/drive_auth.html)
-    for more information.
+[^2]: Note that these files are placed in folders that respect the
+    folder structure of where they come from (if they are not in the
+    repository root folder). For instance, in the example the `params.R`
+    is placed in `<projectPath>/tutos/castorExample/params.R` .
 
 [^3]: See also @sec-simlist.
