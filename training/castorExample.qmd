@@ -207,6 +207,7 @@ out <- setupProject(
                               partition_type = 'live')  
     ))
   },
+  # overwrite = TRUE,  ## activate if you want to keep modules up-to-date the with online repository
   Restart = TRUE
 )
 ```
