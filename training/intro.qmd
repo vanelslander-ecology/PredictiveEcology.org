@@ -9,10 +9,10 @@ output:
     df_print: paged
     keep_md: yes
 always_allow_html: true
-bibliography: references.bib
+bibliography: references/references.bib
 ---
 
-# Introduction {#sec-intro}
+# Introduction {.unnumbered} {#sec-intro}
 
 This book presents a collection of approaches and examples that aim to
 facilitate the building of *nimble workflows* for science-based problems

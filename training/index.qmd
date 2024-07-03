@@ -1,3 +1,7 @@
+---
+bibliography: references/references.bib
+---
+
 # Preface {.unnumbered}
 
 ***This book is a work in progress. Please visit this again as chapters
