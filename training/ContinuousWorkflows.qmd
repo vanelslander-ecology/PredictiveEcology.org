@@ -1,5 +1,7 @@
 ---
-author: "Eliot McIntire"
+author: 
+  - Eliot McIntire
+  - Ceres Barros
 date: last-modified
 editor_options:
   chunk_output_type: console
