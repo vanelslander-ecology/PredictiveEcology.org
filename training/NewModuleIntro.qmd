@@ -37,6 +37,8 @@ knitr::knit_hooks$set(output = function(y, options) {
   hook_output(y, options)
 })
 
+options(repos = list(CRAN = "http://cran.r-project.org"))
+
 if (!require("Require")) {
   install.packages("Require", repos = c("https://predictiveecology.r-universe.dev", getOption("repos")),
                    dependencies = TRUE)
