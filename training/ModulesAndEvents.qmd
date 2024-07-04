@@ -66,7 +66,7 @@ Modules include the following elements:
 
 -   a function call to `defineModule` that defines the metadata
     (mandatory)
-    
+
 -   a function definition for `doEvent.`*moduleName* (mandatory)
 
 There are many optional pieces too. The default template produces many
@@ -100,26 +100,28 @@ To make a new module, see: @sec-moduleintro.
 ::: {.callout-note appearance="simple"}
 ## How to decide whether to make a module, or expand an existing one?
 
-There's no fixed rule about when it is best to create a module vs. expand another
-existing module. This decision will depend on various factors, but at least two questions 
-should be considered when making a decision:
+There's no fixed rule about when it is best to create a module vs.
+expand another existing module. This decision will depend on various
+factors, but at least two questions should be considered when making a
+decision:
 
--   Is the additional code a very small operation, or something that will *never*
-    be disassociated from a current module?
-    If the answer is "yes", then perhaps expanding the existing module is the way 
-    to go.
-    
--   Can we foresee that swapping between algorithms/approaches will be desired 
-    in the future? E.g., knowing that an ordinary least square regression
-    could, in the future, be swapped by a mixed effects model to compare model 
-    performance -- i.e. both approaches are valid and we want eventually to have both.
-    If the answer is "yes", then creating a new module will allow greater flexibility
-    in the future.
-    
-We usually see "data preparation" and "model calibration" steps as semi-independent 
-from "prediction/simulation steps" and have typically created 
-"data preparation"/"calibration" modules to keep these steps separate, 
-and to allow swapping between different approaches to preparing inputs for a model.
+-   Is the additional code a very small operation, or something that
+    will *never* be disassociated from a current module? If the answer
+    is "yes", then perhaps expanding the existing module is the way to
+    go.
+
+-   Can we foresee that swapping between algorithms/approaches will be
+    desired in the future? E.g., knowing that an ordinary least square
+    regression could, in the future, be swapped by a mixed effects model
+    to compare model performance -- i.e. both approaches are valid and
+    we want eventually to have both. If the answer is "yes", then
+    creating a new module will allow greater flexibility in the future.
+
+We usually see "data preparation" and "model calibration" steps as
+semi-independent from "prediction/simulation steps" and have typically
+created "data preparation"/"calibration" modules to keep these steps
+separate, and to allow swapping between different approaches to
+preparing inputs for a model.
 :::
 
 ## Events
@@ -133,21 +135,26 @@ To see how to schedule events, see: @sec-schedulingEvents.
 
 ## Functions
 
-Essentially, everything in R is or uses functions. Modules define
-events (`doEvent.*moduleName*`), events call specific functions (we
-some times call the main function an event calls an "event function", 
-but there can be other nested functions within these), and functions can be defined
-within modules, R packages, or user code contained in `.R` scripts inside the module's
-`R/` folder.
+Essentially, everything in R is or uses functions. Modules define events
+(`doEvent.*moduleName*`), events call specific functions (we some times
+call the main function an event calls an "event function", but there can
+be other nested functions within these), and functions can be defined
+within modules, R packages, or user code contained in `.R` scripts
+inside the module's `R/` folder.
 
 **We would not define functions in the `.GlobalEnv`.**
 
-
 ### Adding functions
 
-Any function can be written and defined in any `.R` file in the `R` folder, just like an R package. They can also be placed in the main module script (the one named `<moduleName>.R`). The default template includes several functions. 
+Any function can be written and defined in any `.R` file in the `R`
+folder, just like an R package. They can also be placed in the main
+module script (the one named `<moduleName>.R`). The default template
+includes several functions.
 
-In this example, instead of writing the code that does what we want inside the `doEvent` function itself, lets use the `Init` function. We move the code from the "init" event into a function, then call that function.
+In this example, instead of writing the code that does what we want
+inside the `doEvent` function itself, lets use the `Init` function. We
+move the code from the "init" event into a function, then call that
+function.
 
 ```{r useAFunction}
 #| eval: false
@@ -165,9 +172,15 @@ Init <- function(sim) {
 }
 ```
 
-We can extend this to any number of functions. Notice, that functions can have any arguments. They don't have to have `sim`. The critical point to retain is that the `doEvent` function must return `sim`. We can also write documentation using `roxygen2` tags (though converting this to normal R documentation is still experimental within a SpaDES module).
+We can extend this to any number of functions. Notice, that functions
+can have any arguments. They don't have to have `sim`. The critical
+point to retain is that the `doEvent` function must return `sim`. We can
+also write documentation using `roxygen2` tags (though converting this
+to normal R documentation is still experimental within a SpaDES module).
 
-Copy these three functions to your module, **replacing the existing functions with these ones** (for `doEvent.My_linear_model.init` and `Init`). `generateY` is completely new, so it won't replace anything.
+Copy these three functions to your module, **replacing the existing
+functions with these ones** (for `doEvent.My_linear_model.init` and
+`Init`). `generateY` is completely new, so it won't replace anything.
 
 ```{r useAFunction2}
 #| eval: false
@@ -194,7 +207,6 @@ generateY <- function(x) {
 
 ```
 
-
 ## Module types {#sec-moduletypes}
 
 SpaDES doesn't have explicit module types. Rather, by convention, we
@@ -209,17 +221,16 @@ revisit this later in \[Part 3\](ContinuousWorkflows.qmd).
 that they may have only one event. Or a sequence of events that occur
 one after the other with no rescheduling.
 
-These could include: 
+These could include:
 
--   Data preparation modules - one (maybe just the
-    "init" event) or few events and their primary goal is to get and deal
-    with data; 
+-   Data preparation modules - one (maybe just the "init" event) or few
+    events and their primary goal is to get and deal with data;
 
--   GIS modules that do a number of GIS operations to get data
-    into the necessary formats;
+-   GIS modules that do a number of GIS operations to get data into the
+    necessary formats;
 
--   Data Visualization modules that specialize
-    in creating a set of visuals from a known set of inputs.
+-   Data Visualization modules that specialize in creating a set of
+    visuals from a known set of inputs.
 
 ### Dynamic
 
@@ -232,10 +243,10 @@ other modules in between) and those that do not.
 
 -   Wildlife population modules with Markov dependency (e.g., population
     matrix models)
-    
+
 -   Wildlife population modules without Markov-dependency (e.g.,
     population models that only depend on habitat covariates)
-    
+
 -   Data visualization modules that get used e.g., annually after other
     modules.
 
@@ -258,13 +269,15 @@ Modules can live only locally (e.g. in a computer), but in the spirit of
 the PERFICT principles (see @sec-newexpect in the [Introduction](intro.qmd)) we like our
 modules to be shareable.
 
-The best way to share modules is to host them on GitHub repositories, as SpaDES 
-tools have been developed to download modules from GitHub.
+The best way to share modules is to host them on GitHub repositories, as
+SpaDES tools have been developed to download modules from GitHub.
 
-Most SpaDES modules known to us are hosted in their own GitHub repositories 
-(preferred), or bundled in GitHub repositories with several modules (e.g. 
-[Castor modules](https://github.com/bcgov/castor/tree/main/R/SpaDES-modules) and
-[SCFM modules](https://github.com/PredictiveEcology/scfm/tree/master/modules)).
+Most SpaDES modules known to us are hosted in their own GitHub
+repositories (preferred), or bundled in GitHub repositories with several
+modules (e.g. [Castor
+modules](https://github.com/bcgov/castor/tree/main/R/SpaDES-modules) and
+[SCFM
+modules](https://github.com/PredictiveEcology/scfm/tree/master/modules)).
 
 ## See also
 
@@ -287,7 +300,6 @@ Module](https://spades-workshops.predictiveecology.org/articlesMay2018/MyFirstMo
 
 [Creating a seed dispersal
 module](https://spades-workshops.predictiveecology.org/articles/02c-Convert_R_code_to_SpaDES_module.html)
-
 
 ## Barebones R script
 
