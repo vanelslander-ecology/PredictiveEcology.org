@@ -15,7 +15,7 @@ cache: false
 bibliography: references/references.bib
 ---
 
-# Working with Continuous Workflows {#sec-continuousWorkflows}
+# Working with Continuous Workflows {#sec-contWorkflows}
 
 ```{r setup}
 #| include: false
@@ -61,6 +61,7 @@ lines of code that are **selectively run or skipped** by a user.
 A **rerun-tolerant function**, has 2 features:
 
 1.  every time a function is run, it must return the same thing
+
 2.  time consuming function calls must be very fast after the first time
 
 A **rerun-tolerant workflow** has a further feature:

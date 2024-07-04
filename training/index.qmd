@@ -21,21 +21,20 @@ for many applications outside the realm of ecological sciences. We
 certainly don't expect NASA scientists to overhaul their own workflows
 and follow ours -- but feel free too and send us your feedback!
 
-This book is therefore focused on the many ways that
-models and data, including the data generated through models, can be
-used for decision making, reproducibility of publications, and reused 
-across different applications and modelling contexts, etc. 
-By working towards a set of standards for our data and
-modeling workflows, our science can become more nimble. We can thus
-pivot and update as issues come up.
+This book is therefore focused on the many ways that models and data,
+including the data generated through models, can be used for decision
+making, reproducibility of publications, and reused across different
+applications and modelling contexts, etc. By working towards a set of
+standards for our data and modeling workflows, our science can become
+more nimble. We can thus pivot and update as issues come up.
 
 We hope that many ecologists and those in related sciences (e.g.
 forestry, wildlife management, etc.), academics or practitioners, can
-appreciate the value of aligning their work with the R^3^T[^1], PERFICT[^2] and 
-nimbleness principles and find these solutions useful. Mostly we hope that
-those that work with ecosystems can embrace these tools to work
-towards expanding the abilities of the community 
-to become robust to any scrutiny we face.
+appreciate the value of aligning their work with the R^3^T[^1],
+PERFICT[^2] and nimbleness principles and find these solutions useful.
+Mostly we hope that those that work with ecosystems can embrace these
+tools to work towards expanding the abilities of the community to become
+robust to any scrutiny we face.
 
 # Acknowledgements {.unnumbered}
 
@@ -44,9 +43,8 @@ that continue to make the open-source ecosystem of SpaDES modules grow.
 
 We also thank the Quarto team for their great work.
 
-
 [^1]: Repeatability, Reproducibility, Reusability and Transparency
 
-[^2]: Predict regularly from models that are Evaluated, Reusable, 
-    Freely accessible, and Interoperable, and that are part of 
-    Continuous workflows that are Tested regularly
+[^2]: Predict regularly from models that are Evaluated, Reusable, Freely
+    accessible, and Interoperable, and that are part of Continuous
+    workflows that are Tested regularly [@mcintire2022].
