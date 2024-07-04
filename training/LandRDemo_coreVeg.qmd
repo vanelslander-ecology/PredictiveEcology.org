@@ -715,6 +715,7 @@ looking for the closes forest land-cover type.
 #| eval: true
 #| echo: false
 #| purl: false
+#| cache: false
 
 fileName <- file.path(qmdPath, "R/Chapter_scripts", sub("rmarkdown", "R", knitr::current_input()))
 ```
@@ -723,6 +724,7 @@ fileName <- file.path(qmdPath, "R/Chapter_scripts", sub("rmarkdown", "R", knitr:
 #| eval: false
 #| echo: true
 #| purl: false
+#| cache: false
 
 ```
 

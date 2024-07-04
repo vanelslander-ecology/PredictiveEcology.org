@@ -260,6 +260,7 @@ where you pass different values to the `length` parameter
 #| eval: true
 #| echo: false
 #| purl: false
+#| cache: false
 
 fileName <- file.path("R/Chapter_scripts", sub("rmarkdown", "R", knitr::current_input()))
 ```
@@ -268,5 +269,6 @@ fileName <- file.path("R/Chapter_scripts", sub("rmarkdown", "R", knitr::current_
 #| eval: false
 #| echo: true
 #| purl: false
+#| cache: false
 
 ```
