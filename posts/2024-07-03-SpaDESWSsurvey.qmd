@@ -1,0 +1,21 @@
+---
+title: "SpaDES Workshop - Post-workshop survey"
+author: "Ceres Barros"
+date: 07-03-2024
+categories:
+  - Workshop
+comments: false
+---
+
+Thank you once again to all who participated in the 
+*Robust and nimble scientific workflows, using SpaDES* workshop in June 11-13, 
+2024.
+
+We ask all participants - regardless of how many sessions they attended -- to
+fill out the exit survey below.
+
+You answers are much needed, as they will help shape and improve future workshops.
+
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfY5nKHN5VwDCOBXMPqiXDC6Vyr4dG1O_Ht3yZgJjmmewksAw/viewform?embedded=true" width="640" height="4377" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+
+Ceres and Eliot
