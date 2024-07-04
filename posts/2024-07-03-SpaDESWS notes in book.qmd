@@ -1,9 +1,10 @@
 ---
 title: "SpaDES Workshop Book Improvements"
 author: "Ceres Barros"
-date: last-modified
+date: 07-03-2024
 categories:
   - Workshop
+  - Training
 comments: false
 ---
 

@@ -1,9 +1,10 @@
 ---
-title: "Our transitioning to `terra` from `raster`"
+title: "Our transition to `terra` from `raster`"
 author: "Ceres Barros"
-date: last-modified
+date: 07-03-2024
 categories:
   - R
+  - spatial
 comments: false
 ---
 
