@@ -199,7 +199,9 @@ generateY <- function(x) {
 
 SpaDES doesn't have explicit module types. Rather, by convention, we
 associate different modules with generic things they do. A fairly
-comprehensive list of modules types that we create are below. We will revisit this later in @sec-continuousWorkflows. 
+comprehensive list of modules types that we create are below. We will
+revisit this later in \[Part 3\](ContinuousWorkflows.qmd).
+<!-- @sec-contWorkflows not working. issue with title cross-refs in "parts" https://github.com/quarto-dev/quarto-cli/issues/5237-->
 
 ### Static
 
