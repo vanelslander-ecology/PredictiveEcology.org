@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eliot J. B. McIntire">
-<meta name="dcterms.date" content="2024-06-12">
+<meta name="dcterms.date" content="2024-06-21">
 
-<title>Robust and nimble scientific workflows, using SpaDES - 11&nbsp; Introduction to Cache</title>
+<title>Robust and nimble scientific workflows, using SpaDES - 10&nbsp; Introduction to Cache</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,35 +109,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="assets/css/main.scss">
 </head>
@@ -242,7 +213,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ContinuousWorkflows.html">Working with Continuous Workflows</a></li><li class="breadcrumb-item"><a href="./Caching.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ContinuousWorkflows.html">Working with Continuous Workflows</a></li><li class="breadcrumb-item"><a href="./Caching.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -263,7 +234,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -278,19 +249,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./installRandSpatialPkgs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Installing R and Spatial Packages</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Installing R and Spatial Packages</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./PackagesForBook.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./TroubleshootingPackageInstallation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Troubleshooting R package installation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Troubleshooting R package installation</span></span></a>
   </div>
 </li>
       </ul>
@@ -307,37 +278,37 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./NewModuleIntro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to SpaDES Modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction to SpaDES Modules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./MetaDataAndModuleFiles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Module Files and Metadata</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Module Files and Metadata</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ModuleInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module Inputs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Providing Module Inputs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simList.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ModulesAndEvents.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Scheduling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span></a>
   </div>
 </li>
       </ul>
@@ -354,19 +325,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Caching.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./debugging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></a>
   </div>
 </li>
       </ul>
@@ -383,25 +354,25 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflowSimple2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./LandRDemo_coreVeg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Forest Landscape Modelling with LandR and <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Forest Landscape Modelling with LandR and <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ForestsAndFire.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -409,7 +380,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bestPractices.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Best practices for <span class="math inline">\(R^3T\)</span> workflows</span></a>
+ <span class="menu-text">Best practices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -428,30 +399,31 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#how-to-use-cache" id="toc-how-to-use-cache" class="nav-link active" data-scroll-target="#how-to-use-cache"><span class="header-section-number">11.1</span> How to use <code>Cache</code></a></li>
-  <li><a href="#when-to-use-cache" id="toc-when-to-use-cache" class="nav-link" data-scroll-target="#when-to-use-cache"><span class="header-section-number">11.2</span> When to use <code>Cache</code></a>
+  <li><a href="#how-to-use-cache" id="toc-how-to-use-cache" class="nav-link active" data-scroll-target="#how-to-use-cache"><span class="header-section-number">10.1</span> How to use <code>Cache</code></a></li>
+  <li><a href="#when-to-use-cache" id="toc-when-to-use-cache" class="nav-link" data-scroll-target="#when-to-use-cache"><span class="header-section-number">10.2</span> When to use <code>Cache</code></a>
   <ul class="collapse">
-  <li><a href="#from-disk" id="toc-from-disk" class="nav-link" data-scroll-target="#from-disk"><span class="header-section-number">11.2.1</span> From disk</a></li>
-  <li><a href="#from-disk-and-memory" id="toc-from-disk-and-memory" class="nav-link" data-scroll-target="#from-disk-and-memory"><span class="header-section-number">11.2.2</span> From disk and memory</a></li>
+  <li><a href="#from-disk" id="toc-from-disk" class="nav-link" data-scroll-target="#from-disk"><span class="header-section-number">10.2.1</span> From disk</a></li>
+  <li><a href="#from-disk-and-memory" id="toc-from-disk-and-memory" class="nav-link" data-scroll-target="#from-disk-and-memory"><span class="header-section-number">10.2.2</span> From disk and memory</a></li>
   </ul></li>
-  <li><a href="#caching-examples" id="toc-caching-examples" class="nav-link" data-scroll-target="#caching-examples"><span class="header-section-number">11.3</span> Caching examples</a>
+  <li><a href="#sec-cachewhere" id="toc-sec-cachewhere" class="nav-link" data-scroll-target="#sec-cachewhere"><span class="header-section-number">10.3</span> Where does the cache live?</a></li>
+  <li><a href="#caching-examples" id="toc-caching-examples" class="nav-link" data-scroll-target="#caching-examples"><span class="header-section-number">10.4</span> Caching examples</a>
   <ul class="collapse">
-  <li><a href="#basic-cache-use-with-tags" id="toc-basic-cache-use-with-tags" class="nav-link" data-scroll-target="#basic-cache-use-with-tags"><span class="header-section-number">11.3.1</span> Basic cache use with tags</a></li>
+  <li><a href="#basic-cache-use-with-tags" id="toc-basic-cache-use-with-tags" class="nav-link" data-scroll-target="#basic-cache-use-with-tags"><span class="header-section-number">10.4.1</span> Basic cache use with tags</a></li>
   </ul></li>
-  <li><a href="#clean-up-cache" id="toc-clean-up-cache" class="nav-link" data-scroll-target="#clean-up-cache"><span class="header-section-number">11.4</span> Clean up cache</a></li>
-  <li><a href="#nested-caching" id="toc-nested-caching" class="nav-link" data-scroll-target="#nested-caching"><span class="header-section-number">11.5</span> Nested Caching</a></li>
-  <li><a href="#best-practices" id="toc-best-practices" class="nav-link" data-scroll-target="#best-practices"><span class="header-section-number">11.6</span> Best practices</a></li>
-  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">11.7</span> See also</a></li>
-  <li><a href="#barebones-r-script" id="toc-barebones-r-script" class="nav-link" data-scroll-target="#barebones-r-script"><span class="header-section-number">11.8</span> Barebones R script</a></li>
+  <li><a href="#clean-up-cache" id="toc-clean-up-cache" class="nav-link" data-scroll-target="#clean-up-cache"><span class="header-section-number">10.5</span> Clean up cache</a></li>
+  <li><a href="#nested-caching" id="toc-nested-caching" class="nav-link" data-scroll-target="#nested-caching"><span class="header-section-number">10.6</span> Nested Caching</a></li>
+  <li><a href="#best-practices" id="toc-best-practices" class="nav-link" data-scroll-target="#best-practices"><span class="header-section-number">10.7</span> Best practices</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">10.8</span> See also</a></li>
+  <li><a href="#barebones-r-script" id="toc-barebones-r-script" class="nav-link" data-scroll-target="#barebones-r-script"><span class="header-section-number">10.9</span> Barebones R script</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ContinuousWorkflows.html">Working with Continuous Workflows</a></li><li class="breadcrumb-item"><a href="./Caching.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ContinuousWorkflows.html">Working with Continuous Workflows</a></li><li class="breadcrumb-item"><a href="./Caching.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-caching" class="quarto-section-identifier"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span></h1>
+<h1 class="title"><span id="sec-caching" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span></h1>
 </div>
 
 
@@ -468,7 +440,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 12, 2024</p>
+      <p class="date">June 21, 2024</p>
     </div>
   </div>
   
@@ -490,17 +462,17 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>The objective of a reproducible workflow is likely that an entire work flow from raw data to publication, decision support, report writing, presentation building etc., could be built and be reproducible anywhere, on any computer and operating system, with any starting conditions, on demand.</p>
+<p>The objective of a reproducible workflow is likely that the entire work flow from raw data to publication, decision support, report writing, presentation building etc., can be built and be reproducible anywhere, on any computer and operating system, with any starting conditions, on demand.</p>
 <p>As part of a reproducible workflow, caching of function calls, code chunks, and other elements of a project can be very valuable. Caching allows a code writer to run all code regularly without “secretly” skipping certain lines because they take too long to run. This has 2 benefits.</p>
 <ol type="1">
-<li>Each line gets run regularly so when failures crop up, they are detected quickly and can be fixed when they are introduced.</li>
-<li>Running code “somewhere else” (different machine, person, operating system) will be more likely to work on an ongoing basis, i.e., it will help maintain a “reproducible” state.</li>
+<li><p>Each line gets run regularly so when failures crop up, they are detected quickly and can be fixed when they are introduced.</p></li>
+<li><p>Running code “somewhere else” (different machine, person, operating system) will be more likely to work on an ongoing basis, i.e., it will help maintain a “reproducible” state.</p></li>
 </ol>
 <p>These benefits allow code to be constantly in a state of functioning, from start to finish, which lowers the effort “at the end” to make all the work reproducible.</p>
-<p>The <code>reproducible::Cache</code> function is built to work with many R functions, including <em>some</em> that are used for their side effects or that use pointers (e.g., a <code>terra</code> <code>SpatRaster</code>) instead of regular R objects.</p>
-<section id="how-to-use-cache" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="how-to-use-cache"><span class="header-section-number">11.1</span> How to use <code>Cache</code></h2>
-<p>The <code>Cache</code> function can be used with any function. A user can wrap it around another function call or use the base pipe operator <code>|&gt;</code>. The following two calls are the same, and thus the 2nd one will result in the identical output to the first:</p>
+<p>The <code>reproducible::Cache()</code> function is built to work with many R functions, including <em>some</em> that are used for their side effects or that use pointers (e.g., a <code>terra</code> <code>SpatRaster</code>) instead of regular R objects.</p>
+<section id="how-to-use-cache" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="how-to-use-cache"><span class="header-section-number">10.1</span> How to use <code>Cache</code></h2>
+<p>The <code>Cache</code> function can be used with any function. A user can wrap it around another function call, use the base pipe operator <code>|&gt;</code> or specify the function and function arguments as arguments to <code>Cache</code>. The following calls are the same, and thus the 2nd and 3rd will result in the identical output to the first:</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -508,7 +480,7 @@ window.Quarto = {
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>reproducible<span class="sc">::</span><span class="fu">Cache</span>(<span class="fu">rnorm</span>(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -1.191585
+<pre><code>[1] -0.6206162
 attr(,".Cache")
 attr(,".Cache")$newCache
 [1] TRUE
@@ -524,7 +496,23 @@ attr(,"call")
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  reproducible<span class="sc">::</span><span class="fu">Cache</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -1.191585
+<pre><code>[1] -0.6206162
+attr(,".Cache")
+attr(,".Cache")$newCache
+[1] FALSE
+
+attr(,"tags")
+[1] "cacheId:422bae4ed2f770cc"
+attr(,"call")
+[1] ""</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>reproducible<span class="sc">::</span><span class="fu">Cache</span>(rnorm,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">n =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.6206162
 attr(,".Cache")
 attr(,".Cache")$newCache
 [1] FALSE
@@ -537,90 +525,130 @@ attr(,"call")
 </div>
 <p>See <code>?reproducible::Cache</code> for many more examples.</p>
 </section>
-<section id="when-to-use-cache" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="when-to-use-cache"><span class="header-section-number">11.2</span> When to use <code>Cache</code></h2>
+<section id="when-to-use-cache" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="when-to-use-cache"><span class="header-section-number">10.2</span> When to use <code>Cache</code></h2>
 <p>The most obvious case to use <code>Cache</code> is when the calculation is expensive. For example, GIS operations are commonly time consuming. In the example below, we will use <code>terra::project</code> three times, with timings.</p>
-<section id="from-disk" class="level3" data-number="11.2.1">
-<h3 data-number="11.2.1" class="anchored" data-anchor-id="from-disk"><span class="header-section-number">11.2.1</span> From disk</h3>
+<section id="from-disk" class="level3" data-number="10.2.1">
+<h3 data-number="10.2.1" class="anchored" data-anchor-id="from-disk"><span class="header-section-number">10.2.1</span> From disk</h3>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data setup</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>tmpDir <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">tempdir</span>(), <span class="st">"reproducible_examples"</span>, <span class="st">"Cache"</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(tmpDir, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> y <span class="ot">&lt;-</span> <span class="dv">2001</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>ras <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">rast</span>(terra<span class="sc">::</span><span class="fu">ext</span>(<span class="dv">0</span>, x, <span class="dv">0</span>, y), <span class="at">vals =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>(x<span class="sc">*</span>y)), <span class="at">res =</span> <span class="dv">1</span>)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">crs</span>(ras) <span class="ot">&lt;-</span> <span class="st">"+proj=lcc +lat_1=48 +lat_2=33 +lon_0=-100 +datum=WGS84"</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>newCRS <span class="ot">&lt;-</span> <span class="st">"+init=epsg:4326"</span> <span class="co"># A longlat crs</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Call slow operation: project</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># No Cache</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(map1 <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(ras, newCRS)) <span class="co"># Warnings due to new PROJ</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data setup</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>tmpDir <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">tempdir</span>(), <span class="st">"reproducible_examples"</span>, <span class="st">"Cache"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(tmpDir, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> y <span class="ot">&lt;-</span> <span class="dv">2001</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>ras <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">rast</span>(terra<span class="sc">::</span><span class="fu">ext</span>(<span class="dv">0</span>, x, <span class="dv">0</span>, y), <span class="at">vals =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>(x<span class="sc">*</span>y)), <span class="at">res =</span> <span class="dv">1</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">crs</span>(ras) <span class="ot">&lt;-</span> <span class="st">"+proj=lcc +lat_1=48 +lat_2=33 +lon_0=-100 +datum=WGS84"</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>newCRS <span class="ot">&lt;-</span> <span class="st">"+init=epsg:4326"</span> <span class="co"># A longlat crs</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Call slow operation: project</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># No Cache</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(map1 <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(ras, newCRS)) <span class="co"># Warnings due to new PROJ</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-   2.45    0.16    2.66 </code></pre>
+   1.91    0.06    2.00 </code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># With Cache -- a little slower the first time because saving to disk</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(map2 <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(ras, newCRS) <span class="sc">|&gt;</span> <span class="fu">Cache</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># With Cache -- a little slower the first time because saving to disk</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(map2 <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(ras, newCRS) <span class="sc">|&gt;</span> <span class="fu">Cache</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-   8.92    0.59    9.55 </code></pre>
+  18.57    0.56   19.17 </code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># faster the second time; improvement depends on size of object and time to run function</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(map3 <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(ras, newCRS) <span class="sc">|&gt;</span> <span class="fu">Cache</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># faster the second time; improvement depends on size of object and time to run function</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(map3 <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(ras, newCRS) <span class="sc">|&gt;</span> <span class="fu">Cache</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-   0.95    0.11    1.08 </code></pre>
+   1.58    0.12    1.72 </code></pre>
 </div>
 </div>
+<p>In this example, the object <code>map3</code> gets cached, along with the <em>evaluation</em> of the function <code>terra::project</code> and its arguments (<code>ras</code> and <code>newCRS</code>). If either the function or supplied arguments change, <code>Cache</code> repeats the operation and re-caches the output in a new cache entry.</p>
 </section>
-<section id="from-disk-and-memory" class="level3" data-number="11.2.2">
-<h3 data-number="11.2.2" class="anchored" data-anchor-id="from-disk-and-memory"><span class="header-section-number">11.2.2</span> From disk and memory</h3>
+<section id="from-disk-and-memory" class="level3" data-number="10.2.2">
+<h3 data-number="10.2.2" class="anchored" data-anchor-id="from-disk-and-memory"><span class="header-section-number">10.2.2</span> From disk and memory</h3>
 <p>We can set an option so that objects will also be saved to disk as normal, but they will also be saved as RAM objects – “memoising”.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>optOrig <span class="ot">&lt;-</span> <span class="fu">options</span>(<span class="st">"reproducible.useMemoise"</span> <span class="ot">=</span> <span class="cn">TRUE</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(map4 <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(ras, newCRS) <span class="sc">|&gt;</span> <span class="fu">Cache</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>optOrig <span class="ot">&lt;-</span> <span class="fu">options</span>(<span class="st">"reproducible.useMemoise"</span> <span class="ot">=</span> <span class="cn">TRUE</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(map4 <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(ras, newCRS) <span class="sc">|&gt;</span> <span class="fu">Cache</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-   0.83    0.09    0.92 </code></pre>
+   1.32    0.06    1.41 </code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(map5 <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(ras, newCRS) <span class="sc">|&gt;</span> <span class="fu">Cache</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(map5 <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(ras, newCRS) <span class="sc">|&gt;</span> <span class="fu">Cache</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-   0.09    0.05    0.14 </code></pre>
+   0.14    0.03    0.19 </code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(optOrig)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(optOrig)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
 </section>
-<section id="caching-examples" class="level2" data-number="11.3">
-<h2 data-number="11.3" class="anchored" data-anchor-id="caching-examples"><span class="header-section-number">11.3</span> Caching examples</h2>
-<section id="basic-cache-use-with-tags" class="level3" data-number="11.3.1">
-<h3 data-number="11.3.1" class="anchored" data-anchor-id="basic-cache-use-with-tags"><span class="header-section-number">11.3.1</span> Basic cache use with tags</h3>
+<section id="sec-cachewhere" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="sec-cachewhere"><span class="header-section-number">10.3</span> Where does the cache live?</h2>
+<p>By default, on a temporary folder which <em>does not</em> persist between R sessions. To see where this folder is run:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="st">"reproducible.cachePath"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>$reproducible.cachePath
+[1] "C:\\Users\\cbarros\\AppData\\Local\\Temp\\RtmpqA2PkG/reproducible/cache"</code></pre>
+</div>
+</div>
+<p>For a persisting cache, we should change to a permanent folder path. This can be done by in two ways:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Cache</span>(<span class="fu">rnorm</span>(<span class="dv">1</span>), </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">cachePath =</span> <span class="st">"~/SpaDES_book/cache"</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="st">"reproducible.cachePath"</span>)   <span class="do">## still the temporary directory</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="st">"reproducible.cachePath"</span> <span class="ot">=</span> <span class="st">"~/SpaDES_book/cache"</span>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">Cache</span>(<span class="fu">rnorm</span>(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>The second, using <code>options</code> sets the <code>cachePath</code> for <em>any</em> subsequent <code>Cache</code> call.</p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>In a SpaDES workflow context, the cached directory can be set by passing the <code>list(..., cachePath = &lt;a_path&gt;)</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> to the <code>paths</code> argument in <code>setupProject</code>, <code>simInit</code> or <code>simInitAndSpaDES</code>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="caching-examples" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="caching-examples"><span class="header-section-number">10.4</span> Caching examples</h2>
+<section id="basic-cache-use-with-tags" class="level3" data-number="10.4.1">
+<h3 data-number="10.4.1" class="anchored" data-anchor-id="basic-cache-use-with-tags"><span class="header-section-number">10.4.1</span> Basic cache use with tags</h3>
 <p>We can add tags to identify the Cache call.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>ranNumsA <span class="ot">&lt;-</span> <span class="fu">Cache</span>(rnorm, <span class="dv">4</span>, <span class="at">userTags =</span> <span class="fu">c</span>(<span class="st">"random number generator"</span>))</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">showCache</span>(<span class="at">userTags =</span> <span class="st">"random number generator"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>ranNumsA <span class="ot">&lt;-</span> <span class="fu">Cache</span>(rnorm, <span class="dv">4</span>, <span class="at">userTags =</span> <span class="fu">c</span>(<span class="st">"random number generator"</span>))</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">showCache</span>(<span class="at">userTags =</span> <span class="st">"random number generator"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>             cacheId                  tagKey                   tagValue
@@ -629,12 +657,12 @@ attr(,"call")
  2: ad0ea27476c50b66                function                      rnorm
  3: ad0ea27476c50b66                   class                    numeric
  4: ad0ea27476c50b66             object.size                       1008
- 5: ad0ea27476c50b66                accessed 2024-06-12 06:55:35.985534
+ 5: ad0ea27476c50b66                accessed 2024-06-21 20:31:06.275774
  6: ad0ea27476c50b66                 inCloud                      FALSE
  7: ad0ea27476c50b66                fromDisk                      FALSE
  8: ad0ea27476c50b66              resultHash                           
- 9: ad0ea27476c50b66       elapsedTimeDigest            0.01124811 secs
-10: ad0ea27476c50b66     elapsedTimeFirstRun          9.298325e-05 secs
+ 9: ad0ea27476c50b66       elapsedTimeDigest           0.007800817 secs
+10: ad0ea27476c50b66     elapsedTimeFirstRun          0.0001580715 secs
 11: ad0ea27476c50b66          otherFunctions                    execute
 12: ad0ea27476c50b66          otherFunctions               process_file
 13: ad0ea27476c50b66          otherFunctions              process_group
@@ -652,67 +680,67 @@ attr(,"call")
              cacheId                  tagKey                   tagValue
                    createdDate
                         &lt;char&gt;
- 1: 2024-06-12 06:55:35.986436
- 2: 2024-06-12 06:55:35.986436
- 3: 2024-06-12 06:55:35.986436
- 4: 2024-06-12 06:55:35.986436
- 5: 2024-06-12 06:55:35.986436
- 6: 2024-06-12 06:55:35.986436
- 7: 2024-06-12 06:55:35.986436
- 8: 2024-06-12 06:55:35.986436
- 9: 2024-06-12 06:55:35.986436
-10: 2024-06-12 06:55:35.986436
-11: 2024-06-12 06:55:35.986436
-12: 2024-06-12 06:55:35.986436
-13: 2024-06-12 06:55:35.986436
-14: 2024-06-12 06:55:35.986436
-15: 2024-06-12 06:55:35.986436
-16: 2024-06-12 06:55:35.986436
-17: 2024-06-12 06:55:35.986436
-18: 2024-06-12 06:55:35.986436
-19: 2024-06-12 06:55:35.986436
-20: 2024-06-12 06:55:35.986436
-21: 2024-06-12 06:55:35.986436
-22: 2024-06-12 06:55:35.986436
-23: 2024-06-12 06:55:35.986436
-24: 2024-06-12 06:55:35.986436
+ 1: 2024-06-21 20:31:06.277134
+ 2: 2024-06-21 20:31:06.277134
+ 3: 2024-06-21 20:31:06.277134
+ 4: 2024-06-21 20:31:06.277134
+ 5: 2024-06-21 20:31:06.277134
+ 6: 2024-06-21 20:31:06.277134
+ 7: 2024-06-21 20:31:06.277134
+ 8: 2024-06-21 20:31:06.277134
+ 9: 2024-06-21 20:31:06.277134
+10: 2024-06-21 20:31:06.277134
+11: 2024-06-21 20:31:06.277134
+12: 2024-06-21 20:31:06.277134
+13: 2024-06-21 20:31:06.277134
+14: 2024-06-21 20:31:06.277134
+15: 2024-06-21 20:31:06.277134
+16: 2024-06-21 20:31:06.277134
+17: 2024-06-21 20:31:06.277134
+18: 2024-06-21 20:31:06.277134
+19: 2024-06-21 20:31:06.277134
+20: 2024-06-21 20:31:06.277134
+21: 2024-06-21 20:31:06.277134
+22: 2024-06-21 20:31:06.277134
+23: 2024-06-21 20:31:06.277134
+24: 2024-06-21 20:31:06.277134
                    createdDate</code></pre>
 </div>
 </div>
 </section>
 </section>
-<section id="clean-up-cache" class="level2" data-number="11.4">
-<h2 data-number="11.4" class="anchored" data-anchor-id="clean-up-cache"><span class="header-section-number">11.4</span> Clean up cache</h2>
+<section id="clean-up-cache" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="clean-up-cache"><span class="header-section-number">10.5</span> Clean up cache</h2>
 <p>We can use either <code>clearCache</code>, <code>keepCache</code>, or <code>cc</code> to remove things from the <code>Cache</code> database. <code>clearCache</code> removes everything that matches the query. <code>keepCache</code> keeps everything that matches the query. <code>cc</code> removes the most recent entry (i.e., it is a shorthand for a commonly used option).</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Two different funcxtions</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Clear only the first one</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">clearCache</span>(<span class="at">userTags =</span> <span class="st">"rnorm"</span>, <span class="at">ask =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>a2 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>b2 <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co"># b2 and b are still identical; a and a2 are not</span></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>a <span class="sc">==</span> a2 <span class="co"># FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Two different funcxtions</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Clear only the first one</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="fu">clearCache</span>(<span class="at">userTags =</span> <span class="st">"rnorm"</span>, <span class="at">ask =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>a2 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>b2 <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="co"># b2 and b are still identical; a and a2 are not</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>a <span class="sc">==</span> a2 <span class="co"># FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>b <span class="sc">==</span> b2 <span class="co"># TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>b <span class="sc">==</span> b2 <span class="co"># TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This time keep ONLY the rnorm</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">keepCache</span>(<span class="at">userTags =</span> <span class="st">"rnorm"</span>, <span class="at">ask =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This time keep ONLY the rnorm</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">keepCache</span>(<span class="at">userTags =</span> <span class="st">"rnorm"</span>, <span class="at">ask =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>             cacheId              tagKey                   tagValue
@@ -720,12 +748,12 @@ attr(,"call")
  1: 422bae4ed2f770cc            function                      rnorm
  2: 422bae4ed2f770cc               class                    numeric
  3: 422bae4ed2f770cc         object.size                        984
- 4: 422bae4ed2f770cc            accessed 2024-06-12 06:55:36.228419
+ 4: 422bae4ed2f770cc            accessed 2024-06-21 20:31:06.605013
  5: 422bae4ed2f770cc             inCloud                      FALSE
  6: 422bae4ed2f770cc            fromDisk                      FALSE
  7: 422bae4ed2f770cc          resultHash                           
- 8: 422bae4ed2f770cc   elapsedTimeDigest           0.003549099 secs
- 9: 422bae4ed2f770cc elapsedTimeFirstRun          0.0001199245 secs
+ 8: 422bae4ed2f770cc   elapsedTimeDigest           0.007511854 secs
+ 9: 422bae4ed2f770cc elapsedTimeFirstRun          0.0001630783 secs
 10: 422bae4ed2f770cc      otherFunctions                    execute
 11: 422bae4ed2f770cc      otherFunctions               process_file
 12: 422bae4ed2f770cc      otherFunctions              process_group
@@ -741,75 +769,75 @@ attr(,"call")
 22: 422bae4ed2f770cc           preDigest        sd:853b1797f54b229c
 23: 422bae4ed2f770cc           preDigest      .FUN:4f604aa46882b368
              cacheId              tagKey                   tagValue
-                  createdDate
-                       &lt;char&gt;
- 1: 2024-06-12 06:55:36.22913
- 2: 2024-06-12 06:55:36.22913
- 3: 2024-06-12 06:55:36.22913
- 4: 2024-06-12 06:55:36.22913
- 5: 2024-06-12 06:55:36.22913
- 6: 2024-06-12 06:55:36.22913
- 7: 2024-06-12 06:55:36.22913
- 8: 2024-06-12 06:55:36.22913
- 9: 2024-06-12 06:55:36.22913
-10: 2024-06-12 06:55:36.22913
-11: 2024-06-12 06:55:36.22913
-12: 2024-06-12 06:55:36.22913
-13: 2024-06-12 06:55:36.22913
-14: 2024-06-12 06:55:36.22913
-15: 2024-06-12 06:55:36.22913
-16: 2024-06-12 06:55:36.22913
-17: 2024-06-12 06:55:36.22913
-18: 2024-06-12 06:55:36.22913
-19: 2024-06-12 06:55:36.22913
-20: 2024-06-12 06:55:36.22913
-21: 2024-06-12 06:55:36.22913
-22: 2024-06-12 06:55:36.22913
-23: 2024-06-12 06:55:36.22913
-                  createdDate</code></pre>
+                   createdDate
+                        &lt;char&gt;
+ 1: 2024-06-21 20:31:06.606392
+ 2: 2024-06-21 20:31:06.606392
+ 3: 2024-06-21 20:31:06.606392
+ 4: 2024-06-21 20:31:06.606392
+ 5: 2024-06-21 20:31:06.606392
+ 6: 2024-06-21 20:31:06.606392
+ 7: 2024-06-21 20:31:06.606392
+ 8: 2024-06-21 20:31:06.606392
+ 9: 2024-06-21 20:31:06.606392
+10: 2024-06-21 20:31:06.606392
+11: 2024-06-21 20:31:06.606392
+12: 2024-06-21 20:31:06.606392
+13: 2024-06-21 20:31:06.606392
+14: 2024-06-21 20:31:06.606392
+15: 2024-06-21 20:31:06.606392
+16: 2024-06-21 20:31:06.606392
+17: 2024-06-21 20:31:06.606392
+18: 2024-06-21 20:31:06.606392
+19: 2024-06-21 20:31:06.606392
+20: 2024-06-21 20:31:06.606392
+21: 2024-06-21 20:31:06.606392
+22: 2024-06-21 20:31:06.606392
+23: 2024-06-21 20:31:06.606392
+                   createdDate</code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>a3 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>b3 <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># b2 and b are still identical; a and a2 are not</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>a2 <span class="sc">==</span> a3 <span class="co"># TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>a3 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>b3 <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># b2 and b are still identical; a and a2 are not</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>a2 <span class="sc">==</span> a3 <span class="co"># TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>b2 <span class="sc">==</span> b3 <span class="co"># FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>b2 <span class="sc">==</span> b3 <span class="co"># FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
 </div>
 </section>
-<section id="nested-caching" class="level2" data-number="11.5">
-<h2 data-number="11.5" class="anchored" data-anchor-id="nested-caching"><span class="header-section-number">11.5</span> Nested Caching</h2>
+<section id="nested-caching" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="nested-caching"><span class="header-section-number">10.6</span> Nested Caching</h2>
 <p>Nested caching is when Caching of a function occurs inside an outer function, which is itself cached. This is a critical element to working within a reproducible work flow. Ideally, at all points in a development cycle, it should be possible to get to any line of code starting from the very initial steps, running through everything up to that point, in less than a few seconds. If the workflow can be kept very fast like this, it will be very likely to work at any point it is tested.</p>
 <p>In the example here, we run an <code>outer</code> function that calls an <code>inner</code> function. If we decide to change the <code>outer</code> function along the way, and the <code>inner</code> function is unaffected, then we can still recover the cached version of the <code>inner</code> call.</p>
 <p><em>Warning</em> this will not necessarily work the other way, i.e., if <code>inner</code> is changed, we won’t notice until we <code>clearCache</code> and rerun.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make 2 functions</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>inner <span class="ot">&lt;-</span> <span class="cf">function</span>(mean) {</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Cache</span>(<span class="fu">rnorm</span>(<span class="dv">3</span>, <span class="at">mean =</span> mean))</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>outer <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Cache</span>(<span class="fu">inner</span>(<span class="fl">0.1</span>))</span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Call outer function</span></span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="fu">Cache</span>(<span class="fu">outer</span>(<span class="at">n =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make 2 functions</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>inner <span class="ot">&lt;-</span> <span class="cf">function</span>(mean) {</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Cache</span>(<span class="fu">rnorm</span>(<span class="dv">3</span>, <span class="at">mean =</span> mean))</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>outer <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Cache</span>(<span class="fu">inner</span>(<span class="fl">0.1</span>))</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Call outer function</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="fu">Cache</span>(<span class="fu">outer</span>(<span class="at">n =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.7879193 0.2111020 0.7123378
+<pre><code>[1] 1.2429132 0.9079636 0.4121525
 attr(,".Cache")
 attr(,".Cache")$newCache
 [1] TRUE
@@ -821,17 +849,17 @@ attr(,"call")
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change outer function</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>outer <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  a <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Cache</span>(<span class="fu">inner</span>(a))</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Still recovers inner </span></span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="fu">Cache</span>(<span class="fu">outer</span>(<span class="at">n =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change outer function</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>outer <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  a <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Cache</span>(<span class="fu">inner</span>(a))</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Still recovers inner </span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="fu">Cache</span>(<span class="fu">outer</span>(<span class="at">n =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.7879193 0.2111020 0.7123378
+<pre><code>[1] 1.2429132 0.9079636 0.4121525
 attr(,".Cache")
 attr(,".Cache")$newCache
 [1] TRUE
@@ -843,15 +871,15 @@ attr(,"call")
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># BUT if we change the inner, it won't work</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>inner <span class="ot">&lt;-</span> <span class="cf">function</span>(mean) {</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span> <span class="dv">2</span>                        <span class="co"># Changed d</span></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Cache</span>(<span class="fu">rnorm</span>(<span class="dv">3</span>, <span class="at">mean =</span> mean))</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">Cache</span>(<span class="fu">outer</span>(<span class="at">n =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># BUT if we change the inner, it won't work</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>inner <span class="ot">&lt;-</span> <span class="cf">function</span>(mean) {</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span> <span class="dv">2</span>                        <span class="co"># Changed d</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Cache</span>(<span class="fu">rnorm</span>(<span class="dv">3</span>, <span class="at">mean =</span> mean))</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="fu">Cache</span>(<span class="fu">outer</span>(<span class="at">n =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.7879193 0.2111020 0.7123378
+<pre><code>[1] 1.2429132 0.9079636 0.4121525
 attr(,".Cache")
 attr(,".Cache")$newCache
 [1] FALSE
@@ -863,8 +891,8 @@ attr(,"call")
 </div>
 </div>
 </section>
-<section id="best-practices" class="level2" data-number="11.6">
-<h2 data-number="11.6" class="anchored" data-anchor-id="best-practices"><span class="header-section-number">11.6</span> Best practices</h2>
+<section id="best-practices" class="level2" data-number="10.7">
+<h2 data-number="10.7" class="anchored" data-anchor-id="best-practices"><span class="header-section-number">10.7</span> Best practices</h2>
 <p>In general, we have found that use of <code>Cache</code> to be beneficial when used as following:</p>
 <ol type="1">
 <li><p>Slow functions get cached. “Slow” can be “slower than using <code>Cache</code>”</p></li>
@@ -876,103 +904,109 @@ attr(,"call")
 <li><p>Don’t cache a <code>simInit</code> call – instead implement internal caching in the modules and use event caching. See <a href="https://rdrr.io/cran/SpaDES.core/f/vignettes/iii-cache.Rmd"><code>vignette(topic = "iii-cache", package = "SpaDES.core")</code></a></p></li>
 </ol>
 </section>
-<section id="see-also" class="level2" data-number="11.7">
-<h2 data-number="11.7" class="anchored" data-anchor-id="see-also"><span class="header-section-number">11.7</span> See also</h2>
+<section id="see-also" class="level2" data-number="10.8">
+<h2 data-number="10.8" class="anchored" data-anchor-id="see-also"><span class="header-section-number">10.8</span> See also</h2>
 <p><a href="https://rdrr.io/cran/SpaDES.core/f/vignettes/iii-cache.Rmd"><code>SpaDES.core</code> vignette on caching</a></p>
 </section>
-<section id="barebones-r-script" class="level2" data-number="11.8">
-<h2 data-number="11.8" class="anchored" data-anchor-id="barebones-r-script"><span class="header-section-number">11.8</span> Barebones R script</h2>
+<section id="barebones-r-script" class="level2" data-number="10.9">
+<h2 data-number="10.9" class="anchored" data-anchor-id="barebones-r-script"><span class="header-section-number">10.9</span> Barebones R script</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reproducible)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>reproducible<span class="sc">::</span><span class="fu">Cache</span>(<span class="fu">rnorm</span>(<span class="dv">1</span>))</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  reproducible<span class="sc">::</span><span class="fu">Cache</span>()</span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Data setup</span></span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>tmpDir <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">tempdir</span>(), <span class="st">"reproducible_examples"</span>, <span class="st">"Cache"</span>)</span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(tmpDir, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> y <span class="ot">&lt;-</span> <span class="dv">2001</span></span>
-<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>ras <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">rast</span>(terra<span class="sc">::</span><span class="fu">ext</span>(<span class="dv">0</span>, x, <span class="dv">0</span>, y), <span class="at">vals =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>(x<span class="sc">*</span>y)), <span class="at">res =</span> <span class="dv">1</span>)</span>
-<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">crs</span>(ras) <span class="ot">&lt;-</span> <span class="st">"+proj=lcc +lat_1=48 +lat_2=33 +lon_0=-100 +datum=WGS84"</span></span>
-<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>newCRS <span class="ot">&lt;-</span> <span class="st">"+init=epsg:4326"</span> <span class="co"># A longlat crs</span></span>
-<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Call slow operation: project</span></span>
-<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a><span class="co"># No Cache</span></span>
-<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(map1 <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(ras, newCRS)) <span class="co"># Warnings due to new PROJ</span></span>
-<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a><span class="co"># With Cache -- a little slower the first time because saving to disk</span></span>
-<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(map2 <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(ras, newCRS) <span class="sc">|&gt;</span> <span class="fu">Cache</span>())</span>
-<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a><span class="co"># faster the second time; improvement depends on size of object and time to run function</span></span>
-<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(map3 <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(ras, newCRS) <span class="sc">|&gt;</span> <span class="fu">Cache</span>())</span>
-<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-26"><a href="#cb34-26" aria-hidden="true" tabindex="-1"></a>optOrig <span class="ot">&lt;-</span> <span class="fu">options</span>(<span class="st">"reproducible.useMemoise"</span> <span class="ot">=</span> <span class="cn">TRUE</span>)</span>
-<span id="cb34-27"><a href="#cb34-27" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(map4 <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(ras, newCRS) <span class="sc">|&gt;</span> <span class="fu">Cache</span>())</span>
-<span id="cb34-28"><a href="#cb34-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-29"><a href="#cb34-29" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(map5 <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(ras, newCRS) <span class="sc">|&gt;</span> <span class="fu">Cache</span>())</span>
-<span id="cb34-30"><a href="#cb34-30" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(optOrig)</span>
-<span id="cb34-31"><a href="#cb34-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-32"><a href="#cb34-32" aria-hidden="true" tabindex="-1"></a>ranNumsA <span class="ot">&lt;-</span> <span class="fu">Cache</span>(rnorm, <span class="dv">4</span>, <span class="at">userTags =</span> <span class="fu">c</span>(<span class="st">"random number generator"</span>))</span>
-<span id="cb34-33"><a href="#cb34-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-34"><a href="#cb34-34" aria-hidden="true" tabindex="-1"></a><span class="fu">showCache</span>(<span class="at">userTags =</span> <span class="st">"random number generator"</span>)</span>
-<span id="cb34-35"><a href="#cb34-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-36"><a href="#cb34-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Two different funcxtions</span></span>
-<span id="cb34-37"><a href="#cb34-37" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
-<span id="cb34-38"><a href="#cb34-38" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
-<span id="cb34-39"><a href="#cb34-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-40"><a href="#cb34-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Clear only the first one</span></span>
-<span id="cb34-41"><a href="#cb34-41" aria-hidden="true" tabindex="-1"></a><span class="fu">clearCache</span>(<span class="at">userTags =</span> <span class="st">"rnorm"</span>, <span class="at">ask =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb34-42"><a href="#cb34-42" aria-hidden="true" tabindex="-1"></a>a2 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
-<span id="cb34-43"><a href="#cb34-43" aria-hidden="true" tabindex="-1"></a>b2 <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
-<span id="cb34-44"><a href="#cb34-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-45"><a href="#cb34-45" aria-hidden="true" tabindex="-1"></a><span class="co"># b2 and b are still identical; a and a2 are not</span></span>
-<span id="cb34-46"><a href="#cb34-46" aria-hidden="true" tabindex="-1"></a>a <span class="sc">==</span> a2 <span class="co"># FALSE</span></span>
-<span id="cb34-47"><a href="#cb34-47" aria-hidden="true" tabindex="-1"></a>b <span class="sc">==</span> b2 <span class="co"># TRUE</span></span>
-<span id="cb34-48"><a href="#cb34-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-49"><a href="#cb34-49" aria-hidden="true" tabindex="-1"></a><span class="co"># This time keep ONLY the rnorm</span></span>
-<span id="cb34-50"><a href="#cb34-50" aria-hidden="true" tabindex="-1"></a><span class="fu">keepCache</span>(<span class="at">userTags =</span> <span class="st">"rnorm"</span>, <span class="at">ask =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb34-51"><a href="#cb34-51" aria-hidden="true" tabindex="-1"></a>a3 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
-<span id="cb34-52"><a href="#cb34-52" aria-hidden="true" tabindex="-1"></a>b3 <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
-<span id="cb34-53"><a href="#cb34-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-54"><a href="#cb34-54" aria-hidden="true" tabindex="-1"></a><span class="co"># b2 and b are still identical; a and a2 are not</span></span>
-<span id="cb34-55"><a href="#cb34-55" aria-hidden="true" tabindex="-1"></a>a2 <span class="sc">==</span> a3 <span class="co"># TRUE</span></span>
-<span id="cb34-56"><a href="#cb34-56" aria-hidden="true" tabindex="-1"></a>b2 <span class="sc">==</span> b3 <span class="co"># FALSE</span></span>
-<span id="cb34-57"><a href="#cb34-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-58"><a href="#cb34-58" aria-hidden="true" tabindex="-1"></a><span class="co"># Make 2 functions</span></span>
-<span id="cb34-59"><a href="#cb34-59" aria-hidden="true" tabindex="-1"></a>inner <span class="ot">&lt;-</span> <span class="cf">function</span>(mean) {</span>
-<span id="cb34-60"><a href="#cb34-60" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb34-61"><a href="#cb34-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Cache</span>(<span class="fu">rnorm</span>(<span class="dv">3</span>, <span class="at">mean =</span> mean))</span>
-<span id="cb34-62"><a href="#cb34-62" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb34-63"><a href="#cb34-63" aria-hidden="true" tabindex="-1"></a>outer <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
-<span id="cb34-64"><a href="#cb34-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Cache</span>(<span class="fu">inner</span>(<span class="fl">0.1</span>))</span>
-<span id="cb34-65"><a href="#cb34-65" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb34-66"><a href="#cb34-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-67"><a href="#cb34-67" aria-hidden="true" tabindex="-1"></a><span class="co"># Call outer function</span></span>
-<span id="cb34-68"><a href="#cb34-68" aria-hidden="true" tabindex="-1"></a><span class="fu">Cache</span>(<span class="fu">outer</span>(<span class="at">n =</span> <span class="dv">2</span>))</span>
-<span id="cb34-69"><a href="#cb34-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-70"><a href="#cb34-70" aria-hidden="true" tabindex="-1"></a><span class="co"># Change outer function</span></span>
-<span id="cb34-71"><a href="#cb34-71" aria-hidden="true" tabindex="-1"></a>outer <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
-<span id="cb34-72"><a href="#cb34-72" aria-hidden="true" tabindex="-1"></a>  a <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
-<span id="cb34-73"><a href="#cb34-73" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Cache</span>(<span class="fu">inner</span>(a))</span>
-<span id="cb34-74"><a href="#cb34-74" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb34-75"><a href="#cb34-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-76"><a href="#cb34-76" aria-hidden="true" tabindex="-1"></a><span class="co"># Still recovers inner </span></span>
-<span id="cb34-77"><a href="#cb34-77" aria-hidden="true" tabindex="-1"></a><span class="fu">Cache</span>(<span class="fu">outer</span>(<span class="at">n =</span> <span class="dv">2</span>))</span>
-<span id="cb34-78"><a href="#cb34-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-79"><a href="#cb34-79" aria-hidden="true" tabindex="-1"></a><span class="co"># BUT if we change the inner, it won't work</span></span>
-<span id="cb34-80"><a href="#cb34-80" aria-hidden="true" tabindex="-1"></a>inner <span class="ot">&lt;-</span> <span class="cf">function</span>(mean) {</span>
-<span id="cb34-81"><a href="#cb34-81" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span> <span class="dv">2</span>                        <span class="co"># Changed d</span></span>
-<span id="cb34-82"><a href="#cb34-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Cache</span>(<span class="fu">rnorm</span>(<span class="dv">3</span>, <span class="at">mean =</span> mean))</span>
-<span id="cb34-83"><a href="#cb34-83" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb34-84"><a href="#cb34-84" aria-hidden="true" tabindex="-1"></a><span class="fu">Cache</span>(<span class="fu">outer</span>(<span class="at">n =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reproducible)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>reproducible<span class="sc">::</span><span class="fu">Cache</span>(<span class="fu">rnorm</span>(<span class="dv">1</span>))</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  reproducible<span class="sc">::</span><span class="fu">Cache</span>()</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Data setup</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>tmpDir <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">tempdir</span>(), <span class="st">"reproducible_examples"</span>, <span class="st">"Cache"</span>)</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(tmpDir, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> y <span class="ot">&lt;-</span> <span class="dv">2001</span></span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>ras <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">rast</span>(terra<span class="sc">::</span><span class="fu">ext</span>(<span class="dv">0</span>, x, <span class="dv">0</span>, y), <span class="at">vals =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>(x<span class="sc">*</span>y)), <span class="at">res =</span> <span class="dv">1</span>)</span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">crs</span>(ras) <span class="ot">&lt;-</span> <span class="st">"+proj=lcc +lat_1=48 +lat_2=33 +lon_0=-100 +datum=WGS84"</span></span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>newCRS <span class="ot">&lt;-</span> <span class="st">"+init=epsg:4326"</span> <span class="co"># A longlat crs</span></span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Call slow operation: project</span></span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a><span class="co"># No Cache</span></span>
+<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(map1 <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(ras, newCRS)) <span class="co"># Warnings due to new PROJ</span></span>
+<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a><span class="co"># With Cache -- a little slower the first time because saving to disk</span></span>
+<span id="cb39-21"><a href="#cb39-21" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(map2 <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(ras, newCRS) <span class="sc">|&gt;</span> <span class="fu">Cache</span>())</span>
+<span id="cb39-22"><a href="#cb39-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-23"><a href="#cb39-23" aria-hidden="true" tabindex="-1"></a><span class="co"># faster the second time; improvement depends on size of object and time to run function</span></span>
+<span id="cb39-24"><a href="#cb39-24" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(map3 <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(ras, newCRS) <span class="sc">|&gt;</span> <span class="fu">Cache</span>())</span>
+<span id="cb39-25"><a href="#cb39-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-26"><a href="#cb39-26" aria-hidden="true" tabindex="-1"></a>optOrig <span class="ot">&lt;-</span> <span class="fu">options</span>(<span class="st">"reproducible.useMemoise"</span> <span class="ot">=</span> <span class="cn">TRUE</span>)</span>
+<span id="cb39-27"><a href="#cb39-27" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(map4 <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(ras, newCRS) <span class="sc">|&gt;</span> <span class="fu">Cache</span>())</span>
+<span id="cb39-28"><a href="#cb39-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-29"><a href="#cb39-29" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(map5 <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">project</span>(ras, newCRS) <span class="sc">|&gt;</span> <span class="fu">Cache</span>())</span>
+<span id="cb39-30"><a href="#cb39-30" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(optOrig)</span>
+<span id="cb39-31"><a href="#cb39-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-32"><a href="#cb39-32" aria-hidden="true" tabindex="-1"></a>ranNumsA <span class="ot">&lt;-</span> <span class="fu">Cache</span>(rnorm, <span class="dv">4</span>, <span class="at">userTags =</span> <span class="fu">c</span>(<span class="st">"random number generator"</span>))</span>
+<span id="cb39-33"><a href="#cb39-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-34"><a href="#cb39-34" aria-hidden="true" tabindex="-1"></a><span class="fu">showCache</span>(<span class="at">userTags =</span> <span class="st">"random number generator"</span>)</span>
+<span id="cb39-35"><a href="#cb39-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-36"><a href="#cb39-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Two different funcxtions</span></span>
+<span id="cb39-37"><a href="#cb39-37" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
+<span id="cb39-38"><a href="#cb39-38" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
+<span id="cb39-39"><a href="#cb39-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-40"><a href="#cb39-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Clear only the first one</span></span>
+<span id="cb39-41"><a href="#cb39-41" aria-hidden="true" tabindex="-1"></a><span class="fu">clearCache</span>(<span class="at">userTags =</span> <span class="st">"rnorm"</span>, <span class="at">ask =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb39-42"><a href="#cb39-42" aria-hidden="true" tabindex="-1"></a>a2 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
+<span id="cb39-43"><a href="#cb39-43" aria-hidden="true" tabindex="-1"></a>b2 <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
+<span id="cb39-44"><a href="#cb39-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-45"><a href="#cb39-45" aria-hidden="true" tabindex="-1"></a><span class="co"># b2 and b are still identical; a and a2 are not</span></span>
+<span id="cb39-46"><a href="#cb39-46" aria-hidden="true" tabindex="-1"></a>a <span class="sc">==</span> a2 <span class="co"># FALSE</span></span>
+<span id="cb39-47"><a href="#cb39-47" aria-hidden="true" tabindex="-1"></a>b <span class="sc">==</span> b2 <span class="co"># TRUE</span></span>
+<span id="cb39-48"><a href="#cb39-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-49"><a href="#cb39-49" aria-hidden="true" tabindex="-1"></a><span class="co"># This time keep ONLY the rnorm</span></span>
+<span id="cb39-50"><a href="#cb39-50" aria-hidden="true" tabindex="-1"></a><span class="fu">keepCache</span>(<span class="at">userTags =</span> <span class="st">"rnorm"</span>, <span class="at">ask =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb39-51"><a href="#cb39-51" aria-hidden="true" tabindex="-1"></a>a3 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
+<span id="cb39-52"><a href="#cb39-52" aria-hidden="true" tabindex="-1"></a>b3 <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">Cache</span>()</span>
+<span id="cb39-53"><a href="#cb39-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-54"><a href="#cb39-54" aria-hidden="true" tabindex="-1"></a><span class="co"># b2 and b are still identical; a and a2 are not</span></span>
+<span id="cb39-55"><a href="#cb39-55" aria-hidden="true" tabindex="-1"></a>a2 <span class="sc">==</span> a3 <span class="co"># TRUE</span></span>
+<span id="cb39-56"><a href="#cb39-56" aria-hidden="true" tabindex="-1"></a>b2 <span class="sc">==</span> b3 <span class="co"># FALSE</span></span>
+<span id="cb39-57"><a href="#cb39-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-58"><a href="#cb39-58" aria-hidden="true" tabindex="-1"></a><span class="co"># Make 2 functions</span></span>
+<span id="cb39-59"><a href="#cb39-59" aria-hidden="true" tabindex="-1"></a>inner <span class="ot">&lt;-</span> <span class="cf">function</span>(mean) {</span>
+<span id="cb39-60"><a href="#cb39-60" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb39-61"><a href="#cb39-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Cache</span>(<span class="fu">rnorm</span>(<span class="dv">3</span>, <span class="at">mean =</span> mean))</span>
+<span id="cb39-62"><a href="#cb39-62" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb39-63"><a href="#cb39-63" aria-hidden="true" tabindex="-1"></a>outer <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb39-64"><a href="#cb39-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Cache</span>(<span class="fu">inner</span>(<span class="fl">0.1</span>))</span>
+<span id="cb39-65"><a href="#cb39-65" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb39-66"><a href="#cb39-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-67"><a href="#cb39-67" aria-hidden="true" tabindex="-1"></a><span class="co"># Call outer function</span></span>
+<span id="cb39-68"><a href="#cb39-68" aria-hidden="true" tabindex="-1"></a><span class="fu">Cache</span>(<span class="fu">outer</span>(<span class="at">n =</span> <span class="dv">2</span>))</span>
+<span id="cb39-69"><a href="#cb39-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-70"><a href="#cb39-70" aria-hidden="true" tabindex="-1"></a><span class="co"># Change outer function</span></span>
+<span id="cb39-71"><a href="#cb39-71" aria-hidden="true" tabindex="-1"></a>outer <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb39-72"><a href="#cb39-72" aria-hidden="true" tabindex="-1"></a>  a <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb39-73"><a href="#cb39-73" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Cache</span>(<span class="fu">inner</span>(a))</span>
+<span id="cb39-74"><a href="#cb39-74" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb39-75"><a href="#cb39-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-76"><a href="#cb39-76" aria-hidden="true" tabindex="-1"></a><span class="co"># Still recovers inner </span></span>
+<span id="cb39-77"><a href="#cb39-77" aria-hidden="true" tabindex="-1"></a><span class="fu">Cache</span>(<span class="fu">outer</span>(<span class="at">n =</span> <span class="dv">2</span>))</span>
+<span id="cb39-78"><a href="#cb39-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-79"><a href="#cb39-79" aria-hidden="true" tabindex="-1"></a><span class="co"># BUT if we change the inner, it won't work</span></span>
+<span id="cb39-80"><a href="#cb39-80" aria-hidden="true" tabindex="-1"></a>inner <span class="ot">&lt;-</span> <span class="cf">function</span>(mean) {</span>
+<span id="cb39-81"><a href="#cb39-81" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span> <span class="dv">2</span>                        <span class="co"># Changed d</span></span>
+<span id="cb39-82"><a href="#cb39-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Cache</span>(<span class="fu">rnorm</span>(<span class="dv">3</span>, <span class="at">mean =</span> mean))</span>
+<span id="cb39-83"><a href="#cb39-83" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb39-84"><a href="#cb39-84" aria-hidden="true" tabindex="-1"></a><span class="fu">Cache</span>(<span class="fu">outer</span>(<span class="at">n =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>where <code>...</code> are other paths, like <code>modulePath</code> .<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
@@ -1542,7 +1576,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./prepInputs.html" class="pagination-link" aria-label="`reproducible::prepInputs` for Data">
-        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

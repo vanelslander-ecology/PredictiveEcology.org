@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eliot McIntire">
-<meta name="dcterms.date" content="2024-06-12">
+<meta name="dcterms.date" content="2024-06-20">
 
-<title>Robust and nimble scientific workflows, using SpaDES - 8&nbsp; The simList - What is it?</title>
+<title>Robust and nimble scientific workflows, using SpaDES - 7&nbsp; The simList - What is it?</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,35 +109,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="assets/css/main.scss">
 </head>
@@ -242,7 +213,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./simList.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./simList.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -263,7 +234,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -278,19 +249,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./installRandSpatialPkgs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Installing R and Spatial Packages</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Installing R and Spatial Packages</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./PackagesForBook.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./TroubleshootingPackageInstallation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Troubleshooting R package installation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Troubleshooting R package installation</span></span></a>
   </div>
 </li>
       </ul>
@@ -307,37 +278,37 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./NewModuleIntro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to SpaDES Modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction to SpaDES Modules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./MetaDataAndModuleFiles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Module Files and Metadata</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Module Files and Metadata</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ModuleInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module Inputs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Providing Module Inputs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simList.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ModulesAndEvents.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Scheduling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span></a>
   </div>
 </li>
       </ul>
@@ -354,19 +325,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Caching.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./debugging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></a>
   </div>
 </li>
       </ul>
@@ -383,25 +354,25 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflowSimple2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./LandRDemo_coreVeg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Forest Landscape Modelling with LandR and <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Forest Landscape Modelling with LandR and <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ForestsAndFire.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -409,7 +380,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bestPractices.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Best practices for <span class="math inline">\(R^3T\)</span> workflows</span></a>
+ <span class="menu-text">Best practices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -428,26 +399,25 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#where-does-simlist-come-from" id="toc-where-does-simlist-come-from" class="nav-link active" data-scroll-target="#where-does-simlist-come-from"><span class="header-section-number">8.1</span> Where does <code>simList</code> come from?</a></li>
-  <li><a href="#how-can-we-specify-a-simlist" id="toc-how-can-we-specify-a-simlist" class="nav-link" data-scroll-target="#how-can-we-specify-a-simlist"><span class="header-section-number">8.2</span> How can we specify a <code>simList</code>?</a></li>
-  <li><a href="#accessing-the-parts-of-a-simlist" id="toc-accessing-the-parts-of-a-simlist" class="nav-link" data-scroll-target="#accessing-the-parts-of-a-simlist"><span class="header-section-number">8.3</span> Accessing the parts of a <code>simList</code></a>
+  <li><a href="#where-does-simlist-come-from" id="toc-where-does-simlist-come-from" class="nav-link active" data-scroll-target="#where-does-simlist-come-from"><span class="header-section-number">7.1</span> Where does <code>simList</code> come from?</a></li>
+  <li><a href="#how-can-we-specify-a-simlist" id="toc-how-can-we-specify-a-simlist" class="nav-link" data-scroll-target="#how-can-we-specify-a-simlist"><span class="header-section-number">7.2</span> How can we specify a <code>simList</code>?</a></li>
+  <li><a href="#accessing-the-parts-of-a-simlist" id="toc-accessing-the-parts-of-a-simlist" class="nav-link" data-scroll-target="#accessing-the-parts-of-a-simlist"><span class="header-section-number">7.3</span> Accessing the parts of a <code>simList</code></a>
   <ul class="collapse">
-  <li><a href="#initialize-and-inspect-an-empty-simlist-object" id="toc-initialize-and-inspect-an-empty-simlist-object" class="nav-link" data-scroll-target="#initialize-and-inspect-an-empty-simlist-object"><span class="header-section-number">8.3.1</span> Initialize and inspect an empty <code>simList</code> object</a></li>
-  <li><a href="#inspect-a-non-empty-simlist-object" id="toc-inspect-a-non-empty-simlist-object" class="nav-link" data-scroll-target="#inspect-a-non-empty-simlist-object"><span class="header-section-number">8.3.2</span> Inspect a non-empty <code>simList</code> object</a></li>
-  <li><a href="#compare-the-simlist-before-and-after-spades" id="toc-compare-the-simlist-before-and-after-spades" class="nav-link" data-scroll-target="#compare-the-simlist-before-and-after-spades"><span class="header-section-number">8.3.3</span> Compare the <code>simList</code> before and after <code>spades()</code></a></li>
+  <li><a href="#initializecreate-and-inspect-an-empty-simlist-object" id="toc-initializecreate-and-inspect-an-empty-simlist-object" class="nav-link" data-scroll-target="#initializecreate-and-inspect-an-empty-simlist-object"><span class="header-section-number">7.3.1</span> Initialize/create and inspect an empty <code>simList</code> object</a></li>
+  <li><a href="#compare-the-simlist-before-and-after-spades" id="toc-compare-the-simlist-before-and-after-spades" class="nav-link" data-scroll-target="#compare-the-simlist-before-and-after-spades"><span class="header-section-number">7.3.2</span> Compare the <code>simList</code> before and after <code>spades()</code></a></li>
   </ul></li>
-  <li><a href="#try-on-your-own" id="toc-try-on-your-own" class="nav-link" data-scroll-target="#try-on-your-own"><span class="header-section-number">8.4</span> Try on your own</a></li>
-  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">8.5</span> See also</a></li>
-  <li><a href="#barebones-r-script" id="toc-barebones-r-script" class="nav-link" data-scroll-target="#barebones-r-script"><span class="header-section-number">8.6</span> Barebones R script</a></li>
+  <li><a href="#try-on-your-own" id="toc-try-on-your-own" class="nav-link" data-scroll-target="#try-on-your-own"><span class="header-section-number">7.4</span> Try on your own</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">7.5</span> See also</a></li>
+  <li><a href="#barebones-r-script" id="toc-barebones-r-script" class="nav-link" data-scroll-target="#barebones-r-script"><span class="header-section-number">7.6</span> Barebones R script</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./simList.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./simList.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-simlist" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span></h1>
+<h1 class="title"><span id="sec-simlist" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span></h1>
 </div>
 
 
@@ -464,7 +434,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 12, 2024</p>
+      <p class="date">June 20, 2024</p>
     </div>
   </div>
   
@@ -522,7 +492,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The name <code>simList</code> has the word “list” in it, but it is actually an <code>environment</code></p>
+<p>The name <code>simList</code> has the word “list” in it, but it is actually an <code>environment</code>. The “sim” part of the name is historically inherited from “simulation” modelling, although you may want to do nothing of the sort with your SpaDES modules.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -531,17 +501,19 @@ window.Quarto = {
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># [1] TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+<p>Accessing objects in the <code>simList</code> can be done with <code>$</code> or <code>[["object_name"]]</code> and objects are manipulated as they would normally – e.g.&nbsp;if <code>DF</code> is a <code>data.frame</code> one would use <code>sim$DF[1, 3]</code> to extract the value on the first row and third column.</p>
+<p>There is no limit to the number of objects you can add to a <code>simList</code> – the limit is, of course, your machine’s RAM.</p>
 </div>
 </div>
-<section id="where-does-simlist-come-from" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="where-does-simlist-come-from"><span class="header-section-number">8.1</span> Where does <code>simList</code> come from?</h2>
+<section id="where-does-simlist-come-from" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="where-does-simlist-come-from"><span class="header-section-number">7.1</span> Where does <code>simList</code> come from?</h2>
 <p>There is only one way in <code>SpaDES.core</code> to create a <code>simList</code>:</p>
 <ul>
 <li>using <a href="https://rdrr.io/cran/SpaDES.core/man/simInit.html"><code>simInit()</code></a> creates a <code>simList</code> object.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
 </ul>
 </section>
-<section id="how-can-we-specify-a-simlist" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="how-can-we-specify-a-simlist"><span class="header-section-number">8.2</span> How can we specify a <code>simList</code>?</h2>
+<section id="how-can-we-specify-a-simlist" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="how-can-we-specify-a-simlist"><span class="header-section-number">7.2</span> How can we specify a <code>simList</code>?</h2>
 <p>A <code>simList</code> object is simply a structured data type containing various elements.</p>
 <p>The main components of a <code>simList</code> are:</p>
 <ol type="1">
@@ -553,16 +525,25 @@ window.Quarto = {
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>emptySim <span class="ot">&lt;-</span> SpaDES<span class="sc">::</span><span class="fu">simInit</span>()</span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>emptySim <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">simInit</span>()</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>emptySim  <span class="co"># same as show(emptySim)</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(emptySim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p><strong>NOTE:</strong> <code>simList</code>s are S4 objects, so we can use <code>getSlots()</code> and <code>slotNames()</code> to examine the object.</p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><code>simList</code>s are S4 objects, so we can use <code>getSlots()</code> and <code>slotNames()</code> to examine the object.</p>
 <p>See also <a href="https://rdrr.io/cran/SpaDES.core/man/simList-class.html"><code>?'simList-class'</code></a></p>
+</div>
+</div>
+</div>
 </section>
-<section id="accessing-the-parts-of-a-simlist" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="accessing-the-parts-of-a-simlist"><span class="header-section-number">8.3</span> Accessing the parts of a <code>simList</code></h2>
+<section id="accessing-the-parts-of-a-simlist" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="accessing-the-parts-of-a-simlist"><span class="header-section-number">7.3</span> Accessing the parts of a <code>simList</code></h2>
 <div class="columns-2">
 
 </div>
@@ -588,8 +569,8 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<section id="initialize-and-inspect-an-empty-simlist-object" class="level3" data-number="8.3.1">
-<h3 data-number="8.3.1" class="anchored" data-anchor-id="initialize-and-inspect-an-empty-simlist-object"><span class="header-section-number">8.3.1</span> Initialize and inspect an empty <code>simList</code> object</h3>
+<section id="initializecreate-and-inspect-an-empty-simlist-object" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="initializecreate-and-inspect-an-empty-simlist-object"><span class="header-section-number">7.3.1</span> Initialize/create and inspect an empty <code>simList</code> object</h3>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -598,9 +579,9 @@ window.Quarto = {
 </div>
 <ol type="1">
 <li><p>What are the names of each of the slots in the simList?</p></li>
-<li><p>What do each of these slots contain?</p></li>
+<li><p>What do each of these slots contain?</p>
+<p>Hint: see <a href="https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/simList-class"><code>?'simList-class'</code></a></p></li>
 </ol>
-<p>Hint: see <a href="https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/simList-class"><code>?'simList-class'</code></a></p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -610,21 +591,20 @@ window.Quarto = {
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>?<span class="st">`</span><span class="at">simList-class</span><span class="st">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section>
-<section id="inspect-a-non-empty-simlist-object" class="level3" data-number="8.3.2">
-<h3 data-number="8.3.2" class="anchored" data-anchor-id="inspect-a-non-empty-simlist-object"><span class="header-section-number">8.3.2</span> Inspect a non-empty <code>simList</code> object</h3>
-<p>Use the <code>simList</code> accessor functions to determine the following:</p>
+<section id="simlist-accessor-functions" class="level4" data-number="7.3.1.1">
+<h4 data-number="7.3.1.1" class="anchored" data-anchor-id="simlist-accessor-functions"><span class="header-section-number">7.3.1.1</span> <code>simList</code> accessor functions</h4>
+<p><code>simList</code> accessor functions are used to determine the following:</p>
 <ol type="1">
 <li><p>the modules included in the simulation and their package dependencies;</p></li>
 <li><p>the global parameter values used;</p></li>
 <li><p>the module-specific parameter values used;</p></li>
-<li><p>the simulation start and end times;</p></li>
-<li><p>the timeunits used by the modules in the simulation;</p></li>
+<li><p>the simulation start, end and current times;</p></li>
+<li><p>the time units used by the modules in the simulation;</p></li>
 <li><p>the scheduled and completed event queues;</p></li>
 <li><p>the objects (functions, data, etc.) used in the simulation;</p></li>
 <li><p>the file paths used for simulation inputs and outputs.</p></li>
 </ol>
-<p>We will try this with the simple linear module first, for which we’ve already defined default values for the input object <code>x</code> (see <a href="MetaDataAndModuleFiles.html" class="quarto-xref"><span>Chapter 6</span></a>).</p>
+<p>We will try this with the simple linear module first, for which we’ve already defined default values for the input object <code>x</code> (see <a href="MetaDataAndModuleFiles.html" class="quarto-xref"><span>Chapter 5</span></a>).</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -632,49 +612,50 @@ window.Quarto = {
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>modulePath <span class="ot">&lt;-</span> <span class="fu">getSampleModules</span>(<span class="fu">tempdir</span>())</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># options(spades.loadReqdPkgs = FALSE) # we don't need to check for packages in this example</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>nm1 <span class="ot">&lt;-</span> <span class="st">"My_linear_model"</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>modulePath <span class="ot">&lt;-</span> <span class="st">"~/SpaDES_book/NewModuleIntro/NewModule"</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>mySim <span class="ot">&lt;-</span> <span class="fu">simInit</span>(<span class="at">params =</span> <span class="fu">list</span>(<span class="st">"My_linear_model"</span> <span class="ot">=</span> <span class="fu">list</span>(<span class="at">length =</span> <span class="dv">20</span>)),</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">modules =</span> nm1,</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">events</span>(mySim)</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># b is in the .xData slot</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>mySim<span class="sc">$</span>x</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>mySim<span class="sc">@</span>.xData<span class="sc">$</span>x</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co"># all functions below come from SpaDES.core::</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co"># list modules used in the simulation</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="fu">modules</span>(mySim)</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co"># list module dependencies and packages used</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="fu">depends</span>(mySim)</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="fu">packages</span>(mySim)</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co"># list global and module-specific param values</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span>(mySim)</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="fu">P</span>(mySim)       <span class="co"># bonus: how do params() and P() differ?</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="co"># list start and end times</span></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="fu">times</span>(mySim)</span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="fu">start</span>(mySim)</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="fu">end</span>(mySim)</span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="co"># get the simulation and module timeunits</span></span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="fu">timeunit</span>(mySim)</span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a><span class="fu">timeunits</span>(mySim)</span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a><span class="co"># get the scheduled and completed event queues</span></span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a><span class="fu">events</span>(mySim)</span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a><span class="fu">completed</span>(mySim)</span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a><span class="co"># list the objects (functions, data, etc.) stored in the simList</span></span>
-<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a><span class="fu">objects</span>(mySim)</span>
-<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a><span class="co"># list the file paths used in the simulation</span></span>
-<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a><span class="fu">paths</span>(mySim)</span>
-<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a><span class="fu">inputPath</span>(mySim)</span>
-<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a><span class="fu">outputPath</span>(mySim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>modulePath <span class="ot">&lt;-</span> <span class="st">"~/SpaDES_book/NewModuleIntro/NewModule"</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>mySim <span class="ot">&lt;-</span> <span class="fu">simInit</span>(<span class="at">params =</span> <span class="fu">list</span>(<span class="st">"My_linear_model"</span> <span class="ot">=</span> <span class="fu">list</span>(<span class="at">length =</span> <span class="dv">20</span>)),</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">modules =</span> <span class="st">"My_linear_model"</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">events</span>(mySim)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># b is in the .xData slot</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>mySim<span class="sc">$</span>x</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>mySim<span class="sc">@</span>.xData<span class="sc">$</span>x</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># all functions below come from SpaDES.core::</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co"># list modules used in the simulation</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="fu">modules</span>(mySim)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co"># list module dependencies and packages used</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="fu">depends</span>(mySim)</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="fu">packages</span>(mySim)</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="co"># list global and module-specific param values</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span>(mySim)</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="fu">P</span>(mySim)       <span class="co"># bonus: how do params() and P() differ?</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="co"># list start and end times</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="fu">times</span>(mySim)</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="fu">start</span>(mySim)</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="fu">end</span>(mySim)</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="do">## and the 'current' time</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="fu">time</span>(mySim)</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="co"># get the simulation and module timeunits</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a><span class="fu">timeunit</span>(mySim)</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="fu">timeunits</span>(mySim)</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a><span class="co"># get the scheduled and completed event queues</span></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a><span class="fu">events</span>(mySim)</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a><span class="fu">completed</span>(mySim)</span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a><span class="co"># list the objects (functions, data, etc.) stored in the simList</span></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a><span class="fu">objects</span>(mySim)</span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a><span class="co"># list the file paths used in the simulation</span></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a><span class="fu">paths</span>(mySim)</span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a><span class="fu">inputPath</span>(mySim)</span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a><span class="fu">outputPath</span>(mySim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Now run the simulation</p>
@@ -711,8 +692,9 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="compare-the-simlist-before-and-after-spades" class="level3" data-number="8.3.3">
-<h3 data-number="8.3.3" class="anchored" data-anchor-id="compare-the-simlist-before-and-after-spades"><span class="header-section-number">8.3.3</span> Compare the <code>simList</code> before and after <code>spades()</code></h3>
+</section>
+<section id="compare-the-simlist-before-and-after-spades" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="compare-the-simlist-before-and-after-spades"><span class="header-section-number">7.3.2</span> Compare the <code>simList</code> before and after <code>spades()</code></h3>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -725,8 +707,8 @@ window.Quarto = {
 </div>
 </section>
 </section>
-<section id="try-on-your-own" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="try-on-your-own"><span class="header-section-number">8.4</span> Try on your own</h2>
+<section id="try-on-your-own" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="try-on-your-own"><span class="header-section-number">7.4</span> Try on your own</h2>
 <ul>
 <li><p>Repeat the above with more complex modules. Use the accessor functions to look at what inside the <code>simList</code> and try passing different parameter values or inputs.</p>
 <div class="cell">
@@ -742,16 +724,16 @@ window.Quarto = {
 </div></li>
 </ul>
 </section>
-<section id="see-also" class="level2" data-number="8.5">
-<h2 data-number="8.5" class="anchored" data-anchor-id="see-also"><span class="header-section-number">8.5</span> See also</h2>
+<section id="see-also" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="see-also"><span class="header-section-number">7.5</span> See also</h2>
 <p><a href="http://adv-r.had.co.nz/Environments.html">Environments - Advanced R</a></p>
 <p><a href="https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/simList-class"><code>?'simList-class'</code></a></p>
 <p><a href="https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/envir"><code>?SpaDES.core::envir</code></a></p>
 <p><a href="https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/simInit"><code>?SpaDES.core::simInit</code></a></p>
 <p><a href="https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/spades"><code>?SpaDES.core::spades</code></a></p>
 </section>
-<section id="barebones-r-script" class="level2" data-number="8.6">
-<h2 data-number="8.6" class="anchored" data-anchor-id="barebones-r-script"><span class="header-section-number">8.6</span> Barebones R script</h2>
+<section id="barebones-r-script" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="barebones-r-script"><span class="header-section-number">7.6</span> Barebones R script</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -775,7 +757,7 @@ window.Quarto = {
 <span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="fu">is</span>(sim, <span class="st">"environment"</span>)</span>
 <span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="co"># [1] TRUE</span></span>
 <span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>emptySim <span class="ot">&lt;-</span> SpaDES<span class="sc">::</span><span class="fu">simInit</span>()</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>emptySim <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">simInit</span>()</span>
 <span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>emptySim  <span class="co"># same as show(emptySim)</span></span>
 <span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(emptySim)</span>
 <span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a></span>
@@ -794,73 +776,74 @@ window.Quarto = {
 <span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>modulePath <span class="ot">&lt;-</span> <span class="fu">getSampleModules</span>(<span class="fu">tempdir</span>())</span>
 <span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a><span class="co"># options(spades.loadReqdPkgs = FALSE) # we don't need to check for packages in this example</span></span>
-<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>nm1 <span class="ot">&lt;-</span> <span class="st">"My_linear_model"</span></span>
-<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>modulePath <span class="ot">&lt;-</span> <span class="st">"~/SpaDES_book/NewModuleIntro/NewModule"</span></span>
-<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>mySim <span class="ot">&lt;-</span> <span class="fu">simInit</span>(<span class="at">params =</span> <span class="fu">list</span>(<span class="st">"My_linear_model"</span> <span class="ot">=</span> <span class="fu">list</span>(<span class="at">length =</span> <span class="dv">20</span>)),</span>
-<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>                 <span class="at">modules =</span> nm1,</span>
-<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>                 <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span>
-<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a><span class="fu">events</span>(mySim)</span>
-<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a><span class="co"># b is in the .xData slot</span></span>
-<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>mySim<span class="sc">$</span>x</span>
-<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a>mySim<span class="sc">@</span>.xData<span class="sc">$</span>x</span>
-<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a><span class="co"># all functions below come from SpaDES.core::</span></span>
-<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a><span class="co"># list modules used in the simulation</span></span>
-<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a><span class="fu">modules</span>(mySim)</span>
-<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a><span class="co"># list module dependencies and packages used</span></span>
-<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a><span class="fu">depends</span>(mySim)</span>
-<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a><span class="fu">packages</span>(mySim)</span>
-<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-59"><a href="#cb12-59" aria-hidden="true" tabindex="-1"></a><span class="co"># list global and module-specific param values</span></span>
-<span id="cb12-60"><a href="#cb12-60" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span>(mySim)</span>
-<span id="cb12-61"><a href="#cb12-61" aria-hidden="true" tabindex="-1"></a><span class="fu">P</span>(mySim)       <span class="co"># bonus: how do params() and P() differ?</span></span>
-<span id="cb12-62"><a href="#cb12-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-63"><a href="#cb12-63" aria-hidden="true" tabindex="-1"></a><span class="co"># list start and end times</span></span>
-<span id="cb12-64"><a href="#cb12-64" aria-hidden="true" tabindex="-1"></a><span class="fu">times</span>(mySim)</span>
-<span id="cb12-65"><a href="#cb12-65" aria-hidden="true" tabindex="-1"></a><span class="fu">start</span>(mySim)</span>
-<span id="cb12-66"><a href="#cb12-66" aria-hidden="true" tabindex="-1"></a><span class="fu">end</span>(mySim)</span>
-<span id="cb12-67"><a href="#cb12-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-68"><a href="#cb12-68" aria-hidden="true" tabindex="-1"></a><span class="co"># get the simulation and module timeunits</span></span>
-<span id="cb12-69"><a href="#cb12-69" aria-hidden="true" tabindex="-1"></a><span class="fu">timeunit</span>(mySim)</span>
-<span id="cb12-70"><a href="#cb12-70" aria-hidden="true" tabindex="-1"></a><span class="fu">timeunits</span>(mySim)</span>
-<span id="cb12-71"><a href="#cb12-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-72"><a href="#cb12-72" aria-hidden="true" tabindex="-1"></a><span class="co"># get the scheduled and completed event queues</span></span>
-<span id="cb12-73"><a href="#cb12-73" aria-hidden="true" tabindex="-1"></a><span class="fu">events</span>(mySim)</span>
-<span id="cb12-74"><a href="#cb12-74" aria-hidden="true" tabindex="-1"></a><span class="fu">completed</span>(mySim)</span>
-<span id="cb12-75"><a href="#cb12-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-76"><a href="#cb12-76" aria-hidden="true" tabindex="-1"></a><span class="co"># list the objects (functions, data, etc.) stored in the simList</span></span>
-<span id="cb12-77"><a href="#cb12-77" aria-hidden="true" tabindex="-1"></a><span class="fu">objects</span>(mySim)</span>
-<span id="cb12-78"><a href="#cb12-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-79"><a href="#cb12-79" aria-hidden="true" tabindex="-1"></a><span class="co"># list the file paths used in the simulation</span></span>
-<span id="cb12-80"><a href="#cb12-80" aria-hidden="true" tabindex="-1"></a><span class="fu">paths</span>(mySim)</span>
-<span id="cb12-81"><a href="#cb12-81" aria-hidden="true" tabindex="-1"></a><span class="fu">inputPath</span>(mySim)</span>
-<span id="cb12-82"><a href="#cb12-82" aria-hidden="true" tabindex="-1"></a><span class="fu">outputPath</span>(mySim)</span>
-<span id="cb12-83"><a href="#cb12-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-84"><a href="#cb12-84" aria-hidden="true" tabindex="-1"></a>mySimOut <span class="ot">&lt;-</span> reproducible<span class="sc">::</span><span class="fu">Copy</span>(mySim) <span class="co"># make a deep copy of the simList</span></span>
-<span id="cb12-85"><a href="#cb12-85" aria-hidden="true" tabindex="-1"></a>mySimOut <span class="ot">&lt;-</span> <span class="fu">spades</span>(mySimOut)</span>
-<span id="cb12-86"><a href="#cb12-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-87"><a href="#cb12-87" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> <span class="fu">simInit</span>()</span>
-<span id="cb12-88"><a href="#cb12-88" aria-hidden="true" tabindex="-1"></a>sim<span class="sc">$</span>a <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb12-89"><a href="#cb12-89" aria-hidden="true" tabindex="-1"></a>simNew <span class="ot">&lt;-</span> sim</span>
-<span id="cb12-90"><a href="#cb12-90" aria-hidden="true" tabindex="-1"></a>simNew<span class="sc">$</span>a <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb12-91"><a href="#cb12-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-92"><a href="#cb12-92" aria-hidden="true" tabindex="-1"></a><span class="co"># what value will this have?</span></span>
-<span id="cb12-93"><a href="#cb12-93" aria-hidden="true" tabindex="-1"></a>sim<span class="sc">$</span>a</span>
-<span id="cb12-94"><a href="#cb12-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-95"><a href="#cb12-95" aria-hidden="true" tabindex="-1"></a><span class="fu">times</span>(mySim)</span>
-<span id="cb12-96"><a href="#cb12-96" aria-hidden="true" tabindex="-1"></a><span class="fu">times</span>(mySimOut)</span>
-<span id="cb12-97"><a href="#cb12-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-98"><a href="#cb12-98" aria-hidden="true" tabindex="-1"></a><span class="fu">objects</span>(mySim)</span>
-<span id="cb12-99"><a href="#cb12-99" aria-hidden="true" tabindex="-1"></a><span class="fu">objects</span>(mySimOut)</span>
-<span id="cb12-100"><a href="#cb12-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-101"><a href="#cb12-101" aria-hidden="true" tabindex="-1"></a>modulePath <span class="ot">&lt;-</span> <span class="fu">getSampleModules</span>(<span class="fu">tempdir</span>())</span>
-<span id="cb12-102"><a href="#cb12-102" aria-hidden="true" tabindex="-1"></a><span class="co"># options(spades.loadReqdPkgs = FALSE) # we don't need to check for packages in this example</span></span>
-<span id="cb12-103"><a href="#cb12-103" aria-hidden="true" tabindex="-1"></a>mySim <span class="ot">&lt;-</span> <span class="fu">simInit</span>(<span class="at">modules =</span> <span class="fu">dir</span>(modulePath[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]),</span>
-<span id="cb12-104"><a href="#cb12-104" aria-hidden="true" tabindex="-1"></a><span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath),</span>
-<span id="cb12-105"><a href="#cb12-105" aria-hidden="true" tabindex="-1"></a><span class="at">objects =</span> <span class="fu">list</span>(<span class="at">b =</span> <span class="dv">1</span>))</span>
-<span id="cb12-106"><a href="#cb12-106" aria-hidden="true" tabindex="-1"></a>simOut <span class="ot">&lt;-</span> <span class="fu">spades</span>(mySim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>modulePath <span class="ot">&lt;-</span> <span class="st">"~/SpaDES_book/NewModuleIntro/NewModule"</span></span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>mySim <span class="ot">&lt;-</span> <span class="fu">simInit</span>(<span class="at">params =</span> <span class="fu">list</span>(<span class="st">"My_linear_model"</span> <span class="ot">=</span> <span class="fu">list</span>(<span class="at">length =</span> <span class="dv">20</span>)),</span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>                 <span class="at">modules =</span> <span class="st">"My_linear_model"</span>,</span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>                 <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a><span class="fu">events</span>(mySim)</span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a><span class="co"># b is in the .xData slot</span></span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>mySim<span class="sc">$</span>x</span>
+<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>mySim<span class="sc">@</span>.xData<span class="sc">$</span>x</span>
+<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a><span class="co"># all functions below come from SpaDES.core::</span></span>
+<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a><span class="co"># list modules used in the simulation</span></span>
+<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a><span class="fu">modules</span>(mySim)</span>
+<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a><span class="co"># list module dependencies and packages used</span></span>
+<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a><span class="fu">depends</span>(mySim)</span>
+<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a><span class="fu">packages</span>(mySim)</span>
+<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a><span class="co"># list global and module-specific param values</span></span>
+<span id="cb12-59"><a href="#cb12-59" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span>(mySim)</span>
+<span id="cb12-60"><a href="#cb12-60" aria-hidden="true" tabindex="-1"></a><span class="fu">P</span>(mySim)       <span class="co"># bonus: how do params() and P() differ?</span></span>
+<span id="cb12-61"><a href="#cb12-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-62"><a href="#cb12-62" aria-hidden="true" tabindex="-1"></a><span class="co"># list start and end times</span></span>
+<span id="cb12-63"><a href="#cb12-63" aria-hidden="true" tabindex="-1"></a><span class="fu">times</span>(mySim)</span>
+<span id="cb12-64"><a href="#cb12-64" aria-hidden="true" tabindex="-1"></a><span class="fu">start</span>(mySim)</span>
+<span id="cb12-65"><a href="#cb12-65" aria-hidden="true" tabindex="-1"></a><span class="fu">end</span>(mySim)</span>
+<span id="cb12-66"><a href="#cb12-66" aria-hidden="true" tabindex="-1"></a>and the <span class="st">'current'</span> time</span>
+<span id="cb12-67"><a href="#cb12-67" aria-hidden="true" tabindex="-1"></a><span class="fu">time</span>(mySim)</span>
+<span id="cb12-68"><a href="#cb12-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-69"><a href="#cb12-69" aria-hidden="true" tabindex="-1"></a><span class="co"># get the simulation and module timeunits</span></span>
+<span id="cb12-70"><a href="#cb12-70" aria-hidden="true" tabindex="-1"></a><span class="fu">timeunit</span>(mySim)</span>
+<span id="cb12-71"><a href="#cb12-71" aria-hidden="true" tabindex="-1"></a><span class="fu">timeunits</span>(mySim)</span>
+<span id="cb12-72"><a href="#cb12-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-73"><a href="#cb12-73" aria-hidden="true" tabindex="-1"></a><span class="co"># get the scheduled and completed event queues</span></span>
+<span id="cb12-74"><a href="#cb12-74" aria-hidden="true" tabindex="-1"></a><span class="fu">events</span>(mySim)</span>
+<span id="cb12-75"><a href="#cb12-75" aria-hidden="true" tabindex="-1"></a><span class="fu">completed</span>(mySim)</span>
+<span id="cb12-76"><a href="#cb12-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-77"><a href="#cb12-77" aria-hidden="true" tabindex="-1"></a><span class="co"># list the objects (functions, data, etc.) stored in the simList</span></span>
+<span id="cb12-78"><a href="#cb12-78" aria-hidden="true" tabindex="-1"></a><span class="fu">objects</span>(mySim)</span>
+<span id="cb12-79"><a href="#cb12-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-80"><a href="#cb12-80" aria-hidden="true" tabindex="-1"></a><span class="co"># list the file paths used in the simulation</span></span>
+<span id="cb12-81"><a href="#cb12-81" aria-hidden="true" tabindex="-1"></a><span class="fu">paths</span>(mySim)</span>
+<span id="cb12-82"><a href="#cb12-82" aria-hidden="true" tabindex="-1"></a><span class="fu">inputPath</span>(mySim)</span>
+<span id="cb12-83"><a href="#cb12-83" aria-hidden="true" tabindex="-1"></a><span class="fu">outputPath</span>(mySim)</span>
+<span id="cb12-84"><a href="#cb12-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-85"><a href="#cb12-85" aria-hidden="true" tabindex="-1"></a>mySimOut <span class="ot">&lt;-</span> reproducible<span class="sc">::</span><span class="fu">Copy</span>(mySim) <span class="co"># make a deep copy of the simList</span></span>
+<span id="cb12-86"><a href="#cb12-86" aria-hidden="true" tabindex="-1"></a>mySimOut <span class="ot">&lt;-</span> <span class="fu">spades</span>(mySimOut)</span>
+<span id="cb12-87"><a href="#cb12-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-88"><a href="#cb12-88" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> <span class="fu">simInit</span>()</span>
+<span id="cb12-89"><a href="#cb12-89" aria-hidden="true" tabindex="-1"></a>sim<span class="sc">$</span>a <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb12-90"><a href="#cb12-90" aria-hidden="true" tabindex="-1"></a>simNew <span class="ot">&lt;-</span> sim</span>
+<span id="cb12-91"><a href="#cb12-91" aria-hidden="true" tabindex="-1"></a>simNew<span class="sc">$</span>a <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb12-92"><a href="#cb12-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-93"><a href="#cb12-93" aria-hidden="true" tabindex="-1"></a><span class="co"># what value will this have?</span></span>
+<span id="cb12-94"><a href="#cb12-94" aria-hidden="true" tabindex="-1"></a>sim<span class="sc">$</span>a</span>
+<span id="cb12-95"><a href="#cb12-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-96"><a href="#cb12-96" aria-hidden="true" tabindex="-1"></a><span class="fu">times</span>(mySim)</span>
+<span id="cb12-97"><a href="#cb12-97" aria-hidden="true" tabindex="-1"></a><span class="fu">times</span>(mySimOut)</span>
+<span id="cb12-98"><a href="#cb12-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-99"><a href="#cb12-99" aria-hidden="true" tabindex="-1"></a><span class="fu">objects</span>(mySim)</span>
+<span id="cb12-100"><a href="#cb12-100" aria-hidden="true" tabindex="-1"></a><span class="fu">objects</span>(mySimOut)</span>
+<span id="cb12-101"><a href="#cb12-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-102"><a href="#cb12-102" aria-hidden="true" tabindex="-1"></a>modulePath <span class="ot">&lt;-</span> <span class="fu">getSampleModules</span>(<span class="fu">tempdir</span>())</span>
+<span id="cb12-103"><a href="#cb12-103" aria-hidden="true" tabindex="-1"></a><span class="co"># options(spades.loadReqdPkgs = FALSE) # we don't need to check for packages in this example</span></span>
+<span id="cb12-104"><a href="#cb12-104" aria-hidden="true" tabindex="-1"></a>mySim <span class="ot">&lt;-</span> <span class="fu">simInit</span>(<span class="at">modules =</span> <span class="fu">dir</span>(modulePath[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]),</span>
+<span id="cb12-105"><a href="#cb12-105" aria-hidden="true" tabindex="-1"></a><span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath),</span>
+<span id="cb12-106"><a href="#cb12-106" aria-hidden="true" tabindex="-1"></a><span class="at">objects =</span> <span class="fu">list</span>(<span class="at">b =</span> <span class="dv">1</span>))</span>
+<span id="cb12-107"><a href="#cb12-107" aria-hidden="true" tabindex="-1"></a>simOut <span class="ot">&lt;-</span> <span class="fu">spades</span>(mySim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 
@@ -1434,13 +1417,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./ModuleInputs.html" class="pagination-link" aria-label="Module Inputs">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module Inputs</span></span>
+      <a href="./ModuleInputs.html" class="pagination-link" aria-label="Providing Module Inputs">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Providing Module Inputs</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./ModulesAndEvents.html" class="pagination-link" aria-label="Modules, Events and Functions">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

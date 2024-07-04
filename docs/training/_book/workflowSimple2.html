@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eliot McIntire">
-<meta name="dcterms.date" content="2024-06-12">
+<meta name="dcterms.date" content="2024-06-18">
 
-<title>Robust and nimble scientific workflows, using SpaDES - 14&nbsp; Workflows with setupProject</title>
+<title>Robust and nimble scientific workflows, using SpaDES - 13&nbsp; Workflows with setupProject</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,35 +109,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="assets/css/main.scss">
 </head>
@@ -242,7 +213,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./workflowSimple2.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./workflowSimple2.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -263,7 +234,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -278,19 +249,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./installRandSpatialPkgs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Installing R and Spatial Packages</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Installing R and Spatial Packages</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./PackagesForBook.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./TroubleshootingPackageInstallation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Troubleshooting R package installation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Troubleshooting R package installation</span></span></a>
   </div>
 </li>
       </ul>
@@ -307,37 +278,37 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./NewModuleIntro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to SpaDES Modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction to SpaDES Modules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./MetaDataAndModuleFiles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Module Files and Metadata</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Module Files and Metadata</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ModuleInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module Inputs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Providing Module Inputs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simList.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ModulesAndEvents.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Scheduling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span></a>
   </div>
 </li>
       </ul>
@@ -354,19 +325,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Caching.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./debugging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></a>
   </div>
 </li>
       </ul>
@@ -383,25 +354,25 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflowSimple2.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./LandRDemo_coreVeg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Forest Landscape Modelling with LandR and <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Forest Landscape Modelling with LandR and <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ForestsAndFire.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -409,7 +380,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bestPractices.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Best practices for <span class="math inline">\(R^3T\)</span> workflows</span></a>
+ <span class="menu-text">Best practices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -428,22 +399,22 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#spades.projectsetupproject" id="toc-spades.projectsetupproject" class="nav-link active" data-scroll-target="#spades.projectsetupproject"><span class="header-section-number">14.1</span> <code>SpaDES.project::setupProject</code></a></li>
-  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation"><span class="header-section-number">14.2</span> Installation</a></li>
-  <li><a href="#using-setupproject" id="toc-using-setupproject" class="nav-link" data-scroll-target="#using-setupproject"><span class="header-section-number">14.3</span> Using <code>setupProject</code></a></li>
-  <li><a href="#emergent-workflow" id="toc-emergent-workflow" class="nav-link" data-scroll-target="#emergent-workflow"><span class="header-section-number">14.4</span> Emergent workflow</a></li>
-  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples"><span class="header-section-number">14.5</span> Examples</a></li>
-  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">14.6</span> See also</a></li>
-  <li><a href="#barebones-r-script" id="toc-barebones-r-script" class="nav-link" data-scroll-target="#barebones-r-script"><span class="header-section-number">14.7</span> Barebones R script</a></li>
+  <li><a href="#spades.projectsetupproject" id="toc-spades.projectsetupproject" class="nav-link active" data-scroll-target="#spades.projectsetupproject"><span class="header-section-number">13.1</span> <code>SpaDES.project::setupProject</code></a></li>
+  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation"><span class="header-section-number">13.2</span> Installation</a></li>
+  <li><a href="#using-setupproject" id="toc-using-setupproject" class="nav-link" data-scroll-target="#using-setupproject"><span class="header-section-number">13.3</span> Using <code>setupProject</code></a></li>
+  <li><a href="#emergent-workflow" id="toc-emergent-workflow" class="nav-link" data-scroll-target="#emergent-workflow"><span class="header-section-number">13.4</span> Emergent workflow</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples"><span class="header-section-number">13.5</span> Examples</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">13.6</span> See also</a></li>
+  <li><a href="#barebones-r-script" id="toc-barebones-r-script" class="nav-link" data-scroll-target="#barebones-r-script"><span class="header-section-number">13.7</span> Barebones R script</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./workflowSimple2.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./workflowSimple2.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></h1>
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></h1>
 </div>
 
 
@@ -460,7 +431,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 12, 2024</p>
+      <p class="date">June 18, 2024</p>
     </div>
   </div>
   
@@ -484,12 +455,12 @@ window.Quarto = {
 </div>
 <p>Once we want to run a project that is more sophisticated, we can start using <code>SpaDES.project</code>. <a href="https://spades-project.predictiveecology.org/"><code>SpaDES.project</code></a> is a package that deals with a number of challenges that crop up creating and using workflows. These become particularly acute when working with multiple modules created by potentially many people. <a href="https://spades-project.predictiveecology.org/#project-challenges">See here to see a longer list of project challenges</a>.</p>
 <p>We will demonstrate its use with an example created by <a href="https://github.com/tati-micheletti/Micheletti_SpaDES/blob/main/demo.R">Tati Micheletti</a> where a workflow with several modules is setup and run.</p>
-<section id="spades.projectsetupproject" class="level2" data-number="14.1">
-<h2 data-number="14.1" class="anchored" data-anchor-id="spades.projectsetupproject"><span class="header-section-number">14.1</span> <code>SpaDES.project::setupProject</code></h2>
+<section id="spades.projectsetupproject" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="spades.projectsetupproject"><span class="header-section-number">13.1</span> <code>SpaDES.project::setupProject</code></h2>
 <p>https://spades-project.predictiveecology.org/articles/i-getting-started.html</p>
 </section>
-<section id="installation" class="level2" data-number="14.2">
-<h2 data-number="14.2" class="anchored" data-anchor-id="installation"><span class="header-section-number">14.2</span> Installation</h2>
+<section id="installation" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="installation"><span class="header-section-number">13.2</span> Installation</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -507,8 +478,8 @@ window.Quarto = {
 </details>
 </div>
 </section>
-<section id="using-setupproject" class="level2" data-number="14.3">
-<h2 data-number="14.3" class="anchored" data-anchor-id="using-setupproject"><span class="header-section-number">14.3</span> Using <code>setupProject</code></h2>
+<section id="using-setupproject" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="using-setupproject"><span class="header-section-number">13.3</span> Using <code>setupProject</code></h2>
 <p><code>setupProject</code> does a series of very specific things, in a particular order, so that the chances of package conflicts and user errors are minimized.</p>
 <p>Note how it downloads the listed modules directly from their GitHub repositories (e.g. <a href="https://github.com/tati-micheletti/speciesAbundance">tati-micheletti/speciesAbundance</a>)</p>
 <div class="cell">
@@ -631,8 +602,8 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="emergent-workflow" class="level2" data-number="14.4">
-<h2 data-number="14.4" class="anchored" data-anchor-id="emergent-workflow"><span class="header-section-number">14.4</span> Emergent workflow</h2>
+<section id="emergent-workflow" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="emergent-workflow"><span class="header-section-number">13.4</span> Emergent workflow</h2>
 <p>We can evaluate the sequence of events using <code>completed</code></p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -712,73 +683,73 @@ window.Quarto = {
     eventTime         moduleName            eventType eventPriority
     ._prevEventTimeFinish           clockTime
                    &lt;POSc&gt;              &lt;POSc&gt;
- 1:   2024-06-12 06:56:05 2024-06-12 06:56:05
- 2:   2024-06-12 06:56:05 2024-06-12 06:56:05
- 3:   2024-06-12 06:56:05 2024-06-12 06:56:05
- 4:   2024-06-12 06:56:05 2024-06-12 06:56:05
- 5:   2024-06-12 06:56:05 2024-06-12 06:56:05
- 6:   2024-06-12 06:56:05 2024-06-12 06:56:05
- 7:   2024-06-12 06:56:05 2024-06-12 06:56:05
- 8:   2024-06-12 06:56:05 2024-06-12 06:56:05
- 9:   2024-06-12 06:56:05 2024-06-12 06:56:06
-10:   2024-06-12 06:56:06 2024-06-12 06:56:06
-11:   2024-06-12 06:56:06 2024-06-12 06:56:06
-12:   2024-06-12 06:56:06 2024-06-12 06:56:06
-13:   2024-06-12 06:56:06 2024-06-12 06:56:06
-14:   2024-06-12 06:56:06 2024-06-12 06:56:06
-15:   2024-06-12 06:56:06 2024-06-12 06:56:06
-16:   2024-06-12 06:56:06 2024-06-12 06:56:06
-17:   2024-06-12 06:56:06 2024-06-12 06:56:06
-18:   2024-06-12 06:56:06 2024-06-12 06:56:06
-19:   2024-06-12 06:56:06 2024-06-12 06:56:06
-20:   2024-06-12 06:56:06 2024-06-12 06:56:06
-21:   2024-06-12 06:56:06 2024-06-12 06:56:06
-22:   2024-06-12 06:56:06 2024-06-12 06:56:06
-23:   2024-06-12 06:56:06 2024-06-12 06:56:06
-24:   2024-06-12 06:56:06 2024-06-12 06:56:06
-25:   2024-06-12 06:56:06 2024-06-12 06:56:06
-26:   2024-06-12 06:56:06 2024-06-12 06:56:06
-27:   2024-06-12 06:56:06 2024-06-12 06:56:06
-28:   2024-06-12 06:56:06 2024-06-12 06:56:06
-29:   2024-06-12 06:56:06 2024-06-12 06:56:06
-30:   2024-06-12 06:56:06 2024-06-12 06:56:06
-31:   2024-06-12 06:56:06 2024-06-12 06:56:06
-32:   2024-06-12 06:56:06 2024-06-12 06:56:06
-33:   2024-06-12 06:56:06 2024-06-12 06:56:06
-34:   2024-06-12 06:56:06 2024-06-12 06:56:06
-35:   2024-06-12 06:56:06 2024-06-12 06:56:06
-36:   2024-06-12 06:56:06 2024-06-12 06:56:06
-37:   2024-06-12 06:56:06 2024-06-12 06:56:06
-38:   2024-06-12 06:56:06 2024-06-12 06:56:06
-39:   2024-06-12 06:56:06 2024-06-12 06:56:06
-40:   2024-06-12 06:56:06 2024-06-12 06:56:06
-41:   2024-06-12 06:56:06 2024-06-12 06:56:06
-42:   2024-06-12 06:56:06 2024-06-12 06:56:06
-43:   2024-06-12 06:56:06 2024-06-12 06:56:06
-44:   2024-06-12 06:56:06 2024-06-12 06:56:07
-45:   2024-06-12 06:56:07 2024-06-12 06:56:07
-46:   2024-06-12 06:56:07 2024-06-12 06:56:07
-47:   2024-06-12 06:56:07 2024-06-12 06:56:07
-48:   2024-06-12 06:56:07 2024-06-12 06:56:07
-49:   2024-06-12 06:56:07 2024-06-12 06:56:07
-50:   2024-06-12 06:56:07 2024-06-12 06:56:07
-51:   2024-06-12 06:56:07 2024-06-12 06:56:07
-52:   2024-06-12 06:56:07 2024-06-12 06:56:07
-53:   2024-06-12 06:56:07 2024-06-12 06:56:07
-54:   2024-06-12 06:56:07 2024-06-12 06:56:07
-55:   2024-06-12 06:56:07 2024-06-12 06:56:07
-56:   2024-06-12 06:56:07 2024-06-12 06:56:07
-57:   2024-06-12 06:56:07 2024-06-12 06:56:07
-58:   2024-06-12 06:56:07 2024-06-12 06:56:07
-59:   2024-06-12 06:56:07 2024-06-12 06:56:07
-60:   2024-06-12 06:56:07 2024-06-12 06:56:07
-61:   2024-06-12 06:56:07 2024-06-12 06:56:08
-62:   2024-06-12 06:56:08 2024-06-12 06:56:08
-63:   2024-06-12 06:56:08 2024-06-12 06:56:08
-64:   2024-06-12 06:56:08 2024-06-12 06:56:08
-65:   2024-06-12 06:56:08 2024-06-12 06:56:08
-66:   2024-06-12 06:56:08 2024-06-12 06:56:08
-67:   2024-06-12 06:56:08 2024-06-12 06:56:08
+ 1:   2024-06-12 01:40:15 2024-06-12 01:40:15
+ 2:   2024-06-12 01:40:15 2024-06-12 01:40:15
+ 3:   2024-06-12 01:40:15 2024-06-12 01:40:15
+ 4:   2024-06-12 01:40:15 2024-06-12 01:40:15
+ 5:   2024-06-12 01:40:15 2024-06-12 01:40:15
+ 6:   2024-06-12 01:40:15 2024-06-12 01:40:15
+ 7:   2024-06-12 01:40:15 2024-06-12 01:40:15
+ 8:   2024-06-12 01:40:15 2024-06-12 01:40:15
+ 9:   2024-06-12 01:40:15 2024-06-12 01:40:15
+10:   2024-06-12 01:40:15 2024-06-12 01:40:15
+11:   2024-06-12 01:40:15 2024-06-12 01:40:15
+12:   2024-06-12 01:40:15 2024-06-12 01:40:15
+13:   2024-06-12 01:40:15 2024-06-12 01:40:15
+14:   2024-06-12 01:40:15 2024-06-12 01:40:15
+15:   2024-06-12 01:40:15 2024-06-12 01:40:15
+16:   2024-06-12 01:40:15 2024-06-12 01:40:15
+17:   2024-06-12 01:40:15 2024-06-12 01:40:15
+18:   2024-06-12 01:40:15 2024-06-12 01:40:15
+19:   2024-06-12 01:40:15 2024-06-12 01:40:15
+20:   2024-06-12 01:40:15 2024-06-12 01:40:15
+21:   2024-06-12 01:40:15 2024-06-12 01:40:15
+22:   2024-06-12 01:40:15 2024-06-12 01:40:15
+23:   2024-06-12 01:40:15 2024-06-12 01:40:15
+24:   2024-06-12 01:40:15 2024-06-12 01:40:15
+25:   2024-06-12 01:40:15 2024-06-12 01:40:15
+26:   2024-06-12 01:40:15 2024-06-12 01:40:15
+27:   2024-06-12 01:40:15 2024-06-12 01:40:15
+28:   2024-06-12 01:40:15 2024-06-12 01:40:15
+29:   2024-06-12 01:40:15 2024-06-12 01:40:15
+30:   2024-06-12 01:40:15 2024-06-12 01:40:15
+31:   2024-06-12 01:40:15 2024-06-12 01:40:15
+32:   2024-06-12 01:40:15 2024-06-12 01:40:15
+33:   2024-06-12 01:40:15 2024-06-12 01:40:15
+34:   2024-06-12 01:40:15 2024-06-12 01:40:15
+35:   2024-06-12 01:40:15 2024-06-12 01:40:15
+36:   2024-06-12 01:40:15 2024-06-12 01:40:15
+37:   2024-06-12 01:40:15 2024-06-12 01:40:15
+38:   2024-06-12 01:40:15 2024-06-12 01:40:15
+39:   2024-06-12 01:40:15 2024-06-12 01:40:15
+40:   2024-06-12 01:40:15 2024-06-12 01:40:15
+41:   2024-06-12 01:40:15 2024-06-12 01:40:15
+42:   2024-06-12 01:40:15 2024-06-12 01:40:15
+43:   2024-06-12 01:40:15 2024-06-12 01:40:15
+44:   2024-06-12 01:40:15 2024-06-12 01:40:16
+45:   2024-06-12 01:40:16 2024-06-12 01:40:16
+46:   2024-06-12 01:40:16 2024-06-12 01:40:16
+47:   2024-06-12 01:40:16 2024-06-12 01:40:16
+48:   2024-06-12 01:40:16 2024-06-12 01:40:16
+49:   2024-06-12 01:40:16 2024-06-12 01:40:16
+50:   2024-06-12 01:40:16 2024-06-12 01:40:16
+51:   2024-06-12 01:40:16 2024-06-12 01:40:16
+52:   2024-06-12 01:40:16 2024-06-12 01:40:16
+53:   2024-06-12 01:40:16 2024-06-12 01:40:16
+54:   2024-06-12 01:40:16 2024-06-12 01:40:16
+55:   2024-06-12 01:40:16 2024-06-12 01:40:16
+56:   2024-06-12 01:40:16 2024-06-12 01:40:16
+57:   2024-06-12 01:40:16 2024-06-12 01:40:16
+58:   2024-06-12 01:40:16 2024-06-12 01:40:16
+59:   2024-06-12 01:40:16 2024-06-12 01:40:16
+60:   2024-06-12 01:40:16 2024-06-12 01:40:16
+61:   2024-06-12 01:40:16 2024-06-12 01:40:16
+62:   2024-06-12 01:40:16 2024-06-12 01:40:16
+63:   2024-06-12 01:40:16 2024-06-12 01:40:16
+64:   2024-06-12 01:40:16 2024-06-12 01:40:17
+65:   2024-06-12 01:40:17 2024-06-12 01:40:17
+66:   2024-06-12 01:40:17 2024-06-12 01:40:17
+67:   2024-06-12 01:40:17 2024-06-12 01:40:17
     ._prevEventTimeFinish           clockTime</code></pre>
 </div>
 </div>
@@ -812,17 +783,17 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="examples" class="level2" data-number="14.5">
-<h2 data-number="14.5" class="anchored" data-anchor-id="examples"><span class="header-section-number">14.5</span> Examples</h2>
+<section id="examples" class="level2" data-number="13.5">
+<h2 data-number="13.5" class="anchored" data-anchor-id="examples"><span class="header-section-number">13.5</span> Examples</h2>
 <p>In the remaining chapters of this section, we will explore several examples, including learning of several arguments to the function <code>setupProject</code>. But we will start very simple first.</p>
 </section>
-<section id="see-also" class="level2" data-number="14.6">
-<h2 data-number="14.6" class="anchored" data-anchor-id="see-also"><span class="header-section-number">14.6</span> See also</h2>
+<section id="see-also" class="level2" data-number="13.6">
+<h2 data-number="13.6" class="anchored" data-anchor-id="see-also"><span class="header-section-number">13.6</span> See also</h2>
 <p><a href="https://spades-core.predictiveecology.org/reference/index.html">All Functions in SpaDES.core</a></p>
 <p><a href="https://spades-core.predictiveecology.org/reference/simList-accessors-events.html">?SpaDES.core::completed</a></p>
 </section>
-<section id="barebones-r-script" class="level2" data-number="14.7">
-<h2 data-number="14.7" class="anchored" data-anchor-id="barebones-r-script"><span class="header-section-number">14.7</span> Barebones R script</h2>
+<section id="barebones-r-script" class="level2" data-number="13.7">
+<h2 data-number="13.7" class="anchored" data-anchor-id="barebones-r-script"><span class="header-section-number">13.7</span> Barebones R script</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -1431,7 +1402,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./LandRDemo_coreVeg.html" class="pagination-link" aria-label="Forest Landscape Modelling with LandR and `setupProject`">
-        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Forest Landscape Modelling with LandR and <code>setupProject</code></span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Forest Landscape Modelling with LandR and <code>setupProject</code></span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

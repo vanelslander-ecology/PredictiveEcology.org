@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ceres Barros">
-<meta name="dcterms.date" content="2024-06-12">
+<meta name="dcterms.date" content="2024-06-20">
 
-<title>Robust and nimble scientific workflows, using SpaDES - 13&nbsp; Debugging SpaDES Modules</title>
+<title>Robust and nimble scientific workflows, using SpaDES - 12&nbsp; Debugging SpaDES Modules</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,35 +109,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="assets/css/main.scss">
 </head>
@@ -242,7 +213,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ContinuousWorkflows.html">Working with Continuous Workflows</a></li><li class="breadcrumb-item"><a href="./debugging.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ContinuousWorkflows.html">Working with Continuous Workflows</a></li><li class="breadcrumb-item"><a href="./debugging.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -263,7 +234,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -278,19 +249,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./installRandSpatialPkgs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Installing R and Spatial Packages</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Installing R and Spatial Packages</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./PackagesForBook.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./TroubleshootingPackageInstallation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Troubleshooting R package installation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Troubleshooting R package installation</span></span></a>
   </div>
 </li>
       </ul>
@@ -307,37 +278,37 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./NewModuleIntro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to SpaDES Modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction to SpaDES Modules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./MetaDataAndModuleFiles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Module Files and Metadata</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Module Files and Metadata</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ModuleInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module Inputs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Providing Module Inputs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simList.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ModulesAndEvents.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Scheduling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span></a>
   </div>
 </li>
       </ul>
@@ -354,19 +325,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Caching.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./debugging.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></a>
   </div>
 </li>
       </ul>
@@ -383,25 +354,25 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflowSimple2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./LandRDemo_coreVeg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Forest Landscape Modelling with LandR and <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Forest Landscape Modelling with LandR and <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ForestsAndFire.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -409,7 +380,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bestPractices.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Best practices for <span class="math inline">\(R^3T\)</span> workflows</span></a>
+ <span class="menu-text">Best practices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -428,27 +399,28 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#debugging-with-browser" id="toc-debugging-with-browser" class="nav-link active" data-scroll-target="#debugging-with-browser"><span class="header-section-number">13.1</span> Debugging with <code>browser()</code></a>
+  <li><a href="#debugging-with-browser" id="toc-debugging-with-browser" class="nav-link active" data-scroll-target="#debugging-with-browser"><span class="header-section-number">12.1</span> Debugging with <code>browser()</code></a>
   <ul class="collapse">
-  <li><a href="#browser-with-a-spades-module" id="toc-browser-with-a-spades-module" class="nav-link" data-scroll-target="#browser-with-a-spades-module"><span class="header-section-number">13.1.1</span> <code>browser()</code> with a SpaDES module</a></li>
+  <li><a href="#browser-with-a-spades-module" id="toc-browser-with-a-spades-module" class="nav-link" data-scroll-target="#browser-with-a-spades-module"><span class="header-section-number">12.1.1</span> <code>browser()</code> with a SpaDES module</a></li>
   </ul></li>
-  <li><a href="#debugging-with-debug-and-debugonce" id="toc-debugging-with-debug-and-debugonce" class="nav-link" data-scroll-target="#debugging-with-debug-and-debugonce"><span class="header-section-number">13.2</span> Debugging with <code>debug()</code> and <code>debugonce()</code></a>
+  <li><a href="#debugging-with-debug-and-debugonce" id="toc-debugging-with-debug-and-debugonce" class="nav-link" data-scroll-target="#debugging-with-debug-and-debugonce"><span class="header-section-number">12.2</span> Debugging with <code>debug()</code> and <code>debugonce()</code></a>
   <ul class="collapse">
-  <li><a href="#debugonce-and-debug-with-a-spades-module" id="toc-debugonce-and-debug-with-a-spades-module" class="nav-link" data-scroll-target="#debugonce-and-debug-with-a-spades-module"><span class="header-section-number">13.2.1</span> <code>debugonce()</code> and <code>debug()</code> with a SpaDES module</a></li>
+  <li><a href="#debugonce-and-debug-with-a-spades-module" id="toc-debugonce-and-debug-with-a-spades-module" class="nav-link" data-scroll-target="#debugonce-and-debug-with-a-spades-module"><span class="header-section-number">12.2.1</span> <code>debugonce()</code> and <code>debug()</code> with a SpaDES module</a></li>
   </ul></li>
-  <li><a href="#restartspades" id="toc-restartspades" class="nav-link" data-scroll-target="#restartspades"><span class="header-section-number">13.3</span> <code>restartSpades()</code></a></li>
-  <li><a href="#try-on-your-own" id="toc-try-on-your-own" class="nav-link" data-scroll-target="#try-on-your-own"><span class="header-section-number">13.4</span> Try on your own</a></li>
-  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">13.5</span> See also</a></li>
-  <li><a href="#barebones-r-script" id="toc-barebones-r-script" class="nav-link" data-scroll-target="#barebones-r-script"><span class="header-section-number">13.6</span> Barebones R script</a></li>
+  <li><a href="#restartspades" id="toc-restartspades" class="nav-link" data-scroll-target="#restartspades"><span class="header-section-number">12.3</span> <code>restartSpades()</code></a></li>
+  <li><a href="#a-note-on-testing-spades-modules" id="toc-a-note-on-testing-spades-modules" class="nav-link" data-scroll-target="#a-note-on-testing-spades-modules"><span class="header-section-number">12.4</span> A note on testing SpaDES modules</a></li>
+  <li><a href="#try-on-your-own" id="toc-try-on-your-own" class="nav-link" data-scroll-target="#try-on-your-own"><span class="header-section-number">12.5</span> Try on your own</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">12.6</span> See also</a></li>
+  <li><a href="#barebones-r-script" id="toc-barebones-r-script" class="nav-link" data-scroll-target="#barebones-r-script"><span class="header-section-number">12.7</span> Barebones R script</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ContinuousWorkflows.html">Working with Continuous Workflows</a></li><li class="breadcrumb-item"><a href="./debugging.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ContinuousWorkflows.html">Working with Continuous Workflows</a></li><li class="breadcrumb-item"><a href="./debugging.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-debugging" class="quarto-section-identifier"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></h1>
+<h1 class="title"><span id="sec-debugging" class="quarto-section-identifier"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></h1>
 </div>
 
 
@@ -465,7 +437,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 12, 2024</p>
+      <p class="date">June 20, 2024</p>
     </div>
   </div>
   
@@ -490,8 +462,8 @@ window.Quarto = {
 <p>The flexibility and collaborative model development that SpaDES promotes can come with the cost of having module code that may not fit all desired applications out-of-the-box or, like any other piece of code, that may have errors.</p>
 <p>It is a good idea to learn the basics of debugging, especially when using open-source, interpreted code languages like R (in opposition to compiled code languages like <em>C++</em>).</p>
 <p>It is also a (very) good idea to learn how to develop a good reproducible example (<em>reprex</em>; see <a href="https://www.r-bloggers.com/2020/10/how-to-make-a-reprex/">How to make a reprex</a>) when debugging attempts have failed or when we cannot fix the issue ourselves (e.g., bugs in R packages need to be fixed by package maintainers).</p>
-<section id="debugging-with-browser" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="debugging-with-browser"><span class="header-section-number">13.1</span> Debugging with <code>browser()</code></h2>
+<section id="debugging-with-browser" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="debugging-with-browser"><span class="header-section-number">12.1</span> Debugging with <code>browser()</code></h2>
 <p><code>browser()</code> calls are very useful when you have access to the source code. When inserted inside a function, they will interrupt code execution at that point and allow the user to “enter” the function’s environment in debugging mode – i.e.&nbsp;they will have access to all the objects the function has access to internally.</p>
 <p>Let’s define a simple function and then use it improperly.</p>
 <div class="cell">
@@ -531,9 +503,9 @@ window.Quarto = {
 </details>
 </div>
 <p>From the above we would quickly realise we were trying to add a numeric vector with a character vector, which obviously doesn’t work.</p>
-<section id="browser-with-a-spades-module" class="level3" data-number="13.1.1">
-<h3 data-number="13.1.1" class="anchored" data-anchor-id="browser-with-a-spades-module"><span class="header-section-number">13.1.1</span> <code>browser()</code> with a SpaDES module</h3>
-<p>Go back to the module <em>My_linear_model</em> created in <a href="NewModuleIntro.html" class="quarto-xref"><span>Chapter 5</span></a> and insert a <code>browser()</code> in the <code>init</code> event, save the module and run again.</p>
+<section id="browser-with-a-spades-module" class="level3" data-number="12.1.1">
+<h3 data-number="12.1.1" class="anchored" data-anchor-id="browser-with-a-spades-module"><span class="header-section-number">12.1.1</span> <code>browser()</code> with a SpaDES module</h3>
+<p>Go back to the module <em>My_linear_model</em> created in <a href="NewModuleIntro.html" class="quarto-xref"><span>Chapter 4</span></a> and insert a <code>browser()</code> in the <code>init</code> event, save the module and run again.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -542,7 +514,7 @@ window.Quarto = {
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    sim<span class="sc">$</span>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)  </span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(sim)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">invisible</span>(sim))</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
@@ -550,7 +522,7 @@ window.Quarto = {
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">simInit</span>(<span class="at">modules =</span> nm1, <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">simInit</span>(<span class="at">modules =</span> <span class="st">"My_linear_model"</span>, <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">spades</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
@@ -571,8 +543,8 @@ window.Quarto = {
 <p>Use <code>ls()</code> to see what objects are in the function environment, then execute code line-by-line with ENTER, F10 or the “Next” button.</p>
 </section>
 </section>
-<section id="debugging-with-debug-and-debugonce" class="level2" data-number="13.2">
-<h2 data-number="13.2" class="anchored" data-anchor-id="debugging-with-debug-and-debugonce"><span class="header-section-number">13.2</span> Debugging with <code>debug()</code> and <code>debugonce()</code></h2>
+<section id="debugging-with-debug-and-debugonce" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="debugging-with-debug-and-debugonce"><span class="header-section-number">12.2</span> Debugging with <code>debug()</code> and <code>debugonce()</code></h2>
 <p>If we don’t have access to the function code (or don’t want to insert a <code>browser()</code>) we can use <code>debug()</code> and <code>debugonce()</code>. The effect will be similar to having a <code>browser()</code> in the first line of a function’s definition.</p>
 <p>Here’s an example:</p>
 <div class="cell">
@@ -584,8 +556,8 @@ window.Quarto = {
 </details>
 </div>
 <p><code>undebug(&lt;function_name&gt;)</code> will de-activate debugging for that function.</p>
-<section id="debugonce-and-debug-with-a-spades-module" class="level3" data-number="13.2.1">
-<h3 data-number="13.2.1" class="anchored" data-anchor-id="debugonce-and-debug-with-a-spades-module"><span class="header-section-number">13.2.1</span> <code>debugonce()</code> and <code>debug()</code> with a SpaDES module</h3>
+<section id="debugonce-and-debug-with-a-spades-module" class="level3" data-number="12.2.1">
+<h3 data-number="12.2.1" class="anchored" data-anchor-id="debugonce-and-debug-with-a-spades-module"><span class="header-section-number">12.2.1</span> <code>debugonce()</code> and <code>debug()</code> with a SpaDES module</h3>
 <p>The process would be similar in a module, with the difference that the <code>debug()</code>/<code>debugonce()</code> call would either happen <em>before</em> running the module with <code>spades()</code>, OR from within the module in debugging mode.</p>
 <div class="callout callout-style-simple callout-tip">
 <div class="callout-body d-flex">
@@ -636,59 +608,97 @@ window.Quarto = {
 </div>
 </section>
 </section>
-<section id="restartspades" class="level2" data-number="13.3">
-<h2 data-number="13.3" class="anchored" data-anchor-id="restartspades"><span class="header-section-number">13.3</span> <code>restartSpades()</code></h2>
+<section id="restartspades" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="restartspades"><span class="header-section-number">12.3</span> <code>restartSpades()</code></h2>
 <p>Probably one of our BFFs (best-friend functions) as SpaDES developpers, it will allow resuming a workflow whose execution was interrupted by an error or the user from the top of the interrupted event, but will first re-parse module code.</p>
 <p>This means that we can insert a <code>browser()</code> somewhere in the event code, then <code>restartSpades()</code> and debug the event.</p>
 </section>
-<section id="try-on-your-own" class="level2" data-number="13.4">
-<h2 data-number="13.4" class="anchored" data-anchor-id="try-on-your-own"><span class="header-section-number">13.4</span> Try on your own</h2>
+<section id="a-note-on-testing-spades-modules" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="a-note-on-testing-spades-modules"><span class="header-section-number">12.4</span> A note on testing SpaDES modules</h2>
+<p>Module testing can happen at several levels:</p>
+<ul>
+<li><p>Assertions – tests/checks embedded in module code.</p></li>
+<li><p>Unit tests of module functions - individual functions are tested <em>independently</em> of the module.</p></li>
+<li><p>Solo-module testing - the module is tested alone with default and non-default input/parameter values.</p></li>
+<li><p>Integration tests - the module is tested in a workflow with other modules, using alone with default and non-default input/parameter values.</p></li>
+</ul>
+<p>At a minimum, a developer should put in place assertions. These are small checks and tests inserted in the module code that issue meaningful warnings/error messages to users when they fail. Here’s an example of an assertion:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>myFunction <span class="ot">&lt;-</span> <span class="cf">function</span>(x, ...) {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">inherits</span>(x, <span class="fu">c</span>(<span class="st">"numeric"</span>, <span class="st">"integer"</span>))) {</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"x should be a numeric/integer vector"</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(x, ...)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">myFunction</span>(LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>])</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Error in myFunction(LETTERS[1:10]) : x should be a numeric/integer vector</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Unit tests require “pulling out” the functions in the module and, potentially, testing them in separate testing workflows.</p>
+<p>Integration tests are implicitly done when modules are put together for particular projects, but this will only cover a specific set of input/parameter values and conditions. Therefore, it is ideal to also do solo-module testing and integration tests that capture a range of module setup conditions.</p>
+<p>This is time-consuming work, but does pay off in the long-run especially if tests are repeated on a regular basis. For this reason, <code>SpaDES.core::newModule()</code> creates a <code>tests/</code> folder in the module folder as a reminder to the developer that they should eventually develop tests for their modules.</p>
+</section>
+<section id="try-on-your-own" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="try-on-your-own"><span class="header-section-number">12.5</span> Try on your own</h2>
 <ul>
 <li>Try to debug the first method of the function <code>show()</code>. Here’s a tip: start with <code>showMethods("show")</code>.</li>
 </ul>
 </section>
-<section id="see-also" class="level2" data-number="13.5">
-<h2 data-number="13.5" class="anchored" data-anchor-id="see-also"><span class="header-section-number">13.5</span> See also</h2>
+<section id="see-also" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="see-also"><span class="header-section-number">12.6</span> See also</h2>
 <p><a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/browser"><code>?browser()</code></a></p>
 <p><a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/debug"><code>?debug()</code></a></p>
 <p><a href="https://spades-core.predictiveecology.org/reference/restartSpades.html"><code>?restartSpades()</code></a></p>
 <p><a href="https://www.rdocumentation.org/packages/methods/versions/3.6.2/topics/showMethods"><code>?showMethods()</code></a> – useful to find out what methods of a function you may want to activate debugging for</p>
-<p>An example of debugging a more complex SpaDES workflow in <a href="LandRDemo_coreVeg.html#sec-LandRdebug" class="quarto-xref"><span>Section 15.5</span></a></p>
+<p>An example of debugging a more complex SpaDES workflow in <a href="LandRDemo_coreVeg.html#sec-LandRdebug" class="quarto-xref"><span>Section 14.5</span></a></p>
 <p><a href="https://adv-r.hadley.nz/debugging.html">Debugging – Advanced R</a></p>
 <p><a href="https://www.r-bloggers.com/2020/10/how-to-make-a-reprex/">How to make a reprex</a></p>
 </section>
-<section id="barebones-r-script" class="level2" data-number="13.6">
-<h2 data-number="13.6" class="anchored" data-anchor-id="barebones-r-script"><span class="header-section-number">13.6</span> Barebones R script</h2>
+<section id="barebones-r-script" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="barebones-r-script"><span class="header-section-number">12.7</span> Barebones R script</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>myFun <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">sum</span>(x, y)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">myFun</span>(<span class="fu">runif</span>(<span class="dv">20</span>), <span class="st">"A"</span>)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>myFun <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">browser</span>()</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">sum</span>(x, y)</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="fu">myFun</span>(<span class="fu">runif</span>(<span class="dv">20</span>), <span class="st">"A"</span>)</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">simInit</span>(<span class="at">modules =</span> nm1, <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">spades</span>(out)</span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="fu">debugonce</span>(<span class="st">"time"</span>)</span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="fu">time</span>(out) <span class="do">## then press ENTER to execute each line of code one-by-one</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>myFun <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">sum</span>(x, y)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">myFun</span>(<span class="fu">runif</span>(<span class="dv">20</span>), <span class="st">"A"</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>myFun <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">browser</span>()</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">sum</span>(x, y)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="fu">myFun</span>(<span class="fu">runif</span>(<span class="dv">20</span>), <span class="st">"A"</span>)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">simInit</span>(<span class="at">modules =</span> <span class="st">"My_linear_model"</span>, <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">spades</span>(out)</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="fu">debugonce</span>(<span class="st">"time"</span>)</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="fu">time</span>(out) <span class="do">## then press ENTER to execute each line of code one-by-one</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>myFunction <span class="ot">&lt;-</span> <span class="cf">function</span>(x, ...) {</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">inherits</span>(x, <span class="fu">c</span>(<span class="st">"numeric"</span>, <span class="st">"integer"</span>))) {</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"x should be a numeric/integer vector"</span>)</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(x, ...)</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a><span class="fu">myFunction</span>(LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>])</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Error in myFunction(LETTERS[1:10]) : x should be a numeric/integer vector</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 
@@ -1257,7 +1267,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./prepInputs.html" class="pagination-link" aria-label="`reproducible::prepInputs` for Data">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eliot McIntire">
-<meta name="dcterms.date" content="2024-06-12">
+<meta name="dcterms.date" content="2024-06-20">
 
-<title>Robust and nimble scientific workflows, using SpaDES - 6&nbsp; Module Files and Metadata</title>
+<title>Robust and nimble scientific workflows, using SpaDES - 5&nbsp; Module Files and Metadata</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,35 +109,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="assets/css/main.scss">
 </head>
@@ -242,7 +213,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./MetaDataAndModuleFiles.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Module Files and Metadata</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./MetaDataAndModuleFiles.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Module Files and Metadata</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -263,7 +234,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -278,19 +249,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./installRandSpatialPkgs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Installing R and Spatial Packages</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Installing R and Spatial Packages</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./PackagesForBook.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./TroubleshootingPackageInstallation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Troubleshooting R package installation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Troubleshooting R package installation</span></span></a>
   </div>
 </li>
       </ul>
@@ -307,37 +278,37 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./NewModuleIntro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to SpaDES Modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction to SpaDES Modules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./MetaDataAndModuleFiles.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Module Files and Metadata</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Module Files and Metadata</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ModuleInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module Inputs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Providing Module Inputs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simList.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ModulesAndEvents.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Scheduling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span></a>
   </div>
 </li>
       </ul>
@@ -354,19 +325,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Caching.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./debugging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></a>
   </div>
 </li>
       </ul>
@@ -383,25 +354,25 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflowSimple2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./LandRDemo_coreVeg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Forest Landscape Modelling with LandR and <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Forest Landscape Modelling with LandR and <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ForestsAndFire.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -409,7 +380,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bestPractices.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Best practices for <span class="math inline">\(R^3T\)</span> workflows</span></a>
+ <span class="menu-text">Best practices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -428,35 +399,36 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#continue-example-a-linear-model" id="toc-continue-example-a-linear-model" class="nav-link active" data-scroll-target="#continue-example-a-linear-model"><span class="header-section-number">6.1</span> Continue example – a linear model</a></li>
-  <li><a href="#required-packages-input-expectations-and-output-creations" id="toc-required-packages-input-expectations-and-output-creations" class="nav-link" data-scroll-target="#required-packages-input-expectations-and-output-creations"><span class="header-section-number">6.2</span> Required Packages, Input Expectations and Output Creations</a>
+  <li><a href="#continue-example-a-linear-model" id="toc-continue-example-a-linear-model" class="nav-link active" data-scroll-target="#continue-example-a-linear-model"><span class="header-section-number">5.1</span> Continue example – a linear model</a></li>
+  <li><a href="#input-expectations-output-creations-and-required-packages" id="toc-input-expectations-output-creations-and-required-packages" class="nav-link" data-scroll-target="#input-expectations-output-creations-and-required-packages"><span class="header-section-number">5.2</span> Input Expectations, Output Creations and Required Packages</a>
   <ul class="collapse">
-  <li><a href="#inputs-and-outputs" id="toc-inputs-and-outputs" class="nav-link" data-scroll-target="#inputs-and-outputs"><span class="header-section-number">6.2.1</span> Inputs and Outputs</a></li>
-  <li><a href="#required-packages" id="toc-required-packages" class="nav-link" data-scroll-target="#required-packages"><span class="header-section-number">6.2.2</span> Required Packages</a></li>
+  <li><a href="#inputs-and-outputs" id="toc-inputs-and-outputs" class="nav-link" data-scroll-target="#inputs-and-outputs"><span class="header-section-number">5.2.1</span> Inputs and Outputs</a></li>
+  <li><a href="#required-packages" id="toc-required-packages" class="nav-link" data-scroll-target="#required-packages"><span class="header-section-number">5.2.2</span> Required Packages</a></li>
   </ul></li>
-  <li><a href="#module-files" id="toc-module-files" class="nav-link" data-scroll-target="#module-files"><span class="header-section-number">6.3</span> Module files</a></li>
-  <li><a href="#inputobjects" id="toc-inputobjects" class="nav-link" data-scroll-target="#inputobjects"><span class="header-section-number">6.4</span> <code>inputObjects</code></a></li>
-  <li><a href="#outputobjects" id="toc-outputobjects" class="nav-link" data-scroll-target="#outputobjects"><span class="header-section-number">6.5</span> <code>outputObjects</code></a></li>
-  <li><a href="#sharing-inputs-and-outputs" id="toc-sharing-inputs-and-outputs" class="nav-link" data-scroll-target="#sharing-inputs-and-outputs"><span class="header-section-number">6.6</span> Sharing inputs and outputs</a></li>
-  <li><a href="#visualization-module" id="toc-visualization-module" class="nav-link" data-scroll-target="#visualization-module"><span class="header-section-number">6.7</span> Visualization module</a>
+  <li><a href="#module-files" id="toc-module-files" class="nav-link" data-scroll-target="#module-files"><span class="header-section-number">5.3</span> Module files</a></li>
+  <li><a href="#inputobjects" id="toc-inputobjects" class="nav-link" data-scroll-target="#inputobjects"><span class="header-section-number">5.4</span> <code>inputObjects</code></a></li>
+  <li><a href="#outputobjects" id="toc-outputobjects" class="nav-link" data-scroll-target="#outputobjects"><span class="header-section-number">5.5</span> <code>outputObjects</code></a></li>
+  <li><a href="#default-values" id="toc-default-values" class="nav-link" data-scroll-target="#default-values"><span class="header-section-number">5.6</span> Default Values</a></li>
+  <li><a href="#sharing-inputs-and-outputs" id="toc-sharing-inputs-and-outputs" class="nav-link" data-scroll-target="#sharing-inputs-and-outputs"><span class="header-section-number">5.7</span> Sharing inputs and outputs</a></li>
+  <li><a href="#adding-a-new-module-visualization-module" id="toc-adding-a-new-module-visualization-module" class="nav-link" data-scroll-target="#adding-a-new-module-visualization-module"><span class="header-section-number">5.8</span> Adding a new module: visualization module</a>
   <ul class="collapse">
-  <li><a href="#outputs-of-one-module-are-inputs-of-another" id="toc-outputs-of-one-module-are-inputs-of-another" class="nav-link" data-scroll-target="#outputs-of-one-module-are-inputs-of-another"><span class="header-section-number">6.7.1</span> Outputs of one module are Inputs of another</a></li>
+  <li><a href="#outputs-of-one-module-are-inputs-of-another" id="toc-outputs-of-one-module-are-inputs-of-another" class="nav-link" data-scroll-target="#outputs-of-one-module-are-inputs-of-another"><span class="header-section-number">5.8.1</span> Outputs of one module are Inputs of another</a></li>
   </ul></li>
-  <li><a href="#default-values" id="toc-default-values" class="nav-link" data-scroll-target="#default-values"><span class="header-section-number">6.8</span> Default Values</a></li>
-  <li><a href="#run-the-new-module" id="toc-run-the-new-module" class="nav-link" data-scroll-target="#run-the-new-module"><span class="header-section-number">6.9</span> Run the new module</a></li>
-  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">6.10</span> Questions</a></li>
-  <li><a href="#sec-moduleFilesAndMetadata-challengeYourself" id="toc-sec-moduleFilesAndMetadata-challengeYourself" class="nav-link" data-scroll-target="#sec-moduleFilesAndMetadata-challengeYourself"><span class="header-section-number">6.11</span> Challenge yourself</a></li>
-  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">6.12</span> See also</a></li>
-  <li><a href="#barebones-r-script" id="toc-barebones-r-script" class="nav-link" data-scroll-target="#barebones-r-script"><span class="header-section-number">6.13</span> Barebones R script</a></li>
+  <li><a href="#run-the-new-module" id="toc-run-the-new-module" class="nav-link" data-scroll-target="#run-the-new-module"><span class="header-section-number">5.9</span> Run the new module</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">5.10</span> Questions</a></li>
+  <li><a href="#try-on-your-own" id="toc-try-on-your-own" class="nav-link" data-scroll-target="#try-on-your-own"><span class="header-section-number">5.11</span> Try on your own</a></li>
+  <li><a href="#common-mistakes" id="toc-common-mistakes" class="nav-link" data-scroll-target="#common-mistakes"><span class="header-section-number">5.12</span> Common mistakes</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">5.13</span> See also</a></li>
+  <li><a href="#barebones-r-script" id="toc-barebones-r-script" class="nav-link" data-scroll-target="#barebones-r-script"><span class="header-section-number">5.14</span> Barebones R script</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./MetaDataAndModuleFiles.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Module Files and Metadata</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./MetaDataAndModuleFiles.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Module Files and Metadata</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-moduleFilesAndMetadata" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Module Files and Metadata</span></span></h1>
+<h1 class="title"><span id="sec-moduleFilesAndMetadata" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Module Files and Metadata</span></span></h1>
 </div>
 
 
@@ -473,7 +445,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 12, 2024</p>
+      <p class="date">June 20, 2024</p>
     </div>
   </div>
   
@@ -495,8 +467,8 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<section id="continue-example-a-linear-model" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="continue-example-a-linear-model"><span class="header-section-number">6.1</span> Continue example – a linear model</h2>
+<section id="continue-example-a-linear-model" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="continue-example-a-linear-model"><span class="header-section-number">5.1</span> Continue example – a linear model</h2>
 <p>We will start by thinking about metadata: <em>What is metadata?</em></p>
 <p>Slightly modifying the example, we remove the line with <code>x &lt;- rnorm(10)</code>. This will make the code chunk not work because it needs the <code>x</code> to run the next line. We can examine the following code chunk. First, we ask: what are the <strong>inputs</strong> and the <strong>outputs</strong>?</p>
 <div class="cell">
@@ -509,16 +481,16 @@ window.Quarto = {
 </details>
 </div>
 </section>
-<section id="required-packages-input-expectations-and-output-creations" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="required-packages-input-expectations-and-output-creations"><span class="header-section-number">6.2</span> Required Packages, Input Expectations and Output Creations</h2>
-<section id="inputs-and-outputs" class="level3" data-number="6.2.1">
-<h3 data-number="6.2.1" class="anchored" data-anchor-id="inputs-and-outputs"><span class="header-section-number">6.2.1</span> Inputs and Outputs</h3>
+<section id="input-expectations-output-creations-and-required-packages" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="input-expectations-output-creations-and-required-packages"><span class="header-section-number">5.2</span> Input Expectations, Output Creations and Required Packages</h2>
+<section id="inputs-and-outputs" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="inputs-and-outputs"><span class="header-section-number">5.2.1</span> Inputs and Outputs</h3>
 <p>We use the terms <code>expectsInput</code> and <code>createsOutput</code> to describe the inputs and outputs in the metadata. This makes it clear that the metadata do <em>not</em> specify which they will <em>go get</em>; rather, it makes it clear that it doesn’t matter <em>where</em> the inputs are coming from. They could come from one of three sources: a user, another module, or defaults that the developer sets up. Likewise, the module specifies which outputs it creates, without specifying “for what other module”.</p>
 <p>The <strong>inputs</strong> to this chunk are just one: the object <code>x</code>. This code will not work (i.e., it will cause an error) if <code>x</code> is not defined. We can say that this code chunk “expects” <code>x</code> as an input.</p>
-<p>The <strong>outputs</strong> are <code>y</code> and <code>model</code>. We can say that this code chunk “creates” <code>y</code> and <code>model</code> as outputs. However, we had said in <a href="NewModuleIntro.html" class="quarto-xref"><span>Chapter 5</span></a> that we would only be interested in keeping <code>model</code>. So, we will continue with only one output, <code>model</code>.</p>
+<p>The <strong>outputs</strong> are <code>y</code> and <code>model</code>. We can say that this code chunk “creates” <code>y</code> and <code>model</code> as outputs. However, we had said in <a href="NewModuleIntro.html" class="quarto-xref"><span>Chapter 4</span></a> that we would only be interested in keeping <code>model</code>. So, we will continue with only one output, <code>model</code>.</p>
 </section>
-<section id="required-packages" class="level3" data-number="6.2.2">
-<h3 data-number="6.2.2" class="anchored" data-anchor-id="required-packages"><span class="header-section-number">6.2.2</span> Required Packages</h3>
+<section id="required-packages" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="required-packages"><span class="header-section-number">5.2.2</span> Required Packages</h3>
 <p>Next, <em>what are the package dependencies?</em>. We call this <code>reqdPkgs</code> in the SpaDES metadata. We see that there are three functions: <code>rnorm</code>, <code>lm</code> and <code>plot</code>. We don’t know what packages they are in, so we can find out by typing them at the R prompt. At the bottom of the function, it says that the function <code>rnorm</code> is in the <code>stats</code> package. Fortunately for us, this is a default (“base”) package in R and it is always pre-loaded. So, nothing to do here.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -527,7 +499,7 @@ window.Quarto = {
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>environment<span class="sc">:</span> namespace<span class="sc">:</span>stats<span class="sc">&gt;</span><span class="er">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>So, our expectations, dependencies and creations are:</p>
+<p>So, our expectations, creations and dependencies are:</p>
 <ul>
 <li>Inputs: <code>x</code></li>
 <li>Outputs: <code>model</code></li>
@@ -536,30 +508,44 @@ window.Quarto = {
 <p>We will next put them into the correct places in the new SpaDES module.</p>
 </section>
 </section>
-<section id="module-files" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="module-files"><span class="header-section-number">6.3</span> Module files</h2>
-<p>Make the module again (see <a href="NewModuleIntro.html" class="quarto-xref"><span>Chapter 5</span></a>). This time we will add <code>sim$</code> for the <code>x</code> as we are now interested in the fact that it might be coming from <em>outside</em> this module.</p>
+<section id="module-files" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="module-files"><span class="header-section-number">5.3</span> Module files</h2>
+<p>Make the module again (see <a href="NewModuleIntro.html" class="quarto-xref"><span>Chapter 4</span></a>). This time we will add <code>sim$</code> for the <code>x</code> as we are now interested in the fact that it might be coming from <em>outside</em> this module.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Require<span class="sc">::</span><span class="fu">Require</span>(<span class="fu">c</span>(<span class="st">"reproducible"</span>, <span class="st">"SpaDES.core"</span>), <span class="at">repos =</span> <span class="fu">c</span>(<span class="st">"https://predictiveecology.r-universe.dev"</span>, <span class="fu">getOption</span>(<span class="st">"repos"</span>)))</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># make a module</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>nm1 <span class="ot">&lt;-</span> <span class="st">"My_linear_model"</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>modulePath <span class="ot">&lt;-</span> <span class="st">"~/SpaDES_book/NewModuleIntro/NewModule"</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">newModule</span>(<span class="at">name =</span> nm1, <span class="at">path =</span> modulePath, <span class="at">open =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">events =</span> <span class="fu">list</span>(</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">init =</span> {</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>                           y <span class="ot">&lt;-</span> sim<span class="sc">$</span>x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)      <span class="co"># &lt;--------- add sim$ here</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># fit a linear model</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                           sim<span class="sc">$</span>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> sim<span class="sc">$</span>x)  <span class="co"># &lt;--------- add sim$ here</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                         }</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                       ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>modulePath <span class="ot">&lt;-</span> <span class="st">"~/SpaDES_book/NewModuleIntro/NewModule"</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">newModule</span>(<span class="at">name =</span> <span class="st">"My_linear_model"</span>, <span class="at">path =</span> modulePath, <span class="at">open =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                       <span class="at">events =</span> <span class="fu">list</span>(</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">init =</span> {</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>                           y <span class="ot">&lt;-</span> sim<span class="sc">$</span>x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)      <span class="co"># &lt;--------- add sim$ here</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># fit a linear model</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                           sim<span class="sc">$</span>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> sim<span class="sc">$</span>x)  <span class="co"># &lt;--------- add sim$ here</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                         }</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                       ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+</div>
+<div class="callout callout-style-simple callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code>newModule()</code> is not part of the “workflow”
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Be aware that every time <code>newModule()</code> is run with the same <code>name</code> and <code>path</code> arguments, it will <strong>overwrite</strong> your module folder/files.</p>
+<p>As such, it is not meant to be part of a workflow. It is meant to provide the user with a tool to create module templates (once), which will then be changed as the module code develops.</p>
+</div>
 </div>
 <p><strong>Where is this module code?</strong> In the previous chapter, we didn’t look or care where the module code was.</p>
 <p><code>newModule</code> actually creates a new folder, with the <code>name</code> as provided by the argument, in the folder specified with <code>path</code>. This folder has several files in it. See <a href="https://rdrr.io/cran/SpaDES.core/man/newModule.html"><code>?newModule</code></a> for details. For now, run the above and open the <code>My_linear_model.R</code> script that it creates.</p>
-<p>When we make a module, we get a message stating where the module code is. <strong>From here, open the file</strong>, e.g., by copy-pasting the file path (pick the <code>.R</code> file NOT the <code>.Rmd</code> file for now)</p>
+<p>When we make a module, we get a message stating where the module code is. <strong>From here, open the file</strong>, e.g., by copy-pasting the file path (pick the <code>.R</code> file NOT the <code>.Rmd</code> file for now).</p>
+<p>You can also set <code>newModule(..., open = TRUE)</code> to have RStudio open the .R and .Rmd files automatically.</p>
 <div class="callout callout-style-simple callout-important no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -567,14 +553,15 @@ window.Quarto = {
 </div>
 <div class="callout-body-container">
 <p><strong>Opening a module file</strong></p>
-<p>From here onward, we will need to manually open the module code file. Every SpaDES module is defined by having at least 1 file that is named with <code>&lt;modulePath&gt;/&lt;moduleName&gt;/&lt;moduleName&gt;.R</code>. Even though we can do a lot with <code>newModule()</code>, we will need to get used to opening, examining and changing the code in the module code file.</p>
+<p>From here onward, we will need to manually open the module code file.</p>
+<p>Every SpaDES module is defined by having at least 1 file that is named with <code>&lt;modulePath&gt;/&lt;moduleName&gt;/&lt;moduleName&gt;.R</code>. Even though we can do a lot with <code>newModule()</code>, we will need to get used to opening, examining and changing the code in the module code file.</p>
 </div>
 </div>
 </div>
-<p>We will look at a few elements in this chapter.</p>
+<p>We will look at a few elements on the module R script in this chapter.</p>
 </section>
-<section id="inputobjects" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="inputobjects"><span class="header-section-number">6.4</span> <code>inputObjects</code></h2>
+<section id="inputobjects" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="inputobjects"><span class="header-section-number">5.4</span> <code>inputObjects</code></h2>
 <p>Scroll down to <code>inputObjects</code> and <code>expectsInputs()</code>. This is where we will put our <code>inputs</code> that we noticed in our code chunk. We will declare <code>x</code> as an “input” by putting it there, like this:</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -586,8 +573,8 @@ window.Quarto = {
 </details>
 </div>
 </section>
-<section id="outputobjects" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="outputobjects"><span class="header-section-number">6.5</span> <code>outputObjects</code></h2>
+<section id="outputobjects" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="outputobjects"><span class="header-section-number">5.5</span> <code>outputObjects</code></h2>
 <p>Next, scroll down to <code>outputObjects</code> and <code>createsOutput()</code>. We will declare <code>model</code> as an “output” by putting it there. Don’t forget the <strong>comma at the end of each <code>createsOutput()</code></strong> as each is an argument to <code>bindrows</code> (unless it is the last one).</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -598,22 +585,48 @@ window.Quarto = {
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>After saving the module R script, we can run the module ad inspect the output</p>
+<p><strong>Note that each input and output object gets a <code>expectsInput</code> or <code>createsOutput</code> entry, respectively.</strong></p>
+</section>
+<section id="default-values" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="default-values"><span class="header-section-number">5.6</span> Default Values</h2>
+<p>Recall, we don’t have a value for <code>x</code>, unlike in the previous chapter where we had <code>x</code> defined in the <code>init</code> event. This means that if you run the following, you will get an error.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">simInit</span>(<span class="at">modules =</span> nm1, <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">simInit</span>(<span class="at">modules =</span> <span class="st">"My_linear_model"</span>, <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">spades</span>(out)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># or </span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">simInitAndSpades</span>(<span class="at">modules =</span> nm1, <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">simInitAndSpades</span>(<span class="at">modules =</span> <span class="st">"My_linear_model"</span>, <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>out<span class="sc">$</span>model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+<p>Just like functions in R, we can supply default values for our module <strong>inputs</strong>. We put these in a function at the bottom called <code>.inputObjects()</code>. See <a href="ModuleInputs.html" class="quarto-xref"><span>Chapter 6</span></a> for a model detailed explanation of module inputs and how to deal with them.</p>
+<p>Copy this to the module, <strong>replacing</strong> the template <code>.inputObjects()</code> function.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>.inputObjects <span class="ot">&lt;-</span> <span class="cf">function</span>(sim) {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">suppliedElsewhere</span>(<span class="st">"x"</span>, sim))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    sim<span class="sc">$</span>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">20</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">invisible</span>(sim))</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><code>!suppliedElsewhere("x", sim)</code> will check if <code>x</code> is in <code>sim</code> and if not, will run the subsequent code lines (see <a href="https://rdrr.io/cran/SpaDES.core/man/suppliedElsewhere.html"><code>?suppliedElsewhere</code></a>).</p>
+<p>After saving the module R script, we can run the module and inspect the output</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">simInitAndSpades</span>(<span class="at">modules =</span> <span class="st">"My_linear_model"</span>, <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>out<span class="sc">$</span>model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
-<section id="sharing-inputs-and-outputs" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="sharing-inputs-and-outputs"><span class="header-section-number">6.6</span> Sharing inputs and outputs</h2>
+<section id="sharing-inputs-and-outputs" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="sharing-inputs-and-outputs"><span class="header-section-number">5.7</span> Sharing inputs and outputs</h2>
 <p>You may have noticed that the <code>init</code> event is now placed into a function called <code>doEvent.My_linear_model.init</code> and it has an argument <code>sim</code>. If you are familiar with making functions in <code>R</code>, this is just a named argument <code>"sim"</code>. This means that we can use <code>sim</code> inside the function. We don’t know what <code>sim</code> is yet, and we don’t know how to use it fully yet. But we do know that we have added <code>sim$</code> to the <code>init</code> event. We also see that there is a <code>return(sim)</code> added at the bottom of the event function.</p>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
@@ -637,9 +650,9 @@ window.Quarto = {
 </div>
 <div class="callout-body-container">
 <p><strong>The <code>simList</code></strong></p>
-<p>The <a href="https://spades-core.predictiveecology.org/reference/simList-class.html"><code>simList</code></a> is the data structure that is the foundation of <code>SpaDES</code>. It can be used <em>like a list</em>; accessing objects can be done with <code>$</code> or <code>[["model"]]</code>, for example.</p>
-<p>In any function that has an argument <code>sim</code>, we pass the <code>simList</code>, so we can access the <code>simList</code> with <code>sim$</code> from inside such a function.</p>
-<p>See <a href="simList.html" class="quarto-xref"><span>Chapter 8</span></a> for more details about the <code>simList</code>.</p>
+<p>The <a href="https://spades-core.predictiveecology.org/reference/simList-class.html"><code>simList</code></a> is the data structure that is the foundation of <code>SpaDES</code>. It can be used <em>like a list</em>; accessing objects can be done with <code>$</code> or <code>[["object_name"]]</code>, for example, and objects are manipulated as they would normally – e.g.&nbsp;if <code>DF</code> is a <code>data.frame</code> one would use <code>sim$DF[1, 3]</code> to extract the value on the first row and third column.</p>
+<p>In any function that has an argument <code>sim</code>, we pass the <code>simList</code>, so we can access it with <code>sim$</code> from inside such a function.</p>
+<p>See <a href="simList.html" class="quarto-xref"><span>Chapter 7</span></a> for more details about the <code>simList</code>.</p>
 </div>
 </div>
 </div>
@@ -647,74 +660,49 @@ window.Quarto = {
 <p>Now we have a module that creates one object, <code>model</code> and puts them inside <code>sim</code>. This all happens in the event called <code>init</code>.</p>
 <p><strong>Next</strong>: add the visualization module with metadata</p>
 </section>
-<section id="visualization-module" class="level2" data-number="6.7">
-<h2 data-number="6.7" class="anchored" data-anchor-id="visualization-module"><span class="header-section-number">6.7</span> Visualization module</h2>
+<section id="adding-a-new-module-visualization-module" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="adding-a-new-module-visualization-module"><span class="header-section-number">5.8</span> Adding a new module: visualization module</h2>
 <p>We remake the second module from last chapter. But this time we will look at and update the metadata.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>nm2 <span class="ot">&lt;-</span> <span class="st">"visualize"</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">newModule</span>(nm2, <span class="at">path =</span> modulePath, <span class="at">open =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">events =</span> <span class="fu">list</span>(</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">init =</span> {</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>              <span class="fu">plot</span>(sim<span class="sc">$</span>model)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>            }</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>          )</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">newModule</span>(<span class="st">"visualize"</span>, <span class="at">path =</span> modulePath, <span class="at">open =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">events =</span> <span class="fu">list</span>(</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">init =</span> {</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>              <span class="fu">plot</span>(sim<span class="sc">$</span>model)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>          )</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<section id="outputs-of-one-module-are-inputs-of-another" class="level3" data-number="6.7.1">
-<h3 data-number="6.7.1" class="anchored" data-anchor-id="outputs-of-one-module-are-inputs-of-another"><span class="header-section-number">6.7.1</span> Outputs of one module are Inputs of another</h3>
+<section id="outputs-of-one-module-are-inputs-of-another" class="level3" data-number="5.8.1">
+<h3 data-number="5.8.1" class="anchored" data-anchor-id="outputs-of-one-module-are-inputs-of-another"><span class="header-section-number">5.8.1</span> Outputs of one module are Inputs of another</h3>
 <p>Here we start to see the “shared” objects. The module we just made above <code>createsOutput</code> of <code>model</code>. But this new <code>visualization</code> module will <code>expectInput</code> of <code>model</code>. So, we can copy the same description if it is the same.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>inputObjects <span class="ot">=</span> <span class="fu">bindrows</span>(</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expectsInput</span>(<span class="at">objectName =</span> <span class="st">"model"</span>, <span class="at">objectClass =</span> <span class="st">"lm"</span>, </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">desc =</span> <span class="st">"A linear model object from the equation (x ~ y)"</span>, <span class="at">sourceURL =</span> <span class="cn">NA</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>inputObjects <span class="ot">=</span> <span class="fu">bindrows</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expectsInput</span>(<span class="at">objectName =</span> <span class="st">"model"</span>, <span class="at">objectClass =</span> <span class="st">"lm"</span>, </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">desc =</span> <span class="st">"A linear model object from the equation (x ~ y)"</span>, <span class="at">sourceURL =</span> <span class="cn">NA</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
 </section>
-<section id="default-values" class="level2" data-number="6.8">
-<h2 data-number="6.8" class="anchored" data-anchor-id="default-values"><span class="header-section-number">6.8</span> Default Values</h2>
-<p>Recall, we don’t have a value for <code>x</code>. This means that if you run the following, you will get an error, unlike in the previous chapter where we had <code>x</code> defined in the <code>init</code> event.</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">simInitAndSpades</span>(<span class="at">modules =</span> <span class="fu">c</span>(nm1, nm2), </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>Just like functions in R, we can supply default values for our <strong>inputs</strong>. We put these in a function at the bottom called <code>.inputObjects</code>. See <a href="ModuleInputs.html" class="quarto-xref"><span>Chapter 7</span></a> for a model detailed explanation of module inputs and how to deal with them.</p>
-<p>Copy this to the module, replacing the contents of the template <code>.inputObjects</code> function.</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>.inputObjects <span class="ot">&lt;-</span> <span class="cf">function</span>(sim) {</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">suppliedElsewhere</span>(<span class="st">"x"</span>, sim))</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    sim<span class="sc">$</span>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">20</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">invisible</span>(sim))</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p><code>!suppliedElsewhere("x", sim)</code> will check if <code>x</code> is in <code>sim</code> and if not, will run the subsequent code lines (see <a href="https://rdrr.io/cran/SpaDES.core/man/suppliedElsewhere.html"><code>?suppliedElsewhere</code></a>).</p>
-</section>
-<section id="run-the-new-module" class="level2" data-number="6.9">
-<h2 data-number="6.9" class="anchored" data-anchor-id="run-the-new-module"><span class="header-section-number">6.9</span> Run the new module</h2>
+<section id="run-the-new-module" class="level2" data-number="5.9">
+<h2 data-number="5.9" class="anchored" data-anchor-id="run-the-new-module"><span class="header-section-number">5.9</span> Run the new module</h2>
 <p>Now, we have <strong>inputs</strong> and <strong>outputs</strong> defined, our code has been places in 2 spots (events), and we have default value for <code>x</code>.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">simInitAndSpades</span>(<span class="at">modules =</span> <span class="fu">c</span>(nm1, nm2), </span>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">simInitAndSpades</span>(<span class="at">modules =</span> <span class="fu">c</span>(<span class="st">"My_linear_model"</span>, <span class="st">"visualize"</span>), </span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>We now have a SpaDES module that has metadata, generates random starting data (if the user doesn’t supply an alternative), fits a linear model, outputs that model, and plots the fit.</p>
 </section>
-<section id="questions" class="level2" data-number="6.10">
-<h2 data-number="6.10" class="anchored" data-anchor-id="questions"><span class="header-section-number">6.10</span> Questions</h2>
+<section id="questions" class="level2" data-number="5.10">
+<h2 data-number="5.10" class="anchored" data-anchor-id="questions"><span class="header-section-number">5.10</span> Questions</h2>
 <ol type="1">
 <li><p>What are some things we “gained” from putting our simple 3 lines of code into a module?</p>
 <ul>
@@ -731,19 +719,36 @@ window.Quarto = {
 <li><p>What is the <code>sim</code>? See <a href="https://rdrr.io/cran/SpaDES.core/man/simList-class.html"><code>?'.simList-class'</code></a></p></li>
 </ol>
 </section>
-<section id="sec-moduleFilesAndMetadata-challengeYourself" class="level2" data-number="6.11">
-<h2 data-number="6.11" class="anchored" data-anchor-id="sec-moduleFilesAndMetadata-challengeYourself"><span class="header-section-number">6.11</span> Challenge yourself</h2>
+<section id="try-on-your-own" class="level2" data-number="5.11">
+<h2 data-number="5.11" class="anchored" data-anchor-id="try-on-your-own"><span class="header-section-number">5.11</span> Try on your own</h2>
 <ol type="1">
 <li><p>Fill in the metadata from the Challenges you did in previous chapter.</p></li>
 <li><p>Look at the other elements of the metadata and cross reference them with <a href="https://rdrr.io/cran/SpaDES.core/man/defineModule.html"><code>?defineModule</code></a></p></li>
 <li><p>Look at the <code>Rmd</code> file of one of the modules that has been built (recall the message after you call <code>newModule</code>), where you have filled in the metadata. Try to build it and look at the automatic tables that get built from the metadata.</p></li>
 </ol>
 </section>
-<section id="see-also" class="level2" data-number="6.12">
-<h2 data-number="6.12" class="anchored" data-anchor-id="see-also"><span class="header-section-number">6.12</span> See also</h2>
-<p><a href="ModulesAndEvents.html" class="quarto-xref"><span>Chapter 9</span></a> on Modules, Events and Functions</p>
-<p><a href="ModuleInputs.html" class="quarto-xref"><span>Chapter 7</span></a> on module inputs</p>
-<p><a href="simList.html" class="quarto-xref"><span>Chapter 8</span></a> on the <code>simList</code></p>
+<section id="common-mistakes" class="level2" data-number="5.12">
+<h2 data-number="5.12" class="anchored" data-anchor-id="common-mistakes"><span class="header-section-number">5.12</span> Common mistakes</h2>
+<p>Some common mistakes/bugs that module developers encounter:</p>
+<ul>
+<li><p><strong>Object doesn’t exist/is NULL.</strong> Errors like the ones below are usually the result of not providing default values for an input in the <code>simList</code> (via <code>.inputObjects()</code>), the user/another module not providing values for that object, or forgetting to assign an object to the <code>simList</code> (i.e.&nbsp;<code>sim$y &lt;- &lt;...&gt;</code>) See <a href="ModuleInputs.html" class="quarto-xref"><span>Chapter 6</span></a>.</p>
+<pre><code>Error in model.frame.default(formula = y ~ sim$x, drop.unused.levels = TRUE) : 
+invalid type (NULL) for variable 'sim$x'
+
+Error in eval(predvars, data, env) : object 'y' not found</code></pre></li>
+<li><p><strong>Parsing errors.</strong> These happen when <code>simInit</code> has issues reading the module R script (or other associated scripts) and are usually easy to debug by reading the error message. For instance, the one below indicates that lines 43, 44, have a problem, which is a missing comma after the “)”. <code>Error in parse(filename) :      C:&lt;modulePath&gt;/My_linear_model/My_linear_model.R:44:3: unexpected symbol     43:   )     44:   outputObjects       ^</code></p></li>
+<li><p><strong>Environment- and <code>simList</code>-related error.</strong> If the <code>simList</code> (<code>sim</code>) is not returned at the end of a function that takes it as an argument – e.g.&nbsp;an event function, the <code>.inputObjects()</code> function… – it will either be lost or changed into something unexpected. Below are two examples of errors that may announce this problem.</p>
+<pre><code>Error in &lt;...&gt;
+sim must be a simList
+
+Error in as.environment(pos) : invalid 'pos' argument</code></pre></li>
+</ul>
+</section>
+<section id="see-also" class="level2" data-number="5.13">
+<h2 data-number="5.13" class="anchored" data-anchor-id="see-also"><span class="header-section-number">5.13</span> See also</h2>
+<p><a href="ModulesAndEvents.html" class="quarto-xref"><span>Chapter 8</span></a> on Modules, Events and Functions</p>
+<p><a href="ModuleInputs.html" class="quarto-xref"><span>Chapter 6</span></a> on how to provide Module Inputs</p>
+<p><a href="simList.html" class="quarto-xref"><span>Chapter 7</span></a> on the <code>simList</code></p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/defineModule.html"><code>?defineModule</code></a> describes all the metadata entries.</p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/expectsInput.html"><code>?expectsInput</code></a></p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/createsOutput.html"><code>?createsOutput</code></a></p>
@@ -753,62 +758,61 @@ window.Quarto = {
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/simInit.html"><code>?SpaDES.core::simInit</code></a></p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/simInitAndSpaDES.html"><code>?SpaDES.core::simInitAndSpaDES</code></a></p>
 </section>
-<section id="barebones-r-script" class="level2" data-number="6.13">
-<h2 data-number="6.13" class="anchored" data-anchor-id="barebones-r-script"><span class="header-section-number">6.13</span> Barebones R script</h2>
+<section id="barebones-r-script" class="level2" data-number="5.14">
+<h2 data-number="5.14" class="anchored" data-anchor-id="barebones-r-script"><span class="header-section-number">5.14</span> Barebones R script</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create some data</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># fit a linear model</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>Require<span class="sc">::</span><span class="fu">Require</span>(<span class="fu">c</span>(<span class="st">"reproducible"</span>, <span class="st">"SpaDES.core"</span>), <span class="at">repos =</span> <span class="fu">c</span>(<span class="st">"https://predictiveecology.r-universe.dev"</span>, <span class="fu">getOption</span>(<span class="st">"repos"</span>)))</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># make a module</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>nm1 <span class="ot">&lt;-</span> <span class="st">"My_linear_model"</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>modulePath <span class="ot">&lt;-</span> <span class="st">"~/SpaDES_book/NewModuleIntro/NewModule"</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">newModule</span>(<span class="at">name =</span> nm1, <span class="at">path =</span> modulePath, <span class="at">open =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>                       <span class="at">events =</span> <span class="fu">list</span>(</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>                         <span class="at">init =</span> {</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>                           y <span class="ot">&lt;-</span> sim<span class="sc">$</span>x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)      <span class="co"># &lt;--------- add sim$ here</span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># fit a linear model</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>                           sim<span class="sc">$</span>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> sim<span class="sc">$</span>x)  <span class="co"># &lt;--------- add sim$ here</span></span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>                         }</span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>                       ))</span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">simInit</span>(<span class="at">modules =</span> nm1, <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">spades</span>(out)</span>
-<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="co"># or </span></span>
-<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">simInitAndSpades</span>(<span class="at">modules =</span> nm1, <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span>
-<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>out<span class="sc">$</span>model</span>
-<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>nm2 <span class="ot">&lt;-</span> <span class="st">"visualize"</span></span>
-<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a><span class="fu">newModule</span>(nm2, <span class="at">path =</span> modulePath, <span class="at">open =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>          <span class="at">events =</span> <span class="fu">list</span>(</span>
-<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>            <span class="at">init =</span> {</span>
-<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>              <span class="fu">plot</span>(sim<span class="sc">$</span>model)</span>
-<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>            }</span>
-<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>          )</span>
-<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a><span class="fu">simInitAndSpades</span>(<span class="at">modules =</span> <span class="fu">c</span>(nm1, nm2), </span>
-<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>                 <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span>
-<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a><span class="fu">simInitAndSpades</span>(<span class="at">modules =</span> <span class="fu">c</span>(nm1, nm2), </span>
-<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>                 <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create some data</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># fit a linear model</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>Require<span class="sc">::</span><span class="fu">Require</span>(<span class="fu">c</span>(<span class="st">"reproducible"</span>, <span class="st">"SpaDES.core"</span>), <span class="at">repos =</span> <span class="fu">c</span>(<span class="st">"https://predictiveecology.r-universe.dev"</span>, <span class="fu">getOption</span>(<span class="st">"repos"</span>)))</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co"># make a module</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>modulePath <span class="ot">&lt;-</span> <span class="st">"~/SpaDES_book/NewModuleIntro/NewModule"</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">newModule</span>(<span class="at">name =</span> <span class="st">"My_linear_model"</span>, <span class="at">path =</span> modulePath, <span class="at">open =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>                       <span class="at">events =</span> <span class="fu">list</span>(</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>                         <span class="at">init =</span> {</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>                           y <span class="ot">&lt;-</span> sim<span class="sc">$</span>x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)      <span class="co"># &lt;--------- add sim$ here</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># fit a linear model</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>                           sim<span class="sc">$</span>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> sim<span class="sc">$</span>x)  <span class="co"># &lt;--------- add sim$ here</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>                         }</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>                       ))</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">simInit</span>(<span class="at">modules =</span> <span class="st">"My_linear_model"</span>, <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">spades</span>(out)</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a><span class="co"># or </span></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">simInitAndSpades</span>(<span class="at">modules =</span> <span class="st">"My_linear_model"</span>, <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>out<span class="sc">$</span>model</span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">simInitAndSpades</span>(<span class="at">modules =</span> <span class="st">"My_linear_model"</span>, <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>out<span class="sc">$</span>model</span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a><span class="fu">newModule</span>(<span class="st">"visualize"</span>, <span class="at">path =</span> modulePath, <span class="at">open =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>          <span class="at">events =</span> <span class="fu">list</span>(</span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>            <span class="at">init =</span> {</span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>              <span class="fu">plot</span>(sim<span class="sc">$</span>model)</span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>          )</span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a><span class="fu">simInitAndSpades</span>(<span class="at">modules =</span> <span class="fu">c</span>(<span class="st">"My_linear_model"</span>, <span class="st">"visualize"</span>), </span>
+<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a>                 <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> modulePath))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 
@@ -1377,12 +1381,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./NewModuleIntro.html" class="pagination-link" aria-label="Introduction to SpaDES Modules">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to SpaDES Modules</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction to SpaDES Modules</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ModuleInputs.html" class="pagination-link" aria-label="Module Inputs">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module Inputs</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ModuleInputs.html" class="pagination-link" aria-label="Providing Module Inputs">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Providing Module Inputs</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

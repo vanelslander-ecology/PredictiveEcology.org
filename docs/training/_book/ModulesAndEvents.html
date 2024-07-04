@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eliot McIntire">
-<meta name="dcterms.date" content="2024-06-12">
+<meta name="dcterms.date" content="2024-07-03">
 
-<title>Robust and nimble scientific workflows, using SpaDES - 9&nbsp; Modules, Events and Functions</title>
+<title>Robust and nimble scientific workflows, using SpaDES - 8&nbsp; Modules, Events and Functions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -129,35 +129,6 @@ div.csl-indent {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="assets/css/main.scss">
 </head>
@@ -262,7 +233,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./ModulesAndEvents.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./ModulesAndEvents.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -283,7 +254,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -298,19 +269,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./installRandSpatialPkgs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Installing R and Spatial Packages</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Installing R and Spatial Packages</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./PackagesForBook.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./TroubleshootingPackageInstallation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Troubleshooting R package installation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Troubleshooting R package installation</span></span></a>
   </div>
 </li>
       </ul>
@@ -327,37 +298,37 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./NewModuleIntro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to SpaDES Modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction to SpaDES Modules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./MetaDataAndModuleFiles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Module Files and Metadata</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Module Files and Metadata</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ModuleInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module Inputs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Providing Module Inputs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simList.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ModulesAndEvents.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Scheduling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span></a>
   </div>
 </li>
       </ul>
@@ -374,19 +345,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Caching.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./debugging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></a>
   </div>
 </li>
       </ul>
@@ -403,25 +374,25 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflowSimple2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./LandRDemo_coreVeg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Forest Landscape Modelling with LandR and <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Forest Landscape Modelling with LandR and <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ForestsAndFire.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -429,7 +400,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bestPractices.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Best practices for <span class="math inline">\(R^3T\)</span> workflows</span></a>
+ <span class="menu-text">Best practices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -448,29 +419,30 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#modules" id="toc-modules" class="nav-link active" data-scroll-target="#modules"><span class="header-section-number">9.1</span> Modules</a></li>
-  <li><a href="#events" id="toc-events" class="nav-link" data-scroll-target="#events"><span class="header-section-number">9.2</span> Events</a></li>
-  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">9.3</span> Functions</a>
+  <li><a href="#modules" id="toc-modules" class="nav-link active" data-scroll-target="#modules"><span class="header-section-number">8.1</span> Modules</a></li>
+  <li><a href="#events" id="toc-events" class="nav-link" data-scroll-target="#events"><span class="header-section-number">8.2</span> Events</a></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">8.3</span> Functions</a>
   <ul class="collapse">
-  <li><a href="#adding-functions" id="toc-adding-functions" class="nav-link" data-scroll-target="#adding-functions"><span class="header-section-number">9.3.1</span> Adding functions</a></li>
+  <li><a href="#adding-functions" id="toc-adding-functions" class="nav-link" data-scroll-target="#adding-functions"><span class="header-section-number">8.3.1</span> Adding functions</a></li>
   </ul></li>
-  <li><a href="#sec-moduletypes" id="toc-sec-moduletypes" class="nav-link" data-scroll-target="#sec-moduletypes"><span class="header-section-number">9.4</span> Module types</a>
+  <li><a href="#sec-moduletypes" id="toc-sec-moduletypes" class="nav-link" data-scroll-target="#sec-moduletypes"><span class="header-section-number">8.4</span> Module types</a>
   <ul class="collapse">
-  <li><a href="#static" id="toc-static" class="nav-link" data-scroll-target="#static"><span class="header-section-number">9.4.1</span> Static</a></li>
-  <li><a href="#dynamic" id="toc-dynamic" class="nav-link" data-scroll-target="#dynamic"><span class="header-section-number">9.4.2</span> Dynamic</a></li>
+  <li><a href="#static" id="toc-static" class="nav-link" data-scroll-target="#static"><span class="header-section-number">8.4.1</span> Static</a></li>
+  <li><a href="#dynamic" id="toc-dynamic" class="nav-link" data-scroll-target="#dynamic"><span class="header-section-number">8.4.2</span> Dynamic</a></li>
   </ul></li>
-  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">9.5</span> See also</a></li>
-  <li><a href="#more-learning-on-this-subject" id="toc-more-learning-on-this-subject" class="nav-link" data-scroll-target="#more-learning-on-this-subject"><span class="header-section-number">9.6</span> More learning on this subject</a></li>
-  <li><a href="#barebones-r-script" id="toc-barebones-r-script" class="nav-link" data-scroll-target="#barebones-r-script"><span class="header-section-number">9.7</span> Barebones R script</a></li>
+  <li><a href="#where-modules-live" id="toc-where-modules-live" class="nav-link" data-scroll-target="#where-modules-live"><span class="header-section-number">8.5</span> Where modules “live”</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">8.6</span> See also</a></li>
+  <li><a href="#more-learning-on-this-subject" id="toc-more-learning-on-this-subject" class="nav-link" data-scroll-target="#more-learning-on-this-subject"><span class="header-section-number">8.7</span> More learning on this subject</a></li>
+  <li><a href="#barebones-r-script" id="toc-barebones-r-script" class="nav-link" data-scroll-target="#barebones-r-script"><span class="header-section-number">8.8</span> Barebones R script</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./ModulesAndEvents.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./ModulesAndEvents.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-modseventsfuns" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span></h1>
+<h1 class="title"><span id="sec-modseventsfuns" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span></h1>
 </div>
 
 
@@ -487,7 +459,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 12, 2024</p>
+      <p class="date">July 3, 2024</p>
     </div>
   </div>
   
@@ -513,18 +485,18 @@ window.Quarto = {
 <p><strong>Events</strong> are ways to name chunks of code that can be run in a particular sequence or at a particular time.</p>
 <p><strong>Functions</strong> are the basic building blocks in R and other languages. We work with all three of these to make robust and re-useable workflows.</p>
 <p>Modules encapsulate events, which encapsulate functions.</p>
-<section id="modules" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="modules"><span class="header-section-number">9.1</span> Modules</h2>
+<section id="modules" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="modules"><span class="header-section-number">8.1</span> Modules</h2>
 <p>Modules include the following elements:</p>
 <ul>
-<li>a function call to <code>defineModule</code> that defines the metadata (mandatory)</li>
-<li>a function definition for <code>doEvent.</code><em>moduleName</em> (mandatory)</li>
+<li><p>a function call to <code>defineModule</code> that defines the metadata (mandatory)</p></li>
+<li><p>a function definition for <code>doEvent.</code><em>moduleName</em> (mandatory)</p></li>
 </ul>
 <p>There are many optional pieces too. The default template produces many of these optional pieces, which means it is “noisy”. This also means we can ignore most of it for now.</p>
 <p>Optional pieces include:</p>
 <ul>
-<li>other functions in the R folder or the main <em>moduleName</em><code>.R</code> file</li>
-<li>a documentation file (<em>moduleName</em>.rmd)</li>
+<li><p>other functions in the R folder or the main <em>moduleName</em><code>.R</code> file</p></li>
+<li><p>a documentation file (<em>moduleName</em>.rmd)</p></li>
 </ul>
 <p>These are all contained within a file structure like this, with other optional files:</p>
 <pre><code>/moduleRepository
@@ -537,18 +509,37 @@ window.Quarto = {
       |_ LICENSE.txt            # describes module's legal usage
       |_ moduleName.R           # module code file (incl. metadata)
       |_ moduleName.Rmd         # documentation, usage info, etc.</code></pre>
-<p>To make a new module, see: <a href="NewModuleIntro.html" class="quarto-xref"><span>Chapter 5</span></a>.</p>
+<p>To make a new module, see: <a href="NewModuleIntro.html" class="quarto-xref"><span>Chapter 4</span></a>.</p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How to decide whether to make a module, or expand an existing one?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>There’s no fixed rule about when it is best to create a module vs. expand another existing module. This decision will depend on various factors, but at least two questions should be considered when making a decision:</p>
+<ul>
+<li><p>Is the additional code a very small operation, or something that will <em>never</em> be disassociated from a current module? If the answer is “yes”, then perhaps expanding the existing module is the way to go.</p></li>
+<li><p>Can we foresee that swapping between algorithms/approaches will be desired in the future? E.g., knowing that an ordinary least square regression could, in the future, be swapped by a mixed effects model to compare model performance – i.e.&nbsp;both approaches are valid and we want eventually to have both. If the answer is “yes”, then creating a new module will allow greater flexibility in the future.</p></li>
+</ul>
+<p>We usually see “data preparation” and “model calibration” steps as semi-independent from “prediction/simulation steps” and have typically created “data preparation”/“calibration” modules to keep these steps separate, and to allow swapping between different approaches to preparing inputs for a model.</p>
+</div>
+</div>
 </section>
-<section id="events" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="events"><span class="header-section-number">9.2</span> Events</h2>
-<p>Events are named chunks of code that can be scheduled to be run once or many times. These are scheduled with <code>scheduleEvent()</code>. There are several commonly occurring module types that can be grouped based on the events that they contain (see <a href="#sec-moduletypes" class="quarto-xref"><span>Section 9.4</span></a>).</p>
-<p>To see how to schedule events, see: <a href="Scheduling.html" class="quarto-xref"><span>Chapter 10</span></a>.</p>
+<section id="events" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="events"><span class="header-section-number">8.2</span> Events</h2>
+<p>Events are named chunks of code that can be scheduled to be run once or many times. These are scheduled with <code>scheduleEvent()</code>. There are several commonly occurring module types that can be grouped based on the events that they contain (see <a href="#sec-moduletypes" class="quarto-xref"><span>Section 8.4</span></a>).</p>
+<p>To see how to schedule events, see: <a href="Scheduling.html" class="quarto-xref"><span>Chapter 9</span></a>.</p>
 </section>
-<section id="functions" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="functions"><span class="header-section-number">9.3</span> Functions</h2>
-<p>Essentially, everything in R is or uses functions. Modules define functions (<code>doEvent.*moduleName*</code>), events call specific functions (we some times call these “event functions”), and functions can be defined within modules, R packages, or user code.</p>
-<section id="adding-functions" class="level3" data-number="9.3.1">
-<h3 data-number="9.3.1" class="anchored" data-anchor-id="adding-functions"><span class="header-section-number">9.3.1</span> Adding functions</h3>
+<section id="functions" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="functions"><span class="header-section-number">8.3</span> Functions</h2>
+<p>Essentially, everything in R is or uses functions. Modules define events (<code>doEvent.*moduleName*</code>), events call specific functions (we some times call the main function an event calls an “event function”, but there can be other nested functions within these), and functions can be defined within modules, R packages, or user code contained in <code>.R</code> scripts inside the module’s <code>R/</code> folder.</p>
+<p><strong>We would not define functions in the <code>.GlobalEnv</code>.</strong></p>
+<section id="adding-functions" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="adding-functions"><span class="header-section-number">8.3.1</span> Adding functions</h3>
 <p>Any function can be written and defined in any <code>.R</code> file in the <code>R</code> folder, just like an R package. They can also be placed in the main module script (the one named <code>&lt;moduleName&gt;.R</code>). The default template includes several functions.</p>
 <p>In this example, instead of writing the code that does what we want inside the <code>doEvent</code> function itself, lets use the <code>Init</code> function. We move the code from the “init” event into a function, then call that function.</p>
 <div class="cell">
@@ -556,7 +547,7 @@ window.Quarto = {
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>doEvent.My_linear_model.init <span class="ot">&lt;-</span> <span class="cf">function</span>(sim, eventTime, eventType, priority) {</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  sim <span class="ot">&lt;-</span> <span class="fu">Init</span>(sim)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(sim)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">invisible</span>(sim))</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>Init <span class="ot">&lt;-</span> <span class="cf">function</span>(sim) {</span>
@@ -573,14 +564,14 @@ window.Quarto = {
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>doEvent.My_linear_model.init <span class="ot">&lt;-</span> <span class="cf">function</span>(sim, eventTime, eventType, priority) {</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  sim <span class="ot">&lt;-</span> <span class="fu">Init</span>(sim)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(sim)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">invisible</span>(sim))</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Use this inside the `doEvent.My_linear_model.init` function</span></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>Init <span class="ot">&lt;-</span> <span class="cf">function</span>(sim) {</span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">generateY</span>(sim<span class="sc">$</span>x)</span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  sim<span class="sc">$</span>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> sim<span class="sc">$</span>x)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(sim)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">invisible</span>(sim))</span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">#' A function that generates random error around an `x`</span></span>
@@ -593,11 +584,11 @@ window.Quarto = {
 </div>
 </section>
 </section>
-<section id="sec-moduletypes" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="sec-moduletypes"><span class="header-section-number">9.4</span> Module types</h2>
-<p>SpaDES doesn’t have explicit module types. Rather, by convention, we associate different modules with generic things they do. A fairly comprehensive list of modules types that we create are below. We will revisit this later in <span class="quarto-unresolved-ref">?sec-continuousWorkflows</span>.</p>
-<section id="static" class="level3" data-number="9.4.1">
-<h3 data-number="9.4.1" class="anchored" data-anchor-id="static"><span class="header-section-number">9.4.1</span> Static</h3>
+<section id="sec-moduletypes" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="sec-moduletypes"><span class="header-section-number">8.4</span> Module types</h2>
+<p>SpaDES doesn’t have explicit module types. Rather, by convention, we associate different modules with generic things they do. A fairly comprehensive list of modules types that we create are below. We will revisit this later in [Part 3](ContinuousWorkflows.qmd). <!-- @sec-contWorkflows not working. issue with title cross-refs in "parts" https://github.com/quarto-dev/quarto-cli/issues/5237--></p>
+<section id="static" class="level3" data-number="8.4.1">
+<h3 data-number="8.4.1" class="anchored" data-anchor-id="static"><span class="header-section-number">8.4.1</span> Static</h3>
 <p><strong>Static</strong> modules can be defined as modules that “run once”. This means that they may have only one event. Or a sequence of events that occur one after the other with no rescheduling.</p>
 <p>These could include:</p>
 <ul>
@@ -606,8 +597,8 @@ window.Quarto = {
 <li><p>Data Visualization modules that specialize in creating a set of visuals from a known set of inputs.</p></li>
 </ul>
 </section>
-<section id="dynamic" class="level3" data-number="9.4.2">
-<h3 data-number="9.4.2" class="anchored" data-anchor-id="dynamic"><span class="header-section-number">9.4.2</span> Dynamic</h3>
+<section id="dynamic" class="level3" data-number="8.4.2">
+<h3 data-number="8.4.2" class="anchored" data-anchor-id="dynamic"><span class="header-section-number">8.4.2</span> Dynamic</h3>
 <p><strong>Dynamic</strong> modules are modules that have <em>events that recur</em>. There are at least 2 types of such models: those that have <strong>cyclic dependencies</strong>, i.e., its outputs are also its inputs (possibly with other modules in between) and those that do not.</p>
 <ul>
 <li><p>Landscape simulation modules (e.g., wildfire, vegetation change)</p></li>
@@ -624,56 +615,28 @@ window.Quarto = {
 <p>There are no strict rules to classify a SpaDES module, just as there are no strict rules to classify an R script.</p>
 </section>
 </section>
-<section id="see-also" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="see-also"><span class="header-section-number">9.5</span> See also</h2>
-<p><a href="Scheduling.html" class="quarto-xref"><span>Chapter 10</span></a> on event scheduling</p>
+<section id="where-modules-live" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="where-modules-live"><span class="header-section-number">8.5</span> Where modules “live”</h2>
+<p>Modules can live only locally (e.g.&nbsp;in a computer), but in the spirit of the PERFICT principles (see <a href="intro.html#sec-newexpect" class="quarto-xref"><span>Section 2.1</span></a> in the <a href="./intro.html">Introduction</a>) we like our modules to be shareable.</p>
+<p>The best way to share modules is to host them on GitHub repositories, as SpaDES tools have been developed to download modules from GitHub.</p>
+<p>Most SpaDES modules known to us are hosted in their own GitHub repositories (preferred), or bundled in GitHub repositories with several modules (e.g.&nbsp;<a href="https://github.com/bcgov/castor/tree/main/R/SpaDES-modules">Castor modules</a> and <a href="https://github.com/PredictiveEcology/scfm/tree/master/modules">SCFM modules</a>).</p>
+</section>
+<section id="see-also" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="see-also"><span class="header-section-number">8.6</span> See also</h2>
+<p><a href="Scheduling.html" class="quarto-xref"><span>Chapter 9</span></a> on event scheduling</p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/scheduleEvent.html"><code>?scheduleEvent</code></a></p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/params.html"><code>?P</code></a></p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html"><code>?time</code></a></p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html"><code>?start</code></a></p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html"><code>?end</code></a></p>
 </section>
-<section id="more-learning-on-this-subject" class="level2" data-number="9.6">
-<h2 data-number="9.6" class="anchored" data-anchor-id="more-learning-on-this-subject"><span class="header-section-number">9.6</span> More learning on this subject</h2>
+<section id="more-learning-on-this-subject" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="more-learning-on-this-subject"><span class="header-section-number">8.7</span> More learning on this subject</h2>
 <p><a href="https://spades-workshops.predictiveecology.org/articlesMay2018/MyFirstModule.html">My First Module</a></p>
 <p><a href="https://spades-workshops.predictiveecology.org/articles/02c-Convert_R_code_to_SpaDES_module.html">Creating a seed dispersal module</a></p>
 </section>
-<section id="barebones-r-script" class="level2" data-number="9.7">
-<h2 data-number="9.7" class="anchored" data-anchor-id="barebones-r-script"><span class="header-section-number">9.7</span> Barebones R script</h2>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>doEvent.My_linear_model.init <span class="ot">&lt;-</span> <span class="cf">function</span>(sim, eventTime, eventType, priority) {</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  sim <span class="ot">&lt;-</span> <span class="fu">Init</span>(sim)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(sim)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>Init <span class="ot">&lt;-</span> <span class="cf">function</span>(sim) {</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> sim<span class="sc">$</span>x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  sim<span class="sc">$</span>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> sim<span class="sc">$</span>x)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">invisible</span>(sim))</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>doEvent.My_linear_model.init <span class="ot">&lt;-</span> <span class="cf">function</span>(sim, eventTime, eventType, priority) {</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  sim <span class="ot">&lt;-</span> <span class="fu">Init</span>(sim)</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(sim)</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Use this inside the `doEvent.My_linear_model.init` function</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>Init <span class="ot">&lt;-</span> <span class="cf">function</span>(sim) {</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">generateY</span>(sim<span class="sc">$</span>x)</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  sim<span class="sc">$</span>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> sim<span class="sc">$</span>x)</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(sim)</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="co">#' A function that generates random error around an `x`</span></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param x Any numeric vector of length 10</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>generateY <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
+<section id="barebones-r-script" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="barebones-r-script"><span class="header-section-number">8.8</span> Barebones R script</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -1245,12 +1208,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./simList.html" class="pagination-link" aria-label="The `simList` - What is it?">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./Scheduling.html" class="pagination-link" aria-label="Scheduling Events">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eliot McIntire">
-<meta name="dcterms.date" content="2024-06-12">
+<meta name="dcterms.date" content="2024-06-21">
 
-<title>Robust and nimble scientific workflows, using SpaDES - 12&nbsp; reproducible::prepInputs for Data</title>
+<title>Robust and nimble scientific workflows, using SpaDES - 11&nbsp; reproducible::prepInputs for Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,35 +109,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="assets/css/main.scss">
 </head>
@@ -242,7 +213,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ContinuousWorkflows.html">Working with Continuous Workflows</a></li><li class="breadcrumb-item"><a href="./prepInputs.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ContinuousWorkflows.html">Working with Continuous Workflows</a></li><li class="breadcrumb-item"><a href="./prepInputs.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -263,7 +234,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -278,19 +249,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./installRandSpatialPkgs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Installing R and Spatial Packages</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Installing R and Spatial Packages</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./PackagesForBook.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./TroubleshootingPackageInstallation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Troubleshooting R package installation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Troubleshooting R package installation</span></span></a>
   </div>
 </li>
       </ul>
@@ -307,37 +278,37 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./NewModuleIntro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to SpaDES Modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction to SpaDES Modules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./MetaDataAndModuleFiles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Module Files and Metadata</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Module Files and Metadata</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ModuleInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module Inputs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Providing Module Inputs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simList.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ModulesAndEvents.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Scheduling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span></a>
   </div>
 </li>
       </ul>
@@ -354,19 +325,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Caching.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepInputs.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./debugging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></a>
   </div>
 </li>
       </ul>
@@ -383,25 +354,25 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflowSimple2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./LandRDemo_coreVeg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Forest Landscape Modelling with LandR and <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Forest Landscape Modelling with LandR and <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ForestsAndFire.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -409,7 +380,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bestPractices.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Best practices for <span class="math inline">\(R^3T\)</span> workflows</span></a>
+ <span class="menu-text">Best practices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -428,29 +399,29 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#prepinputs" id="toc-prepinputs" class="nav-link active" data-scroll-target="#prepinputs"><span class="header-section-number">12.1</span> <code>prepInputs</code></a></li>
-  <li><a href="#simplest-case-a-url" id="toc-simplest-case-a-url" class="nav-link" data-scroll-target="#simplest-case-a-url"><span class="header-section-number">12.2</span> Simplest case: a <code>url</code></a></li>
-  <li><a href="#case-in-an-archive-like-zip" id="toc-case-in-an-archive-like-zip" class="nav-link" data-scroll-target="#case-in-an-archive-like-zip"><span class="header-section-number">12.3</span> Case: in an archive (like <code>zip</code>)</a></li>
-  <li><a href="#case-local-stash-using-reproducible.inputpaths" id="toc-case-local-stash-using-reproducible.inputpaths" class="nav-link" data-scroll-target="#case-local-stash-using-reproducible.inputpaths"><span class="header-section-number">12.4</span> Case: local stash using <code>reproducible.inputPaths</code></a></li>
-  <li><a href="#stages-of-prepinputs" id="toc-stages-of-prepinputs" class="nav-link" data-scroll-target="#stages-of-prepinputs"><span class="header-section-number">12.5</span> Stages of <code>prepInputs</code></a></li>
-  <li><a href="#with-gis" id="toc-with-gis" class="nav-link" data-scroll-target="#with-gis"><span class="header-section-number">12.6</span> With GIS</a>
+  <li><a href="#prepinputs" id="toc-prepinputs" class="nav-link active" data-scroll-target="#prepinputs"><span class="header-section-number">11.1</span> <code>prepInputs</code></a></li>
+  <li><a href="#simplest-case-a-url" id="toc-simplest-case-a-url" class="nav-link" data-scroll-target="#simplest-case-a-url"><span class="header-section-number">11.2</span> Simplest case: a <code>url</code></a></li>
+  <li><a href="#case-in-an-archive-like-zip" id="toc-case-in-an-archive-like-zip" class="nav-link" data-scroll-target="#case-in-an-archive-like-zip"><span class="header-section-number">11.3</span> Case: in an archive (like <code>zip</code>)</a></li>
+  <li><a href="#case-local-stash-using-reproducible.inputpaths" id="toc-case-local-stash-using-reproducible.inputpaths" class="nav-link" data-scroll-target="#case-local-stash-using-reproducible.inputpaths"><span class="header-section-number">11.4</span> Case: local stash using <code>reproducible.inputPaths</code></a></li>
+  <li><a href="#stages-of-prepinputs" id="toc-stages-of-prepinputs" class="nav-link" data-scroll-target="#stages-of-prepinputs"><span class="header-section-number">11.5</span> Stages of <code>prepInputs</code></a></li>
+  <li><a href="#with-gis" id="toc-with-gis" class="nav-link" data-scroll-target="#with-gis"><span class="header-section-number">11.6</span> With GIS</a>
   <ul class="collapse">
-  <li><a href="#vector-data" id="toc-vector-data" class="nav-link" data-scroll-target="#vector-data"><span class="header-section-number">12.6.1</span> Vector data</a></li>
-  <li><a href="#raster-data" id="toc-raster-data" class="nav-link" data-scroll-target="#raster-data"><span class="header-section-number">12.6.2</span> Raster data</a></li>
+  <li><a href="#vector-data" id="toc-vector-data" class="nav-link" data-scroll-target="#vector-data"><span class="header-section-number">11.6.1</span> Vector data</a></li>
+  <li><a href="#raster-data" id="toc-raster-data" class="nav-link" data-scroll-target="#raster-data"><span class="header-section-number">11.6.2</span> Raster data</a></li>
   </ul></li>
-  <li><a href="#caching" id="toc-caching" class="nav-link" data-scroll-target="#caching"><span class="header-section-number">12.7</span> Caching</a></li>
-  <li><a href="#extending-prepinputs-with-fun" id="toc-extending-prepinputs-with-fun" class="nav-link" data-scroll-target="#extending-prepinputs-with-fun"><span class="header-section-number">12.8</span> Extending <code>prepInputs</code> with <code>fun</code></a></li>
-  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">12.9</span> See also</a></li>
-  <li><a href="#barebones-r-script" id="toc-barebones-r-script" class="nav-link" data-scroll-target="#barebones-r-script"><span class="header-section-number">12.10</span> Barebones R script</a></li>
+  <li><a href="#caching" id="toc-caching" class="nav-link" data-scroll-target="#caching"><span class="header-section-number">11.7</span> Caching</a></li>
+  <li><a href="#extending-prepinputs-with-fun" id="toc-extending-prepinputs-with-fun" class="nav-link" data-scroll-target="#extending-prepinputs-with-fun"><span class="header-section-number">11.8</span> Extending <code>prepInputs</code> with <code>fun</code></a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">11.9</span> See also</a></li>
+  <li><a href="#barebones-r-script" id="toc-barebones-r-script" class="nav-link" data-scroll-target="#barebones-r-script"><span class="header-section-number">11.10</span> Barebones R script</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ContinuousWorkflows.html">Working with Continuous Workflows</a></li><li class="breadcrumb-item"><a href="./prepInputs.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ContinuousWorkflows.html">Working with Continuous Workflows</a></li><li class="breadcrumb-item"><a href="./prepInputs.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-prepInputs" class="quarto-section-identifier"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></h1>
+<h1 class="title"><span id="sec-prepInputs" class="quarto-section-identifier"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></h1>
 </div>
 
 
@@ -467,7 +438,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 12, 2024</p>
+      <p class="date">June 21, 2024</p>
     </div>
   </div>
   
@@ -492,26 +463,26 @@ window.Quarto = {
 <p>Every project that has data will need to get the data from its original source into a form and format that works for a given project. To do this in a reproducible/reusable manner is not trivial.</p>
 <p>Some elements that should be present when bringing the data into a project in a reproducible/reusable manner can ideally include:</p>
 <ul>
-<li><strong>Accessible</strong> from any computer</li>
-<li><strong>User-access control</strong> (i.e., can allow only some people to get the data)</li>
-<li><strong>Versioned</strong> i.e., can know and control the version accessed</li>
-<li><strong>Spatially appropriate</strong> – if data are spatial (e.g., GIS data), they must be coerced to the relevant template for a project</li>
-<li><strong>Exact</strong>, i.e., test to ensure the data were downloaded as desired</li>
-<li><strong>Flexible</strong> for many classes of data</li>
-<li><strong>Simple</strong></li>
+<li><p><strong>Accessible</strong> from any computer</p></li>
+<li><p><strong>User-access control</strong> (i.e., can allow only some people to get the data)</p></li>
+<li><p><strong>Versioned</strong> i.e., can know and control the version accessed</p></li>
+<li><p><strong>Spatially appropriate</strong> – if data are spatial (e.g., GIS data), they must be coerced to the relevant template for a project</p></li>
+<li><p><strong>Exact</strong>, i.e., test to ensure the data were downloaded as desired</p></li>
+<li><p><strong>Flexible</strong> for many classes of data</p></li>
+<li><p><strong>Simple</strong></p></li>
 </ul>
 <p>Similar, if the data are to be re-used in many projects, the approach to getting the data should be:</p>
 <ul>
-<li><strong>Locally cached</strong> if used in many projects, only one copy is needed</li>
-<li><strong>Modular</strong> approach to accessing, so they can be easily added to any project</li>
+<li><p><strong>Locally cached</strong> if used in many projects, only one copy is needed</p></li>
+<li><p><strong>Modular</strong> approach to accessing, so they can be easily added to any project</p></li>
 </ul>
 <p>We designed a function to achieve all this: <a href="https://reproducible.predictiveecology.org/reference/prepInputs.html"><code>reproducible::prepInputs</code></a></p>
-<section id="prepinputs" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="prepinputs"><span class="header-section-number">12.1</span> <code>prepInputs</code></h2>
+<section id="prepinputs" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="prepinputs"><span class="header-section-number">11.1</span> <code>prepInputs</code></h2>
 <p>This function can be used to prepare R objects from remote or local data sources. The object of this function is to provide a reproducible version of a series of commonly used steps for getting, loading, and processing data.</p>
 </section>
-<section id="simplest-case-a-url" class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="simplest-case-a-url"><span class="header-section-number">12.2</span> Simplest case: a <code>url</code></h2>
+<section id="simplest-case-a-url" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="simplest-case-a-url"><span class="header-section-number">11.2</span> Simplest case: a <code>url</code></h2>
 <p>If we can point directly to a file on a cloud location, <code>prepInputs</code> does its thing, getting the local file.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -525,8 +496,8 @@ window.Quarto = {
 </details>
 </div>
 </section>
-<section id="case-in-an-archive-like-zip" class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="case-in-an-archive-like-zip"><span class="header-section-number">12.3</span> Case: in an archive (like <code>zip</code>)</h2>
+<section id="case-in-an-archive-like-zip" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="case-in-an-archive-like-zip"><span class="header-section-number">11.3</span> Case: in an archive (like <code>zip</code>)</h2>
 <p>Often, cloud-stored files are in an archive, like a <code>zip</code> or <code>tar.gz</code>. These can be handled automatically with <code>prepInputs</code>. By default, it will try to extract all files from the archive, and load one of them into R:</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -537,8 +508,8 @@ window.Quarto = {
 </details>
 </div>
 </section>
-<section id="case-local-stash-using-reproducible.inputpaths" class="level2" data-number="12.4">
-<h2 data-number="12.4" class="anchored" data-anchor-id="case-local-stash-using-reproducible.inputpaths"><span class="header-section-number">12.4</span> Case: local stash using <code>reproducible.inputPaths</code></h2>
+<section id="case-local-stash-using-reproducible.inputpaths" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="case-local-stash-using-reproducible.inputpaths"><span class="header-section-number">11.4</span> Case: local stash using <code>reproducible.inputPaths</code></h2>
 <p>If we want to use the same file in many projects, we can obviously just download it again in each project, using the same lines of <code>prepInputs</code>. However, we can setup a local “stash” of data files. This is a <strong>set it and forget it</strong> option in <code>reproducible</code>.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -551,23 +522,25 @@ window.Quarto = {
 </div>
 <p>If we run this chunk in the same project, results will be like the previous chunk: a vector dataset from the Canadian federal government. BUT, if we run it in a different project, it will check the stashed diretory and won’t need to download it again. Moreover, it will not actually make a copy but a link to the file, so it won’t take extra space on your hard drive.</p>
 <p>If you are running in a *nix-like system (Mac, Linux, etc.) or you have Git Bash installed, you can see the number of links to a file with <code>ls</code>. The column after the attributes (e.g., drwxr-xr-x), is the number of pointers to a file. Anything more than 1 means that there are several pointers.</p>
-<pre class="eval=false"><code>system(paste0("ls -l", getOption("inputPaths")))</code></pre>
+<pre><code>system(paste0("ls -l", getOption("inputPaths")))</code></pre>
 </section>
-<section id="stages-of-prepinputs" class="level2" data-number="12.5">
-<h2 data-number="12.5" class="anchored" data-anchor-id="stages-of-prepinputs"><span class="header-section-number">12.5</span> Stages of <code>prepInputs</code></h2>
+<section id="stages-of-prepinputs" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="stages-of-prepinputs"><span class="header-section-number">11.5</span> Stages of <code>prepInputs</code></h2>
 <p>This function has three stages, using three internal functions:</p>
 <ul>
-<li><a href="https://reproducible.predictiveecology.org/reference/preProcess.html"><code>reproducible::preProcess</code></a> which is <strong>getting data</strong> (download, extracting from archives, checksumming)</li>
-<li><code>reproducible::process</code> – load the data into R (note: user can’t access this directly)</li>
-<li><a href="https://reproducible.predictiveecology.org/reference/postProcessTo.html"><code>reproducible::postProcessTo</code></a> (for <code>Spatial*</code> and <code>Raster*</code> objects, this is crop, reproject, mask/intersect).</li>
+<li><p><a href="https://reproducible.predictiveecology.org/reference/preProcess.html"><code>reproducible::preProcess</code></a> which is <strong>getting data</strong> (download, extracting from archives, checksumming)</p></li>
+<li><p><code>reproducible::process</code> loads the data into R (note: user can’t access this directly)</p></li>
+<li><p><a href="https://reproducible.predictiveecology.org/reference/postProcessTo.html"><code>reproducible::postProcessTo</code></a> is used with <code>Spatial*</code> and <code>Raster*</code> objects, and crops, reprojects, mask/intersects.</p></li>
 </ul>
-<p><code>preProcess</code> will be run, if a user supplies <code>url</code> or <code>archive</code>. <code>process</code> will be run if <code>fun</code> is not <code>NA</code>. It will try to guess <code>fun</code> based on file type if <code>fun</code> is left at the default of <code>NULL</code>. <code>postProcess</code> will be triggered if the user passes any of the arguments of <code>postProcessTo</code> (<code>to</code>, <code>maskTo</code>, <code>cropTo</code>) <code>studyArea</code> or <code>rasterToMatch</code>.</p>
+<p><code>preProcess</code> will be run, if a user supplies <code>url</code> or <code>archive</code>.</p>
+<p><code>process</code> will be run if <code>fun</code> is not <code>NA</code>. It will try to guess <code>fun</code> based on file type if <code>fun</code> is left at the default of <code>NULL</code>.</p>
+<p><code>postProcessTo</code> will be triggered if the user passes any its aruments (<code>to</code>, <code>maskTo</code>, <code>cropTo</code>) <code>studyArea</code> or <code>rasterToMatch</code> are supplied. Other arguments like <code>method</code> can also be to inner functions (e.g.&nbsp;<code>terra::project</code>) to control spatial operations. See <code>...</code> in <code>?postProcessTo</code>.</p>
 </section>
-<section id="with-gis" class="level2" data-number="12.6">
-<h2 data-number="12.6" class="anchored" data-anchor-id="with-gis"><span class="header-section-number">12.6</span> With GIS</h2>
+<section id="with-gis" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="with-gis"><span class="header-section-number">11.6</span> With GIS</h2>
 <p>The data we download may cover a larger area than our study needs. For example, there may be a provincial or national dataset, but we are only using a part of that. If we create a <code>studyArea</code>, we can use this as part of <code>prepInputs</code>, passing it to <code>to</code> or one of the other <a href="https://reproducible.predictiveecology.org/reference/postProcessTo.html"><code>*to</code></a> functions.</p>
-<section id="vector-data" class="level3" data-number="12.6.1">
-<h3 data-number="12.6.1" class="anchored" data-anchor-id="vector-data"><span class="header-section-number">12.6.1</span> Vector data</h3>
+<section id="vector-data" class="level3" data-number="11.6.1">
+<h3 data-number="11.6.1" class="anchored" data-anchor-id="vector-data"><span class="header-section-number">11.6.1</span> Vector data</h3>
 <p>The following will get the national ecozone map, project, crop and mask it to the SK dataset.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -581,8 +554,8 @@ window.Quarto = {
 </details>
 </div>
 </section>
-<section id="raster-data" class="level3" data-number="12.6.2">
-<h3 data-number="12.6.2" class="anchored" data-anchor-id="raster-data"><span class="header-section-number">12.6.2</span> Raster data</h3>
+<section id="raster-data" class="level3" data-number="11.6.2">
+<h3 data-number="11.6.2" class="anchored" data-anchor-id="raster-data"><span class="header-section-number">11.6.2</span> Raster data</h3>
 <p>The following will get a national DEM layer, crop and mask it to the SK dataset. We leave it in the projection it came in at the original source.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -628,9 +601,9 @@ window.Quarto = {
 <p>So, we can easily put these <code>prepInputs</code> calls in our workflows, in any project, with minimal new effort each time.</p>
 </section>
 </section>
-<section id="caching" class="level2" data-number="12.7">
-<h2 data-number="12.7" class="anchored" data-anchor-id="caching"><span class="header-section-number">12.7</span> Caching</h2>
-<p><code>prepInputs</code> is friendly with <code>Cache</code>. In addition to the local stashing of a file, the GIS itself may take a long time. We can just <code>|&gt; Cache()</code> at the end and we have a workflow that doesn’t need to be broken.</p>
+<section id="caching" class="level2" data-number="11.7">
+<h2 data-number="11.7" class="anchored" data-anchor-id="caching"><span class="header-section-number">11.7</span> Caching</h2>
+<p><code>prepInputs</code> is friendly with <code>Cache</code> and, in addition to the local stashing of a file, caches some internal operations (e.g.&nbsp;<code>prepProcess</code>). GIS operations, however, are not internally cached. Instead the user should use <code>|&gt; Cache()</code> to enable having a workflow that doesn’t need to be broken.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -650,9 +623,10 @@ window.Quarto = {
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Cache</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+<p>Note that changing the default <code>cachePath</code> is advisable to have persistent caches between R sessions. See <a href="Caching.html#sec-cachewhere" class="quarto-xref"><span>Section 10.3</span></a> in <a href="Caching.html" class="quarto-xref"><span>Chapter 10</span></a>.</p>
 </section>
-<section id="extending-prepinputs-with-fun" class="level2" data-number="12.8">
-<h2 data-number="12.8" class="anchored" data-anchor-id="extending-prepinputs-with-fun"><span class="header-section-number">12.8</span> Extending <code>prepInputs</code> with <code>fun</code></h2>
+<section id="extending-prepinputs-with-fun" class="level2" data-number="11.8">
+<h2 data-number="11.8" class="anchored" data-anchor-id="extending-prepinputs-with-fun"><span class="header-section-number">11.8</span> Extending <code>prepInputs</code> with <code>fun</code></h2>
 <p>It is impossible for <code>prepInputs</code> to be able to handle all data capturing cases. When customization is needed, a few options are possible.</p>
 <ol type="1">
 <li>Make a custom <code>fun</code> argument. Optionally, <code>dlFun</code> can be used to specify how to download the data.</li>
@@ -685,15 +659,15 @@ window.Quarto = {
 <p>By rerunning the previous code, the caching will be in effect. This means that the slow, two-or-more-stage processes of downloading, custom operations, and possibly GIS using `<em>to</em> functions can all be Cached in a single step, resulting in the smallest possible output being saved, i.e., intermediate large objects have only limited “saving”.</p>
 <p>NOTE: Rmarkdown and Quarto both have a form of caching of chunks. This can be effective in some circumstances, but it is somewhat limited (as are all forms of Caching – they will hit their limits somewhere). For instance, they do not deal with the pointers of <code>C++</code> objects in <code>terra</code>.</p>
 </section>
-<section id="see-also" class="level2" data-number="12.9">
-<h2 data-number="12.9" class="anchored" data-anchor-id="see-also"><span class="header-section-number">12.9</span> See also</h2>
+<section id="see-also" class="level2" data-number="11.9">
+<h2 data-number="11.9" class="anchored" data-anchor-id="see-also"><span class="header-section-number">11.9</span> See also</h2>
 <p>There are many other elements of this function that can be effectively used.</p>
 <p><a href="https://reproducible.predictiveecology.org/reference/prepInputs.html"><code>reproducible::prepInputs</code></a></p>
 <p><a href="https://reproducible.predictiveecology.org/reference/preProcess.html"><code>reproducible::preProcess</code></a></p>
 <p><a href="https://reproducible.predictiveecology.org/reference/postProcessTo.html"><code>reproducible::postProcessTo</code></a></p>
 </section>
-<section id="barebones-r-script" class="level2" data-number="12.10">
-<h2 data-number="12.10" class="anchored" data-anchor-id="barebones-r-script"><span class="header-section-number">12.10</span> Barebones R script</h2>
+<section id="barebones-r-script" class="level2" data-number="11.10">
+<h2 data-number="11.10" class="anchored" data-anchor-id="barebones-r-script"><span class="header-section-number">11.10</span> Barebones R script</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -1353,12 +1327,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./Caching.html" class="pagination-link" aria-label="Introduction to Cache">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./debugging.html" class="pagination-link" aria-label="Debugging SpaDES Modules">
-        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

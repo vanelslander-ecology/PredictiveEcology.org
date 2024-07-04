@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eliot McIntire">
-<meta name="dcterms.date" content="2024-06-12">
+<meta name="dcterms.date" content="2024-06-21">
 
-<title>Robust and nimble scientific workflows, using SpaDES - 10&nbsp; Scheduling Events</title>
+<title>Robust and nimble scientific workflows, using SpaDES - 9&nbsp; Scheduling Events</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,35 +109,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="assets/css/main.scss">
 </head>
@@ -242,7 +213,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./Scheduling.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling Events</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./Scheduling.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Scheduling Events</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -263,7 +234,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -278,19 +249,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./installRandSpatialPkgs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Installing R and Spatial Packages</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Installing R and Spatial Packages</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./PackagesForBook.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./TroubleshootingPackageInstallation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Troubleshooting R package installation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Troubleshooting R package installation</span></span></a>
   </div>
 </li>
       </ul>
@@ -307,37 +278,37 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./NewModuleIntro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to SpaDES Modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction to SpaDES Modules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./MetaDataAndModuleFiles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Module Files and Metadata</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Module Files and Metadata</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ModuleInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module Inputs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Providing Module Inputs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simList.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ModulesAndEvents.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Scheduling.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span></a>
   </div>
 </li>
       </ul>
@@ -354,19 +325,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Caching.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./debugging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></a>
   </div>
 </li>
       </ul>
@@ -383,25 +354,25 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflowSimple2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./LandRDemo_coreVeg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Forest Landscape Modelling with LandR and <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Forest Landscape Modelling with LandR and <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ForestsAndFire.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -409,7 +380,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bestPractices.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Best practices for <span class="math inline">\(R^3T\)</span> workflows</span></a>
+ <span class="menu-text">Best practices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -428,30 +399,33 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#convert-to-a-module" id="toc-convert-to-a-module" class="nav-link active" data-scroll-target="#convert-to-a-module"><span class="header-section-number">10.1</span> Convert to a module</a></li>
-  <li><a href="#new-event-function-prediction" id="toc-new-event-function-prediction" class="nav-link" data-scroll-target="#new-event-function-prediction"><span class="header-section-number">10.2</span> New Event Function – Prediction</a></li>
-  <li><a href="#scheduling" id="toc-scheduling" class="nav-link" data-scroll-target="#scheduling"><span class="header-section-number">10.3</span> Scheduling</a>
+  <li><a href="#convert-to-a-module" id="toc-convert-to-a-module" class="nav-link active" data-scroll-target="#convert-to-a-module"><span class="header-section-number">9.1</span> Convert to a module</a>
   <ul class="collapse">
-  <li><a href="#doevent" id="toc-doevent" class="nav-link" data-scroll-target="#doevent"><span class="header-section-number">10.3.1</span> doEvent</a></li>
-  <li><a href="#the-new-event" id="toc-the-new-event" class="nav-link" data-scroll-target="#the-new-event"><span class="header-section-number">10.3.2</span> The new event</a></li>
-  <li><a href="#double-check-existing-events" id="toc-double-check-existing-events" class="nav-link" data-scroll-target="#double-check-existing-events"><span class="header-section-number">10.3.3</span> Double check existing events</a></li>
-  <li><a href="#update-module-metadata" id="toc-update-module-metadata" class="nav-link" data-scroll-target="#update-module-metadata"><span class="header-section-number">10.3.4</span> Update module metadata</a></li>
+  <li><a href="#update-module-metadata" id="toc-update-module-metadata" class="nav-link" data-scroll-target="#update-module-metadata"><span class="header-section-number">9.1.1</span> Update module metadata</a></li>
   </ul></li>
-  <li><a href="#run" id="toc-run" class="nav-link" data-scroll-target="#run"><span class="header-section-number">10.4</span> Run</a></li>
-  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">10.5</span> Questions</a></li>
-  <li><a href="#try-on-your-own" id="toc-try-on-your-own" class="nav-link" data-scroll-target="#try-on-your-own"><span class="header-section-number">10.6</span> Try on your own</a></li>
-  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">10.7</span> See also</a></li>
-  <li><a href="#more-learning-on-this-subject" id="toc-more-learning-on-this-subject" class="nav-link" data-scroll-target="#more-learning-on-this-subject"><span class="header-section-number">10.8</span> More learning on this subject</a></li>
-  <li><a href="#barebones-r-script" id="toc-barebones-r-script" class="nav-link" data-scroll-target="#barebones-r-script"><span class="header-section-number">10.9</span> Barebones R script</a></li>
+  <li><a href="#new-event-function-prediction" id="toc-new-event-function-prediction" class="nav-link" data-scroll-target="#new-event-function-prediction"><span class="header-section-number">9.2</span> New Event Function – Prediction</a></li>
+  <li><a href="#scheduling" id="toc-scheduling" class="nav-link" data-scroll-target="#scheduling"><span class="header-section-number">9.3</span> Scheduling</a>
+  <ul class="collapse">
+  <li><a href="#doevent.-and-scheduleevent" id="toc-doevent.-and-scheduleevent" class="nav-link" data-scroll-target="#doevent.-and-scheduleevent"><span class="header-section-number">9.3.1</span> <code>doEvent.*()</code> and <code>scheduleEvent()</code></a></li>
+  <li><a href="#the-new-events" id="toc-the-new-events" class="nav-link" data-scroll-target="#the-new-events"><span class="header-section-number">9.3.2</span> The new events</a></li>
+  <li><a href="#double-check-existing-events" id="toc-double-check-existing-events" class="nav-link" data-scroll-target="#double-check-existing-events"><span class="header-section-number">9.3.3</span> Double check existing events</a></li>
+  </ul></li>
+  <li><a href="#run" id="toc-run" class="nav-link" data-scroll-target="#run"><span class="header-section-number">9.4</span> Run</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">9.5</span> Questions</a></li>
+  <li><a href="#try-on-your-own" id="toc-try-on-your-own" class="nav-link" data-scroll-target="#try-on-your-own"><span class="header-section-number">9.6</span> Try on your own</a></li>
+  <li><a href="#common-mistakes" id="toc-common-mistakes" class="nav-link" data-scroll-target="#common-mistakes"><span class="header-section-number">9.7</span> Common mistakes</a></li>
+  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also"><span class="header-section-number">9.8</span> See also</a></li>
+  <li><a href="#more-learning-on-this-subject" id="toc-more-learning-on-this-subject" class="nav-link" data-scroll-target="#more-learning-on-this-subject"><span class="header-section-number">9.9</span> More learning on this subject</a></li>
+  <li><a href="#barebones-r-script" id="toc-barebones-r-script" class="nav-link" data-scroll-target="#barebones-r-script"><span class="header-section-number">9.10</span> Barebones R script</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./Scheduling.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling Events</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SpaDESbasics.html">SpaDES 101</a></li><li class="breadcrumb-item"><a href="./Scheduling.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Scheduling Events</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-schedulingEvents" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span></h1>
+<h1 class="title"><span id="sec-schedulingEvents" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span></h1>
 </div>
 
 
@@ -468,7 +442,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 12, 2024</p>
+      <p class="date">June 21, 2024</p>
     </div>
   </div>
   
@@ -490,7 +464,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>Here, we will talk about <strong>scheduling events</strong> in a SpaDES module using a function called <a href="https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/scheduleEvent"><code>SpaDES.core ::scheduleEvents()</code></a>. Please see <a href="NewModuleIntro.html" class="quarto-xref"><span>Chapter 5</span></a> for how to create a simple module and <a href="ModulesAndEvents.html" class="quarto-xref"><span>Chapter 9</span></a> for an overview of what events are before attempting this section.</p>
+<p>Here, we will talk about <strong>scheduling events</strong> in a SpaDES module using a function called <a href="https://rdocumentation.org/packages/SpaDES.core/versions/2.0.5/topics/scheduleEvent"><code>SpaDES.core ::scheduleEvents()</code></a>. Please see <a href="NewModuleIntro.html" class="quarto-xref"><span>Chapter 4</span></a> for how to create a simple module and <a href="ModulesAndEvents.html" class="quarto-xref"><span>Chapter 8</span></a> for an overview of what events are before attempting this section.</p>
 <div class="callout callout-style-simple callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -509,7 +483,7 @@ Repeated? When?
 </div>
 <p>Scheduling events allows us to control when things happen in a sequence. This can be as simple as “this module will just do one thing” to “this module will do several things, some of which repeat”.</p>
 <p>Below, we will use a simple example where there is one thing that happens once and one thing that happens several times. In “normal” R-speak, <em>we will write a loop</em>.</p>
-<p>We return to the example in <a href="NewModuleIntro.html" class="quarto-xref"><span>Chapter 5</span></a>, but this time, we will add a <em>predict</em> step from the linear model, with updated values of the <code>y</code>. In this simple example, we will pretend that each prediction is “one year into the future” and that our <code>y</code> will slowly get bigger.</p>
+<p>We return to the example in <a href="NewModuleIntro.html" class="quarto-xref"><span>Chapter 4</span></a>, but this time, we will add a <em>predict</em> step from the linear model, with updated values of the <code>y</code>. In this simple example, we will pretend that each prediction is “one year into the future” and that our <code>y</code> will slowly get bigger.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -543,8 +517,8 @@ Repeated? When?
 </div>
 </div>
 </div>
-<section id="convert-to-a-module" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="convert-to-a-module"><span class="header-section-number">10.1</span> Convert to a module</h2>
+<section id="convert-to-a-module" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="convert-to-a-module"><span class="header-section-number">9.1</span> Convert to a module</h2>
 <p>In the above code, there are 4 sections. These will each be copied into the SpaDES module below, in their respective sections. We have added 1 new section, called “Prediction”.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -552,7 +526,7 @@ Repeated? When?
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">newModule</span>(<span class="at">name =</span> <span class="st">"scheduling"</span>, <span class="at">path =</span> <span class="st">"~/SpaDES_book/scheduling"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Open the module file, which will be printed in the console. Scroll down to the <code>Init</code> function and copy the <code>Init</code>, the <code>.inputObjects</code>, and the <code>Plot</code> parts in the code above into the new module, as we did in <a href="NewModuleIntro.html" class="quarto-xref"><span>Chapter 5</span></a>.</p>
+<p>Open the module file, which will be printed in the console. Scroll down to the <code>Init</code> function and copy the <code>Init</code>, the <code>.inputObjects()</code>, and the <code>Plot</code> parts in the code above into the new module, as we did in <a href="NewModuleIntro.html" class="quarto-xref"><span>Chapter 4</span></a>.</p>
 <p>We must make the same decisions about “local objects” (objects that are OK not to be kept for later) and about “global objects” (those that we want to keep). These <em>global</em> objects get put into <code>sim</code>. Your new module should have these 3 new sections/functions:</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -562,88 +536,155 @@ Repeated? When?
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fit a linear model</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  sim<span class="sc">$</span>out <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> sim<span class="sc">$</span>x)</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  sim<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>plotFun <span class="ot">&lt;-</span> <span class="cf">function</span>(sim) {</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  sim<span class="sc">$</span>predictions <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">year =</span> <span class="fu">rep</span>(sim<span class="sc">$</span>years, <span class="at">each =</span> <span class="dv">10</span>), <span class="at">prediction =</span> <span class="fu">unlist</span>(sim<span class="sc">$</span>pred))</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># plot the predictions</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  sim<span class="sc">$</span>gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(sim<span class="sc">$</span>predictions, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> prediction, <span class="at">colour =</span> year)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>()</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(sim<span class="sc">$</span>gg)</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>.inputObjects <span class="ot">&lt;-</span> <span class="cf">function</span>(sim) {</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  sim<span class="sc">$</span>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">invisible</span>(sim))</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>plotFun <span class="ot">&lt;-</span> <span class="cf">function</span>(sim) {</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  sim<span class="sc">$</span>predictions <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">year =</span> <span class="fu">rep</span>(sim<span class="sc">$</span>years, <span class="at">each =</span> <span class="dv">10</span>), <span class="at">prediction =</span> <span class="fu">unlist</span>(sim<span class="sc">$</span>pred))</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># plot the predictions</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  sim<span class="sc">$</span>gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(sim<span class="sc">$</span>predictions, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> prediction, <span class="at">colour =</span> year)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>()</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(sim<span class="sc">$</span>gg)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">invisible</span>(sim))</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>.inputObjects <span class="ot">&lt;-</span> <span class="cf">function</span>(sim) {</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  sim<span class="sc">$</span>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">invisible</span>(sim))</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+<section id="update-module-metadata" class="level3" data-number="9.1.1">
+<h3 data-number="9.1.1" class="anchored" data-anchor-id="update-module-metadata"><span class="header-section-number">9.1.1</span> Update module metadata</h3>
+<p>Like in <a href="MetaDataAndModuleFiles.html" class="quarto-xref"><span>Chapter 5</span></a>, we also have to update the module metadata… what the inputs, outputs, parameters <em>are</em>. <code>SpaDES</code> will not error if the metadata are not correct, but it will try to point out the problems.</p>
+<p>Here’s an example:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">createsOutput</span>(<span class="at">objectName =</span> <span class="st">"predictions"</span>, <span class="at">objectClass =</span> <span class="st">"data.frame"</span>, </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">desc =</span> <span class="st">"Table of predictions and years"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Make sure the inputs (<code>x</code>) and all outputs (<code>predictions</code>, <code>gg</code>, <code>pred</code> and <code>out</code>) are all declared.</p>
 </section>
-<section id="new-event-function-prediction" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="new-event-function-prediction"><span class="header-section-number">10.2</span> New Event Function – Prediction</h2>
+</section>
+<section id="new-event-function-prediction" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="new-event-function-prediction"><span class="header-section-number">9.2</span> New Event Function – Prediction</h2>
 <p>The new part is the <code>for</code> loop. This part takes new covariates (new values for <code>y</code>), emulating “predicted” covariates, and derives a newly predicted <code>x</code>, which we then keep as the <em>predicted</em> <code>x</code> values each year.</p>
 <p>We’ll use <code>scheduleEvent()</code> below to do this iteration. For now, copy the <code>Prediction</code> part into a new function:</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Prediction <span class="ot">&lt;-</span> <span class="cf">function</span>(sim) {</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  startYear <span class="ot">&lt;-</span> <span class="dv">2023</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  sim<span class="sc">$</span>years <span class="ot">&lt;-</span> startYear<span class="sc">:</span>(startYear <span class="sc">+</span> <span class="dv">10</span>) <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (year <span class="cf">in</span> sim<span class="sc">$</span>years <span class="sc">-</span> startYear) {</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    sim<span class="sc">$</span>pred[[year]] <span class="ot">&lt;-</span> <span class="fu">predict</span>(sim<span class="sc">$</span>out, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>) <span class="sc">+</span> year))</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">invisible</span>(sim))</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Prediction <span class="ot">&lt;-</span> <span class="cf">function</span>(sim) {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  startYear <span class="ot">&lt;-</span> <span class="dv">2023</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  sim<span class="sc">$</span>years <span class="ot">&lt;-</span> startYear<span class="sc">:</span>(startYear <span class="sc">+</span> <span class="dv">10</span>) <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (year <span class="cf">in</span> sim<span class="sc">$</span>years <span class="sc">-</span> startYear) {</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    sim<span class="sc">$</span>pred[[year]] <span class="ot">&lt;-</span> <span class="fu">predict</span>(sim<span class="sc">$</span>out, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>) <span class="sc">+</span> year))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">invisible</span>(sim))</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+<p>Note the new output <code>years</code>, which should also be added to the metadata.</p>
 </section>
-<section id="scheduling" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="scheduling"><span class="header-section-number">10.3</span> Scheduling</h2>
-<p>Now we need to tell SpaDES when to execute and when to iterate each of the steps or “events”. The <code>Init</code> we do once, at the start. The <code>plotFn</code> we do once, but this time it is at the “end”. The <code>.inputObjects</code> always only happens once and “before the start” (<code>Init</code>) – it is scheduled automatically so nothing to do here. The last part (i.e., the prediction event) must happen 10 times, and it must start after <code>Init</code> and before the <code>plotFn</code>.</p>
-<section id="doevent" class="level3" data-number="10.3.1">
-<h3 data-number="10.3.1" class="anchored" data-anchor-id="doevent"><span class="header-section-number">10.3.1</span> doEvent</h3>
-<p>There is a special function in a <code>SpaDES</code> module called <code>doEvent()</code>. SpaDES calls this function once, passing the argument <code>event = "init"</code>. That means that R will enter into this function only once and run only the <code>init</code> part, unless we specifically tell it to do more, using the <code>scheduleEvent</code> function.</p>
-<p>We place this function anywhere we want inside <code>doEvent</code>, in general. In this example, we will place it in a few places.</p>
-<section id="in-the-init-event" class="level4" data-number="10.3.1.1">
-<h4 data-number="10.3.1.1" class="anchored" data-anchor-id="in-the-init-event"><span class="header-section-number">10.3.1.1</span> In the <code>init</code> event</h4>
+<section id="scheduling" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="scheduling"><span class="header-section-number">9.3</span> Scheduling</h2>
+<p>Now we need to tell SpaDES when to execute and when to iterate each of the steps or “events”. The <code>init</code> we do once, at the start. The <code>.inputObjects</code> always only happens once and “before the start” (<code>init</code>) – it is scheduled automatically so nothing to do here. The last part (i.e., the prediction event) must happen 10 times, and it must start after <code>init</code> and before the <code>plot</code>. The <code>plot</code> we do once.</p>
+<section id="doevent.-and-scheduleevent" class="level3" data-number="9.3.1">
+<h3 data-number="9.3.1" class="anchored" data-anchor-id="doevent.-and-scheduleevent"><span class="header-section-number">9.3.1</span> <code>doEvent.*()</code> and <code>scheduleEvent()</code></h3>
+<p>There is a special function defined in a <code>SpaDES</code> module called <code>doEvent.*()</code> (it usually is appended with the module name: <code>doEvent.&lt;module_name&gt;()</code>). SpaDES calls this function several times and executes it’s code depending on the values of the <code>eventTime</code> and <code>eventType</code> arguments.</p>
+<p>By default the only mandatory event executed by <code>spades</code> is the <code>init</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, unless we specifically tell it to do more, using the <code>SpaDES.core::scheduleEvent()</code> function and declaring more values for the <code>event</code> argument (i.e.&nbsp;more events).</p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Order of event <em>code</em> (not to confuse with event <em>execution</em>)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Events do not have to be defined in any particular order in the <code>doEvent.&lt;module_name&gt;()</code> function, as their order of execution is solely determined by scheduling (<code>scheduleEvent()</code>) or, for some events, imposed by <code>simInit()</code> and <code>spades()</code> (e.g., <code>.inputObjects()</code> and <code>init</code> are always executed first).</p>
+<p>Similarly, the order in which functions used by events appear in the module R script is arbitrary.</p>
+</div>
+</div>
+<p><code>scheduleEvent()</code> is the “scheduler” function. Using the arguments <code>eventTime</code> and <code>eventType</code>, we define <em>when</em> and <em>what event</em> to schedule, respectively. <code>eventPriority</code> can be specified to determine which event should occur first, when two are scheduled for the same time<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Finally, <code>moduleName</code> and <code>sim</code> always have to be passed.</p>
+<p>We place <code>scheduleEvent()</code> anywhere we want inside each event’s code in <code>doEvent.*()</code>. In this example, we will place it in a few places:</p>
+<section id="in-the-init-event" class="level4" data-number="9.3.1.1">
+<h4 data-number="9.3.1.1" class="anchored" data-anchor-id="in-the-init-event"><span class="header-section-number">9.3.1.1</span> In the <code>init</code> event</h4>
 <p>We look at the <code>init</code> event (code inside <code>event = "init"</code>) and we see 2 <code>scheduleEvent</code> calls that come with the template. We will use those to learn. In each “event”, we often see one part that “does something” and another part that “schedules something”.</p>
 <p>In the default template, we “do” the <code>Init</code> function and we schedule <code>plot</code> and <code>save</code>. We can delete the <code>save</code> event, as we won’t do that here. But we will replace it with “schedule prediction”.</p>
-<p>See <a href="https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html"><code>?start</code></a>, <a href=""><code>?scheduleEvent</code></a>https://rdrr.io/cran/SpaDES.core/man/scheduleEvent.html, <a href="https://rdrr.io/cran/SpaDES.core/man/params.html"><code>?P</code></a></p>
+<p>See <a href="https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html"><code>?start</code></a>, <a href="https://rdrr.io/cran/SpaDES.core/man/scheduleEvent.html"><code>?scheduleEvent</code></a>, <a href="https://rdrr.io/cran/SpaDES.core/man/params.html"><code>?P</code></a></p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> <span class="fu">Init</span>(sim)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># schedule future event(s)</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> <span class="fu">scheduleEvent</span>(sim, <span class="fu">P</span>(sim)<span class="sc">$</span>.plotInitialTime, <span class="st">"scheduling"</span>, <span class="st">"plot"</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># sim &lt;- scheduleEvent(sim, P(sim)$.saveInitialTime, "scheduling", "save")</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># here we create a new event type == "predictions" and we schedule it for `start(sim)`</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> <span class="fu">scheduleEvent</span>(sim, <span class="fu">start</span>(sim), <span class="st">"scheduling"</span>, <span class="st">"predictions"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> <span class="fu">Init</span>(sim)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># schedule future event(s)</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> <span class="fu">scheduleEvent</span>(sim, <span class="fu">P</span>(sim)<span class="sc">$</span>.plotInitialTime, <span class="st">"scheduling"</span>, <span class="st">"plot"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># here we create a new event type == "predictions" and we schedule it for `start(sim)`</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> <span class="fu">scheduleEvent</span>(sim, <span class="fu">start</span>(sim), <span class="st">"scheduling"</span>, <span class="st">"predictions"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Copy the above code chunk to the <code>init</code> section so that it looks like this:</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span>(</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  eventType,</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">init =</span> {</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    sim <span class="ot">&lt;-</span> <span class="fu">Init</span>(sim)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># schedule future event(s)</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    sim <span class="ot">&lt;-</span> <span class="fu">scheduleEvent</span>(sim, <span class="fu">P</span>(sim)<span class="sc">$</span>.plotInitialTime, <span class="st">"scheduling"</span>, <span class="st">"plot"</span>)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># here we create a new event type == "predictions" and we schedule it for `start(sim)`</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    sim <span class="ot">&lt;-</span> <span class="fu">scheduleEvent</span>(sim, <span class="fu">start</span>(sim), <span class="st">"scheduling"</span>, <span class="st">"predictions"</span>) </span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  },</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  ...</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  eventType,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">init =</span> {</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    sim <span class="ot">&lt;-</span> <span class="fu">Init</span>(sim)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># schedule future event(s)</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    sim <span class="ot">&lt;-</span> <span class="fu">scheduleEvent</span>(sim, <span class="fu">P</span>(sim)<span class="sc">$</span>.plotInitialTime, <span class="st">"scheduling"</span>, <span class="st">"plot"</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># here we create a new event type == "predictions" and we schedule it for `start(sim)`</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    sim <span class="ot">&lt;-</span> <span class="fu">scheduleEvent</span>(sim, <span class="fu">start</span>(sim), <span class="st">"scheduling"</span>, <span class="st">"predictions"</span>) </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  ...</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+</div>
+<div class="callout callout-style-simple callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Match <code>scheduleEvent()</code> arguments to event names
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The name of an event is defined as argument values for <code>doEvent.&lt;module_name&gt;(..., eventType)</code>:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>doEvent.scheduling <span class="ot">=</span> <span class="cf">function</span>(sim, eventTime, eventType) {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">switch</span>(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    eventType,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">init =</span> {    <span class="co"># &lt;----- "init" is the eventType/name</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>     <span class="sc">&lt;</span>...<span class="sc">&gt;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">predictions =</span> {  <span class="co"># &lt;----- "predictions" is another eventType/name</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>      <span class="sc">&lt;</span>...<span class="sc">&gt;</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">warning</span>(<span class="fu">noEventWarning</span>(sim))</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">invisible</span>(sim))</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>It <em>must</em> match what is provided to <code>scheduleEvent(..., eventType)</code>.</p>
+</div>
 </div>
 </section>
 </section>
-<section id="the-new-event" class="level3" data-number="10.3.2">
-<h3 data-number="10.3.2" class="anchored" data-anchor-id="the-new-event"><span class="header-section-number">10.3.2</span> The new event</h3>
-<p>We will add code to make a new event, called <code>"predictions"</code> (the name must match what we wrote in the <code>scheduleEvent</code> above). In this event, we “do” the prediction, then we schedule the next prediction at “time plus 1”</p>
+<section id="the-new-events" class="level3" data-number="9.3.2">
+<h3 data-number="9.3.2" class="anchored" data-anchor-id="the-new-events"><span class="header-section-number">9.3.2</span> The new events</h3>
+<p>We will add code to make two new events, called <code>"predictions"</code> and <code>"plot"</code> (the name must match what we wrote in the <code>scheduleEvent()</code> above). In these events, we “do” the prediction, schedule the next prediction at “time plus 1”, and plot.</p>
 <p>See <code>?SpaDES.core::times()</code>.</p>
 <div class="callout callout-style-simple callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -663,18 +704,22 @@ Time in <code>SpaDES</code>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span>(</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  eventType,</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">init =</span> {...},</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">predictions =</span> {</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># do the Prediction</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    sim <span class="ot">&lt;-</span> <span class="fu">Prediction</span>(sim)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># schedule the next Prediction</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    sim <span class="ot">&lt;-</span> <span class="fu">scheduleEvent</span>(sim, <span class="fu">time</span>(sim) <span class="sc">+</span> <span class="dv">1</span>, <span class="st">"scheduling"</span>, <span class="st">"predictions"</span>) </span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  },</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  ...</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  eventType,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">init =</span> {...},</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">predictions =</span> {</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># do the Prediction</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    sim <span class="ot">&lt;-</span> <span class="fu">Prediction</span>(sim)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># schedule the next Prediction</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    sim <span class="ot">&lt;-</span> <span class="fu">scheduleEvent</span>(sim, <span class="fu">time</span>(sim) <span class="sc">+</span> <span class="dv">1</span>, <span class="st">"scheduling"</span>, <span class="st">"predictions"</span>) </span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot =</span> {</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># do the plot</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    sim <span class="ot">&lt;-</span> <span class="fu">plotFun</span>(sim)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  ...</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="callout callout-style-simple callout-tip callout-titled">
@@ -691,90 +736,88 @@ Top-down vs Bottom-up workflow sequencing
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scheduleEvent</span>(sim, <span class="fu">time</span>(sim) <span class="sc">+</span> <span class="dv">1</span>, <span class="st">"predictions"</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scheduleEvent</span>(sim, <span class="fu">time</span>(sim) <span class="sc">+</span> <span class="dv">2</span>, <span class="st">"predictions"</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scheduleEvent</span>(sim, <span class="fu">time</span>(sim) <span class="sc">+</span> <span class="dv">3</span>, <span class="st">"predictions"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scheduleEvent</span>(sim, <span class="fu">time</span>(sim) <span class="sc">+</span> <span class="dv">1</span>, <span class="st">"predictions"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scheduleEvent</span>(sim, <span class="fu">time</span>(sim) <span class="sc">+</span> <span class="dv">2</span>, <span class="st">"predictions"</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scheduleEvent</span>(sim, <span class="fu">time</span>(sim) <span class="sc">+</span> <span class="dv">3</span>, <span class="st">"predictions"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>This would schedule 3 <em>predictions</em>, during the next three “time steps”. This may be very clear, but it would be difficult to do this for dozens of years (could be done with a for-loop).</p>
-<p>A “bottom up” approach is to schedule the <em>predictions</em> event once, then each time that <em>predictions</em> event occurs, reschedule it.</p>
+<p>A “bottom up” approach is to schedule the <em>predictions</em> event once during <code>init</code>, then each time that <em>predictions</em> event occurs, reschedule it:</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>init <span class="ot">=</span> {</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scheduleEvent</span>(sim, <span class="fu">time</span>(sim), <span class="st">"predictions"</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>predictions <span class="ot">=</span> {</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scheduleEvent</span>(sim, <span class="fu">time</span>(sim) <span class="sc">+</span> <span class="dv">1</span>, <span class="st">"predictions"</span>)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>init <span class="ot">=</span> {</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  ...</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scheduleEvent</span>(sim, <span class="fu">start</span>(sim), <span class="st">"predictions"</span>)   <span class="co"># schedule first occurrence of "predictions"</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>},</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>predictions <span class="ot">=</span> {</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  ...</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scheduleEvent</span>(sim, <span class="fu">time</span>(sim) <span class="sc">+</span> <span class="dv">1</span>, <span class="st">"predictions"</span>)  <span class="co"># re-schedule "predictions"</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Each time the <em>predictions</em> event happens, it will reschedule itself forever! Very simple. The workflow sequence emerges from the self-scheduling.</p>
 </div>
 </div>
 </section>
-<section id="double-check-existing-events" class="level3" data-number="10.3.3">
-<h3 data-number="10.3.3" class="anchored" data-anchor-id="double-check-existing-events"><span class="header-section-number">10.3.3</span> Double check existing events</h3>
-<p>If we ran the above changes, we would see an error because <code>plotFn</code> is, by default, scheduled to run at the time that is specified by <code>.plotInitialTime</code>, which by default is <code>start(sim)</code>. We have no data yet at that time. So, we will choose to schedule <code>plotFn</code> to run at <code>end(sim)</code>:</p>
+<section id="double-check-existing-events" class="level3" data-number="9.3.3">
+<h3 data-number="9.3.3" class="anchored" data-anchor-id="double-check-existing-events"><span class="header-section-number">9.3.3</span> Double check existing events</h3>
+<p>If we ran the above changes, we would see an error because <code>plotFun</code> was scheduled to run at the time that is specified by <code>.plotInitialTime</code>, which by default is <code>start(sim)</code>. We have no data yet at that time. So, we will choose to schedule <code>plotFun</code> to run at <code>end(sim)</code>:</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scheduleEvent</span>(sim, <span class="fu">end</span>(sim), <span class="st">"scheduling"</span>, <span class="st">"plot"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scheduleEvent</span>(sim, <span class="fu">end</span>(sim), <span class="st">"scheduling"</span>, <span class="st">"plot"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section>
-<section id="update-module-metadata" class="level3" data-number="10.3.4">
-<h3 data-number="10.3.4" class="anchored" data-anchor-id="update-module-metadata"><span class="header-section-number">10.3.4</span> Update module metadata</h3>
-<p>Like in <a href="MetaDataAndModuleFiles.html" class="quarto-xref"><span>Chapter 6</span></a>, we have to update the module metadata… what the inputs, outputs, parameters <em>are</em>. <code>SpaDES</code> will not error if the metadata are not correct, but it will try to point out the problems.</p>
-<p>Here’s an example:</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">createsOutput</span>(<span class="at">objectName =</span> <span class="st">"predictions"</span>, <span class="at">objectClass =</span> <span class="st">"data.frame"</span>, </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">desc =</span> <span class="st">"Table of predictions and years"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Events and event functions – not to be confused
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The name of an event and of the function that an event calls (the “event function”) need not (and should not, to avoid confusion) be the same.</p>
+<p>In the examples above the <code>predictions</code> <em>event</em> called the <code>Prediction()</code> <em>event function</em> and the <code>plot</code> event called the <code>plotFun()</code> function.</p>
+<p>Conventionally, event names have been all lowercase; but this highly depends on developer coding style and the module.</p>
+</div>
 </div>
 </section>
 </section>
-<section id="run" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="run"><span class="header-section-number">10.4</span> Run</h2>
+<section id="run" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="run"><span class="header-section-number">9.4</span> Run</h2>
 <p>The resulting module can now be run.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">simInitAndSpades</span>(<span class="at">modules =</span> <span class="st">"scheduling"</span>, <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> <span class="st">"~/SpaDES_book/scheduling"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">simInitAndSpades</span>(<span class="at">modules =</span> <span class="st">"scheduling"</span>, <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> <span class="st">"~/SpaDES_book/scheduling"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>A complete version of this new module can be found at <a href="https://github.com/PredictiveEcology/PredictiveEcology.org/blob/training-book/tutos/scheduling/scheduling/scheduling.R">scheduling.R</a>. You can copy this over top of the new module that you created here, i.e., keep the same folder structure.</p>
+<p>A complete version of this new module can be found at <a href="https://github.com/PredictiveEcology/PredictiveEcology.org/blob/tutos/scheduling/scheduling.R">scheduling.R</a>. You can copy this over top of the new module that you created here, i.e., keep the same folder structure.</p>
 </section>
-<section id="questions" class="level2" data-number="10.5">
-<h2 data-number="10.5" class="anchored" data-anchor-id="questions"><span class="header-section-number">10.5</span> Questions</h2>
+<section id="questions" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="questions"><span class="header-section-number">9.5</span> Questions</h2>
 <ol type="1">
 <li><p>how are some ways that <code>scheduleEvent</code> is different from a “loop”?</p>
 <ul>
 <li><p>We can change the “step” length between events.</p></li>
 <li><p>We can interweave events, e.g., a fire event then a tree growth event</p></li>
 </ul></li>
-</ol>
-<!-- -->
-<ol start="2" type="1">
 <li><p>When is a loop better than scheduling?</p>
 <ul>
 <li><p>Loops are much faster than scheduling.</p></li>
 <li><p>But really, avoid loops in R if you can help it</p></li>
 </ul></li>
-</ol>
-<!-- -->
-<ol start="3" type="1">
 <li><p>Chances are that the first versions of this module didn’t work. How do you fix it?</p>
 <ul>
 <li><a href="https://github.com/PredictiveEcology/SpaDES/wiki/Debugging">Learn how to debug in R and SpaDES</a></li>
 </ul></li>
 </ol>
 </section>
-<section id="try-on-your-own" class="level2" data-number="10.6">
-<h2 data-number="10.6" class="anchored" data-anchor-id="try-on-your-own"><span class="header-section-number">10.6</span> Try on your own</h2>
+<section id="try-on-your-own" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="try-on-your-own"><span class="header-section-number">9.6</span> Try on your own</h2>
 <ul>
 <li><p>Try creating a new parameter that controls the frequency of predictions.</p>
 <p>Here’s a clue:</p>
@@ -783,134 +826,156 @@ Top-down vs Bottom-up workflow sequencing
 }    </code></pre></li>
 </ul>
 </section>
-<section id="see-also" class="level2" data-number="10.7">
-<h2 data-number="10.7" class="anchored" data-anchor-id="see-also"><span class="header-section-number">10.7</span> See also</h2>
-<p><a href="ModulesAndEvents.html" class="quarto-xref"><span>Chapter 9</span></a> on Modules, Events and Functions</p>
+<section id="common-mistakes" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="common-mistakes"><span class="header-section-number">9.7</span> Common mistakes</h2>
+<ul>
+<li><p><strong>Undefined event type</strong>. This is a <em>warning</em>, rather than an <em>error</em>, that is issued when an event is being scheduled with <code>scheduleEvent()</code>, but has not been defined in <code>doEvent.&lt;module_name&gt;()</code>. Check spelling and make sure all scheduled events appear in <code>doEvent.&lt;module_name&gt;()</code>.</p></li>
+<li><p><strong>Event not being scheduled/executed</strong>. If an event doesn’t appear printed in <code>spades()</code> messages during workflow execution or in the event queues shown by <code>events()</code> or <code>completed()</code>, double check:</p>
+<ul>
+<li><p>whether the first occurrence of the event is being scheduled by the <code>init</code> event;</p></li>
+<li><p>if the chosen time for the first occurrence is correct;</p></li>
+<li><p>whether the event is rescheduling itself appropriately;</p></li>
+<li><p>whether the name of the event and module are spelled correctly in <code>scheduleEvent()</code>;</p></li>
+<li><p>whether the event has been <em>defined</em> in <code>doEvent.&lt;module_name&gt;()</code>.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="see-also" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="see-also"><span class="header-section-number">9.8</span> See also</h2>
+<p><a href="ModulesAndEvents.html" class="quarto-xref"><span>Chapter 8</span></a> on Modules, Events and Functions</p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/scheduleEvent.html"><code>?scheduleEvent</code></a></p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/params.html"><code>?P</code></a></p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html"><code>?time</code></a></p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html"><code>?start</code></a></p>
 <p><a href="https://rdrr.io/cran/SpaDES.core/man/simList-accessors-times.html"><code>?end</code></a></p>
+<p><a href="https://rdrr.io/r/base/switch.html"><code>?switch</code></a></p>
 </section>
-<section id="more-learning-on-this-subject" class="level2" data-number="10.8">
-<h2 data-number="10.8" class="anchored" data-anchor-id="more-learning-on-this-subject"><span class="header-section-number">10.8</span> More learning on this subject</h2>
+<section id="more-learning-on-this-subject" class="level2" data-number="9.9">
+<h2 data-number="9.9" class="anchored" data-anchor-id="more-learning-on-this-subject"><span class="header-section-number">9.9</span> More learning on this subject</h2>
 <p><a href="https://spades-workshops.predictiveecology.org/articlesMay2018/MyFirstModule.html">My First Module</a></p>
 <p><a href="https://spades-workshops.predictiveecology.org/articles/02c-Convert_R_code_to_SpaDES_module.html">Creating a seed dispersal module</a></p>
 </section>
-<section id="barebones-r-script" class="level2" data-number="10.9">
-<h2 data-number="10.9" class="anchored" data-anchor-id="barebones-r-script"><span class="header-section-number">10.9</span> Barebones R script</h2>
+<section id="barebones-r-script" class="level2" data-number="9.10">
+<h2 data-number="9.10" class="anchored" data-anchor-id="barebones-r-script"><span class="header-section-number">9.10</span> Barebones R script</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># .inputObjects  #####</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Init #####</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># fit a linear model</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Prediction #####</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>startYear <span class="ot">&lt;-</span> <span class="dv">2023</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> startYear<span class="sc">:</span>(startYear <span class="sc">+</span> <span class="dv">10</span>) <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (year <span class="cf">in</span> years <span class="sc">-</span> startYear) {</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  pred[[year]] <span class="ot">&lt;-</span> <span class="fu">predict</span>(out, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>) <span class="sc">+</span> year))</span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot #####</span></span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>predictions <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">year =</span> <span class="fu">rep</span>(years, <span class="at">each =</span> <span class="dv">10</span>), <span class="at">prediction =</span> <span class="fu">unlist</span>(pred))</span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the predictions</span></span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(predictions, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> prediction, <span class="at">colour =</span> year)) <span class="sc">+</span> </span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>()</span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">newModule</span>(<span class="at">name =</span> <span class="st">"scheduling"</span>, <span class="at">path =</span> <span class="st">"~/SpaDES_book/scheduling"</span>)</span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>Init <span class="ot">&lt;-</span> <span class="cf">function</span>(sim) {</span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> sim<span class="sc">$</span>x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fit a linear model</span></span>
-<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>  sim<span class="sc">$</span>out <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> sim<span class="sc">$</span>x)</span>
-<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>  sim<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>plotFun <span class="ot">&lt;-</span> <span class="cf">function</span>(sim) {</span>
-<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>  sim<span class="sc">$</span>predictions <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">year =</span> <span class="fu">rep</span>(sim<span class="sc">$</span>years, <span class="at">each =</span> <span class="dv">10</span>), <span class="at">prediction =</span> <span class="fu">unlist</span>(sim<span class="sc">$</span>pred))</span>
-<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># plot the predictions</span></span>
-<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>  sim<span class="sc">$</span>gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(sim<span class="sc">$</span>predictions, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> prediction, <span class="at">colour =</span> year)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>()</span>
-<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(sim<span class="sc">$</span>gg)</span>
-<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>.inputObjects <span class="ot">&lt;-</span> <span class="cf">function</span>(sim) {</span>
-<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>  sim<span class="sc">$</span>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
-<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>Prediction <span class="ot">&lt;-</span> <span class="cf">function</span>(sim) {</span>
-<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>  startYear <span class="ot">&lt;-</span> <span class="dv">2023</span></span>
-<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a>  sim<span class="sc">$</span>years <span class="ot">&lt;-</span> startYear<span class="sc">:</span>(startYear <span class="sc">+</span> <span class="dv">10</span>) <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (year <span class="cf">in</span> sim<span class="sc">$</span>years <span class="sc">-</span> startYear) {</span>
-<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a>    sim<span class="sc">$</span>pred[[year]] <span class="ot">&lt;-</span> <span class="fu">predict</span>(sim<span class="sc">$</span>out, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>) <span class="sc">+</span> year))</span>
-<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">invisible</span>(sim))</span>
-<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-52"><a href="#cb14-52" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> <span class="fu">Init</span>(sim)</span>
-<span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-54"><a href="#cb14-54" aria-hidden="true" tabindex="-1"></a><span class="co"># schedule future event(s)</span></span>
-<span id="cb14-55"><a href="#cb14-55" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> <span class="fu">scheduleEvent</span>(sim, <span class="fu">P</span>(sim)<span class="sc">$</span>.plotInitialTime, <span class="st">"scheduling"</span>, <span class="st">"plot"</span>)</span>
-<span id="cb14-56"><a href="#cb14-56" aria-hidden="true" tabindex="-1"></a><span class="co"># sim &lt;- scheduleEvent(sim, P(sim)$.saveInitialTime, "scheduling", "save")</span></span>
-<span id="cb14-57"><a href="#cb14-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-58"><a href="#cb14-58" aria-hidden="true" tabindex="-1"></a><span class="co"># here we create a new event type == "predictions" and we schedule it for `start(sim)`</span></span>
-<span id="cb14-59"><a href="#cb14-59" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> <span class="fu">scheduleEvent</span>(sim, <span class="fu">start</span>(sim), <span class="st">"scheduling"</span>, <span class="st">"predictions"</span>) </span>
-<span id="cb14-60"><a href="#cb14-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-61"><a href="#cb14-61" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span>(</span>
-<span id="cb14-62"><a href="#cb14-62" aria-hidden="true" tabindex="-1"></a>  eventType,</span>
-<span id="cb14-63"><a href="#cb14-63" aria-hidden="true" tabindex="-1"></a>  <span class="at">init =</span> {</span>
-<span id="cb14-64"><a href="#cb14-64" aria-hidden="true" tabindex="-1"></a>    sim <span class="ot">&lt;-</span> <span class="fu">Init</span>(sim)</span>
-<span id="cb14-65"><a href="#cb14-65" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb14-66"><a href="#cb14-66" aria-hidden="true" tabindex="-1"></a>    <span class="co"># schedule future event(s)</span></span>
-<span id="cb14-67"><a href="#cb14-67" aria-hidden="true" tabindex="-1"></a>    sim <span class="ot">&lt;-</span> <span class="fu">scheduleEvent</span>(sim, <span class="fu">P</span>(sim)<span class="sc">$</span>.plotInitialTime, <span class="st">"scheduling"</span>, <span class="st">"plot"</span>)</span>
-<span id="cb14-68"><a href="#cb14-68" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb14-69"><a href="#cb14-69" aria-hidden="true" tabindex="-1"></a>    <span class="co"># here we create a new event type == "predictions" and we schedule it for `start(sim)`</span></span>
-<span id="cb14-70"><a href="#cb14-70" aria-hidden="true" tabindex="-1"></a>    sim <span class="ot">&lt;-</span> <span class="fu">scheduleEvent</span>(sim, <span class="fu">start</span>(sim), <span class="st">"scheduling"</span>, <span class="st">"predictions"</span>) </span>
-<span id="cb14-71"><a href="#cb14-71" aria-hidden="true" tabindex="-1"></a>  },</span>
-<span id="cb14-72"><a href="#cb14-72" aria-hidden="true" tabindex="-1"></a>  ...</span>
-<span id="cb14-73"><a href="#cb14-73" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb14-74"><a href="#cb14-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-75"><a href="#cb14-75" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span>(</span>
-<span id="cb14-76"><a href="#cb14-76" aria-hidden="true" tabindex="-1"></a>  eventType,</span>
-<span id="cb14-77"><a href="#cb14-77" aria-hidden="true" tabindex="-1"></a>  <span class="at">init =</span> {...},</span>
-<span id="cb14-78"><a href="#cb14-78" aria-hidden="true" tabindex="-1"></a>  <span class="at">predictions =</span> {</span>
-<span id="cb14-79"><a href="#cb14-79" aria-hidden="true" tabindex="-1"></a>    <span class="co"># do the Prediction</span></span>
-<span id="cb14-80"><a href="#cb14-80" aria-hidden="true" tabindex="-1"></a>    sim <span class="ot">&lt;-</span> <span class="fu">Prediction</span>(sim)</span>
-<span id="cb14-81"><a href="#cb14-81" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb14-82"><a href="#cb14-82" aria-hidden="true" tabindex="-1"></a>    <span class="co"># schedule the next Prediction</span></span>
-<span id="cb14-83"><a href="#cb14-83" aria-hidden="true" tabindex="-1"></a>    sim <span class="ot">&lt;-</span> <span class="fu">scheduleEvent</span>(sim, <span class="fu">time</span>(sim) <span class="sc">+</span> <span class="dv">1</span>, <span class="st">"scheduling"</span>, <span class="st">"predictions"</span>) </span>
-<span id="cb14-84"><a href="#cb14-84" aria-hidden="true" tabindex="-1"></a>  },</span>
-<span id="cb14-85"><a href="#cb14-85" aria-hidden="true" tabindex="-1"></a>  ...</span>
-<span id="cb14-86"><a href="#cb14-86" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb14-87"><a href="#cb14-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-88"><a href="#cb14-88" aria-hidden="true" tabindex="-1"></a><span class="fu">scheduleEvent</span>(sim, <span class="fu">time</span>(sim) <span class="sc">+</span> <span class="dv">1</span>, <span class="st">"predictions"</span>)</span>
-<span id="cb14-89"><a href="#cb14-89" aria-hidden="true" tabindex="-1"></a><span class="fu">scheduleEvent</span>(sim, <span class="fu">time</span>(sim) <span class="sc">+</span> <span class="dv">2</span>, <span class="st">"predictions"</span>)</span>
-<span id="cb14-90"><a href="#cb14-90" aria-hidden="true" tabindex="-1"></a><span class="fu">scheduleEvent</span>(sim, <span class="fu">time</span>(sim) <span class="sc">+</span> <span class="dv">3</span>, <span class="st">"predictions"</span>)</span>
-<span id="cb14-91"><a href="#cb14-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-92"><a href="#cb14-92" aria-hidden="true" tabindex="-1"></a>init <span class="ot">=</span> {</span>
-<span id="cb14-93"><a href="#cb14-93" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scheduleEvent</span>(sim, <span class="fu">time</span>(sim), <span class="st">"predictions"</span>)</span>
-<span id="cb14-94"><a href="#cb14-94" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb14-95"><a href="#cb14-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-96"><a href="#cb14-96" aria-hidden="true" tabindex="-1"></a>predictions <span class="ot">=</span> {</span>
-<span id="cb14-97"><a href="#cb14-97" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scheduleEvent</span>(sim, <span class="fu">time</span>(sim) <span class="sc">+</span> <span class="dv">1</span>, <span class="st">"predictions"</span>)</span>
-<span id="cb14-98"><a href="#cb14-98" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb14-99"><a href="#cb14-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-100"><a href="#cb14-100" aria-hidden="true" tabindex="-1"></a><span class="fu">scheduleEvent</span>(sim, <span class="fu">end</span>(sim), <span class="st">"scheduling"</span>, <span class="st">"plot"</span>)</span>
-<span id="cb14-101"><a href="#cb14-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-102"><a href="#cb14-102" aria-hidden="true" tabindex="-1"></a><span class="fu">createsOutput</span>(<span class="at">objectName =</span> <span class="st">"predictions"</span>, <span class="at">objectClass =</span> <span class="st">"data.frame"</span>, </span>
-<span id="cb14-103"><a href="#cb14-103" aria-hidden="true" tabindex="-1"></a>              <span class="at">desc =</span> <span class="st">"Table of predictions and years"</span>)</span>
-<span id="cb14-104"><a href="#cb14-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-105"><a href="#cb14-105" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">simInitAndSpades</span>(<span class="at">modules =</span> <span class="st">"scheduling"</span>, <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> <span class="st">"~/SpaDES_book/scheduling"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># .inputObjects  #####</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Init #####</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># fit a linear model</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Prediction #####</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>startYear <span class="ot">&lt;-</span> <span class="dv">2023</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> startYear<span class="sc">:</span>(startYear <span class="sc">+</span> <span class="dv">10</span>) <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (year <span class="cf">in</span> years <span class="sc">-</span> startYear) {</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  pred[[year]] <span class="ot">&lt;-</span> <span class="fu">predict</span>(out, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>) <span class="sc">+</span> year))</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot #####</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>predictions <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">year =</span> <span class="fu">rep</span>(years, <span class="at">each =</span> <span class="dv">10</span>), <span class="at">prediction =</span> <span class="fu">unlist</span>(pred))</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the predictions</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(predictions, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> prediction, <span class="at">colour =</span> year)) <span class="sc">+</span> </span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>()</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">newModule</span>(<span class="at">name =</span> <span class="st">"scheduling"</span>, <span class="at">path =</span> <span class="st">"~/SpaDES_book/scheduling"</span>)</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>Init <span class="ot">&lt;-</span> <span class="cf">function</span>(sim) {</span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> sim<span class="sc">$</span>x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fit a linear model</span></span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>  sim<span class="sc">$</span>out <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> sim<span class="sc">$</span>x)</span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>  sim<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>plotFun <span class="ot">&lt;-</span> <span class="cf">function</span>(sim) {</span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>  sim<span class="sc">$</span>predictions <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">year =</span> <span class="fu">rep</span>(sim<span class="sc">$</span>years, <span class="at">each =</span> <span class="dv">10</span>), <span class="at">prediction =</span> <span class="fu">unlist</span>(sim<span class="sc">$</span>pred))</span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># plot the predictions</span></span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>  sim<span class="sc">$</span>gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(sim<span class="sc">$</span>predictions, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> prediction, <span class="at">colour =</span> year)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>()</span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(sim<span class="sc">$</span>gg)</span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>.inputObjects <span class="ot">&lt;-</span> <span class="cf">function</span>(sim) {</span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a>  sim<span class="sc">$</span>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a>Prediction <span class="ot">&lt;-</span> <span class="cf">function</span>(sim) {</span>
+<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a>  startYear <span class="ot">&lt;-</span> <span class="dv">2023</span></span>
+<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a>  sim<span class="sc">$</span>years <span class="ot">&lt;-</span> startYear<span class="sc">:</span>(startYear <span class="sc">+</span> <span class="dv">10</span>) <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (year <span class="cf">in</span> sim<span class="sc">$</span>years <span class="sc">-</span> startYear) {</span>
+<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a>    sim<span class="sc">$</span>pred[[year]] <span class="ot">&lt;-</span> <span class="fu">predict</span>(sim<span class="sc">$</span>out, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>) <span class="sc">+</span> year))</span>
+<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">invisible</span>(sim))</span>
+<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-51"><a href="#cb15-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-52"><a href="#cb15-52" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> <span class="fu">Init</span>(sim)</span>
+<span id="cb15-53"><a href="#cb15-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-54"><a href="#cb15-54" aria-hidden="true" tabindex="-1"></a><span class="co"># schedule future event(s)</span></span>
+<span id="cb15-55"><a href="#cb15-55" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> <span class="fu">scheduleEvent</span>(sim, <span class="fu">P</span>(sim)<span class="sc">$</span>.plotInitialTime, <span class="st">"scheduling"</span>, <span class="st">"plot"</span>)</span>
+<span id="cb15-56"><a href="#cb15-56" aria-hidden="true" tabindex="-1"></a><span class="co"># sim &lt;- scheduleEvent(sim, P(sim)$.saveInitialTime, "scheduling", "save")</span></span>
+<span id="cb15-57"><a href="#cb15-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-58"><a href="#cb15-58" aria-hidden="true" tabindex="-1"></a><span class="co"># here we create a new event type == "predictions" and we schedule it for `start(sim)`</span></span>
+<span id="cb15-59"><a href="#cb15-59" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> <span class="fu">scheduleEvent</span>(sim, <span class="fu">start</span>(sim), <span class="st">"scheduling"</span>, <span class="st">"predictions"</span>) </span>
+<span id="cb15-60"><a href="#cb15-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-61"><a href="#cb15-61" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span>(</span>
+<span id="cb15-62"><a href="#cb15-62" aria-hidden="true" tabindex="-1"></a>  eventType,</span>
+<span id="cb15-63"><a href="#cb15-63" aria-hidden="true" tabindex="-1"></a>  <span class="at">init =</span> {</span>
+<span id="cb15-64"><a href="#cb15-64" aria-hidden="true" tabindex="-1"></a>    sim <span class="ot">&lt;-</span> <span class="fu">Init</span>(sim)</span>
+<span id="cb15-65"><a href="#cb15-65" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-66"><a href="#cb15-66" aria-hidden="true" tabindex="-1"></a>    <span class="co"># schedule future event(s)</span></span>
+<span id="cb15-67"><a href="#cb15-67" aria-hidden="true" tabindex="-1"></a>    sim <span class="ot">&lt;-</span> <span class="fu">scheduleEvent</span>(sim, <span class="fu">P</span>(sim)<span class="sc">$</span>.plotInitialTime, <span class="st">"scheduling"</span>, <span class="st">"plot"</span>)</span>
+<span id="cb15-68"><a href="#cb15-68" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-69"><a href="#cb15-69" aria-hidden="true" tabindex="-1"></a>    <span class="co"># here we create a new event type == "predictions" and we schedule it for `start(sim)`</span></span>
+<span id="cb15-70"><a href="#cb15-70" aria-hidden="true" tabindex="-1"></a>    sim <span class="ot">&lt;-</span> <span class="fu">scheduleEvent</span>(sim, <span class="fu">start</span>(sim), <span class="st">"scheduling"</span>, <span class="st">"predictions"</span>) </span>
+<span id="cb15-71"><a href="#cb15-71" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb15-72"><a href="#cb15-72" aria-hidden="true" tabindex="-1"></a>  ...</span>
+<span id="cb15-73"><a href="#cb15-73" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-74"><a href="#cb15-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-75"><a href="#cb15-75" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span>(</span>
+<span id="cb15-76"><a href="#cb15-76" aria-hidden="true" tabindex="-1"></a>  eventType,</span>
+<span id="cb15-77"><a href="#cb15-77" aria-hidden="true" tabindex="-1"></a>  <span class="at">init =</span> {...},</span>
+<span id="cb15-78"><a href="#cb15-78" aria-hidden="true" tabindex="-1"></a>  <span class="at">predictions =</span> {</span>
+<span id="cb15-79"><a href="#cb15-79" aria-hidden="true" tabindex="-1"></a>    <span class="co"># do the Prediction</span></span>
+<span id="cb15-80"><a href="#cb15-80" aria-hidden="true" tabindex="-1"></a>    sim <span class="ot">&lt;-</span> <span class="fu">Prediction</span>(sim)</span>
+<span id="cb15-81"><a href="#cb15-81" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-82"><a href="#cb15-82" aria-hidden="true" tabindex="-1"></a>    <span class="co"># schedule the next Prediction</span></span>
+<span id="cb15-83"><a href="#cb15-83" aria-hidden="true" tabindex="-1"></a>    sim <span class="ot">&lt;-</span> <span class="fu">scheduleEvent</span>(sim, <span class="fu">time</span>(sim) <span class="sc">+</span> <span class="dv">1</span>, <span class="st">"scheduling"</span>, <span class="st">"predictions"</span>) </span>
+<span id="cb15-84"><a href="#cb15-84" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb15-85"><a href="#cb15-85" aria-hidden="true" tabindex="-1"></a>  ...</span>
+<span id="cb15-86"><a href="#cb15-86" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-87"><a href="#cb15-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-88"><a href="#cb15-88" aria-hidden="true" tabindex="-1"></a><span class="fu">scheduleEvent</span>(sim, <span class="fu">time</span>(sim) <span class="sc">+</span> <span class="dv">1</span>, <span class="st">"predictions"</span>)</span>
+<span id="cb15-89"><a href="#cb15-89" aria-hidden="true" tabindex="-1"></a><span class="fu">scheduleEvent</span>(sim, <span class="fu">time</span>(sim) <span class="sc">+</span> <span class="dv">2</span>, <span class="st">"predictions"</span>)</span>
+<span id="cb15-90"><a href="#cb15-90" aria-hidden="true" tabindex="-1"></a><span class="fu">scheduleEvent</span>(sim, <span class="fu">time</span>(sim) <span class="sc">+</span> <span class="dv">3</span>, <span class="st">"predictions"</span>)</span>
+<span id="cb15-91"><a href="#cb15-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-92"><a href="#cb15-92" aria-hidden="true" tabindex="-1"></a>init <span class="ot">=</span> {</span>
+<span id="cb15-93"><a href="#cb15-93" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scheduleEvent</span>(sim, <span class="fu">time</span>(sim), <span class="st">"predictions"</span>)</span>
+<span id="cb15-94"><a href="#cb15-94" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-95"><a href="#cb15-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-96"><a href="#cb15-96" aria-hidden="true" tabindex="-1"></a>predictions <span class="ot">=</span> {</span>
+<span id="cb15-97"><a href="#cb15-97" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scheduleEvent</span>(sim, <span class="fu">time</span>(sim) <span class="sc">+</span> <span class="dv">1</span>, <span class="st">"predictions"</span>)</span>
+<span id="cb15-98"><a href="#cb15-98" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-99"><a href="#cb15-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-100"><a href="#cb15-100" aria-hidden="true" tabindex="-1"></a><span class="fu">scheduleEvent</span>(sim, <span class="fu">end</span>(sim), <span class="st">"scheduling"</span>, <span class="st">"plot"</span>)</span>
+<span id="cb15-101"><a href="#cb15-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-102"><a href="#cb15-102" aria-hidden="true" tabindex="-1"></a><span class="fu">createsOutput</span>(<span class="at">objectName =</span> <span class="st">"predictions"</span>, <span class="at">objectClass =</span> <span class="st">"data.frame"</span>, </span>
+<span id="cb15-103"><a href="#cb15-103" aria-hidden="true" tabindex="-1"></a>              <span class="at">desc =</span> <span class="st">"Table of predictions and years"</span>)</span>
+<span id="cb15-104"><a href="#cb15-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-105"><a href="#cb15-105" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">simInitAndSpades</span>(<span class="at">modules =</span> <span class="st">"scheduling"</span>, <span class="at">paths =</span> <span class="fu">list</span>(<span class="at">modulePath =</span> <span class="st">"~/SpaDES_book/scheduling"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>although others appear in the template <code>.R</code> generated by <code>newModule()</code> .<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>by default, all events get equal <em>relative</em> priority, and the one scheduled first will happen first.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
@@ -1475,7 +1540,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./ModulesAndEvents.html" class="pagination-link" aria-label="Modules, Events and Functions">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

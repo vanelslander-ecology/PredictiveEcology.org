@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ceres Barros">
-<meta name="dcterms.date" content="2024-06-12">
+<meta name="dcterms.date" content="2024-07-03">
 
-<title>Robust and nimble scientific workflows, using SpaDES - 17&nbsp; Castor Workflow with setupProject</title>
+<title>Robust and nimble scientific workflows, using SpaDES - 16&nbsp; Castor Workflow with setupProject</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,35 +109,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="assets/css/main.scss">
 </head>
@@ -242,7 +213,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./castorExample.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./castorExample.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -263,7 +234,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -278,19 +249,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./installRandSpatialPkgs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Installing R and Spatial Packages</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Installing R and Spatial Packages</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./PackagesForBook.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Pre-installing R packages for book</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./TroubleshootingPackageInstallation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Troubleshooting R package installation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Troubleshooting R package installation</span></span></a>
   </div>
 </li>
       </ul>
@@ -307,37 +278,37 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./NewModuleIntro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to SpaDES Modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introduction to SpaDES Modules</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./MetaDataAndModuleFiles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Module Files and Metadata</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Module Files and Metadata</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ModuleInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module Inputs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Providing Module Inputs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./simList.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">The <code>simList</code> - What is it?</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ModulesAndEvents.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Modules, Events and Functions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Scheduling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Scheduling Events</span></span></a>
   </div>
 </li>
       </ul>
@@ -354,19 +325,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Caching.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to Cache</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepInputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title"><code>reproducible::prepInputs</code> for Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./debugging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Debugging SpaDES Modules</span></span></a>
   </div>
 </li>
       </ul>
@@ -383,25 +354,25 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./workflowSimple2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workflows with <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./LandRDemo_coreVeg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Forest Landscape Modelling with LandR and <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Forest Landscape Modelling with LandR and <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ForestsAndFire.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./castorExample.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -409,7 +380,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bestPractices.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Best practices for <span class="math inline">\(R^3T\)</span> workflows</span></a>
+ <span class="menu-text">Best practices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -428,20 +399,20 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-castorSetup" id="toc-sec-castorSetup" class="nav-link active" data-scroll-target="#sec-castorSetup"><span class="header-section-number">17.1</span> Workflow setup</a></li>
-  <li><a href="#initialise-the-model-and-inspect-simlist" id="toc-initialise-the-model-and-inspect-simlist" class="nav-link" data-scroll-target="#initialise-the-model-and-inspect-simlist"><span class="header-section-number">17.2</span> Initialise the model and inspect <code>simList</code></a></li>
-  <li><a href="#visualize-the-workflow" id="toc-visualize-the-workflow" class="nav-link" data-scroll-target="#visualize-the-workflow"><span class="header-section-number">17.3</span> Visualize the workflow</a></li>
-  <li><a href="#run-simulation" id="toc-run-simulation" class="nav-link" data-scroll-target="#run-simulation"><span class="header-section-number">17.4</span> Run simulation</a></li>
-  <li><a href="#barebones-r-script" id="toc-barebones-r-script" class="nav-link" data-scroll-target="#barebones-r-script"><span class="header-section-number">17.5</span> Barebones R script</a></li>
+  <li><a href="#sec-castorSetup" id="toc-sec-castorSetup" class="nav-link active" data-scroll-target="#sec-castorSetup"><span class="header-section-number">16.1</span> Workflow setup</a></li>
+  <li><a href="#initialise-the-model-and-inspect-simlist" id="toc-initialise-the-model-and-inspect-simlist" class="nav-link" data-scroll-target="#initialise-the-model-and-inspect-simlist"><span class="header-section-number">16.2</span> Initialise the model and inspect <code>simList</code></a></li>
+  <li><a href="#visualize-the-workflow" id="toc-visualize-the-workflow" class="nav-link" data-scroll-target="#visualize-the-workflow"><span class="header-section-number">16.3</span> Visualize the workflow</a></li>
+  <li><a href="#run-simulation" id="toc-run-simulation" class="nav-link" data-scroll-target="#run-simulation"><span class="header-section-number">16.4</span> Run simulation</a></li>
+  <li><a href="#barebones-r-script" id="toc-barebones-r-script" class="nav-link" data-scroll-target="#barebones-r-script"><span class="header-section-number">16.5</span> Barebones R script</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./castorExample.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setupProject.html">SpaDES workflows and projects</a></li><li class="breadcrumb-item"><a href="./castorExample.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-castorEg" class="quarto-section-identifier"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span></h1>
+<h1 class="title"><span id="sec-castorEg" class="quarto-section-identifier"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span></h1>
 </div>
 
 
@@ -458,7 +429,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 12, 2024</p>
+      <p class="date">July 3, 2024</p>
     </div>
   </div>
   
@@ -483,42 +454,38 @@ window.Quarto = {
 <p><a href="https://github.com/bcgov/castor">Castor</a> is a forest and land-use model used to simulate forest harvest and its effects on multiple forest values, which include not only timber, but also habitat for several wildlife (e.g.&nbsp;caribou, fisher). It is a fully open-source model, implemented in <code>SpaDES</code>, developed and maintained by researchers at the Forest Analysis and Inventory Branch, BC Ministry of Forests.</p>
 <p>In this chapter, we demonstrate how to set up a Castor workflow using <code>setupProject</code> from the <a href="https://spades-project.predictiveecology.org/"><code>SpaDES.project</code></a> package. The code was adapted from <a href="https://github.com/bcgov/castor/blob/main/R/scenarios/comparison_stsm/base_case_harvest_flow_20230628.Rmd">this Castor scenario</a>, with some modifications to streamline the code and accommodate the use of <code>SpaDES.project</code> functions.</p>
 <p>A bare-bones version of this example is also available in this <a href="https://github.com/PredictiveEcology/PredictiveEcology.org/blob/training-book/tutos/castorExample/castorExample.R">.R script</a></p>
-<section id="sec-castorSetup" class="level2" data-number="17.1">
-<h2 data-number="17.1" class="anchored" data-anchor-id="sec-castorSetup"><span class="header-section-number">17.1</span> Workflow setup</h2>
-<p><code>SpaDES.project</code> functions expect SpaDES modules to either exist locally, or at root level of separate repositories. This is not the case with Castor modules, which are in a nested folder (i.e.&nbsp;a folder in a folder tree) of a single GitHub repository.</p>
-<p><code>SpaDES.project</code> will eventually be able to deal with this<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, but for now we work around this issue by using a custom function called <code>getCastorModulesAndDB</code>. This function will also download the demo SQLite database from Google Drive<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. You’ll be prompted to authorize this operation and a browser window will open for this. Make sure you give <code>tidyverse</code> read/write access to your files:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="assets/img/gdriveauth.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="467"></p>
-</figure>
-</div>
+<section id="sec-castorSetup" class="level2" data-number="16.1">
+<h2 data-number="16.1" class="anchored" data-anchor-id="sec-castorSetup"><span class="header-section-number">16.1</span> Workflow setup</h2>
+<p>Currently, <code>SpaDES.project</code> functions expect SpaDES modules to either exist locally, or at root level of separate repositories. This is not the case with Castor modules, which are in a nested folder (i.e.&nbsp;a folder in a folder tree) of a single GitHub repository.</p>
+<p><code>SpaDES.project</code> will eventually be able to deal with this<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, but for now we work around this issue by using a beta version from the <code>nestedGHmodules</code> branch.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install/load necessary packages</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>repos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"predictiveecology.r-universe.dev"</span>, <span class="fu">getOption</span>(<span class="st">"repos"</span>))</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"SpaDES.project"</span>, <span class="st">"googledrive"</span>, <span class="st">"reproducible"</span>), </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">repos =</span> repos, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SpaDES.project)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># get Castor modules and functions</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">setupFunctions</span>(<span class="at">paths =</span> <span class="fu">list</span>(<span class="st">"projectPath"</span> <span class="ot">=</span> <span class="st">"~/SpaDES_book/castorExample/"</span>),</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">functions =</span> <span class="fu">c</span>(<span class="st">"PredictiveEcology/PredictiveEcology.org@main/tutos/castorExample/getCastorModulesAndDB.R"</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"PredictiveEcology/PredictiveEcology.org@main/tutos/castorExample/params.R"</span>),</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>outMod <span class="ot">&lt;-</span> <span class="fu">getCastorModulesAndDB</span>(<span class="at">paths =</span> <span class="fu">list</span>(<span class="st">"modulePath"</span> <span class="ot">=</span> <span class="st">"~/SpaDES_book/castorExample/modules/"</span>,</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                                             <span class="st">"projectPath"</span> <span class="ot">=</span> <span class="st">"~/SpaDES_book/castorExample"</span>),</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                                <span class="at">modules =</span> <span class="fu">c</span>(<span class="st">"dataCastor"</span>, </span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                                            <span class="st">"growingStockCastor"</span>, </span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                                            <span class="st">"forestryCastor"</span>, </span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>                                            <span class="st">"blockingCastor"</span>),</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>                                <span class="at">dbURL =</span> <span class="st">"https://drive.google.com/file/d/1-2POunzC7aFbkKK5LeBJNsFYMBBY8dNx/view?usp=sharing"</span>,</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>                                <span class="at">dbPath =</span> <span class="st">"~/SpaDES_book/castorExample/R/scenarios/comparison_stsm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"SpaDES.project"</span>, <span class="st">"Require"</span>), <span class="at">repos =</span> repos, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SpaDES.project)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Check where the <code>getCastorModulesAndDB.R</code> and <code>params.R</code> files ended up. <code>setupFunctions()</code> respected the folder structure in <code>PredictiveEcology.org</code> and placed these files in <code>tutos/castorExample/</code> <em>within</em> the specified <code>projectPath</code>. We’ll need to remember this for later.</p>
-<p>After the “workaround” <code>setupProject</code> does all the heavy-lifting of setting up the workflow, namely installing all package dependencies listed in the several modules and in <code>setupProject(..., packages)</code>, creating all the necessary folders, sourcing additional files and creating parameter, inputs and outputs lists – see <a href="https://spades-project.predictiveecology.org/reference/setupProject.html"><code>?setupProject</code></a>.</p>
-<p>Note that all folder/file paths are <em>relative</em> to <code>projectPath</code>, even the file path passed to <code>parameters</code> (remember the file path from above?).</p>
+<p><code>setupProject</code> does all the heavy-lifting of setting up the workflow, creating all the necessary folders, namely installing all package dependencies listed in the several modules and in <code>setupProject(..., packages)</code>, sourcing additional files and creating parameter, inputs and outputs lists – see <a href="https://spades-project.predictiveecology.org/reference/setupProject.html"><code>?setupProject</code></a>.</p>
+<p>Note that all folder/file paths are relative to <code>projectPath</code>. Note also how <code>setupProject</code> is getting extra functions and the parameters list from online .R scripts that it downloads to the project folder and sources<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<div class="callout callout-style-simple callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Using <code>setupProject(..., Restart = TRUE)</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When creating a project for the first time, <code>setupProject()</code> will not only create the project folder structure, but also create an RStudio project file (<code>.Rproj</code>) and copy the current script (if it has been saved) into the project root directory.</p>
+<p>Setting <code>Restart = TRUE</code> will open a new RStudio window from “inside” the project being defined (i.e., the RStudio Project will be opened and all paths will be relative to the project root directory) and open the active script.</p>
+<p>This means that all code before the <code>setupProject()</code> call and the <code>setupProject()</code> call will need to be re-run again on the new RStudio/R sessions.</p>
+<p>None of this happens if the RStudio project file is already active (open).</p>
+</div>
+</div>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -530,78 +497,84 @@ window.Quarto = {
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>               <span class="st">"modulePath"</span> <span class="ot">=</span> <span class="st">"modules/"</span>,</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>               <span class="st">"cachePath"</span> <span class="ot">=</span> <span class="st">"modules/forestryCastor"</span>,</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>               <span class="st">"projectPath"</span> <span class="ot">=</span> <span class="st">"~/SpaDES_book/castorExample"</span>),</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">modules =</span> <span class="fu">names</span>(outMod<span class="sc">$</span>modules),</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">options =</span> <span class="fu">list</span>(<span class="at">repos =</span> repos),</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">functions =</span> <span class="st">"bcgov/castor@main/R/functions/R_Postgres.R"</span>,</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># install and load</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">require =</span> <span class="st">"dplyr"</span>,</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># install but don't load these:</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">packages =</span> <span class="fu">c</span>(</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"DBI"</span>, </span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"DiagrammeR"</span>,</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"keyring"</span>,</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"rgdal"</span>, </span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"RPostgreSQL"</span>, </span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sp"</span>,</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"terra"</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">params =</span> <span class="st">"tutos/castorExample/params.R"</span>,  </span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="fu">list</span>(<span class="at">start =</span> <span class="dv">0</span>, <span class="at">end =</span> <span class="dv">20</span>),</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">outputs =</span> {</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(<span class="at">objectName =</span> <span class="fu">c</span>(<span class="st">"harvestReport"</span>,</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"growingStockReport"</span>))</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  },</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">scenario =</span> {</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.table</span>(<span class="at">name =</span> <span class="st">"stsm_base_case"</span>,</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>               <span class="at">description =</span> <span class="fu">paste</span>(<span class="st">"Priority queue = oldest first. Adjacency constraint"</span>,</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"= None. Includes roads (mst) and blocks (pre)."</span>,</span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Harvest flow = 147,300 m3/year in decade 1, 133,500"</span>,</span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"m3/year in decade 2, 132,300 m3/year in decades 3 to"</span>,</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"14 and 135,400 m3/year in decades 15 to 25."</span>,</span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Minimum harvest age = 80 and minimum harvest volume = 150"</span>))</span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  },</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  <span class="at">harvestFlow =</span> {</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rbindlist</span>(<span class="fu">list</span>(<span class="fu">data.table</span>(<span class="at">compartment =</span> <span class="st">"tsa99"</span>,</span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition =</span> <span class="st">' age &gt; 79 AND vol &gt; 149 '</span>, </span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>                              <span class="at">period =</span> <span class="fu">rep</span>( <span class="fu">seq</span> (<span class="at">from =</span> <span class="dv">1</span>,</span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">to =</span> <span class="dv">1</span>, </span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">by =</span> <span class="dv">1</span>),</span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>                                            <span class="dv">1</span>), </span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>                              <span class="at">flow =</span> <span class="dv">1473000</span>, </span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition_type =</span> <span class="st">'live'</span>),</span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">data.table</span>(<span class="at">compartment =</span> <span class="st">"tsa99"</span>,</span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition =</span> <span class="st">' age &gt; 79 AND vol &gt; 149 '</span>, </span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>                              <span class="at">period =</span> <span class="fu">rep</span>( <span class="fu">seq</span> (<span class="at">from =</span> <span class="dv">2</span>,</span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">to =</span> <span class="dv">2</span>, </span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">by =</span> <span class="dv">1</span>),</span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>                                            <span class="dv">1</span>), </span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>                              <span class="at">flow =</span> <span class="dv">1335000</span>, </span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition_type =</span> <span class="st">'live'</span>),</span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">data.table</span>(<span class="at">compartment =</span> <span class="st">"tsa99"</span>,</span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition =</span> <span class="st">' age &gt; 79 AND vol &gt; 149 '</span>, </span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>                              <span class="at">period =</span> <span class="fu">rep</span>( <span class="fu">seq</span> (<span class="at">from =</span> <span class="dv">3</span>,</span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">to =</span> <span class="dv">14</span>, </span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">by =</span> <span class="dv">1</span>),</span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>                                            <span class="dv">1</span>), </span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>                              <span class="at">flow =</span> <span class="dv">1323000</span>, </span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition_type =</span> <span class="st">'live'</span>),</span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">data.table</span>(<span class="at">compartment =</span> <span class="st">"tsa99"</span>,</span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition =</span> <span class="st">' age &gt; 79 AND vol &gt; 149 '</span>, </span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>                              <span class="at">period =</span> <span class="fu">rep</span>( <span class="fu">seq</span> (<span class="at">from =</span> <span class="dv">15</span>,</span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">to =</span> <span class="dv">25</span>, </span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">by =</span> <span class="dv">1</span>),</span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>                                            <span class="dv">1</span>), </span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>                              <span class="at">flow =</span> <span class="dv">1354000</span>, </span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition_type =</span> <span class="st">'live'</span>)  </span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>    ))</span>
-<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>  },</span>
-<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>  <span class="at">Restart =</span> <span class="cn">TRUE</span></span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">modules =</span> <span class="fu">file.path</span>(<span class="st">"bcgov/castor@main/R/SpaDES-modules"</span>, </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">c</span>(<span class="st">"dataCastor"</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"growingStockCastor"</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"blockingCastor"</span>,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"forestryCastor"</span>,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"roadCastor"</span>)),</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">options =</span> <span class="fu">list</span>(<span class="at">repos =</span> repos),</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">functions =</span> <span class="st">"bcgov/castor@main/R/functions/R_Postgres.R"</span>,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># install and load</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">require =</span> <span class="st">"dplyr"</span>,</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># install but don't load these:</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">packages =</span> <span class="fu">c</span>(</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"DBI"</span>, </span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"DiagrammeR"</span>,</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"keyring"</span>,</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"rgdal"</span>, </span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"RPostgreSQL"</span>, </span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sp"</span>,</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">"terra"</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">params =</span> <span class="st">"PredictiveEcology/PredictiveEcology.org@main/tutos/castorExample/params.R"</span>,  </span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="fu">list</span>(<span class="at">start =</span> <span class="dv">0</span>, <span class="at">end =</span> <span class="dv">20</span>),</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">outputs =</span> {</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(<span class="at">objectName =</span> <span class="fu">c</span>(<span class="st">"harvestReport"</span>,</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"growingStockReport"</span>))</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  <span class="at">scenario =</span> {</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.table</span>(<span class="at">name =</span> <span class="st">"stsm_base_case"</span>,</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>               <span class="at">description =</span> <span class="fu">paste</span>(<span class="st">"Priority queue = oldest first. Adjacency constraint"</span>,</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"= None. Includes roads (mst) and blocks (pre)."</span>,</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Harvest flow = 147,300 m3/year in decade 1, 133,500"</span>,</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"m3/year in decade 2, 132,300 m3/year in decades 3 to"</span>,</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"14 and 135,400 m3/year in decades 15 to 25."</span>,</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Minimum harvest age = 80 and minimum harvest volume = 150"</span>))</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>  <span class="at">harvestFlow =</span> {</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rbindlist</span>(<span class="fu">list</span>(<span class="fu">data.table</span>(<span class="at">compartment =</span> <span class="st">"tsa99"</span>,</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition =</span> <span class="st">' age &gt; 79 AND vol &gt; 149 '</span>, </span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>                              <span class="at">period =</span> <span class="fu">rep</span>( <span class="fu">seq</span> (<span class="at">from =</span> <span class="dv">1</span>,</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">to =</span> <span class="dv">1</span>, </span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">by =</span> <span class="dv">1</span>),</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>                                            <span class="dv">1</span>), </span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>                              <span class="at">flow =</span> <span class="dv">1473000</span>, </span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition_type =</span> <span class="st">'live'</span>),</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">data.table</span>(<span class="at">compartment =</span> <span class="st">"tsa99"</span>,</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition =</span> <span class="st">' age &gt; 79 AND vol &gt; 149 '</span>, </span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>                              <span class="at">period =</span> <span class="fu">rep</span>( <span class="fu">seq</span> (<span class="at">from =</span> <span class="dv">2</span>,</span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">to =</span> <span class="dv">2</span>, </span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">by =</span> <span class="dv">1</span>),</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>                                            <span class="dv">1</span>), </span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>                              <span class="at">flow =</span> <span class="dv">1335000</span>, </span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition_type =</span> <span class="st">'live'</span>),</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">data.table</span>(<span class="at">compartment =</span> <span class="st">"tsa99"</span>,</span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition =</span> <span class="st">' age &gt; 79 AND vol &gt; 149 '</span>, </span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>                              <span class="at">period =</span> <span class="fu">rep</span>( <span class="fu">seq</span> (<span class="at">from =</span> <span class="dv">3</span>,</span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">to =</span> <span class="dv">14</span>, </span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">by =</span> <span class="dv">1</span>),</span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>                                            <span class="dv">1</span>), </span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>                              <span class="at">flow =</span> <span class="dv">1323000</span>, </span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition_type =</span> <span class="st">'live'</span>),</span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">data.table</span>(<span class="at">compartment =</span> <span class="st">"tsa99"</span>,</span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition =</span> <span class="st">' age &gt; 79 AND vol &gt; 149 '</span>, </span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>                              <span class="at">period =</span> <span class="fu">rep</span>( <span class="fu">seq</span> (<span class="at">from =</span> <span class="dv">15</span>,</span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">to =</span> <span class="dv">25</span>, </span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">by =</span> <span class="dv">1</span>),</span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>                                            <span class="dv">1</span>), </span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>                              <span class="at">flow =</span> <span class="dv">1354000</span>, </span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition_type =</span> <span class="st">'live'</span>)  </span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>    ))</span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>  <span class="co"># overwrite = TRUE,  ## activate if you want to keep modules up-to-date the with online repository</span></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>  <span class="at">Restart =</span> <span class="cn">TRUE</span></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
-<section id="initialise-the-model-and-inspect-simlist" class="level2" data-number="17.2">
-<h2 data-number="17.2" class="anchored" data-anchor-id="initialise-the-model-and-inspect-simlist"><span class="header-section-number">17.2</span> Initialise the model and inspect <code>simList</code></h2>
+<section id="initialise-the-model-and-inspect-simlist" class="level2" data-number="16.2">
+<h2 data-number="16.2" class="anchored" data-anchor-id="initialise-the-model-and-inspect-simlist"><span class="header-section-number">16.2</span> Initialise the model and inspect <code>simList</code></h2>
 <p><code>setupProject()</code> returns a names list containing values that can be passed as argument to <a href="https://rdrr.io/cran/SpaDES.core/man/simInit.html"><code>simInit()</code></a><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
 <p>We use <code>do.call()</code> to pass the whole list of arguments to <code>simInit</code>.</p>
 <div class="cell">
@@ -653,9 +626,9 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="visualize-the-workflow" class="level2" data-number="17.3">
-<h2 data-number="17.3" class="anchored" data-anchor-id="visualize-the-workflow"><span class="header-section-number">17.3</span> Visualize the workflow</h2>
-<p><code>moduleDiagram()</code> and <code>objectDiagram()</code> are great to visualise how each module interacts with the other. Recall that these interactions arise from object “exchanges” between modules, which are deduced by <code>simInit()</code> from module metadata (<a href="#fig-objectDiagram" class="quarto-xref">Figure&nbsp;<span>17.2</span></a>) – i.e., if a module’s inputs are another’s outputs, then the first module will follow the second.</p>
+<section id="visualize-the-workflow" class="level2" data-number="16.3">
+<h2 data-number="16.3" class="anchored" data-anchor-id="visualize-the-workflow"><span class="header-section-number">16.3</span> Visualize the workflow</h2>
+<p><code>moduleDiagram()</code> and <code>objectDiagram()</code> are great to visualise how each module interacts with the other. Recall that these interactions arise from object “exchanges” between modules, which are deduced by <code>simInit()</code> from module metadata (<a href="#fig-objectDiagram" class="quarto-xref">Figure&nbsp;<span>16.2</span></a>) – i.e., if a module’s inputs are another’s outputs, then the first module will follow the second.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -671,7 +644,7 @@ window.Quarto = {
 <img src="castorExample_files/figure-html/fig-moduleDiagram-1.png" class="img-fluid figure-img" width="576">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-moduleDiagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;17.1: Diagram of module connections.
+Figure&nbsp;16.1: Diagram of module connections.
 </figcaption>
 </figure>
 </div>
@@ -685,15 +658,15 @@ Figure&nbsp;17.1: Diagram of module connections.
 <img src="C:/Users/cbarros/GitHub/PredictiveEcology.org/training/assets/img/castorExample_objDiagram.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-objectDiagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;17.2: Diagram of module inter-dependencies with object names.
+Figure&nbsp;16.2: Diagram of module inter-dependencies with object names.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="run-simulation" class="level2" data-number="17.4">
-<h2 data-number="17.4" class="anchored" data-anchor-id="run-simulation"><span class="header-section-number">17.4</span> Run simulation</h2>
+<section id="run-simulation" class="level2" data-number="16.4">
+<h2 data-number="16.4" class="anchored" data-anchor-id="run-simulation"><span class="header-section-number">16.4</span> Run simulation</h2>
 <p><code>spades()</code> runs the simulation, beginning with the execution of the <code>init</code> events. Notice how the result of <code>outputs()</code> differs from previously.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -822,226 +795,217 @@ Figure&nbsp;17.2: Diagram of module inter-dependencies with object names.
 </details>
 </div>
 </section>
-<section id="barebones-r-script" class="level2" data-number="17.5">
-<h2 data-number="17.5" class="anchored" data-anchor-id="barebones-r-script"><span class="header-section-number">17.5</span> Barebones R script</h2>
+<section id="barebones-r-script" class="level2" data-number="16.5">
+<h2 data-number="16.5" class="anchored" data-anchor-id="barebones-r-script"><span class="header-section-number">16.5</span> Barebones R script</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install/load necessary packages</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>repos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"predictiveecology.r-universe.dev"</span>, <span class="fu">getOption</span>(<span class="st">"repos"</span>))</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"SpaDES.project"</span>, <span class="st">"googledrive"</span>, <span class="st">"reproducible"</span>), </span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">repos =</span> repos, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"SpaDES.project"</span>, <span class="st">"Require"</span>), <span class="at">repos =</span> repos, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SpaDES.project)</span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># get Castor modules and functions</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">setupFunctions</span>(<span class="at">paths =</span> <span class="fu">list</span>(<span class="st">"projectPath"</span> <span class="ot">=</span> <span class="st">"~/SpaDES_book/castorExample/"</span>),</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">functions =</span> <span class="fu">c</span>(<span class="st">"PredictiveEcology/PredictiveEcology.org@main/tutos/castorExample/getCastorModulesAndDB.R"</span>,</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"PredictiveEcology/PredictiveEcology.org@main/tutos/castorExample/params.R"</span>),</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>outMod <span class="ot">&lt;-</span> <span class="fu">getCastorModulesAndDB</span>(<span class="at">paths =</span> <span class="fu">list</span>(<span class="st">"modulePath"</span> <span class="ot">=</span> <span class="st">"~/SpaDES_book/castorExample/modules/"</span>,</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>                                             <span class="st">"projectPath"</span> <span class="ot">=</span> <span class="st">"~/SpaDES_book/castorExample"</span>),</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>                                <span class="at">modules =</span> <span class="fu">c</span>(<span class="st">"dataCastor"</span>, </span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>                                            <span class="st">"growingStockCastor"</span>, </span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>                                            <span class="st">"forestryCastor"</span>, </span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>                                            <span class="st">"blockingCastor"</span>),</span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>                                <span class="at">dbURL =</span> <span class="st">"https://drive.google.com/file/d/1-2POunzC7aFbkKK5LeBJNsFYMBBY8dNx/view?usp=sharing"</span>,</span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>                                <span class="at">dbPath =</span> <span class="st">"~/SpaDES_book/castorExample/R/scenarios/comparison_stsm"</span>)</span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="co"># set up the workflow paths, dependencies and modules</span></span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="co"># as well as simulation parameters, (some) inputs and outputs</span></span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">setupProject</span>(</span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">paths =</span> <span class="fu">list</span>(<span class="st">"inputPath"</span> <span class="ot">=</span> <span class="st">"modules/forestryCastor/inputs"</span>,</span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>               <span class="st">"outputPath"</span> <span class="ot">=</span> <span class="st">"R/scenarios/comparison_stsm/outputs"</span>,</span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>               <span class="st">"modulePath"</span> <span class="ot">=</span> <span class="st">"modules/"</span>,</span>
-<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>               <span class="st">"cachePath"</span> <span class="ot">=</span> <span class="st">"modules/forestryCastor"</span>,</span>
-<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>               <span class="st">"projectPath"</span> <span class="ot">=</span> <span class="st">"~/SpaDES_book/castorExample"</span>),</span>
-<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">modules =</span> <span class="fu">names</span>(outMod<span class="sc">$</span>modules),</span>
-<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">options =</span> <span class="fu">list</span>(<span class="at">repos =</span> repos),</span>
-<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">functions =</span> <span class="st">"bcgov/castor@main/R/functions/R_Postgres.R"</span>,</span>
-<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>  <span class="co"># install and load</span></span>
-<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>  <span class="at">require =</span> <span class="st">"dplyr"</span>,</span>
-<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>  <span class="co"># install but don't load these:</span></span>
-<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>  <span class="at">packages =</span> <span class="fu">c</span>(</span>
-<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>    <span class="st">"DBI"</span>, </span>
-<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>    <span class="st">"DiagrammeR"</span>,</span>
-<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>    <span class="st">"keyring"</span>,</span>
-<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>    <span class="st">"rgdal"</span>, </span>
-<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>    <span class="st">"RPostgreSQL"</span>, </span>
-<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sp"</span>,</span>
-<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a>    <span class="st">"terra"</span></span>
-<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a>  <span class="at">params =</span> <span class="st">"tutos/castorExample/params.R"</span>,  </span>
-<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="fu">list</span>(<span class="at">start =</span> <span class="dv">0</span>, <span class="at">end =</span> <span class="dv">20</span>),</span>
-<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a>  <span class="at">outputs =</span> {</span>
-<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(<span class="at">objectName =</span> <span class="fu">c</span>(<span class="st">"harvestReport"</span>,</span>
-<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"growingStockReport"</span>))</span>
-<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a>  },</span>
-<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a>  <span class="at">scenario =</span> {</span>
-<span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.table</span>(<span class="at">name =</span> <span class="st">"stsm_base_case"</span>,</span>
-<span id="cb13-53"><a href="#cb13-53" aria-hidden="true" tabindex="-1"></a>               <span class="at">description =</span> <span class="fu">paste</span>(<span class="st">"Priority queue = oldest first. Adjacency constraint"</span>,</span>
-<span id="cb13-54"><a href="#cb13-54" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"= None. Includes roads (mst) and blocks (pre)."</span>,</span>
-<span id="cb13-55"><a href="#cb13-55" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Harvest flow = 147,300 m3/year in decade 1, 133,500"</span>,</span>
-<span id="cb13-56"><a href="#cb13-56" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"m3/year in decade 2, 132,300 m3/year in decades 3 to"</span>,</span>
-<span id="cb13-57"><a href="#cb13-57" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"14 and 135,400 m3/year in decades 15 to 25."</span>,</span>
-<span id="cb13-58"><a href="#cb13-58" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Minimum harvest age = 80 and minimum harvest volume = 150"</span>))</span>
-<span id="cb13-59"><a href="#cb13-59" aria-hidden="true" tabindex="-1"></a>  },</span>
-<span id="cb13-60"><a href="#cb13-60" aria-hidden="true" tabindex="-1"></a>  <span class="at">harvestFlow =</span> {</span>
-<span id="cb13-61"><a href="#cb13-61" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rbindlist</span>(<span class="fu">list</span>(<span class="fu">data.table</span>(<span class="at">compartment =</span> <span class="st">"tsa99"</span>,</span>
-<span id="cb13-62"><a href="#cb13-62" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition =</span> <span class="st">' age &gt; 79 AND vol &gt; 149 '</span>, </span>
-<span id="cb13-63"><a href="#cb13-63" aria-hidden="true" tabindex="-1"></a>                              <span class="at">period =</span> <span class="fu">rep</span>( <span class="fu">seq</span> (<span class="at">from =</span> <span class="dv">1</span>,</span>
-<span id="cb13-64"><a href="#cb13-64" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">to =</span> <span class="dv">1</span>, </span>
-<span id="cb13-65"><a href="#cb13-65" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">by =</span> <span class="dv">1</span>),</span>
-<span id="cb13-66"><a href="#cb13-66" aria-hidden="true" tabindex="-1"></a>                                            <span class="dv">1</span>), </span>
-<span id="cb13-67"><a href="#cb13-67" aria-hidden="true" tabindex="-1"></a>                              <span class="at">flow =</span> <span class="dv">1473000</span>, </span>
-<span id="cb13-68"><a href="#cb13-68" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition_type =</span> <span class="st">'live'</span>),</span>
-<span id="cb13-69"><a href="#cb13-69" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">data.table</span>(<span class="at">compartment =</span> <span class="st">"tsa99"</span>,</span>
-<span id="cb13-70"><a href="#cb13-70" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition =</span> <span class="st">' age &gt; 79 AND vol &gt; 149 '</span>, </span>
-<span id="cb13-71"><a href="#cb13-71" aria-hidden="true" tabindex="-1"></a>                              <span class="at">period =</span> <span class="fu">rep</span>( <span class="fu">seq</span> (<span class="at">from =</span> <span class="dv">2</span>,</span>
-<span id="cb13-72"><a href="#cb13-72" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">to =</span> <span class="dv">2</span>, </span>
-<span id="cb13-73"><a href="#cb13-73" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">by =</span> <span class="dv">1</span>),</span>
-<span id="cb13-74"><a href="#cb13-74" aria-hidden="true" tabindex="-1"></a>                                            <span class="dv">1</span>), </span>
-<span id="cb13-75"><a href="#cb13-75" aria-hidden="true" tabindex="-1"></a>                              <span class="at">flow =</span> <span class="dv">1335000</span>, </span>
-<span id="cb13-76"><a href="#cb13-76" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition_type =</span> <span class="st">'live'</span>),</span>
-<span id="cb13-77"><a href="#cb13-77" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">data.table</span>(<span class="at">compartment =</span> <span class="st">"tsa99"</span>,</span>
-<span id="cb13-78"><a href="#cb13-78" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition =</span> <span class="st">' age &gt; 79 AND vol &gt; 149 '</span>, </span>
-<span id="cb13-79"><a href="#cb13-79" aria-hidden="true" tabindex="-1"></a>                              <span class="at">period =</span> <span class="fu">rep</span>( <span class="fu">seq</span> (<span class="at">from =</span> <span class="dv">3</span>,</span>
-<span id="cb13-80"><a href="#cb13-80" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">to =</span> <span class="dv">14</span>, </span>
-<span id="cb13-81"><a href="#cb13-81" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">by =</span> <span class="dv">1</span>),</span>
-<span id="cb13-82"><a href="#cb13-82" aria-hidden="true" tabindex="-1"></a>                                            <span class="dv">1</span>), </span>
-<span id="cb13-83"><a href="#cb13-83" aria-hidden="true" tabindex="-1"></a>                              <span class="at">flow =</span> <span class="dv">1323000</span>, </span>
-<span id="cb13-84"><a href="#cb13-84" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition_type =</span> <span class="st">'live'</span>),</span>
-<span id="cb13-85"><a href="#cb13-85" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">data.table</span>(<span class="at">compartment =</span> <span class="st">"tsa99"</span>,</span>
-<span id="cb13-86"><a href="#cb13-86" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition =</span> <span class="st">' age &gt; 79 AND vol &gt; 149 '</span>, </span>
-<span id="cb13-87"><a href="#cb13-87" aria-hidden="true" tabindex="-1"></a>                              <span class="at">period =</span> <span class="fu">rep</span>( <span class="fu">seq</span> (<span class="at">from =</span> <span class="dv">15</span>,</span>
-<span id="cb13-88"><a href="#cb13-88" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">to =</span> <span class="dv">25</span>, </span>
-<span id="cb13-89"><a href="#cb13-89" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">by =</span> <span class="dv">1</span>),</span>
-<span id="cb13-90"><a href="#cb13-90" aria-hidden="true" tabindex="-1"></a>                                            <span class="dv">1</span>), </span>
-<span id="cb13-91"><a href="#cb13-91" aria-hidden="true" tabindex="-1"></a>                              <span class="at">flow =</span> <span class="dv">1354000</span>, </span>
-<span id="cb13-92"><a href="#cb13-92" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition_type =</span> <span class="st">'live'</span>)  </span>
-<span id="cb13-93"><a href="#cb13-93" aria-hidden="true" tabindex="-1"></a>    ))</span>
-<span id="cb13-94"><a href="#cb13-94" aria-hidden="true" tabindex="-1"></a>  },</span>
-<span id="cb13-95"><a href="#cb13-95" aria-hidden="true" tabindex="-1"></a>  <span class="at">Restart =</span> <span class="cn">TRUE</span></span>
-<span id="cb13-96"><a href="#cb13-96" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb13-97"><a href="#cb13-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-98"><a href="#cb13-98" aria-hidden="true" tabindex="-1"></a><span class="co"># initialize simulation</span></span>
-<span id="cb13-99"><a href="#cb13-99" aria-hidden="true" tabindex="-1"></a>castorInit <span class="ot">&lt;-</span> <span class="fu">do.call</span>(SpaDES.core<span class="sc">::</span>simInit, out)</span>
-<span id="cb13-100"><a href="#cb13-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-101"><a href="#cb13-101" aria-hidden="true" tabindex="-1"></a>castorInit <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">simInit</span>(</span>
-<span id="cb13-102"><a href="#cb13-102" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> out<span class="sc">$</span>times,</span>
-<span id="cb13-103"><a href="#cb13-103" aria-hidden="true" tabindex="-1"></a>  <span class="at">params =</span> out<span class="sc">$</span>params,</span>
-<span id="cb13-104"><a href="#cb13-104" aria-hidden="true" tabindex="-1"></a>  <span class="at">modules =</span> out<span class="sc">$</span>modules,</span>
-<span id="cb13-105"><a href="#cb13-105" aria-hidden="true" tabindex="-1"></a>  <span class="at">objects =</span> <span class="fu">list</span>(<span class="at">scenario =</span> out<span class="sc">$</span>scenario,</span>
-<span id="cb13-106"><a href="#cb13-106" aria-hidden="true" tabindex="-1"></a>                 <span class="at">harvestFlow =</span> out<span class="sc">$</span>harvestFlow)</span>
-<span id="cb13-107"><a href="#cb13-107" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># set up the workflow paths, dependencies and modules</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co"># as well as simulation parameters, (some) inputs and outputs</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">setupProject</span>(</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">paths =</span> <span class="fu">list</span>(<span class="st">"inputPath"</span> <span class="ot">=</span> <span class="st">"modules/forestryCastor/inputs"</span>,</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>               <span class="st">"outputPath"</span> <span class="ot">=</span> <span class="st">"R/scenarios/comparison_stsm/outputs"</span>,</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>               <span class="st">"modulePath"</span> <span class="ot">=</span> <span class="st">"modules/"</span>,</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>               <span class="st">"cachePath"</span> <span class="ot">=</span> <span class="st">"modules/forestryCastor"</span>,</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>               <span class="st">"projectPath"</span> <span class="ot">=</span> <span class="st">"~/SpaDES_book/castorExample"</span>),</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">modules =</span> <span class="fu">file.path</span>(<span class="st">"bcgov/castor@main/R/SpaDES-modules"</span>, </span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">c</span>(<span class="st">"dataCastor"</span>,</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"growingStockCastor"</span>,</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"blockingCastor"</span>,</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"forestryCastor"</span>,</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"roadCastor"</span>)),</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">options =</span> <span class="fu">list</span>(<span class="at">repos =</span> repos),</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">functions =</span> <span class="st">"bcgov/castor@main/R/functions/R_Postgres.R"</span>,</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># install and load</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">require =</span> <span class="st">"dplyr"</span>,</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># install but don't load these:</span></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">packages =</span> <span class="fu">c</span>(</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">"DBI"</span>, </span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">"DiagrammeR"</span>,</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">"keyring"</span>,</span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">"rgdal"</span>, </span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">"RPostgreSQL"</span>, </span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sp"</span>,</span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">"terra"</span></span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>  <span class="at">params =</span> <span class="st">"PredictiveEcology/PredictiveEcology.org@main/tutos/castorExample/params.R"</span>,  </span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="fu">list</span>(<span class="at">start =</span> <span class="dv">0</span>, <span class="at">end =</span> <span class="dv">20</span>),</span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>  <span class="at">outputs =</span> {</span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(<span class="at">objectName =</span> <span class="fu">c</span>(<span class="st">"harvestReport"</span>,</span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"growingStockReport"</span>))</span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>  <span class="at">scenario =</span> {</span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.table</span>(<span class="at">name =</span> <span class="st">"stsm_base_case"</span>,</span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a>               <span class="at">description =</span> <span class="fu">paste</span>(<span class="st">"Priority queue = oldest first. Adjacency constraint"</span>,</span>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"= None. Includes roads (mst) and blocks (pre)."</span>,</span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Harvest flow = 147,300 m3/year in decade 1, 133,500"</span>,</span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"m3/year in decade 2, 132,300 m3/year in decades 3 to"</span>,</span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"14 and 135,400 m3/year in decades 15 to 25."</span>,</span>
+<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Minimum harvest age = 80 and minimum harvest volume = 150"</span>))</span>
+<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a>  <span class="at">harvestFlow =</span> {</span>
+<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rbindlist</span>(<span class="fu">list</span>(<span class="fu">data.table</span>(<span class="at">compartment =</span> <span class="st">"tsa99"</span>,</span>
+<span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition =</span> <span class="st">' age &gt; 79 AND vol &gt; 149 '</span>, </span>
+<span id="cb13-53"><a href="#cb13-53" aria-hidden="true" tabindex="-1"></a>                              <span class="at">period =</span> <span class="fu">rep</span>( <span class="fu">seq</span> (<span class="at">from =</span> <span class="dv">1</span>,</span>
+<span id="cb13-54"><a href="#cb13-54" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">to =</span> <span class="dv">1</span>, </span>
+<span id="cb13-55"><a href="#cb13-55" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">by =</span> <span class="dv">1</span>),</span>
+<span id="cb13-56"><a href="#cb13-56" aria-hidden="true" tabindex="-1"></a>                                            <span class="dv">1</span>), </span>
+<span id="cb13-57"><a href="#cb13-57" aria-hidden="true" tabindex="-1"></a>                              <span class="at">flow =</span> <span class="dv">1473000</span>, </span>
+<span id="cb13-58"><a href="#cb13-58" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition_type =</span> <span class="st">'live'</span>),</span>
+<span id="cb13-59"><a href="#cb13-59" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">data.table</span>(<span class="at">compartment =</span> <span class="st">"tsa99"</span>,</span>
+<span id="cb13-60"><a href="#cb13-60" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition =</span> <span class="st">' age &gt; 79 AND vol &gt; 149 '</span>, </span>
+<span id="cb13-61"><a href="#cb13-61" aria-hidden="true" tabindex="-1"></a>                              <span class="at">period =</span> <span class="fu">rep</span>( <span class="fu">seq</span> (<span class="at">from =</span> <span class="dv">2</span>,</span>
+<span id="cb13-62"><a href="#cb13-62" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">to =</span> <span class="dv">2</span>, </span>
+<span id="cb13-63"><a href="#cb13-63" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">by =</span> <span class="dv">1</span>),</span>
+<span id="cb13-64"><a href="#cb13-64" aria-hidden="true" tabindex="-1"></a>                                            <span class="dv">1</span>), </span>
+<span id="cb13-65"><a href="#cb13-65" aria-hidden="true" tabindex="-1"></a>                              <span class="at">flow =</span> <span class="dv">1335000</span>, </span>
+<span id="cb13-66"><a href="#cb13-66" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition_type =</span> <span class="st">'live'</span>),</span>
+<span id="cb13-67"><a href="#cb13-67" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">data.table</span>(<span class="at">compartment =</span> <span class="st">"tsa99"</span>,</span>
+<span id="cb13-68"><a href="#cb13-68" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition =</span> <span class="st">' age &gt; 79 AND vol &gt; 149 '</span>, </span>
+<span id="cb13-69"><a href="#cb13-69" aria-hidden="true" tabindex="-1"></a>                              <span class="at">period =</span> <span class="fu">rep</span>( <span class="fu">seq</span> (<span class="at">from =</span> <span class="dv">3</span>,</span>
+<span id="cb13-70"><a href="#cb13-70" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">to =</span> <span class="dv">14</span>, </span>
+<span id="cb13-71"><a href="#cb13-71" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">by =</span> <span class="dv">1</span>),</span>
+<span id="cb13-72"><a href="#cb13-72" aria-hidden="true" tabindex="-1"></a>                                            <span class="dv">1</span>), </span>
+<span id="cb13-73"><a href="#cb13-73" aria-hidden="true" tabindex="-1"></a>                              <span class="at">flow =</span> <span class="dv">1323000</span>, </span>
+<span id="cb13-74"><a href="#cb13-74" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition_type =</span> <span class="st">'live'</span>),</span>
+<span id="cb13-75"><a href="#cb13-75" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">data.table</span>(<span class="at">compartment =</span> <span class="st">"tsa99"</span>,</span>
+<span id="cb13-76"><a href="#cb13-76" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition =</span> <span class="st">' age &gt; 79 AND vol &gt; 149 '</span>, </span>
+<span id="cb13-77"><a href="#cb13-77" aria-hidden="true" tabindex="-1"></a>                              <span class="at">period =</span> <span class="fu">rep</span>( <span class="fu">seq</span> (<span class="at">from =</span> <span class="dv">15</span>,</span>
+<span id="cb13-78"><a href="#cb13-78" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">to =</span> <span class="dv">25</span>, </span>
+<span id="cb13-79"><a href="#cb13-79" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">by =</span> <span class="dv">1</span>),</span>
+<span id="cb13-80"><a href="#cb13-80" aria-hidden="true" tabindex="-1"></a>                                            <span class="dv">1</span>), </span>
+<span id="cb13-81"><a href="#cb13-81" aria-hidden="true" tabindex="-1"></a>                              <span class="at">flow =</span> <span class="dv">1354000</span>, </span>
+<span id="cb13-82"><a href="#cb13-82" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition_type =</span> <span class="st">'live'</span>)  </span>
+<span id="cb13-83"><a href="#cb13-83" aria-hidden="true" tabindex="-1"></a>    ))</span>
+<span id="cb13-84"><a href="#cb13-84" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb13-85"><a href="#cb13-85" aria-hidden="true" tabindex="-1"></a>  <span class="co"># overwrite = TRUE,  ## activate if you want to keep modules up-to-date the with online repository</span></span>
+<span id="cb13-86"><a href="#cb13-86" aria-hidden="true" tabindex="-1"></a>  <span class="at">Restart =</span> <span class="cn">TRUE</span></span>
+<span id="cb13-87"><a href="#cb13-87" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-88"><a href="#cb13-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-89"><a href="#cb13-89" aria-hidden="true" tabindex="-1"></a><span class="co"># initialize simulation</span></span>
+<span id="cb13-90"><a href="#cb13-90" aria-hidden="true" tabindex="-1"></a>castorInit <span class="ot">&lt;-</span> <span class="fu">do.call</span>(SpaDES.core<span class="sc">::</span>simInit, out)</span>
+<span id="cb13-91"><a href="#cb13-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-92"><a href="#cb13-92" aria-hidden="true" tabindex="-1"></a>castorInit <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">simInit</span>(</span>
+<span id="cb13-93"><a href="#cb13-93" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> out<span class="sc">$</span>times,</span>
+<span id="cb13-94"><a href="#cb13-94" aria-hidden="true" tabindex="-1"></a>  <span class="at">params =</span> out<span class="sc">$</span>params,</span>
+<span id="cb13-95"><a href="#cb13-95" aria-hidden="true" tabindex="-1"></a>  <span class="at">modules =</span> out<span class="sc">$</span>modules,</span>
+<span id="cb13-96"><a href="#cb13-96" aria-hidden="true" tabindex="-1"></a>  <span class="at">objects =</span> <span class="fu">list</span>(<span class="at">scenario =</span> out<span class="sc">$</span>scenario,</span>
+<span id="cb13-97"><a href="#cb13-97" aria-hidden="true" tabindex="-1"></a>                 <span class="at">harvestFlow =</span> out<span class="sc">$</span>harvestFlow)</span>
+<span id="cb13-98"><a href="#cb13-98" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-99"><a href="#cb13-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-100"><a href="#cb13-100" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect the `simList`</span></span>
+<span id="cb13-101"><a href="#cb13-101" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">params</span>(castorInit)</span>
+<span id="cb13-102"><a href="#cb13-102" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">inputs</span>(castorInit)</span>
+<span id="cb13-103"><a href="#cb13-103" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">outputs</span>(castorInit)</span>
+<span id="cb13-104"><a href="#cb13-104" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">times</span>(castorInit)</span>
+<span id="cb13-105"><a href="#cb13-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-106"><a href="#cb13-106" aria-hidden="true" tabindex="-1"></a><span class="co"># scheduled events</span></span>
+<span id="cb13-107"><a href="#cb13-107" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">events</span>(castorInit)</span>
 <span id="cb13-108"><a href="#cb13-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-109"><a href="#cb13-109" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect the `simList`</span></span>
-<span id="cb13-110"><a href="#cb13-110" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">params</span>(castorInit)</span>
-<span id="cb13-111"><a href="#cb13-111" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">inputs</span>(castorInit)</span>
-<span id="cb13-112"><a href="#cb13-112" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">outputs</span>(castorInit)</span>
-<span id="cb13-113"><a href="#cb13-113" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">times</span>(castorInit)</span>
+<span id="cb13-109"><a href="#cb13-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-110"><a href="#cb13-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-111"><a href="#cb13-111" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">moduleDiagram</span>(castorInit)</span>
+<span id="cb13-112"><a href="#cb13-112" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">objectDiagram</span>(castorInit)</span>
+<span id="cb13-113"><a href="#cb13-113" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-114"><a href="#cb13-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-115"><a href="#cb13-115" aria-hidden="true" tabindex="-1"></a><span class="co"># scheduled events</span></span>
-<span id="cb13-116"><a href="#cb13-116" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">events</span>(castorInit)</span>
+<span id="cb13-115"><a href="#cb13-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-116"><a href="#cb13-116" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-117"><a href="#cb13-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-118"><a href="#cb13-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-118"><a href="#cb13-118" aria-hidden="true" tabindex="-1"></a>castorSim <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">spades</span>(castorInit)</span>
 <span id="cb13-119"><a href="#cb13-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-120"><a href="#cb13-120" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">moduleDiagram</span>(castorInit)</span>
-<span id="cb13-121"><a href="#cb13-121" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">objectDiagram</span>(castorInit)</span>
+<span id="cb13-120"><a href="#cb13-120" aria-hidden="true" tabindex="-1"></a><span class="co"># we now have outputs</span></span>
+<span id="cb13-121"><a href="#cb13-121" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">outputs</span>(castorSim)</span>
 <span id="cb13-122"><a href="#cb13-122" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-123"><a href="#cb13-123" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-124"><a href="#cb13-124" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-125"><a href="#cb13-125" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-126"><a href="#cb13-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-127"><a href="#cb13-127" aria-hidden="true" tabindex="-1"></a>castorSim <span class="ot">&lt;-</span> SpaDES.core<span class="sc">::</span><span class="fu">spades</span>(castorInit)</span>
+<span id="cb13-127"><a href="#cb13-127" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">completed</span>(castorSim)</span>
 <span id="cb13-128"><a href="#cb13-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-129"><a href="#cb13-129" aria-hidden="true" tabindex="-1"></a><span class="co"># we now have outputs</span></span>
-<span id="cb13-130"><a href="#cb13-130" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">outputs</span>(castorSim)</span>
-<span id="cb13-131"><a href="#cb13-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-129"><a href="#cb13-129" aria-hidden="true" tabindex="-1"></a>modules <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"dataCastor"</span>,</span>
+<span id="cb13-130"><a href="#cb13-130" aria-hidden="true" tabindex="-1"></a>             <span class="st">"growingStockCastor"</span>,</span>
+<span id="cb13-131"><a href="#cb13-131" aria-hidden="true" tabindex="-1"></a>             <span class="st">"forestryCastor"</span>)</span>
 <span id="cb13-132"><a href="#cb13-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-133"><a href="#cb13-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-134"><a href="#cb13-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-135"><a href="#cb13-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-136"><a href="#cb13-136" aria-hidden="true" tabindex="-1"></a>SpaDES.core<span class="sc">::</span><span class="fu">completed</span>(castorSim)</span>
-<span id="cb13-137"><a href="#cb13-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-138"><a href="#cb13-138" aria-hidden="true" tabindex="-1"></a>modules <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"dataCastor"</span>,</span>
-<span id="cb13-139"><a href="#cb13-139" aria-hidden="true" tabindex="-1"></a>             <span class="st">"growingStockCastor"</span>,</span>
-<span id="cb13-140"><a href="#cb13-140" aria-hidden="true" tabindex="-1"></a>             <span class="st">"forestryCastor"</span>)</span>
-<span id="cb13-141"><a href="#cb13-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-142"><a href="#cb13-142" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">setupProject</span>(</span>
-<span id="cb13-143"><a href="#cb13-143" aria-hidden="true" tabindex="-1"></a>  <span class="at">paths =</span> <span class="fu">list</span>(<span class="st">"inputPath"</span> <span class="ot">=</span> <span class="st">"modules/forestryCastor/inputs"</span>,</span>
-<span id="cb13-144"><a href="#cb13-144" aria-hidden="true" tabindex="-1"></a>               <span class="st">"outputPath"</span> <span class="ot">=</span> <span class="st">"/R/scenarios/comparison_stsm/outputs"</span>,</span>
-<span id="cb13-145"><a href="#cb13-145" aria-hidden="true" tabindex="-1"></a>               <span class="st">"modulePath"</span> <span class="ot">=</span> <span class="st">"modules/"</span>,</span>
-<span id="cb13-146"><a href="#cb13-146" aria-hidden="true" tabindex="-1"></a>               <span class="st">"cachePath"</span> <span class="ot">=</span> <span class="st">"modules/forestryCastor"</span>,</span>
-<span id="cb13-147"><a href="#cb13-147" aria-hidden="true" tabindex="-1"></a>               <span class="st">"projectPath"</span> <span class="ot">=</span> <span class="st">"~/SpaDES_book/castorExample/"</span>),</span>
-<span id="cb13-148"><a href="#cb13-148" aria-hidden="true" tabindex="-1"></a>  <span class="at">modules =</span> modules,</span>
-<span id="cb13-149"><a href="#cb13-149" aria-hidden="true" tabindex="-1"></a>  <span class="at">functions =</span> <span class="st">"bcgov/castor@main/R/functions/R_Postgres.R"</span>,</span>
-<span id="cb13-150"><a href="#cb13-150" aria-hidden="true" tabindex="-1"></a>  <span class="co"># install and load</span></span>
-<span id="cb13-151"><a href="#cb13-151" aria-hidden="true" tabindex="-1"></a>  <span class="at">require =</span> <span class="st">"dplyr"</span>,</span>
-<span id="cb13-152"><a href="#cb13-152" aria-hidden="true" tabindex="-1"></a>  <span class="co"># install but don't load these:</span></span>
-<span id="cb13-153"><a href="#cb13-153" aria-hidden="true" tabindex="-1"></a>  <span class="at">packages =</span> <span class="fu">c</span>(</span>
-<span id="cb13-154"><a href="#cb13-154" aria-hidden="true" tabindex="-1"></a>    <span class="st">"DBI"</span>,</span>
-<span id="cb13-155"><a href="#cb13-155" aria-hidden="true" tabindex="-1"></a>    <span class="st">"keyring"</span>,</span>
-<span id="cb13-156"><a href="#cb13-156" aria-hidden="true" tabindex="-1"></a>    <span class="st">"rgdal"</span>,</span>
-<span id="cb13-157"><a href="#cb13-157" aria-hidden="true" tabindex="-1"></a>    <span class="st">"RPostgreSQL"</span>,</span>
-<span id="cb13-158"><a href="#cb13-158" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sp"</span>,</span>
-<span id="cb13-159"><a href="#cb13-159" aria-hidden="true" tabindex="-1"></a>    <span class="st">"terra"</span></span>
-<span id="cb13-160"><a href="#cb13-160" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb13-161"><a href="#cb13-161" aria-hidden="true" tabindex="-1"></a>  <span class="at">params =</span> <span class="st">"params.R"</span>,</span>
-<span id="cb13-162"><a href="#cb13-162" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="fu">list</span>(<span class="at">start =</span> <span class="dv">0</span>, <span class="at">end =</span> <span class="dv">20</span>),</span>
-<span id="cb13-163"><a href="#cb13-163" aria-hidden="true" tabindex="-1"></a>  <span class="at">outputs =</span> {</span>
-<span id="cb13-164"><a href="#cb13-164" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(<span class="at">objectName =</span> <span class="fu">c</span>(<span class="st">"harvestReport"</span>,</span>
-<span id="cb13-165"><a href="#cb13-165" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"growingStockReport"</span>))</span>
+<span id="cb13-133"><a href="#cb13-133" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">setupProject</span>(</span>
+<span id="cb13-134"><a href="#cb13-134" aria-hidden="true" tabindex="-1"></a>  <span class="at">paths =</span> <span class="fu">list</span>(<span class="st">"inputPath"</span> <span class="ot">=</span> <span class="st">"modules/forestryCastor/inputs"</span>,</span>
+<span id="cb13-135"><a href="#cb13-135" aria-hidden="true" tabindex="-1"></a>               <span class="st">"outputPath"</span> <span class="ot">=</span> <span class="st">"/R/scenarios/comparison_stsm/outputs"</span>,</span>
+<span id="cb13-136"><a href="#cb13-136" aria-hidden="true" tabindex="-1"></a>               <span class="st">"modulePath"</span> <span class="ot">=</span> <span class="st">"modules/"</span>,</span>
+<span id="cb13-137"><a href="#cb13-137" aria-hidden="true" tabindex="-1"></a>               <span class="st">"cachePath"</span> <span class="ot">=</span> <span class="st">"modules/forestryCastor"</span>,</span>
+<span id="cb13-138"><a href="#cb13-138" aria-hidden="true" tabindex="-1"></a>               <span class="st">"projectPath"</span> <span class="ot">=</span> <span class="st">"~/SpaDES_book/castorExample/"</span>),</span>
+<span id="cb13-139"><a href="#cb13-139" aria-hidden="true" tabindex="-1"></a>  <span class="at">modules =</span> modules,</span>
+<span id="cb13-140"><a href="#cb13-140" aria-hidden="true" tabindex="-1"></a>  <span class="at">functions =</span> <span class="st">"bcgov/castor@main/R/functions/R_Postgres.R"</span>,</span>
+<span id="cb13-141"><a href="#cb13-141" aria-hidden="true" tabindex="-1"></a>  <span class="co"># install and load</span></span>
+<span id="cb13-142"><a href="#cb13-142" aria-hidden="true" tabindex="-1"></a>  <span class="at">require =</span> <span class="st">"dplyr"</span>,</span>
+<span id="cb13-143"><a href="#cb13-143" aria-hidden="true" tabindex="-1"></a>  <span class="co"># install but don't load these:</span></span>
+<span id="cb13-144"><a href="#cb13-144" aria-hidden="true" tabindex="-1"></a>  <span class="at">packages =</span> <span class="fu">c</span>(</span>
+<span id="cb13-145"><a href="#cb13-145" aria-hidden="true" tabindex="-1"></a>    <span class="st">"DBI"</span>,</span>
+<span id="cb13-146"><a href="#cb13-146" aria-hidden="true" tabindex="-1"></a>    <span class="st">"keyring"</span>,</span>
+<span id="cb13-147"><a href="#cb13-147" aria-hidden="true" tabindex="-1"></a>    <span class="st">"rgdal"</span>,</span>
+<span id="cb13-148"><a href="#cb13-148" aria-hidden="true" tabindex="-1"></a>    <span class="st">"RPostgreSQL"</span>,</span>
+<span id="cb13-149"><a href="#cb13-149" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sp"</span>,</span>
+<span id="cb13-150"><a href="#cb13-150" aria-hidden="true" tabindex="-1"></a>    <span class="st">"terra"</span></span>
+<span id="cb13-151"><a href="#cb13-151" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb13-152"><a href="#cb13-152" aria-hidden="true" tabindex="-1"></a>  <span class="at">params =</span> <span class="st">"params.R"</span>,</span>
+<span id="cb13-153"><a href="#cb13-153" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="fu">list</span>(<span class="at">start =</span> <span class="dv">0</span>, <span class="at">end =</span> <span class="dv">20</span>),</span>
+<span id="cb13-154"><a href="#cb13-154" aria-hidden="true" tabindex="-1"></a>  <span class="at">outputs =</span> {</span>
+<span id="cb13-155"><a href="#cb13-155" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(<span class="at">objectName =</span> <span class="fu">c</span>(<span class="st">"harvestReport"</span>,</span>
+<span id="cb13-156"><a href="#cb13-156" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"growingStockReport"</span>))</span>
+<span id="cb13-157"><a href="#cb13-157" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb13-158"><a href="#cb13-158" aria-hidden="true" tabindex="-1"></a>  <span class="at">scenario =</span> {</span>
+<span id="cb13-159"><a href="#cb13-159" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.table</span>(<span class="at">name =</span> <span class="st">"stsm_base_case"</span>,</span>
+<span id="cb13-160"><a href="#cb13-160" aria-hidden="true" tabindex="-1"></a>               <span class="at">description =</span> <span class="fu">paste</span>(<span class="st">"Priority queue = oldest first. Adjacency constraint"</span>,</span>
+<span id="cb13-161"><a href="#cb13-161" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"= None. Includes roads (mst) and blocks (pre)."</span>,</span>
+<span id="cb13-162"><a href="#cb13-162" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Harvest flow = 147,300 m3/year in decade 1, 133,500"</span>,</span>
+<span id="cb13-163"><a href="#cb13-163" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"m3/year in decade 2, 132,300 m3/year in decades 3 to"</span>,</span>
+<span id="cb13-164"><a href="#cb13-164" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"14 and 135,400 m3/year in decades 15 to 25."</span>,</span>
+<span id="cb13-165"><a href="#cb13-165" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Minimum harvest age = 80 and minimum harvest volume = 150"</span>))</span>
 <span id="cb13-166"><a href="#cb13-166" aria-hidden="true" tabindex="-1"></a>  },</span>
-<span id="cb13-167"><a href="#cb13-167" aria-hidden="true" tabindex="-1"></a>  <span class="at">scenario =</span> {</span>
-<span id="cb13-168"><a href="#cb13-168" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.table</span>(<span class="at">name =</span> <span class="st">"stsm_base_case"</span>,</span>
-<span id="cb13-169"><a href="#cb13-169" aria-hidden="true" tabindex="-1"></a>               <span class="at">description =</span> <span class="fu">paste</span>(<span class="st">"Priority queue = oldest first. Adjacency constraint"</span>,</span>
-<span id="cb13-170"><a href="#cb13-170" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"= None. Includes roads (mst) and blocks (pre)."</span>,</span>
-<span id="cb13-171"><a href="#cb13-171" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Harvest flow = 147,300 m3/year in decade 1, 133,500"</span>,</span>
-<span id="cb13-172"><a href="#cb13-172" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"m3/year in decade 2, 132,300 m3/year in decades 3 to"</span>,</span>
-<span id="cb13-173"><a href="#cb13-173" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"14 and 135,400 m3/year in decades 15 to 25."</span>,</span>
-<span id="cb13-174"><a href="#cb13-174" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Minimum harvest age = 80 and minimum harvest volume = 150"</span>))</span>
-<span id="cb13-175"><a href="#cb13-175" aria-hidden="true" tabindex="-1"></a>  },</span>
-<span id="cb13-176"><a href="#cb13-176" aria-hidden="true" tabindex="-1"></a>  <span class="at">harvestFlow =</span> {</span>
-<span id="cb13-177"><a href="#cb13-177" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rbindlist</span>(<span class="fu">list</span>(<span class="fu">data.table</span>(<span class="at">compartment =</span> <span class="st">"tsa99"</span>,</span>
-<span id="cb13-178"><a href="#cb13-178" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition =</span> <span class="st">' age &gt; 79 AND vol &gt; 149 '</span>,</span>
-<span id="cb13-179"><a href="#cb13-179" aria-hidden="true" tabindex="-1"></a>                              <span class="at">period =</span> <span class="fu">rep</span>( <span class="fu">seq</span> (<span class="at">from =</span> <span class="dv">1</span>,</span>
-<span id="cb13-180"><a href="#cb13-180" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">to =</span> <span class="dv">1</span>,</span>
-<span id="cb13-181"><a href="#cb13-181" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">by =</span> <span class="dv">1</span>),</span>
-<span id="cb13-182"><a href="#cb13-182" aria-hidden="true" tabindex="-1"></a>                                            <span class="dv">1</span>),</span>
-<span id="cb13-183"><a href="#cb13-183" aria-hidden="true" tabindex="-1"></a>                              <span class="at">flow =</span> <span class="dv">1473000</span>,</span>
-<span id="cb13-184"><a href="#cb13-184" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition_type =</span> <span class="st">'live'</span>),</span>
-<span id="cb13-185"><a href="#cb13-185" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">data.table</span>(<span class="at">compartment =</span> <span class="st">"tsa99"</span>,</span>
-<span id="cb13-186"><a href="#cb13-186" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition =</span> <span class="st">' age &gt; 79 AND vol &gt; 149 '</span>,</span>
-<span id="cb13-187"><a href="#cb13-187" aria-hidden="true" tabindex="-1"></a>                              <span class="at">period =</span> <span class="fu">rep</span>( <span class="fu">seq</span> (<span class="at">from =</span> <span class="dv">2</span>,</span>
-<span id="cb13-188"><a href="#cb13-188" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">to =</span> <span class="dv">2</span>,</span>
-<span id="cb13-189"><a href="#cb13-189" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">by =</span> <span class="dv">1</span>),</span>
-<span id="cb13-190"><a href="#cb13-190" aria-hidden="true" tabindex="-1"></a>                                            <span class="dv">1</span>),</span>
-<span id="cb13-191"><a href="#cb13-191" aria-hidden="true" tabindex="-1"></a>                              <span class="at">flow =</span> <span class="dv">1335000</span>,</span>
-<span id="cb13-192"><a href="#cb13-192" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition_type =</span> <span class="st">'live'</span>),</span>
-<span id="cb13-193"><a href="#cb13-193" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">data.table</span>(<span class="at">compartment =</span> <span class="st">"tsa99"</span>,</span>
-<span id="cb13-194"><a href="#cb13-194" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition =</span> <span class="st">' age &gt; 79 AND vol &gt; 149 '</span>,</span>
-<span id="cb13-195"><a href="#cb13-195" aria-hidden="true" tabindex="-1"></a>                              <span class="at">period =</span> <span class="fu">rep</span>( <span class="fu">seq</span> (<span class="at">from =</span> <span class="dv">3</span>,</span>
-<span id="cb13-196"><a href="#cb13-196" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">to =</span> <span class="dv">14</span>,</span>
-<span id="cb13-197"><a href="#cb13-197" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">by =</span> <span class="dv">1</span>),</span>
-<span id="cb13-198"><a href="#cb13-198" aria-hidden="true" tabindex="-1"></a>                                            <span class="dv">1</span>),</span>
-<span id="cb13-199"><a href="#cb13-199" aria-hidden="true" tabindex="-1"></a>                              <span class="at">flow =</span> <span class="dv">1323000</span>,</span>
-<span id="cb13-200"><a href="#cb13-200" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition_type =</span> <span class="st">'live'</span>),</span>
-<span id="cb13-201"><a href="#cb13-201" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">data.table</span>(<span class="at">compartment =</span> <span class="st">"tsa99"</span>,</span>
-<span id="cb13-202"><a href="#cb13-202" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition =</span> <span class="st">' age &gt; 79 AND vol &gt; 149 '</span>,</span>
-<span id="cb13-203"><a href="#cb13-203" aria-hidden="true" tabindex="-1"></a>                              <span class="at">period =</span> <span class="fu">rep</span>( <span class="fu">seq</span> (<span class="at">from =</span> <span class="dv">15</span>,</span>
-<span id="cb13-204"><a href="#cb13-204" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">to =</span> <span class="dv">25</span>,</span>
-<span id="cb13-205"><a href="#cb13-205" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">by =</span> <span class="dv">1</span>),</span>
-<span id="cb13-206"><a href="#cb13-206" aria-hidden="true" tabindex="-1"></a>                                            <span class="dv">1</span>),</span>
-<span id="cb13-207"><a href="#cb13-207" aria-hidden="true" tabindex="-1"></a>                              <span class="at">flow =</span> <span class="dv">1354000</span>,</span>
-<span id="cb13-208"><a href="#cb13-208" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition_type =</span> <span class="st">'live'</span>)</span>
-<span id="cb13-209"><a href="#cb13-209" aria-hidden="true" tabindex="-1"></a>    ))</span>
-<span id="cb13-210"><a href="#cb13-210" aria-hidden="true" tabindex="-1"></a>  },</span>
-<span id="cb13-211"><a href="#cb13-211" aria-hidden="true" tabindex="-1"></a>  <span class="at">Restart =</span> <span class="cn">TRUE</span></span>
-<span id="cb13-212"><a href="#cb13-212" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb13-213"><a href="#cb13-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-214"><a href="#cb13-214" aria-hidden="true" tabindex="-1"></a><span class="co"># initialize and run simulation in one go</span></span>
-<span id="cb13-215"><a href="#cb13-215" aria-hidden="true" tabindex="-1"></a>castorSim2 <span class="ot">&lt;-</span> <span class="fu">do.call</span>(SpaDES.core<span class="sc">::</span>simInitAndSpades, out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-167"><a href="#cb13-167" aria-hidden="true" tabindex="-1"></a>  <span class="at">harvestFlow =</span> {</span>
+<span id="cb13-168"><a href="#cb13-168" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rbindlist</span>(<span class="fu">list</span>(<span class="fu">data.table</span>(<span class="at">compartment =</span> <span class="st">"tsa99"</span>,</span>
+<span id="cb13-169"><a href="#cb13-169" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition =</span> <span class="st">' age &gt; 79 AND vol &gt; 149 '</span>,</span>
+<span id="cb13-170"><a href="#cb13-170" aria-hidden="true" tabindex="-1"></a>                              <span class="at">period =</span> <span class="fu">rep</span>( <span class="fu">seq</span> (<span class="at">from =</span> <span class="dv">1</span>,</span>
+<span id="cb13-171"><a href="#cb13-171" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">to =</span> <span class="dv">1</span>,</span>
+<span id="cb13-172"><a href="#cb13-172" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">by =</span> <span class="dv">1</span>),</span>
+<span id="cb13-173"><a href="#cb13-173" aria-hidden="true" tabindex="-1"></a>                                            <span class="dv">1</span>),</span>
+<span id="cb13-174"><a href="#cb13-174" aria-hidden="true" tabindex="-1"></a>                              <span class="at">flow =</span> <span class="dv">1473000</span>,</span>
+<span id="cb13-175"><a href="#cb13-175" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition_type =</span> <span class="st">'live'</span>),</span>
+<span id="cb13-176"><a href="#cb13-176" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">data.table</span>(<span class="at">compartment =</span> <span class="st">"tsa99"</span>,</span>
+<span id="cb13-177"><a href="#cb13-177" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition =</span> <span class="st">' age &gt; 79 AND vol &gt; 149 '</span>,</span>
+<span id="cb13-178"><a href="#cb13-178" aria-hidden="true" tabindex="-1"></a>                              <span class="at">period =</span> <span class="fu">rep</span>( <span class="fu">seq</span> (<span class="at">from =</span> <span class="dv">2</span>,</span>
+<span id="cb13-179"><a href="#cb13-179" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">to =</span> <span class="dv">2</span>,</span>
+<span id="cb13-180"><a href="#cb13-180" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">by =</span> <span class="dv">1</span>),</span>
+<span id="cb13-181"><a href="#cb13-181" aria-hidden="true" tabindex="-1"></a>                                            <span class="dv">1</span>),</span>
+<span id="cb13-182"><a href="#cb13-182" aria-hidden="true" tabindex="-1"></a>                              <span class="at">flow =</span> <span class="dv">1335000</span>,</span>
+<span id="cb13-183"><a href="#cb13-183" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition_type =</span> <span class="st">'live'</span>),</span>
+<span id="cb13-184"><a href="#cb13-184" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">data.table</span>(<span class="at">compartment =</span> <span class="st">"tsa99"</span>,</span>
+<span id="cb13-185"><a href="#cb13-185" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition =</span> <span class="st">' age &gt; 79 AND vol &gt; 149 '</span>,</span>
+<span id="cb13-186"><a href="#cb13-186" aria-hidden="true" tabindex="-1"></a>                              <span class="at">period =</span> <span class="fu">rep</span>( <span class="fu">seq</span> (<span class="at">from =</span> <span class="dv">3</span>,</span>
+<span id="cb13-187"><a href="#cb13-187" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">to =</span> <span class="dv">14</span>,</span>
+<span id="cb13-188"><a href="#cb13-188" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">by =</span> <span class="dv">1</span>),</span>
+<span id="cb13-189"><a href="#cb13-189" aria-hidden="true" tabindex="-1"></a>                                            <span class="dv">1</span>),</span>
+<span id="cb13-190"><a href="#cb13-190" aria-hidden="true" tabindex="-1"></a>                              <span class="at">flow =</span> <span class="dv">1323000</span>,</span>
+<span id="cb13-191"><a href="#cb13-191" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition_type =</span> <span class="st">'live'</span>),</span>
+<span id="cb13-192"><a href="#cb13-192" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">data.table</span>(<span class="at">compartment =</span> <span class="st">"tsa99"</span>,</span>
+<span id="cb13-193"><a href="#cb13-193" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition =</span> <span class="st">' age &gt; 79 AND vol &gt; 149 '</span>,</span>
+<span id="cb13-194"><a href="#cb13-194" aria-hidden="true" tabindex="-1"></a>                              <span class="at">period =</span> <span class="fu">rep</span>( <span class="fu">seq</span> (<span class="at">from =</span> <span class="dv">15</span>,</span>
+<span id="cb13-195"><a href="#cb13-195" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">to =</span> <span class="dv">25</span>,</span>
+<span id="cb13-196"><a href="#cb13-196" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">by =</span> <span class="dv">1</span>),</span>
+<span id="cb13-197"><a href="#cb13-197" aria-hidden="true" tabindex="-1"></a>                                            <span class="dv">1</span>),</span>
+<span id="cb13-198"><a href="#cb13-198" aria-hidden="true" tabindex="-1"></a>                              <span class="at">flow =</span> <span class="dv">1354000</span>,</span>
+<span id="cb13-199"><a href="#cb13-199" aria-hidden="true" tabindex="-1"></a>                              <span class="at">partition_type =</span> <span class="st">'live'</span>)</span>
+<span id="cb13-200"><a href="#cb13-200" aria-hidden="true" tabindex="-1"></a>    ))</span>
+<span id="cb13-201"><a href="#cb13-201" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb13-202"><a href="#cb13-202" aria-hidden="true" tabindex="-1"></a>  <span class="at">Restart =</span> <span class="cn">TRUE</span></span>
+<span id="cb13-203"><a href="#cb13-203" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-204"><a href="#cb13-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-205"><a href="#cb13-205" aria-hidden="true" tabindex="-1"></a><span class="co"># initialize and run simulation in one go</span></span>
+<span id="cb13-206"><a href="#cb13-206" aria-hidden="true" tabindex="-1"></a>castorSim2 <span class="ot">&lt;-</span> <span class="fu">do.call</span>(SpaDES.core<span class="sc">::</span>simInitAndSpades, out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 
@@ -1051,8 +1015,8 @@ Figure&nbsp;17.2: Diagram of module inter-dependencies with object names.
 <hr>
 <ol>
 <li id="fn1"><p><code>SpaDES.project</code> is currently being adapted to deal with modules nested in folders of GitHub repositories (instead of living in their own GitHub repositories). Hence, the code in this example is subject to changes in the near future.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Using the <code>googledrive</code> R package. See <a href="https://rdrr.io/cran/googledrive/man/drive_auth.html"><code>?googledrive::drive_auth</code></a> for more information.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>See also <a href="simList.html" class="quarto-xref"><span>Chapter 8</span></a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Note that these files are placed in folders that respect the folder structure of where they come from (if they are not in the repository root folder). For instance, in the example the <code>params.R</code> is placed in <code>&lt;projectPath&gt;/tutos/castorExample/params.R</code> .<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>See also <a href="simList.html" class="quarto-xref"><span>Chapter 7</span></a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -1618,12 +1582,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./ForestsAndFire.html" class="pagination-link" aria-label="Forest Succession and Wildfire using `setupProject`">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./bestPractices.html" class="pagination-link" aria-label="Best practices for $R^3T$ workflows">
-        <span class="nav-page-text">Best practices for <span class="math inline">\(R^3T\)</span> workflows</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./bestPractices.html" class="pagination-link" aria-label="Best practices">
+        <span class="nav-page-text">Best practices</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -42,6 +42,13 @@
     "text": "Presentations"
   },
   {
+    "objectID": "posts/2024-07-03-SpaDESWS notes in book.html",
+    "href": "posts/2024-07-03-SpaDESWS notes in book.html",
+    "title": "SpaDES Workshop Book Improvements",
+    "section": "",
+    "text": "As promised, we have now incorporated many notes from our June workshop into the “training book” Robust and nimble scientific workflows, using SpaDES, and fixed a few examples that needed attention.\nPlease have a look again at the troubleshooting section of the book where many of the package installation issues reported during the workshop are addressed.\nOur work on the book contents is by no means done and the book will continue to be improved.\nIf you spot any issues, please let us know via GitHub Issues.\nCeres and Eliot"
+  },
+  {
     "objectID": "posts/2024-05-07-SpaDES Workshop Confirmation.html",
     "href": "posts/2024-05-07-SpaDES Workshop Confirmation.html",
     "title": "SpaDES Workshop confirmation",
@@ -683,7 +690,7 @@
     "href": "Workshops.html#upcoming-workshops",
     "title": "Workshops",
     "section": "Upcoming workshops",
-    "text": "Upcoming workshops\n\n\n\n\n\n\n\nTitle\n\n\nDescription\n\n\nDate\n\n\n\n\n\n\n\n\n\nRobust and nimble scientific workflows, using SpaDES\n\n\nA multi-day workshop focusing on learning robust approaches to building reuseable, reproducible workflows for ecological applications\n\n\nJun 14, 2024\n\n\n\n\n\nNo matching items"
+    "text": "Upcoming workshops\n\n\n\n\n\n\n\nTitle\n\n\nDescription\n\n\nDate\n\n\n\n\n\n\n\n\n\nRobust and nimble scientific workflows, using SpaDES\n\n\nA multi-day workshop focusing on learning robust approaches to building reuseable, reproducible workflows for ecological applications\n\n\nJun 18, 2024\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "Workshops.html#past-workshops",
@@ -1127,10 +1134,24 @@
     "text": "Registration is now closed for the SpaDES workshop in June 11 - 13, 2024, and the outline of the agenda has been posted.\nNote that although the agenda content/timings are unlikely to change much, there might be some minor adjustments in the next few days. Stay tuned!\nThank you,\nEliot and Ceres"
   },
   {
+    "objectID": "posts/2024-07-03-terra transition.html",
+    "href": "posts/2024-07-03-terra transition.html",
+    "title": "Our transition to terra from raster",
+    "section": "",
+    "text": "We have been asked multiple times how we are “dealing with the transition from raster to terra”. The answer is, somewhat painfully and more slowly than we had hoped for.\nMuch of what we do involves manipulating spatial objects (raster or vector data) be it for data extraction (e.g., extracting data for statistical modelling), results production (e.g., outputting results spatially) or visualisation (e.g., making maps) and our packages and SpaDES modules were deeply intertwined with the raster and sp packages.\nWe have started the transition more than a year ago and still haven’t finished. Part of the reason why this takes so long is because we are attempting to keep backwards compatibility. Which take us to the purpose of this post.\nOur advice to others in the same transition journey as us:\n\nTry to keep backwards compatibility. Many terra functions allow passing Raster* class objects. Where they don’t, make your own function wrappers to deal with this. We have a few in the reproducible and LandR (on GitHub) packages (see table bellow)\nTest. A LOT.\n\nThat’s all really.\nBelow is a lit of raster to terra (or other packages) function equivalencies that may be useful. Note that these are likely to change as terra and other packages evolve.\nSee also the description of terra methods for more useful information.\n\n\n\n\n\nraster package\n\n\n\n\nterra or other packages\n\n\n\n\n\n\nras[]\n\n\n\n\nas.vec t o r(ras[])as.vector(values(ras))\n\n\n\n\n\n\ncompareCRS\n\n\n\n\nFor now, LandR::.compareCRS – only 2 rasters LandR::.compareRas – multiple rasters\n\n\n\n\n\n\nmaxValue, minValue\n\n\n\n\nminmax or reproducible::minFn, reproducible::maxFn\n\n\n\n\n\n\ncompareRaster\n\n\n\n\nterra::compareGeom – more sensitive than st_crs(x) == st_crs(y) and returns false negatives in many situations.  Alternatives are: sf::st_crs(x) == s f::st_crs(y)LandR::.compareRas\n\n\n\n\n\n\ngetValues\n\n\n\n\nSpatRaster[] returns a matrix, even if it is just one layer; RasterLayer[] returns a vector; RasterStack[] returns a matrix  For consistency, use: reproducible::values2 which replicates the old RasterLayer/RasterStack behaviour of vector if 1 layer, matrix if &gt; 1 layer, using internally: terra:: v a lues(ras, mat = nlyr(ras) &gt; 1) if ras is a RasterLayer \n\n\n\n\n\n\nsetValues\n\n\n\n\nras[] &lt;-\n\n\n\n\n\n\nextract, mask, ncell, cover\n\n\n\n\nSame function names in terra, all compatible with RasterLayer and RasterStack\n\n\n\n\n\n\nraster(ras)\n\n\n\n\nUsed to create a template raster.\n\n\nterra equivalent is: rast(ras)\n\n\nreproducible::rasterRead can use either, depending on value of getO p t ion(“reproducible.rasterRead”)\n\n\n\n\n\n\nraster(filepath)\n\n\n\n\nUsed to load a raster from a file.\n\n\nterra equivalent is rast(filepath)\n\n\nreproducible::rasterRead can use either, depending on value of getO p t ion(“reproducible.rasterRead”)\n\n\n\n\n\n\nlayerNames\n\n\n\n\nnames\n\n\n\n\n\n\nextent\n\n\n\n\nterra::ext – compatible with RasterLayer and RasterStack\n\n\n\n\n\n\nres\n\n\n\n\nterra::res – compatible with RasterLayer and RasterStack\n\n\n\n\n\n\nnlayers\n\n\n\n\nlength(names(ras)) or terra::nlyr; new transition function reproducible::nlayers2 works with either RasterLayer or SpatRaster\n\n\n\n\n\n\nas.integer(ras) doesn’t work for SpatRaster … this also doesn’t work: ras[] &lt;- as.integer(ras[])\n\n\n\n\nras &lt;- LandR::asInt(ras) works on RasterLayer or SpatRaster\n\n\nLandR::isInt # the equivalent for is.integer \n\n\n\n\n\n\nsetColors\n\n\n\n\nSee terra::coltab \n\n\n\n\n\n\nsubs\n\n\n\n\nterra::subst – but arguments are different\n\n\n\n\n\n\nfasterize::fasterize\n\n\n\n\nNo equivalent for SpatVector objects yet.\n\n\nUse terra::rasterize but this appears to be slow at the moment. sf objects may need to be converted to a temporary SpatVector\n\n\n\n\n\n\nSpaDES.core::Plots(ras)\n\n\n\n\nUse\n\n\nSpaDES.core::Plo t s (ras, fn = LandR::plotRast, …) available in LandRdevelopment\n\n\n\n\n\n\nquickPlot::Plot(ras)\n\n\n\n\nquickPlot::Plot(ras) – accepts SpatRaster\n\n\n\n\n\n\nraster::dataType\n\n\n\n\nEquivalent in terra is datatype (notice different capitalization)\n\n\nreproducible::dataType2 works on RasterLayer and SpatRaster\n\n\n\n\n\n\nxyFromCell\n\n\n\n\nterra::xyFromCell(…, cell) does not accept (unlike r aster::xyFromCell(…, cell)) Passing as.vector(cell) will work with RasterLayer and SpatRaster\n\n\n\n\n\n\nclump()\n\n\n\n\npatches()\n\n\n\n\n\n\nfilename()\n\n\n\n\nEquivalent in terra is sources() reproducible::Filenames() works on either RasterLayer or SpatRaster"
+  },
+  {
     "objectID": "publications.html",
     "href": "publications.html",
     "title": "Publications",
     "section": "",
     "text": "This list is currently only for Eliot McIntire. To see other members’ publications, see AlexChubaty, Yong Luo, AlanaClason, Sarah Bauduin, Jean Marchal, Sébastien Renard, Ceres Barros"
+  },
+  {
+    "objectID": "posts/2024-07-03-SpaDESWSsurvey.html",
+    "href": "posts/2024-07-03-SpaDESWSsurvey.html",
+    "title": "SpaDES Workshop - Post-workshop survey",
+    "section": "",
+    "text": "Thank you once again to all who participated in the Robust and nimble scientific workflows, using SpaDES workshop in June 11-13, 2024.\nWe ask all participants - regardless of how many sessions they attended – to fill out the exit survey below.\nYou answers are much needed, as they will help shape and improve future workshops.\n\nLoading…\n\nCeres and Eliot"
   }
 ]
