@@ -37,6 +37,10 @@ jobs:
 
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
+        with:
+          extra-repositories:
+            http://cran.r-project.org
+            https://predictiveecology.r-universe.dev
 
       - name: Install dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
