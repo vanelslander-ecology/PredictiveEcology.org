@@ -67,19 +67,13 @@ script](https://github.com/PredictiveEcology/PredictiveEcology.org/blob/training
 
 ## Workflow setup {#sec-castorSetup}
 
-`SpaDES.project` functions expect SpaDES modules to either exist
-locally, or at root level of separate repositories. This is not the case
-with Castor modules, which are in a nested folder (i.e. a folder in a
-folder tree) of a single GitHub repository.
+We usually expect SpaDES modules to either exist locally, or at root level of 
+separate repositories. However, this is not the case with Castor modules, 
+which are in a nested folder (i.e. a folder in a folder tree) 
+of a single GitHub repository.
 
-`SpaDES.project` will eventually be able to deal with this[^1], but for
-now we work around this issue by using a custom function called
-`getCastorModulesAndDB`. This function will also download the demo
-SQLite database from Google Drive[^2]. You'll be prompted to authorize
-this operation and a browser window will open for this. Make sure you
-give `tidyverse` read/write access to your files:
-
-![](assets/img/gdriveauth.png){fig-align="center" width="467"}
+`SpaDES.project` is now able to deal with this[^1], if you install the version 
+available from [predictiveecology.r-universe.dev](predictiveecology.r-universe.dev).
 
 ```{r workaround}
 #| results: hide
@@ -300,7 +294,7 @@ SpaDES.core::moduleDiagram(castorInit)
 #| purl: false
 
 figPath <- normalizePath(file.path(qmdPath, "assets/img/castorExample_objDiagram.png"),
-                winslash = "/")
+                         winslash = "/")
 
 knitr::include_graphics(figPath, rel_path = FALSE, dpi = NA)
 ```
