@@ -89,11 +89,9 @@ Init <- function(sim) {
 }
 
 Prediction <- function(sim) {
-  startYear <- 2023
-  sim$years <- startYear:(startYear + 10) + 1
-  for (year in sim$years - startYear) {
-    sim$pred[[year]] <- predict(sim$out, newdata = data.frame(y = rnorm(10) + year))
-  }
+
+  sim$pred[[time(sim)]] <- predict(sim$out, newdata = data.frame(y = rnorm(10) + time(sim)))
+
   return(invisible(sim))
 }
 

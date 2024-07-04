@@ -367,6 +367,22 @@ switch(
 )
 ```
 
+Because the `"predictions"` event schedules itself we will have to adapt the
+`Prediction()` function, as the `for`-loop is no longer necessary:
+
+```{r}
+#| purl: false
+#| eval: false
+
+Prediction <- function(sim) {
+  
+  sim$pred[[time(sim)]] <- predict(sim$out, newdata = data.frame(y = rnorm(10) + time(sim)))
+  
+  return(invisible(sim))
+}
+```
+
+
 ::: {.callout-tip appearance="simple"}
 ## Top-down vs Bottom-up workflow sequencing
 
