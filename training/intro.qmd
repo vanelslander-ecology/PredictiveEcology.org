@@ -12,7 +12,7 @@ always_allow_html: true
 bibliography: references/references.bib
 ---
 
-# Introduction {.unnumbered} {#sec-intro}
+# Introduction {.unnumbered}
 
 This book presents a collection of approaches and examples that aim to
 facilitate the building of *nimble workflows* for science-based problems

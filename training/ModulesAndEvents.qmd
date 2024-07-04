@@ -252,8 +252,9 @@ no strict rules to classify an R script.
 
 ## Where modules "live"
 
-Modules can live only locally (e.g. in a computer), but in the spirit of the PERFICT principles
-(see @sec-newexpect in @sec-intro) we like our modules to be shareable. 
+Modules can live only locally (e.g. in a computer), but in the spirit of
+the PERFICT principles (see @sec-newexpect in the [Introduction](intro.qmd)) we like our
+modules to be shareable.
 
 The best way to share modules is to host them on GitHub repositories, as SpaDES 
 tools have been developed to download modules from GitHub.
