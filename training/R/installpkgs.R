@@ -19,7 +19,8 @@ out <- setupProject(
   paths = list(projectPath = tempDir,
                packagePath = file.path(currDir, "packages/")),
   packages = "PredictiveEcology/PredictiveEcology.org@main/training/R/pkgList.R",
-  modules = "PredictiveEcology/Biomass_core@main"
+  modules = "PredictiveEcology/Biomass_core@main",
+  Restart = TRUE
 )
 
 setwd(currDir)
