@@ -46,7 +46,8 @@ jobs:
             any::knitr
             any::quarto
             any::rmarkdown
-            any::terra ## must be here, won't work from r setup script
+            any::igraph ## must be here, won't work from r setup script -- linux deps
+            any::terra ## must be here, won't work from r setup script -- linux deps
 
       - name: Build site 🔧
         run: Rscript R/renderCopyBook.R
