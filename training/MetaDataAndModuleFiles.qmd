@@ -38,10 +38,10 @@ knitr::knit_hooks$set(output = function(y, options) {
   hook_output(y, options)
 })
 
-if (Sys.getenv("USERNAME") != "GHA") {
+# if (Sys.getenv("USERNAME") != "GHA") {
   libPath <- ifelse(dir.exists("packages"), "packages", "training/packages") # if run interactively vs knited
   .libPaths(libPath)
-}
+# }
 
 ```
 
