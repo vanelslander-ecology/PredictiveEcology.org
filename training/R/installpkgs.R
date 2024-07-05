@@ -6,6 +6,8 @@
 ## steps from qmds (when theya re not part of example code)
 repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
 install.packages(c("SpaDES.project"), repos = repos)
+
+# install.packages(c("remotes"), repos = repos)
 # remotes::install_github("PredictiveEcology/SpaDES.project@development")
 
 library(SpaDES.project)
