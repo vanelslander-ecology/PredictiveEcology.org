@@ -15,7 +15,7 @@ library(SpaDES.project)
 currDir <- getwd()
 tempDir <- tempdir()
 out <- setupProject(
-  options = list("repos" = repos),
+  options = list("repos" = unique(repos)),
   paths = list(projectPath = tempDir,
                packagePath = file.path(currDir, "packages/")),
   packages = "PredictiveEcology/PredictiveEcology.org@main/training/R/pkgList.R",
