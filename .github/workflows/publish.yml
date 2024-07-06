@@ -41,12 +41,13 @@ jobs:
       - name: Install dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          packages:
+          packages: |
             any::httr
             any::knitr
             any::quarto
             any::rmarkdown
             any::terra
+            any::igraph
 
       - name: Build site 🔧
         run: Rscript R/renderCopyBook.R
