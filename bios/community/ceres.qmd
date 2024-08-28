@@ -11,7 +11,7 @@ about:
   links: 
     - icon: globe
       text: webpage
-      href: https:/www.researchgate.net/profile/Ceres-Barros
+      href: https://www.researchgate.net/profile/Ceres-Barros
     - icon: github
       text: GitHub
       href: https://github.com/CeresBarros
