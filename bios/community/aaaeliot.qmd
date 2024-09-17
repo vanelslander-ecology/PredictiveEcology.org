@@ -11,7 +11,7 @@ about:
   links: 
     - icon: globe
       text: webpage
-      href: https:/www.researchgate.net/profile/Eliot-Mcintire
+      href: https://www.researchgate.net/profile/Eliot-Mcintire
     - icon: github
       text: GitHub
       href: https://github.com/eliotmcintire 
@@ -21,8 +21,8 @@ about:
 ---
 
 ::: {#eliot}
-Research Scientist, [Natural Resources Canada](www.nrcan.gc.ca/home)\
-Adjunct Professor, [University of British Columbia](www.ubc.ca) & [Université Laval](www.ulaval.ca)
+Research Scientist, [Natural Resources Canada](https://www.nrcan.gc.ca/home)\
+Adjunct Professor, [University of British Columbia](https://www.ubc.ca) & [Université Laval](https://www.ulaval.ca)
 
 My research interests lie in applied ecology, conservation and forecasting of a broad array of ecosystems and species. Specifically, I am interested in using modern quantitative techniques to understand the natural complexity of ecosystems, ultimately, to allow forecasting of organisms and ecosystem processes. I use a variety of quantitative techniques, including Hierarchical Bayes, Spatial Analysis, Landscape Simulation Modeling, Structural Equation Modeling, and Non-Linear Models to achieve the best ecological inference from ecological data. Through each of the systems I study, I strive to understand the ecological processes and to test this understanding by forecasting.
 :::
