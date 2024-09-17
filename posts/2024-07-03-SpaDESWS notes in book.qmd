@@ -9,7 +9,7 @@ comments: false
 ---
 
 As promised, we have now incorporated many notes from our June workshop into
-the "training book" [Robust and nimble scientific workflows, using SpaDES](training/_book/index.html),
+the "training book" [Robust and nimble scientific workflows, using SpaDES](../training/_book/index.html),
 and fixed a few examples that needed attention.
 
 Please have a look again at the troubleshooting section of the book where many of the 
