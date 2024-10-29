@@ -1,0 +1,22 @@
+---
+title: "Mario van Telgen"
+name: "Mario van Telgen"
+image: https://i1.rgstatic.net/ii/profile.image/426959055396868-1478806379526_Q512/Mario_Van_Telgen.jpg
+comments: false
+about: 
+  id: mario
+  template: solana
+  image: https://i1.rgstatic.net/ii/profile.image/426959055396868-1478806379526_Q512/Mario_Van_Telgen.jpg
+  image-shape: rounded
+  links: 
+    - icon: globe
+      text: webpage
+      href: https://www.researchgate.net/profile/Mario_Van_Telgen
+---
+
+::: {#mario}
+(PhD) 
+:::
+
+
+

@@ -1,7 +1,7 @@
 ---
 title: "Dr Céline Boisvenue"
 name: "Céline Boisvenue"
-image: https://github.com/cboisvenue/photo/celine-photo2023.jpg
+image: https://github.com/cboisvenue/photo/blob/main/celine-photo2023.jpg?raw=true
 comments: false
 about:
   id: celine

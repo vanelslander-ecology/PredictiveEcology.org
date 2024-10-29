@@ -1,0 +1,21 @@
+---
+title: "Ian Eddy"
+name: "Ian Eddy"
+image: https://media.licdn.com/dms/image/C5603AQGZ0O9dY7MY6A/profile-displayphoto-shrink_800_800/0/1517441920541?e=2147483647&v=beta&t=TkfotiDMOrioFqtLxJGvHJM2CZ365ZwRU02RtagdXEI
+comments: false
+about: 
+  id: ian
+  template: solana
+  image: https://media.licdn.com/dms/image/C5603AQGZ0O9dY7MY6A/profile-displayphoto-shrink_800_800/0/1517441920541?e=2147483647&v=beta&t=TkfotiDMOrioFqtLxJGvHJM2CZ365ZwRU02RtagdXEI
+  image-shape: rounded
+  links: 
+    - icon: linkedin
+      text: LinkedIn
+      href: https://ca.linkedin.com/in/ian-eddy
+---
+
+::: {#ian}
+(Canadian Forest Service -- Geospatial Scientist 2018 - )
+
+Ian works part time with our team on various topics related to cumulative effects, GIS, SpaDES, modeling and data analytics.
+:::

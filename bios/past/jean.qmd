@@ -1,0 +1,19 @@
+---
+title: "Dr. Jean Marchal"
+name: "Jean Marchal"
+image: https://media.licdn.com/dms/image/C5603AQFRQZ7GqwxVLQ/profile-displayphoto-shrink_800_800/0/1563118335993?e=2147483647&v=beta&t=SpkJ_iGWz6NCV6InOjYHc56Es3WTQ4XeqyAhhLmiHDA
+comments: false
+about: 
+  id: jean
+  template: solana
+  image: https://media.licdn.com/dms/image/C5603AQFRQZ7GqwxVLQ/profile-displayphoto-shrink_800_800/0/1563118335993?e=2147483647&v=beta&t=SpkJ_iGWz6NCV6InOjYHc56Es3WTQ4XeqyAhhLmiHDA
+  image-shape: rounded
+  links: 
+    - icon: globe
+      text: webpage
+      href: https://www.wavx.ca/
+---
+
+::: {#jean}
+(PhD 2017)
+:::

@@ -1,0 +1,20 @@
+---
+title: "Sebastien Renard"
+name: "Sebastien Renard"
+image: https://i1.rgstatic.net/ii/profile.image/288757442990080-1445856547205_Q512/Sebastien_Renard2.jpg
+comments: false
+about: 
+  id: sebastien
+  template: solana
+  image: https://i1.rgstatic.net/ii/profile.image/288757442990080-1445856547205_Q512/Sebastien_Renard2.jpg
+  image-shape: rounded
+  links: 
+    - icon: globe
+      text: webpage
+      href: https://www.researchgate.net/profile/Sebastien_Renard2
+---
+
+::: {#sebastien}
+(PhD)
+:::
+

@@ -28,6 +28,22 @@ listing:
     categories: false
     feed: false
     page-size: 100
+  - id: research-professional
+    type: grid
+    grid-columns: 4
+    contents:
+      - bios/professional/*.qmd
+    sort: 
+      - "name"
+    fields: [image, title, description]
+    max-description-length: 1000000
+    image-height: 200px
+    image-align: left
+    sort-ui: false
+    filter-ui: false
+    categories: false
+    feed: false
+    page-size: 100
   - id: current-students
     type: grid
     grid-columns: 4
@@ -44,37 +60,11 @@ listing:
     categories: false
     feed: false
     page-size: 100
-  - id: research-professional
-    type: grid
-    grid-columns: 4
-    contents:
-      - bios/ian.qmd
-      - bios/camille.qmd
-      - bios/susan.qmd
-      - bios/allen.qmd
-    sort: 
-      - "name"
-    fields: [image, title, description]
-    max-description-length: 1000000
-    image-height: 200px
-    image-align: left
-    sort-ui: false
-    filter-ui: false
-    categories: false
-    feed: false
-    page-size: 100
   - id: former-personnel
     type: grid
     grid-columns: 4
     contents:
-      - bios/frances.qmd
-      - bios/alana.qmd
-      - bios/yong.qmd
-      - bios/jean.qmd
-      - bios/josh.qmd
-      - bios/sarah.qmd
-      - bios/sebastien.qmd
-      - bios/mario.qmd
+      - bios/past/*.qmd
     sort: 
       - "name"
     fields: [image, title, description]
@@ -106,22 +96,24 @@ University of British Columbia and Université Laval.
 ::: {#researchers}
 :::
 
-------------------------------------------------------------------------
-
-### Current students/post docs
-
-::: {#current-students}
-:::
 
 ### Research Professional
 
 ::: {#research-professional}
 :::
 
+
+### Current students/post docs
+
+::: {#current-students}
+:::
+
+
 ### Former Personnel
 
 ::: {#former-personnel}
 :::
+
 
 #### Prior to 2015
 

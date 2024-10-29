@@ -101,34 +101,6 @@ ul.task-list li input[type="checkbox"] {
   
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-current-students .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-image','listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-current-students'] = new List('listing-current-students', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
     const listingTargetEl = window.document.querySelector('#listing-research-professional .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
@@ -143,6 +115,34 @@ ul.task-list li input[type="checkbox"] {
 
     window['quarto-listings'] = window['quarto-listings'] || {};
     window['quarto-listings']['listing-research-professional'] = new List('listing-research-professional', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-current-students .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-image','listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-current-students'] = new List('listing-current-students', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -276,6 +276,10 @@ window.Quarto = {
     <a class="dropdown-item" href="./workshops/June-2024-SpaDES-workshop.html">
  <span class="dropdown-text">June 2024 Workshop Agenda</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./workshops/Nov-2024-SpaDES-workshop.html">
+ <span class="dropdown-text">November 2024 Workshop Agenda</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -373,7 +377,7 @@ window.Quarto = {
 <h3 data-anchor-id="researchers">Researchers</h3>
 <div id="listing-researchers" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-4">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1714514908378" data-listing-reading-time-sort="1" data-listing-word-count-sort="107">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1726615717231" data-listing-reading-time-sort="1" data-listing-word-count-sort="107">
 <a href="./bios/community/aaaeliot.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -391,7 +395,7 @@ Adjunct Professor, University of British Columbia &amp; Université Laval
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1714514908378" data-listing-reading-time-sort="1" data-listing-word-count-sort="18">
+<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1715116353991" data-listing-reading-time-sort="1" data-listing-word-count-sort="18">
 <a href="./bios/community/alex.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -408,7 +412,7 @@ President, FOR-CAST Research &amp; Analytics
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1714514908378" data-listing-reading-time-sort="1" data-listing-word-count-sort="6">
+<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1715116354050" data-listing-reading-time-sort="1" data-listing-word-count-sort="6">
 <a href="./bios/community/barry.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -425,11 +429,11 @@ Research Scientist, Natural Resources Canada
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1717527892345" data-listing-reading-time-sort="1" data-listing-word-count-sort="161">
+<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1730164447999" data-listing-reading-time-sort="1" data-listing-word-count-sort="161">
 <a href="./bios/community/celine.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img src="https://github.com/cboisvenue/photo/celine-photo2023.jpg" class="thumbnail-image card-img" style="height: 200px;">
+<img src="https://github.com/cboisvenue/photo/blob/main/celine-photo2023.jpg?raw=true" class="thumbnail-image card-img" style="height: 200px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -444,7 +448,7 @@ Dr Céline Boisvenue
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="4" data-listing-file-modified-sort="1714514908379" data-listing-reading-time-sort="1" data-listing-word-count-sort="112">
+<div class="g-col-1" data-index="4" data-listing-file-modified-sort="1726615717258" data-listing-reading-time-sort="1" data-listing-word-count-sort="112">
 <a href="./bios/community/ceres.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -461,7 +465,7 @@ Research Scientist, Natural Resources Canada
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="5" data-listing-file-modified-sort="1714514908380" data-listing-reading-time-sort="1" data-listing-word-count-sort="34">
+<div class="g-col-1" data-index="5" data-listing-file-modified-sort="1715116354207" data-listing-reading-time-sort="1" data-listing-word-count-sort="34">
 <a href="./bios/community/frances.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -478,7 +482,7 @@ Canada Research Chair, Northern Wildlife, Laurier University.
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="6" data-listing-file-modified-sort="1714514908381" data-listing-reading-time-sort="1" data-listing-word-count-sort="20">
+<div class="g-col-1" data-index="6" data-listing-file-modified-sort="1715116354228" data-listing-reading-time-sort="1" data-listing-word-count-sort="20">
 <a href="./bios/community/julie.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -495,7 +499,7 @@ Research Associate, Biodiversity Pathways.
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="7" data-listing-file-modified-sort="1714514908382" data-listing-reading-time-sort="1" data-listing-word-count-sort="4">
+<div class="g-col-1" data-index="7" data-listing-file-modified-sort="1715116354257" data-listing-reading-time-sort="1" data-listing-word-count-sort="4">
 <a href="./bios/community/steve.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -512,7 +516,7 @@ Professor, Université Laval
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="8" data-listing-file-modified-sort="1714514908382" data-listing-reading-time-sort="1" data-listing-word-count-sort="57">
+<div class="g-col-1" data-index="8" data-listing-file-modified-sort="1730162818716" data-listing-reading-time-sort="1" data-listing-word-count-sort="57">
 <a href="./bios/community/tati.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -534,13 +538,90 @@ Research Associate, TU Dresden, Germany.
 No matching items
 </div>
 </div>
-<hr>
+</section>
+<section id="research-professional" class="level3">
+<h3 data-anchor-id="research-professional">Research Professional</h3>
+<div id="listing-research-professional" class="quarto-listing quarto-listing-container-grid">
+<div class="list grid quarto-listing-cols-4">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1730163177558" data-listing-reading-time-sort="1" data-listing-word-count-sort="11">
+<a href="./bios/professional/allen.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="https://avatars.githubusercontent.com/u/38874024?v=4" class="thumbnail-image card-img" style="height: 200px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Allen Larocque
+</h5>
+<div class="card-text listing-description">
+Research Associate, Natural Resources Canada, Canadian Forest Service, Victoria, BC.
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1730161916068" data-listing-reading-time-sort="1" data-listing-word-count-sort="11">
+<a href="./bios/professional/camille.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="https://avatars.githubusercontent.com/u/172439801?v=4" class="thumbnail-image card-img" style="height: 200px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Camille Giuliano
+</h5>
+<div class="card-text listing-description">
+Research Associate, Natural Resources Canada, Canadian Forest Service, Victoria, BC.
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1715116354343" data-listing-reading-time-sort="1" data-listing-word-count-sort="29">
+<a href="./bios/professional/ian.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="https://media.licdn.com/dms/image/C5603AQGZ0O9dY7MY6A/profile-displayphoto-shrink_800_800/0/1517441920541?e=2147483647&amp;v=beta&amp;t=TkfotiDMOrioFqtLxJGvHJM2CZ365ZwRU02RtagdXEI" class="thumbnail-image card-img" style="height: 200px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Ian Eddy
+</h5>
+<div class="card-text listing-description">
+(Canadian Forest Service – Geospatial Scientist 2018 - )
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1730164372370" data-listing-reading-time-sort="1" data-listing-word-count-sort="11">
+<a href="./bios/professional/susan.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="https://avatars.githubusercontent.com/u/32853084?v=4" class="thumbnail-image card-img" style="height: 200px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Susan Murray
+</h5>
+<div class="card-text listing-description">
+Research Associate, Natural Resources Canada, Canadian Forest Service, Victoria, BC.
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
 </section>
 <section id="current-studentspost-docs" class="level3">
 <h3 data-anchor-id="current-studentspost-docs">Current students/post docs</h3>
 <div id="listing-current-students" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-4">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1714514908383" data-listing-reading-time-sort="1" data-listing-word-count-sort="32">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1715116354289" data-listing-reading-time-sort="1" data-listing-word-count-sort="32">
 <a href="./bios/current/ana.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -557,7 +638,7 @@ Ana Raymundo
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1714514908384" data-listing-reading-time-sort="1" data-listing-word-count-sort="24">
+<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1715116354316" data-listing-reading-time-sort="1" data-listing-word-count-sort="24">
 <a href="./bios/current/genevieve.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -574,7 +655,7 @@ Geneviève Degré-Timmons
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1714514908384" data-listing-reading-time-sort="1" data-listing-word-count-sort="12">
+<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1715116354327" data-listing-reading-time-sort="1" data-listing-word-count-sort="12">
 <a href="./bios/current/isolde.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -597,39 +678,12 @@ No matching items
 </div>
 </div>
 </section>
-<section id="research-professional" class="level3">
-<h3 data-anchor-id="research-professional">Research Professional</h3>
-<div id="listing-research-professional" class="quarto-listing quarto-listing-container-grid">
-<div class="list grid quarto-listing-cols-4">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1714514908385" data-listing-reading-time-sort="1" data-listing-word-count-sort="29">
-<a href="./bios/ian.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="https://media.licdn.com/dms/image/C5603AQGZ0O9dY7MY6A/profile-displayphoto-shrink_800_800/0/1517441920541?e=2147483647&amp;v=beta&amp;t=TkfotiDMOrioFqtLxJGvHJM2CZ365ZwRU02RtagdXEI" class="thumbnail-image card-img" style="height: 200px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Ian Eddy
-</h5>
-<div class="card-text listing-description">
-(Canadian Forest Service – Geospatial Scientist 2018 - )
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div>
-</section>
 <section id="former-personnel" class="level3">
 <h3 data-anchor-id="former-personnel">Former Personnel</h3>
 <div id="listing-former-personnel" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-4">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1714514908377" data-listing-reading-time-sort="1" data-listing-word-count-sort="31">
-<a href="./bios/alana.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1715116353937" data-listing-reading-time-sort="1" data-listing-word-count-sort="31">
+<a href="./bios/past/alana.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img src="https://bvcentre.ca/wp-content/uploads/2023/10/Alana-Clason.jpg" class="thumbnail-image card-img" style="height: 200px;">
@@ -645,8 +699,8 @@ Research fellow at the Bulkley Valley Research Centre.
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1712944243107" data-listing-reading-time-sort="1" data-listing-word-count-sort="3">
-<a href="./bios/jean.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1715116354343" data-listing-reading-time-sort="1" data-listing-word-count-sort="3">
+<a href="./bios/past/jean.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img src="https://media.licdn.com/dms/image/C5603AQFRQZ7GqwxVLQ/profile-displayphoto-shrink_800_800/0/1563118335993?e=2147483647&amp;v=beta&amp;t=SpkJ_iGWz6NCV6InOjYHc56Es3WTQ4XeqyAhhLmiHDA" class="thumbnail-image card-img" style="height: 200px;">
@@ -662,8 +716,8 @@ Dr.&nbsp;Jean Marchal
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1712944243123" data-listing-reading-time-sort="1" data-listing-word-count-sort="3">
-<a href="./bios/josh.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1715116354343" data-listing-reading-time-sort="1" data-listing-word-count-sort="3">
+<a href="./bios/past/josh.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img src="https://pbs.twimg.com/profile_images/1030880418554245120/PTIxTrMS_400x400.jpg" class="thumbnail-image card-img" style="height: 200px;">
@@ -679,8 +733,8 @@ Dr Josh Nowak
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1712944243123" data-listing-reading-time-sort="1" data-listing-word-count-sort="3">
-<a href="./bios/mario.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1715116354343" data-listing-reading-time-sort="1" data-listing-word-count-sort="3">
+<a href="./bios/past/mario.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img src="https://i1.rgstatic.net/ii/profile.image/426959055396868-1478806379526_Q512/Mario_Van_Telgen.jpg" class="thumbnail-image card-img" style="height: 200px;">
@@ -696,8 +750,8 @@ Mario van Telgen
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="4" data-listing-file-modified-sort="1712944243138" data-listing-reading-time-sort="1" data-listing-word-count-sort="3">
-<a href="./bios/sarah.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="4" data-listing-file-modified-sort="1715116354358" data-listing-reading-time-sort="1" data-listing-word-count-sort="3">
+<a href="./bios/past/sarah.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img src="https://www.sarahbauduin.fr/wp-content/uploads/2019/08/BauduinSarah_profil.jpg" class="thumbnail-image card-img" style="height: 200px;">
@@ -713,8 +767,8 @@ Dr.&nbsp;Sarah Bauduin
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="5" data-listing-file-modified-sort="1712944243153" data-listing-reading-time-sort="1" data-listing-word-count-sort="2">
-<a href="./bios/sebastien.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="5" data-listing-file-modified-sort="1715116354358" data-listing-reading-time-sort="1" data-listing-word-count-sort="2">
+<a href="./bios/past/sebastien.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img src="https://i1.rgstatic.net/ii/profile.image/288757442990080-1445856547205_Q512/Sebastien_Renard2.jpg" class="thumbnail-image card-img" style="height: 200px;">
@@ -730,8 +784,8 @@ Sebastien Renard
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="6" data-listing-file-modified-sort="1712944243169" data-listing-reading-time-sort="1" data-listing-word-count-sort="4">
-<a href="./bios/yong.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="6" data-listing-file-modified-sort="1715116354358" data-listing-reading-time-sort="1" data-listing-word-count-sort="4">
+<a href="./bios/past/yong.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img src="https://media.licdn.com/dms/image/C5603AQFp66Ozi5vv4Q/profile-displayphoto-shrink_200_200/0/1517372657629?e=2147483647&amp;v=beta&amp;t=Tj3XfSbweQsOwQNzZEDjQbXZLBvDPUQtvvM--JxP3t0" class="thumbnail-image card-img" style="height: 200px;">

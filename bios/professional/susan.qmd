@@ -1,7 +1,7 @@
 ---
 title: "Susan Murray"
 name: "Susan Murray"
-image: https://avatars.githubusercontent.com/u/172439801?v=4
+image: https://avatars.githubusercontent.com/u/32853084?v=4
 comments: false
 about: 
   id: ian
@@ -16,7 +16,7 @@ about:
       href: https://github.com/suz-estella/
 ---
 
-::: {#camille}
+::: {#susan}
 
 Research Associate, Natural Resources Canada, Canadian Forest Service, Victoria, BC.
 
