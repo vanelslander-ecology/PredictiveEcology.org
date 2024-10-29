@@ -690,7 +690,7 @@
     "href": "Workshops.html#upcoming-workshops",
     "title": "Workshops",
     "section": "Upcoming workshops",
-    "text": "Upcoming workshops\n\n\n\n\n\n\n\nTitle\n\n\nDescription\n\n\nDate\n\n\n\n\n\n\n\n\n\nRobust and nimble scientific workflows, using SpaDES\n\n\nA multi-day workshop focusing on learning robust approaches to building reuseable, reproducible workflows for ecological applications\n\n\nJun 18, 2024\n\n\n\n\n\nNo matching items"
+    "text": "Upcoming workshops\n\n\n\n\n\n\n\nTitle\n\n\nDescription\n\n\nDate\n\n\n\n\n\n\n\n\n\nRobust and nimble scientific workflows, using SpaDES\n\n\nA multi-day workshop focusing on learning robust approaches to building reuseable, reproducible workflows for Forest Degradation\n\n\nOct 29, 2024\n\n\n\n\n\n\n\nRobust and nimble scientific workflows, using SpaDES\n\n\nA multi-day workshop focusing on learning robust approaches to building reuseable, reproducible workflows for ecological applications\n\n\nJul 5, 2024\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "Workshops.html#past-workshops",
@@ -1236,7 +1236,7 @@
     "href": "workshops/Nov-2024-SpaDES-workshop.html",
     "title": "Robust and nimble scientific workflows, using SpaDES",
     "section": "",
-    "text": "Update: links to presentation files have been added to the agenda.\nIf you missed it, but would like to attend a future workshop, please reach out to Eliot or Ceres so that we can add you to the wait list."
+    "text": "Update: links to presentation files have been added to the agenda.\nIf you missed it, but would like to attend a future workshop, please reach out to Eliot or Ian so that we can add you to the wait list."
   },
   {
     "objectID": "workshops/Nov-2024-SpaDES-workshop.html#date-nov-19---21-2024",
@@ -1265,5 +1265,12 @@
     "title": "Robust and nimble scientific workflows, using SpaDES",
     "section": "THIS IS TENTATIVE - EXPECT CHANGES BEFORE THE START",
     "text": "THIS IS TENTATIVE - EXPECT CHANGES BEFORE THE START\n\n\n\nDAY 1\nSpaDES foundations\n\n\n9:00 - 10:00\nIntroduction\n\n\n\nWorkshop logistics\n\n\n\nWhat is SpaDES and why use it?\n\n\n\nDownload presentation\n\n\n10:00 - 10:30\nIntroduction to SpaDES modules\n\n\n10:30 - 11:00\nWOYO\n\n\n11:00 - 11:30\nModule files and metadata\n\n\n\nDownload presentation\n\n\n11:30 - 12:30\nWOYO\n\n\n12:30 - 1:30\nLUNCH BREAK\n\n\n1:30 - 2:00\nModule inputs\n\n\n\nDownload presentation\n\n\n2:00 - 3:00\nWOYO\n\n\n3:00 - 3:30\nThe simList\n\n\n\nDownload presentation\n\n\n3:30 - free ending\n\nWOYO\n\n\nDAY 2\nContinuous workflows with simple examples\n\n\n9:00 - 9:30\nRevisit previous WOYO and Day 1\n\n\n9:30 - 10:00\nModules & events\n\n\n\nEvent scheduling\n\n\n\nDownload presentation\n\n\n10:00 - 11:00\nWOYO\n\n\n11:00 - 11:30\nContinuous workflows\n\n\n\nCaching\n\n\n\nDownload presentation\n\n\n11:30 - 12:30\nWOYO\n\n\n12:30 - 1:30\nLUNCH BREAK\n\n\n1:30 - 2:00\nprepInputs()\n\n\n\nDownload presentation\n\n\n2:00 - 3:00\nWOYO\n\n\n3:00 - 3:30\nSpaDES workflows and projects with setupProject\n\n\n\nA simple workflow for an ecological example\n\n\n\nDownload presentation\n\n\n3:30 - 4:00\n\n\n\nDAY 3\nUsing continuous workflows with real challenges\n\n\n9:00 - 9:30\nRevisit previous WOYO and Day 2\n\n\n9:30 - 10:00\nFlexibility comes at a cost, but it’s worth it!\n\n\n\nDownload presentation\n\n\n10:00 - 10:30\nForest landscape modelling - parameterisation, simulation/prediction\n\n\n10:30 - 11:00\nWOYO\n\n\n11:00 - 11:30\nForest landscape modelling - turn plotting on, extend the simulation, scenarios\n\n\n11:30 - 12:30\nWOYO\n\n\n12:30 - 1:30\nLUNCH BREAK\n\n\n1:30 - 2:00\nForests and wildfire\n\n\n2:00 - 4:00\nWOYO"
+  },
+  {
+    "objectID": "posts/2024-10-29-workshop announcement.html",
+    "href": "posts/2024-10-29-workshop announcement.html",
+    "title": "SpaDES Workshop planning for Nov 2024 begins",
+    "section": "",
+    "text": "Final arrangements have been made and dates have been settled!\nI will be leading a 3 day workshop on training with SpaDES with focus on how to use it for Forest Degradation. on Nov 19-21, 2024 in person in Victoria, BC at the Pacific Forestry Centre.\nIf you are interested in a future workshop, virtual or in person, please contact Eliot or Ian."
   }
 ]

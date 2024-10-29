@@ -1,0 +1,14 @@
+---
+title: "SpaDES Workshop planning for Nov 2024 begins"
+author: "Eliot McIntire"
+date: "Oct 29, 2024"
+categories:
+  - Workshop
+comments: false
+---
+
+Final arrangements have been made and dates have been settled!
+
+I will be leading a [3 day workshop on training with SpaDES with focus on how to use it for Forest Degradation.](https://predictiveecology.org/workshops/Nov-2024-SpaDES-workshop.html) on Nov 19-21, 2024 in person in Victoria, BC at the Pacific Forestry Centre. 
+
+If you are interested in a future workshop, virtual or in person, please contact [Eliot](../bios/community/aaaeliot.qmd) or [Ian](../bios/professional/ian.qmd).

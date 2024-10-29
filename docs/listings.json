@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/2024-10-29-workshop announcement.html",
       "/posts/2024-07-03-SpaDESWS notes in book.html",
       "/posts/2024-07-03-SpaDESWSsurvey.html",
       "/posts/2024-07-03-terra transition.html",
@@ -92,6 +93,7 @@
   {
     "listing": "/Workshops.html",
     "items": [
+      "/workshops/Nov-2024-SpaDES-workshop.html",
       "/workshops/June-2024-SpaDES-workshop.html"
     ]
   },

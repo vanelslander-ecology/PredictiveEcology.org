@@ -9,8 +9,9 @@ listing:
   - id: workshops
     type: table
     contents: 
+      - workshops/Nov-2024-SpaDES-workshop.qmd
       - workshops/June-2024-SpaDES-workshop.qmd
-    sort: "date asc"
+    sort: "date desc"
     fields: [image, title, description, date]
     max-description-length: 1000000
     image-height: 250px
