@@ -1,0 +1,23 @@
+---
+title: "Camille Giuliano"
+name: "Camille Giuliano"
+image: https://avatars.githubusercontent.com/u/172439801?v=4
+comments: false
+about: 
+  id: ian
+  template: solana
+  image-shape: rounded
+  links: 
+    - icon: globe
+      text: webpage
+      href: https://scf.rncan.gc.ca/employees/read/cgiulian
+    - icon: github
+      text: GitHub
+      href: https://github.com/camillegiuliano/
+---
+
+::: {#camille}
+
+Research Associate, Natural Resources Canada, Canadian Forest Service, Victoria, BC.
+
+:::

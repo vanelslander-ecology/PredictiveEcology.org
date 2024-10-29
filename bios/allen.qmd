@@ -1,0 +1,23 @@
+---
+title: "Allen Larocque"
+name: "Allen Larocque"
+image: https://avatars.githubusercontent.com/u/38874024?v=4
+comments: false
+about: 
+  id: allen
+  template: solana
+  image-shape: rounded
+  links: 
+    - icon: globe
+      text: webpage
+      href: https://cfs.nrcan.gc.ca/employees/read/allarocq
+    - icon: github
+      text: GitHub
+      href: https://github.com/AllenLarocque
+---
+
+::: {#allen}
+
+Research Associate, Natural Resources Canada, Canadian Forest Service, Victoria, BC.
+
+:::

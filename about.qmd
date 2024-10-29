@@ -49,6 +49,9 @@ listing:
     grid-columns: 4
     contents:
       - bios/ian.qmd
+      - bios/camille.qmd
+      - bios/susan.qmd
+      - bios/allen.qmd
     sort: 
       - "name"
     fields: [image, title, description]
