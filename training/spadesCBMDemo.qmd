@@ -1,0 +1,140 @@
+---
+author: 
+date: last-modified
+editor_options:
+  chunk_output_type: console
+editor:
+  mode: source
+bibliography: references/references.bib
+execute:
+  tidy: false
+  warning: false
+  message: false
+  error: false
+  cache: true
+  eval: false
+---
+
+# Forest Carbon Modelling spadesCBM and setupProject
+
+::: {.callout-tip appearance="simple"}
+See \[Barebones R script\] for the code shown in this chapter
+:::
+
+```{r setup}
+#| include: false
+#| eval: true
+#| cache: false
+#| purl: false
+
+knitr::opts_chunk$set(tidy = FALSE, 
+                      warning = FALSE, 
+                      message = FALSE, 
+                      error = FALSE)
+
+# truncate text output
+hook_output <- knitr::knit_hooks$get("output")
+
+knitr::knit_hooks$set(output = function(x, options) {
+  if (!is.null(n <- options$outlines)) {
+    x <- xfun::split_lines(x)
+    if (length(x) > n) {
+      # truncate the output
+      x <- c(head(x, n), "....\n")
+    }
+    x <- paste(x, collapse = "\n")
+  }
+  hook_output(x, options)
+})
+
+if (Sys.getenv("USERNAME") == "GHA") {
+  googledrive::drive_auth(path = Sys.getenv("GOOGLE_APP_CREDENTIALS"))
+}
+
+qmdPath <- normalizePath(getwd(), winslash = "/")
+
+if (!interactive()) { 
+  dir.create("~/SpaDES_book/LandRDemo_coreVeg", recursive = TRUE)
+  knitr::opts_knit$set(root.dir = "~/SpaDES_book/LandRDemo_coreVeg")
+}
+```
+
+::: {#imp-gdrive .callout-important}
+## Google account needed for this example
+
+Like the LandR example, you will need to access some of the data using the `googledrive` R package (part of the `tidyverse` family). During the `simInit()` (or `simInitAndSpades()`) call R will prompt you to either choose a previously authenticated account (if you have previously used `googledrive`) or to open a browser window and authenticate. If this doesn't work, try this workaround:
+
+```{r setupGoogle}
+#| eval: false
+#| results: hide
+#| code-fold: false
+#| code-summary: "Show code"
+install.packages(c("googledrive", "httpuv"), repos = repos)
+
+googledriveAuthPath <- "~/SpaDES_book/googledrive_auth_cache"
+dir.create(googledriveAuthPath, showWarnings = FALSE)
+googledrive::drive_auth(cache = "~/SpaDES_book/googledrive_auth_cache")
+
+```
+
+Make sure you give `tidyverse` read/write access to your files:
+
+![](assets/img/gdriveauth.png){fig-align="center" width="467"}
+:::
+
+## Setup
+
+```         
+insert needed chunk from the global
+```
+
+### spadesCBM Modules
+
+spadesCBM runs using 4 distinct modules.
+
+#### CBM_defaults
+
+#### CBM_dataPrep_xx
+
+#### CBM_vol2biomass
+
+#### CBM_core
+
+## Run Simulation
+
+```         
+simPython <- do.call(SpaDES.core::simInitAndSpades, out)
+```
+
+### Some examples/results
+
+#### NPP
+
+```         
+MasterR <- terra::unwrap(simPython$masterRaster)
+npp <- as.data.table(copy(simPython$NPP))
+npp[, `:=`(avgNPP, mean(NPP)), by = c("pixelGroup")]
+cols <- c("simYear", "NPP")
+avgNPP <- unique(npp[, `:=`((cols), NULL)])
+t <- simPython$spatialDT[, .(pixelIndex, pixelGroup)]
+setkey(t, pixelGroup)
+setkey(avgNPP, pixelGroup)
+temp <- merge(t, avgNPP, on = "pixelGroup", allow.cartesian=TRUE)
+setkey(temp, pixelIndex)
+plotMaster <- terra::rast(simPython$masterRaster)
+plotMaster[] <- 0
+plotMaster[temp$pixelIndex] <- temp$avgNPP
+pixSize <- prod(res(MasterR))/10000
+temp[, `:=`(pixNPP, avgNPP * pixSize)]
+overallAvgNpp <- sum(temp$pixNPP)/(nrow(temp) * pixSize)
+quickPlot::Plot(plotMaster, new = TRUE,
+                title = paste0("Pixel-level average NPP",
+                                "\n Landscape average: ", round(overallAvgNpp, 3), "  MgC/ha/yr."))
+```
+
+#### Total Carbon
+
+## Barebones script
+```
+insert whole global here. 
+```
