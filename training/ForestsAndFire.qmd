@@ -19,7 +19,7 @@ See [Barebones R script] for the code shown in this chapter
 :::
 
 ::: {.callout-note appearance="simple"}
-*1.5 hours -- estimated time for 1st time executing* 
+*1.5 hours -- estimated time for 1st time executing*
 
 *6 GB RAM -- estimated peak RAM for executing*
 :::
@@ -86,7 +86,6 @@ Require::Require(c("PredictiveEcology/SpaDES.project@development (HEAD)"))
 
 out <- SpaDES.project::setupProject(
   updateRprofile = TRUE,
-  name = "scfm_example_fresh",
   useGit = FALSE,
   paths = list(projectPath = "~/SpaDES_book"),
   modules = c("PredictiveEcology/Biomass_borealDataPrep@development",
@@ -146,7 +145,7 @@ out <- SpaDES.project::setupProject(
 #this must be done outside of setupProject (temporarily)
 #alternatively
 outSim <- do.call(SpaDES.core::simInitAndSpades, out) |>
-  Cache()
+  reproducible::Cache()
 ```
 
 ## Examining things
@@ -185,7 +184,6 @@ outSim <- simInitAndSpades2(out)
 
 Then we can look in the `outputs/figures` folder to see all the figures
 that the modules created.
-
 
 ## Barebones R script
 
