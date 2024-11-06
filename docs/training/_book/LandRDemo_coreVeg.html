@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ceres Barros">
-<meta name="dcterms.date" content="2024-07-03">
+<meta name="dcterms.date" content="2024-07-05">
 
 <title>Robust and nimble scientific workflows, using SpaDES - 14&nbsp; Forest Landscape Modelling with LandR and setupProject</title>
 <style>
@@ -389,12 +389,6 @@ div.csl-indent {
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Forest Succession and Wildfire using <code>setupProject</code></span></span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./castorExample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Castor Workflow with <code>setupProject</code></span></span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -457,7 +451,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 3, 2024</p>
+      <p class="date">July 5, 2024</p>
     </div>
   </div>
   
@@ -650,7 +644,7 @@ Important&nbsp;14.1: Google account needed for this example
 <span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>If you have a look at <a href="castorExample.html#sec-castorSetup" class="quarto-xref"><span>Section 16.1</span></a> in the <a href="castorExample.html" class="quarto-xref"><span>Chapter 16</span></a> chapter, you will see some differences in the way we setup the two workflows:</p>
+<p>If you have a look at <span class="quarto-unresolved-ref">?sec-castorSetup</span> in the <span class="quarto-unresolved-ref">?sec-castorEg</span> chapter, you will see some differences in the way we setup the two workflows:</p>
 <ul>
 <li><p><code>paths</code>. Here we left the defaults for all paths (see <a href="https://spades-project.predictiveecology.org/reference/setup.html"><code>?setupPaths()</code></a> for the list of path options) except for the project location (<code>projectPath</code>) and the location of the package library (<code>packagePath</code>, which will be placed inside <code>projectPath</code>).</p></li>
 <li><p><code>options</code>. We also set a couple of “global options” that determine the where data will be downloaded to (“reproducible.destinationPath”). This will be the same as the default directory to look for inputs (“spades.inputPath”). Notice how we used <code>paths$</code> to get these directory paths from the <code>paths</code> object that <code>setupProject</code> creates (based on the <code>paths</code> argument above) prior to setting the options.</p></li>

@@ -80,7 +80,7 @@ book:
       - workflowSimple2.qmd
       - LandRDemo_coreVeg.qmd
       - ForestsAndFire.qmd
-      - castorExample.qmd
+      # - castorExample.qmd
     - bestPractices.qmd
     - references.qmd
 
