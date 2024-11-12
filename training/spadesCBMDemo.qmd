@@ -1,5 +1,7 @@
 ---
-author: "Céline Boisvenue"
+author: 
+  - "Céline Boisvenue"
+  - "Camille Giuliano"
 date: last-modified
 editor_options:
   chunk_output_type: console
