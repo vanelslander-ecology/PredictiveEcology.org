@@ -195,7 +195,19 @@ Make sure you give `tidyverse` read/write access to your files:
 ![](assets/img/gdriveauth.png){fig-align="center" width="467"}
 :::
 
+::: {#imp-python .callout-important}
+## Python is required for this example
 
+The *CBM_core* module requires Python >=3.9 and <=3.12.7.
+
+If a suitable version of Python does not already exist on your computer,
+`setupProject` will use the [`reticulate`](https://rstudio.github.io/reticulate/) package to install it using the [pyenv](https://github.com/pyenv/pyenv) or [pyenv-win](https://github.com/pyenv-win/pyenv-win) project.
+
+If you are using a Windows computer with Git installed, the `pyenv-win` tool will be acquired and managed directly by `reticulate`. If you are using a Windows computer without Git installed, you will be prompted to allow the `pyenv-win` tool to be downloaded directly from Github to your local user application data directory (`tools::R_user_dir("r-spadesCBM")`).
+
+If the Python installation process fails or you would prefer to manually install Python, it can be downloaded directly from [python.org/downloads](https://python.org/downloads).
+
+:::
 
 ## Run Simulation
 
