@@ -17,7 +17,7 @@ execute:
   eval: false
 ---
 
-# Forest Carbon Modelling in SpaDES with setupProject
+# Forest Carbon Modelling in SpaDES with `setupProject`
 
 ::: {.callout-tip appearance="simple"}
 See \[Barebones R script\] for the code shown in this chapter
@@ -74,13 +74,8 @@ for how these relate in SpaDES). The first module *CBM_defaults* reads in
 defaults CBM parameters for Canada.  The second module *CBM_dataPrep_SK* is
 a data preparation SpaDES module, where input data and spatial layers are
 assembled and prepared for a specific study area (the *SK*
-indicates the
-specific study area or scenario, in this case it is a small raster in Saskatchewan). In spadesCBM, as in CBM, growth curves are
-the main change-agent. The third module
-*CBM_vol2biomass* translates user-provided growth curves ($m^3/ha$) into increments for specific above ground carbon pools (metric tonnes of carbon/ha) using @boudewyn2007 models to which we added a smoothing algorithm. These three modules provide the input to *CBM_core* module where processes are applied on a yearly time step.
-This modularity enables users to access and change default parameters, change
-inputs, and assess the impact of these changes. We are working on some
-implementations of this modularity and making these available to the community.
+indicates the specific study area or scenario, in this case it is a small raster in Saskatchewan). In spadesCBM, as in CBM, growth curves are
+the main change-agent. The third module *CBM_vol2biomass* translates user-provided growth curves ($m^3/ha$) into increments for specific above ground carbon pools (metric tonnes of carbon/ha) using @boudewyn2007 models to which we added a smoothing algorithm. These three modules provide the inputs to the *CBM_core* module where processes are applied on a yearly time step. This modularity enables users to access and change default parameters, change inputs, and assess the impact of these changes. We are working on some implementations of this modularity and making these available to the community.
 We hope others will do the same. A manual describing spadesCBM in detail is forthcoming. The link to the manual will be posted here.
 
 Several core utilities to spadesCBm are provided by the [`CBMutils`](https://github.com/PredictiveEcology/CBMutils@development) package, available on GitHub. Active development in `CBMutils` and all `spadesCBM` modules is underway.
@@ -91,8 +86,90 @@ In this example, we will setup the workflow using `setupProject` from the
 [`SpaDES.project`](https://spades-project.predictiveecology.org/) package and
 current versions of the spadesCBM modules.
 
-```         
-insert needed chunk from the global
+``` {r}        
+projectPath <- "~/spadesCBMpython"
+dir.create(projectPath, recursive = TRUE, showWarnings = FALSE)
+setwd(projectPath)
+
+repos <- unique(c("predictiveecology.r-universe.dev", getOption("repos")))
+#if (!require("SpaDES.project")) install.packages("SpaDES.project", repos = repos)
+install.packages("SpaDES.project",
+                 repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
+
+# start in 1998 because there are known disturbances in the study area
+times <- list(start = 1998, end = 2002)
+
+out <- SpaDES.project::setupProject(
+  Restart = TRUE,
+  useGit = "PredictiveEcology", # a developer sets and keeps this = TRUE
+  overwrite = TRUE, # a user who wants to get latest modules sets this to TRUE
+  paths = list(projectPath = projectPath),
+
+  options = options(
+    repos = c(repos = repos),
+    Require.cloneFrom = Sys.getenv("R_LIBS_USER"),
+    reproducible.destinationPath = "inputs", ## TODO: SpaDES.project#24
+    ## These are for speed
+    reproducible.useMemoise = TRUE,
+    # Require.offlineMode = TRUE,
+    spades.moduleCodeChecks = FALSE
+  ),
+  modules =  c("PredictiveEcology/CBM_defaults@training",
+               "PredictiveEcology/CBM_dataPrep_SK@training",
+               "PredictiveEcology/CBM_vol2biomass@training",
+               "PredictiveEcology/CBM_core@training"),##TODO not linked yet!
+  times = times,
+  require = c("SpaDES.core", "reticulate",
+              "PredictiveEcology/libcbmr", "data.table"),
+
+  parameters = list(
+    CBM_defaults = list(
+      .useCache = TRUE
+    ),
+    CBM_dataPrep_SK = list(
+      .useCache = TRUE
+    ),
+    CBM_vol2biomass = list(
+      .useCache = TRUE
+    )
+  ),
+
+  ret = {
+    reticulate::use_virtualenv(virtualenv = "r-reticulate")
+    reticulate::py_install("libcbm", envname = "r-reticulate")
+  },
+
+  #### begin manually passed inputs #########################################
+  ##Need to keep this master raster here. It defines the smaller study area. We
+  ##will not need it when we run all of the managed forests of SK as the study
+  ##area will be defined by a masterRaster that we get via a URL.
+  masterRaster = {
+    extent = terra::ext(c(xmin = -687696, xmax = -681036, ymin = 711955, ymax = 716183))
+    masterRaster <- terra::rast(extent, res = 30)
+    terra::crs(masterRaster) <- "PROJCRS[\"Lambert_Conformal_Conic_2SP\",\n    BASEGEOGCRS[\"GCS_GRS_1980_IUGG_1980\",\n        DATUM[\"D_unknown\",\n            ELLIPSOID[\"GRS80\",6378137,298.257222101,\n                LENGTHUNIT[\"metre\",1,\n                    ID[\"EPSG\",9001]]]],\n        PRIMEM[\"Greenwich\",0,\n            ANGLEUNIT[\"degree\",0.0174532925199433,\n                ID[\"EPSG\",9122]]]],\n    CONVERSION[\"Lambert Conic Conformal (2SP)\",\n        METHOD[\"Lambert Conic Conformal (2SP)\",\n            ID[\"EPSG\",9802]],\n        PARAMETER[\"Latitude of false origin\",49,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8821]],\n        PARAMETER[\"Longitude of false origin\",-95,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8822]],\n        PARAMETER[\"Latitude of 1st standard parallel\",49,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8823]],\n        PARAMETER[\"Latitude of 2nd standard parallel\",77,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8824]],\n        PARAMETER[\"Easting at false origin\",0,\n            LENGTHUNIT[\"metre\",1],\n            ID[\"EPSG\",8826]],\n        PARAMETER[\"Northing at false origin\",0,\n            LENGTHUNIT[\"metre\",1],\n            ID[\"EPSG\",8827]]],\n    CS[Cartesian,2],\n        AXIS[\"easting\",east,\n            ORDER[1],\n            LENGTHUNIT[\"metre\",1,\n                ID[\"EPSG\",9001]]],\n        AXIS[\"northing\",north,\n            ORDER[2],\n            LENGTHUNIT[\"metre\",1,\n                ID[\"EPSG\",9001]]]]"
+    masterRaster[] <- rep(1, terra::ncell(masterRaster))
+    mr <- reproducible::prepInputs(url = "https://drive.google.com/file/d/1zUyFH8k6Ef4c_GiWMInKbwAl6m6gvLJW/view?usp=drive_link",
+                                   destinationPath = "inputs",
+                                   to = masterRaster,
+                                   method = "near")
+    mr[mr[] == 0] <- NA
+    mr
+  },
+  ##Need to keep the disturbance rasters here. We will not need it when we run all
+  ##of the managed forests of SK as the disturbance rasters will be defined by
+  ##rasters that we get via a URL.
+  disturbanceRasters = "https://drive.google.com/file/d/12YnuQYytjcBej0_kdodLchPg7z9LygCt/view?usp=drive_link",
+
+  # Restart = getOption("SpaDES.project.Restart", FALSE),
+
+  outputs = as.data.frame(expand.grid(objectName = c("cbmPools", "NPP"),
+                                      saveTime = sort(c(times$start,
+                                                        times$start +
+                                                          c(1:(times$end - times$start))
+                                      )))),
+
+)
+out$loadOrder <- unlist(out$modules)
 ```
 
 ::: {#imp-gdrive .callout-important}
@@ -122,7 +199,7 @@ Make sure you give `tidyverse` read/write access to your files:
 
 ## Run Simulation
 
-```         
+```{r}         
 simPython <- do.call(SpaDES.core::simInitAndSpades, out)
 ```
 
@@ -132,26 +209,8 @@ simPython <- do.call(SpaDES.core::simInitAndSpades, out)
 
 ### Looking at results
 
-```         
-MasterR <- terra::unwrap(simPython$masterRaster)
-npp <- as.data.table(copy(simPython$NPP))
-npp[, `:=`(avgNPP, mean(NPP)), by = c("pixelGroup")]
-cols <- c("simYear", "NPP")
-avgNPP <- unique(npp[, `:=`((cols), NULL)])
-t <- simPython$spatialDT[, .(pixelIndex, pixelGroup)]
-setkey(t, pixelGroup)
-setkey(avgNPP, pixelGroup)
-temp <- merge(t, avgNPP, on = "pixelGroup", allow.cartesian=TRUE)
-setkey(temp, pixelIndex)
-plotMaster <- terra::rast(simPython$masterRaster)
-plotMaster[] <- 0
-plotMaster[temp$pixelIndex] <- temp$avgNPP
-pixSize <- prod(res(MasterR))/10000
-temp[, `:=`(pixNPP, avgNPP * pixSize)]
-overallAvgNpp <- sum(temp$pixNPP)/(nrow(temp) * pixSize)
-quickPlot::Plot(plotMaster, new = TRUE,
-                title = paste0("Pixel-level average NPP",
-                                "\n Landscape average: ", round(overallAvgNpp, 3), "  MgC/ha/yr."))
+``` {r}        
+
 ```
 
 ## Changing study area
@@ -159,6 +218,95 @@ quickPlot::Plot(plotMaster, new = TRUE,
 Changing study areas requires that all the inputs be available. In spadesCBM, that means growth curves where (i.e., which pixel) they apply, and what is the leading species for that stand, an age raster, an ecozone raster, and information about disturbances (i.e., disturbance rasters) for all the years of simulation. Since we have that information for the province of Saskatchewan, we can change the definition of the study area in our `setupProject` script.
 
 ## Barebones script
-```
-insert whole global here. 
+```{r}
+projectPath <- "~/spadesCBMpython"
+dir.create(projectPath, recursive = TRUE, showWarnings = FALSE)
+setwd(projectPath)
+
+repos <- unique(c("predictiveecology.r-universe.dev", getOption("repos")))
+#if (!require("SpaDES.project")) install.packages("SpaDES.project", repos = repos)
+install.packages("SpaDES.project",
+                 repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
+
+# start in 1998 because there are known disturbances in the study area
+times <- list(start = 1998, end = 2002)
+
+out <- SpaDES.project::setupProject(
+  Restart = TRUE,
+  useGit = "PredictiveEcology", # a developer sets and keeps this = TRUE
+  overwrite = TRUE, # a user who wants to get latest modules sets this to TRUE
+  paths = list(projectPath = projectPath),
+
+  options = options(
+    repos = c(repos = repos),
+    Require.cloneFrom = Sys.getenv("R_LIBS_USER"),
+    reproducible.destinationPath = "inputs", ## TODO: SpaDES.project#24
+    ## These are for speed
+    reproducible.useMemoise = TRUE,
+    # Require.offlineMode = TRUE,
+    spades.moduleCodeChecks = FALSE
+  ),
+  modules =  c("PredictiveEcology/CBM_defaults@training",
+               "PredictiveEcology/CBM_dataPrep_SK@training",
+               "PredictiveEcology/CBM_vol2biomass@training",
+               "PredictiveEcology/CBM_core@training"),##TODO not linked yet!
+  times = times,
+  require = c("SpaDES.core", "reticulate",
+              "PredictiveEcology/libcbmr", "data.table"),
+
+  parameters = list(
+    CBM_defaults = list(
+      .useCache = TRUE
+    ),
+    CBM_dataPrep_SK = list(
+      .useCache = TRUE
+    ),
+    CBM_vol2biomass = list(
+      .useCache = TRUE
+    )
+  ),
+
+  ret = {
+    reticulate::use_virtualenv(virtualenv = "r-reticulate")
+    reticulate::py_install("libcbm", envname = "r-reticulate")
+  },
+
+  #### begin manually passed inputs #########################################
+  ##Need to keep this master raster here. It defines the smaller study area. We
+  ##will not need it when we run all of the managed forests of SK as the study
+  ##area will be defined by a masterRaster that we get via a URL.
+  masterRaster = {
+    extent = terra::ext(c(xmin = -687696, xmax = -681036, ymin = 711955, ymax = 716183))
+    masterRaster <- terra::rast(extent, res = 30)
+    terra::crs(masterRaster) <- "PROJCRS[\"Lambert_Conformal_Conic_2SP\",\n    BASEGEOGCRS[\"GCS_GRS_1980_IUGG_1980\",\n        DATUM[\"D_unknown\",\n            ELLIPSOID[\"GRS80\",6378137,298.257222101,\n                LENGTHUNIT[\"metre\",1,\n                    ID[\"EPSG\",9001]]]],\n        PRIMEM[\"Greenwich\",0,\n            ANGLEUNIT[\"degree\",0.0174532925199433,\n                ID[\"EPSG\",9122]]]],\n    CONVERSION[\"Lambert Conic Conformal (2SP)\",\n        METHOD[\"Lambert Conic Conformal (2SP)\",\n            ID[\"EPSG\",9802]],\n        PARAMETER[\"Latitude of false origin\",49,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8821]],\n        PARAMETER[\"Longitude of false origin\",-95,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8822]],\n        PARAMETER[\"Latitude of 1st standard parallel\",49,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8823]],\n        PARAMETER[\"Latitude of 2nd standard parallel\",77,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8824]],\n        PARAMETER[\"Easting at false origin\",0,\n            LENGTHUNIT[\"metre\",1],\n            ID[\"EPSG\",8826]],\n        PARAMETER[\"Northing at false origin\",0,\n            LENGTHUNIT[\"metre\",1],\n            ID[\"EPSG\",8827]]],\n    CS[Cartesian,2],\n        AXIS[\"easting\",east,\n            ORDER[1],\n            LENGTHUNIT[\"metre\",1,\n                ID[\"EPSG\",9001]]],\n        AXIS[\"northing\",north,\n            ORDER[2],\n            LENGTHUNIT[\"metre\",1,\n                ID[\"EPSG\",9001]]]]"
+    masterRaster[] <- rep(1, terra::ncell(masterRaster))
+    mr <- reproducible::prepInputs(url = "https://drive.google.com/file/d/1zUyFH8k6Ef4c_GiWMInKbwAl6m6gvLJW/view?usp=drive_link",
+                                   destinationPath = "inputs",
+                                   to = masterRaster,
+                                   method = "near")
+    mr[mr[] == 0] <- NA
+    mr
+  },
+  ##Need to keep the disturbance rasters here. We will not need it when we run all
+  ##of the managed forests of SK as the disturbance rasters will be defined by
+  ##rasters that we get via a URL.
+  disturbanceRasters = "https://drive.google.com/file/d/12YnuQYytjcBej0_kdodLchPg7z9LygCt/view?usp=drive_link",
+
+  # Restart = getOption("SpaDES.project.Restart", FALSE),
+
+  outputs = as.data.frame(expand.grid(objectName = c("cbmPools", "NPP"),
+                                      saveTime = sort(c(times$start,
+                                                        times$start +
+                                                          c(1:(times$end - times$start))
+                                      )))),
+
+)
+out$loadOrder <- unlist(out$modules)
+
+# Run
+simPython <- do.call(SpaDES.core::simInitAndSpades, out)
+
+#INSERT ANY OTHER CODE HERE
+## e.g. the example to change the start or end time, and the one to change the masterRaster. 
+
 ```
