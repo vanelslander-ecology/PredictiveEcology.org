@@ -169,7 +169,7 @@ out$loadOrder <- unlist(out$modules)
 
 ```
 
-::: {#imp-gdrive .callout-important}
+::: {.callout-important}
 ## Google account needed for this example
 
 Like the LandR example, you will need to access some of the data using the `googledrive` R package (part of the `tidyverse` family). During the `simInit()` (or `simInitAndSpades()`) call R will prompt you to either choose a previously authenticated account (if you have previously used `googledrive`) or to open a browser window and authenticate. If this doesn't work, try this workaround:
@@ -192,7 +192,7 @@ Make sure you give `tidyverse` read/write access to your files:
 ![](assets/img/gdriveauth.png){fig-align="center" width="467"}
 :::
 
-::: {#imp-python .callout-important}
+::: {.callout-important}
 ## Python is required for this example
 
 The *CBM_core* module requires Python >=3.9 and <=3.12.7.
@@ -214,13 +214,26 @@ Now that our project is set up, we can run our simulation.
 simPython <- do.call(SpaDES.core::simInitAndSpades, out)
 ```
 
-### Inspect your simulation
+## Looking at results
+### Outputs
+In our `setupProject()` call, we defined certain outputs to be saved. You can see a list of these outputs your simulation has created, their name, and where they were saved by using the `outputs()` function like so:
+```{r} 
+> outputs(simPython)
 
+  objectName saveTime                                                                      file     
+1   cbmPools     1998 ~/spadesCBMpython/outputs/cbmPools_year1998.rds saveRDS    base  TRUE
+2        NPP     1998      ~/spadesCBMpython/outputs/NPP_year1998.rds saveRDS    base  TRUE
+3   cbmPools     1999 ~/spadesCBMpython/outputs/cbmPools_year1999.rds saveRDS    base  TRUE
+4        NPP     1999      ~/spadesCBMpython/outputs/NPP_year1999.rds saveRDS    base  TRUE
+5   cbmPools     2000 ~/spadesCBMpython/outputs/cbmPools_year2000.rds saveRDS    base  TRUE
+6        NPP     2000      ~/spadesCBMpython/outputs/NPP_year2000.rds saveRDS    base  TRUE
 
+```
 
-### Looking at results
+In our simulation, as defined in `setupProject()`, we have `cbmPools.rds` and `NPP.rds` files for each simulation year. These files will be found in the `outputs` folder created in the project directory defined in our setup. 
 
-Now that we've run our simulation, we can now visualize some results using some plotting functions sourced from our modules. 
+### Plotting
+We can also visualize some results using some plotting functions sourced from our modules. 
 
 ``` {r}        
 carbonOutPlot(
@@ -246,7 +259,8 @@ spatialPlot(
 
 ```
 
-You can also schedule these plots within a module so that they are automatically generated at the end of the simulation. In `CBM_core.R` you can find these plots already defined in the `doEvent.CBM_core()` function.  
+You can also schedule these plots within a module so that they are automatically generated at the end of the simulation. In the `CBM_core.R` module, you can find these plots already defined in the `doEvent.CBM_core()` function.  
+
 ```{r}
 plot = {
       if (time(sim) != start(sim)) {
@@ -276,13 +290,35 @@ plot = {
     },
 ```
 
-If you look a few lines above where the plots are defined in the module (on line 186) you will find a line of code currently commented out:
+If you look a few lines above where the plots are defined in the module (on line 186) you will find a line of code currently commented out. If this line was being read, this would schedule the plotting event at the very end of the simulation (i.e. `eventPriority = 12`). 
 
 ``` {r}        
 # sim <- scheduleEvent(sim, end(sim), "CBM_core", "plot",  eventPriority = 12)
 ```
 
-You can remove the comment # to add this line of code back in, save, and rerun your simulation. You are now scheduling the plotting to occur at the end of the simulation. The model should now automatically run the plotting functions above.
+You can remove the comment # to add this line of code back in, save, and rerun your simulation. The plotting is now a scheduled event in this module. The model should now automatically run the plotting functions above.
+
+## Changing the length of the simulation
+We currently are only running our simulation for 3 years, from 1998 to 2000. You can confirm that our simulation ends in 2000 like so:
+```{r}
+> time(simPython)
+[1] 2000
+attr(,"unit")
+[1] "year"
+
+```
+
+However, we have access to disturbance rasters until 2011. We can easily change the length of our simulation to a later year as long as we have the matching disturbance raster. If we wanted to extend our simulation to 2002 we could do so like this:
+```{r}
+end(simPython) <- 2002
+```
+
+We can then extend `simPython` to 2002 and create `simPython2`
+```{r}
+simPython2 <- spades(simPython)
+```
+
+With `simPython2`, you can look at your results and generate plots in the same way as we did with the 3 year simulation `simPython` earlier. 
 
 ## Changing study area
 
