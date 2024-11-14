@@ -208,6 +208,8 @@ If the Python installation process fails or you would prefer to manually install
 
 ## Run Simulation
 
+Now that our project is set up, we can run our simulation.
+
 ```{r}         
 simPython <- do.call(SpaDES.core::simInitAndSpades, out)
 ```
@@ -218,9 +220,69 @@ simPython <- do.call(SpaDES.core::simInitAndSpades, out)
 
 ### Looking at results
 
+Now that we've run our simulation, we can now visualize some results using some plotting functions sourced from our modules. 
+
 ``` {r}        
+carbonOutPlot(
+  emissionsProducts = simPython$emissionsProducts
+  ) # This plots yearly forest products and yearly emissions for the length of the simulation
+
+ barPlot(
+   cbmPools = simPython$cbmPools
+   ) # This plots the carbon proportions above and below ground each simulation year
+
+NPPplot(
+  spatialDT = simPython$spatialDT,
+  NPP = simPython$NPP,
+  masterRaster = simPython$masterRaster
+  ) # This plots the per-pixel average net primary production 
+
+spatialPlot(
+  cbmPools = simPython$cbmPools,
+  years = 2000,
+  masterRaster = simPython$masterRaster,
+  spatialDT = simPython$spatialDT
+  ) # this plots the Total Carbon per pixel for the final simulation year
 
 ```
+
+You can also schedule these plots within a module so that they are automatically generated at the end of the simulation. In `CBM_core.R` you can find these plots already defined in the `doEvent.CBM_core()` function.  
+```{r}
+plot = {
+      if (time(sim) != start(sim)) {
+        retry(quote({
+          carbonOutPlot(
+            emissionsProducts = sim$emissionsProducts
+          )
+        }), retries = 2)
+
+        barPlot(
+          cbmPools = sim$cbmPools
+        )
+
+        NPPplot(
+          spatialDT = sim$spatialDT,
+          NPP = sim$NPP,
+          masterRaster = sim$masterRaster
+        )
+      }
+
+      spatialPlot(
+        cbmPools = sim$cbmPools,
+        years = time(sim),
+        masterRaster = sim$masterRaster,
+        spatialDT = sim$spatialDT
+      )
+    },
+```
+
+If you look a few lines above where the plots are defined in the module (on line 186) you will find a line of code currently commented out:
+
+``` {r}        
+# sim <- scheduleEvent(sim, end(sim), "CBM_core", "plot",  eventPriority = 12)
+```
+
+You can remove the comment # to add this line of code back in, save, and rerun your simulation. You are now scheduling the plotting to occur at the end of the simulation. The model should now automatically run the plotting functions above.
 
 ## Changing study area
 
