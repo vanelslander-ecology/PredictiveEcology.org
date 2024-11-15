@@ -4,7 +4,7 @@ project:
     port: 4200
     browser: false
   pre-render:
-  - R/installpkgs.R
+  # - R/installpkgs.R
   - R/makeChapterRscripts.R
   post-render:
   - R/makePkgList.R

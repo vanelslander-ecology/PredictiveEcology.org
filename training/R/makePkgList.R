@@ -2,7 +2,7 @@
 ## List of packages to pre-install for book
 ## ------------------------------------------------------
 
-pkgList <- Require::pkgSnapshot2(libPaths = c("training/packages/", "training/packages/4.3/",
+pkgList <- Require::pkgSnapshot2(libPaths = c("training/packages/", file.path("training/packages", Require:::versionMajorMinor()),
                                               .libPaths(),
                                               SpaDES.project:::.libPathDefault("castorExample"),
                                               SpaDES.project:::.libPathDefault("integratingSpaDESmodules")))
