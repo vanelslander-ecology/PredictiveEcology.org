@@ -74,11 +74,11 @@ for how these relate in SpaDES). The first module *CBM_defaults* reads in
 defaults CBM parameters for Canada.  The second module *CBM_dataPrep_SK* is
 a data preparation SpaDES module, where input data and spatial layers are
 assembled and prepared for a specific study area (the *SK*
-indicates the specific study area or scenario, in this case it is a small raster in Saskatchewan). In spadesCBM, as in CBM, growth curves are
+indicates the specific study area or scenario, in this example it is a small raster in Saskatchewan). In spadesCBM, as in CBM, growth curves are
 the main change-agent. The third module *CBM_vol2biomass* translates user-provided growth curves ($m^3/ha$) into increments for specific above ground carbon pools (metric tonnes of carbon/ha) using @boudewyn2007 models to which we added a smoothing algorithm. These three modules provide the inputs to the *CBM_core* module where processes are applied on a yearly time step. This modularity enables users to access and change default parameters, change inputs, and assess the impact of these changes. We are working on some implementations of this modularity and making these available to the community.
 We hope others will do the same. A manual describing spadesCBM in detail is forthcoming. The link to the manual will be posted here.
 
-Several core utilities to spadesCBm are provided by the [`CBMutils`](https://github.com/PredictiveEcology/CBMutils@development) package, available on GitHub. Active development in `CBMutils` and all `spadesCBM` modules is underway.
+Several core utilities to `spadesCBM` are provided by the [`CBMutils`](https://github.com/PredictiveEcology/CBMutils@development) package, available on GitHub. Active development in `CBMutils` and all `spadesCBM` modules is underway.
 
 ## Setup
 
@@ -325,7 +325,7 @@ You can remove the comment # to add this line of code back in, save `CBM_core.R`
 
 ## Changing the length of the simulation
 
-We currently are running our simulation for 3 years, from 1998 to 2000. This is defined in the script provided in the [Setup] section above by `times <- list(start = 1998, end = 2000)`. You can explore the time steps, start and end times, and units in this simulation like so:
+We currently are running our simulation for three years, from 1998 to 2000. This is defined in the script provided in the [Setup] section above by `times <- list(start = 1998, end = 2000)`. You can explore the time steps, start and end times, and units in this simulation like so:
 ```{r}
 times(simPython)
 
