@@ -8,9 +8,9 @@ editor:
 bibliography: references/references.bib
 execute:
   tidy: false
-  warning: false
-  message: false
-  error: false
+  warning: true
+  message: true
+  error: true
   cache: true
   eval: false
 ---
@@ -57,6 +57,10 @@ if (!interactive()) {
   dir.create("~/SpaDES_book/LandRDemo_coreVeg", recursive = TRUE)
   knitr::opts_knit$set(root.dir = "~/SpaDES_book/LandRDemo_coreVeg")
 }
+
+options(gargle_oauth_email = "eliotmcintire@gmail.com",
+        gargle_oauth_cache = "c:/Eliot/SpaDES_book/googledrive_auth_cache")
+googledrive::drive_auth(email = "eliotmcintire@gmail.com", cache = "c:/Eliot/SpaDES_book/googledrive_auth_cache")
 ```
 
 ::: {.callout-note appearance="simple"}
@@ -105,21 +109,6 @@ to either choose a previously authenticated account (if you have
 previously used `googledrive`) or to open a browser window and
 authenticate. 
 
-But in many cases, it seems, the above won't work for some people. This next chunk has worked for many:
-
-```{r setupGoogle}
-#| eval: false
-#| results: hide
-#| code-fold: false
-#| code-summary: "Show code"
-install.packages(c("googledrive", "httpuv"), repos = repos)
-
-googledriveAuthPath <- "~/SpaDES_book/googledrive_auth_cache"
-dir.create(googledriveAuthPath, showWarnings = FALSE)
-googledrive::drive_auth(cache = "~/SpaDES_book/googledrive_auth_cache")
-
-```
-
 Make sure you give `tidyverse` read/write access to your
 files:
 
@@ -137,121 +126,107 @@ then, our apologies for any inconvenience.
 #| eval: true
 #| results: hide
 #| code-fold: true
+#| error: true
+#| message: true
+#| warning: true
 #| code-summary: "Show code"
 repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
-install.packages(c("SpaDES.project", "Require"), repos = repos)
-
+if (packageVersion("SpaDES.project") < "0.1.1")
+  install.packages(c("SpaDES.project", "Require"), repos = repos)
 
 library(SpaDES.project)
 
 out <- setupProject(
-  # INPUT OBJECTS -----------------------------------
-  # these need to come *before* any formal arguments, as they are needed for params.R
+  # OBJECTS needed within this function -----------------------------------
+  #    these need to come *before* any formal arguments
+  #    specifically these are needed for params.R
   sppEquivCol = "Boreal",
   vegLeadingProportion = 0,
-  successionTimestep = 10L,
-  eventCaching = c(".inputObjects", "init"),
-  useParallel = FALSE,
-  overwrite = TRUE, # Just run this once. Then remove it.
-  Restart = TRUE,
-  standAlone = TRUE,
-  paths = list("packagePath" = "packages/",
+  # successionTimestep = 10L,
+  # eventCaching = c(".inputObjects", "init"),
+  # overwrite = TRUE, # Just run this once. Then remove it.
+  # useGit = "eliotmcintire",
+  # Named arguments for setupProject -- see ?SpaDES.project::setupProject for help
+  # standAlone = TRUE,
+  paths = list("packagePath" = file.path("packages", Require:::versionMajorMinor()),
                "projectPath" = "~/SpaDES_book/LandRDemo_coreVeg"),
-  packages = c(
-    # these are needed but don't load
-    "DiagrammeR",
-    "lattice (>= 0.22.5)",
-    "SpaDES.project (>= 0.1.0.9003)",
-    "LandR (>=1.1.5.9000)",
-    "quickPlot (>= 1.0.2.9003)",
-    "reproducible (>= 2.1.1.9002)",
-    "eliotmcintire/PSPclean@Eliot (>= 0.1.4.9006)",
-    "PredictiveEcology/SpaDES.experiment@development (HEAD)",
-    "SpaDES.core (>= 2.1.5)",
-    "terra"
-  ),
-  options = list(
-    "LandR.assertions" = TRUE,
-    "reproducible.destinationPath" = paths$inputPath,
-    "spades.inputPath" = paths$inputPath,
-    "spades.moduleCodeChecks" = FALSE,
-    "repos" = repos
-  ),
   modules = c(
     "PredictiveEcology/Biomass_speciesData@main",
     "PredictiveEcology/Biomass_borealDataPrep@main",
     "PredictiveEcology/Biomass_speciesParameters@main",
     "PredictiveEcology/Biomass_core@main"
   ),
-  # SIMULATION SETUP ------------------------------------
-  times = list(start = 2001, end = 2031),
-  params = "PredictiveEcology/PredictiveEcology.org@training-book/tutos/LandRDemo_coreVeg/params.R",
-  # (more) INPUT OBJECTS -----------------------------------
-  # these come after, so that we don't need to pre-install/load LandR
-  # species lists/traits
-  sppEquiv = {
-    data("sppEquivalencies_CA", package = "LandR")
-    sppEquivalencies_CA[grep("Pin", LandR), `:=`(EN_generic_short = "Pine",
-                                                 EN_generic_full = "Pine",
-                                                 Leading = "Pine leading")]
-    sppEquivalencies_CA[grep("Betu_pap", LandR), `:=`(EN_generic_short = "Birch",
-                                                      EN_generic_full = "Birch",
-                                                      Leading = "Birch leading")]
-    # all Popu will be merged
-    sppEquivalencies_CA[grep("Popu_", LandR), `:=`(EN_generic_short = "Poplar",
-                                                   EN_generic_full = "Poplar",
-                                                   Leading = "Poplar leading")]
-    sppEquivalencies_CA[grep("Popu_", LandR), Boreal := "Popu_Spp"]
-
-    # define spp column to use for model
-    sppEquivalencies_CA <- sppEquivalencies_CA[!"", on = sppEquivCol]
-    sppEquivalencies_CA <- na.omit(sppEquivalencies_CA, sppEquivCol)
-    sppEquivalencies_CA
+  # packages only need to be specified if they are needed within this setupProject
+  package = NULL,
+  # packages = c(
+  #   "googledrive",
+  #   "httr",
+  #   "terra"
+  # ),
+  options = list(
+    "LandR.assertions" = TRUE,
+    "reproducible.destinationPath" = paths$inputPath,
+    "spades.inputPath" = paths$inputPath,
+    "spades.moduleCodeChecks" = FALSE,
+    "Require.cloneFrom" = Sys.getenv("R_LIBS_USER"), # faster package installs (from personal library)
+    "repos" = unique(repos)
+  ),
+  # sideEffects are anything that needs doing, but doesn't return a value
+  sideEffects = {
+    if (interactive()) {
+      googledriveAuthPath <- "~/SpaDES_book/googledrive_auth_cache"
+      dir.create(googledriveAuthPath, showWarnings = FALSE)
+      if (!googledrive::drive_has_token())
+        googledrive::drive_auth(cache = "~/SpaDES_book/googledrive_auth_cache")
+    }
   },
+
+  # DYNAMIC MODEL SETUP ------------------------------------
+  times = list(start = 2001, end = 2031),
+  # 
+  # # Module optional parameters
+  params = "PredictiveEcology/PredictiveEcology.org@training-book/tutos/LandRDemo_coreVeg/params.R",
+  # 
+  # # (more) INPUT OBJECTS -----------------------------------
+  # # these come after, so that we don't need to pre-install/load LandR
+  # # species lists/traits
+  studyArea = {
+    # create and use a random study area
+    # Lambert Conformal Conic for Canada: this is used in NRCan's "KNN" products
+    Biomass_corecrs <- "+proj=lcc +lat_1=49 +lat_2=77 +lat_0=0 +lon_0=-95 +x_0=0 +y_0=0 +datum=NAD83 +units=m +no_defs +ellps=GRS80 +towgs84=0,0,0"
+    centre <- terra::vect(cbind(-104.757, 55.68663), crs = "epsg:4326") # Lat Long
+    centre <- terra::project(centre, Biomass_corecrs)
+    studyArea <- LandR::randomStudyArea(centre, size = 2e8, seed = 1234)
+  },
+  # create a "larger" study area that can be used for parameter estimation, using
+  #   more datasets that will fall into this larger area
+  studyAreaLarge = terra::buffer(studyArea, width = 3e4),
+  # sppEquiv is a table that defines equivalent names for species e.g., Pice_mar and Pice_Mar are identical
+  sppEquiv = {
+    speciesInStudy <- LandR::speciesInStudyArea(studyAreaLarge)
+    species <- LandR::equivalentName(speciesInStudy$speciesList,
+                                     df = LandR::sppEquivalencies_CA, sppEquivCol)
+    LandR::sppEquivalencies_CA[Boreal %in% species]
+  },
+
   speciesParams = {
     list(
       "shadetolerance" = list(
-        Betu_Pap = 1
-        , Lari_Lar = 1
+        # Betu_Pap = 1
+        Lari_Lar = 1
         , Pice_Gla = 2
         , Pice_Mar = 3
         , Pinu_Ban = 1.5
-        , Popu_Spp = 1
+        , Popu_Tre = 1
       )
     )
   },
-  studyArea = {
-    originalcrs <- "+proj=longlat +datum=NAD83 +no_defs +ellps=GRS80 +towgs84=0,0,0"
-    Biomass_corecrs <- "+proj=lcc +lat_1=49 +lat_2=77 +lat_0=0 +lon_0=-95 +x_0=0 +y_0=0 +datum=NAD83 +units=m +no_defs +ellps=GRS80 +towgs84=0,0,0"
 
-    smallExtent <- c(xmin = -104.757, xmax = -104.48835, ymin = 55.68663, ymax = 55.94491)
-    studyAreaS <- terra::vect(terra::ext(smallExtent))
-    studyAreaS <-  terra::vect(terra::geom(studyAreaS), "polygons", crs = originalcrs, atts = data.frame(id = 1:length(studyAreaS)))
-    studyAreaS <- terra::project(studyAreaS, Biomass_corecrs)
-    studyAreaS
-  },
-  studyAreaLarge = {
-    originalcrs <- "+proj=longlat +datum=NAD83 +no_defs +ellps=GRS80 +towgs84=0,0,0"
-    Biomass_corecrs <- "+proj=lcc +lat_1=49 +lat_2=77 +lat_0=0 +lon_0=-95 +x_0=0 +y_0=0 +datum=NAD83 +units=m +no_defs +ellps=GRS80 +towgs84=0,0,0"
-    largeExtent <- c(xmin = -104.757, xmax = -104.2197, ymin = 55.68663, ymax = 56.20319)
-
-    studyAreaL <- terra::vect(terra::ext(largeExtent))
-    studyAreaL <-  terra::vect(terra::geom(studyAreaL), "polygons", crs = originalcrs, atts = data.frame(id = 1:length(studyAreaL)))
-    studyAreaL <- terra::project(studyAreaL, Biomass_corecrs)
-    studyAreaL
-  },
   # OUTPUTS TO SAVE -----------------------
   outputs = {
-    rbind(
-      data.frame(
-        objectName = "cohortData",
-        saveTime = seq(times$start, times$end)
-      ),
-      data.frame(
-        objectName = "pixelGroupMap",
-        saveTime = seq(times$start, times$end)
-      )
-    )
+    # save to disk 2 objects, every year
+    expand.grid(objectName = c("cohortData", "pixelGroupMap"),
+                saveTime = seq(times$start, times$end))
   }
 )
 ```
