@@ -1,5 +1,7 @@
 ---
 author: 
+  - "Céline Boisvenue"
+  - "Camille Giuliano"
 date: last-modified
 editor_options:
   chunk_output_type: console
@@ -15,10 +17,10 @@ execute:
   eval: false
 ---
 
-# Forest Carbon Modelling spadesCBM and setupProject
+# Forest Carbon Modelling in SpaDES with `setupProject`
 
 ::: {.callout-tip appearance="simple"}
-See \[Barebones R script\] for the code shown in this chapter
+See [Barebones R script] for the code shown in this chapter
 :::
 
 ```{r setup}
@@ -54,12 +56,37 @@ if (Sys.getenv("USERNAME") == "GHA") {
 qmdPath <- normalizePath(getwd(), winslash = "/")
 
 if (!interactive()) { 
-  dir.create("~/SpaDES_book/LandRDemo_coreVeg", recursive = TRUE)
-  knitr::opts_knit$set(root.dir = "~/SpaDES_book/LandRDemo_coreVeg")
+  dir.create("~/SpaDES_book/spadesCBMDemo", recursive = TRUE)
+  knitr::opts_knit$set(root.dir = "~/SpaDES_book/spadesCBMDemo")
 }
 ```
 
-::: {#imp-gdrive .callout-important}
+spadesCBM is a modular, transparent, and spatially explicit implementation of the logic, pools structure, equations, and default assumptions of the Carbon Budget Model of the Canadian Forest Sector [CBM](https://natural-resources.canada.ca/climate-change/climate-change-impacts-forests/carbon-accounting/carbon-budget-model/13107).
+It applies the science presented in @kurz2009 in a similar way to the
+simulations in @boisvenue2016 and @boisvenue2022 but calls Python
+functions for annual processes. These functions are, like much of
+modelling-based science, continuously under development.
+
+## spadesCBM Modules
+
+Four modules need to be run in tandem for a spadesCBM simulation (see [Setup]  
+for how these relate in SpaDES). The first module *CBM_defaults* reads in
+defaults CBM parameters for Canada.  The second module *CBM_dataPrep_SK* is
+a data preparation SpaDES module, where input data and spatial layers are
+assembled and prepared for a specific study area (the *SK*
+indicates the specific study area or scenario, in this example it is a small raster in Saskatchewan). In spadesCBM, as in CBM, growth curves are
+the main change-agent. The third module *CBM_vol2biomass* translates user-provided growth curves ($m^3/ha$) into increments for specific above ground carbon pools (metric tonnes of carbon/ha) using @boudewyn2007 models to which we added a smoothing algorithm. These three modules provide the inputs to the *CBM_core* module where processes are applied on a yearly time step. This modularity enables users to access and change default parameters, change inputs, and assess the impact of these changes. We are working on some implementations of this modularity and making these available to the community.
+We hope others will do the same. A manual describing spadesCBM in detail is forthcoming. The link to the manual will be posted here.
+
+Several core utilities to `spadesCBM` are provided by the [`CBMutils`](https://github.com/PredictiveEcology/CBMutils@development) package, available on GitHub. Active development in `CBMutils` and all `spadesCBM` modules is underway.
+
+## Setup
+
+In this example, we will setup the workflow using `setupProject` from the
+[`SpaDES.project`](https://spades-project.predictiveecology.org/) package and
+current versions of the spadesCBM modules.
+
+::: {.callout-important}
 ## Google account needed for this example
 
 Like the LandR example, you will need to access some of the data using the `googledrive` R package (part of the `tidyverse` family). During the `simInit()` (or `simInitAndSpades()`) call R will prompt you to either choose a previously authenticated account (if you have previously used `googledrive`) or to open a browser window and authenticate. If this doesn't work, try this workaround:
@@ -82,59 +109,382 @@ Make sure you give `tidyverse` read/write access to your files:
 ![](assets/img/gdriveauth.png){fig-align="center" width="467"}
 :::
 
-## Setup
+::: {.callout-important}
+## Python is required for this example
 
-```         
-insert needed chunk from the global
+The *CBM_core* module requires Python >=3.9 and <=3.12.7.
+
+If a suitable version of Python does not already exist on your computer,
+`setupProject` will use the [`reticulate`](https://rstudio.github.io/reticulate/) package to install it using the [pyenv](https://github.com/pyenv/pyenv) or [pyenv-win](https://github.com/pyenv-win/pyenv-win) project.
+
+If you are using a Windows computer with Git installed, the `pyenv-win` tool will be acquired and managed directly by `reticulate`. If you are using a Windows computer without Git installed, you will be prompted to allow the `pyenv-win` tool to be downloaded directly from Github to your local user application data directory (`tools::R_user_dir("r-spadesCBM")`).
+
+If the Python installation process fails or you would prefer to manually install Python, it can be downloaded directly from [python.org/downloads](https://python.org/downloads).
+
+:::
+
+
+``` {r}        
+projectPath <- "~/spadesCBMpython"
+dir.create(projectPath, recursive = TRUE, showWarnings = FALSE)
+setwd(projectPath)
+
+repos <- unique(c("predictiveecology.r-universe.dev", getOption("repos")))
+install.packages("SpaDES.project",
+                 repos = repos)
+
+# start in 1998, and end in 2000
+times <- list(start = 1998, end = 2000)
+
+out <- SpaDES.project::setupProject(
+  Restart = TRUE,
+  useGit = "PredictiveEcology", # a developer sets and keeps this = TRUE
+  overwrite = TRUE, # a user who wants to get latest modules sets this to TRUE
+  paths = list(projectPath = projectPath),
+
+  options = options(
+    repos = c(repos = repos),
+    Require.cloneFrom = Sys.getenv("R_LIBS_USER"),
+    reproducible.destinationPath = "inputs",
+    ## These are for speed
+    reproducible.useMemoise = TRUE,
+    # Require.offlineMode = TRUE,
+    spades.moduleCodeChecks = FALSE
+  ),
+  modules =  c("PredictiveEcology/CBM_defaults@training",
+               "PredictiveEcology/CBM_dataPrep_SK@training",
+               "PredictiveEcology/CBM_vol2biomass@training",
+               "PredictiveEcology/CBM_core@training"),
+  times = times,
+  require = c("SpaDES.core", "reticulate",
+              "PredictiveEcology/libcbmr", "data.table"),
+
+  parameters = list(
+    CBM_defaults = list(
+      .useCache = TRUE
+    ),
+    CBM_dataPrep_SK = list(
+      .useCache = TRUE
+    ),
+    CBM_vol2biomass = list(
+      .useCache = TRUE
+    )
+  ),
+  functions = file.path(paths$modulePath, "CBM_core", "R", "ReticulateFindPython.R"),
+
+  ret = {
+    reticulate::virtualenv_create(
+      "r-spadesCBM",
+      python = if (!reticulate::virtualenv_exists("r-spadesCBM")){
+        ReticulateFindPython(
+          version        = ">=3.9,<=3.12.7",
+          versionInstall = "3.10:latest",
+          pyenvRoot      = tools::R_user_dir("r-spadesCBM")
+        )
+      },
+      packages = c(
+        "numpy<2",
+        "pandas>=1.1.5",
+        "scipy",
+        "numexpr>=2.8.7",
+        "numba",
+        "pyyaml",
+        "mock",
+        "openpyxl",
+        "libcbm"
+      )
+    )
+    reticulate::use_virtualenv("r-spadesCBM")
+  },
+
+  #### begin manually passed inputs #########################################
+  ## define the  study area.
+  masterRaster = {
+    extent = terra::ext(c(xmin = -687696, xmax = -681036, ymin = 711955, ymax = 716183))
+    masterRaster <- terra::rast(extent, res = 30)
+    terra::crs(masterRaster) <- "PROJCRS[\"Lambert_Conformal_Conic_2SP\",\n    BASEGEOGCRS[\"GCS_GRS_1980_IUGG_1980\",\n        DATUM[\"D_unknown\",\n            ELLIPSOID[\"GRS80\",6378137,298.257222101,\n                LENGTHUNIT[\"metre\",1,\n                    ID[\"EPSG\",9001]]]],\n        PRIMEM[\"Greenwich\",0,\n            ANGLEUNIT[\"degree\",0.0174532925199433,\n                ID[\"EPSG\",9122]]]],\n    CONVERSION[\"Lambert Conic Conformal (2SP)\",\n        METHOD[\"Lambert Conic Conformal (2SP)\",\n            ID[\"EPSG\",9802]],\n        PARAMETER[\"Latitude of false origin\",49,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8821]],\n        PARAMETER[\"Longitude of false origin\",-95,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8822]],\n        PARAMETER[\"Latitude of 1st standard parallel\",49,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8823]],\n        PARAMETER[\"Latitude of 2nd standard parallel\",77,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8824]],\n        PARAMETER[\"Easting at false origin\",0,\n            LENGTHUNIT[\"metre\",1],\n            ID[\"EPSG\",8826]],\n        PARAMETER[\"Northing at false origin\",0,\n            LENGTHUNIT[\"metre\",1],\n            ID[\"EPSG\",8827]]],\n    CS[Cartesian,2],\n        AXIS[\"easting\",east,\n            ORDER[1],\n            LENGTHUNIT[\"metre\",1,\n                ID[\"EPSG\",9001]]],\n        AXIS[\"northing\",north,\n            ORDER[2],\n            LENGTHUNIT[\"metre\",1,\n                ID[\"EPSG\",9001]]]]"
+    masterRaster[] <- rep(1, terra::ncell(masterRaster))
+    mr <- reproducible::prepInputs(url = "https://drive.google.com/file/d/1zUyFH8k6Ef4c_GiWMInKbwAl6m6gvLJW/view?usp=drive_link",
+                                   destinationPath = "inputs",
+                                   to = masterRaster,
+                                   method = "near")
+    mr[mr[] == 0] <- NA
+    mr
+  },
+  ## Give the location of the disturbance rasters.
+  disturbanceRasters = "https://drive.google.com/file/d/12YnuQYytjcBej0_kdodLchPg7z9LygCt/view?usp=drive_link",
+
+  # Restart = getOption("SpaDES.project.Restart", FALSE),
+
+  outputs = as.data.frame(expand.grid(objectName = c("cbmPools", "NPP"),
+                                      saveTime = sort(c(times$start,
+                                                        times$start +
+                                                          c(1:(times$end - times$start))
+                                      )))),
+
+)
+
+out$loadOrder <- unlist(out$modules)
+
 ```
-
-### spadesCBM Modules
-
-spadesCBM runs using 4 distinct modules.
-
-#### CBM_defaults
-
-#### CBM_dataPrep_xx
-
-#### CBM_vol2biomass
-
-#### CBM_core
 
 ## Run Simulation
 
-```         
+Now that our project is set up, we can run our simulation.
+
+```{r}         
 simPython <- do.call(SpaDES.core::simInitAndSpades, out)
 ```
 
-### Some examples/results
+## Looking at results
 
-#### NPP
+### Outputs
 
-```         
-MasterR <- terra::unwrap(simPython$masterRaster)
-npp <- as.data.table(copy(simPython$NPP))
-npp[, `:=`(avgNPP, mean(NPP)), by = c("pixelGroup")]
-cols <- c("simYear", "NPP")
-avgNPP <- unique(npp[, `:=`((cols), NULL)])
-t <- simPython$spatialDT[, .(pixelIndex, pixelGroup)]
-setkey(t, pixelGroup)
-setkey(avgNPP, pixelGroup)
-temp <- merge(t, avgNPP, on = "pixelGroup", allow.cartesian=TRUE)
-setkey(temp, pixelIndex)
-plotMaster <- terra::rast(simPython$masterRaster)
-plotMaster[] <- 0
-plotMaster[temp$pixelIndex] <- temp$avgNPP
-pixSize <- prod(res(MasterR))/10000
-temp[, `:=`(pixNPP, avgNPP * pixSize)]
-overallAvgNpp <- sum(temp$pixNPP)/(nrow(temp) * pixSize)
-quickPlot::Plot(plotMaster, new = TRUE,
-                title = paste0("Pixel-level average NPP",
-                                "\n Landscape average: ", round(overallAvgNpp, 3), "  MgC/ha/yr."))
+In our `setupProject()` call, we defined certain outputs to be saved by specifying `out$outputs`. Look at that table. It defines what is saved in the *output* folder. You can also see a list of these outputs your simulation has created, their name, and where they were saved by using the `outputs()` function like so:
+```{r} 
+> outputs(simPython)
+
+  objectName saveTime                                                                      file     
+1   cbmPools     1998 ~/spadesCBMpython/outputs/cbmPools_year1998.rds saveRDS    base  TRUE
+2        NPP     1998      ~/spadesCBMpython/outputs/NPP_year1998.rds saveRDS    base  TRUE
+3   cbmPools     1999 ~/spadesCBMpython/outputs/cbmPools_year1999.rds saveRDS    base  TRUE
+4        NPP     1999      ~/spadesCBMpython/outputs/NPP_year1999.rds saveRDS    base  TRUE
+5   cbmPools     2000 ~/spadesCBMpython/outputs/cbmPools_year2000.rds saveRDS    base  TRUE
+6        NPP     2000      ~/spadesCBMpython/outputs/NPP_year2000.rds saveRDS    base  TRUE
+
 ```
 
-#### Total Carbon
+In our simulation, as defined in `setupProject()` with `out$outputs`, we have `cbmPools.rds` and `NPP.rds` files for each simulation year. These files are in the `outputs` folder created in the project directory defined in our [Setup]. You can look at the these if you would like to explore results.
+
+### Plotting
+
+We can also visualize some results using some plotting functions sourced from our modules. 
+
+``` {r}        
+carbonOutPlot(
+  emissionsProducts = simPython$emissionsProducts
+  ) # This plots yearly forest products and yearly emissions for the length of the simulation
+
+ barPlot(
+   cbmPools = simPython$cbmPools
+   ) # This plots the carbon proportions above and below ground each simulation year
+
+NPPplot(
+  spatialDT = simPython$spatialDT,
+  NPP = simPython$NPP,
+  masterRaster = simPython$masterRaster
+  ) # This plots the per-pixel average net primary production 
+
+spatialPlot(
+  cbmPools = simPython$cbmPools,
+  years = 2000,
+  masterRaster = simPython$masterRaster,
+  spatialDT = simPython$spatialDT
+  ) # this plots the Total Carbon per pixel for the final simulation year
+
+```
+
+You can also schedule these plots in your simulation. To do that a `plot` event has to be scheduled within a module. We want the plots to be automatically generated at the end of the simulation. In the `CBM_core.R` module, we already have a `plot` event defined in the `doEvent.CBM_core()` function.  
+
+```{r}
+plot = {
+      if (time(sim) != start(sim)) {
+        retry(quote({
+          carbonOutPlot(
+            emissionsProducts = sim$emissionsProducts
+          )
+        }), retries = 2)
+
+        barPlot(
+          cbmPools = sim$cbmPools
+        )
+
+        NPPplot(
+          spatialDT = sim$spatialDT,
+          NPP = sim$NPP,
+          masterRaster = sim$masterRaster
+        )
+      }
+
+      spatialPlot(
+        cbmPools = sim$cbmPools,
+        years = time(sim),
+        masterRaster = sim$masterRaster,
+        spatialDT = sim$spatialDT
+      )
+    }
+```
+
+Even though the `event` (plot) exists, we had not scheduled this event in the simulation you just ran. If you look a few lines above where the plots are defined in the module (on line 186 in the `CBM_core.R` module), you will find a line of code currently commented out. If this line was being read, this would schedule the plotting event at the very end of the simulation (i.e., `eventPriority = 12`). 
+
+``` {r}        
+# sim <- scheduleEvent(sim, end(sim), "CBM_core", "plot",  eventPriority = 12)
+```
+
+You can remove the comment # to add this line of code back in, save `CBM_core.R`, and rerun your simulation. The plotting is now a scheduled event in this module. The model will now automatically run the plotting functions above.
+
+## Changing the length of the simulation
+
+We currently are running our simulation for three years, from 1998 to 2000. This is defined in the script provided in the [Setup] section above by `times <- list(start = 1998, end = 2000)`. You can explore the time steps, start and end times, and units in this simulation like so:
+```{r}
+times(simPython)
+
+```
+
+To change the length of the simulation, we have to make sure we have the required inputs. If we keep the same study area, with the same growth information, and inventory information, we only need disturbance information for each year to extend the simulations. We have access to disturbance rasters from 1985 to 2011 via the `out$disturbanceRasters` in our [Setup] section above. We can change the length of our simulation to a later year, and even resume our simulations where we left off. Here, we set the last year of the simulation to 2002:
+
+```{r}
+end(simPython) <- 2002
+```
+
+And now we resume the simulation using `simPython` to 2002, and create a new `simList`, `simPython2`.
+
+```{r}
+simPython2 <- spades(simPython)
+```
+
+With `simPython2`, you can look at your results and generate plots in the same way as we did with the three year simulation `simPython` earlier. 
+
+
 
 ## Barebones script
-```
-insert whole global here. 
+```{r}
+projectPath <- "~/spadesCBMpython"
+dir.create(projectPath, recursive = TRUE, showWarnings = FALSE)
+setwd(projectPath)
+
+repos <- unique(c("predictiveecology.r-universe.dev", getOption("repos")))
+install.packages("SpaDES.project",
+                 repos = repos)
+
+# start in 1998, and end in 2000
+times <- list(start = 1998, end = 2000)
+
+out <- SpaDES.project::setupProject(
+  Restart = TRUE,
+  useGit = "PredictiveEcology", # a developer sets and keeps this = TRUE
+  overwrite = TRUE, # a user who wants to get latest modules sets this to TRUE
+  paths = list(projectPath = projectPath),
+
+  options = options(
+    repos = c(repos = repos),
+    Require.cloneFrom = Sys.getenv("R_LIBS_USER"),
+    reproducible.destinationPath = "inputs",
+    ## These are for speed
+    reproducible.useMemoise = TRUE,
+    # Require.offlineMode = TRUE,
+    spades.moduleCodeChecks = FALSE
+  ),
+  modules =  c("PredictiveEcology/CBM_defaults@training",
+               "PredictiveEcology/CBM_dataPrep_SK@training",
+               "PredictiveEcology/CBM_vol2biomass@training",
+               "PredictiveEcology/CBM_core@training"),
+  times = times,
+  require = c("SpaDES.core", "reticulate",
+              "PredictiveEcology/libcbmr", "data.table"),
+
+  parameters = list(
+    CBM_defaults = list(
+      .useCache = TRUE
+    ),
+    CBM_dataPrep_SK = list(
+      .useCache = TRUE
+    ),
+    CBM_vol2biomass = list(
+      .useCache = TRUE
+    )
+  ),
+  functions = file.path(paths$modulePath, "CBM_core", "R", "ReticulateFindPython.R"),
+
+  ret = {
+    reticulate::virtualenv_create(
+      "r-spadesCBM",
+      python = if (!reticulate::virtualenv_exists("r-spadesCBM")){
+        ReticulateFindPython(
+          version        = ">=3.9,<=3.12.7",
+          versionInstall = "3.10:latest",
+          pyenvRoot      = tools::R_user_dir("r-spadesCBM")
+        )
+      },
+      packages = c(
+        "numpy<2",
+        "pandas>=1.1.5",
+        "scipy",
+        "numexpr>=2.8.7",
+        "numba",
+        "pyyaml",
+        "mock",
+        "openpyxl",
+        "libcbm"
+      )
+    )
+    reticulate::use_virtualenv("r-spadesCBM")
+  },
+
+  #### begin manually passed inputs #########################################
+  ## define the  study area.
+  masterRaster = {
+    extent = terra::ext(c(xmin = -687696, xmax = -681036, ymin = 711955, ymax = 716183))
+    masterRaster <- terra::rast(extent, res = 30)
+    terra::crs(masterRaster) <- "PROJCRS[\"Lambert_Conformal_Conic_2SP\",\n    BASEGEOGCRS[\"GCS_GRS_1980_IUGG_1980\",\n        DATUM[\"D_unknown\",\n            ELLIPSOID[\"GRS80\",6378137,298.257222101,\n                LENGTHUNIT[\"metre\",1,\n                    ID[\"EPSG\",9001]]]],\n        PRIMEM[\"Greenwich\",0,\n            ANGLEUNIT[\"degree\",0.0174532925199433,\n                ID[\"EPSG\",9122]]]],\n    CONVERSION[\"Lambert Conic Conformal (2SP)\",\n        METHOD[\"Lambert Conic Conformal (2SP)\",\n            ID[\"EPSG\",9802]],\n        PARAMETER[\"Latitude of false origin\",49,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8821]],\n        PARAMETER[\"Longitude of false origin\",-95,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8822]],\n        PARAMETER[\"Latitude of 1st standard parallel\",49,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8823]],\n        PARAMETER[\"Latitude of 2nd standard parallel\",77,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8824]],\n        PARAMETER[\"Easting at false origin\",0,\n            LENGTHUNIT[\"metre\",1],\n            ID[\"EPSG\",8826]],\n        PARAMETER[\"Northing at false origin\",0,\n            LENGTHUNIT[\"metre\",1],\n            ID[\"EPSG\",8827]]],\n    CS[Cartesian,2],\n        AXIS[\"easting\",east,\n            ORDER[1],\n            LENGTHUNIT[\"metre\",1,\n                ID[\"EPSG\",9001]]],\n        AXIS[\"northing\",north,\n            ORDER[2],\n            LENGTHUNIT[\"metre\",1,\n                ID[\"EPSG\",9001]]]]"
+    masterRaster[] <- rep(1, terra::ncell(masterRaster))
+    mr <- reproducible::prepInputs(url = "https://drive.google.com/file/d/1zUyFH8k6Ef4c_GiWMInKbwAl6m6gvLJW/view?usp=drive_link",
+                                   destinationPath = "inputs",
+                                   to = masterRaster,
+                                   method = "near")
+    mr[mr[] == 0] <- NA
+    mr
+  },
+  ## Give the location of the disturbance rasters.
+  disturbanceRasters = "https://drive.google.com/file/d/12YnuQYytjcBej0_kdodLchPg7z9LygCt/view?usp=drive_link",
+
+  # Restart = getOption("SpaDES.project.Restart", FALSE),
+
+  outputs = as.data.frame(expand.grid(objectName = c("cbmPools", "NPP"),
+                                      saveTime = sort(c(times$start,
+                                                        times$start +
+                                                          c(1:(times$end - times$start))
+                                      )))),
+
+)
+
+out$loadOrder <- unlist(out$modules)
+
+# Run
+simPython <- do.call(SpaDES.core::simInitAndSpades, out)
+
+# Look at figures
+carbonOutPlot(
+  emissionsProducts = simPython$emissionsProducts
+  ) # This plots yearly forest products and yearly emissions for the length of the simulation
+
+ barPlot(
+   cbmPools = simPython$cbmPools
+   ) # This plots the carbon proportions above and below ground each simulation year
+
+NPPplot(
+  spatialDT = simPython$spatialDT,
+  NPP = simPython$NPP,
+  masterRaster = simPython$masterRaster
+  ) # This plots the per-pixel average net primary production 
+
+spatialPlot(
+  cbmPools = simPython$cbmPools,
+  years = 2000,
+  masterRaster = simPython$masterRaster,
+  spatialDT = simPython$spatialDT
+  ) # this plots the Total Carbon per pixel for the final simulation year
+
+# Look at outputs
+outputs(simPython)
+
+# Explore the length of your simulation
+times(simPython)
+
+# Extend your simulation by changing the end time
+end(simPython) <- 2002
+
+# Resume the simulation
+simPython2 <- spades(simPython)
+
 ```
