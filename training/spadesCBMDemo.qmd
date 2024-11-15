@@ -20,7 +20,7 @@ execute:
 # Forest Carbon Modelling in SpaDES with `setupProject`
 
 ::: {.callout-tip appearance="simple"}
-See \[Barebones R script\] for the code shown in this chapter
+See [Barebones R script] for the code shown in this chapter
 :::
 
 ```{r setup}
@@ -69,7 +69,7 @@ modelling-based science, continuously under development.
 
 ## spadesCBM Modules
 
-Four modules need to be run in tandem for a spadesCBM simulation (see section XX
+Four modules need to be run in tandem for a spadesCBM simulation (see [Setup]  
 for how these relate in SpaDES). The first module *CBM_defaults* reads in
 defaults CBM parameters for Canada.  The second module *CBM_dataPrep_SK* is
 a data preparation SpaDES module, where input data and spatial layers are
@@ -254,7 +254,7 @@ In our `setupProject()` call, we defined certain outputs to be saved by specifyi
 
 ```
 
-In our simulation, as defined in `setupProject()` with `out$outputs`, we have `cbmPools.rds` and `NPP.rds` files for each simulation year. These files are in the `outputs` folder created in the project directory defined in our setup. You can look at the these if you would like to explore results.
+In our simulation, as defined in `setupProject()` with `out$outputs`, we have `cbmPools.rds` and `NPP.rds` files for each simulation year. These files are in the `outputs` folder created in the project directory defined in our [Setup]. You can look at the these if you would like to explore results.
 
 ### Plotting
 
@@ -325,13 +325,13 @@ You can remove the comment # to add this line of code back in, save `CBM_core.R`
 
 ## Changing the length of the simulation
 
-We currently are running our simulation for 3 years, from 1998 to 2000. This is defined in the script provided in the *Setup* section above by `times <- list(start = 1998, end = 2000)`. You can explore the time steps, start and end times, and units in this simulation like so:
+We currently are running our simulation for 3 years, from 1998 to 2000. This is defined in the script provided in the [Setup] section above by `times <- list(start = 1998, end = 2000)`. You can explore the time steps, start and end times, and units in this simulation like so:
 ```{r}
 times(simPython)
 
 ```
 
-To change the length of the simulation, we have to make sure we have the required inputs. If we keep the same study area, with the same growth information, and inventory information, we only need disturbance information for each year to extend the simulations. We have access to disturbance rasters from 1985 to 2011 via the `out$disturbanceRasters` in our *Setup* section above. We can change the length of our simulation to a later year, and even resume our simulations where we left off. Here, we set the last year of the simulation to 2002:
+To change the length of the simulation, we have to make sure we have the required inputs. If we keep the same study area, with the same growth information, and inventory information, we only need disturbance information for each year to extend the simulations. We have access to disturbance rasters from 1985 to 2011 via the `out$disturbanceRasters` in our [Setup] section above. We can change the length of our simulation to a later year, and even resume our simulations where we left off. Here, we set the last year of the simulation to 2002:
 
 ```{r}
 end(simPython) <- 2002
@@ -452,6 +452,28 @@ out$loadOrder <- unlist(out$modules)
 
 # Run
 simPython <- do.call(SpaDES.core::simInitAndSpades, out)
+
+# Look at figures
+carbonOutPlot(
+  emissionsProducts = simPython$emissionsProducts
+  ) # This plots yearly forest products and yearly emissions for the length of the simulation
+
+ barPlot(
+   cbmPools = simPython$cbmPools
+   ) # This plots the carbon proportions above and below ground each simulation year
+
+NPPplot(
+  spatialDT = simPython$spatialDT,
+  NPP = simPython$NPP,
+  masterRaster = simPython$masterRaster
+  ) # This plots the per-pixel average net primary production 
+
+spatialPlot(
+  cbmPools = simPython$cbmPools,
+  years = 2000,
+  masterRaster = simPython$masterRaster,
+  spatialDT = simPython$spatialDT
+  ) # this plots the Total Carbon per pixel for the final simulation year
 
 # Look at outputs
 outputs(simPython)
