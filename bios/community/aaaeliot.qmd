@@ -1,12 +1,12 @@
 ---
 title: "Dr Eliot McIntire"
 name: "Eliot McIntire"
-image: https://nafew.org/wp-content/uploads/2022/01/eliot-mc-intire-modal.jpg
+image: https://gravatar.com/avatar/c3ce0a75463d3bc3cb4513725247ab81?size=256
 comments: false
 about: 
   id: eliot
   template: solana
-  image: https://nafew.org/wp-content/uploads/2022/01/eliot-mc-intire-modal.jpg
+  image: https://gravatar.com/avatar/c3ce0a75463d3bc3cb4513725247ab81?size=256
   image-shape: rounded
   links: 
     - icon: globe

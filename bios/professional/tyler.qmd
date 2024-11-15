@@ -1,12 +1,12 @@
 ---
 title: "Tyler Rudolph"
 name: "Tyler Rudolph"
-image: https://gravatar.com/valiantlya46f132164
+image: https://1.gravatar.com/avatar/a91ba23a3124172654498691816d5f963e63f060735ead877eac96c639c2cf60?size=256
 comments: false
 about: 
   id: tyler
   template: solana
-  image: https://gravatar.com/valiantlya46f132164
+  image: https://1.gravatar.com/avatar/a91ba23a3124172654498691816d5f963e63f060735ead877eac96c639c2cf60?size=256
   image-shape: rounded
   links: 
     - icon: globe
