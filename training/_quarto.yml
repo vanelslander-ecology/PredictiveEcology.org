@@ -37,6 +37,8 @@ book:
             href: ../../Workshops.html
           - text: "June 2024 Workshop Agenda"
             href: ../../workshops/June-2024-SpaDES-workshop.html
+          - text: "November 2024 Workshop Agenda"
+            href: ../../workshops/Nov-2024-SpaDES-workshop.qmd
       - text: "Training"
         menu:
           - text: "Training Book"

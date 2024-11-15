@@ -28,7 +28,7 @@ already familiar with SpaDES, namely creating and using SpaDES modules.
 If not, we encourage going through the chapters in Section [SpaDES
 101](SpaDESbasics.qmd).
 
-From @sec-castorEg onwards, we show project flows with SpaDES modules
+From @sec-LandRExample onwards, we show project flows with SpaDES modules
 that have been developed and used in ecological modelling and
 forecasting, to answer both research or applied questions. We encourage
 readers to learn more about these models (and *modules*) from the

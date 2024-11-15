@@ -145,13 +145,11 @@ if (tryCatch(packageVersion("SpaDES.project") < "0.1.1", error = function(x) TRU
 #| purl: false
 out1 <- SpaDES.project::setupProject(package = c("googledrive", "httr"),
                                      paths = list("packagePath" = packagePath),
-                                     "projectPath" = "~/SpaDES_book/LandRDemo_coreVeg", 
+                                     projectPath = "~/SpaDES_book/LandRDemo_coreVeg", 
                                      verbose = -2)
 if (!googledrive::drive_has_token() && !interactive()) {
   options(gargle_oauth_email = "eliotmcintire@gmail.com",
           gargle_oauth_cache = "c:/Eliot/SpaDES_book/googledrive_auth_cache")
-  googledrive::drive_auth(email = "eliotmcintire@gmail.com", 
-                          cache = "c:/Eliot/SpaDES_book/googledrive_auth_cache")
 }
 ```
 
@@ -174,36 +172,24 @@ out <- setupProject(
   # Named arguments for setupProject -- see ?SpaDES.project::setupProject for help
   paths = list("packagePath" = file.path("packages", Require:::versionMajorMinor()),
                "projectPath" = "~/SpaDES_book/LandRDemo_coreVeg"),
+  
   modules = c(
-    "PredictiveEcology/Biomass_speciesData@main",
-    "PredictiveEcology/Biomass_borealDataPrep@main",
-    "PredictiveEcology/Biomass_speciesParameters@main",
-    "PredictiveEcology/Biomass_core@main"
+    "PredictiveEcology/Biomass_speciesData@main"
+    , "PredictiveEcology/Biomass_borealDataPrep@main"
+    , "PredictiveEcology/Biomass_speciesParameters@main"
+    , "PredictiveEcology/Biomass_core@main"
   ),
+  
   # packages only need to be specified if they are needed within this setupProject
-  packages = c(
-    "googledrive",
-    "httr",
-    "terra",
-    "DiagrammeR" # For plotting later
-  ),
+  #   DiagrammeR is for plotting later in this qmd
+  packages = c("DiagrammeR", "googledrive", "httr", "terra"),
+  
   options = list(
-    # "LandR.assertions" = TRUE,
     "reproducible.destinationPath" = paths$inputPath,
-    # "spades.inputPath" = paths$inputPath,
     "spades.moduleCodeChecks" = FALSE,
     "Require.cloneFrom" = Sys.getenv("R_LIBS_USER"), # faster package installs (from personal library)
     "repos" = unique(repos)
   ),
-  # sideEffects are anything that needs doing, but doesn't return a value
-  sideEffects = {
-    if (interactive()) {
-      googledriveAuthPath <- "~/SpaDES_book/googledrive_auth_cache"
-      dir.create(googledriveAuthPath, showWarnings = FALSE)
-      if (!googledrive::drive_has_token())
-        googledrive::drive_auth(cache = "~/SpaDES_book/googledrive_auth_cache")
-    }
-  },
 
   # DYNAMIC MODEL SETUP ------------------------------------
   times = list(start = 2001, end = 2031),
