@@ -8,9 +8,9 @@ editor:
 bibliography: references/references.bib
 execute:
   tidy: false
-  warning: true
-  message: true
-  error: true
+  warning: false
+  message: false
+  error: false
   cache: true
   eval: false
 ---
@@ -126,9 +126,6 @@ then, our apologies for any inconvenience.
 #| eval: true
 #| results: hide
 #| code-fold: true
-#| error: true
-#| message: true
-#| warning: true
 #| code-summary: "Show code"
 repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
 if (packageVersion("SpaDES.project") < "0.1.1")
@@ -142,12 +139,8 @@ out <- setupProject(
   #    specifically these are needed for params.R
   sppEquivCol = "Boreal",
   vegLeadingProportion = 0,
-  # successionTimestep = 10L,
-  # eventCaching = c(".inputObjects", "init"),
-  # overwrite = TRUE, # Just run this once. Then remove it.
-  # useGit = "eliotmcintire",
+  
   # Named arguments for setupProject -- see ?SpaDES.project::setupProject for help
-  # standAlone = TRUE,
   paths = list("packagePath" = file.path("packages", Require:::versionMajorMinor()),
                "projectPath" = "~/SpaDES_book/LandRDemo_coreVeg"),
   modules = c(
@@ -157,12 +150,11 @@ out <- setupProject(
     "PredictiveEcology/Biomass_core@main"
   ),
   # packages only need to be specified if they are needed within this setupProject
-  package = NULL,
-  # packages = c(
-  #   "googledrive",
-  #   "httr",
-  #   "terra"
-  # ),
+  packages = c(
+    "googledrive",
+    "httr",
+    "terra"
+  ),
   options = list(
     "LandR.assertions" = TRUE,
     "reproducible.destinationPath" = paths$inputPath,
