@@ -4,7 +4,7 @@
 
 pkgList <- Require::pkgSnapshot2(libPaths = c("training/packages/", file.path("training/packages", Require:::versionMajorMinor()),
                                               .libPaths(),
-                                              SpaDES.project:::.libPathDefault("castorExample"),
+                                              # SpaDES.project:::.libPathDefault("castorExample"),
                                               SpaDES.project:::.libPathDefault("integratingSpaDESmodules")))
 pkgList <- c(pkgList, "disk.frame")
 

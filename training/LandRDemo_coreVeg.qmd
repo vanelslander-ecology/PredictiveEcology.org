@@ -178,6 +178,7 @@ out <- setupProject(
     , "PredictiveEcology/Biomass_borealDataPrep@main"
     , "PredictiveEcology/Biomass_speciesParameters@main"
     , "PredictiveEcology/Biomass_core@main"
+    # , "PredictiveEcology/Biomass_regeneration@main"
   ),
   
   # packages only need to be specified if they are needed within this setupProject
@@ -363,7 +364,7 @@ terra::plot(simOut$studyArea, col = "lightblue", add = TRUE)
 # spatial outputs from list above
 terra::plot(simOut$vegTypeMap, 
             col = hcl.colors(palette = "Dynamic", n = length(unique(simOut$vegTypeMap[]))), 
-            main = "")
+            main = "", add = TRUE)
 terra::plot(simOut$speciesLayers)
 ```
 
@@ -410,10 +411,13 @@ live plotting in *Biomass_core*, without having to
 
 -   repeat the `setupProject` call
 
-Note that because `simOut` is actually a copy of `simInitOut` (see the
-output of `SpaDES.core::completed(simInitOut)`), this still means that
-`simInitOut` has to be re-generated for this purpose, otherwise `spades`
-would try to resume the simulation from the "last year".
+Note that because `simOut` has some objects that have "pointers", like 
+`SpatRaster` objects that come from `tif` files, we may not be able to 
+start from the previous `simInitOut`. In other words, even though it looks like
+it is the object that emerges from the `simInit` function and therefore, we should
+be able to pass it to `spades`, it may not work as desired (can test this, 
+if desired). This means that `simInitOut` may need to re-generated, otherwise `spades`
+would inherit some objects that were changed during the previous `spades`.
 
 Thanks to internal caching, it will only take seconds to "redo"
 `simInitOut`. You will also notice that `init` events are retrieved from
@@ -439,8 +443,7 @@ SpaDES.core::end(simOut) <- 2061
 simOut <- SpaDES.core::spades(simOut)
 ```
 
-<!--
-### Many replicates {#sec-LandRReplication}
+### Many replicates (somewhat **experimental**; actively developing) {#sec-LandRReplication}
 
 Dynamic ecological models like LandR often simulate stochastic
 ecological processes, like dispersal, probability of germination, or
@@ -459,7 +462,7 @@ to do two things:
 -   Create a folder structure by replicate to store the simulation
     outputs
 
--   Generate 10 *independent* simulations and run them in sequence (@lst-exp) 
+-   Generate 2 *independent* simulations and run them in sequence (@lst-exp) 
     or in parallel (@lst-expparall), using the `future` package.
 
 ```{r expSim}
@@ -467,11 +470,17 @@ to do two things:
 #| lst-cap: Sequential replication 
 #| purl: false
 
+Require::Install("SpaDES.experiment (HEAD)", repos = unique(repos))
 simInitOut <- SpaDES.core::simInit2(out)
 
 future::plan("sequential")
-simOutExperiment <- SpaDES.experiment::experiment2(simInitOut, replicates = 10)
+simOutExperiment <- SpaDES.experiment::experiment2(simInitOut, replicates = 2)
 ```
+
+#### Parallel
+
+This works, in theory, on Windows, Linux and MacOS, but in practice seems to be less
+problematic on Linux.
 
 ```{r expSimParll}
 #| lst-label: lst-expparall
@@ -479,7 +488,7 @@ simOutExperiment <- SpaDES.experiment::experiment2(simInitOut, replicates = 10)
 #| purl: false
 
 future::plan("multisession", workers = 2)
-simOutExperiment <- SpaDES.experiment::experiment2(simInitOut, replicates = 10)
+simOutExperiment <- SpaDES.experiment::experiment2(simInitOut, replicates = 2)
 future:::ClusterRegistry("stop")  
 ```
 
@@ -507,10 +516,9 @@ conditions because they all access the same cached objects from the
 To have fully independent replication we can use
 `experiment2(..., useCache = FALSE)`
 :::
--->
 
-<!--
-## Validation
+
+## Validation (very experimental)  {#sec-LandRValidation}
 
 Now that we have several replicates, we can use *Biomass_validationKNN*
 to run some validation statistics.
@@ -531,58 +539,57 @@ are linked to these file paths explicitly.
 #| purl: false
 
 outValid <- setupProject(
-paths = list("packagePath" = "packages/",
-"projectPath" = "~/SpaDES_book/LandRDemo_coreVeg",
-"outputPath" = "validation/"),
-options = list(
-"LandR.assertions" = TRUE,
-"reproducible.destinationPath" = paths$inputPath,
-"spades.inputPath" = paths$inputPath,
-"spades.moduleCodeChecks" = FALSE,
-"repos" = repos
-),
-modules = c(
-"PredictiveEcology/Biomass_validationKNN@main"
-),
-# SIMULATION SETUP --------------------------------
-times = list(start = 1, end = 1),
-# PARAMETERS --------------------------------------
-params = list("Biomass_validationKNN" = list(
-"minCoverThreshold" = SpaDES.core::params(simOut)$Biomass_borealDataPrep$minCoverThreshold,
-"pixelGroupBiomassClass" = SpaDES.core::params(simOut)$Biomass_borealDataPrep$pixelGroupBiomassClass,
-"deciduousCoverDiscount" = SpaDES.core::params(simOut)$Biomass_borealDataPrep$deciduousCoverDiscount,
-"sppEquivCol" = SpaDES.core::params(simOut)$Biomass_borealDataPrep$sppEquivCol,
-".plots" = c("png") # save all to .png
-)),
-# INPUT OBJECTS -----------------------------------
-studyArea = {
-simOut$studyArea
-},
-rasterToMatch = {
-terra::deepcopy(simOut$rasterToMatch)
-},
-rawBiomassMapStart = {
-terra::deepcopy(simOut$rasterToMatchLarge)
-},
-simulationOutputs = {
-lapply(simOutExperiment, SpaDES.core::outputs) |> 
-rbindlist()
-},
-sppEquiv = simOut$sppEquiv,
-sppEquivCol = simOut$sppEquivCol,
-sppColorVect = simOut$sppColorVect,
-speciesLayersStart = {
-terra::deepcopy(simOut$speciesLayers)
-},
-standAgeMapStart = {
-terra::deepcopy(simOut$standAgeMap)
-}
+  paths = list("packagePath" = "packages/",
+               "projectPath" = "~/SpaDES_book/LandRDemo_coreVeg",
+               "outputPath" = "validation/"),
+  options = list(
+    "LandR.assertions" = TRUE,
+    "reproducible.destinationPath" = paths$inputPath,
+    "spades.inputPath" = paths$inputPath,
+    "spades.moduleCodeChecks" = FALSE,
+    "repos" = repos
+  ),
+  modules = c(
+    "PredictiveEcology/Biomass_validationKNN@main"
+  ),
+  # SIMULATION SETUP --------------------------------
+  times = list(start = 1, end = 1),
+  # PARAMETERS --------------------------------------
+  params = list("Biomass_validationKNN" = list(
+    "minCoverThreshold" = SpaDES.core::params(simOut)$Biomass_borealDataPrep$minCoverThreshold,
+    "pixelGroupBiomassClass" = SpaDES.core::params(simOut)$Biomass_borealDataPrep$pixelGroupBiomassClass,
+    "deciduousCoverDiscount" = SpaDES.core::params(simOut)$Biomass_borealDataPrep$deciduousCoverDiscount,
+    "sppEquivCol" = SpaDES.core::params(simOut)$Biomass_borealDataPrep$sppEquivCol,
+    ".plots" = c("png") # save all to .png
+  )),
+  # INPUT OBJECTS -----------------------------------
+  studyArea = {
+    simOut$studyArea
+  },
+  rasterToMatch = {
+    terra::deepcopy(simOut$rasterToMatch)
+  },
+  rawBiomassMapStart = {
+    terra::deepcopy(simOut$rasterToMatchLarge)
+  },
+  simulationOutputs = {
+    lapply(simOutExperiment, SpaDES.core::outputs) |> 
+      rbindlist()
+  },
+  sppEquiv = simOut$sppEquiv,
+  sppEquivCol = simOut$sppEquivCol,
+  sppColorVect = simOut$sppColorVect,
+  speciesLayersStart = {
+    terra::deepcopy(simOut$speciesLayers)
+  },
+  standAgeMapStart = {
+    terra::deepcopy(simOut$standAgeMap)
+  }
 )
 
 simOutValid <- SpaDES.core::simInitAndSpades2(outValid)
 
 ```
--->
 
 
 ## Different scenarios and model selection {#sec-LandRScenarios}

@@ -1,5 +1,8 @@
 ---
 bibliography: references/references.bib
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
 # Preface {.unnumbered}
@@ -35,6 +38,19 @@ PERFICT[^2] and nimbleness principles and find these solutions useful.
 Mostly we hope that those that work with ecosystems can embrace these
 tools to work towards expanding the abilities of the community to become
 robust to any scrutiny we face.
+
+# Audience {.unnumbered}
+
+The anticipated audience for this book are scientists who have some
+knowledge of R who appreciate the value of creating modular code that
+can be reused by others. We believe that anybody who has completed a course
+in R (advanced undergraduate, graduate student, postdoc, working scientist etc.)
+or who works with R should be able to use this book.
+
+The examples are all in Ecology, with a
+sub-focus on issues related to Forest Landscapes, meaning that there
+will be issues that other disciplines may have that won't be addressed
+here.
 
 # Acknowledgements {.unnumbered}
 

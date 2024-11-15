@@ -91,7 +91,7 @@ approach:
 
 -   **`targets` is "top-down", SpaDES is "bottom-up"** – with `targets`,
     the workflow is entirely defined by the script developer (as in
-    [Make](https://www.gnu.org/software/make/)). This is, they define
+    [Make](https://www.gnu.org/software/make/)). That is, they define
     the connections and the *sequence* between each "target" (the code
     sections that call functions and execute operations), when they will
     be iterated and for "how many times". Re-arranging "targets"
@@ -242,7 +242,7 @@ call by having the ability to:
 
 -   spatially process the data according to a polygon or raster template
 
-It also caches these operations, so taht they don't need to be repeated
+It also caches these operations, so that they don't need to be repeated
 unnecessarily.
 
 This can save hours of learning to master caching and GIS algorithms (or

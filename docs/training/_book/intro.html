@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-07-05">
+<meta name="dcterms.date" content="2024-11-15">
 
 <title>Robust and nimble scientific workflows, using SpaDES - Introduction</title>
 <style>
@@ -148,7 +148,7 @@ div.csl-indent {
  <span class="dropdown-text">June 2024 Workshop Agenda</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./../../workshops/Nov-2024-SpaDES-workshop.qmd">
+    <a class="dropdown-item" href="./../../workshops/Nov-2024-SpaDES-workshop.html">
  <span class="dropdown-text">November 2024 Workshop Agenda</span></a>
   </li>  
     </ul>
@@ -419,7 +419,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 5, 2024</p>
+      <p class="date">November 15, 2024</p>
     </div>
   </div>
   
@@ -463,7 +463,7 @@ div.csl-indent {
 <p><a href="https://books.ropensci.org/targets/"><code>targets</code></a> is an R package (descendant of <code>drake</code>), very similar to <a href="https://www.gnu.org/software/make/">GNU Make</a>, that facilitates building data analyses pipelines.</p>
 <p>There are two major differences between <code>targets</code> and the SpaDES approach:</p>
 <ul>
-<li><p><strong><code>targets</code> is “top-down”, SpaDES is “bottom-up”</strong> – with <code>targets</code>, the workflow is entirely defined by the script developer (as in <a href="https://www.gnu.org/software/make/">Make</a>). This is, they define the connections and the <em>sequence</em> between each “target” (the code sections that call functions and execute operations), when they will be iterated and for “how many times”. Re-arranging “targets” sequences and iterations may therefore be hard, if the “target” code is not well known/understood.</p>
+<li><p><strong><code>targets</code> is “top-down”, SpaDES is “bottom-up”</strong> – with <code>targets</code>, the workflow is entirely defined by the script developer (as in <a href="https://www.gnu.org/software/make/">Make</a>). That is, they define the connections and the <em>sequence</em> between each “target” (the code sections that call functions and execute operations), when they will be iterated and for “how many times”. Re-arranging “targets” sequences and iterations may therefore be hard, if the “target” code is not well known/understood.</p>
 <p>SpaDES is meant to enable mixing-and-matching different modules that share the same inputs/outputs easily – i.e.&nbsp;without having to have deep knowledge of the module code. SpaDES will read each module’s metadata and from it deduce the sequence in which modules need to be chained. SpaDES will also iterate module code when necessary, following the developer’s “scheduling” instructions. The workflow sequence, therefore, <em>arises</em> from the set of modules that is being used<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p></li>
 <li><p><strong>SpaDES has “embedded” metadata</strong> – or at least it makes the developer think about it<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Each module is defined by listing not only the inputs and outputs, but also their descriptions and types of object class, the module’s description, its operating time scale, package and module dependencies, and much more. Some of the metadata is essential to chain modules (lists of inputs and outputs), some is not but can greatly facilitate workflow setup (e.g.&nbsp;declaring module dependencies), while other metadata is simply good to have (e.g.&nbsp;a description of the module).</p></li>
 </ul>
@@ -558,7 +558,7 @@ Tip&nbsp;1: <code>reproducible::prepInputs</code> a tool that will make your lif
 <li><p>download from a data repository URL;</p></li>
 <li><p>spatially process the data according to a polygon or raster template</p></li>
 </ul>
-<p>It also caches these operations, so taht they don’t need to be repeated unnecessarily.</p>
+<p>It also caches these operations, so that they don’t need to be repeated unnecessarily.</p>
 <p>This can save hours of learning to master caching and GIS algorithms (or avoid using flawed approaches) for many ecologists!</p>
 </div>
 </div>
