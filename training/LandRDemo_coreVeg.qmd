@@ -8,9 +8,9 @@ editor:
 bibliography: references/references.bib
 execute:
   tidy: false
-  warning: false
-  message: false
-  error: false
+  warning: true
+  message: true
+  error: true
   cache: true
   eval: false
 ---
@@ -58,9 +58,12 @@ if (!interactive()) {
   knitr::opts_knit$set(root.dir = "~/SpaDES_book/LandRDemo_coreVeg")
 }
 
-options(gargle_oauth_email = "eliotmcintire@gmail.com",
-        gargle_oauth_cache = "c:/Eliot/SpaDES_book/googledrive_auth_cache")
-googledrive::drive_auth(email = "eliotmcintire@gmail.com", cache = "c:/Eliot/SpaDES_book/googledrive_auth_cache")
+# This needs to be done because the "automated" run needs googledrive::drive::auth() run
+#   before it is in 
+packagePath <- file.path("packages", gsub(".[[:digit:]]{1,3}$", "", getRversion()))
+dir.create(packagePath, showWarnings = FALSE, recursive = TRUE)
+.libPaths(packagePath)
+
 ```
 
 ::: {.callout-note appearance="simple"}
@@ -122,14 +125,42 @@ then, our apologies for any inconvenience.
 
 ## Workflow setup
 
+```{r SpaDES.project}
+#| eval: true
+#| results: hide
+#| code-fold: false
+#| cache: false
+#| purl: false
+# This repository is ours and it has the latest versions of our packages
+repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
+# Need the latest version
+if (tryCatch(packageVersion("SpaDES.project") < "0.1.1", error = function(x) TRUE))
+  install.packages(c("SpaDES.project", "Require"), repos = repos)
+```
+
+```{r googledrive}
+#| include: false
+#| eval: true
+#| cache: false
+#| purl: false
+out1 <- SpaDES.project::setupProject(package = c("googledrive", "httr"),
+                                     paths = list("packagePath" = packagePath),
+                                     "projectPath" = "~/SpaDES_book/LandRDemo_coreVeg", 
+                                     verbose = -2)
+if (!googledrive::drive_has_token() && !interactive()) {
+  options(gargle_oauth_email = "eliotmcintire@gmail.com",
+          gargle_oauth_cache = "c:/Eliot/SpaDES_book/googledrive_auth_cache")
+  googledrive::drive_auth(email = "eliotmcintire@gmail.com", 
+                          cache = "c:/Eliot/SpaDES_book/googledrive_auth_cache")
+}
+```
+
+
 ```{r setupProject}
 #| eval: true
 #| results: hide
 #| code-fold: true
 #| code-summary: "Show code"
-repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
-if (packageVersion("SpaDES.project") < "0.1.1")
-  install.packages(c("SpaDES.project", "Require"), repos = repos)
 
 library(SpaDES.project)
 
@@ -153,12 +184,13 @@ out <- setupProject(
   packages = c(
     "googledrive",
     "httr",
-    "terra"
+    "terra",
+    "DiagrammeR" # For plotting later
   ),
   options = list(
-    "LandR.assertions" = TRUE,
+    # "LandR.assertions" = TRUE,
     "reproducible.destinationPath" = paths$inputPath,
-    "spades.inputPath" = paths$inputPath,
+    # "spades.inputPath" = paths$inputPath,
     "spades.moduleCodeChecks" = FALSE,
     "Require.cloneFrom" = Sys.getenv("R_LIBS_USER"), # faster package installs (from personal library)
     "repos" = unique(repos)
@@ -193,7 +225,9 @@ out <- setupProject(
   # create a "larger" study area that can be used for parameter estimation, using
   #   more datasets that will fall into this larger area
   studyAreaLarge = terra::buffer(studyArea, width = 3e4),
-  # sppEquiv is a table that defines equivalent names for species e.g., Pice_mar and Pice_Mar are identical
+  
+  # sppEquiv is a table that defines equivalent names for species 
+  #    e.g., Pice_mar and Pice_Mar are identical
   sppEquiv = {
     speciesInStudy <- LandR::speciesInStudyArea(studyAreaLarge)
     species <- LandR::equivalentName(speciesInStudy$speciesList,
@@ -203,14 +237,10 @@ out <- setupProject(
 
   speciesParams = {
     list(
-      "shadetolerance" = list(
-        # Betu_Pap = 1
-        Lari_Lar = 1
-        , Pice_Gla = 2
-        , Pice_Mar = 3
-        , Pinu_Ban = 1.5
-        , Popu_Tre = 1
-      )
+      "shadetolerance" = list(Lari_Lar = 1, 
+                              Pice_Gla = 2, Pice_Mar = 3, 
+                              Pinu_Ban = 1.5, Popu_Tre = 1
+                              )
     )
   },
 
@@ -223,8 +253,8 @@ out <- setupProject(
 )
 ```
 
-If you have a look at @sec-castorSetup in the @sec-castorEg chapter, you
-will see some differences in the way we setup the two workflows:
+If you have a look at other chapters in this section about `setupProject`, you
+will see some variation in the way we setup the workflows:
 
 -   `paths`. Here we left the defaults for all paths (see
     [`?setupPaths()`](https://spades-project.predictiveecology.org/reference/setup.html)
@@ -241,15 +271,22 @@ will see some differences in the way we setup the two workflows:
     above) prior to setting the options.
 
 -   other arguments (`...`). Almost all other arguments in the call
-    above were passed to `...`. These are objects that need to be
-    supplied by the user for these modules (e.g. `studyArea` and
-    `studyAreaLarge`) or whose defaults we want to override (e.g., the
-    species table, `sppEquiv`, and trait values, `speciesParams`). To
-    avoid creating them on the `.GlobalEnv` first, we take advantage of
+    above were part of the `...` (in the `setupProject` function). 
+    These are objects that are objects that are used by modules. Because
+    modules have defaults for most objects, these tend to be "optionaly"; but
+    the more a user understands a module, the more clearly the defaults can be 
+    evaluated as to whether they are sufficient or not. 
+    To avoid creating objects in the `.GlobalEnv` first, we take advantage of
     `setupProject`'s ability to run the code in `{ }` and make these
     polygons. Note that these arguments are passed prior to any 'formal
     arguments' (see
     [`?formalArgs()`](https://www.rdocumentation.org/packages/methods/versions/3.6.2/topics/methodUtilities))
+
+- There are 4 objects that tend to be "required" in the modules that have 
+    emerged from the Predictive Ecology group. These are about the spatial area
+    to be covered by the project:  e.g. `studyArea`, `studyAreaLarge`, 
+    `rasterToMatch` and `rasterToMatchLarge`. or whose defaults we want to override (e.g., the
+    species table, `sppEquiv`, and trait values, `speciesParams`). 
 
 ## Run simulation
 
