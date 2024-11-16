@@ -186,8 +186,13 @@ the query. `keepCache` keeps everything that matches the query. `cc`
 removes the most recent entry (i.e., it is a shorthand for a commonly
 used option).
 
+<!--
+The next chunk fails for some reason when non-interactive ... needs debugging
+-->
+
 ```{r keepCache}
-# Two different funcxtions
+#| eval: false
+# Two different functions
 a <- rnorm(1) |> Cache()
 b <- runif(1) |> Cache()
 

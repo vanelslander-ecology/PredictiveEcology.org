@@ -43,14 +43,13 @@ robust to any scrutiny we face.
 
 The anticipated audience for this book are scientists who have some
 knowledge of R who appreciate the value of creating modular code that
-can be reused by others. We believe that anybody who has completed a course
-in R (advanced undergraduate, graduate student, postdoc, working scientist etc.)
-or who works with R should be able to use this book.
+can be reused by others. We believe that anybody who has completed a
+course in R (advanced undergraduate, graduate student, postdoc, working
+scientist etc.) or who works with R should be able to use this book.
 
-The examples are all in Ecology, with a
-sub-focus on issues related to Forest Landscapes, meaning that there
-will be issues that other disciplines may have that won't be addressed
-here.
+The examples are all in Ecology, with a sub-focus on issues related to
+Forest Landscapes, meaning that there will be issues that other
+disciplines may have that won't be addressed here.
 
 # Acknowledgements {.unnumbered}
 

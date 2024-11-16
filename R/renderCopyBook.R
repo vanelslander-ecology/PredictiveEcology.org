@@ -1,10 +1,22 @@
 ## render book
+#
+#
+# files <- system(paste0("git diff --name-only -- . "), intern=T) %>%
+#   grep(pattern = ".qmd$|\\.R$", value = TRUE)
+#
+# if(length(files) > 0){
+#   for(f in files){
+#     quarto::quarto_render(f, as_job = FALSE)
+#   }
+# }
+
+
 message("Rendering book...")
-quarto::quarto_render("training/", as_job = FALSE)
+quarto::quarto_render("training/", as_job = FALSE, use_freezer = TRUE)
 
 ## render website
 message("Rendering website...")
-quarto::quarto_render(as_job = FALSE)
+quarto::quarto_render(as_job = FALSE, use_freezer = TRUE)
 
 ## now copy book HTMLs to docs/ (always *after* rendering site)
 message("Copying book files over to website")

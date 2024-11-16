@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ceres Barros">
-<meta name="dcterms.date" content="2024-07-05">
+<meta name="dcterms.date" content="2024-11-15">
 
 <title>Robust and nimble scientific workflows, using SpaDES - 12&nbsp; Debugging SpaDES Modules</title>
 <style>
@@ -441,7 +441,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 5, 2024</p>
+      <p class="date">November 15, 2024</p>
     </div>
   </div>
   
@@ -614,7 +614,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="restartspades" class="level2" data-number="12.3">
 <h2 data-number="12.3" class="anchored" data-anchor-id="restartspades"><span class="header-section-number">12.3</span> <code>restartSpades()</code></h2>
-<p>Probably one of our BFFs (best-friend functions) as SpaDES developpers, it will allow resuming a workflow whose execution was interrupted by an error or the user from the top of the interrupted event, but will first re-parse module code.</p>
+<p>Probably one of our BFFs (best-friend functions) as SpaDES developers, it will allow resuming a workflow whose execution was interrupted by an error or the user from the top of the interrupted event, but will first re-parse module code.</p>
 <p>This means that we can insert a <code>browser()</code> somewhere in the event code, then <code>restartSpades()</code> and debug the event.</p>
 </section>
 <section id="a-note-on-testing-spades-modules" class="level2" data-number="12.4">

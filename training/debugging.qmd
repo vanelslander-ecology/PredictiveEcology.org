@@ -218,7 +218,7 @@ Try `showMethods("show")` to see all the methods implemented.
 
 ## `restartSpades()`
 
-Probably one of our BFFs (best-friend functions) as SpaDES developpers,
+Probably one of our BFFs (best-friend functions) as SpaDES developers,
 it will allow resuming a workflow whose execution was interrupted by an
 error or the user from the top of the interrupted event, but will first
 re-parse module code.

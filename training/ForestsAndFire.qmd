@@ -180,7 +180,7 @@ event took.
 
 ```{r}
 completed(outSim)
-elapsedTime(outSim, units = "minute")
+elapsedTime(outSim, units = "mins")
 ```
 
 The module metadata can be accessed from the `sim` or can be read from
