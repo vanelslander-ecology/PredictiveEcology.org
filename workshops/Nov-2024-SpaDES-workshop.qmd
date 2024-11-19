@@ -24,7 +24,7 @@ If you missed it, but would like to attend a future workshop, please reach out t
 
 This workshop will be in person. We will be 4 people who have worked with SpaDES and ecological models: [Eliot McIntire](../bios/community/aaaeliot.qmd), [Ian Eddy](../bios/professional/ian.qmd), [Celine Boisvenue](../bios/community/celine.qmd), and [Camille Giuliano](../bios/professional/camille.qmd).
 
-## Tentative Agenda
+## Agenda
 
 "WOYO", Work On Your Own + health breaks
 
@@ -34,8 +34,6 @@ questions and encouraging discussion. The last 15min of each WOYO will be discus
 All times in Pacific Daylight Time (GMT-7)
 
 Presentation slides will be added at the end of each day.
-
-## THIS IS TENTATIVE - EXPECT CHANGES BEFORE THE START
 
 +-------------------------+--------------------------------------------------------------------------------------------------------------------------+
 | **DAY 1**               | **SpaDES foundations**                                                                                                   |
