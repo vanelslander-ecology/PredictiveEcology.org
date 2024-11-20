@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eliot McIntire">
-<meta name="dcterms.date" content="2024-07-05">
+<meta name="dcterms.date" content="2024-11-20">
 
 <title>Robust and nimble scientific workflows, using SpaDES - 9&nbsp; Scheduling Events</title>
 <style>
@@ -446,7 +446,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 5, 2024</p>
+      <p class="date">November 20, 2024</p>
     </div>
   </div>
   
@@ -504,7 +504,7 @@ Repeated? When?
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>startYear <span class="ot">&lt;-</span> <span class="dv">2023</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> startYear<span class="sc">:</span>(startYear <span class="sc">+</span> <span class="dv">10</span>) <span class="sc">+</span> <span class="dv">1</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (year <span class="cf">in</span> years <span class="sc">-</span> startYear) {</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  pred[[year]] <span class="ot">&lt;-</span> <span class="fu">predict</span>(out, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>) <span class="sc">+</span> year))</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  pred[[year]] <span class="ot">&lt;-</span> <span class="fu">predict</span>(out, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>) <span class="sc">+</span> year))</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot #####</span></span>
@@ -891,7 +891,7 @@ scheduleEvent(sim, time(sim) + P(sim)$predFreq, "predictions")
 <span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>startYear <span class="ot">&lt;-</span> <span class="dv">2023</span></span>
 <span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> startYear<span class="sc">:</span>(startYear <span class="sc">+</span> <span class="dv">10</span>) <span class="sc">+</span> <span class="dv">1</span></span>
 <span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (year <span class="cf">in</span> years <span class="sc">-</span> startYear) {</span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  pred[[year]] <span class="ot">&lt;-</span> <span class="fu">predict</span>(out, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>) <span class="sc">+</span> year))</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  pred[[year]] <span class="ot">&lt;-</span> <span class="fu">predict</span>(out, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>) <span class="sc">+</span> year))</span>
 <span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot #####</span></span>

@@ -90,7 +90,7 @@ pred <- list()
 startYear <- 2023
 years <- startYear:(startYear + 10) + 1
 for (year in years - startYear) {
-  pred[[year]] <- predict(out, newdata = data.frame(y = rnorm(10) + year))
+  pred[[year]] <- predict(out, newdata = data.frame(x = rnorm(10) + year))
 }
 
 # Plot #####
