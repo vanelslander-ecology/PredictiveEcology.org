@@ -191,8 +191,8 @@ isn't in `sim`, then give it a value.
 
 .inputObjects <- function(sim) {
   
-  if (!suppliedElsewhere("y", sim)) {
-    sim$y <- rnorm(100)
+  if (!suppliedElsewhere("x", sim)) {
+    sim$x <- rnorm(100)
   }
   
   return(invisible(sim))

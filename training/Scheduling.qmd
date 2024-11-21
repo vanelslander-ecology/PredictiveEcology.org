@@ -123,6 +123,7 @@ module should have these 3 new sections/functions:
 ```{r}
 #| purl: false
 #| eval: false
+#| echo: true
 
 Init <- function(sim) {
   y <- sim$x + rnorm(10)
@@ -182,12 +183,13 @@ the `Prediction` part into a new function:
 ```{r}
 #| purl: false
 #| eval: false
+#| echo: true
 
 Prediction <- function(sim) {
   startYear <- 2023
   sim$years <- startYear:(startYear + 10) + 1
   for (year in sim$years - startYear) {
-    sim$pred[[year]] <- predict(sim$out, newdata = data.frame(y = rnorm(10) + year))
+    sim$pred[[year]] <- predict(sim$out, newdata = data.frame(x = rnorm(10) + year))
   }
   return(invisible(sim))
 }
@@ -258,6 +260,7 @@ See
 ```{r defaultInit}
 #| purl: false
 #| eval: false
+#| echo: true
 
 sim <- Init(sim)
 
@@ -274,6 +277,7 @@ this:
 ```{r newInit}
 #| purl: false
 #| eval: false
+#| echo: true
 
 switch(
   eventType,
@@ -299,6 +303,7 @@ The name of an event is defined as argument values for
 ```{r}
 #| eval: false
 #| purl: false
+#| echo: true
 
 doEvent.scheduling = function(sim, eventTime, eventType) {
   switch(
@@ -348,6 +353,7 @@ respectfully. These would have been specified in `simInit`.
 ```{r predictionEvent}
 #| purl: false
 #| eval: false
+#| echo: true
 
 switch(
   eventType,
@@ -373,10 +379,13 @@ Because the `"predictions"` event schedules itself we will have to adapt the
 ```{r}
 #| purl: false
 #| eval: false
+#| echo: true
 
 Prediction <- function(sim) {
   
-  sim$pred[[time(sim)]] <- predict(sim$out, newdata = data.frame(y = rnorm(10) + time(sim)))
+  # need "as.character" because start(sim) is 0, so time(sim) is 0 at the start:
+  #  R cannot index a list with a 0 (zero)
+  sim$pred[[as.character(time(sim))]] <- predict(sim$out, newdata = data.frame(x = rnorm(10) + time(sim)))
   
   return(invisible(sim))
 }
@@ -391,6 +400,7 @@ In a "top-down" workflow, we could imagine something like:
 ```{r}
 #| purl: false
 #| eval: false
+#| echo: true
 
 scheduleEvent(sim, time(sim) + 1, "predictions")
 scheduleEvent(sim, time(sim) + 2, "predictions")
@@ -408,6 +418,7 @@ reschedule it:
 ```{r}
 #| eval: false
 #| purl: false
+#| echo: true
 
 init = {
   ...
@@ -434,6 +445,7 @@ we will choose to schedule `plotFun` to run at `end(sim)`:
 ```{r}
 #| purl: false
 #| eval: false
+#| echo: true
 
 scheduleEvent(sim, end(sim), "scheduling", "plot")
 ```
@@ -493,7 +505,8 @@ predictions.
 
 Here's a clue:
 
-```         
+```{r clue}
+#| echo: true
 predictions = {
 scheduleEvent(sim, time(sim) + P(sim)$predFreq, "predictions")
 }    
@@ -564,6 +577,105 @@ fileName <- file.path("R/Chapter_scripts", sub("rmarkdown", "R", knitr::current_
 #| echo: true
 #| purl: false
 #| cache: false
+
+```
+
+## Suggested solution all together
+
+This might be a possible solution for your module:
+
+```{r secondBare}
+defineModule(sim, list(
+  name = "scheduling",
+  description = "",
+  keywords = "",
+  authors = structure(list(list(given = c("First", "Middle"), family = "Last", role = c("aut", "cre"), email = "email@example.com", comment = NULL)), class = "person"),
+  childModules = character(0),
+  version = list(scheduling = "0.0.0.9000"),
+  timeframe = as.POSIXlt(c(NA, NA)),
+  timeunit = "year",
+  citation = list("citation.bib"),
+  documentation = list("NEWS.md", "README.md", "scheduling.Rmd"),
+  reqdPkgs = list("SpaDES.core (>= 2.1.5.9003)", "ggplot2"),
+  parameters = bindrows(
+    #defineParameter("paramName", "paramClass", value, min, max, "parameter description"),
+    defineParameter("length", "integer", 10L, 5L, 100L,
+                    "Number of values to generate"),
+    defineParameter(".plots", "character", "screen", NA, NA,
+                    "Used by Plots function, which can be optionally used here"),
+    defineParameter(".plotInitialTime", "numeric", start(sim), NA, NA,
+                    "Describes the simulation time at which the first plot event should occur."),
+    defineParameter(".plotInterval", "numeric", NA, NA, NA,
+                    "Describes the simulation time interval between plot events."),
+    defineParameter(".saveInitialTime", "numeric", NA, NA, NA,
+                    "Describes the simulation time at which the first save event should occur."),
+    defineParameter(".saveInterval", "numeric", NA, NA, NA,
+                    "This describes the simulation time interval between save events."),
+    defineParameter(".studyAreaName", "character", NA, NA, NA,
+                    "Human-readable name for the study area used - e.g., a hash of the study",
+                          "area obtained using `reproducible::studyAreaName()`"),
+    ## .seed is optional: `list('init' = 123)` will `set.seed(123)` for the `init` event only.
+    defineParameter(".seed", "list", list(), NA, NA,
+                    "Named list of seeds to use for each event (names)."),
+    defineParameter(".useCache", "logical", FALSE, NA, NA,
+                    "Should caching of events or module be used?")
+  ),
+  inputObjects = bindrows(
+    expectsInput(objectName = "x", objectClass = "numeric", 
+                 desc = "A vector of values for x in your linear model", sourceURL = NA)
+  ),
+  outputObjects = bindrows(
+    createsOutput(objectName = "predictions", objectClass = "data.frame", 
+                  desc = "Table of predictions and years")
+  )
+))
+
+doEvent.scheduling = function(sim, eventTime, eventType) {
+  switch(
+    eventType,
+    init = {
+      sim <- Init(sim)
+      scheduleEvent(sim, start(sim), "predictions")   # schedule first occurrence of "predictions"
+    },
+    predictions = {
+      sim <- Prediction(sim)
+      scheduleEvent(sim, time(sim) + 1, "predictions")  # re-schedule "predictions"
+    }
+    warning(noEventWarning(sim))
+  )
+  return(invisible(sim))
+}
+
+Prediction <- function(sim) {
+  
+  sim$pred[[as.character(time(sim))]] <- predict(sim$out, newdata = data.frame(x = rnorm(10) + time(sim)))
+  
+  return(invisible(sim))
+}
+
+Init <- function(sim) {
+  y <- sim$x + rnorm(10)
+  # fit a linear model
+  sim$out <- lm(y ~ sim$x)
+  sim$pred <- list()
+  
+  return(invisible(sim))
+}
+
+plotFun <- function(sim) {
+  sim$predictions <- data.frame(year = rep(sim$years, each = 10), prediction = unlist(sim$pred))
+  # plot the predictions
+  sim$gg <- ggplot(sim$predictions, aes(x = year, y = prediction, colour = year)) + geom_point() + geom_smooth()
+  print(sim$gg)
+  
+  return(invisible(sim))
+}
+
+.inputObjects <- function(sim) {
+  sim$x <- rnorm(10)
+  
+  return(invisible(sim))
+}
 
 ```
 

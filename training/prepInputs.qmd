@@ -240,7 +240,7 @@ project, with minimal new effort each time.
 ## Caching
 
 `prepInputs` is friendly with `Cache` and, in addition to the local stashing
-of a file, caches some internal operations (e.g. `prepProcess`). 
+of a file, caches some internal operations (e.g. `preProcess`). 
 GIS operations, however, are not internally cached. Instead the user should
 use `|> Cache()` to enable having a workflow that doesn't need to be broken.
 

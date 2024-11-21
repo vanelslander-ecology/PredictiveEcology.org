@@ -205,15 +205,15 @@ defined default values for the input object `x` (see @sec-moduleFilesAndMetadata
 ```{r inspect-simList}
 # Get the sample modules that come with SpaDES.core
 
-modulePath <- getSampleModules(tempdir())
-# options(spades.loadReqdPkgs = FALSE) # we don't need to check for packages in this example
 modulePath <- "~/SpaDES_book/NewModuleIntro/NewModule"
 mySim <- simInit(params = list("My_linear_model" = list(length = 20)),
                  modules = "My_linear_model",
                  paths = list(modulePath = modulePath))
+
+# Look at the initial event Queue
 events(mySim)
 
-# b is in the .xData slot
+# x is in the .xData slot -- this came from `.inputObjects`
 mySim$x
 mySim@.xData$x
 
