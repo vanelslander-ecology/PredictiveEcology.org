@@ -11,6 +11,8 @@
 # }
 
 
+if (identical(Sys.info()["user"], "emcintir"))
+  setwd("~/GitHub/PredictiveEcology.org/")
 message("Rendering book...")
 quarto::quarto_render("training/", as_job = FALSE, use_freezer = TRUE)
 

@@ -136,7 +136,7 @@ out <- SpaDES.project::setupProject(
     spades.moduleCodeChecks = FALSE,
     spades.recoveryMode = 1
   ),
-  packages = c('RCurl', 'XML', 'snow'),
+  packages = c('RCurl', 'XML', 'snow', 'googledrive'),
   times = list(start = 2011, end = 2081),
   #70 years of fire should be enough to evaluate MAAB
   studyArea = {
