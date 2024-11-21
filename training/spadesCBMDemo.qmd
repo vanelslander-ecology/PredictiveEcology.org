@@ -138,7 +138,7 @@ times <- list(start = 1998, end = 2000)
 
 out <- SpaDES.project::setupProject(
   Restart = TRUE,
-  useGit = "PredictiveEcology", # a developer sets and keeps this = TRUE
+  # useGit = "PredictiveEcology", # a developer sets and keeps this set
   overwrite = TRUE, # a user who wants to get latest modules sets this to TRUE
   paths = list(projectPath = projectPath),
 
