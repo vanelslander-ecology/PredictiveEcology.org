@@ -108,16 +108,16 @@ Presentation slides will be added at the end of each day.
 +-------------------------+--------------------------------------------------------------------------------------------------------------------------+
 | **DAY 3**               | **Using continuous workflows with real challenges**                                                                      |
 +-------------------------+--------------------------------------------------------------------------------------------------------------------------+
-| 9:00 - 9:30             | Flexibility comes at a cost, but it's worth it!                                                                          |
+| 9:00 - 9:30             | Recap, review   |
 +-------------------------+--------------------------------------------------------------------------------------------------------------------------+
-| 9:30 - 10:00            | [Download presentation](Presentations/2024-06-11/costOfFlexibility.pdf)                                                  |
+| 9:30 - 10:00            | Flexibility comes at a cost, but it's worth it! [Download presentation](Presentations/2024-06-11/costOfFlexibility.pdf)  |
 +-------------------------+--------------------------------------------------------------------------------------------------------------------------+
-| 10:00 - 10:30           | [Forest landscape modelling - parameterisation,                                                                          |
-|                         | simulation/prediction](https://predictiveecology.org/training/_book/LandRDemo_coreVeg.html)                              |
+| 10:00 - 10:30           | [Forest carbon ](https://predictiveecology.org/training/_book/spadesCBMDemo.html)                                        |
 +-------------------------+--------------------------------------------------------------------------------------------------------------------------+
 | 10:30 - 11:00           | WOYO and Discussion and Break                                                                                            |
 +-------------------------+--------------------------------------------------------------------------------------------------------------------------+
-| 11:00 - 11:30           | [Forest carbon ](https://predictiveecology.org/training/_book/spadesCBMDemo.html)                                        |
+| 11:00 - 11:30           | [Forest landscape modelling - parameterisation,                                                                          |
+|                         | simulation/prediction](https://predictiveecology.org/training/_book/LandRDemo_coreVeg.html)                              |
 +-------------------------+--------------------------------------------------------------------------------------------------------------------------+
 |                         | [Download presentation](Presentations/2024-06-11/ForestCarbon.pdf)                                                       |
 +-------------------------+--------------------------------------------------------------------------------------------------------------------------+
