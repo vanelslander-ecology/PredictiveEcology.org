@@ -9,11 +9,14 @@ about:
   image-shape: rounded
   links: 
     - icon: globe
-      text: webpage
-      href: https://scf.rncan.gc.ca/employees/read/smurray
+      text: Webpage
+      href: https://scf.rncan.gc.ca/employees/read/sumurray
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com/in/sumurray
     - icon: github
       text: GitHub
-      href: https://github.com/suz-estella/
+      href: https://github.com/suz-estella
 ---
 
 ::: {#susan}
