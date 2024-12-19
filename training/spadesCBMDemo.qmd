@@ -126,9 +126,6 @@ If the Python installation process fails or you would prefer to manually install
 
 ``` {r}        
 projectPath <- "~/spadesCBMpython"
-dir.create(projectPath, recursive = TRUE, showWarnings = FALSE)
-setwd(projectPath)
-
 repos <- unique(c("predictiveecology.r-universe.dev", getOption("repos")))
 install.packages("SpaDES.project",
                  repos = repos)
@@ -159,7 +156,7 @@ out <- SpaDES.project::setupProject(
   require = c("SpaDES.core", "reticulate",
               "PredictiveEcology/libcbmr", "data.table"),
 
-  parameters = list(
+  params = list(
     CBM_defaults = list(
       .useCache = TRUE
     ),
@@ -223,9 +220,6 @@ out <- SpaDES.project::setupProject(
                                       )))),
 
 )
-
-out$loadOrder <- unlist(out$modules)
-
 ```
 
 ## Run Simulation
@@ -233,7 +227,7 @@ out$loadOrder <- unlist(out$modules)
 Now that our project is set up, we can run our simulation.
 
 ```{r}         
-simPython <- do.call(SpaDES.core::simInitAndSpades, out)
+simPython <- SpaDES.core::simInitAndSpades2(out)
 ```
 
 ## Looking at results
@@ -350,9 +344,6 @@ With `simPython2`, you can look at your results and generate plots in the same w
 ## Barebones script
 ```{r}
 projectPath <- "~/spadesCBMpython"
-dir.create(projectPath, recursive = TRUE, showWarnings = FALSE)
-setwd(projectPath)
-
 repos <- unique(c("predictiveecology.r-universe.dev", getOption("repos")))
 install.packages("SpaDES.project",
                  repos = repos)
@@ -383,7 +374,7 @@ out <- SpaDES.project::setupProject(
   require = c("SpaDES.core", "reticulate",
               "PredictiveEcology/libcbmr", "data.table"),
 
-  parameters = list(
+  params = list(
     CBM_defaults = list(
       .useCache = TRUE
     ),
@@ -448,10 +439,8 @@ out <- SpaDES.project::setupProject(
 
 )
 
-out$loadOrder <- unlist(out$modules)
-
 # Run
-simPython <- do.call(SpaDES.core::simInitAndSpades, out)
+simPython <- SpaDES.core::simInitAndSpades2(out)
 
 # Look at figures
 carbonOutPlot(
