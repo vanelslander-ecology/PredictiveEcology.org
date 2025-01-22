@@ -183,7 +183,7 @@ out <- setupProject(
   
   # packages only need to be specified if they are needed within this setupProject
   #   DiagrammeR is for plotting later in this qmd
-  packages = c("DiagrammeR", "googledrive", "httr", "terra"),
+  packages = c("DiagrammeR", "googledrive", "httr2", "terra"),
   
   options = list(
     "reproducible.destinationPath" = paths$inputPath,
