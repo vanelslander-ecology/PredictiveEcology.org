@@ -14,11 +14,13 @@
 if (identical(unname(Sys.info()["user"]), "emcintir"))
   setwd("~/GitHub/PredictiveEcology.org/")
 message("Rendering book...")
-quarto::quarto_render("training/", as_job = FALSE, use_freezer = TRUE)
+# quarto::quarto_render("training/", as_job = FALSE, use_freezer = TRUE)
 
 ## render website
 message("Rendering website...")
 quarto::quarto_render(as_job = FALSE, use_freezer = TRUE)
+# can do one file at a time
+# quarto::quarto_render(input = "bios\\professional\\jonathan.qmd", as_job = FALSE, use_freezer = TRUE)
 
 ## now copy book HTMLs to docs/ (always *after* rendering site)
 message("Copying book files over to website")
