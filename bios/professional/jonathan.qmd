@@ -1,0 +1,24 @@
+---
+title: "Jonathan Van Elslander"
+name: "Jonathan Van Elslander"
+image: https://images.squarespace-cdn.com/content/v1/62dadfeae3210465ac3dc05e/cad0707b-a55d-459b-a3fb-da745bdb5234/Haiely0178_8.jpeg?format=1000w
+comments: false
+about: 
+  id: jonathan
+  template: solana
+  image-shape: rounded
+  links: 
+    - icon: globe
+      text: webpage
+      href: https://www.jonathanvanelslander.com
+    - icon: github
+      text: GitHub
+      href: https://github.com/vanelslander-ecology
+---
+  
+::: {#jonathan}
+    
+Research Associate, Natural Resources Canada, Canadian Forest Service, Victoria, BC.
+    
+:::
+      
