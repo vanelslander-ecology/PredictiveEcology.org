@@ -16,7 +16,7 @@ about:
       href: https://github.com/DominiqueCaron/
 ---
 
-::: {#isolde}
+::: {#dominique}
 
 (Postdoc 2024 - )
 
