@@ -1,6 +1,6 @@
 ---
 title: "Dominique Caron"
-name: "Dominique Caron
+name: "Dominique Caron"
 image: https://avatars.githubusercontent.com/u/23227281?v=4
 comments: false
 about: 
