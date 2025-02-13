@@ -1,0 +1,27 @@
+---
+title: "Dominique Caron"
+name: "Dominique Caron
+image: https://avatars.githubusercontent.com/u/23227281?v=4
+comments: false
+about: 
+  id: dominique
+  template: solana
+  image-shape: rounded
+  links: 
+    - icon: globe
+      text: webpage
+      href: https://dominiquecaron.github.io/
+    - icon: github
+      text: Github
+      href: https://github.com/DominiqueCaron/
+---
+
+::: {#dominique}
+
+(Postdoc 2024 - )
+
+Posdoctoral researcher, Natural Resources Canada, Canadian Forest Service, Victoria, BC
+
+Dominique works on integrating vegetation, disturbance, and forest carbon dynamics to improve carbon modelling
+
+:::
