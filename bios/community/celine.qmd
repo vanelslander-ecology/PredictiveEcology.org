@@ -23,7 +23,7 @@ about:
 ::: {#celine}
 **Research Scientist, [Natural Resources Canada](https://www.nrcan.gc.ca/home)**\
 **Adjunct Professor, [University of British Columbia](https://www.ubc.ca)**\
-**University of Alberta, [WISEST profile](https://www.ualberta.ca/women-in-scholarship-engineering-science-technology/community/youth-council/women-in-stem-profiles/celine-boisvenue.html)**
+**University of Alberta, [WISEST profile](https://www.ualberta.ca/en/women-in-scholarship-engineering-science-technology/programs/youth-council/women-in-stem-profiles/celine-boisvenue.html)**
 
 I am a Research Scientist with the Canadian Forest Service, in Victoria BC. All my research is applied to understanding forests, modelling them as well as possible given available data, to support science-based management and policy development. My research activities provide scientific support for Canada's greenhouse gas (GHG) balance for forests under international reporting obligations, and contribute to the next generation of models for forest GHG estimates. I was a practicing forester and a biometrics consultant prior to becoming a researcher. I am therefore well positioned to provide viable solutions for both management and policy development. My recent focus has been on regional spatio-temporal modelling and the integration of remotely-sensed products into forest dynamics models. My masters from UBC biometrics (http://biometrics.forestry.ubc.ca/ ), and my PhD is from the Numerical Terradynamic Simulation group (NTSG - http://www.ntsg.umt.edu/), a NASA Earth Science Information Partner (http://www.esipfed.org/) at the University of Montana.
 :::
