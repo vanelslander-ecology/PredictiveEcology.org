@@ -9,11 +9,14 @@ about:
   image-shape: rounded
   links: 
     - icon: globe
-      text: webpage
+      text: Website
       href: https://www.jonathanvanelslander.com
     - icon: github
       text: GitHub
       href: https://github.com/vanelslander-ecology
+    - icon: globe
+      text: ResearchGate
+      href: https://www.researchgate.net/profile/Jonathan-Van-Elslander
 ---
   
 ::: {#jonathan}
